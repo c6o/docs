@@ -1,0 +1,24 @@
+{
+  "name": "@traxitt/docs",
+  "version": "0.0.1",
+  "description": "Documentation for traxitt",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --raw 'docsify serve .' 'sleep 1' 'open http://localhost:3000'",
+    "publish": "git push public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/traxitt/docs.git"
+  },
+  "keywords": [
+    "traxitt",
+    "docs"
+  ],
+  "author": "Narayan Sainaney",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/traxitt/docs/issues"
+  },
+  "homepage": "https://github.com/traxitt/docs#readme"
+}
