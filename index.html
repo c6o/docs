@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traxitt Docs</title>
+  <link rel="shortcut icon" type="image/png" href="/_media/favicon.png"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
+  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  
+  <style>
+    :root {
+      --docsifytabs-border-color: #ededed;
+      --docsifytabs-tab-highlight-color: purple;
+    }
+
+    .app-name-link img {
+      width: 200px
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+
+    // Mermaid
+    var mermaid_num = 0;
+    mermaid.initialize({ startOnLoad: false })
+
+    window.$docsify = {
+      name: 'Traxitt Docs',
+      repo: 'traxitt/docs',
+      auto2top: true,
+      logo: '_media/traxitt.svg',
+      loadSidebar: true,
+      plugins: [
+        EditOnGithubPlugin.create(
+          'https://github.com/traxitt/docs/',
+          null,
+          'Edit'
+        )
+      ],
+      'flexible-alerts': {
+        style: 'flat'
+      },
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return (
+                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + mermaid_num++, code) + "</div>"
+              );
+            }
+            return this.origin.code.apply(this, arguments)
+          }
+        }
+      },
+      tabs: {
+        persist    : true,      // default
+        sync       : true,      // default
+        theme      : 'material', // default
+        tabComments: true,      // default
+        tabHeadings: true       // default
+      }
+    }
+  </script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify-copy-code"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+  <script src="//unpkg.com/docsify-plugin-flexible-alerts"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+
+  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
+  <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>  
+</body>
+</html>
