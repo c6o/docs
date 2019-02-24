@@ -1,4 +1,4 @@
-# Quick Start Guide
+# Quick Start Guide #
 
 Right - we're past the yadda yadda and want to dive into how Traxitt works.
 

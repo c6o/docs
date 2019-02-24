@@ -1,34 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Traxitt Docs</title>
-  <link rel="shortcut icon" type="image/png" href="/content/_media/favicon.png"/>
+  <link rel="shortcut icon" type="image/png" href="/content/_media/favicon.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
-
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
-  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <meta name="description" content="Traxitt Documentation">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
+  
+  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
   <style>
+    /* Override some of the theme elements */
+
     :root {
       --docsifytabs-border-color: #ededed;
       --docsifytabs-tab-highlight-color: purple;
+      --theme-color: #E69634;
     }
 
     .app-name-link img {
-      width: 150px
+      width: 150px;
     }
-  </style>
-  
-</head>
-<body>
-  <div id="app"></div>
-  <script>
 
+    .sidebar-toggle {
+      bottom: unset;
+      width: unset;
+      top: 10px;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- <nav>
+    <a href="#/" class='active'>Concepts</a>
+    <a href="#/">Tasks</a>
+    <a href="#/">Tutorials</a>
+    <a href="#/">Reference</a>
+  </nav> -->
+
+  <div id="app"></div>
+
+  <script>
     // Mermaid
     var mermaid_num = 0;
     mermaid.initialize({ startOnLoad: false })
@@ -48,14 +70,26 @@
           'https://github.com/traxitt/docs/blob/master/',
           null,
           'Edit'
-        )
+        ),
+        function (hook) {
+          const footer = [
+            '<footer>',
+            '<span>&copy; Copyright 2019, <a href="https://traxitt.com">Traxitt Inc</a>. All Rights Reserved.</span>',
+            '<span style="float:right"> Published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+            '</footer>'
+          ].join('')
+
+          hook.afterEach(function (html) {
+            return html + footer;
+          })
+        }
       ],
       'flexible-alerts': {
         style: 'flat'
       },
       markdown: {
         renderer: {
-          code: function(code, lang) {
+          code: function (code, lang) {
             if (lang === "mermaid") {
               return (
                 '<div class="mermaid">' + mermaid.render('mermaid-svg-' + mermaid_num++, code) + "</div>"
@@ -66,9 +100,9 @@
         }
       },
       tabs: {
-        persist    : true,      // default
-        sync       : true,      // default
-        theme      : 'material', // default
+        persist: true,      // default
+        sync: true,      // default
+        theme: 'material', // default
         tabComments: true,      // default
         tabHeadings: true       // default
       }
@@ -83,6 +117,7 @@
 
   <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
   <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>  
+  <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
 </body>
+
 </html>
