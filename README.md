@@ -1,4 +1,4 @@
-# Traxitt Doc
+# Traxitt Docs
 
 This documentation is published by Traxitt Inc. and covers all aspects of the Traxitt system. The documents are open to modification and is the basis for the [http://docs.traxitt.com](http://docs.traxitt.com) website.
 
