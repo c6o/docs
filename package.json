@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/traxitt/docs#readme",
   "dependencies": {
-    "docsify": "^4.9.1"
+    "docsify-cli": "^4.3.0"
   }
 }
