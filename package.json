@@ -4,7 +4,7 @@
   "description": "Documentation for traxitt",
   "main": "index.js",
   "scripts": {
-    "start": "npm docsify serve -p $PORT .",
+    "start": "npx docsify serve -p $PORT .",
     "startdev": "concurrently --raw 'docsify serve .' 'sleep 1' 'open http://localhost:3000'",
     "publish": "git push public"
   },
