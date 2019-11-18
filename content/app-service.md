@@ -94,16 +94,16 @@ Diagram illustrates relationship between the Hub, Application Service, Provision
 
 ```mermaid
 graph TB
-    pr[Provisioner Repository]---|installs from|tas
-    th--REST API-->tas--REST API-->k8s1
-    tas--REST API-->k8s2
-    tas--REST API-->k8s3
-
-    subgraph traxitt[Traxitt System]
+    subgraph Traxitt System
        th[Traxitt Hub]
        tas[Traxitt App Service]
     end
-   subgraph customers[Customer Clusters]
+    pr[Provisioner Repository]---|installs from|tas
+    th--REST API-->tas
+    tas--REST API-->k8s1
+    tas--REST API-->k8s2
+    tas--REST API-->k8s3
+    subgraph Customer Clusters
        k8s1[K8s Customer 1]
        k8s2[K8s Customer 2]
        k8s3[K8s Customer 3]
