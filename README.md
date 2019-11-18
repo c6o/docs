@@ -13,7 +13,12 @@ If however, you would like to preview the site, clone this repo and run the foll
 ``` bash
 git clone ...
 cd docs
-npm install -g docsify
+npm install
+npm run develop
+
+OR
+
+npm install -g docsify-cli
 docsify serve .
 ```
 
@@ -23,4 +28,4 @@ The site will run locally at `http://localhost:3000`
 
 These documents are published as-is and come with no warranty. Traxitt Inc. reserves the right to change these documents at any time.
 
-© Copyright 2019 Traxitt Inc. All Rights Rerved
+© Copyright 2019 Traxitt Inc. All Rights Reserved
