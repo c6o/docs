@@ -32,7 +32,7 @@ A consumer of content needs to securely register with a Traxitt subscriber, eith
 
 For each account, there must be 1 or more schemas uploaded prior to producing content.  This is because content needs to be published according to a predefined schema (or multiple schemas) that consumers can subscribe to, based on these schemas.
 
-These schemas must follow the format of [YAML](http://en.wikipedia.org/wiki/YAML). Note that [JSON schema](http://en.wikipedia.org/wiki/JSON) is valid YAML since it's a subset of the YAML specification.
+These schemas must follow the format of [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html).
 
 It's recommended, but not enforced, that the account's schemas are kept as minimal as possible.  This will make the schemas more manageable.
 
@@ -42,6 +42,10 @@ When a producer registers, the producer must specify the content type as follows
 * By one or more schemas
 
 If no consumers are subscribed to a schema (or schemas) at publish time, then the content is simply dropped by the Traxitt System's publisher component.  Conversely, if there's a consumer subscribed to all schemas (*) then no content is dropped.
+
+Of course, there are an incredible variety of producer content sources out there.  Custom software needs to be written for each type (and possibly major version) of this content source.  Traxitt can assist customers to write adapters for their specific hardware sensors and/or data sources.  In addition, Traxitt has a library of adapters already written either by Traxitt or the developer community.
+
+We recommend polling your sensors or data sources with a sensible predefined frequency.  In other words, choose a frequency that makes sense to capture expected changes quickly but doesn't introduce too much noise.  For example, a weather-based temperature sensor could be polled every 60 seconds and there's little value polling it more frequently than this.  Of course, take into account the sensor's accuracy and account for a follow up reading after a wild fluctuation.
 
 ### Subscriber content
 
@@ -64,11 +68,13 @@ For now, if there are multiple consumers interested in the same content but with
 
 ### Loose coupling
 
-Producers and consumers would connect to publishers and subscribers, respectively, by fully qualified service name instead of IP address or cloud hostname.  For example: publisher.traxitt.svc.local instead of 192.168.0.1 or pod123.digitalocean.com.  This way, the service will hand off the request to the appropriate load balanced publisher component.
+Producers and consumers connect to publishers and subscribers using Kubernetes' DNS-based service discovery.  For example: publisher.traxitt-system.svc.cluster.local instead of 192.168.0.1 or pod123.digitalocean.com.  This way, the service will hand off the request to the appropriate load balanced publisher component and there is no tight coupling.
 
 ### Time series database
 
-Most of the time, all of the content needs to be persisted to a time series database.  This doesn't need to be a high priority but it does need to be guaranteed (dependable).  For this reason, the Traxitt System comes with this ability out of the box and can be easily configured to set this up.
+Most of the time, all of the content needs to be persisted to a time series database.  This doesn't need to be a high priority but it does need to be complete (reliable).  For this reason, the Traxitt System comes with this ability out of the box and can be easily configured to set this up.
+
+This time series database is useful for record keeping as well as running queries and performing analytics.
 
 After some research, ElasticSearch runs well on Kubernetes and is open source.  TimescaleDB is also open source and 
 * InfluxDB not recommended for production in k8s
