@@ -6,7 +6,11 @@ Traxitt's inter-app communication is built to run on Kubernetes and to leverage 
 
 A producer of content needs to securely register with a Traxitt publisher, either via a gRPC or RESTful API call.  The producer can either stream the content or make a separate API call for each item.
 
-A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent  content via a stream or an outbound separate API call will be made for each item.
+A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent content via a stream or an outbound separate API call will be made for each item.
+
+The Traxitt System is architected to allow many producers and many consumers.  And, for scalability and realibility reasons, the system must allow for multiple publisher and subscriber components.
+
+The Traxitt System uses Etcd for its core registry.
 
 ## Content
 
@@ -68,7 +72,7 @@ In a production environment, it's recommended to use server-side TLS/SSL certifi
 In addition, the Traxitt System implements JWT tokens as follows:
 
 You can call a to a UnaryInterceptor like so if you want to verify the jwt on every request
-```
+``` go
 // middleware for each rpc request. This function verifies the client has the correct "jwt".
 func authInterceptor(ctx context.Context, req interface{}, usi *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
     meta, ok := metadata.FromIncomingContext(ctx)
@@ -92,7 +96,7 @@ In your context from the client use the metadata to pass the jwt string and veri
 
 In Your main function remember to register it like so
 
-```
+``` go
 // register server
 myService := grpc.NewServer(
     grpc.UnaryInterceptor(authInterceptor), // use auth interceptor middleware
@@ -103,7 +107,7 @@ reflection.Register(myService)
 
 Your client would need to call your server like this:
 
-```
+``` go
 // create context with token and timeout
 ctx, cancel := context.WithTimeout(metadata.NewOutgoingContext(context.Background(), metadata.New(map[string]string{"jwt": "myjwtstring"})), time.Second*1)
 defer cancel()
@@ -129,6 +133,8 @@ Producers and consumers connect to publishers and subscribers using Kubernetes' 
 
 Most of the time, all of the content needs to be persisted to a time series database.  This doesn't need to be a high priority but it does need to be complete (reliable).  For this reason, the Traxitt System comes with this ability out of the box and can be easily configured to set this up.
 
+> Should we may only support 1 or more common SaaS time series DB providers OR should we support in Kubernetes.  I would think the latter due to Internet bandwidth/latency...
+
 This time series database is useful for record keeping as well as running queries and performing analytics.
 
 After some research, ElasticSearch runs well on Kubernetes and is open source.  TimescaleDB is also open source and 
@@ -148,6 +154,8 @@ The Traxitt System components have the ability to output logs at a configurable 
 At any particular level, any higher level logs will also be included.  For example: Warnings will include errors and fatal issues.
 
 In production, the debug (all) log level should not be used for performance reasons.
+
+(https://kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/)
 
 #### Integration
 TBD re: offering out of the box, configurable logging integration with SaaS/cloud logging services.
