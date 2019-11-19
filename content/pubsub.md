@@ -85,6 +85,10 @@ Another example, a consumer may subscribe to a schema representing Temperature a
 ### Handling multiple consumers for a particular schema
 For now, if there are multiple consumers interested in the same content but with different projections and/or selections then the Traxitt System will simply send this content independently of each other even if there are opportunities for possible efficiency and/or performance improvements.
 
+### Partitioning
+
+TODO
+
 ### Schema management
 
 An account's schemas can be managed using [Traxitt's hub](#) software.  Schemas can be created, viewed, updated and deleted.  Caution should be taken when updating a schema as follows:
