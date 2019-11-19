@@ -1,23 +1,5 @@
 # Publisher / Subscriber
 
-> Welcome to Traxitt.
-
-<!-- tabs:start -->
-
-## ** English **
-
-Hello!
-
-## ** French **
-
-Bonjour!
-
-## ** Italian **
-
-Ciao!
-
-<!-- tabs:end -->
-
 ## Publisher / Subscriber Model
 
 Traxitt's inter-app communication is built to run on Kubernetes and to leverage resiliency, scalability and automatic deployments.
@@ -138,7 +120,6 @@ The publisher and subscriber software components are written in Go (Golang) in o
 Producers talk to the publisher component via gRPC or RESTful-based APIs.  gRPC is recommended for performance and efficiency reasons.  Both unary and streamed connections are supported in the gRPC API.
 
 Similarly, consumers talk to the subscriber component via gRPC or RESTful-based APIs.  gRPC is recommended for performance and efficiency reasons.  Both unary and streamed connections are supported in the gRPC API.`
- 
 
 ### Loose coupling
 
@@ -157,21 +138,21 @@ After some research, ElasticSearch runs well on Kubernetes and is open source.  
 
 ### Logging
 
+#### Levels
+The Traxitt System components have the ability to output logs at a configurable threshold level as follows:
+* Fatal only
+* Errors
+* Warnings
+* Info
+* Debug (all)
+At any particular level, any higher level logs will also be included.  For example: Warnings will include errors and fatal issues.
 
+In production, the debug (all) log level should not be used for performance reasons.
 
-``` mermaid
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->John: Hello John, how are you?
-    loop Healthcheck
-        John->John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail...
-    John-->Alice: Great!
-    John->Bob: How about you?
-    Bob-->John: Jolly good!
-```
+#### Integration
+TBD re: offering out of the box, configurable logging integration with SaaS/cloud logging services.
+
+---
 
 :octocat: Hello
 
