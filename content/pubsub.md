@@ -12,6 +12,41 @@ The Traxitt System is architected to allow many producers and many consumers.  A
 
 The Traxitt System uses Etcd for its core registry.
 
+``` mermaid
+graph TB
+    subgraph Traxitt System
+       subgraph Publisher
+    	 	pub1[Publisher 1]
+       	pub2[Publisher 2]
+       	pub3[Publisher 3]
+		 end
+		 subgraph Subscriber
+       	sub1[Subscriber 1]
+       	sub2[Subscriber 2]
+       	sub3[Subscriber 3]
+		end
+    end
+	 pro1--gRPC-->pub1
+	 pro2--gRPC-->pub3
+	 pro3--gRPC-->pub2
+	 sub2--gRPC-->con1
+	 sub3--gRPC-->con2
+	 pub2--queue-->sub1
+	 pub2--queue-->sub2
+	 pub3--queue-->sub1
+	 pub3--queue-->sub3
+    subgraph Customer Producers
+       pro1[Producer 1]
+		 pro2[Producer 2]
+		 pro3[Producer 3]
+    end
+	 subgraph Customer Consumers
+       con1[Consumer 1]
+		 con2[Consumer 2]
+    end
+```
+
+
 ## Content
 
 ### Schemas (content types)
