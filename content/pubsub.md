@@ -52,7 +52,7 @@ We recommend polling your sensors or data sources with a sensible predefined fre
 When a consumer registers, the consumer can specify the messages or content it's interested in as follows:
 * All content (*)
 * Only content of a particular schema (type)
-* If applicable, which subsets of the schema (projection), if not all of it
+* If applicable, which subsets of the schema (projection), if not all of it.  See [W3C specification for fragement identification](https://www.w3.org/TR/2012/WD-fragid-best-practices-20121025/)
 * If applicable, which content that applies to the schema, by [JAQL](http://en.wikipedia.org/wiki/JSON) filtering (selection).
 * * Note that JAQL's group, join, sort, top and transform are NOT supported; instead, these operations are left to the consumer.
 * * Alternatives include Pig and Hive.
@@ -64,7 +64,81 @@ Another example, a consumer may subscribe to a schema representing Temperature a
 ### Handling multiple consumers for a particular schema
 For now, if there are multiple consumers interested in the same content but with different projections and/or selections then the Traxitt System will simply send this content independently of each other even if there are opportunities for possible efficiency and/or performance improvements.
 
+### Schema management
+
+An account's schemas can be managed using [Traxitt's hub](#) software.  Schemas can be created, viewed, updated and deleted.  Caution should be taken when updating a schema as follows:
+* When updating a schema, any existing subscribers to that schema based on $schema URI must be reevaluated and, if applicable, dropped.
+* When deleting a schemam, any existing subscribers to that schema based on $schema URI must be dropped.
+
+Schema URIs should follow the form:
+http://schamas.traxitt.com/customer-namespace/id#
+E.g.: https://schemas.traxitt.com/ibm.com/temperature/20190101#
+
+### Security
+Security if obviously important to the consumer/subscriber side of things to ensure that the content is sent to legitimate consumers.  However, it's also quite important to ensure that producers are allowed to publish content.
+
+#### TLS/SSL
+
+In a production environment, it's recommended to use server-side TLS/SSL certificates.
+** See [gRPC authentication](https://grpc.io/docs/guides/auth/)
+
+#### JWT
+In addition, the Traxitt System implements JWT tokens as follows:
+
+You can call a to a UnaryInterceptor like so if you want to verify the jwt on every request
+```
+// middleware for each rpc request. This function verifies the client has the correct "jwt".
+func authInterceptor(ctx context.Context, req interface{}, usi *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+    meta, ok := metadata.FromIncomingContext(ctx)
+    if !ok {
+        return nil, status.Error(codes.Unauthenticated, "INTERNAL_SERVER_ERROR")
+    }
+    if len(meta["jwt"]) != 1 {
+        return nil, status.Error(codes.Unauthenticated, "INTERNAL_SERVER_ERROR")
+    }
+
+    // perform different authorization logic per method
+    if usi.FullMethod != ...
+
+    // if code here to verify jwt is correct. if not return nil and error by accessing meta["jwt"][0]
+
+    return handler(ctx, req) // go to function.
+}
+```
+
+In your context from the client use the metadata to pass the jwt string and verify.
+
+In Your main function remember to register it like so
+
+```
+// register server
+myService := grpc.NewServer(
+    grpc.UnaryInterceptor(authInterceptor), // use auth interceptor middleware
+)
+pb.RegisterTheServiceServer(myService, &s)
+reflection.Register(myService)
+````
+
+Your client would need to call your server like this:
+
+```
+// create context with token and timeout
+ctx, cancel := context.WithTimeout(metadata.NewOutgoingContext(context.Background(), metadata.New(map[string]string{"jwt": "myjwtstring"})), time.Second*1)
+defer cancel()
+````
+
+Similarly, see [gRPC interceptors blog post](https://davidsbond.github.io/2019/06/14/creating-grpc-interceptors-in-go.html)
+
 ## Component architecture
+
+The publisher and subscriber software components are written in Go (Golang) in order to take full advantage of microservice architecture and scalability on Kubernetes.
+
+### APIs
+
+Producers talk to the publisher component via gRPC or RESTful-based APIs.  gRPC is recommended for performance and efficiency reasons.  Both unary and streamed connections are supported in the gRPC API.
+
+Similarly, consumers talk to the subscriber component via gRPC or RESTful-based APIs.  gRPC is recommended for performance and efficiency reasons.  Both unary and streamed connections are supported in the gRPC API.`
+ 
 
 ### Loose coupling
 
@@ -78,9 +152,12 @@ This time series database is useful for record keeping as well as running querie
 
 After some research, ElasticSearch runs well on Kubernetes and is open source.  TimescaleDB is also open source and 
 * InfluxDB not recommended for production in k8s
+* [ElasticSearch as a time series data store](https://www.elastic.co/blog/elasticsearch-as-a-time-series-data-store)
 * [Research on Time Series DBs](https://redmonk.com/rstephens/2018/04/03/the-state-of-the-time-series-database-market/)
 
-123
+### Logging
+
+
 
 ``` mermaid
 sequenceDiagram
