@@ -12,43 +12,48 @@ The TAS manages application manifests that describe the application to the syste
 - configuration required (can be filled in using a UI or CLI).
 - provisioner to use (if not the default application provisioner)
 
-Like Helm, the service runs outside a standard kubernetes cluster and is used to install applications and services using a CLI.  Unlike Helm, it can also run as a service with a REST API.
+The service runs inside or outside a standard kubernetes cluster and is used to install applications and services using a CLI.  Unlike Helm, it can also run as a service with a UI and associated REST API.
 
 Helm does not support an application lifecycle.  Helm applications are either running in the k8s cluster or not.  Using TAS, applications can be in an `installed`, `configured`, or `running` state.  (The k8s cluster will only manage running applications.)
 
 The configuration and logic needed to deploy and run an application in the cluster is in a *provisioner* component of TAS.  We expect there may be a few different provisioners needed for applications and specialized system components, but they will be fairly simple.
 
-
 ## High Level Architecture
 
-Diagram illustrates relationship between the Hub, Application Service, Provisioner repository and customer's k8s clusters.  The TAS is a service within the traxitt system.
+Diagram illustrates relationship between the Hub and customer's k8s clusters running TAS other traxitt system services and apps.
 
 ```mermaid
 graph TB
+    user(Customer 1 User)
     subgraph Traxitt System
-       th[Traxitt Hub]
-       tas[Traxitt App Service]
+       hub[Traxitt Hub App Store]
     end
-    th--REST API-->tas
-    tas--REST API-->k8s1
-    tas--REST API-->k8s2
-    tas--REST API-->k8s3
-    subgraph Customer Clusters
-       k8s1[K8s Customer 1]
-       k8s2[K8s Customer 2]
-       k8s3[K8s Customer 3]
+    user-->tas1
+    user-->hub
+    tas1--REST API-->hub
+    tas2--REST API-->hub
+    subgraph K8s Customer 1
+        tas1[Traxitt App Service]
+        apps[Apps]
+    end
+    subgraph K8s Customer 2
+        tas2[Traxitt App Service]
+        apps2[Apps]
+
     end
 ```
 
-Note that the TAS maintains state for the applications that are installed, configured or running in clusters.  The customer k8s clusters only maintain state about running applications.
+Note how Customer 1 interacts with TAS on their cluster to install applications.
 
+Note that the TAS maintains state for the applications that are in any state: installed, configured or running in the cluster.  Only running apps are actually maintained by k8s.
 
+> NOTE: Hub will need to bootstrap new clusters and install TAS and other Traxitt OS services.  Once TAS is installed like any other application or system component, it is accessed directly the end user to install and manage applications on the cluster.  Hub is a repository for application manifests like an app store.  Code for applications will be in a container repository.
 
 ## Example Use Cases
 
-### 1. Install, configure and run Node-RED as a traxitt application using CLI.**
+### 1. Install, configure and run Node-RED as a traxitt application using CLI
 
-Node-RED is a node.js application that depends on a volume.  User finds app manifest for Node-RED (node-red.yaml).
+Node-RED is a Node.js application that depends on a persistent volume.  The user finds app manifest for Node-RED (node-red.yaml) to install it using the CLI.
 
 User types:
 
@@ -74,15 +79,15 @@ This causes the provisioner to take the manifest, configuration and create kuber
 
 ### 2. Install Dashboard Web application using Traxitt Hub
 
-In this case, Hub is a client of TAS.  A web application called *dashboard* depends on a mongodb instance and a time series database instance.
+In this case, TAS is running in the customer's cluster with a web UI and associated REST API.  A web application they want to install called *dashboard* depends on a mongodb instance and a time series database instance.
 
-The user opens Hub to find a UI for the dashboard manifest in the app store.  Hub displays a nice icon, description, and other information from the manifest its storage.  Note that hub only manages manifests, i.e. the app store, not the state of applications.
+The user opens the TAS UI and searches for the dashboard app manifest in the Hub app store.  The UI displays a nice icon, description, and other information from the manifest.
 
 The user clicks on `install`.
 
-The manifest is sent to TAS and moved to the `installed` state by making a REST call to install the application.
+The manifest is retrieved by the TAS running in the customer's cluster with a REST call to Hub and moved to the `installed` state.
 
-In the Hub UI, the user views list of installed applications that are not yet configured or running on Hub.  This infomration is retrieved from the TAS service.
+In the TAS UI, the user views list of installed applications that are not yet configured or running on the customer's cluster.
 
 She clicks on the installed dashboard application, and then clicks on `configure`.
 
@@ -90,11 +95,11 @@ A configuration dialog appears with the parawemeters that need to be configured 
 
 She realizes the required dependencies haven't been installed and configured yet, so she cancels, and then goes to the app store to find a mongodb, and time series database.  She installs and configures those, and then runs them.  She notes down the connection strings needed for her application during the configuration.
 
-She then goes to the dashboard app again, clicks on `configure`, and fills in the dependency connection strings.  Once done, Hub makes a call to TAS to configure the app.  The dashboard is now configured.
+She then goes to the dashboard app again, clicks on `configure`, and fills in the dependency connection strings.  Once done, TAS configures the app moving it to the `configured` state.  The dashboard is now configured.
 
 > Perhaps we can auto detect the config strings for dependencies?
 
-She then clicks on 'run' in the dashboard app.  Hub calls TAS to deploy the resources for the application into kubernetes using the provisioner code.
+She then clicks on 'run' in the dashboard app.  TAS to deploys the resources for the application into kubernetes using the provisioner code.
 
 Note that there could be multiple dashboards running.  This would require providing a different name during the configuration phase.
 
@@ -108,7 +113,10 @@ Note that there could be multiple dashboards running.  This would require provid
 
     traxitt bootstrap
 
-Install or bootstrap the Traxitt OS into a k8s cluster.  This includes the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications.  Just point the `KUBECONFIG` environment and execute this command to get up and running.
+Install or bootstrap the Traxitt OS into a k8s cluster.  This includes the TAS service itself, the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications.  Just point the `KUBECONFIG` environment and execute this command to get up and running.
+
+> [!NOTE]
+> In this case TAS is run as a CLI *outside* a cluster.
 
 ### Install Traxitt Application
 
@@ -154,7 +162,7 @@ Lists the applications and their current state (installed, configured, running).
 
 Gets information about the specified application including its manifest, state.
 
-## Application Manfiest
+## Application Manifest
 
 App manifests contain the information needed deploy an application.
 
@@ -168,15 +176,13 @@ App manifests contain the information needed deploy an application.
 
 TODO: examples of yaml
 
-## Running TAS as a service
+## TAS UI
 
-How to run TAS as a service.
-
-### REST Interface
+## REST Interface
 
 REST interface.
 
-TODOL This will correpond to the CLI.
+TODO: This will correpond to the CLI.
 
 ## FAQ
 
