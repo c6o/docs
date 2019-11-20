@@ -46,8 +46,22 @@ graph TB
     end
 ```
 
-
 ## Content
+
+### Content contract
+
+``` protobuf
+message Message {   
+    string Id = 1; // ULID
+    string SchemaURI = 2;
+	string GroupId = 3;
+    google.protobuf.Timestamp Timestamp = 4;
+    int32 TTL = 5;
+    map<string, string> Labels = 6;
+    map<string, string> Headers = 7;
+    bytes Payload = 8;
+}
+```
 
 ### Schemas (content types)
 
@@ -56,6 +70,62 @@ For each account, there must be 1 or more schemas uploaded prior to producing co
 These schemas must follow the format of [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html).
 
 It's recommended, but not enforced, that the account's schemas are kept as minimal as possible.  This will make the schemas more manageable.
+
+### Subscriptions
+
+``` protobuf
+message Subscription {
+    string namespace = 1;
+    string address = 2;
+    bool persistent = 3;
+	repeated string SchemaURIs = 4; // nil for all schemas	
+	map<string, string> Filters = 5; // map SchemaURI, filter
+	map<string, string> Projections = 6; // map of SchemaURI, JSON Path projection
+}
+```
+
+For example:
+
+#### Data
+``` json
+{
+	"active": true,
+	"time": "2019-01-01 10:00:00",
+	"temperature": [{
+		"value": "254.9",
+		"unit": "Kelvin"
+	},{
+		"value": "-18.1",
+		"unit": "C"
+	},{
+		"value": "-0.6",
+		"unit": "F"
+	}],
+	"humidity": {
+		"value": "0.21"
+	}
+}
+```
+
+#### Subscription
+
+``` json
+{
+	"namespace": "" ,
+ 	"address": "127.0.0.1" ,
+	"persistent": false,
+	"SchemaURIs" : { "https://schemas.traxitt.com/ibm.com/temperature/20190101#" },
+	"Filters" : 
+		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
+			"$and: { $.Active, $.Temperature[?(@unit=='C')].Value < 0 }"
+		},
+	"Projections" :
+		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
+			"$.time,$.temperature[?(@unit=='C')]"
+		}	
+}
+
+```
 
 ### Producer content
 
@@ -73,9 +143,9 @@ We recommend polling your sensors or data sources with a sensible predefined fre
 When a consumer registers, the consumer can specify the messages or content it's interested in as follows:
 * All content (*)
 * Only content of a particular schema (type)
-* If applicable, which subsets of the schema (projection), if not all of it.  See [W3C specification for fragement identification](https://www.w3.org/TR/2012/WD-fragid-best-practices-20121025/)
 * If applicable, which content that applies to the schema, by [JAQL](http://en.wikipedia.org/wiki/JSON) filtering (selection).
 * * Note that JAQL's group, join, sort, top and transform are NOT supported; instead, these operations are left to the consumer.
+* If applicable, which subsets of the schema (projection), if not all of it.  See [W3C specification for fragement identification](https://www.w3.org/TR/2012/WD-fragid-best-practices-20121025/)
 * * Alternatives include Pig and Hive.
 
 For example, a consumer may subscribe to everything (*).  This may be desirable to persist all content to a time series database.  See [Time series database](#Time-series-database)
@@ -87,7 +157,13 @@ For now, if there are multiple consumers interested in the same content but with
 
 ### Partitioning
 
-TODO
+Aggregation is out of scope and is a task best handled by a consumer.  However, the Traxitt System allows for partitioning to ensure that a consumer with a subscription continue to receive content from the same producers so that they can perform aggregation.  For example, let's say that the task of calculating the average temperature over a 24 hour period for each sensor in a warehouse is a job handled by 3 or more consumers (for performance and scalability reasons).  Of course, the Traxitt Ssystem cannot arbitrarily send content to any of these 3 consumers but, instead, needs to parition the content by producer and then consistenly send the content onto the same consumer unless something goes wrong (more on this later).
+
+So, how is this achieved?  If a consumer subscribes with an existing subscription, i.e.: the messages or content they're after is a complete match, then the subscriber automatically recognizes this and assigns a partition to the preexisting consumer and this new consumer.  As such, both consumers will now get roughly half of the content.  Interestingly, this does have the side effect of the original consumer now no longer receiving content from roughly half of the producers it was receiving.
+
+Similarly, if a third consumer subscribes with the same existing subscription then, the content is now partitioned into roughly thirds from that point forward.  Conversely, if a consumer crashes or is no longer available then the content is repartitioned into one less part until, of course, there is no partition needed and all of the content for that subscription is sent to a single consumer.
+
+In order to partition content consistently, this is achieved by partitioning based on a hashing algorithm on the producer ID.
 
 ### Schema management
 
@@ -164,7 +240,9 @@ Producers talk to the publisher component via gRPC or RESTful-based APIs.  gRPC 
 
 Similarly, consumers talk to the subscriber component via gRPC or RESTful-based APIs.  gRPC is recommended for performance and efficiency reasons.  Both unary and streamed connections are supported in the gRPC API.`
 
-### Loose coupling
+### Coupling
+
+The coupling of services can be either tight or loose.  A tightly coupled service or component, theservices or components are dependent on one another and, as a result, isn't very scalable.  Changes to one service or component often requires changes to a number of other services or components.  Conversely, loose coupling reduces interdependencies between components, more flexible, maintainable, scalable and stable.  For these reasons, the traxitt System is loosely coupled.
 
 Producers and consumers connect to publishers and subscribers using Kubernetes' DNS-based service discovery.  For example: publisher.traxitt-system.svc.cluster.local instead of 192.168.0.1 or pod123.digitalocean.com.  This way, the service will hand off the request to the appropriate load balanced publisher component and there is no tight coupling.
 
@@ -198,35 +276,3 @@ In production, the debug (all) log level should not be used for performance reas
 
 #### Integration
 TBD re: offering out of the box, configurable logging integration with SaaS/cloud logging services.
-
----
-
-:octocat: Hello
-
-``` json
-{
-    "foo: {
-        "bar": "car"
-    }
-}
-```
-
-Something
-
-> [!NOTE]
-> An alert of type 'note' using global style 'callout'.
-
-Something
-
-> [!WARNING]
-> An alert of type 'note' using global style 'callout'.
-
-Tip
-
-> [!TIP]
-> An alert of type 'note' using global style 'callout'.
-
-Danger
-
-> [!DANGER]
-> An alert of type 'note' using global style 'callout'.
