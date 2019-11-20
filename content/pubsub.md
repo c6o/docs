@@ -79,7 +79,7 @@ message Subscription {
     string address = 2;
     bool persistent = 3;
 	repeated string SchemaURIs = 4; // nil for all schemas	
-	map<string, string> Filters = 5; // map SchemaURI, filter
+	map<string, string> Filters = 5; // map SchemaURI, JSON Query filter
 	map<string, string> Projections = 6; // map of SchemaURI, JSON Path projection
 }
 ```
@@ -143,9 +143,9 @@ We recommend polling your sensors or data sources with a sensible predefined fre
 When a consumer registers, the consumer can specify the messages or content it's interested in as follows:
 * All content (*)
 * Only content of a particular schema (type)
-* If applicable, which content that applies to the schema, by [JAQL](http://en.wikipedia.org/wiki/JSON) filtering (selection).
+* If applicable, which content that applies to the schema, by JSON Query filtering (selection).
 * * Note that JAQL's group, join, sort, top and transform are NOT supported; instead, these operations are left to the consumer.
-* If applicable, which subsets of the schema (projection), if not all of it.  See [W3C specification for fragement identification](https://www.w3.org/TR/2012/WD-fragid-best-practices-20121025/)
+* If applicable, which subsets of the schema (projection), if not all of it.  See [JSON Path](https://goessner.net/articles/JsonPath/)
 * * Alternatives include Pig and Hive.
 
 For example, a consumer may subscribe to everything (*).  This may be desirable to persist all content to a time series database.  See [Time series database](#Time-series-database)
