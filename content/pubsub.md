@@ -163,7 +163,7 @@ So, how is this achieved?  If a consumer subscribes with an existing subscriptio
 
 Similarly, if a third consumer subscribes with the same existing subscription then, the content is now partitioned into roughly thirds from that point forward.  Conversely, if a consumer crashes or is no longer available then the content is repartitioned into one less part until, of course, there is no partition needed and all of the content for that subscription is sent to a single consumer.
 
-In order to partition content consistently, this is achieved by partitioning based on a hashing algorithm on the producer ID.
+In order to partition content consistently, this is achieved by partitioning based on a hashing algorithm on the producer ID and the number of partitions at the time.
 
 ### Schema management
 
