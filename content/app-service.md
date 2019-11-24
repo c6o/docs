@@ -2,7 +2,7 @@
 
 The Traxitt System includes Application Management Services (AMS) and tools for Traxitt Cloud OS (OS) developers. It allows non-technical users to install, configure and run Traxitt Applications (Apps) in the Traxitt Cloud OS running in a Kubernetes cluster.
 
-> Traxitts goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
+> Traxitt's goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
 
 The AMS consists of application manifests that describe the application to the system. A manifest consists of information about the application including:
 
@@ -16,13 +16,13 @@ The AMS consists of application manifests that describe the application to the s
 
 The AMS runs inside a standard Kubernetes cluster in the `traxitt-system` namespace and provides interfaces to install and manage applications. Developers can interact with the service using a CLI. Unlike Helm, it can also run as a service with a UI and associated REST API.
 
-Helm does not support an application lifecycle. Helm applications are either running in the Kubernetes cluster or not. Using TAS, applications can be in an `installed`, `configured`, or `running` state. (The Kubernetes cluster will only manage running applications.)
+Helm does not support an application lifecycle. Helm applications are either running in the Kubernetes cluster or not. Using AMS, applications can be in an `installed`, `configured`, or `running` state. (The Kubernetes cluster will only manage running applications.)
 
-The configuration and logic needed to deploy and run an application in the cluster is done using *provisioners*. You can think of provisioners as installers on Windows and MacOS. Several provisioners may be required to properly install an application depending on the complexity of the application stack. Simple applications, may not require provisioners.
+The configuration and logic needed to deploy and run an application in the cluster is done using *provisioners*. You can think of provisioners as installers on Windows and MacOS. Several provisioners may be required to properly install an application depending on the complexity of the application stack. Simple applications may not require provisioners.
 
 ## Architecture
 
-This diagram illustrates relationship between the Hub and customer's Kubernetes clusters running TAS other traxitt system services and apps.
+This diagram illustrates relationship between the Hub Application Registry and customer's Kubernetes clusters running AMS, the App Store and Traxitt Apps.
 
 ```mermaid
 graph TB
@@ -50,7 +50,7 @@ graph TB
     docker-->ams1
 ```
 
-Users interacts with the Traxitt App Store on their cluster to install Apps.
+Users interact with the Traxitt App Store on their cluster to install Apps.
 
 The AMS manages the user experience and Apps throught the lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps, however, is managed by Kubernetes.
 
@@ -74,15 +74,17 @@ Once the node-red application is `installed`, developers can launch the app from
 traxitt launch node-red
 ```
 
-On launch, the Traxitt System will check to see if all configuation requirements set out in the App manifest are met. If not, developers and users are presented with configuration screens prior to launch.
+On launch, the Traxitt System will check to see if all configuration requirements set out in the App manifest are met. If not, developers and users are presented with configuration requests prior to launch.
 
 For example, the Traxitt CLI responds with configuration needed:
 
 ``` bash
-flow storage volume to mount at /data:
+> Flow storage volume to mount at /data: [volume-name]
 ```
 
-User fills in the volume name, or cancels if one does not exist. Once the App is configured, the App is in a `running` state.
+User fills in the volume name, or cancels if one does not exist and installs it separately, and tries again to launch.
+
+Once Node-RED is configured, the App is launched and in a `running` state.
 
 ### 2. Install Dashboard Web App using Traxitt Hub
 
@@ -104,7 +106,7 @@ The linking of Mongodb and time series database (connection strings etc) is done
 
 > NOTE: We should ensure the command format feels familiar to kubectl/helm/docker users. WIP
 
-### Boostrap Traxitt Cluster
+### Bootstrap Traxitt Cluster
 
     traxitt bootstrap
 
@@ -117,27 +119,35 @@ Install or bootstrap the Traxitt OS into a Kubernetes cluster. This includes the
 
     traxitt install {manifest.yaml}
 
-This command installs an application using the specified `manifest.yaml` file. This does not run the application, simply moves it to the installed state so that it can be configured. Returns the name of the unconfigured application as in the manifest.
+This command installs an application using the specified `manifest.yaml` file. This does not run the application, simply moves it to the `installed` state so that it can be configured. Returns the name of the unconfigured application as in the manifest.
 
 > Do we specify the name of the instance of the app here so we can configure and install multiple?
 
-### Configure Application
+### Configurure Application
 
-    traxitt configure {application} {values.yml}
+    traxitt launch {application} {values.yml} {name}
 
-The user can configure the application with the supplied values file, or get input from the CLI to fill in configuration parameters.
+The user can configure the application with the supplied values file, or get input from the CLI to fill in configuration parameters.  Once configured the application is in the `configured` state
 
 ### Run Application
 
-    traxitt run {application}
+    traxitt run {name}
 
-This runs a configured application with a specified name. If no name is supplied one is generated and returned.
+Run the application by name that is ready to run (configured).
+
+### Launch Application
+
+    traxitt launch {application} {values.yml} {name}
+
+Configure and run an application in one step.
+
+> Do we need a separate configuration state for the application? That is, it is configured, ready to run, but not running?
 
 ### Stop Application
 
     traxitt stop {application}
 
-This stops an application moving it to the configured state. This may involve deleting it from Kubernetes.
+This stops an application moving it back to the `configured` state. This may involve deleting it from Kubernetes.
 
 ### Uninstall Application
 
