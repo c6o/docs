@@ -98,7 +98,7 @@ message client.SubscriptionToken {
 
 #### Content contract
 
-Content is transmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels (or tags) and custom headers, both of which are optional and are provided for customer specific needs.  If applicable, customer's can specify a time to live, which is the shelf life for which the content is useful.  Finally, it's possible to partition content by grouping content with other similar content.  
+Content is transmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels (or tags) and custom headers, both of which are optional and are provided for customer specific needs.  If applicable, customer's can specify a time to live, which is the shelf life for which the content is useful.  Finally, it's possible to partition content by grouping content with other similar content so that related devices can produce content to the same publisher based on a partition ID.
 
 *** Need to talk about what grouping does
 
@@ -106,7 +106,7 @@ Content is transmitted using a predefined message format.  Content is divided up
 message client.Message {   
     string Id = 1; // ULID
     string SchemaURI = 2;
-	string GroupId = 3;
+	string PartitionId = 3;
     google.protobuf.Timestamp Timestamp = 4;
     int32 TTL = 5;
     map<string, string> Labels = 6;
@@ -383,3 +383,5 @@ In production, the debug (all) log level should not be used for performance reas
 
 #### Integration
 TBD re: offering out of the box, configurable logging integration with SaaS/cloud logging services.
+
+*** TODO - Avro vs Parquet
