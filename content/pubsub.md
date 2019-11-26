@@ -46,12 +46,64 @@ graph TB
     end
 ```
 
-## Content
+## APIs
 
-### Content contract
+### Publishing
+
+For producers to publish content, there are 2 API options: unary and streamed.  A producer can either make a separate publish call each time there is new content or it can open up a stream and send the content as it is ready.  Both of these options are fully supported and fully functional and so it is left to the producer to decide which works best.
+
+#### Traxitt System APIs
 
 ``` protobuf
-message Message {   
+service Publisher {
+  rpc PublishStream(stream client.Message) returns (google.protobuf.Empty) {}
+  rpc Publish(client.Message) returns (google.protobuf.Empty) {}
+}
+```
+
+*** In addition, there will be RESTful API.
+
+### Subscribing
+
+For consumer to subscribe to content, there are also 2 API choices: unary and streamed.  The simplest is for the consumer to subscribe and a stream is created, through which all of the content is sent back to the consumer as soon as it becomes available.  Once the consumer is finsihed, the consumer should just close the stream.
+
+The unary choice is a little more complicated because it involves multiple calls and the consumer needs to serve up a gRPC API and listen for incoming content.  The consumer first needs to subscribe and the subscription must include the address of the gRPC API endpoint that it is already listening on.  Upon subscription, a token will be returned.  During the subscription, the consumer must await on incoming content to the hosted gRPC API.  Of course, this API must follow the specification that the Traxitt System is expecting; otherwise, it won't be able to properly receive content.  Once it is finished, it should unsubscribe with that token to let the Traxitt System know that it no longer needs the subscription.
+
+Subscriptions can be either persistent or transient.  A persistent subscription will be retained even if the consumer crashes or is no longer reachable, which allows the consumer to reconnect and resume.  A transient subscription only lasts for the duration of the active subscription.
+
+Subscriptions have namespaces in order to keep them account specific.
+
+#### Traxitt System APIs
+
+``` protobuf
+service Subscriber {
+  rpc SubscribeStream(client.Subscription) returns (stream client.Message) {}
+  rpc Subscribe(client.Subscription) returns (client.SubscriptionToken) {}
+  rpc Unsubscribe(client.SubscriptionToken) returns (google.protobuf.Empty) {}
+  rpc KeepAlive(client.SubscriptionToken) returns (google.protobuf.Empty) {}
+}
+
+message client.Subscription {
+    // Metadata
+    string namespace = 1;
+    string address = 2;
+    bool persistent = 3;
+	client.Filter filter = 4;
+}
+
+message client.SubscriptionToken {
+    string token = 1;
+}
+```
+
+*** In addition, there will be RESTful API.
+
+#### Content contract
+
+Content is trasmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a timestamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels or tags, and custom headers, and, if applicable, can specify a time to live, which is the shelf life for which the content is useful.
+
+``` protobuf
+message client.Message {   
     string Id = 1; // ULID
     string SchemaURI = 2;
 	string GroupId = 3;
@@ -60,6 +112,14 @@ message Message {
     map<string, string> Labels = 6;
     map<string, string> Headers = 7;
     bytes Payload = 8;
+}
+```
+
+#### Consumer API
+
+``` protobuf
+service Consumer {
+  rpc ProcessMessage(client.Message) returns (google.protobuf.Empty) {}
 }
 ```
 
