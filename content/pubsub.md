@@ -83,14 +83,15 @@ service Subscriber {
 
 message client.Subscription {
     // Metadata
-    string namespace = 1;
-    string address = 2;
-    bool persistent = 3;
-	client.Filter filter = 4;
+    string Namespace = 1;
+    string Address = 2;
+    bool Persistent = 3;
+	map<string, string> Filters = 4;
+    map<string, string> Projections = 5;
 }
 
 message client.SubscriptionToken {
-    string token = 1;
+    string Token = 1;
 }
 ```
 
@@ -161,9 +162,9 @@ Example 1: here is an example of content that a consumer subscribes to in certai
 
 ``` json
 {
-	"namespace": "" ,
- 	"address": null ,
-	"persistent": false,
+	"Namespace": "" ,
+ 	"Address": null ,
+	"Persistent": false,
 	"SchemaURIs" : { "https://schemas.traxitt.com/ibm.com/temperature/20190101#" },
 	"Filters" : 
 		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
@@ -222,9 +223,9 @@ Example 2: in this example, there's a warehouse full of humidiity sensors but th
 
 ``` json
 {
-	"namespace": "" ,
- 	"address": null ,
-	"persistent": false,
+	"Namespace": "" ,
+ 	"Address": null ,
+	"Persistent": false,
 	"SchemaURIs" : { "https://schemas.traxitt.com/ibm.com/temperature/20190101#" },
 	"Filters" : 
 		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
