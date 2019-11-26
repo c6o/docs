@@ -2,15 +2,9 @@
 
 ## Publisher / Subscriber Model
 
-Traxitt's inter-app communication is built to run on Kubernetes to leverage resiliency, scalability and automatic deployments.
+Traxit's inter-app communication is built on a system comprised of multiple publisher and subscriber components, which customers communicate with using producers and consumers, respectively.  Each time content is published to the Traxitt System from a customer's producer, if this content has active subscriptions then it's queued sent onto the respective subscribers and, finally, onto the customer's consumers.
 
-A producer of content needs to securely register with a Traxitt publisher, either via a gRPC or RESTful API call.  The producer can either stream the content or make a separate API call for each content item.
-
-A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent content via a stream or an inbound separate API call will be made for each item.
-
-The Traxitt System is architected to allow many producers and many consumers.  And, for scalability and realibility reasons, the system must allow for multiple publisher and subscriber components.
-
-The Traxitt System uses Etcd for its core registry.
+Traxitt's inter-app communication is built to run on Kubernetes to leverage microservices, resiliency, scalability and automatic deployments.  Each component talks to a common registry, implemented by Etcd, which is also a microservice to manage the system.  And, the communication between publishers and subscribers is only via queueing, which is scalable and persistent.
 
 ``` mermaid
 graph TB
@@ -26,11 +20,11 @@ graph TB
        	sub3[Subscriber 3]
 		end
     end
-	 pro1--gRPC-->pub1
-	 pro2--gRPC-->pub3
-	 pro3--gRPC-->pub2
-	 sub2--gRPC-->con1
-	 sub3--gRPC-->con2
+	 pro1--gRPC/REST-->pub1
+	 pro2--gRPC/REST-->pub3
+	 pro3--gRPC/REST-->pub2
+	 sub2--gRPC/REST-->con1
+	 sub3--gRPC/REST-->con2
 	 pub2--queue-->sub1
 	 pub2--queue-->sub2
 	 pub3--queue-->sub1
@@ -45,6 +39,10 @@ graph TB
 		 con2[Consumer 2]
     end
 ```
+
+A producer of content needs to securely register with a Traxitt publisher, either via a gRPC or RESTful API call.  The producer can either stream the content or make a separate API call for each content item.
+
+A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent content via a stream or an inbound separate API call will be made for each item.
 
 ## APIs
 
@@ -100,7 +98,9 @@ message client.SubscriptionToken {
 
 #### Content contract
 
-Content is trasmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels or tags, and custom headers, both of which are optional and are provided for customer usage.  If applicable, can specify a time to live, which is the shelf life for which the content is useful.
+Content is transmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels (or tags) and custom headers, both of which are optional and are provided for customer specific needs.  If applicable, customer's can specify a time to live, which is the shelf life for which the content is useful.  Finally, it's possible to partition content by grouping content with other similar content.  
+
+*** Need to talk about what grouping does
 
 ``` protobuf
 message client.Message {   
@@ -117,6 +117,8 @@ message client.Message {
 
 #### Consumer API
 
+For consumers that subscribe using the unary API calls, they will need to serve and listen for incoming messages using a predefined API specification as follows:
+
 ``` protobuf
 service Consumer {
   rpc ProcessMessage(client.Message) returns (google.protobuf.Empty) {}
@@ -131,11 +133,12 @@ These schemas must follow the format of [JSON Schema](https://json-schema.org/un
 
 It's recommended, but not enforced, that the customer's account's schemas are kept as minimal as possible.  This will make the schemas more manageable.
 
-For example:
+Example 1: here is an example of content that a consumer subscribes to in certain cases and only wants a subset of this content:
 
 #### Data
 ``` json
 {
+    "sensorid" : "s123",
 	"active": true,
 	"time": "2019-01-01 10:00:00",
 	"temperature": [{
@@ -159,25 +162,82 @@ For example:
 ``` json
 {
 	"namespace": "" ,
- 	"address": "127.0.0.1" ,
+ 	"address": null ,
 	"persistent": false,
 	"SchemaURIs" : { "https://schemas.traxitt.com/ibm.com/temperature/20190101#" },
 	"Filters" : 
 		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
-			"$and: { $.Active, $.Temperature[?(@unit=='C')].Value < 0 }"
+			"$and: { $.active, $.temperature[?(@unit=='C')].Value < 0 }"
 		},
 	"Projections" :
 		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
 			"$.time,$.temperature[?(@unit=='C')]"
 		}	
 }
-
 ```
+As you can see, the consumer only wants temperature content that is from an active sensor and has a reading below freezing.  And, to only subscribe to the timestamp and temperature value in Celsius.
+
+Example 2: in this example, there's a warehouse full of humidiity sensors but the cosnumer only wants to monitor a specific sensor:
+
+#### Data
+``` json
+{
+    "sensorid" : "warehouse1sensor1",
+	"active": true,
+	"time": "2019-01-01 10:00:02",
+	"temperature": [{
+		"value": "254.9",
+		"unit": "Kelvin"
+	},{
+		"value": "-18.1",
+		"unit": "C"
+	},{
+		"value": "-0.6",
+		"unit": "F"
+	}],
+	"humidity": {
+		"value": "0.21"
+	}
+},{
+	"sensorid" : "warehouse1sensor2",
+	"active": true,
+	"time": "2019-01-01 10:00:01",
+	"temperature": [{
+		"value": "254.9",
+		"unit": "Kelvin"
+	},{
+		"value": "-18.1",
+		"unit": "C"
+	},{
+		"value": "-0.6",
+		"unit": "F"
+	}],
+	"humidity": {
+		"value": "0.21"
+	}
+},...
+```
+
+#### Subscription
+
+``` json
+{
+	"namespace": "" ,
+ 	"address": null ,
+	"persistent": false,
+	"SchemaURIs" : { "https://schemas.traxitt.com/ibm.com/temperature/20190101#" },
+	"Filters" : 
+		{ "https://schemas.traxitt.com/ibm.com/temperature/20190101#" :
+			"$.sensorid == 'warehouse1sensor2'"
+		},
+	"Projections" : null
+}
+```
+As you can see, the consumer wants all of the content from 'warehouse1sensor2'.
 
 ### Producer content
 
-When a producer registers, the producer must specify the content type as follows:
-* By one or more schemas
+When a producer registers, the producer must specify the content type as one or more schemas.
 
 If no consumers are subscribed to a schema (or schemas) at publish time, then the content is simply dropped by the Traxitt System's publisher component.  Conversely, if there's a consumer subscribed to all schemas (*) then no content is dropped.
 
