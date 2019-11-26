@@ -2,11 +2,11 @@
 
 ## Publisher / Subscriber Model
 
-Traxitt's inter-app communication is built to run on Kubernetes and to leverage resiliency, scalability and automatic deployments.
+Traxitt's inter-app communication is built to run on Kubernetes to leverage resiliency, scalability and automatic deployments.
 
-A producer of content needs to securely register with a Traxitt publisher, either via a gRPC or RESTful API call.  The producer can either stream the content or make a separate API call for each item.
+A producer of content needs to securely register with a Traxitt publisher, either via a gRPC or RESTful API call.  The producer can either stream the content or make a separate API call for each content item.
 
-A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent content via a stream or an outbound separate API call will be made for each item.
+A consumer of content needs to securely register with a Traxitt subscriber, either via a gRPC or RESTful API call.  The consumer will then be sent content via a stream or an inbound separate API call will be made for each item.
 
 The Traxitt System is architected to allow many producers and many consumers.  And, for scalability and realibility reasons, the system must allow for multiple publisher and subscriber components.
 
@@ -50,7 +50,7 @@ graph TB
 
 ### Publishing
 
-For producers to publish content, there are 2 API options: unary and streamed.  A producer can either make a separate publish call each time there is new content or it can open up a stream and send the content as it is ready.  Both of these options are fully supported and fully functional and so it is left to the producer to decide which works best.
+For producers to publish content, there are 2 API choices: unary and streamed.  A producer can either make a separate publish call each time there is new content or it can open up (and keep open) a stream and send the content as it is ready.  Both of these options are fully supported and fully functional and so it is left to the producer to decide which works best.
 
 #### Traxitt System APIs
 
@@ -65,13 +65,13 @@ service Publisher {
 
 ### Subscribing
 
-For consumer to subscribe to content, there are also 2 API choices: unary and streamed.  The simplest is for the consumer to subscribe and a stream is created, through which all of the content is sent back to the consumer as soon as it becomes available.  Once the consumer is finsihed, the consumer should just close the stream.
+For consumers to subscribe to content, there are also 2 API choices: unary and streamed.  The simplest is for the consumer to subscribe and a stream is created, through which all of the subscription content is sent back to the consumer as soon as it becomes available.  Once the consumer is finsihed, the consumer should just close the stream.
 
-The unary choice is a little more complicated because it involves multiple calls and the consumer needs to serve up a gRPC API and listen for incoming content.  The consumer first needs to subscribe and the subscription must include the address of the gRPC API endpoint that it is already listening on.  Upon subscription, a token will be returned.  During the subscription, the consumer must await on incoming content to the hosted gRPC API.  Of course, this API must follow the specification that the Traxitt System is expecting; otherwise, it won't be able to properly receive content.  Once it is finished, it should unsubscribe with that token to let the Traxitt System know that it no longer needs the subscription.
+The unary choice is a little more complicated because it involves multiple calls and the consumer needs to serve up a API and listen for incoming content.  The consumer first needs to subscribe and the subscription must include the address of the gRPC API endpoint that it is already listening on.  Upon successful subscription, a token will be returned.  During the subscription, the consumer must await on incoming content to the hosted gRPC API.  Of course, this API must follow the specification that the Traxitt System is expecting; otherwise, it won't be able to properly receive content.  Once the consumer is finished, it should unsubscribe with that token to let the Traxitt System know that it no longer needs the subscription.
 
-Subscriptions can be either persistent or transient.  A persistent subscription will be retained even if the consumer crashes or is no longer reachable, which allows the consumer to reconnect and resume.  A transient subscription only lasts for the duration of the active subscription.
+Subscriptions can be either persistent or transient.  Content in a persistent subscription will be retained even if the consumer crashes or is no longer reachable, which allows the consumer to reconnect and resume from where it left off.  A transient subscription only lasts for the duration of the active subscription.
 
-Subscriptions have namespaces in order to keep them account specific.
+Subscriptions have namespaces in order to keep them customer account or domain specific.
 
 #### Traxitt System APIs
 
@@ -100,7 +100,7 @@ message client.SubscriptionToken {
 
 #### Content contract
 
-Content is trasmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a timestamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels or tags, and custom headers, and, if applicable, can specify a time to live, which is the shelf life for which the content is useful.
+Content is trasmitted using a predefined message format.  Content is divided up into metadata and the actual content (payload).  For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to.  Content can have custom labels or tags, and custom headers, both of which are optional and are provided for customer usage.  If applicable, can specify a time to live, which is the shelf life for which the content is useful.
 
 ``` protobuf
 message client.Message {   
@@ -125,24 +125,11 @@ service Consumer {
 
 ### Schemas (content types)
 
-For each account, there must be 1 or more schemas uploaded prior to producing content.  This is because content needs to be published according to a predefined schema (or multiple schemas) that consumers can subscribe to, based on these schemas.
+For a customer account, there must be 1 or more schemas uploaded prior to producing content.  This is because content needs to be published according to a predefined schema (or multiple schemas) that consumers can subscribe to, based on these schemas.
 
 These schemas must follow the format of [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html).
 
-It's recommended, but not enforced, that the account's schemas are kept as minimal as possible.  This will make the schemas more manageable.
-
-### Subscriptions
-
-``` protobuf
-message Subscription {
-    string namespace = 1;
-    string address = 2;
-    bool persistent = 3;
-	repeated string SchemaURIs = 4; // nil for all schemas	
-	map<string, string> Filters = 5; // map SchemaURI, JSON Query filter
-	map<string, string> Projections = 6; // map of SchemaURI, JSON Path projection
-}
-```
+It's recommended, but not enforced, that the customer's account's schemas are kept as minimal as possible.  This will make the schemas more manageable.
 
 For example:
 
@@ -196,7 +183,7 @@ If no consumers are subscribed to a schema (or schemas) at publish time, then th
 
 Of course, there are an incredible variety of producer content sources out there.  Custom software needs to be written for each type (and possibly major version) of this content source.  Traxitt can assist customers to write adapters for their specific hardware sensors and/or data sources.  In addition, Traxitt has a library of adapters already written either by Traxitt or the developer community.
 
-We recommend polling your sensors or data sources with a sensible predefined frequency.  In other words, choose a frequency that makes sense to capture expected changes quickly but doesn't introduce too much noise.  For example, a weather-based temperature sensor could be polled every 60 seconds and there's little value polling it more frequently than this.  Of course, take into account the sensor's accuracy and account for a follow up reading after a wild fluctuation.
+We recommend polling your sensors or data sources with a practical predefined frequency.  In other words, choose a frequency that makes sense to capture expected changes quickly but doesn't introduce too much noise.  For example, a weather-based temperature sensor could be polled every 60 seconds and there's little value polling it more frequently than this.  Of course, take into account the sensor's accuracy and account for a follow up reading after a wild fluctuation.
 
 ### Subscriber content
 
@@ -205,15 +192,15 @@ When a consumer registers, the consumer can specify the messages or content it's
 * Only content of a particular schema (type)
 * If applicable, which content that applies to the schema, by JSON Query filtering (selection).
 * * Note that JAQL's group, join, sort, top and transform are NOT supported; instead, these operations are left to the consumer.
-* If applicable, which subsets of the schema (projection), if not all of it.  See [JSON Path](https://goessner.net/articles/JsonPath/)
+* If applicable, which subsets of the schema (projection), if not all of it.  Try to be minimal in order to be efficient and this will increase performance.  See [JSON Path](https://goessner.net/articles/JsonPath/)
 * * Alternatives include Pig and Hive.
 
 For example, a consumer may subscribe to everything (*).  This may be desirable to persist all content to a time series database.  See [Time series database](#Time-series-database)
 
-Another example, a consumer may subscribe to a schema representing Temperature and Humidity.  However, this consumer coudl specify the projection of just the humidity subset of possible data, including the sensor's location.  In addition, this consumer could also specify to only subscribe to humidity values over 65%.  This may be desirable for a high humidity alarm and/or to trigger a nearby dehumidifier to be activated.
+Another example, a consumer may subscribe to a schema representing Temperature and Humidity.  However, this consumer could specify the projection of just the humidity subset of possible data, including the sensor's location.  In addition, this consumer could also specify to only subscribe to humidity values over 65%.  This may be desirable for a high humidity alarm and/or to trigger a nearby dehumidifier to be activated.
 
 ### Handling multiple consumers for a particular schema
-For now, if there are multiple consumers interested in the same content but with different projections and/or selections then the Traxitt System will simply send this content independently of each other even if there are opportunities for possible efficiency and/or performance improvements.
+For now, if there are multiple consumers interested in the same content but with different projections and/or selections then the Traxitt System will simply send duplicated of this content even if there are opportunities for possible efficiency and/or performance improvements.
 
 ### Partitioning
 
@@ -227,7 +214,7 @@ In order to partition content consistently, this is achieved by partitioning bas
 
 ### Schema management
 
-An account's schemas can be managed using [Traxitt's hub](#) software.  Schemas can be created, viewed, updated and deleted.  Caution should be taken when updating a schema as follows:
+A customer's account's schemas can be managed using [Traxitt's hub](#) software.  Schemas can be created, viewed, updated and deleted.  Caution should be taken when updating a schema as follows:
 * When updating a schema, any existing subscribers to that schema based on $schema URI must be reevaluated and, if applicable, dropped.
 * When deleting a schemam, any existing subscribers to that schema based on $schema URI must be dropped.
 
