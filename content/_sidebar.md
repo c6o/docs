@@ -7,5 +7,6 @@
     - [Traxitt Hub](/architecture.md)
     - [Inter-Service Communication](/architecture.md)
 - [Services](/services.md)
+    - [Traxitt Applications](/app-service.md)
 - [Tools](/services.md)
 - [Extending Traxitt](/services.md)
