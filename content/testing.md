@@ -11,13 +11,14 @@ TODO
 ## Scope
 
 The scope of testing includes:
-* The Publisher/Subcriber inter-app communication system
+* The Traxitt Installer
 * The Traxitt Hub
-* Traxitt apps for Kubernetes
+* The Publisher/Subcriber inter-app communication system
+* Traxitt apps?
 
 ## Testing Strategy
 
-The focus for testing will be unit testing, system & integration testing, and performance & stress testing.  Unit tests are automatically tested as part of the build process.  System & integration testing and performance & stress testing are both manual tests and need to be performed prior to each release.
+The focus for testing will be unit testing, system & integration testing, and performance & stress testing.  Unit tests are automatically tested as part of the build process.  System & integration testing and performance & stress testing are both manual tests and need to be performed prior to each release.  And, of course, chaos testing is important given the nature of our buisness (lots of sensor data and large flow volumes).
 
 ### Unit Testing
 
@@ -58,9 +59,11 @@ Load testing needs to find and help identify the breaking points of the Traxitt 
 * * Start off with a single producer/consumer pairing sending a burst 1000 messages
 * * Continue to add each pairing sending a simultaneous 1000 message burst until an error threshold is exceeded
 * Chart the message throughput as follows:
-* * Number of producer/consumer pairings
-* * Average # of messages sent end-to-end per second across all pairings
-* * Failure rate and percentage
+* * Average # of successful and unsuccessful messages sent end-to-end per second per pairings
+* * Corresponding CPU usage
+* * Corresponding memory usage
+* * Corresponding blocking calls
+* * Corresponding network usage
 
 And, for the test results close to failing and failing, the following additional reports need to be created:
 * CPU profile
