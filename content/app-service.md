@@ -1,8 +1,8 @@
 # Traxitt Applications
 
-The Traxitt System includes Application Management Services (AMS) and tools for Traxitt Cloud OS (OS) developers. It allows non-technical users to bootstrap the OS, install, configure and run Traxitt Applications (Apps) in a Kubernetes cluster.
+Traxitt's goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
 
-> Traxitt's goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
+The Traxitt System includes Application Management Services (AMS) and tools for Traxitt Cloud OS (OS) developers. It allows non-technical users to bootstrap the OS, install, configure and run Traxitt Applications (Apps) in a Kubernetes cluster.
 
 The AMS manages of application manifests that describe the application to the system. A manifest consists of information about the application including:
 
@@ -50,16 +50,38 @@ graph TB
     docker-->ams1
 ```
 
-Users interact with the Traxitt Store on their cluster to install Apps and manage instances of these apps.
+Users interact with the *Traxitt Store* on their cluster to install Apps and manage instances of these apps.
 
-The AMS manages the user experience and Apps throught the application lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps once running, however, is managed by Kubernetes.
-
-> NOTE: Users will need to bootstrap new clusters and install the Traxitt Cloud OS. Once OS is installed, Users access the Traxitt Store directly via a web UI or using the CLI.
+The AMS manages the user experience and Apps throught the application lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps once running, however, is managed by Kubernetes.  Users will need to bootstrap new clusters and install the Traxitt Cloud OS. Once OS is installed, Users access the Traxitt Store directly via a web UI or using the CLI.
 
 AMS manages two resources:
 
 - **Applications** - apps that are installed in the cluster.  These are essentially templates that can be configured and run by the AMS
 - **Instances** - apps that are configured and/or running.  When an application is configured or launched, a new instance is created.
+
+### Security Considerations
+
+Where necessary, role based access control supported by kubernetes will be used to secure internal services used by Traxitt components and installed applications.
+
+The AMS and Traxitt Store UI will support authentication and access control.  The assumption is that a single traxitt customer organization will own the cluster, but the customer will want to provide access to different capabilities and access to applications and instances to different users in their organization based on roles such as owner/admin, user, guest for example.
+
+Some users will have the ability to install new applications and create new instances (administrators, owners) while others will only have the ability to view what has already been installed in the store.
+
+User management and authentication for Traxitt Store and the AMS will be independent of the Traxitt Hub so that the cluster will work without connectivity to the Hub.
+
+Roles:
+
+- **owner** - initial admin can also create, manage cluster
+- **admin** - can manage users, install apps, create instances for users
+- **user** - can view and access app instances that are running for them, manage these instances.
+- **guest** - can only access instances.
+
+Open issues for discussion:
+
+- This implies that the Traxitt Store and AMS may also need a way to manage users (CRUD) and perhaps API keys.  Do we want a separate service for this?  Can we leverage external authentication systems for this, or point to an org's LDAP server?
+- Are we just controlling the capabilities of the Traxitt Store and AMS or visibilty and access control of the apps themselves?
+- Related to above, applications installed with the system will often have their own access control.  Will we layer Traxitt User access control on top somehow?  Perhaps using a proxy (we did this for Node-RED)?  How then would we map our users/roles to the applications?  Would they need to log in twice?
+- For an MVP suggest all authenticated users will be admins, and we'll assume installed applications (e.g. mongodb, dashboards) will manage their own access control separately.
 
 ## Example Use Cases
 
@@ -135,7 +157,7 @@ The traxitt CLI is a client to the AMS system shown in the architecture diagram.
 
 There are two ways to provide a manifest for an application.
 
-- download by package name/version from the repository
+- specify by package name/version for download from the Hub repository
 - supply a manifest file directly (e.g. during development)
 
 One an application is installed, an instance of it is created on configuration or launch (config and run) allowing the user to manage more than one instance of an application in their cluster by name.
@@ -146,7 +168,9 @@ One an application is installed, an instance of it is created on configuration o
 traxitt bootstrap
 ```
 
-Bootstrap the Traxitt OS into a Kubernetes cluster. This installs the minimum required components required to bootstrap the rest of the system (the AMS).   Once these components are loaded, they will pull in other traxitt OS components including the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications. Just export the `KUBECONFIG` environment variable and execute this command to get up and running.
+Bootstrap the Traxitt OS into a Kubernetes cluster. This installs the minimum required components required to bootstrap the rest of the system (the AMS).   Once these components are loaded, they will pull in other Traxitt OS components including the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications. Just export the `KUBECONFIG` environment variable and execute this command to get up and running.
+
+No authentication is required.
 
 ### Install Application
 
@@ -240,7 +264,7 @@ App manifests contain the information needed deploy an application.  An applicat
 - docker images for the provisioner to install
 - dependencies required (other apps such as a database)
 - system services required (volumes, pub/sub)
-    - related configuration needed by the system services such as pub/sub schemas
+  - related configuration needed by the system services such as pub/sub schemas
 - configuration required (to be filled in using a web UI or CLI).
 - provisioner to use (if not uses the default application provisioner)
 
