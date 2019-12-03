@@ -137,19 +137,45 @@ Once Node-RED is configured, an application instance called `red-1` is launched 
 
 ### 3. Install Dashboard Web App using Traxitt Hub
 
-In this case, OS is running in the cluster and the user is interacting with the web based Traxitt Store UI. They App they want to install called *Dashboard* depends on a Mongodb service and a time series database.
+In this case, OS is running in the cluster and the user is interacting with the web based Traxitt Store UI. The App they want to install, called *Dashboard*, depends on a Mongodb service and a Time Series database service.
 
 The user opens the Traxitt Store UI, and searches for the Dashboard App. The Traxitt Store experience is one we already familiar with. The user clicks on `install`.
 
-Behind the scenes, the manifest is retrieved by the AMS and the system installs the Dashboard App.
+Behind the scenes, the manifest is retrieved by the AMS and the system installs the Dashboard App.  Note that this does not create an instance of the application in the cluster, it just allows the user to create an *instance* of the app in the cluster by configuring it and running it (launch).
 
-Once installed, she clicks on the Dashboard App icon and clicks on `launch`. The user can then type in the name of the instance such as `dashboard1`. The Traxitt OS sees that the manifest requires a mongodb and time series database. The user is presented with a configuration screen as these Apps have not been installed yet. She is then prompted to install the Mongodb service and time series database from the Traxitt Store using the same flow.
+Once installed, she clicks on the Dashboard App icon and clicks on `launch`. The user can then type in the name of the instance such as `dashboard1`. The Traxitt OS sees that the manifest requires a mongodb and time series database.
 
-Once all the dependencies are installed, and all the configuration requirements of the Dashboard App are now met, the system creates an instance `dashboard1`.  The Dashboard App is in a `running` state and the new dashboard UI is presented to her.
+Because dependencies are not yet available, the dashboard is not deployed to the cluster.  The user is presented with a configuration screen as these Apps have not been installed yet. She is then prompted to install the Mongodb service and time series database from the Traxitt Store using the same flow, that is, first installing, then launching them.
 
-The linking of Mongodb and time series database (connection strings etc) is done during the configuration flow via a simple UI.
+> Note: initially we can just let the user what dependencies they need, and cancel the application launch.  Once dependencies are installed, they can attempt to launch the app again, filling in configuration for their dependencies.
+
+Once all the dependencies are installed, and all the configuration requirements of the Dashboard App are met, the system creates an instance `dashboard1`.  The Dashboard App is in a `running` state and the new dashboard UI is presented to her.
 
 > Note: There are potentially mulitple instances of the Dashboard App running with different configurations. The UX for managing this is WIP.
+
+## Configuring Application Dependencies
+
+The dashboard to mongodb and time series database  use case highlights the need for a way to associate clients to the services they depend on, such as web applications to databases, or other services like traxitt pub/sub, filling in configuration parameters like connection strings, dns names, and credentials.
+
+Initially we'll do this manually, then we'll create k8s resources to be able to do this automatically based on configMap/secret schemas.
+
+### Manual Application Dependency Configuration
+
+Intially, the association of the dashboard instances to mongodb and time series database (configuring mongodb connection strings etc) is done during via a simple UI.
+
+After launching mongodb, we can allow the user to request the current configuration containing connection strings and references to secrets in the UI.
+
+The user can then jot these down or copy/paste these to the application configuration on launch.
+
+### Automatic Configuration
+
+To make dependency configuration automatic, we can define configMap/secret *schemas* for dependencies based on the dependency type and version.  For example, we can define a `mongodb/v1` schema that defines how the connection string, and root password needed by applications will be exposed in k8s configMaps and secrets to connect to it.
+
+When an application like dashboard is launched, it can look for its dependencies (mongodb), and if found, can retrieve the associated configMap and secret by its schema `mongodb/v1` and the instance name.  It can then point its configuration to the connection string and secrets needed in the configMap and secret defined by the schema.
+
+This will require defining different config/secret schemas for dependencies like databases and other services, including the traxitt pub/sub systems.  Applications must be aware of these schemas to configure themselves as described.
+
+Like data schema used by the pub/sub system application configuration schemas will be described using a standard like JSON schema, and referenced in the application manifest.
 
 ## Using TAS CLI
 
