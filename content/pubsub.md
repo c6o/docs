@@ -81,9 +81,50 @@ graph TB
 
 The Pub/Sub engine is a Subscriber pull system which means if there are no active Subscriptions (i.e. no one wants the data), the data is dropped by the Publisher so that  system resources are not consumed unnecessarily.
 
+## Messages
+
+`Messages` are the equivalent of Documents in a traditional operating system and make up the backbone of the Traxitt System. Data is transmitted using the predefined `Message` format below. `Messages` comprise of Metadata that describe the data and the Payload.
+
+``` protobuf
+message Message {
+    string Id = 1;
+    string SchemaId = 2;
+    google.protobuf.Timestamp Timestamp = 4;
+    map<string, string> Labels = 6;
+    map<string, string> Headers = 7;
+    bytes Payload = 8;
+}
+```
+
+### Id
+
+The `Message.Id` uniquely identifies the Message and is a ULID. Messages take a non-deterministic path through the system to Consumers. Consumers can use this `Id` to de-duplicate actions or to merge the `Message` as it may arrive back at a consumer several times as it is processed by the different pathways in the system.
+
+### SchemaId
+
+The `Message.SchemaId` is a pointer to a Schema URI that defines the `Message.Payload` format. The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
+
+> TBD: How does one retrieve the Schema given a SchemaId?
+
+### Timestamp
+
+The `Message.Timestamp` field defines the Event Time that resulted in the `Message`. This is different than Gateway Timestamp or Processing Timestamps.
+
+> TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard
+
+### Labels and Headers
+
+`Message.Labels` and `Message.Headers` are key value pairs that make up the key part of the `Message` Metadata. These are anything that have to do with the processing of the data as opposed to `Payload` data. `Subscriptions` can filter my `Labels` and not by `Headers`. `Headers` would therefore contain things like trace and diagnostic information whereas `Labels` would would include things like which `Consumers` have already processed the `Message`
+
+> TBD: Do we really need both? Can we get by with just `Headers`?
+
+### Payload
+
+The `Message.Payload` contains the body of the message and is defined by the `Message.SchemaId`
+
 ## Publishing
 
-Publishing is designed to be dead simple. The Producer sends data to the Publisher in a fire-and-forget model without any concern for any upstream Consumers. The data format however has to meet the Pub/Sub `Message` format.
+Publishing is designed to be dead simple. The Producer sends `Messages` to the Publisher in a fire-and-forget model without any concern for any upstream Consumers.
 
 ### gRPC API
 
@@ -93,12 +134,25 @@ The streamed option is recommended when the Producer generates a lot of data in 
 
 The following protobuf specification defines these RPC services.
 
+<!-- tabs:start -->
+
+#### ** Streamed **
+
 ``` protobuf
 service Publisher {
   rpc PublishStream(stream Message) returns (google.protobuf.Empty) {}
+}
+```
+
+#### ** Unary **
+
+``` protobuf
+service Publisher {
   rpc Publish(Message) returns (google.protobuf.Empty) {}
 }
 ```
+
+<!-- tabs:end -->
 
 ### REST API
 
@@ -106,30 +160,71 @@ service Publisher {
 
 ## Subscribing
 
+A `Subscription` describes the type of data a Consumer wishes to receive. The Traxitt System handles everything with respect to delivering data from Producers within the cluster. One can think of a Traxitt `Subscription` as a living database query. The `Subscription` request is as follows:
+
+``` protobuf
+message Subscription {
+    string Namespace = 1;
+    string Address = 2;
+    bool Persistent = 3;
+	string PartitionField = 4;
+	repeated Filter Filters = 5;
+    map<string, string> Projections = 6;
+}
+```
+
+### Namespaces
+
+> TBD: Subscription namespaces
+
+### Address
+
+The `Subscription.Address` defines where data is delivered. This is only applicable for unary `Subscriptions` (see below)
+
+### Persistence
+
+Subscriptions can be either Persistent or Transient as specified by the `Subscription.Persistent` field. A persistent subscription will continue to buffer messages even if the Consumer endpoint stops responding. In contrast, should the Consumer endpoint fail to acknowledge messages to a transient subscription, the Subscriber will automatically terminate the subscription. Buffered messages will be retained based on the Traxitt System configuration settings.
+
+### Partition Field
+
+When subscribing to data, Traxitt can send data to a Kubernetes Service or a Pod depending on the `Address` specified. If data is sent to a Service, Kubernetes takes car of routing Message to a Pod. This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a Message and triggers an alert. If however, you have a stateful service, you can use the `Subscription.PartitionField` to specify how to partition the data so it gets routed to a specific Pod. The `PartitionField` is a JSON Path string to a field in the `Message.Payload`. For instance, if your `Message.Payload` has a `DeviceId` field and you set this to the `Subscription.PartitionField`, the system will route the message to a Pods such that Messages for a given `DeviceId` will always be routed to the same Pod. If the Pod is no longer responsive, the system will elect a new Pod for the `Message` for the given `DeviceId`
+
+> TBD: How do you specify a Deployment? You can't with Address and Namespace
+
+If the `PartitionField` is missing in the `Message.Payload`, the message is dropped.
+
+> TBD How does one subscribe to data in another cluster?
+
+### Filters
+
+> TBD Grant
+
+### Projections
+
+> TBD Grant
+
 ### gRPC API
 
 Consumers can also choose between unary and streamed gRPC APIs. The streamed option is the simpler of the two. When `SubscribeStream` is called, the Consumer receives messages as a streamed response. When the Consumer wishes to end the subscription, simply close the stream and the Subscription will be cleaned up. The `Subscription.Address` field is ignored for streamed subscriptions.
 
 For the unary option, the Consumer has to set up a gRPC endpoint where the Subscriber will send Messages. The Address of the gRPC service is in the `Subscription.Address` field. This can be a Kubernetes `Service`, an individual `Pod` or even an external endpoint. The call to `Subscribe` returns a `SubscriptionToken`. When the Consumer is done with the Subscription, it has to call `Unsubscribe` with this token to end the Subscription.
 
-Subscriptions can be either Persistent or Transient as specified by the `Subscription.Persistent` field. A persistent subscription will continue to buffer messages even if the Consumer endpoint stops responding. In contrast, should the Consumer endpoint fail to acknowledge messages to a transient subscription, the Subscriber will automatically terminate the subscription. Buffered messages will be retained based on the Traxitt System configuration settings.
+<!-- tabs:start -->
 
-> TBD: Subscription namespaces
+#### ** Streamed **
 
 ``` protobuf
 service Subscriber {
   rpc SubscribeStream(Subscription) returns (stream Message) {}
+
+```
+
+#### ** Unary **
+
+``` protobuf
+service Subscriber {
   rpc Subscribe(Subscription) returns (SubscriptionToken) {}
   rpc Unsubscribe(SubscriptionToken) returns (google.protobuf.Empty) {}
-}
-
-message Subscription {
-    string Namespace = 1;
-    string Address = 2;
-    bool Persistent = 3;
-	string PartitionField = 4;
-	map<string, string> Filters = 5;
-    map<string, string> Projections = 6;
 }
 
 message SubscriptionToken {
@@ -137,9 +232,9 @@ message SubscriptionToken {
 }
 ```
 
-#### Unary Consumer RPC Endpoint
+#### Consumer RPC Endpoint
 
-For consumers that subscribe using the unary API calls will have to provide an endpoint that listens as follows:
+Messages to Consumers that subscribe using the unary API will be sent to the following RPC call. This has to be implemented at the endpoint specified at `Subscription.Address`:
 
 ``` protobuf
 service Consumer {
@@ -147,42 +242,19 @@ service Consumer {
 }
 ```
 
+<!-- tabs:end -->
+
 ### REST API
 
 > TBD - Not yet implemented
 
-## Messages
-
-Data is transmitted using the predefined Message format below. Messages are the equivalent of Documents in a traditional operating system and make up the backbone of the Traxitt System. Messages comprise of Metadata that describe the data and the Payload.
-
-``` protobuf
-message Message {
-    string Id = 1;
-    string Schema = 2;
-    google.protobuf.Timestamp Timestamp = 4;
-    int32 TTL = 5;
-    map<string, string> Labels = 6;
-    map<string, string> Headers = 7;
-    bytes Payload = 8;
-}
-```
-
-### Metadata
-
- Content is divided up into metadata and the actual content (payload). For the metadata portion, content must have a unique identifier, a time stamp, and indicate the JSON schema that its payload adheres to. Content can have custom labels (or tags) and custom headers, both of which are optional and are provided for customer specific needs. If applicable, customer's can specify a time to live, which is the shelf life for which the content is useful. Finally, it's possible to partition content by grouping content with other similar content so that related devices can produce content to the same publisher based on a partition ID.
-
-*** Need to talk about what grouping does
 
 
-### Schemas (content types)
 
-For a customer account, there must be 1 or more schemas uploaded prior to producing content. This is because content needs to be published according to a predefined schema (or multiple schemas) that consumers can subscribe to, based on these schemas.
 
-These schemas must follow the format of [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html).
 
-It's recommended, but not enforced, that the customer's account's schemas are kept as minimal as possible. This will make the schemas more manageable.
 
-Example 1: here is an example of content that a consumer subscribes to in certain cases and only wants a subset of this content:
+## NOTES = to be organized
 
 #### Data
 ``` json
