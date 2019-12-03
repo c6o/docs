@@ -5,7 +5,7 @@
 - [Architecture](/architecture.md)
     - [Provisioners](/architecture.md)
     - [Traxitt Hub](/architecture.md)
-    - [Inter-Service Communication](/architecture.md)
+    - [Inter-Service Communication](/pubsub.md)
 - [Services](/services.md)
     - [Traxitt Applications](/app-service.md)
 - [Tools](/services.md)
