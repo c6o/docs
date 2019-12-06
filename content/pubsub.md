@@ -88,11 +88,11 @@ The Pub/Sub engine is a Subscriber pull system which means if there are no activ
 ``` protobuf
 message Message {
     string Id = 1;
-    string SchemaId = 2;
-    google.protobuf.Timestamp Timestamp = 4;
-    map<string, string> Labels = 6;
-    map<string, string> Headers = 7;
-    bytes Payload = 8;
+    string SchemaUri = 2;
+    google.protobuf.Timestamp Timestamp = 3;
+    map<string, string> Labels = 4;
+    repeatable string Tags = 5;
+    bytes Payload = 6;
 }
 ```
 
@@ -100,11 +100,13 @@ message Message {
 
 The `Message.Id` uniquely identifies the Message and is a ULID. Messages take a non-deterministic path through the system to Consumers. Consumers can use this `Id` to de-duplicate actions or to merge the `Message` as it may arrive back at a consumer several times as it is processed by the different pathways in the system.
 
-### SchemaId
+### SchemaUri
 
-The `Message.SchemaId` is a pointer to a Schema URI that defines the `Message.Payload` format. The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
+The `Message.SchemaUri` is a Schema URI that defines the `Message.Payload` format. The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
 
-> TBD: How does one retrieve the Schema given a SchemaId?
+> Note that the Schema URI doesn't have to be local to the Traxitt Hub, e.g.: https://hub.traxitt.com/schema/customerdomain/v1/temperature, but does need to be accessible on the Internet.  You have the ability to manage your schemas in Traxitt's hub system.
+
+> Once a schema is used by any producers and/or consumers, it should not be immutable; instead, use an new schema with a different version, e.g.: https://hub.traxitt.com/schema/customerdomain/v2/temperature and, once the previous schema is no longer in use then it can be removed.
 
 ### Timestamp
 
@@ -112,11 +114,13 @@ The `Message.Timestamp` field defines the Event Time that resulted in the `Messa
 
 > TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard
 
-### Labels and Headers
+### Labels
 
-`Message.Labels` and `Message.Headers` are key value pairs that make up the key part of the `Message` Metadata. These are anything that have to do with the processing of the data as opposed to `Payload` data. `Subscriptions` can filter my `Labels` and not by `Headers`. `Headers` would therefore contain things like trace and diagnostic information whereas `Labels` would would include things like which `Consumers` have already processed the `Message`
+`Message.Labels` are optional key value pairs that make up the key part of the `Message` Metadata. These are anything that have to do with the processing of the data as opposed to `Payload` data. `Subscriptions` can filter by `Labels`.
 
-> TBD: Do we really need both? Can we get by with just `Headers`?
+### Tags
+
+`Message.Tags` are a list of optional tags (strings) that make up the key part of the `Message` Metadata. `Tags` would include things like which `Consumers` have already processed the `Message`
 
 ### Payload
 
@@ -164,30 +168,38 @@ A `Subscription` describes the type of data a Consumer wishes to receive. The Tr
 
 ``` protobuf
 message Subscription {
-    string Namespace = 1;
-    string Address = 2;
-    bool Persistent = 3;
-	string PartitionField = 4;
-	repeated Filter Filters = 5;
-    map<string, string> Projections = 6;
+    string SchemaUri = 1;    
+	Partition Partition = 2;
+	repeated Selector Filters = 3;
+    repeated Selector Projections = 4;
+    bool Persistent = 5;
+    string Address = 6;    
+}
+
+message Partition {
+    repeated string MetadataFields = 1;
+    repeated string PayloadFields = 2;
+    string Namespace = 3;
+    string LabelSelector = 4; // to query k8s to get the pods
+}
+
+message Selector {
+    string Provider = 1;
+    string Query = 2;
 }
 ```
 
-### Namespaces
+### SchemaUri
 
-> TBD: Subscription namespaces
+The `Subscription.SchemaUri` defines the schema Uri of the messages that the consumer is interested in.
 
-### Address
-
-The `Subscription.Address` defines where data is delivered. This is only applicable for unary `Subscriptions` (see below)
-
-### Persistence
-
-Subscriptions can be either Persistent or Transient as specified by the `Subscription.Persistent` field. A persistent subscription will continue to buffer messages even if the Consumer endpoint stops responding. In contrast, should the Consumer endpoint fail to acknowledge messages to a transient subscription, the Subscriber will automatically terminate the subscription. Buffered messages will be retained based on the Traxitt System configuration settings.
+> Traxitt has a reserved schema URI that can be referenced when subscriptions need to see every message produced.  This is useful when a consumer is writing all messages to a time series database or log.  In this case, use https://hub.traxitt.com/schema/traxitt/all
 
 ### Partition Field
 
 When subscribing to data, Traxitt can send data to a Kubernetes Service or a Pod depending on the `Address` specified. If data is sent to a Service, Kubernetes takes car of routing Message to a Pod. This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a Message and triggers an alert. If however, you have a stateful service, you can use the `Subscription.PartitionField` to specify how to partition the data so it gets routed to a specific Pod. The `PartitionField` is a JSON Path string to a field in the `Message.Payload`. For instance, if your `Message.Payload` has a `DeviceId` field and you set this to the `Subscription.PartitionField`, the system will route the message to a Pods such that Messages for a given `DeviceId` will always be routed to the same Pod. If the Pod is no longer responsive, the system will elect a new Pod for the `Message` for the given `DeviceId`
+
+> Note that if a partition is specified then the filters must be the same across all consumers in that partition.
 
 > TBD: How do you specify a Deployment? You can't with Address and Namespace
 
@@ -197,11 +209,32 @@ If the `PartitionField` is missing in the `Message.Payload`, the message is drop
 
 ### Filters
 
-> TBD Grant
+The consumer may not be interested in all of the messages even if they have the same schema.  For example: an alert/alarm consumer of temperature sensors may only be interested in data flowing from sensors in a particular warehouse and, of those, only those that are either below or above certain alert/alarm thresholds.
+
+Use the `Subscription.Filters` to specify one or more filters to select which messages to receive.  If multiple filters are specified then the intersection of the resulting messages will only be sent, i.e.: an AND logical operator is applied acroos multiple filters.
+
+Each filter must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine whether or not it should be sent.  The query can be as asimple or complicated as long as it is supported by the provider.
+
+> TBD: Initially, only PartiQL will be supported.
 
 ### Projections
 
-> TBD Grant
+Often, consumers may not be interested in all of the message content and, in fact, it is good practice for consumers to specify just the content they want to consumer from the messages.  This not only reduces unnecessary noise in messaging but can greatly increase the system performance.
+
+The consumer can specify one or more projections in the `Subscription.Projections`.  If multiple projections are specified then the union of the projections will be sent, i.e.: a union/combination of each of the projections will be sent as the final message.
+
+Each projection must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine the subset of message content to be sent.  The query can be as asimple or complicated as long as it is supported by the provider.
+
+> TBD: Initially, only PartiQL will be supported.
+> TBD: Determine what to use as the projection format, e.g.: JSON Path.
+
+### Persistence
+
+Subscriptions can be either Persistent or Transient as specified by the `Subscription.Persistent` field. A persistent subscription will continue to buffer messages even if all of the Consumers stop responding. In contrast, should a Consumer endpoint fail to acknowledge messages to a transient subscription, the Subscriber will automatically trigger a repartintioning or, if no consumers remain, terminate the subscription. Buffered messages will be retained based on the Traxitt System configuration settings.
+
+### Address
+
+The `Subscription.Address` defines where data is delivered. This is only applicable for unary `Subscriptions` (see below)
 
 ### gRPC API
 
