@@ -1,4 +1,4 @@
-# Messaging
+# Introduction
 
 When developing modular systems using Service Oriented Architecture, there are a number of ways in which two services can communicate with each other. In general, services can be tightly coupled or loosely coupled.
 
