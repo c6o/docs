@@ -1,10 +1,8 @@
-# Overview #
-
-This page is an overview of Traxitt.
+# Welcome
 
 ## What is Traxitt? ##
 
-[whatistraxitt](../_fragments/whatistraxitt.md ':include')
+[whatistraxitt](_fragments/whatistraxitt.md ':include')
 
 Traxitt takes a developer and user centric view to cluster computing while mainting DevOps control over the aspects that they :heart: and are accustomed to.
 

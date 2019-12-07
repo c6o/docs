@@ -1,12 +1,13 @@
 
-- [Welcome](/welcome.md)
-    - [Overview](/welcome/overview.md)
+- Welcome
+    - [Introduction](/welcome/intro.md)
     - [Quick Start Guide](/welcome/quickstart.md)
 - [Architecture](/architecture.md)
     - [Provisioners](/architecture.md)
     - [Traxitt Hub](/architecture.md)
-    - [Inter-Service Communication](/pubsub.md)
-- [Services](/services.md)
-    - [Traxitt Applications](/app-service.md)
+- [Applications](/app-service.md)
+- Messaging
+    - [Introduction](/messaging/intro.md)
+    - [The Rest](/messaging/pubsub.md)
 - [Tools](/services.md)
 - [Extending Traxitt](/services.md)

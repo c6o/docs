@@ -4,8 +4,9 @@
   "description": "Documentation for traxitt",
   "main": "index.js",
   "scripts": {
-    "start": "npx http-server -p $PORT -r .",
-    "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
+    "old_start": "npx http-server -p $PORT -r ./docs",
+    "start": "node index.js",
+    "develop": "concurrently --raw 'docsify serve ./docs'  'sleep 1 && open http://localhost:3000'",
     "publish": "git push public"
   },
   "repository": {
@@ -23,7 +24,9 @@
   },
   "homepage": "https://github.com/traxitt/docs#readme",
   "dependencies": {
-    "docsify-cli": "^4.3.0",
+    "docsify-cli": "^4.4.0",
+    "express": "^4.17.1",
+    "express-basic-auth": "^1.2.0",
     "http-server": "^0.11.1"
   },
   "devDependencies": {
