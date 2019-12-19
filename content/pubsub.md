@@ -2,45 +2,49 @@
 
 ## Overview
 
-When developing modular systems using Service Oriented Architecture, there are a number of ways in which two services can communicate with each other. In general, services can be tightly coupled or loosely coupled.
+When developing modular systems using Service Oriented Architectures, there are a number of ways in which two services can communicate with each other. In general, services can be *tightly coupled* or *loosely coupled*.
 
 ### Tightly Coupled Services
 
-Tightly coupled services can be anything from statically linked libraries to services communicating over a REST API. In this case, developers are fully aware of the application interface provided by the other service and software is hard coded to the contract defined by the interface.
+Tightly coupled services can be anything from statically linked libraries to services communicating over a REST API. In this case, developers are fully aware of the application interface provided by the other service.  Clients are hard coded to the contract defined by the service interface.
 
-Tightly coupled services are very common primarily because they are very easy to build. There are, however, some down sides to tightly coupled services:
+Tightly coupled services are very common because they are very easy to build. There are, however, some down sides to tightly coupled services:
 
 1. They can be fragile. Changes made to one service can break the other service
 1. The are less resilient. A service outage can cause the entire service pipeline to experience an outage
-1. By definition, it is not easy to swap out one service for another unless the interface happens to match the current contract
+1. By definition, it is not easy to swap out one service for another unless the interface strictly matches the current contract
 
 ### Loosely Coupled Services
 
-Alternatively, developers can build loosely coupled services. Loosely coupled services use a transport mechanism that acts as a data broker between services. Services read and write to the intermediary broker (generally called an Enterprise Service Bus) which handles messaging between services. This service bus:
+Alternatively, developers can build loosely coupled services. Loosely coupled services use a transport mechanism that acts as a data broker between services. Services read and write to an intermediary message broker that:
 
-1. Acts as a shock absorber as the system experiences increased load
+1. Acts as a "shock absorber" in case the system experiences increased load
 1. Is responsible for transporting messages between services
 1. Can provide additional services like keeping messages in order or fanning out the messages to multiple recipients
 
-While there is additional development complexity in building loosely coupled services, they are essential to building resilient systems that scale. Traxitt provides out of the box functions to eliminate this development complexity.
+While there is additional development complexity in building loosely coupled services, they are essential to building resilient systems that scale. Traxitt provides out of the box functionality to eliminate this development complexity.
 
 ### Direct Communication
 
-Kubernetes already has excellent features for building tightly coupled services. You can expose services internally and externally using built in constructs such as Services and Pods. Traxitt stays out of the way and lets you continue to use these familiar means of inter-service communications. The rest of this document will focus on building loosely coupled services.
+With Kubernetes you can expose services internally and externally using constructs such as *Services* and *Pods*. Typically these services are tightly coupled, communicating directly, with interfaces that are specific to the communicating services.  Traxitt's Publisher/Subscriber Subsystem builds on top of existing Kubernetes services and pods, providing means of inter-service communications to support loosely coupled services described here.
 
 ### The Publisher/Subscriber Subsystem
 
-Traxitt provides a Publisher and Subscriber (Pub/Sub) system to build loosely connected services. Services that publish data are called Producers and services that subscribe to data are called Consumers. These services talk to the Publisher and Subscriber service. An internal system called the Registry coordinates everything and is backed by etcd. You will never have to directly interact with the Registry however, it is the source of truth on all active Subscriptions.
+Clients of the Traxitt Publisher and Subscriber (Pub/Sub) system are called *Producers* and *Consumers*.  Producers publish data, Consumers subscribe to data using the subsystem's *Publisher* and *Subscriber* services. An internal system called the *Registry* coordinates Publishers and Subscribers and is backed by etcd.
 
-The Traxitt Pub/Sub system is an abstraction over Queueing providers like RabbitMQ, Kafka, Azure Event Hubs etc. The Pub/Sub system provides a data centric view to services and is inspired by databases instead of queues. End users can link services through the Traxitt UI to create Subscriptions much like the File Open dialog in present day Operating Systems. Developers can create Subscriptions programmatically.
+> [!NOTE]
+> You will never have to directly interact with the Registry however, it is the source of truth for all active Subscriptions.
+
+The Pub/Sub system provides an abstraction over Queueing providers like RabbitMQ, Kafka, Azure Event Hubs and others. By doing so, the Pub/Sub system provides a data centric view on streams of data more akin to databases than queues. End users can link services through the Traxitt UI to create Subscriptions much like the "File Open" dialog in present day desktop Operating Systems. Developers can create Subscriptions programmatically.
 
 The Pub/Sub system provides service developers and users a means to:
 
-1. Produce data without concern of who the upstream Consumer is
-1. Not have to worry about the underlying queuing constructs like partitioning and topics
+1. Produce data without concern of who the downstream Consumers are
 1. Support both stateless and stateful Consumers for Subscriptions
 1. Manage authorization on which Users can access what data based on the Subscriptions they can create
-1. Handle burst of data in some parts of the data pipeline without it affecting other parts of the pipeline through real time management of hot and cold paths and time-to-live
+1. Handle bursts of data in the data pipeline without it affecting other parts through persistent and non persistent data paths with different TTL settings.
+
+This functionality is provided without the need to worry about underlying queuing constructs like partitioning and topics for scalabiltiy and maintaining state.
 
 The following diagram illustrates the key components of the Pub/Sub subsystem:
 
@@ -79,11 +83,11 @@ graph TB
     end
 ```
 
-The Pub/Sub engine is a Subscriber pull system which means if there are no active Subscriptions (i.e. no one wants the data), the data is dropped by the Publisher so that  system resources are not consumed unnecessarily.
+The Pub/Sub engine is a "subscriber interest" system meaning if there are no Consumers interested in data from a producer, data is dropped by the Publisher so that system resources are not consumed unnecessarily.
 
 ## Messages
 
-`Messages` are the equivalent of Documents in a traditional operating system and make up the backbone of the Traxitt System. Data is transmitted using the predefined `Message` format below. `Messages` comprise of Metadata that describe the data and the Payload.
+Streams of `Messages` are the equivalent of Documents in a traditional operating system.  They make up the backbone of the Traxitt System. Data is transmitted using `Message` format below. `Messages` comprise of Metadata that describe the data and the Payload.
 
 ``` protobuf
 message Message {
@@ -98,21 +102,23 @@ message Message {
 
 ### Id
 
-The `Message.Id` uniquely identifies the Message and is a ULID. Messages take a non-deterministic path through the system to Consumers. Consumers can use this `Id` to de-duplicate actions or to merge the `Message` as it may arrive back at a consumer several times as it is processed by the different pathways in the system.
+The `Message.Id` uniquely identifies the Message and is a ULID. Messages take a non-deterministic path through the system to Consumers. Consumers can use this `Id` to de-duplicate or merge parts of a `Message` as it is processed by the different pathways through the system.
 
 ### SchemaUri
 
-The `Message.SchemaUri` is a Schema URI that defines the `Message.Payload` format. The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
+The `Message.SchemaUri` is a Schema URI that defines the `Message.Payload` format, and the messages that Subscribers are interested in on behalf of their Consumers as described later.
+
+The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
 
 > Note that the Schema URI doesn't have to be local to the Traxitt Hub, e.g.: https://hub.traxitt.com/schema/customerdomain/v1/temperature, but does need to be accessible on the Internet.  You have the ability to manage your schemas in Traxitt's hub system.
 
-> Once a schema is used by any producers and/or consumers, it should not be immutable; instead, use an new schema with a different version, e.g.: https://hub.traxitt.com/schema/customerdomain/v2/temperature and, once the previous schema is no longer in use then it can be removed.
+> Once a schema is used by any Producer or Consumer, it should not be changed; instead, when a schema needs to be updated, applications should use an *new* schema with a different version, e.g.: https://hub.traxitt.com/schema/customerdomain/v2/temperature.  Once the an older schema version is fully deprecated it can then be removed.
 
 ### Timestamp
 
-The `Message.Timestamp` field defines the Event Time that resulted in the `Message`. This is different than Gateway Timestamp or Processing Timestamps.
+The `Message.Timestamp` field defines the time the message was generated. This is different than Gateway Timestamp or Processing Timestamps.
 
-> TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard
+> TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard.  We likely want a client (device) timestamp and a timestamp when the Message was generated.
 
 ### Labels
 
@@ -128,7 +134,7 @@ The `Message.Payload` contains the body of the message and is defined by the `Me
 
 ## Publishing
 
-Publishing is designed to be dead simple. The Producer sends `Messages` to the Publisher in a fire-and-forget model without any concern for any upstream Consumers.
+Publishing is simple. The Producer sends `Messages` to the Publisher service in a fire-and-forget model without any concern for any downstream Consumer requirements.
 
 ### gRPC API
 
@@ -164,7 +170,7 @@ service Publisher {
 
 ## Subscribing
 
-A `Subscription` describes the type of data a Consumer wishes to receive. The Traxitt System handles everything with respect to delivering data from Producers within the cluster. One can think of a Traxitt `Subscription` as a living database query. The `Subscription` request is as follows:
+A `Subscription` describes the type of data a Consumer wishes to receive. The Traxitt System handles everything with respect to delivering data from Producers to Consumers within the cluster. One can think of a Traxitt `Subscription` as a live database query. The `Subscription` request is as follows:
 
 ``` protobuf
 message Subscription {
@@ -191,56 +197,56 @@ message Selector {
 
 ### SchemaUri
 
-The `Subscription.SchemaUri` defines the schema Uri of the messages that the consumer is interested in.
+The `Subscription.SchemaUri` defines the schema Uri of the messages that a consumer is interested in.
 
 > Traxitt has a reserved schema URI that can be referenced when subscriptions need to see every message produced.  This is useful when a consumer is writing all messages to a time series database or log.  In this case, use https://hub.traxitt.com/schema/traxitt/all
 
 ### Partition Field
 
-When subscribing to data, Traxitt can send data to a Kubernetes Service or a Pod depending on the `Address` specified. If data is sent to a Service, Kubernetes takes car of routing Message to a Pod. This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a Message and triggers an alert. If however, you have a stateful service, you can use the `Subscription.PartitionField` to specify how to partition the data so it gets routed to a specific Pod. The `PartitionField` is a JSON Path string to a field in the `Message.Payload`. For instance, if your `Message.Payload` has a `DeviceId` field and you set this to the `Subscription.PartitionField`, the system will route the message to a Pods such that Messages for a given `DeviceId` will always be routed to the same Pod. If the Pod is no longer responsive, the system will elect a new Pod for the `Message` for the given `DeviceId`
+When subscribing to data, Traxitt can send data to a Consumer Kubernetes Service or a Pod using the streaming API or the `Address` specified using an unary gRPC call.  This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a single Message to trigger an alert. If, however, you have a stateful service, requiring multiple messages associated with entities to be delivered to the same Consumer, you will need to use partitioning to ensure the system will scale.
 
-> Note that if a partition is specified then the filters must be the same across all consumers in that partition.
+To do so, use the `Subscription.PartitionField` to specify how to partition the data so it gets routed to a specific Pod. The `PartitionField` is a JSON Path string identifying a field in the `Message.Payload`. For instance, if your `Message.Payload` has a `DeviceId` field and you identify this field in the `Subscription.PartitionField`, the system will route the message to a Pods such that Messages for a given `DeviceId` will always be routed to the same Pod. If the Pod is no longer responsive, the system will elect a new Pod for the `Message` for the given `DeviceId`.
 
 > TBD: How do you specify a Deployment? You can't with Address and Namespace
 
-If the `PartitionField` is missing in the `Message.Payload`, the message is dropped.
+If the specified `PartitionField` is missing in the `Message.Payload`, the message is dropped.
 
 > TBD How does one subscribe to data in another cluster?
 
 ### Filters
 
-The consumer may not be interested in all of the messages even if they have the same schema.  For example: an alert/alarm consumer of temperature sensors may only be interested in data flowing from sensors in a particular warehouse and, of those, only those that are either below or above certain alert/alarm thresholds.
+The consumer will likely not be interested in all of the messages with the same schema.  For example: an alert/alarm consumer of temperature sensors may only be interested in data flowing from sensors in a particular warehouse and, of those, only those that are either below or above certain alert/alarm thresholds.
 
-Use the `Subscription.Filters` to specify one or more filters to select which messages to receive.  If multiple filters are specified then the intersection of the resulting messages will only be sent, i.e.: an AND logical operator is applied acroos multiple filters.
+Use the `Subscription.Filters` to specify one or more filters to select which messages to receive.  If multiple filters are specified then the intersection of the resulting messages will only be sent, i.e.: an AND logical operator is applied across multiple filters.
 
-Each filter must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine whether or not it should be sent.  The query can be as asimple or complicated as long as it is supported by the provider.
+Each filter must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine whether or not it should be sent.
 
 > TBD: Initially, only PartiQL will be supported.
 
 ### Projections
 
-Often, consumers may not be interested in all of the message content and, in fact, it is good practice for consumers to specify just the content they want to consumer from the messages.  This not only reduces unnecessary noise in messaging but can greatly increase the system performance.
+Often, consumers may not be interested in all fields of the filtered message content, or may need to reshape the data.  It is good practice for consumers to specify only the content they want from the messages to maintain system performance and reduce noise.
 
 The consumer can specify one or more projections in the `Subscription.Projections`.  If multiple projections are specified then the union of the projections will be sent, i.e.: a union/combination of each of the projections will be sent as the final message.
-
-Each projection must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine the subset of message content to be sent.  The query can be as asimple or complicated as long as it is supported by the provider.
 
 > TBD: Initially, only PartiQL will be supported.
 > TBD: Determine what to use as the projection format, e.g.: JSON Path.
 
 ### Persistence
 
-Subscriptions can be either Persistent or Transient as specified by the `Subscription.Persistent` field. A persistent subscription will continue to buffer messages even if all of the Consumers stop responding. In contrast, should a Consumer endpoint fail to acknowledge messages to a transient subscription, the Subscriber will automatically trigger a repartintioning or, if no consumers remain, terminate the subscription. Buffered messages will be retained based on the Traxitt System configuration settings.
+Subscriptions can be either *Persistent* or *Transient* as specified by the `Subscription.Persistent` field. The system will continue to buffer messages for a persistent subscription even if all of the Consumers stop responding. In contrast, should all Consumer endpoints fail to acknowledge messages to a transient subscription, the subscription will be terminated.
+
+> Note that any buffered messages will be retained based on the Traxitt System configuration settings.
 
 ### Address
 
-The `Subscription.Address` defines where data is delivered. This is only applicable for unary `Subscriptions` (see below)
+The `Subscription.Address` defines where data is delivered. This is only applicable for unary `Subscriptions` (see below).
 
 ### gRPC API
 
-Consumers can also choose between unary and streamed gRPC APIs. The streamed option is the simpler of the two. When `SubscribeStream` is called, the Consumer receives messages as a streamed response. When the Consumer wishes to end the subscription, simply close the stream and the Subscription will be cleaned up. The `Subscription.Address` field is ignored for streamed subscriptions.
+Consumers can also choose between using unary and streamed gRPC APIs. The streamed option is the simpler of the two. When `SubscribeStream` is used, the Consumer receives messages as a streamed response. To end the subscription, the Consumer simply closes the stream; the Subscription will be cleaned up. The `Subscription.Address` field is ignored for streamed subscriptions.
 
-For the unary option, the Consumer has to set up a gRPC endpoint where the Subscriber will send Messages. The Address of the gRPC service is in the `Subscription.Address` field. This can be a Kubernetes `Service`, an individual `Pod` or even an external endpoint. The call to `Subscribe` returns a `SubscriptionToken`. When the Consumer is done with the Subscription, it has to call `Unsubscribe` with this token to end the Subscription.
+When using the unary gRPC option, the Consumer sets up a gRPC endpoint where the Subscriber will send Messages. The Address of the gRPC service is set in the `Subscription.Address` field. This can be a Kubernetes `Service`, an individual `Pod` or even an external endpoint. The call to `Subscribe` returns a `SubscriptionToken`. When the Consumer is done with the Subscription, it has to call `Unsubscribe` with this token to end the Subscription.
 
 <!-- tabs:start -->
 
@@ -267,7 +273,7 @@ message SubscriptionToken {
 
 #### Consumer RPC Endpoint
 
-Messages to Consumers that subscribe using the unary API will be sent to the following RPC call. This has to be implemented at the endpoint specified at `Subscription.Address`:
+Messages to Consumers that subscribe using the unary API will be sent to the following Consumer service interface. This has to be implemented at the endpoint specified at `Subscription.Address`:
 
 ``` protobuf
 service Consumer {
@@ -428,16 +434,14 @@ In order to partition content consistently, this is achieved by partitioning bas
 
 ### Schema management
 
-A customer's account's schemas can be managed using [Traxitt's hub](#) software. Schemas can be created, viewed, updated and deleted. Caution should be taken when updating a schema as follows:
-* When updating a schema, any existing subscribers to that schema based on $schema URI must be reevaluated and, if applicable, dropped.
-* When deleting a schemam, any existing subscribers to that schema based on $schema URI must be dropped.
+Customer schemas are be managed using [Traxitt's hub](#) software. Schemas can be created, viewed, updated and deleted. Caution should be taken when updating or deleting a schema to ensure that there are no existing subscribers that depend on it.
 
 Schema URIs should follow the form:
 http://schamas.traxitt.com/customer-namespace/id#
 E.g.: https://schemas.traxitt.com/ibm.com/temperature/20190101#
 
 ### Security
-Security if obviously important to the consumer/subscriber side of things to ensure that the content is sent to legitimate consumers. However, it's also quite important to ensure that producers are allowed to publish content.
+Security is important to ensure that produces are permitted to publish data and messages are only sent to legitimate consumers.
 
 #### TLS/SSL
 
