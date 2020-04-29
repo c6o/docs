@@ -27,11 +27,11 @@ These core values help guide the overall architecture at Traxitt.
 
 ## What is a Cluster Operating System? ##
 
-Operating system abstract away low level aspects of the underlying computing hardware and key software resources. Over time, Operating Systems have gone from handling single CPU computers, to multi-core processors and now, any number of CPU and GPU combinations. At Traxitt, we asked ourselves what this means in the age of Cloud Computing.
+Operating systems abstract away low level aspects of the underlying computing hardware and key software resources. Over time, Operating Systems have gone from handling single CPU computers, to multi-core processors and now, any number of CPU and GPU combinations. At Traxitt, we asked ourselves what this means in the age of Cloud Computing.
 
 These days, engineers who work on web, IoT and various other Service Oriented Architecture (SOA) projects typically deploy to a cluster of computers. This is why Cloud Computing architectures have now moved towards microservices and service meshes instead of monolitic architectures.
 
-There is a good deal of technology already developed to help manage clusters of computers. Technologies such as [kubernetes](http://kubernetes.io) and [Docker](http://docker.com) have made it much easier to have to manage and orchestrate a cluster of machines.
+There is a good deal of technology already developed to help manage clusters of computers. Technologies such as [kubernetes](http://kubernetes.io) and [Docker](http://docker.com) have made it much easier to manage and orchestrate a cluster of machines.
 
 Despite that, we feel there is more that can be done to improve the overall experience.
 

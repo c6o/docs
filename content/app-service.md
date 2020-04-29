@@ -4,7 +4,7 @@ Traxitt's goal is to empower developers to give non-technical users a great user
 
 The Traxitt System includes Application Management Services (AMS) and tools for Traxitt Cloud OS (OS) developers. It allows non-technical users to bootstrap the OS, install, configure and run Traxitt Applications (Apps) in a Kubernetes cluster.
 
-The AMS manages of application manifests that describe the application to the system. A manifest consists of information about the application including:
+The AMS manages application manifests that describe the application to the system. A manifest consists of information about the application, including:
 
 - packaging information including icon, application type, name, description, authors, and other data needed for provisioners, the hub UI.
 - images for the provisioner to install
@@ -14,7 +14,7 @@ The AMS manages of application manifests that describe the application to the sy
 - configuration required (can be filled in using a UI or CLI).
 - provisioner to use (if not the default application provisioner)
 
-The AMS runs inside a standard Kubernetes cluster in the `traxitt-system` namespace and provides an interfaces to install and manage applications called the Traxitt Store. Developers can also interact with the service using a CLI.
+The AMS runs inside a standard Kubernetes cluster in the `traxitt-system` namespace and provides an interface to install and manage applications called the Traxitt Store. Developers can also interact with the service using a CLI.
 
 The AMS is quite different from other package managers like Helm.  Helm does not support an application lifecycle. Helm applications are either running in the Kubernetes cluster or not. Using AMS, applications can be in an `installed`, `configured`, or `running` state. (The Kubernetes cluster will only manage running applications.)
 
@@ -71,9 +71,9 @@ User management and authentication for Traxitt Store and the AMS will be indepen
 
 Roles:
 
-- **owner** - initial admin can also create, manage cluster
+- **owner** - initial installer and admin who can also create, manage cluster
 - **admin** - can manage users, install apps, create instances for users
-- **user** - can view and access app instances that are running for them, manage these instances.
+- **user (with permissions)** - can view and access app instances that are running for them, manage these instances.
 - **guest** - can only access instances.
 
 Open issues for discussion:
@@ -87,7 +87,7 @@ Open issues for discussion:
 
 ### 1. Bootstrapping Traxitt
 
-The user will bootstrap the traxitt system either using the CLI or using the Traxitt Hub.
+The user will bootstrap the Traxitt system using either the CLI or using the Traxitt Hub.
 
 The customer will provision their k8s cluster on any cloud such as Digital Ocean, AWS, Azure or Google Cloud.  Once provisioned, they will retrieve their kubernetes configuration file.
 
