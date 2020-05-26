@@ -1,10 +1,10 @@
 # Welcome
 
-Welcome to Traxitt!
+Welcome to CodeZero!
 
-[whatistraxitt](_fragments/whatistraxitt.md ':include')
+[whatiscodezero](_fragments/whatiscodezero.md ':include')
 
-If you are new to Traxitt, you may wish to start with the [Overview](#/welcome/overview.md) sections.
+If you are new to CodeZero (often abbreviated to **c6o**) you may wish to start with the [Overview](#/welcome/overview.md) sections.
 
 Our [Quick Start Guide](#/welcome/quickstart.md) guide is a great place to start if you prefer to dive into using the software.
 

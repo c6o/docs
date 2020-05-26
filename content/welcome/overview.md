@@ -1,12 +1,8 @@
 # Overview #
 
-This page is an overview of Traxitt.
+[whatiscodezero](../_fragments/whatiscodezero.md ':include')
 
-## What is Traxitt? ##
-
-[whatistraxitt](../_fragments/whatistraxitt.md ':include')
-
-Traxitt takes a developer and user centric view to cluster computing while mainting DevOps control over the aspects that they :heart: and are accustomed to.
+CodeZero takes a developer and user centric view to cluster computing while mainting DevOps control over the aspects that they :heart: and are accustomed to.
 
 We have taken care to reuse what is already available so you can leverage your investment in these excellent technologies.
 

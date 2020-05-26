@@ -1,0 +1,3 @@
+# Provisioner Overview
+
+To add a new application to CodeZero, you need to provide an application manifest and an associated provisioner.  An application manifest is a k8s resource managed by Hub and makes use of one or more provisioners to install, remove and configure applications running in a c6o-enabled cluster. A provisioner is a npm package that implements the Provisioner object used by the CodeZero platform to install, remove, and update or configure your application.  The provisioner is accessed both by the CodeZero CLI and the web based Marina, Store and Navstation applications.

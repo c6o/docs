@@ -1,1 +1,0 @@
-> Traxitt is a service mesh platform to rapidly develop and run workloads on a cluster of computers. Traxitt builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io) and introduces some new higher level concepts to simplify the development and operations of microservices in a service mesh.

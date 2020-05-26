@@ -1,10 +1,10 @@
-# Traxitt Applications
+# CodeZero Applications
 
-Traxitt's goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
+CodeZero's goal is to empower developers to give non-technical users a great user experience running applications in their Private Cloud.
 
-The Traxitt System includes Application Management Services (AMS) and tools for Traxitt Cloud OS (OS) developers. It allows non-technical users to bootstrap the OS, install, configure and run Traxitt Applications (Apps) in a Kubernetes cluster.
+The CodeZero Platform includes the CodeZero System and tools for CodeZero Cloud OS (OS) developers to publish apps. It allows non-technical users to bootstrap the OS, install, configure and run CodeZero Applications (Apps) in a Kubernetes cluster.
 
-The AMS manages application manifests that describe the application to the system. A manifest consists of information about the application, including:
+The c6o System manages application manifests that describe the application to the system. A manifest consists of information about the application, including:
 
 - packaging information including icon, application type, name, description, authors, and other data needed for provisioners, the hub UI.
 - images for the provisioner to install
@@ -14,7 +14,7 @@ The AMS manages application manifests that describe the application to the syste
 - configuration required (can be filled in using a UI or CLI).
 - provisioner to use (if not the default application provisioner)
 
-The AMS runs inside a standard Kubernetes cluster in the `traxitt-system` namespace and provides an interface to install and manage applications called the Traxitt Store. Developers can also interact with the service using a CLI.
+The AMS runs inside a standard Kubernetes cluster in the `codezero-system` namespace and provides an interface to install and manage applications called the CodeZero Store. Developers can also interact with the service using a CLI.
 
 The AMS is quite different from other package managers like Helm.  Helm does not support an application lifecycle. Helm applications are either running in the Kubernetes cluster or not. Using AMS, applications can be in an `installed`, `configured`, or `running` state. (The Kubernetes cluster will only manage running applications.)
 
@@ -22,13 +22,13 @@ The configuration and logic needed to deploy and run an application in the clust
 
 ## Architecture
 
-This diagram illustrates relationship between the Hub Application Registry and customer's Kubernetes clusters running AMS, the Traxitt Store and Traxitt Apps.
+This diagram illustrates relationship between the Hub Application Registry and customer's Kubernetes clusters running AMS, the CodeZero Store and CodeZero Apps.
 
 ```mermaid
 graph TB
     user(User)
     developer(Developer)
-    subgraph Traxitt Hub
+    subgraph CodeZero Hub
        hub[Application Registry]
     end
     subgraph Docker Registry
@@ -36,7 +36,7 @@ graph TB
     end
     subgraph Kubernetes Cluster
         ams1[AMS]
-        as1[Traxitt Store]
+        as1[CodeZero Store]
         app1[Apps]
     end
     user-->as1
@@ -50,9 +50,9 @@ graph TB
     docker-->ams1
 ```
 
-Users interact with the *Traxitt Store* on their cluster to install Apps and manage instances of these apps.
+Users interact with the *CodeZero Store* on their cluster to install Apps and manage instances of these apps.
 
-The AMS manages the user experience and Apps throught the application lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps once running, however, is managed by Kubernetes.  Users will need to bootstrap new clusters and install the Traxitt Cloud OS. Once OS is installed, Users access the Traxitt Store directly via a web UI or using the CLI.
+The AMS manages the user experience and Apps throught the application lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps once running, however, is managed by Kubernetes.  Users will need to bootstrap new clusters and install the CodeZero Cloud OS. Once OS is installed, Users access the CodeZero Store directly via a web UI or using the CLI.
 
 AMS manages two resources:
 
@@ -61,13 +61,13 @@ AMS manages two resources:
 
 ### Security Considerations
 
-Where necessary, role based access control supported by kubernetes will be used to secure internal services used by Traxitt components and installed applications.
+Where necessary, role based access control supported by kubernetes will be used to secure internal services used by CodeZero components and installed applications.
 
-The AMS and Traxitt Store UI will support authentication and access control.  The assumption is that a single traxitt customer organization will own the cluster, but the customer will want to provide access to different capabilities and access to applications and instances to different users in their organization based on roles such as owner/admin, user, guest for example.
+The AMS and CodeZero Store UI will support authentication and access control.  The assumption is that a single CodeZero customer organization will own the cluster, but the customer will want to provide access to different capabilities and access to applications and instances to different users in their organization based on roles such as owner/admin, user, guest for example.
 
 Some users will have the ability to install new applications and create new instances (administrators, owners) while others will only have the ability to view what has already been installed in the store.
 
-User management and authentication for Traxitt Store and the AMS will be independent of the Traxitt Hub so that the cluster will work without connectivity to the Hub.
+User management and authentication for CodeZero Store and the AMS will be independent of the CodeZero Hub so that the cluster will work without connectivity to the Hub.
 
 Roles:
 
@@ -78,16 +78,16 @@ Roles:
 
 Open issues for discussion:
 
-- This implies that the Traxitt Store and AMS may also need a way to manage users (CRUD) and perhaps API keys.  Do we want a separate service for this?  Can we leverage external authentication systems for this, or point to an org's LDAP server?
-- Are we just controlling the capabilities of the Traxitt Store and AMS or visibilty and access control of the apps themselves?
-- Related to above, applications installed with the system will often have their own access control.  Will we layer Traxitt User access control on top somehow?  Perhaps using a proxy (we did this for Node-RED)?  How then would we map our users/roles to the applications?  Would they need to log in twice?
+- This implies that the CodeZero Store and AMS may also need a way to manage users (CRUD) and perhaps API keys.  Do we want a separate service for this?  Can we leverage external authentication systems for this, or point to an org's LDAP server?
+- Are we just controlling the capabilities of the CodeZero Store and AMS or visibilty and access control of the apps themselves?
+- Related to above, applications installed with the system will often have their own access control.  Will we layer CodeZero User access control on top somehow?  Perhaps using a proxy (we did this for Node-RED)?  How then would we map our users/roles to the applications?  Would they need to log in twice?
 - For an MVP suggest all authenticated users will be admins, and we'll assume installed applications (e.g. mongodb, dashboards) will manage their own access control separately.
 
 ## Example Use Cases
 
-### 1. Bootstrapping Traxitt
+### 1. Bootstrapping CodeZero
 
-The user will bootstrap the Traxitt system using either the CLI or using the Traxitt Hub.
+The user will bootstrap the CodeZero system using either the CLI or using the CodeZero Hub.
 
 The customer will provision their k8s cluster on any cloud such as Digital Ocean, AWS, Azure or Google Cloud.  Once provisioned, they will retrieve their kubernetes configuration file.
 

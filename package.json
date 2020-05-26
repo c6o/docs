@@ -1,7 +1,7 @@
 {
   "name": "@traxitt/docs",
   "version": "0.0.1",
-  "description": "Documentation for traxitt",
+  "description": "Documentation for CodeZero",
   "main": "index.js",
   "scripts": {
     "start": "npx http-server -p $PORT -r .",
