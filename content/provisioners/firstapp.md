@@ -340,7 +340,49 @@ TODO: only need to remove resources that are not linked to the app as an owner.
 
 ### Web User Interface
 
-TODO: walk through web user interface for Node-RED
+Applications should have at least an install web UI.  Other UIs for removal and configuration are optional, depending on the capabilities of the application or what features you would like to expose.
+
+For Node-RED, we've implemented the install web component in the `/ui/index.ts` file as shown below.  Here, the component tag name is `node-red-install-main`.  The convention for naming web components for provisioners is `{application-name}-{action}-main` using the application name in the manifest metadata, the action is either `install`, `uninstall` or `settings` depending on the UI panel supported.
+
+```typescript
+import { LitElement, html, customElement } from 'lit-element'
+import { StoreFlowStep, StoreFlowMediator } from '@provisioner/common'
+
+@customElement('node-red-install-main')
+export class NodeRedSettings extends LitElement implements StoreFlowStep {
+    mediator: StoreFlowMediator
+    values = ['1Gi','2Gi','4Gi']
+
+    get serviceSpec() {
+        return this.mediator.getServiceSpec('node-red')
+    }
+
+    render() {
+        return html`
+            <traxitt-form-layout>
+                <traxitt-combo-box @selected-item-changed=${this.storageSelected} label='Node-RED Storage' value=${this.serviceSpec.storage} required allow-custom-value .items=${this.values}></traxitt-combo-box>
+            </traxitt-form-layout>
+            <traxitt-form-layout>
+                <traxitt-checkbox @checked-changed=${this.projectsCheckChanged} ?checked=${this.serviceSpec.projects == true}>Enable Projects</traxitt-checkbox>
+            </traxitt-form-layout>
+        `
+    }
+
+    async begin() {
+        // set defaults
+        this.serviceSpec.storage = this.serviceSpec.storage || '2Gi'
+        this.serviceSpec.projects = this.serviceSpec.projects !== undefined ? this.serviceSpec.projects : false
+    }
+
+    storageSelected = (e) => {
+        this.serviceSpec.storage = e.detail.value
+    }
+
+    projectsCheckChanged = (e) => {
+        this.serviceSpec.projects = e.detail.value
+    }
+}
+```
 
 ## Example provisioners
 
