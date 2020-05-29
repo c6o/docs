@@ -14,11 +14,13 @@ There are some general principles to follow when cereating new applications for 
 
 * Status reporting and error handling.  Application provisioners should report status and handle errors in case of failure.
 
-To get started, we'll have a look at the Node-RED provisioner.
+To get started, we'll have a look at the Node-RED application spec and provisioner.
 
-## Application Spec
+## A Simple CodeZero Application
 
-The application spec is installed in a c6o cluster to trigger provisioning.  To get started, it's best to create an application spec manually before publishing it to Hub for local testing using the CLI.
+### Application Spec
+
+The application spec is installed in a c6o cluster to trigger provisioning.  To get started, it's best to create an application spec manually before publishing it to Hub for development and testing.
 
 An example Node-RED manifest that supports installation, removal and launch from the c6o Marina desktop is as follows:
 
@@ -54,7 +56,7 @@ The `spec` section contains several subsections used by c6o:
 * `marina` - tells the Marina desktop how to view (launch) the application in the browser.  In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
 * `routes` - this section tells the provisioner how to configure networking within the cluster to access the application.  In this case, simple http routing is used to access the application service `node-red`
 
-## A Simple Provisioner
+### The Provisioner
 
 A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different phases.
 
@@ -62,9 +64,9 @@ The actions are: *create*, *update*, and *remove*.  The main phases are inquire,
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 
-`createInquire` - ask the CLI user for configuration options in the provisioner sectino that are not specified in the application spec.
-`createValidate` - ensure all needed application options are valid, and/or fill in any default options.
-`createApply` - use the kubeclient module to install kubernetes resources configured using the application spec.
+* `createInquire` - ask the CLI user for configuration options in the provisioner sectino that are not specified in the application spec.
+* `createValidate` - ensure all needed application options are valid, and/or fill in any default options.
+* `createApply` - use the kubeclient module to install kubernetes resources configured using the application spec.
 
 ### Kubernetes Resources
 
@@ -159,7 +161,7 @@ spec:
 
 The service exposes Node-RED to other applications on the cluster on port 80.
 
-Once these specifications are tested, you're ready to wrap them in a provisioner.
+Once these specifications are tested on a cluster, you're ready to wrap them in a provisioner.
 
 ### Provisioner
 
@@ -178,10 +180,167 @@ The Node-RED provisioner module is set up as follows:
   * tsconfig.json
 
 
-TODO:
-* Walk through entry point in index.ts
-* Walk through mixins, open createInqure
-* Walk through createApply
+#### `index.ts`
+
+The provisioner npm module exports a Provisioner class that implements several methods in `index.tx`.  The Node-RED provisioner uses mixin classes to implement Provisioner methods.  In the listing below, the provisioner supports remove and create action as well as command line help.
+
+```typescript
+import { mix } from 'mixwith'
+import { ProvisionerBase } from '@provisioner/common'
+
+import {
+    removeInquireMixin,
+    removeApplyMixin,
+    createApplyMixin,
+    createInquireMixin,
+    helpMixin
+} from './mixins'
+
+export type baseProvisionerType = new (...a) => Provisioner & ProvisionerBase
+
+export class Provisioner extends mix(ProvisionerBase).with( 
+  helpMixin,
+  removeInquireMixin,
+  removeApplyMixin,
+  createInquireMixin,
+  createApplyMixin,) {
+}
+```
+
+### Create Action
+
+Installing an application is implemented using the createInquire and createApply methods.
+
+#### `createInqure.ts`
+
+In the createInquireMixin, the createInquire method asks the CLI user for any options that have not been specified in the application manifest or in command line options.  It makes use of the [inquirer]() library to query the user from the CLI.
+
+```typescript
+import { baseProvisionerType } from '..'
+
+export const createInquireMixin = (base: baseProvisionerType) => class extends base {
+
+    providedStorageSetting(answers) {
+        return this.spec.storage || answers['storage']
+    }
+
+    providedProjectSetting(answers) {
+        return this.spec.projects !== undefined ? this.spec.projects : answers['projects']
+    }
+
+    async createInquire(answers) {
+
+        // TODO: use inquire properly
+        if (!this.providedStorageSetting(answers)) {
+            const response = await this.manager.inquirer.prompt({
+                type: 'input',
+                name: 'storage',
+                default: '2Gi',
+                message: 'What size data volume would you like for your Node-RED flows?'
+            })
+
+            if (response)
+                this.spec.storage = response.storage
+            else
+                this.spec.storage = '2Gi'
+        } else this.spec.storage = '2Gi'
+
+        if (!this.providedProjectSetting(answers)) {
+            const response = await this.manager.inquirer.prompt({
+                type: 'confirm',
+                name: 'projects',
+                default: false,
+                message: 'Enable projects feature?',
+            })
+            if (response)
+                this.spec.projects = response.projects
+            else
+                this.spec.projects = false
+        } else this.spec.storage = false
+    }
+}
+```
+
+#### `createApply.ts`
+
+The createApplyMixin is where the action happens, that is, where the provisioner installs the kubernetes resources for your application.
+
+The method first calls the base class `ensureServiceNamespacesExist()` to ensure the target namespace exists and create it if needed.
+
+It then uses `ensureNodeRedIsInstalled()` to us the CodeZero kubeclient module to install the kubernetes resoures with the template values filled in.
+
+The kubeclient is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
+
+Finally, the method calls `ensureNodeRedIsRunning()` to wait for the cluster to successfully launch a Node-RED pod.  Once a pod is running, we can assume its available to CodeZero users.
+
+```typescript
+import { baseProvisionerType } from '../index'
+
+export const createApplyMixin = (base: baseProvisionerType) => class extends base {
+
+    async createApply() {
+        await this.ensureServiceNamespacesExist()
+        await this.ensureNodeRedIsInstalled()
+        await this.ensureNodeRedIsRunning()
+    }
+
+    get nodeRedPods() {
+        return {
+            kind: 'Pod',
+            metadata: {
+                namespace: this.serviceNamespace,
+                labels: {
+                    name: 'node-red'
+                }
+            }
+        }
+    }
+
+    async ensureNodeRedIsInstalled() {
+
+        const storage = this.spec.storage
+        const projects = this.spec.projects
+        const namespace = this.serviceNamespace
+
+        await this.manager.cluster
+            .begin('Install Node-RED services')
+                .list(this.nodeRedPods)
+                .do((result, processor) => {
+                    if (result?.object?.items?.length == 0) {
+                        // There are no node-red pods running
+                        // Install node-red
+                        processor
+                            .upsertFile('../../k8s/pvc.yaml', { namespace, storage })
+                            .upsertFile('../../k8s/deployment.yaml', { namespace, projects })
+                            .upsertFile('../../k8s/service.yaml', { namespace })
+                    }
+                })
+            .end()
+    }
+
+    async ensureNodeRedIsRunning() {
+        await this.manager.cluster.
+            begin('Ensure a Node-RED replica is running')
+                .beginWatch(this.nodeRedPods)
+                .whenWatch(({ condition }) => condition.Ready == 'True', (processor, pod) => {
+                    processor.endWatch()
+                })
+            .end()
+    }
+}
+```
+
+TODO: should add resources to the app as an owner
+
+### Other actions
+
+The remove action is implemented in a similar way.
+
+TODO: only need to remove resources that are not linked to the app as an owner.
+
+### Web User Interface
+
+TODO: walk through web user interface for Node-RED
 
 ## Example provisioners
 
