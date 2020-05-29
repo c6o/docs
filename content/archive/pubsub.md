@@ -6,7 +6,7 @@ When developing modular systems using Service Oriented Architectures, there are 
 
 ### Tightly Coupled Services
 
-Tightly coupled services can be anything from statically linked libraries to services communicating over a REST API. In this case, developers are fully aware of the application interface provided by the other service.  Clients are hard coded to the contract defined by the service interface.
+Tightly coupled services can be anything from statically linked libraries to services communicating over a REST API. In this case, developers are fully aware of the application interface provided by the other service. Clients are hard coded to the contract defined by the service interface.
 
 Tightly coupled services are very common because they are very easy to build. There are, however, some down sides to tightly coupled services:
 
@@ -26,11 +26,11 @@ While there is additional development complexity in building loosely coupled ser
 
 ### Direct Communication
 
-With Kubernetes you can expose services internally and externally using constructs such as *Services* and *Pods*. Typically these services are tightly coupled, communicating directly, with interfaces that are specific to the communicating services.  Traxitt's Publisher/Subscriber Subsystem builds on top of existing Kubernetes services and pods, providing means of inter-service communications to support loosely coupled services described here.
+With Kubernetes you can expose services internally and externally using constructs such as *Services* and *Pods*. Typically these services are tightly coupled, communicating directly, with interfaces that are specific to the communicating services. Traxitt's Publisher/Subscriber Subsystem builds on top of existing Kubernetes services and pods, providing means of inter-service communications to support loosely coupled services described here.
 
 ### The Publisher/Subscriber Subsystem
 
-Clients of the Traxitt Publisher and Subscriber (Pub/Sub) system are called *Producers* and *Consumers*.  Producers publish data, Consumers subscribe to data using the subsystem's *Publisher* and *Subscriber* services. An internal system called the *Registry* coordinates Publishers and Subscribers and is backed by etcd.
+Clients of the Traxitt Publisher and Subscriber (Pub/Sub) system are called *Producers* and *Consumers*. Producers publish data, Consumers subscribe to data using the subsystem's *Publisher* and *Subscriber* services. An internal system called the *Registry* coordinates Publishers and Subscribers and is backed by etcd.
 
 > [!NOTE]
 > You will never have to directly interact with the Registry however, it is the source of truth for all active Subscriptions.
@@ -87,7 +87,7 @@ The Pub/Sub engine is a "subscriber interest" system meaning if there are no Con
 
 ## Messages
 
-Streams of `Messages` are the equivalent of Documents in a traditional operating system.  They make up the backbone of the Traxitt System. Data is transmitted using `Message` format below. `Messages` comprise of Metadata that describe the data and the Payload.
+Streams of `Messages` are the equivalent of Documents in a traditional operating system. They make up the backbone of the Traxitt System. Data is transmitted using `Message` format below. `Messages` comprise of Metadata that describe the data and the Payload.
 
 ``` protobuf
 message Message {
@@ -110,15 +110,15 @@ The `Message.SchemaUri` is a Schema URI that defines the `Message.Payload` forma
 
 The Schema URL is in [JSON Schema](https://json-schema.org/understanding-json-schema/structuring.html) format.
 
-> Note that the Schema URI doesn't have to be local to the Traxitt Hub, e.g.: https://hub.traxitt.com/schema/customerdomain/v1/temperature, but does need to be accessible on the Internet.  You have the ability to manage your schemas in Traxitt's hub system.
+> Note that the Schema URI doesn't have to be local to the Traxitt Hub, e.g.: https://hub.traxitt.com/schema/customerdomain/v1/temperature, but does need to be accessible on the Internet. You have the ability to manage your schemas in Traxitt's hub system.
 
-> Once a schema is used by any Producer or Consumer, it should not be changed; instead, when a schema needs to be updated, applications should use an *new* schema with a different version, e.g.: https://hub.traxitt.com/schema/customerdomain/v2/temperature.  Once the an older schema version is fully deprecated it can then be removed.
+> Once a schema is used by any Producer or Consumer, it should not be changed; instead, when a schema needs to be updated, applications should use an *new* schema with a different version, e.g.: https://hub.traxitt.com/schema/customerdomain/v2/temperature. Once the an older schema version is fully deprecated it can then be removed.
 
 ### Timestamp
 
 The `Message.Timestamp` field defines the time the message was generated. This is different than Gateway Timestamp or Processing Timestamps.
 
-> TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard.  We likely want a client (device) timestamp and a timestamp when the Message was generated.
+> TBD: Do we store other timestamps? Are they just part of the payload? If so, this means we don't have a standard. We likely want a client (device) timestamp and a timestamp when the Message was generated.
 
 ### Labels
 
@@ -199,11 +199,11 @@ message Selector {
 
 The `Subscription.SchemaUri` defines the schema Uri of the messages that a consumer is interested in.
 
-> Traxitt has a reserved schema URI that can be referenced when subscriptions need to see every message produced.  This is useful when a consumer is writing all messages to a time series database or log.  In this case, use https://hub.traxitt.com/schema/traxitt/all
+> Traxitt has a reserved schema URI that can be referenced when subscriptions need to see every message produced. This is useful when a consumer is writing all messages to a time series database or log. In this case, use https://hub.traxitt.com/schema/traxitt/all
 
 ### Partition Field
 
-When subscribing to data, Traxitt can send data to a Consumer Kubernetes Service or a Pod using the streaming API or the `Address` specified using an unary gRPC call.  This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a single Message to trigger an alert. If, however, you have a stateful service, requiring multiple messages associated with entities to be delivered to the same Consumer, you will need to use partitioning to ensure the system will scale.
+When subscribing to data, Traxitt can send data to a Consumer Kubernetes Service or a Pod using the streaming API or the `Address` specified using an unary gRPC call. This is fine if your Service is a stateless service and it does not matter which Pod processes the Message. An example stateless service is an Alerting service that looks at a single Message to trigger an alert. If, however, you have a stateful service, requiring multiple messages associated with entities to be delivered to the same Consumer, you will need to use partitioning to ensure the system will scale.
 
 To do so, use the `Subscription.PartitionField` to specify how to partition the data so it gets routed to a specific Pod. The `PartitionField` is a JSON Path string identifying a field in the `Message.Payload`. For instance, if your `Message.Payload` has a `DeviceId` field and you identify this field in the `Subscription.PartitionField`, the system will route the message to a Pods such that Messages for a given `DeviceId` will always be routed to the same Pod. If the Pod is no longer responsive, the system will elect a new Pod for the `Message` for the given `DeviceId`.
 
@@ -215,9 +215,9 @@ If the specified `PartitionField` is missing in the `Message.Payload`, the messa
 
 ### Filters
 
-The consumer will likely not be interested in all of the messages with the same schema.  For example: an alert/alarm consumer of temperature sensors may only be interested in data flowing from sensors in a particular warehouse and, of those, only those that are either below or above certain alert/alarm thresholds.
+The consumer will likely not be interested in all of the messages with the same schema. For example: an alert/alarm consumer of temperature sensors may only be interested in data flowing from sensors in a particular warehouse and, of those, only those that are either below or above certain alert/alarm thresholds.
 
-Use the `Subscription.Filters` to specify one or more filters to select which messages to receive.  If multiple filters are specified then the intersection of the resulting messages will only be sent, i.e.: an AND logical operator is applied across multiple filters.
+Use the `Subscription.Filters` to specify one or more filters to select which messages to receive. If multiple filters are specified then the intersection of the resulting messages will only be sent, i.e.: an AND logical operator is applied across multiple filters.
 
 Each filter must specify the `Selector.Provider` and have the `Selector.Query`, which will be applied against each message to determine whether or not it should be sent.
 
@@ -225,9 +225,9 @@ Each filter must specify the `Selector.Provider` and have the `Selector.Query`, 
 
 ### Projections
 
-Often, consumers may not be interested in all fields of the filtered message content, or may need to reshape the data.  It is good practice for consumers to specify only the content they want from the messages to maintain system performance and reduce noise.
+Often, consumers may not be interested in all fields of the filtered message content, or may need to reshape the data. It is good practice for consumers to specify only the content they want from the messages to maintain system performance and reduce noise.
 
-The consumer can specify one or more projections in the `Subscription.Projections`.  If multiple projections are specified then the union of the projections will be sent, i.e.: a union/combination of each of the projections will be sent as the final message.
+The consumer can specify one or more projections in the `Subscription.Projections`. If multiple projections are specified then the union of the projections will be sent, i.e.: a union/combination of each of the projections will be sent as the final message.
 
 > TBD: Initially, only PartiQL will be supported.
 > TBD: Determine what to use as the projection format, e.g.: JSON Path.

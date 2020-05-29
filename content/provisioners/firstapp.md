@@ -8,11 +8,11 @@ This guide assumes familiarity with Kubernetes concepts, and implementing npm mo
 
 There are some general principles to follow when cereating new applications for CodeZero to provide a great user experience.
 
-* Applications should simple to set up and use.  Provisioners should hide the complexity of application installation, removal and configuration.  Documentation should avoid the use of jargon where possible.
+* Applications should simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
 
-* Applications should be well defined.  Applications should not install more or less than is required for the application.  If applictions require other components or applications to extend functionality, for example, logging or metrics they should use application linking when possible.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If applictions require other components or applications to extend functionality, for example, logging or metrics they should use application linking when possible.
 
-* Status reporting and error handling.  Application provisioners should report status and handle errors in case of failure.
+* Status reporting and error handling. Application provisioners should report status and handle errors in case of failure.
 
 To get started, we'll have a look at the Node-RED application spec and provisioner.
 
@@ -20,7 +20,7 @@ To get started, we'll have a look at the Node-RED application spec and provision
 
 ### Application Spec
 
-The application spec is installed in a c6o cluster to trigger provisioning.  To get started, it's best to create an application spec manually before publishing it to Hub for development and testing.
+The application spec is installed in a c6o cluster to trigger provisioning. To get started, it's best to create an application spec manually before publishing it to Hub for development and testing.
 
 An example Node-RED manifest that supports installation, removal and launch from the c6o Marina desktop is as follows:
 
@@ -52,15 +52,15 @@ spec:
 The `metadata` section contains information such as the edition, display name and icon used in the c6o Marina.
 The `spec` section contains several subsections used by c6o:
 
-* `provisioner` - this section contains provisioner-specific configuration options such as storage size, specific features and configuration options.  While there are some reserved fields such as `package` and `tag-prefix` (see Application Spec), most of the fields in this section are defined by the provisioner.
-* `marina` - tells the Marina desktop how to view (launch) the application in the browser.  In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
-* `routes` - this section tells the provisioner how to configure networking within the cluster to access the application.  In this case, simple http routing is used to access the application service `node-red`
+* `provisioner` - this section contains provisioner-specific configuration options such as storage size, specific features and configuration options. While there are some reserved fields such as `package` and `tag-prefix` (see Application Spec), most of the fields in this section are defined by the provisioner.
+* `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
+* `routes` - this section tells the provisioner how to configure networking within the cluster to access the application. In this case, simple http routing is used to access the application service `node-red`
 
 ### The Provisioner
 
 A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different phases.
 
-The actions are: *create*, *update*, and *remove*.  The main phases are inquire, validate and apply.  Not all phases and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
+The actions are: *create*, *update*, and *remove*. The main phases are inquire, validate and apply. Not all phases and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 
@@ -70,7 +70,7 @@ For example to install an application from the CLI the provisioner would impleme
 
 ### Kubernetes Resources
 
-To create a new application, you first need to create and test the needed kubernetes resources that need to be installed.  For Node-RED, and other simple applications we'll typically need a deployment to specify theimage and pods used, a persistent volume to store data, and a service that exposes the application to the cluster, and to the outside world.  We'll look at these for Node-RED.
+To create a new application, you first need to create and test the needed kubernetes resources that need to be installed. For Node-RED, and other simple applications we'll typically need a deployment to specify theimage and pods used, a persistent volume to store data, and a service that exposes the application to the cluster, and to the outside world. We'll look at these for Node-RED.
 
 #### Deployment
 
@@ -117,7 +117,7 @@ spec:
             claimName: node-red-pvc
 ```
 
-Note the template markers for the `namespace` and `projects` fields.  These are filled in by the provisioner with values when the resources are added.  For manual testing, these can be filled in and the resource applied to the cluster using the kubectl command.
+Note the template markers for the `namespace` and `projects` fields. These are filled in by the provisioner with values when the resources are added. For manual testing, these can be filled in and the resource applied to the cluster using the kubectl command.
 
 #### Persistent Volume Claim
 
@@ -182,7 +182,7 @@ The Node-RED provisioner module is set up as follows:
 
 #### `index.ts`
 
-The provisioner npm module exports a Provisioner class that implements several methods in `index.tx`.  The Node-RED provisioner uses mixin classes to implement Provisioner methods.  In the listing below, the provisioner supports remove and create action as well as command line help.
+The provisioner npm module exports a Provisioner class that implements several methods in `index.tx`. The Node-RED provisioner uses mixin classes to implement Provisioner methods. In the listing below, the provisioner supports remove and create action as well as command line help.
 
 ```typescript
 import { mix } from 'mixwith'
@@ -213,7 +213,7 @@ Installing an application is implemented using the createInquire and createApply
 
 #### `createInqure.ts`
 
-In the createInquireMixin, the createInquire method asks the CLI user for any options that have not been specified in the application manifest or in command line options.  It makes use of the [inquirer]() library to query the user from the CLI.
+In the createInquireMixin, the createInquire method asks the CLI user for any options that have not been specified in the application manifest or in command line options. It makes use of the [inquirer]() library to query the user from the CLI.
 
 ```typescript
 import { baseProvisionerType } from '..'
@@ -271,7 +271,7 @@ It then uses `ensureNodeRedIsInstalled()` to us the CodeZero kubeclient module t
 
 The kubeclient is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
 
-Finally, the method calls `ensureNodeRedIsRunning()` to wait for the cluster to successfully launch a Node-RED pod.  Once a pod is running, we can assume its available to CodeZero users.
+Finally, the method calls `ensureNodeRedIsRunning()` to wait for the cluster to successfully launch a Node-RED pod. Once a pod is running, we can assume its available to CodeZero users.
 
 ```typescript
 import { baseProvisionerType } from '../index'
@@ -340,9 +340,9 @@ TODO: only need to remove resources that are not linked to the app as an owner.
 
 ### Web User Interface
 
-Applications should have at least an install web UI.  Other UIs for removal and configuration are optional, depending on the capabilities of the application or what features you would like to expose.
+Applications should have at least an install web UI. Other UIs for removal and configuration are optional, depending on the capabilities of the application or what features you would like to expose.
 
-For Node-RED, we've implemented the install web component in the `/ui/index.ts` file as shown below.  Here, the component tag name is `node-red-install-main`.  The convention for naming web components for provisioners is `{application-name}-{action}-main` using the application name in the manifest metadata, the action is either `install`, `uninstall` or `settings` depending on the UI panel supported.
+For Node-RED, we've implemented the install web component in the `/ui/index.ts` file as shown below. Here, the component tag name is `node-red-install-main`. The convention for naming web components for provisioners is `{application-name}-{action}-main` using the application name in the manifest metadata, the action is either `install`, `uninstall` or `settings` depending on the UI panel supported.
 
 ```typescript
 import { LitElement, html, customElement } from 'lit-element'
@@ -386,11 +386,11 @@ export class NodeRedSettings extends LitElement implements StoreFlowStep {
 
 ## Example provisioners
 
-Several example provisioners exist to get you started.  See, for example, the `vscode` provisioner that implements several provisioner methods as a starting point.
+Several example provisioners exist to get you started. See, for example, the `vscode` provisioner that implements several provisioner methods as a starting point.
 
 ### Install/Create Example
 
-For a more complex example of installing an application, see the mongodb provisioner.  VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
+For a more complex example of installing an application, see the mongodb provisioner. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
 
 ### Configurable Uninstall Example
 

@@ -4,13 +4,13 @@ To add a new application to CodeZero, you need to provide an *application manife
 
 An application manifest is a k8s resource managed by Hub installed by the c6o system using a provisioner.
 
-A provisioner is a npm package used by the c6o platform to install, remove, and update or configure your application.  The provisioner is accessed both by the  CLI and the c6o system via the web-based Marina, Store and Navstation applications.
+A provisioner is a npm package used by the c6o platform to install, remove, and update or configure your application. The provisioner is accessed both by the  CLI and the c6o system via the web-based Marina, Store and Navstation applications.
 
 ## How Provisioners Work
 
-The application manifest is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications.  It contains sections used by the provisioner for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status.  More information on the manifest can be found here.
+The application manifest is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications. It contains sections used by the provisioner for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status. More information on the manifest can be found here.
 
-To install an application, the manifest is retrieved by the c6o system (or the CLI) and added to the cluster.  The system then detects that the application has been added and calls the provisioner to perform the installation.  Similarly, when an application is updated or removed, the system detects the change, and uses the application provisioner to perform the change.
+To install an application, the manifest is retrieved by the c6o system (or the CLI) and added to the cluster. The system then detects that the application has been added and calls the provisioner to perform the installation. Similarly, when an application is updated or removed, the system detects the change, and uses the application provisioner to perform the change.
 
 ## Provisioner Services
 
@@ -22,7 +22,7 @@ Given an application manifest hosted on Hub, combined with configuration options
 
 ### Remove Application Action
 
-Provisioners are responsible for removing applications from a cluster, ensuring resources added during install are cleaned up, while other resources such as data and assocatiated storage remain if desired.  Provisioners provide support for removal options, again using the CLI or web application.
+Provisioners are responsible for removing applications from a cluster, ensuring resources added during install are cleaned up, while other resources such as data and assocatiated storage remain if desired. Provisioners provide support for removal options, again using the CLI or web application.
 
 ### Update/Configure Action
 
@@ -30,21 +30,21 @@ After an application is installed, it may need to be re-configured, for example 
 
 ### Web User interface
 
-Provisioners provide web components for configuration during install, remove, and update via the web.  To support this, provisioners provide web components for installation/provisioning deprovisioning/removal and configuration using settings.
+Provisioners provide web components for configuration during install, remove, and update via the web. To support this, provisioners provide web components for installation/provisioning deprovisioning/removal and configuration using settings.
 
 #### Install - Store
 
 Application manifests are stored in Hub, and downloaded to the store for installation. When installing an application, the Store uses information the manifest to find the corresponding provisioners to install applications.
 
-In the store, users are prompted with a wizard to generate the a complete application spec.  The application spec is then written to the cluster.  The system-controller retrieves an event and provisions the application by calling one (or more) application provisioners.
+In the store, users are prompted with a wizard to generate the a complete application spec. The application spec is then written to the cluster. The system-controller retrieves an event and provisions the application by calling one (or more) application provisioners.
 
 #### Remove - Marina
 
-On deprovision, the app manifest is deleted.  The system-controller detects the delete, and then calls the deprovision method on a provisioner.  Once deprovision succeeds, the application resource is released for k8s to delete it.  When the user chooses advanced options during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard simpilar to the install.
+On deprovision, the app manifest is deleted. The system-controller detects the delete, and then calls the deprovision method on a provisioner. Once deprovision succeeds, the application resource is released for k8s to delete it. When the user chooses advanced options during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard simpilar to the install.
 
 #### Settings - NavStation
 
-To change the settings of an application, the web components load an application's settings UI web component.  This UI then makes API calls to the app's default provisioner to change the application state.
+To change the settings of an application, the web components load an application's settings UI web component. This UI then makes API calls to the app's default provisioner to change the application state.
 
 ### CLI support
 
@@ -54,8 +54,8 @@ Provisioners have can support interaction from the command line allowing users t
 
 ### Provisioner APIs
 
-Provisioners can expose APIs to other provisioners, e.g. to support linking functionality, and access via REST endpoints from web or access from other provisioners that need to configure them for application linking.  These can be custom APIs or APIs that conform to a common service such as logging.
+Provisioners can expose APIs to other provisioners, e.g. to support linking functionality, and access via REST endpoints from web or access from other provisioners that need to configure them for application linking. These can be custom APIs or APIs that conform to a common service such as logging.
 
 ### Application Linking
 
-To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be *linked*.  To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.
+To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be *linked*. To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.
