@@ -1,3 +1,3 @@
-> CodeZero (c6o) is a platform for creating managed *Clouds* on a cluster of computers. With CodeZero-managed Clouds you can easily install, configure and manage a variety of out-of-the-box open source and proprietary *application* and associated infrastructure components hosted on the c6o [Hub]().
+> CodeZero (c6o) is a platform for creating managed *Clouds* on a cluster of computers. With CodeZero-managed Clouds you can easily install, configure and manage out-of-the-box open source and proprietary applications and associated infrastructure components hosted on the c6o [Hub]().
 
 CodeZero builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io). Key to the CodeZero platform is introducing the concept of c6o *applications* used to simplify the installation and management of the various resources associated with a service running on Kubernetes.
