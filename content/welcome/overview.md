@@ -33,12 +33,12 @@ Despite that, we felt there was more that can be done to improve the overall exp
 
 ## CodeZero Features
 
-Key Features of a Cluster Operating System
+Key Features of a CodeZero:
 
-* Abstract away computing, networking and storage resources
+* Abstracts away cloud computing, networking and storage resources
 * Install, configure, coordinate and uninstall services and apps
 * Provide diagnostic information such as logs, metrics and alerts
-* An easy to use GUI for interacting with applications
+* Provide an easy to use GUI for accessing cloud applications
 
 ## Our Inspiration and Tools ##
 
@@ -46,5 +46,5 @@ Key Features of a Cluster Operating System
 * Docker
 * Istio
 * nodejs/npm
-* dotnetcore
+* Typescript
 * feathersjs
