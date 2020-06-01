@@ -14,7 +14,9 @@ To install an application, the manifest is retrieved by the c6o system (or the C
 
 ## Provisioner Services
 
-Provisioners provide one or more of the following services:
+A provisioner is an object implemented by an NPM package that exposes methods to implement the *create*, *update* and *remove* *actions* of c6o applications in the cluster. The *create* action corresponds to application install, *update* to changing configuration, and *remove* to uninstalling.
+
+Each action has three *phases*: *inquire*, *validate* and *apply*.  The inquire phase retrieves info from the user of the CLI, validate is used to validate the application manifest, and apply to install resources on the cluster.  When using a provisioner from the web UI, the application manifest is created on the front end, then sent to the system server for validate and apply phases.
 
 ### Create Application Action
 

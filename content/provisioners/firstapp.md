@@ -6,7 +6,7 @@ This guide assumes familiarity with Kubernetes concepts, and implementing npm mo
 
 ## General
 
-There are some general principles to follow when cereating new applications for CodeZero to provide a great user experience.
+There are some general principles to follow when creating new applications for CodeZero to provide a great user experience.
 
 * Applications should simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
 
@@ -60,7 +60,7 @@ The `spec` section contains several subsections used by c6o:
 
 A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different phases.
 
-The actions are: *create*, *update*, and *remove*. The main phases are inquire, validate and apply. Not all phases and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
+The actions are: *create*, *update*, and *remove*. The main phases are *inquire*, *validate* and *apply*. Not all phases and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 

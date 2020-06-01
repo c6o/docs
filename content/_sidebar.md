@@ -9,6 +9,7 @@
     - [Your First c6o Application](/provisioners/firstapp.md)
     - [Provisioner Structure](/provisioners/structure.md)
     - [Implementation Strategy](/provisioners/implementation.md)
+    - [The CodeZero CLI](/provisioners/cli.md)
     - [Testing and Debugging](/provisioners/testdebug.md)
     - [Advanced Topics](/provisioners/advanced.md)
 - Archive
