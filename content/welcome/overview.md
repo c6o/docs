@@ -2,6 +2,8 @@
 
 [whatiscodezero](../_fragments/whatiscodezero.md ':include')
 
+CodeZero builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io). Key to the CodeZero platform is introducing the concept of c6o *applications* used to simplify the installation and management of the various resources associated with a service running on Kubernetes.
+
 CodeZero takes a developer and user centric view to cluster computing while mainting DevOps control over the aspects that they :heart: and are accustomed to.
 
 We have taken care to reuse what is already available so you can leverage your investment in these excellent technologies.

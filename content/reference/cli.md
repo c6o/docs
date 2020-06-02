@@ -1,4 +1,6 @@
-# The CodeZero CLI
+# CodeZero CLI Reference
+
+Command Line Reference
 
 ## auth
 

@@ -1,4 +1,4 @@
-# Provisioner Implementation
+# Provisioner Implementation Guide
 
 The strategy for implementing a provisioner is as follows:
 
@@ -11,24 +11,3 @@ The strategy for implementing a provisioner is as follows:
 * When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
 
 In this section we provide information on the Provisioner methods that need to be implemented and point to example provisioners for reference.
-
-
-## Example provisioners
-
-Several example provisioners exist in the `/packages/provisioners` directory to get you started. See for example the `vscode` provisioner that implements several endpoints as a starting point.
-
-### Provisioning
-
-See mongodb for the most complex example. Node-RED for the simplest. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
-
-### Deprovisioning
-
-VSCode has several deprovisioning options and UI.
-
-### Settings/Ask
-
-The istio provisioner can dynamically link to the Grafana application.
-
-### API
-
-Grafana exposes a dashboard API.

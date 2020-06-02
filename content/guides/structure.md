@@ -2,8 +2,7 @@
 
 ```
 Provisioner Structure
-	Application spec overview
-		Structure, keywords, parts of the spec.
+
 	Create, Update, Remove actions
 	Phases - Inquire, Validate, Apply
 	User Interface

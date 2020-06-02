@@ -1,14 +1,8 @@
-# Overview
+# How Provisioners Work
 
-To add a new application to CodeZero, you need to provide an *application manifest* and an associated *provisioner*.
-
-An application manifest is a k8s resource managed by Hub installed by the c6o system using a provisioner.
+The c6o *application manifest* is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications. This resiyrce contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status. More information on the manifest can be found here.
 
 A provisioner is a npm package used by the c6o platform to install, remove, and update or configure your application. The provisioner is accessed both by the  CLI and the c6o system via the web-based Marina, Store and Navstation applications.
-
-## How Provisioners Work
-
-The application manifest is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications. It contains sections used by the provisioner for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status. More information on the manifest can be found here.
 
 To install an application, the manifest is retrieved by the c6o system (or the CLI) and added to the cluster. The system then detects that the application has been added and calls the provisioner to perform the installation. Similarly, when an application is updated or removed, the system detects the change, and uses the application provisioner to perform the change.
 
