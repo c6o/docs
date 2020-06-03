@@ -1,10 +1,43 @@
 # How Provisioners Work
 
-The c6o *application manifest* is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications. This resiyrce contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status. More information on the manifest can be found here.
+The c6o *application manifest* is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage applications. The manifest contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, what interfaces are supported, and status. More information on the manifest can be found [here](/reference/appspec.md).
 
 A provisioner is a npm package used by the c6o platform to install, remove, and update or configure your application. The provisioner is accessed both by the  CLI and the c6o system via the web-based Marina, Store and Navstation applications.
 
 To install an application, the manifest is retrieved by the c6o system (or the CLI) and added to the cluster. The system then detects that the application has been added and calls the provisioner to perform the installation. Similarly, when an application is updated or removed, the system detects the change, and uses the application provisioner to perform the change.
+
+## Architecture
+
+The provisioning system is illustrated below.  The c6o Application controller watches application CRDs.  When an application resources changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation, and call the appropriate action methods needed to handle the event.  
+
+For example, the application controller would detect a CREATE event when a new application is added.  The event handler uses the Provision Manager to download and instantiate the provisioner for that application.  In a separate process, it calls the provisioner to perform the action.  The Provisioner generates the needed k8s resources such as a deployment, service, and pvc as shown to install the application.
+
+```mermaid
+graph TD
+	subgraph Kubernetes Cluster
+		subgraph System
+			controller[Application Controller]
+			pm[Provisioner Manager]
+			provisioner[Provisioner]
+		end
+		app(Application Spec)
+		deployment(Deployment)
+		pvc(Volume Claim)
+		service(Service)
+	end
+    controller -- onCreate, onUpdate, onDelete --> pm
+	npm((NPM Registry))
+	pm -- creates --> provisioner
+	npm -- provides module --> pm
+	controller -- uses --> provisioner
+	app -- CREATE, UPDATE, DELETE --> controller
+	provisioner -- create/update/remove --> deployment
+	provisioner -- create/update/remove --> pvc
+	provisioner -- create/update/remove --> service
+
+```
+
+> Note that it is possible for the c6o CLI to call the Provisioner Manager directly to perform application install, update and removal without involving the System Applicaton Controller.  This is useful for testing and debugging.
 
 ## Provisioner Services
 

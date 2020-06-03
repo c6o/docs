@@ -65,8 +65,9 @@ These are standard k8s metadata fields and how they are used by c6o
 
 | Field | Description |
 |-------|-----------------------------------------------|
-| skip | When the provisioner section set to `skip` the system will not call a provisioner on install |
+| ignore | When the provisioner section set to `ignore` the system will not call a provisioner on install |
 | name | provisioner name to overrides app spec name |
+| namespace | namespace to override chosen namespace for app |
 | services | deprecated - list of additional provisioner sections used to install the application |
 | tag-prefix | prefix to use for provisioner UI web components.  When not set, this is the application name |
 | package | npm package to use for provisioning.  When not set, it is @provisioner/{app-name} |
