@@ -9,6 +9,7 @@
     - [Testing and Debugging](/guides/testdebug.md)
     - [Advanced Topics](/guides/advanced.md)
 - [Manuals](/manuals/overview.md)
+    - [CodeZero Architecture](/manuals/architecture.md)
     - [CodeZero Hub](/manuals/hub.md)
     - [CodeZero System](/manuals/system.md)
 - [Reference](/reference/overview.md)

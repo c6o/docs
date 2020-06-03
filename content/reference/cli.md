@@ -1,81 +1,68 @@
 # CodeZero CLI Reference
 
-Command Line Reference
+## c6o
 
-## auth
+The base command for the c6o CLI.
+
+### Commands
+
+| Command | Description |
+|---------|-------------|
+| [auth](#auth) | authenticate the CLI against the c6o Hub |
+| [install](#install) | install an application that is published on Hub |
+| [provision](#provision) | install (provision) an application using a local application spec file during development |
+| [uninstall](#uninstall) | uninstall application in the cluster |
+| [update](#update) | update an application in the cluster with the application spec patch during development.  This may cause the application to reconfigure itself and restart |
+| [publish](#publish) | publish a new application spec or edition to Hub |
+
+<a name="auth" id="auth"></a>
+## c6o auth
 
 ```bash
 c6o auth login
 c6o auth logout
 ```
 
-## install
+<a name="install" id="install"></a>
+## c6o install
 
 ```bash
-c6o install {application-name} {options} 
+c6o install APPNAME [OPTIONS]
 ```
 
-### provision
+<a name="provision" id="provision"></a>
+## c6o provision
 
 ```bash
-c6o install {app-manifest} {options} 
-```
-
-## remove
-
-```bash
-c6o remove {application-name} {options} 
-```
-
-## update
-
-```bash
-c6o update {application-name} {options} 
-```
-
-## publish
-
-```bash
-c6o publish {application-name} {options} 
-```
-
-
-
-### CLI Provision
-
-```bash
-traxitt provision {path-to-manifest} {options}
+c6o provision PATH [OPTIONS] 
 ```
 
 To configure and run a provisioner from the CLI, the user creates a file containing an application spec and runs the provisioner.
 
 If there are options not specified either on the command line, or in the application spec, the provisioner will prompt the user to supply values.
 
-### CLI Deprovision
+<a name="uninstall" id="uninstall"></a>
+## c6o uninstall
 
 ```bash
-traxitt deprovision {app-name} {options}
+c6o uninstall APPNAME [OPTIONS]
 ```
 
 This will look for an application in the cluster. If there is more than one with this name the CLI will prompt for a namespace if required.
 
 If there are deprovisioning options that are available but not specified in the manifest or on the command line, the CLI will prompt.
 
-### CLI Ask
+<a name="update" id="update"></a>
+## c6o update
 
 ```bash
-traxitt ask {app-name} {options}
+c6o update PATH [OPTIONS]
 ```
 
-This command will reconfigure an application in the cluster directly, as specified by the command line options, or interactive request. Again, if there is more than one application with the specified name, the namespace will need to be specified.
+## <a name="publish" id="publish"></a> c6o publish
 
-### CLI Help
+```bash
+c6o publish PATH [OPTIONS]
+```
 
-It is possible to retrieve help information for the above commands, and provisioner-specific options.
-
-### Other CLI Commands
-
-The CLI supports other commands for working with applications:
-
-* auth - login and logout of the hub for install
-* install - installs an application manifest retrieved from the hub (uses Auth) rather than from a local file.
+> TODO: Not implemented yet.
