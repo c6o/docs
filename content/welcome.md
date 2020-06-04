@@ -6,9 +6,9 @@ Welcome to CodeZero!
 
 If you are new to CodeZero you may wish to start with the [Overview](#/welcome/overview.md) sections.
 
-Our [Quick Start Guide](/welcome/quickstart.md) guide is a great place to start if you prefer to dive into how to get your clouds installed and applications running in CodeZero.
+Our [Quick Start Guide](/welcome/quickstart.md) guide is a great place to start if you want to jump right in to getting your clouds installed and applications running.
 
-After that, dive into the following sections for more information:
+After that, check out the following sections for more information:
 
 - [Guides](/guides/overview.md) - how to develop apps for CodeZero
 - [Manuals](/manuals/overview.md) - architecture overview, Hub and System manuals
