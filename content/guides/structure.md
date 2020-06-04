@@ -2,9 +2,9 @@
 
 ## Provisioner Methods
 
-When handling a `CREATE`, `UPDATE` or `REMOVE` event from the c6o controller, or corresponding call from the CLI, the Provision Manager calls provisioner methods in phases.
+When handling a `CREATE`, `UPDATE` or `REMOVE` event from the c6o controller, or corresponding call from the CLI, the Provision Manager calls provisioner methods in stages.
 
-To implement a provisioner, you need to implement one or more methods corresponding to the action and phases of provisioning.  There are three actions: **create**, **update** and **remove**, and three phases: **inquire**, **validate** and **apply**.
+To implement a provisioner, you need to implement one or more methods corresponding to the action and stages of provisioning.  There are three actions: **create**, **update** and **remove**, and three stages: **inquire**, **validate** and **apply**.
 
 *Inquire* asks the CLI user for options. It is not used by the web UI. *Validate* ensures application spec is consistent and fills in any defaults. *Apply* does the work of the action. It is the only action method that must be implemented to perform the action.
 

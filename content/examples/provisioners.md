@@ -1,19 +1,15 @@
-# Provisioner Examples
+# Examples
 
-Several example provisioners exist in the `/packages/provisioners` directory to get you started. See for example the `vscode` provisioner that implements several endpoints as a starting point.
+Several example provisioners exist to get you started. See, for example, the `vscode` provisioner that implements several provisioner methods as a starting point.
 
-### Provisioning
+### Install/Create Example
 
-See mongodb for the most complex example. Node-RED for the simplest. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
+For a more complex example of installing an application, see the mongodb provisioner. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
 
-### Deprovisioning
+### Configurable Uninstall Example
 
-VSCode has several deprovisioning options and UI.
+VSCode has remove options and supporting UI.
 
-### Settings/Ask
+### Settings and Application Linking
 
-The istio provisioner can dynamically link to the Grafana application.
-
-### API
-
-Grafana exposes a dashboard API.
+The istio provisioner can dynamically link to Prometheus and Grafana applications using an API.

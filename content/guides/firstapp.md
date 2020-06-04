@@ -58,9 +58,9 @@ The `spec` section contains several subsections used by c6o:
 
 ### The Provisioner
 
-A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different phases.
+A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different stages.
 
-The actions are: *create*, *update*, and *remove*. The main phases are *inquire*, *validate* and *apply*. Not all phases and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
+The actions are: *create*, *update*, and *remove*. The main stages are *inquire*, *validate* and *apply*. Not all stages and actions need to be implemented up front, but a full featured provisioner will likely implement most, if not all of these methods.
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 
@@ -213,7 +213,7 @@ Installing an application is implemented using the createInquire and createApply
 
 #### `createInqure.ts`
 
-In the createInquireMixin, the createInquire method asks the CLI user for any options that have not been specified in the application manifest or in command line options. It makes use of the [inquirer]() library to query the user from the CLI.
+In the createInquireMixin, the createInquire method asks the CLI user for any options that have not been specified in the application manifest or in command line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
 
 ```typescript
 import { baseProvisionerType } from '..'
@@ -383,20 +383,3 @@ export class NodeRedSettings extends LitElement implements StoreFlowStep {
     }
 }
 ```
-
-## Example provisioners
-
-Several example provisioners exist to get you started. See, for example, the `vscode` provisioner that implements several provisioner methods as a starting point.
-
-### Install/Create Example
-
-For a more complex example of installing an application, see the mongodb provisioner. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
-
-### Configurable Uninstall Example
-
-VSCode has several deprovisioning options and UI.
-
-### Settings and Application Linking
-
-The istio provisioner can dynamically link to Prometheus and Grafana applications using an API.
-
