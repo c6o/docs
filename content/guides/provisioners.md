@@ -1,6 +1,6 @@
 # How Provisioners Work
 
-The c6o *application manifest* is a kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage cloud applications.
+The c6o *application manifest* is a Kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage cloud applications.
 
 The manifest contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, service interfaces, and status. More information on the manifest can be found [here](/reference/appspec.md).
 
@@ -8,7 +8,7 @@ A Provisioner is a npm package used by the c6o platform to install, remove, and 
 
 ## Architecture
 
-The provisioning system is illustrated below.  The c6o Application controller watches application CRDs.  When an application changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation, and call the appropriate action methods needed to handle the event.  
+The provisioning system is illustrated below.  The c6o Application controller watches application specs.  When an application changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation.  It then call the appropriate action methods needed to handle the event.  
 
 For example, the application controller may detect a CREATE event when a new application spec is added.  The event handler uses the Provisioner Manager to download and instantiate the provisioner for that application.  In a separate process, it calls the provisioner to perform the action.  The Provisioner generates the needed k8s resources such as a deployment, service, and pvc as shown to install the application.
 
@@ -47,7 +47,7 @@ Each action typically has three phases: *inquire*, *validate* and *apply*.  The 
 
 ### Create Application Action
 
-When a new application spec is added to the cluster, the provisioner adds kubernetes resources to the cluster ensures it is up and running and accessible by authorized users.
+When a new application spec is added to the cluster, the provisioner adds Kubernetes resources to the cluster ensures it is up and running and accessible by authorized users.
 
 ### Remove Application Action
 
