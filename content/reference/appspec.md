@@ -2,7 +2,7 @@
 
 The CodeZero Application Custom Resource Definition (CRD) is used by CodeZero to configure applications and provide information to the CodeZero apps for display.
 
-The system uses the application CRD metadata fields, labels and annotations as well as content in the `spec` section
+The system uses the application metadata fields, labels, and annotations as well as content in the `spec` section
 
 An example spec is shown below:
 
@@ -69,14 +69,14 @@ These are standard k8s metadata fields and how they are used by c6o
 | name | provisioner name to overrides app spec name |
 | namespace | namespace to override chosen namespace for app |
 | services | deprecated - list of additional provisioner sections used to install the application |
-| tag-prefix | prefix to use for provisioner UI web components.  When not set, this is the application name |
-| package | npm package to use for provisioning.  When not set, it is @provisioner/{app-name} |
+| tag-prefix | prefix to use for provisioner UI web components. When not set, this is the application name |
+| package | npm package to use for provisioning. When not set, it is @provisioner/{app-name} |
 | $unset | field that is to be removed during provisioning |
 | *other* | All other provisioner fields and sub fields are provisioner specific |
 
 ### Marina
 
-The Marina section describes how the application should be 'launched' from the Marina when it is clicked on.  For example:
+The Marina section describes how the application should be 'launched' from the Marina when it is clicked on. For example:
 
 ```yaml
 # ....
@@ -96,8 +96,6 @@ spec:
 | launch.port | port to use in the URL |
 | launch.path | path to use in the URL |
 | launch.tag | TODO |
-
-Inline means that it will appear in the browser.  When 
 
 ### Routes
 

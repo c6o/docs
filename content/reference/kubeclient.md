@@ -67,5 +67,5 @@ The KubeClient functionality is available in both direct and batch mode except w
 
 ## Status Reporting
 
-The KubeClient can be supplied with an instance of the Status object.  Status object maintains the state of the execution of a command stack for display on the command line or other real time status display.
+The KubeClient can be supplied with an instance of the Status object. Status object maintains the state of the execution of a command stack for display on the command line or other real time status display.
 

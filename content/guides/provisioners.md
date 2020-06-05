@@ -8,9 +8,9 @@ A Provisioner is a npm package used by the c6o platform to install, remove, and 
 
 ## Architecture
 
-The provisioning system is illustrated below.  The c6o Application controller watches application specs.  When an application changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation.  It then call the appropriate action methods needed to handle the event.  
+The provisioning system is illustrated below. The c6o Application controller watches application specs. When an application changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation. It then call the appropriate action methods needed to handle the event.
 
-For example, the application controller may detect a CREATE event when a new application spec is added.  The event handler uses the Provisioner Manager to download and instantiate the provisioner for that application.  In a separate process, it calls the provisioner to perform the action.  The Provisioner generates the needed k8s resources such as a deployment, service, and pvc as shown to install the application.
+For example, the application controller may detect a CREATE event when a new application spec is added. The event handler uses the Provisioner Manager to download and instantiate the provisioner for that application. In a separate process, it calls the provisioner to perform the action. The Provisioner generates the needed k8s resources such as a deployment, service, and pvc as shown to install the application.
 
 ```mermaid
 graph TD
@@ -37,13 +37,13 @@ graph TD
 
 ```
 
-> Note that it is possible for the c6o CLI to call the Provisioner Manager directly to perform application install, update and removal without involving the System Applicaton Controller.  This is useful for testing and debugging.
+> Note that it is possible for the c6o CLI to call the Provisioner Manager directly to perform application install, update and removal without involving the System Applicaton Controller. This is useful for testing and debugging.
 
 ## Provisioner Services
 
 A Provisioner exposes methods to implement the *create*, *update* and *remove* actions. The *create* action corresponds to application install, *update* to changing configuration, and *remove* to uninstalling.
 
-Each action typically has three phases: *inquire*, *validate* and *apply*.  The inquire stage retrieves info from the user of the CLI; validate is used to validate the application manifest, and apply to install resources on the cluster.  When using a provisioner from the web UI, the application manifest is created on the front end and added to the cluster.
+Each action typically has three phases: *inquire*, *validate* and *apply*. The inquire stage retrieves info from the user of the CLI; validate is used to validate the application manifest, and apply to install resources on the cluster. When using a provisioner from the web UI, the application manifest is created on the front end and added to the cluster.
 
 ### Create Application Action
 
@@ -51,7 +51,7 @@ When a new application spec is added to the cluster, the provisioner adds Kubern
 
 ### Remove Application Action
 
-Provisioners are also responsible for removing applications from a cluster, ensuring resources added during install are removed.  In some cases a provisioner can provide options to keep data volumes and other resources on removal; Provisioners provide support for removal options using the CLI or web application.
+Provisioners are also responsible for removing applications from a cluster, ensuring resources added during install are removed. In some cases a provisioner can provide options to keep data volumes and other resources on removal; Provisioners provide support for removal options using the CLI or web application.
 
 ### Update/Configure Action
 

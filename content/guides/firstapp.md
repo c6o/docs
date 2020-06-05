@@ -14,7 +14,7 @@ There are some general principles to follow when creating new applications for C
 
 * Status reporting and error handling. Application provisioners should report status and handle errors in case of failure.
 
-To get started, we'll have a look at the Node-RED example application spec and provisioner.  [Node-RED](http://nodered.org) is a low-code programming tool for building event driven IoT applications.
+To get started, we'll have a look at the Node-RED example application spec and provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event driven IoT applications.
 
 ## A Simple CodeZero Application
 

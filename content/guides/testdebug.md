@@ -1,7 +1,5 @@
 # Provisioner Testing and Debugging
 
-```
-Testing and Debugging
-	Debugging provisioner methods using CLI
-	Debugging provisioner UI using browser
-```
+## Testing and Debugging using the CLI
+
+## Testing and Debugging Web Components
