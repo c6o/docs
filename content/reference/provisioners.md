@@ -5,29 +5,20 @@
 The ProvisionManager creates provisioner objects, and holds the state of provisioning.  It provides access to several APIs used by provisioners:
 
 ### Fields
+
 * `document` - application document that is being created, updated or removed
 * `status` - Status API to provide real time status while provisioning, also used by the cluster API
 * `inquirer` - [inquirer API](https://github.com/SBoudrias/Inquirer.js#readme) to interact with the CLI
 * `cluster` - [KubeClient API](/references/kubeclient.md)
 * `state` - map for storing data between provisioning stages
 
-
 ### Methods
 
-
-- `getInstalledApps(name)`
-- `getInstalledApp(name, namespace)`
-- `getProvisioner(appDoc: AppDocument)`
-- `getAppProvisioner(appDoc: AppDocument)`
-- `getInstalledServices(serviceName)`
-            let apps = await this.manager.getInstalledServices('npm-registry')
-            const npmOptions = apps.map(app => {
-                return {
-                    name: `${app.metadata.namespace}/${app.metadata.name}`,
-                    ...app.spec.services['npm-registry']
-                }
-            }) || []
-
+* `getInstalledApps(name)` - get installed app specs for applications on the cluster with the specified name
+* `getInstalledApp(name, namespace)` - get installed app spec for the specified app name and namespace
+* `getProvisioner(appDoc: AppDocument)` - get the provisioner for the specified app spec
+* `getAppProvisioner(name, namespace)` - get the provisioner for the application with the specified name and namespace
+* `getInstalledServices(serviceName)` - get the applications in the cluster that advertise the specified service
 
 ## Provisioner Base Class
 

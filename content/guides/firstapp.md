@@ -20,7 +20,7 @@ To get started, we'll have a look at the Node-RED example application spec and p
 
 ### Application Spec
 
-The application spec is inserted in a c6o cluster by the c6o Store to trigger application installation. To get started, it's best to create an application spec manually before publishing it to Hub for development and testing.
+The application spec is inserted in a c6o cluster by the c6o Store to trigger application installation. To get started, it's best to create an application spec manually for development and testing before publishing it to Hub.
 
 An example Node-RED manifest that supports installation, removal and launch from the c6o Marina desktop is as follows:
 
@@ -60,17 +60,17 @@ For more information on the application spec see the [reference](/reference/apps
 
 ### The Provisioner
 
-A provisioner is an npm module consisting of a `package.json` file, typically some kubernetes resource templates, and implementations of methods of the base `Provisioner` object supplied by the provisioning framework to support provisining *actions* that occur in different stages.
+A provisioner is an npm module consisting of Kubernetes resource templates, and implementations of methods of the base `Provisioner` object to support provisioning *actions* that occur in different stages.
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 
 * `createInquire` - ask the CLI user for configuration options in the provisioner sectino that are not specified in the application spec.
 * `createValidate` - ensure all needed application options are valid, and/or fill in any default options.
-* `createApply` - use the kubeclient module to install kubernetes resources configured using the application spec.
+* `createApply` - use the kubeclient module to install Kubernetes resources configured using the application spec.
 
 ### Kubernetes Resources
 
-To create a new application, you first need to create and test the needed kubernetes resources that need to be installed and managed by the Provisioner. For Node-RED, and other simple applications we'll typically need a *deployment* to specify the docker image, replicas and volumes used, a *persistent volume claim* to store data, and a *service* that exposes the application to the cluster and the outside world.
+First create and test the needed Kubernetes resources that will be installed and managed by your Provisioner. For a simple application like Node-RED we'll need a *deployment* to specify the docker image, replicas and volumes used, a *persistent volume claim* to store data, and a *service* that exposes the application to the cluster and the outside world.
 
 #### Deployment
 
@@ -144,19 +144,19 @@ Note the templating used for specifying the `storage` size, and `namespace` here
 apiVersion: v1
 kind: Service
 metadata:
-    namespace: '{{namespace}}'
+  namespace: '{{namespace}}'
+  name: node-red
+  labels:
     name: node-red
-    labels:
-        name: node-red
-        role: server
+    role: server
 spec:
-    ports:
-    - port: 80
-      name: http
-      targetPort: 1880
-    type: NodePort
-    selector:
-		name: node-red
+  ports:
+  - port: 80
+    name: http
+    targetPort: 1880
+  type: NodePort
+  selector:
+  name: node-red
 ```
 
 The service exposes Node-RED to other applications on the cluster on port 80.
@@ -165,12 +165,12 @@ Once these specifications are tested on a cluster, you're ready to use them in a
 
 ### Provisioner
 
-We'll focus on implementing the create action for Node-RED to install Node-RED with the CLI using the [Node-RED provisioner module]() as a reference.
+We'll focus on implementing the create action for Node-RED to install Node-RED with the CLI using the Node-RED provisioner module as a reference.
 
 The Node-RED provisioner module directory layout is as follows:
 
 * `/node-red`
-  * `/k8s` - kubernetes templates above
+  * `/k8s` - Kubernetes templates above
   * `/src` - Typescript source
     * `/mixins` - provisioner method implementations
     * `/ui` - provisioner UI web components
@@ -220,7 +220,7 @@ import { baseProvisionerType } from '..'
 export const createInquireMixin = (base: baseProvisionerType) => class extends base {
 
     async createInquire(args) {
-        
+
         const answers = {
             storage: args.storage || this.spec.storage,
             projects: args.projects || this.spec.projects
@@ -247,11 +247,11 @@ export const createInquireMixin = (base: baseProvisionerType) => class extends b
 
 #### `createApply.ts`
 
-The `createApplyMixin` is where the action happens.  Here the  provisioner installs the kubernetes resources for your application.
+The `createApplyMixin` is where the action happens.  Here the  provisioner installs the Kubernetes resources for your application.
 
 The method first calls the base class `ensureServiceNamespacesExist()` provided with the [provisioner base class](/reference/provisioners.md)  to ensure the target namespace exists and create it if needed.
 
-It then uses `ensureNodeRedIsInstalled()`.  This method uses the  [kubeclient library](/reference/kubeclient.md) to install the kubernetes resoures with the template values filled in.
+It then uses `ensureNodeRedIsInstalled()`.  This method uses the  [kubeclient library](/reference/kubeclient.md) to install the Kubernetes resoures with the template values filled in.
 
 The kubeclient is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
 
@@ -314,7 +314,7 @@ export const createApplyMixin = (base: baseProvisionerType) => class extends bas
 }
 ```
 
-TODO: should add resources to the app as an owner
+> TODO: should add resources with the application as an owner for uninstall.
 
 ### Other actions
 

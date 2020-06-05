@@ -1,6 +1,6 @@
 # KubeClient Reference
 
-The KubeClient provides an easy to use interface to kubernetes clusters.  It can be used in direct mode, where changes are immediate, or in a batch mode where commands are added to a command stack and then executed sequentially when the command stack is ended.
+The KubeClient provides an easy to use interface to kubernetes clusters. It can be used in direct mode, where changes are immediate, or in a batch mode where commands are added to a command stack and then executed sequentially when the command stack is ended.
 
 ## API Examples
 
@@ -47,7 +47,7 @@ cluster
     .end()
 ```
 
-In some cases, you may need to execute arbitrary Typescript code in the middle of a command sequence.  This is done using the `do` command as shown. You provide `do()` with a callback that has the result from the previous command, and the processor command stack.
+In some cases, you may need to execute arbitrary Typescript code in the middle of a command sequence. This is done using the `do` method as shown. You provide `do()` with a callback that has the result from the previous command, and the processor command stack.
 
 ## Functionality
 
@@ -68,3 +68,4 @@ The KubeClient functionality is available in both direct and batch mode except w
 ## Status Reporting
 
 The KubeClient can be supplied with an instance of the Status object.  Status object maintains the state of the execution of a command stack for display on the command line or other real time status display.
+
