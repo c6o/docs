@@ -1,0 +1,1 @@
+> CodeZero (c6o) is a platform for creating managed *Clouds* on a cluster of computers. With CodeZero-managed Clouds you can easily install, configure and manage out-of-the-box open source and proprietary applications from the c6o [Hub]().

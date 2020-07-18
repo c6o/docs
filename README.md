@@ -1,6 +1,6 @@
-# Traxitt Docs #
+# CodeZero Docs #
 
-This documentation is published by Traxitt Inc. and covers all aspects of the Traxitt system. The documents are open to modification and is the basis for the [http://docs.traxitt.com](http://docs.traxitt.com) website.
+This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [http://docs.traxitt.com](http://docs.traxitt.com) website.
 
 All modifications should be submitted via a pull request and are subject to review prior to publishing.
 
@@ -26,6 +26,6 @@ The site will run locally at `http://localhost:3000`
 
 ## Legal Stuff ##
 
-These documents are published as-is and come with no warranty. Traxitt Inc. reserves the right to change these documents at any time.
+These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2019 Traxitt Inc. All Rights Reserved
+© Copyright 2030 CodeZero Technologies Inc. All Rights Reserved
