@@ -1,0 +1,7 @@
+.gitsecret
+.github
+.vscode
+node_modules
+**/node_modules
+**/lib
+**/tsconfig.tsbuildinfo

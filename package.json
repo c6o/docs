@@ -6,7 +6,9 @@
   "scripts": {
     "start": "npx http-server -p $PORT -r .",
     "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
-    "publish": "git push public"
+    "docker-build": "docker build -t traxitt/docs .",
+    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",
+    "docker-push": "docker push gcr.io/traxitt-staging/traxitt/docs"
   },
   "repository": {
     "type": "git",
@@ -23,7 +25,7 @@
   },
   "homepage": "https://github.com/traxitt/docs#readme",
   "dependencies": {
-    "docsify-cli": "^4.3.0",
+    "docsify-cli": "^4.4.1",
     "http-server": "^0.11.1"
   },
   "devDependencies": {
