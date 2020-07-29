@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
-  
+
   <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
@@ -22,7 +22,7 @@
     :root {
       --docsifytabs-border-color: #ededed;
       --docsifytabs-tab-highlight-color: purple;
-      --theme-color: rgb(0, 0, 0);
+      --theme-color: #FF5A00;
     }
 
     .app-name-link img {
@@ -53,11 +53,15 @@
   <script>
     // Mermaid
     var mermaid_num = 0;
-    mermaid.initialize({ startOnLoad: false })
+    mermaid.initialize({
+      startOnLoad: false,
+      // https://github.com/mermaid-js/mermaid/issues/790
+      themeCSS: ".label foreignObject { font-size: 14px; }"
+    })
 
     window.$docsify = {
       name: 'CodeZero Docs',
-      repo: 'traxitt/docs',
+      repo: 'c6o/docs',
       basePath: 'content',
       homepage: 'welcome.md',
       auto2top: true,
@@ -67,7 +71,7 @@
       loadSidebar: true,
       plugins: [
         EditOnGithubPlugin.create(
-          'https://github.com/traxitt/docs/blob/master/content',
+          'https://github.com/c6o/docs/blob/develop/content',
           null,
           'Edit'
         ),

@@ -4,7 +4,7 @@
   "description": "Documentation for CodeZero",
   "main": "index.js",
   "scripts": {
-    "start": "npx http-server -p $PORT -r .",
+    "start": "npx http-server -p 3000 -r .",
     "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
     "docker-build": "docker build -t traxitt/docs .",
     "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",
