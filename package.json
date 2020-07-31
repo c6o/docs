@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx http-server -p 3000 -r .",
+    "precopy-kubeclient-docs": "rm -rf content/kubeclient && (cd ../node-monorepo/packages/kubeclient/ && yarn generate-docs)",
+    "copy-kubeclient-docs": "mv ../node-monorepo/packages/kubeclient/docs content/kubeclient",
     "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
     "docker-build": "docker build -t traxitt/docs .",
     "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",

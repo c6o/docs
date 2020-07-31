@@ -16,11 +16,16 @@
     - [The CodeZero CLI](/reference/cli.md)
     - [Application Spec Reference](/reference/appspec.md)
     - [Provisioner API](/reference/provisioners.md)
-    - [KubeClient Reference](/reference/kubeclient.md)
+- [KubeClient Reference](/kubeclient/index.md)
+    - [Cluster](/kubeclient/classes/cluster.md)
+    - [Processor](/kubeclient/classes/processor.md)
+    - [Result](/kubeclient/classes/result.md)
+    - [Version](/kubeclient/classes/version.md)
 - [Examples](/examples/overview.md)
     - [Provisioner Examples](/examples/provisioners.md)
-
-
 - Archive
     - [CodeZero Applications](/archive/app-service.md)
     - [Inter-Service Communication](/archive/pubsub.md)
+- Legal
+    - [Privacy Policy](/legal/privacy.md)
+    - [Terms of Service](/legal/terms.md)
