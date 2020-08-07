@@ -6,22 +6,22 @@ Provisioners can provide APIs for use by other provisioners or that can be calle
 
 To provide an API, simply add API methods to the Provisioner. To call an API from another provisioner, the client provisioner uses its ProvisionerManager to find the target application in the cluster, instantiate the provisioner of the other application, and then call the API.
 
-For example, the istio provisioner calls the grafana provisioner as follows.
+For example, the Istio provisioner calls the Grafana provisioner as follows.
 
 ```typescript
 const grafanaProvisioner = await this.manager.getAppProvisioner('grafana', grafanaNamespace)
 await grafanaProvisioner.beginConfig(grafanaNamespace, serviceNamespace, 'istio')
 ```
 
-First, it uses its ProvisionManager to get the provisioner for the grafana application in the specified namespace. This will find the application spec for grafana there, and if found will load the appropriate NPM package and instantiate the grafana provisioner.
+First, it uses its ProvisionManager to get the provisioner for the Grafana application in the specified namespace. This will find the application spec for Grafana there, and if found will load the appropriate NPM package and instantiate the Grafana provisioner.
 
-The grafana provisioner API methods such as `beginConfig()` shown can then be called directly.
+The Grafana provisioner API methods such as `beginConfig()` shown can then be called directly.
 
 ## Provisioner Web APIs
 
 Provisioners can expose web APIs to the c6o system for use by the UI web components.
 
-To do so, names services are added to the provisioners that contain one or more service methods. These services are [feathers services](https://docs.feathersjs.com/api/services.html) that expose one or more of the following methods:
+To do so, named services are added to the provisioners that contain one or more service methods. These services are [feathers services](https://docs.feathersjs.com/api/services.html) that expose one or more of the following methods:
 
 ```typescript
 async find(params) {
@@ -34,9 +34,9 @@ async patch(id, data, params) {}
 async remove(id, params) {}
 ```
 
-> Note that as in feathersjs, service methods are optional, and if a method is not implemented, the system will emit a `NotImplemented` error.
+> Note that as in FeathersJS, service methods are optional, and if a method is not implemented, the system will emit a `NotImplemented` error.
 
-For example, the istio provisioner exposes a choices service that exposes only a find method. This method uses the ProvisionManager to look for grafana and prometheus applications installed in the cluster.
+For example, the Istio provisioner exposes a choices service that exposes only a find method. This method uses the ProvisionManager to look for Grafana and Prometheus applications installed in the cluster.
 
 ```typescript
 import { baseProvisionerType } from '../../'
@@ -58,7 +58,7 @@ export const choicesApiMixin = (base: baseProvisionerType) => class extends base
 }
 ```
 
-To call this service from the UI, the settings web component uses the UI to retrieve a client side feathers service as shown in the web component snippet below.
+To call this service from the UI, the settings web component uses the UI to retrieve a client-side feathers service as shown in the web component snippet below.
 
 ```typescript
 async connectedCallback() {
@@ -74,9 +74,9 @@ See the [Implementation Strategy](/guides/implementation.md) and [Provisioner AP
 
 ## Advertising Services
 
-To indicate that an application provides a well known API that is application independent, applications can advertise *services* by adding labels to the application spec.
+To indicate that an application provides a well-known API that is application-independent, applications can advertise *services* by adding labels to the application spec.
 
-For example, the verdaccio provisioner supports the NPM registry API. To advertise this, it contains the npm-registry service label in its application spec (see the [Application Spec reference](/reference/appspec.md) for more information).
+For example, the Verdaccio provisioner supports the NPM registry API. To advertise this, it contains the npm-registry service label in its application spec (see the [Application Spec reference](/reference/appspec.md) for more information).
 
 To find applications that support a specific service, a client provisioner uses the ProvisionerManager `getInstalledServices` method to find applications that advertise this service. For example:
 

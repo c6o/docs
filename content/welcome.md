@@ -6,7 +6,7 @@ Welcome to CodeZero!
 
 If you are new to CodeZero you may wish to start with the [Overview](#/welcome/overview.md) sections.
 
-Our [Quick Start Guide](/welcome/quickstart.md) guide is a great place to start if you want to jump right in to getting your clouds installed and applications running.
+Our [Quick Start Guide](/welcome/quickstart.md) guide is a great place to start if you want to jump right into getting your clouds installed and applications running.
 
 After that, check out the following sections for more information:
 
@@ -15,4 +15,4 @@ After that, check out the following sections for more information:
 - [Reference](/reference/overview.md) - CLI and API references
 - [Examples](/examples/overview.md) - Example code to get you started
 
-Note that every document on this site is hosted on github and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.
+Note that every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.

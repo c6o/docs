@@ -4,7 +4,7 @@ Several example provisioners exist to get you started. See, for example, the `vs
 
 ### Install/Create Example
 
-For a more complex example of installing an application, see the mongodb provisioner. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
+For a more complex example of installing an application, see the MongoDB provisioner. VSCode, Grafana, Prometheus, Node-RED have example install user interfaces.
 
 ### Configurable Uninstall Example
 
@@ -12,4 +12,4 @@ VSCode has remove options and supporting UI.
 
 ### Settings and Application Linking
 
-The istio provisioner can dynamically link to Prometheus and Grafana applications using an API.
+The Istio provisioner can dynamically link to Prometheus and Grafana applications using an API.

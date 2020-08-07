@@ -48,9 +48,9 @@ The Mediator will call `begin()` and `end()` on the web component when the panel
 
 ### NavStation API
 
-The Navstation API is injected into the settings web component.  It provides access to the application spec as well as a method to create a front end service client to access provisioner web APIs.
+The NavStation API is injected into the settings web component.  It provides access to the application spec as well as a method to create a front end service client to access provisioner web APIs.
 
 * `manifest` - the current application manifest
-* `watchManifest(callback: (manifest) => void)` - watch for manifest changes, when changes, call callaback with the updated manifest
+* `watchManifest(callback: (manifest) => void)` - watch for manifest changes, when changes, call callback with the updated manifest
 * `patchManifest(patch)` - patch the manifest with the provided specification)
 * `createService(provisionerService)` - create a feathers service client to the provisioner web API service specified.

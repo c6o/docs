@@ -4,13 +4,13 @@ The c6o *application manifest* is a Kubernetes custom resource definition (CRD) 
 
 The manifest contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, service interfaces, and status. More information on the manifest can be found [here](/reference/appspec.md).
 
-A Provisioner is a npm package used by the c6o platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the  CLI and the c6o system via the Marina desktop, Store and Navstation applications.
+A Provisioner is an npm package used by the c6o platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the  CLI and the c6o system via the Marina desktop, Store and NavStation applications.
 
 ## Architecture
 
 The provisioning system is illustrated below. The c6o Application controller watches application specs. When an application changes the App Controller uses the Provisioner Manager to download an NPM module, and instantiate the provisioner implementation. It then call the appropriate action methods needed to handle the event.
 
-For example, the application controller may detect a CREATE event when a new application spec is added. The event handler uses the Provisioner Manager to download and instantiate the provisioner for that application. In a separate process, it calls the provisioner to perform the action. The Provisioner generates the needed k8s resources such as a deployment, service, and pvc as shown to install the application.
+For example, the application controller may detect a CREATE event when a new application spec is added. The event handler uses the Provisioner Manager to download and instantiate the provisioner for that application. In a separate process, it calls the provisioner to perform the action. The Provisioner generates the needed k8s resources such as Deployment, Service, and PVC as shown to install the application.
 
 ```mermaid
 graph TD
@@ -37,7 +37,7 @@ graph TD
 
 ```
 
-> Note that it is possible for the c6o CLI to call the Provisioner Manager directly to perform application install, update and removal without involving the System Applicaton Controller. This is useful for testing and debugging.
+> Note that it is possible for the c6o CLI to call the Provisioner Manager directly to perform application install, update and removal without involving the System Application Controller. This is useful for testing and debugging.
 
 ## Provisioner Services
 
@@ -55,7 +55,7 @@ Provisioners are also responsible for removing applications from a cluster, ensu
 
 ### Update/Configure Action
 
-After an application is installed, it may need to be re-configured, for example to link it to other applications, scale it up or down, or enable application specific features and networking options.
+After an application is installed, it may need to be re-configured, for example to link it to other applications, scale it up or down, or enable application-specific features and networking options.
 
 ### Web User interface
 
@@ -65,13 +65,13 @@ Provisioners supply web components for users to configure applications using the
 
 Application manifests are stored in Hub, and downloaded to the store for installation. When installing an application, the Store uses information the manifest to find the corresponding provisioners to install applications.
 
-In the store, users are prompted with an install wizard to generate the a complete application spec. The application spec is then written to the cluster. The system-controller retrieves an event and provisions the application by calling one (or more) application provisioners.
+In the store, users are prompted with an install wizard to generate a complete application spec. The application spec is then written to the cluster. The system-controller retrieves an event and provisions the application by calling one (or more) application provisioners.
 
 #### Remove - Marina
 
 On remove, the app manifest is deleted. The system-controller detects the delete, and then calls the deprovision method on a provisioner. Once deprovision succeeds, the application resource is released for k8s to delete it.
 
-When the user chooses *advanced options* during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard simpilar to the install.
+When the user chooses *advanced options* during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard similar to the install.
 
 #### Settings - NavStation
 

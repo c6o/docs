@@ -10,11 +10,11 @@ There are some general principles to follow when creating new applications for C
 
 * Applications should simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
 
-* Applications should be well defined. Applications should not install more or less than is required for the application. If applictions require other components or applications to extend functionality, for example, logging or metrics they should use application linking when possible.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If applications require other components or applications to extend functionality, for example, logging or metrics they should use application linking when possible.
 
 * Status reporting and error handling. Application provisioners should report status and handle errors in case of failure.
 
-To get started, we'll have a look at the Node-RED example application spec and provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event driven IoT applications.
+To get started, we'll have a look at the Node-RED example application spec and provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event-driven IoT applications.
 
 ## A Simple CodeZero Application
 
@@ -64,7 +64,7 @@ A provisioner is an npm module consisting of Kubernetes resource templates, and 
 
 For example to install an application from the CLI the provisioner would implement the following *create* action methods:
 
-* `createInquire` - ask the CLI user for configuration options in the provisioner sectino that are not specified in the application spec.
+* `createInquire` - ask the CLI user for configuration options in the provisioner section that are not specified in the application spec.
 * `createValidate` - ensure all needed application options are valid, and/or fill in any default options.
 * `createApply` - use the kubeclient module to install Kubernetes resources configured using the application spec.
 
@@ -181,7 +181,7 @@ The Node-RED provisioner module directory layout is as follows:
 
 #### `index.ts`
 
-The provisioner npm module exports a Provisioner class that implements several methods in `index.ts`. The Node-RED provisioner uses mixin classes to implement Provisioner methods. In the example below, the provisioner supports remove and create action as well as command line help.
+The provisioner npm module exports a Provisioner class that implements several methods in `index.ts`. The Node-RED provisioner uses mixin classes to implement Provisioner methods. In the example below, the provisioner supports remove and create actions as well as command-line help.
 
 ```typescript
 import { mix } from 'mixwith'
@@ -212,7 +212,7 @@ Installing an application is implemented using the `createInquire` and `createAp
 
 #### `createInqure.ts`
 
-In the `createInquireMixin`, the `createInquire` method asks the CLI user for any options that have not been specified in the application manifest or in command line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
+In the `createInquireMixin`, the `createInquire` method asks the CLI user for any options that have not been specified in the application manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
 
 ```typescript
 import { baseProvisionerType } from '..'
