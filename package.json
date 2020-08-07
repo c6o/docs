@@ -9,7 +9,7 @@
     "copy-kubeclient-docs": "mv ../node-monorepo/packages/kubeclient/docs content/kubeclient",
     "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
     "docker-build": "docker build -t traxitt/docs .",
-    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/codezero-staging/traxitt/docs:latest",
+    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",
     "docker-push": "docker push gcr.io/traxitt-staging/traxitt/docs"
   },
   "repository": {
