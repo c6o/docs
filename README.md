@@ -28,4 +28,4 @@ The site will run locally at `http://localhost:3000`
 
 These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2030 CodeZero Technologies Inc. All Rights Reserved
+© Copyright 2020 CodeZero Technologies Inc. All Rights Reserved
