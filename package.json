@@ -1,5 +1,5 @@
 {
-  "name": "@codezero/docs",
+  "name": "@traxitt/docs",
   "version": "0.0.1",
   "description": "Documentation for CodeZero",
   "main": "index.js",
@@ -8,13 +8,13 @@
     "precopy-kubeclient-docs": "rm -rf content/kubeclient && (cd ../node-monorepo/packages/kubeclient/ && yarn generate-docs)",
     "copy-kubeclient-docs": "mv ../node-monorepo/packages/kubeclient/docs content/kubeclient",
     "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
-    "docker-build": "docker build -t codezero/docs .",
-    "postdocker-build": "docker tag codezero/docs:latest gcr.io/codezero-staging/codezero/docs:latest",
-    "docker-push": "docker push gcr.io/codezero-staging/codezero/docs"
+    "docker-build": "docker build -t traxitt/docs .",
+    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/codezero-staging/traxitt/docs:latest",
+    "docker-push": "docker push gcr.io/traxitt-staging/traxitt/docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codezero/docs.git"
+    "url": "git+https://github.com/c6o/docs.git"
   },
   "keywords": [
     "codezero",
@@ -23,9 +23,9 @@
   "author": "Narayan Sainaney",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/codezero/docs/issues"
+    "url": "https://github.com/c6o/docs/issues"
   },
-  "homepage": "https://github.com/codezero/docs#readme",
+  "homepage": "https://github.com/c6o/docs#readme",
   "dependencies": {
     "docsify-cli": "^4.4.1",
     "http-server": "^0.11.1"
