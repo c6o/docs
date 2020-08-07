@@ -1,6 +1,6 @@
 # CodeZero Docs #
 
-This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [http://docs.traxitt.com](http://docs.traxitt.com) website.
+This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [http://docs.codezero.io](http://docs.codezero.io) website.
 
 All modifications should be submitted via a pull request and are subject to review prior to publishing.
 

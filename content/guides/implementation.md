@@ -69,17 +69,17 @@ export class PrometheusMainInstall extends LitElement implements StoreFlowStep {
 
     render() {
         return html`
-            <traxitt-form-layout>
-                <traxitt-checkbox @checked-changed=${this.checkHandler('simpleService')} ?checked=${!!this.serviceSpec.simpleService}>Simple Prometheus Install</traxitt-checkbox>
+            <codezero-form-layout>
+                <codezero-checkbox @checked-changed=${this.checkHandler('simpleService')} ?checked=${!!this.serviceSpec.simpleService}>Simple Prometheus Install</codezero-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('alertManagerEnabled')} ?checked=${!!this.serviceSpec.alertManagerEnabled} ?disabled=${this.isSimple}>Alert Manager</traxitt-checkbox>
+                <codezero-checkbox @checked-changed=${this.checkHandler('alertManagerEnabled')} ?checked=${!!this.serviceSpec.alertManagerEnabled} ?disabled=${this.isSimple}>Alert Manager</codezero-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('kubeMetricsEnabled')} ?checked=${!!this.serviceSpec.kubeMetricsEnabled} ?disabled=${this.isSimple}>Kube State Metrics</traxitt-checkbox>
+                <codezero-checkbox @checked-changed=${this.checkHandler('kubeMetricsEnabled')} ?checked=${!!this.serviceSpec.kubeMetricsEnabled} ?disabled=${this.isSimple}>Kube State Metrics</codezero-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('nodeExporterEnabled')} ?checked=${!!this.serviceSpec.nodeExporterEnabled} ?disabled=${this.isSimple}>Node Exporter</traxitt-checkbox>
+                <codezero-checkbox @checked-changed=${this.checkHandler('nodeExporterEnabled')} ?checked=${!!this.serviceSpec.nodeExporterEnabled} ?disabled=${this.isSimple}>Node Exporter</codezero-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('pushGatewayEnabled')} ?checked=${!!this.serviceSpec.pushGatewayEnabled} ?disabled=${this.isSimple}>Push Gateway</traxitt-checkbox>
-            </traxitt-form-layout>
+                <codezero-checkbox @checked-changed=${this.checkHandler('pushGatewayEnabled')} ?checked=${!!this.serviceSpec.pushGatewayEnabled} ?disabled=${this.isSimple}>Push Gateway</codezero-checkbox>
+            </codezero-form-layout>
         `
     }
 
@@ -143,33 +143,33 @@ export class IstioSettings extends LitElement {
             <hr />
             ${this.renderGrafanaLink()}
             <hr />
-            <traxitt-checkbox @checked-changed=${this.httpsRedirectChanged} ?disabled=${this.busy} ?checked=${this.httpsRedirect}>Enable https redirect</traxitt-checkbox>
-            <traxitt-button @click=${this.resetSettings} ?disabled=${this.busy}>Reset Changes</traxitt-button>
-            <traxitt-button @click=${this.applyChanges} ?disabled=${this.busy}>Apply Changes</traxitt-button>
+            <codezero-checkbox @checked-changed=${this.httpsRedirectChanged} ?disabled=${this.busy} ?checked=${this.httpsRedirect}>Enable https redirect</codezero-checkbox>
+            <codezero-button @click=${this.resetSettings} ?disabled=${this.busy}>Reset Changes</codezero-button>
+            <codezero-button @click=${this.applyChanges} ?disabled=${this.busy}>Apply Changes</codezero-button>
             `
     }
 
     renderGrafanaLink() {
         if (this.grafanaNamespace !== unlinkToken)
             return html`
-            <traxitt-button @click=${this.unlinkGrafana} ?disabled=${this.busy}>Unlink Grafana in ${this.grafanaNamespace}</traxitt-button>
+            <codezero-button @click=${this.unlinkGrafana} ?disabled=${this.busy}>Unlink Grafana in ${this.grafanaNamespace}</codezero-button>
           `
         return html`
-            <traxitt-combo-box id='grafana-combo-box' label='Select Grafana Installation'
-                required value=${this.grafanaOptions[0]} .items=${this.grafanaOptions} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken }></traxitt-combo-box>
-            <traxitt-button @click=${this.linkGrafana} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken}>Link Grafana</traxitt-button>
+            <codezero-combo-box id='grafana-combo-box' label='Select Grafana Installation'
+                required value=${this.grafanaOptions[0]} .items=${this.grafanaOptions} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken }></codezero-combo-box>
+            <codezero-button @click=${this.linkGrafana} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken}>Link Grafana</codezero-button>
         `
     }
 
     renderPrometheusLink() {
         if (this.prometheusNamespace !== unlinkToken)
             return html`
-            <traxitt-button @click=${this.unlinkPrometheus} ?disabled=${this.busy}>Unlink Prometheus in ${this.prometheusNamespace}</traxitt-button>
+            <codezero-button @click=${this.unlinkPrometheus} ?disabled=${this.busy}>Unlink Prometheus in ${this.prometheusNamespace}</codezero-button>
           `
 
         return html`
-          <traxitt-combo-box id='prometheus-combo-box' label='Select Prometheus Installation' required value=${this.prometheusOptions[0]} .items=${this.prometheusOptions} ?disabled=${this.busy}></traxitt-combo-box>
-          <traxitt-button @click=${this.linkPrometheus} ?disabled=${this.busy}>Link Prometheus</traxitt-button>
+          <codezero-combo-box id='prometheus-combo-box' label='Select Prometheus Installation' required value=${this.prometheusOptions[0]} .items=${this.prometheusOptions} ?disabled=${this.busy}></codezero-combo-box>
+          <codezero-button @click=${this.linkPrometheus} ?disabled=${this.busy}>Link Prometheus</codezero-button>
         `
     }
 
@@ -255,11 +255,11 @@ export class UninstallVSCode extends LitElement implements StoreFlowStep {
 
     render() {
         return html`
-        <traxitt-form-layout>
-        <traxitt-checkbox @checked-changed=${this.checkHandler('keep-ip')} ?checked=${!!this.serviceSpec.deprovision['keep-ip']}>Keep IP address</traxitt-checkbox>
+        <c6o-form-layout>
+        <c6o-checkbox @checked-changed=${this.checkHandler('keep-ip')} ?checked=${!!this.serviceSpec.deprovision['keep-ip']}>Keep IP address</c6o-checkbox>
         <br />
-        <traxitt-checkbox @checked-changed=${this.checkHandler('keep-vol')} ?checked=${!!this.serviceSpec.deprovision['keep-vol']}>Keep data volume</traxitt-checkbox>
-        </traxitt-form-layout>
+        <c6o-checkbox @checked-changed=${this.checkHandler('keep-vol')} ?checked=${!!this.serviceSpec.deprovision['keep-vol']}>Keep data volume</c6o-checkbox>
+        </c6o-form-layout>
         `
     }
 

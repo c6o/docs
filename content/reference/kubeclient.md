@@ -14,8 +14,8 @@ let result = await this.manager.cluster.list({
     metadata: {
         namespace,
         labels: {
-            'system.traxitt.com/app-name': 'grafana',
-            'system.traxitt.com/app-namespace': 'monitoring',
+            'system.codezero.io/app-name': 'grafana',
+            'system.codezero.io/app-namespace': 'monitoring',
         }
     }
 })
