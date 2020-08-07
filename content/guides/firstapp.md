@@ -25,16 +25,16 @@ The application spec is inserted in a c6o cluster by the c6o Store to trigger ap
 An example Node-RED manifest that supports installation, removal and launch from the c6o Marina desktop is as follows:
 
 ```yaml
-apiVersion: system.traxitt.com/v1
+apiVersion: system.codezero.io/v1
 kind: App
 metadata:
   name: node-red
   labels:
-    system.traxitt.com/edition: latest
+    system.codezero.io/edition: latest
   annotations:
-    system.traxitt.com/display: Node-RED
-    system.traxitt.com/description: "IoT programming tool for wiring together hardware devices, APIs and online services."
-    system.traxitt.com/iconUrl: "https://staging.hub.traxitt.com/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
+    system.codezero.io/display: Node-RED
+    system.codezero.io/description: "IoT programming tool for wiring together hardware devices, APIs and online services."
+    system.codezero.io/iconUrl: "https://hub.codezero.io/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
 spec:
   routes:
     simple:
@@ -343,12 +343,12 @@ export class NodeRedSettings extends LitElement implements StoreFlowStep {
 
     render() {
         return html`
-            <traxitt-form-layout>
-                <traxitt-combo-box @selected-item-changed=${this.storageSelected} label='Node-RED Storage' value=${this.serviceSpec.storage} required allow-custom-value .items=${this.values}></traxitt-combo-box>
-            </traxitt-form-layout>
-            <traxitt-form-layout>
-                <traxitt-checkbox @checked-changed=${this.projectsCheckChanged} ?checked=${this.serviceSpec.projects == true}>Enable Projects</traxitt-checkbox>
-            </traxitt-form-layout>
+            <c6o-form-layout>
+                <c6o-combo-box @selected-item-changed=${this.storageSelected} label='Node-RED Storage' value=${this.serviceSpec.storage} required allow-custom-value .items=${this.values}></c6o-combo-box>
+            </c6o-form-layout>
+            <c6o-form-layout>
+                <c6o-checkbox @checked-changed=${this.projectsCheckChanged} ?checked=${this.serviceSpec.projects == true}>Enable Projects</c6o-checkbox>
+            </c6o-form-layout>
         `
     }
 

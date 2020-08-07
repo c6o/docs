@@ -14,18 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/traxitt/docs.git"
+    "url": "git+https://github.com/c6o/docs.git"
   },
   "keywords": [
-    "traxitt",
+    "codezero",
     "docs"
   ],
   "author": "Narayan Sainaney",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/traxitt/docs/issues"
+    "url": "https://github.com/c6o/docs/issues"
   },
-  "homepage": "https://github.com/traxitt/docs#readme",
+  "homepage": "https://github.com/c6o/docs#readme",
   "dependencies": {
     "docsify-cli": "^4.4.1",
     "http-server": "^0.11.1"

@@ -69,17 +69,17 @@ export class PrometheusMainInstall extends LitElement implements StoreFlowStep {
 
     render() {
         return html`
-            <traxitt-form-layout>
-                <traxitt-checkbox @checked-changed=${this.checkHandler('simpleService')} ?checked=${!!this.serviceSpec.simpleService}>Simple Prometheus Install</traxitt-checkbox>
+            <c6o-form-layout>
+                <c6o-checkbox @checked-changed=${this.checkHandler('simpleService')} ?checked=${!!this.serviceSpec.simpleService}>Simple Prometheus Install</c6o-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('alertManagerEnabled')} ?checked=${!!this.serviceSpec.alertManagerEnabled} ?disabled=${this.isSimple}>Alert Manager</traxitt-checkbox>
+                <c6o-checkbox @checked-changed=${this.checkHandler('alertManagerEnabled')} ?checked=${!!this.serviceSpec.alertManagerEnabled} ?disabled=${this.isSimple}>Alert Manager</c6o-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('kubeMetricsEnabled')} ?checked=${!!this.serviceSpec.kubeMetricsEnabled} ?disabled=${this.isSimple}>Kube State Metrics</traxitt-checkbox>
+                <c6o-checkbox @checked-changed=${this.checkHandler('kubeMetricsEnabled')} ?checked=${!!this.serviceSpec.kubeMetricsEnabled} ?disabled=${this.isSimple}>Kube State Metrics</c6o-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('nodeExporterEnabled')} ?checked=${!!this.serviceSpec.nodeExporterEnabled} ?disabled=${this.isSimple}>Node Exporter</traxitt-checkbox>
+                <c6o-checkbox @checked-changed=${this.checkHandler('nodeExporterEnabled')} ?checked=${!!this.serviceSpec.nodeExporterEnabled} ?disabled=${this.isSimple}>Node Exporter</c6o-checkbox>
                 <br />
-                <traxitt-checkbox @checked-changed=${this.checkHandler('pushGatewayEnabled')} ?checked=${!!this.serviceSpec.pushGatewayEnabled} ?disabled=${this.isSimple}>Push Gateway</traxitt-checkbox>
-            </traxitt-form-layout>
+                <c6o-checkbox @checked-changed=${this.checkHandler('pushGatewayEnabled')} ?checked=${!!this.serviceSpec.pushGatewayEnabled} ?disabled=${this.isSimple}>Push Gateway</c6o-checkbox>
+            </c6o-form-layout>
         `
     }
 
@@ -143,33 +143,33 @@ export class IstioSettings extends LitElement {
             <hr />
             ${this.renderGrafanaLink()}
             <hr />
-            <traxitt-checkbox @checked-changed=${this.httpsRedirectChanged} ?disabled=${this.busy} ?checked=${this.httpsRedirect}>Enable https redirect</traxitt-checkbox>
-            <traxitt-button @click=${this.resetSettings} ?disabled=${this.busy}>Reset Changes</traxitt-button>
-            <traxitt-button @click=${this.applyChanges} ?disabled=${this.busy}>Apply Changes</traxitt-button>
+            <c6o-checkbox @checked-changed=${this.httpsRedirectChanged} ?disabled=${this.busy} ?checked=${this.httpsRedirect}>Enable https redirect</c6o-checkbox>
+            <c6o-button @click=${this.resetSettings} ?disabled=${this.busy}>Reset Changes</c6o-button>
+            <c6o-button @click=${this.applyChanges} ?disabled=${this.busy}>Apply Changes</c6o-button>
             `
     }
 
     renderGrafanaLink() {
         if (this.grafanaNamespace !== unlinkToken)
             return html`
-            <traxitt-button @click=${this.unlinkGrafana} ?disabled=${this.busy}>Unlink Grafana in ${this.grafanaNamespace}</traxitt-button>
+            <c6o-button @click=${this.unlinkGrafana} ?disabled=${this.busy}>Unlink Grafana in ${this.grafanaNamespace}</c6o-button>
           `
         return html`
-            <traxitt-combo-box id='grafana-combo-box' label='Select Grafana Installation'
-                required value=${this.grafanaOptions[0]} .items=${this.grafanaOptions} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken }></traxitt-combo-box>
-            <traxitt-button @click=${this.linkGrafana} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken}>Link Grafana</traxitt-button>
+            <c6o-combo-box id='grafana-combo-box' label='Select Grafana Installation'
+                required value=${this.grafanaOptions[0]} .items=${this.grafanaOptions} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken }></c6o-combo-box>
+            <c6o-button @click=${this.linkGrafana} ?disabled=${this.busy || this.prometheusNamespace === unlinkToken}>Link Grafana</c6o-button>
         `
     }
 
     renderPrometheusLink() {
         if (this.prometheusNamespace !== unlinkToken)
             return html`
-            <traxitt-button @click=${this.unlinkPrometheus} ?disabled=${this.busy}>Unlink Prometheus in ${this.prometheusNamespace}</traxitt-button>
+            <c6o-button @click=${this.unlinkPrometheus} ?disabled=${this.busy}>Unlink Prometheus in ${this.prometheusNamespace}</c6o-button>
           `
 
         return html`
-          <traxitt-combo-box id='prometheus-combo-box' label='Select Prometheus Installation' required value=${this.prometheusOptions[0]} .items=${this.prometheusOptions} ?disabled=${this.busy}></traxitt-combo-box>
-          <traxitt-button @click=${this.linkPrometheus} ?disabled=${this.busy}>Link Prometheus</traxitt-button>
+          <c6o-combo-box id='prometheus-combo-box' label='Select Prometheus Installation' required value=${this.prometheusOptions[0]} .items=${this.prometheusOptions} ?disabled=${this.busy}></c6o-combo-box>
+          <c6o-button @click=${this.linkPrometheus} ?disabled=${this.busy}>Link Prometheus</c6o-button>
         `
     }
 
@@ -255,11 +255,11 @@ export class UninstallVSCode extends LitElement implements StoreFlowStep {
 
     render() {
         return html`
-        <traxitt-form-layout>
-        <traxitt-checkbox @checked-changed=${this.checkHandler('keep-ip')} ?checked=${!!this.serviceSpec.deprovision['keep-ip']}>Keep IP address</traxitt-checkbox>
+        <c6o-form-layout>
+        <c6o-checkbox @checked-changed=${this.checkHandler('keep-ip')} ?checked=${!!this.serviceSpec.deprovision['keep-ip']}>Keep IP address</c6o-checkbox>
         <br />
-        <traxitt-checkbox @checked-changed=${this.checkHandler('keep-vol')} ?checked=${!!this.serviceSpec.deprovision['keep-vol']}>Keep data volume</traxitt-checkbox>
-        </traxitt-form-layout>
+        <c6o-checkbox @checked-changed=${this.checkHandler('keep-vol')} ?checked=${!!this.serviceSpec.deprovision['keep-vol']}>Keep data volume</c6o-checkbox>
+        </c6o-form-layout>
         `
     }
 
