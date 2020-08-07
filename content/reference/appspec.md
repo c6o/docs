@@ -7,16 +7,16 @@ The system uses the application metadata fields, labels, and annotations as well
 An example spec is shown below:
 
 ```yaml
-apiVersion: system.traxitt.com/v1
+apiVersion: system.codezero.com/v1
 kind: App
 metadata:
   name: node-red
   labels:
-    system.traxitt.com/edition: latest
+    system.codezero.com/edition: latest
   annotations:
-    system.traxitt.com/display: Node-RED
-    system.traxitt.com/description: "IoT programming tool for wiring together hardware devices, APIs and online services."
-    system.traxitt.com/iconUrl: "https://staging.hub.traxitt.com/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
+    system.codezero.com/display: Node-RED
+    system.codezero.com/description: "IoT programming tool for wiring together hardware devices, APIs and online services."
+    system.codezero.com/iconUrl: "https://staging.hub.codezero.com/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
 spec:
   routes:
     simple:
@@ -41,22 +41,22 @@ These are standard k8s metadata fields and how they are used by c6o
 |-----------|----------------------------------------------|
 | name      | Globally unique application name             |
 | namespace | Namespace where the application is installed |
-| finalizers | set to `finalizer.app.traxitt.com` after install |
+| finalizers | set to `finalizer.app.codezero.com` after install |
 
 ### Labels
 
 | Label                          | Description                                   |
 |--------------------------------|-----------------------------------------------|
-| system.traxitt.com/edition     | application spec edition                      |
-| system.traxitt.com/interface-{interfaceName} | label for identifying applications that expose a documented service interface {interfaceName} |
+| system.codezero.com/edition     | application spec edition                      |
+| system.codezero.com/interface-{interfaceName} | label for identifying applications that expose a documented service interface {interfaceName} |
 
 ### Annotations
 
 | Annotation                     | Description |
 |--------------------------------|-----------------------------------------------|
-| system.traxitt.com/description | Description of the applicaton                 |
-| system.traxitt.com/iconUrl     | Icon for display in the Marina and other apps |
-| system.traxitt.com/appId | Application identifier assigned by Hub |
+| system.codezero.com/description | Description of the applicaton                 |
+| system.codezero.com/iconUrl     | Icon for display in the Marina and other apps |
+| system.codezero.com/appId | Application identifier assigned by Hub |
 
 
 ## Spec Section
@@ -126,7 +126,7 @@ When the `spec.navstation` field is set to true, the application and associated 
 
 The services section provides information on how client applications should access application services that are advertized in an application metadata label.
 
-For example, for the `npm-registry` interface, the metadata label section will include a label for `system.traxitt.com/interface-npm-registry` and the services section will look as follows
+For example, for the `npm-registry` interface, the metadata label section will include a label for `system.codezero.com/interface-npm-registry` and the services section will look as follows
 
 ```yaml
 # ...
