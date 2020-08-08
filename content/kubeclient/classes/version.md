@@ -8,7 +8,7 @@ Represents the version and other cluster information
 
 • **data**: *any*
 
-Result from the cluster info call
+The result from the cluster-info call
 
 ## Methods
 

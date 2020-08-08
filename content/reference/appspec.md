@@ -54,7 +54,7 @@ These are standard k8s metadata fields and how they are used by c6o
 
 | Annotation                     | Description |
 |--------------------------------|-----------------------------------------------|
-| system.codezero.io/description | Description of the applicaton                 |
+| system.codezero.io/description | Description of the application                 |
 | system.codezero.io/iconUrl     | Icon for display in the Marina and other apps |
 | system.codezero.io/appId | Application identifier assigned by Hub |
 
@@ -116,7 +116,7 @@ spec:
 
 | Field | Description |
 |-------|-----------------------------------------------|
-| routes.simple | configuration used by the internal istio virtual service for configuring ingress to the application |
+| routes.simple | configuration used by the internal Istio virtual service for configuring ingress to the application |
 
 ### Navstation
 

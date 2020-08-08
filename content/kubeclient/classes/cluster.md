@@ -6,7 +6,7 @@
 
 • **info**: *[Version](version.md)*
 
-The Kubernetes cluster info
+The Kubernetes cluster-info
 
 ___
 
@@ -23,7 +23,7 @@ The currently executing processor. Each begin/end block starts a new processor.
 ▸ **begin**(`stageName?`: string): *[Processor](processor.md)*
 
 Start a new processor. A Processor is a stack of operations that execute sequentially.
-Results of each step are passed onto the next step. Begin has to have a matching end
+The results of each step are passed onto the next step. Begin has to have a matching end
 
 **Parameters:**
 
@@ -45,7 +45,7 @@ Create a given resource
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource |
+`document` | KubeDocument | The Kubernetes resource |
 `owners?` | Array‹KubeDocument› | Kubernetes resource that own this resource. Deleting the owner will delete this resource  |
 
 **Returns:** *Promise‹[Result](result.md)›*
@@ -56,7 +56,7 @@ ___
 
 ▸ **delete**(`document`: KubeDocument): *Promise‹[Result](result.md)›*
 
-Delete a kubernetes resource
+Delete a Kubernetes resource
 
 **Parameters:**
 
@@ -107,7 +107,7 @@ ___
 
 ▸ **patch**(`document`: KubeDocument, `patch`: Partial‹KubeObject›): *Promise‹[Result](result.md)›*
 
-Patch a kubernetes resource
+Patch a Kubernetes resource
 
 **Parameters:**
 
@@ -139,7 +139,7 @@ ___
 
 ▸ **put**(`document`: KubeDocument, `newDoc`: KubeDocument, `params?`: putOptions): *Promise‹[Result](result.md)›*
 
-Replaces a kubernetes resource
+Replaces a Kubernetes resource
 
 **Parameters:**
 
@@ -201,14 +201,14 @@ ___
 
 ▸ **upsert**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): *Promise‹[Result](result.md)›*
 
-Upsert a kubernetes resource. This performs a read first and a create or patch depending
+Upsert a Kubernetes resource. This performs a read first and a create or patch depending
 on the results
 
 **Parameters:**
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource to upsert |
+`document` | KubeDocument | The Kubernetes resource to upsert |
 `owners?` | Array‹KubeDocument› | Owners are passed to create if inserting  |
 
 **Returns:** *Promise‹[Result](result.md)›*

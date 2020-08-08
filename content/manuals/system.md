@@ -1,6 +1,6 @@
 # c6o System Overview
 
-Manual for system, marina desktop, store, navstation apps
+Manual for System, Marina desktop, Store, and NavStation apps
 
 ## Marina
 

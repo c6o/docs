@@ -4,7 +4,7 @@
 
 CodeZero builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io). Key to the CodeZero platform is introducing the concept of c6o *applications* used to simplify the installation and management of the various resources associated with a service running on Kubernetes.
 
-CodeZero takes a developer and user centric view to cluster computing while mainting DevOps control over the aspects that they :heart: and are accustomed to.
+CodeZero takes a developer and user-centric view to cluster computing while maintaining DevOps control over the aspects that they :heart: and are accustomed to.
 
 We have taken care to reuse what is already available so you can leverage your investment in these excellent technologies.
 
@@ -27,7 +27,7 @@ These core values help guide the overall architecture of CodeZero.
 
 Over time, traditional Operating Systems have gone from handling single CPU computers, to multi-core processors and now, any number of CPU and GPU combinations. At CodeZero, we asked ourselves what this means in the age of Cloud Computing.
 
-Just as Operating systems abstract away low level aspects of underlying computing hardware for applications and services, CodeZero provides an OS-like abstraction for cloud applications.
+Just as Operating systems abstract away low-level aspects of underlying computing hardware for applications and services, CodeZero provides an OS-like abstraction for cloud applications.
 
 Fortunately there is a good deal of technology already developed to help manage clusters of computers. Technologies such as [kubernetes](http://kubernetes.io), [Istio](http://istio.io) and [Docker](http://docker.com) have made it much easier to manage and orchestrate a cluster of machines.
 
@@ -49,4 +49,4 @@ Key Features of a CodeZero:
 * Istio
 * nodejs/npm
 * Typescript
-* feathersjs
+* FeathersJS

@@ -2,12 +2,12 @@
 
 The strategy for implementing a provisioner is as follows:
 
-* Create and test the set of kubernetes resources such as deployments, services, configmaps, secrets and otehr needed to deploy your application.
+* Create and test the set of Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets and others needed to deploy your application.
 * Parameterize these resources using handlebars `{{}}` to allow users to configure the applications on install. This includes allowing users to deploy them in different namespaces, different cloud environments with varying storage options.
 * Create a new provisioner npm module.
 * Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and `createApply` provisioner implementation.
 * Test and debug using the CLI using a local file application manifest.
-* Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with install. Currently these must be tested with a system server running locally.
+* Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently these must be tested with a system server running locally.
 * When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
 
 ## Provisioner Methods
@@ -22,15 +22,15 @@ For example, for a simple provisioner that does only installation, you'd need to
 
 | Method | Description | CLI/Web |
 |--------|-------------|---------|
-| createInquire | interactively ask user for configuration options from the command line before install | CLI |
+| createInquire | interactively ask the user for configuration options from the command line before install | CLI |
 | createValidate | ensure provided install options are valid, and set any defaults | both |
 | createApply | add k8s resources to the cluster | both |
 | | |
-| updateInquire | interactively ask user for configuration options from the command line before update | CLI |
+| updateInquire | interactively ask the user for configuration options from the command line before update | CLI |
 | updateValidate | ensure update options are valid, and set any defaults | both | 
-| updateApply | perform update of the application resource, for example, changing config maps | both |
+| updateApply | performs an update of the application resource, for example, changing config maps | both |
 | | |
-| removeInquire | interactively ask user for configuration options from the command line before removal such as keeping IP addresses or data volumes | CLI |
+| removeInquire | interactively ask the user for configuration options from the command line before removal such as keeping IP addresses or data volumes | CLI |
 | removeValidate | ensure removal options are valid, and set any defaults | both | 
 | removeApply | remove the application resources from the cluster, leaving any the user wants to reuse such as IP addresses and data volumes. | both |
 
@@ -44,11 +44,11 @@ The install web component is displayed during the install process. The c6o Store
 
 The install tag should be named {app}-install-main.
 
-> NOTE: To change the tag prefix from something other than the appliation name, the `tag-prefix` provisioner field can be used as documented [here](/references/appspec.md).
+> NOTE: To change the tag prefix from something other than the application name, the `tag-prefix` provisioner field can be used as documented [here](/references/appspec.md).
 
 The c6o Store injects the `StoreFlowMediator` mediator as shown. The mediator provides access to the provisioner section of the application spec.
 
-The component can optionally implement a `begin` and `end` method called on panel set up and take down. The `end` method returns a boolean to indicate whether the UI passes validation checks.
+The component can optionally implement a `begin` and `end` method called on the panel set-up and take-down. The `end` method returns a boolean to indicate whether the UI passes validation checks.
 
 An example install web component from the Prometheus installer is shown below.
 

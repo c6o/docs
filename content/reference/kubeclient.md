@@ -1,6 +1,6 @@
 # KubeClient Reference
 
-The KubeClient provides an easy to use interface to kubernetes clusters. It can be used in direct mode, where changes are immediate, or in a batch mode where commands are added to a command stack and then executed sequentially when the command stack is ended.
+The KubeClient provides an easy to use interface to Kubernetes clusters. It can be used in direct mode, where changes are immediate, or in a batch mode where commands are added to a command stack and then executed sequentially when the command stack is ended.
 
 ## API Examples
 
@@ -24,7 +24,7 @@ if (result.error) throw result.error
 
 ### Batch Mode - Processor Command Stack
 
-The following snippet creates a new cluster object, and then executes a list of command sequentially.
+The following snippet creates a new cluster object, and then executes a list of commands sequentially.
 
 A command stack is created with the `begin()` method, and execution on the stack begins when `end()` is called as shown.
 
@@ -53,11 +53,11 @@ In some cases, you may need to execute arbitrary Typescript code in the middle o
 
 The KubeClient functionality is available in both direct and batch mode except where indicated.
 
-* CRUD - perform create, read list, update, patch or delete on a specified kubernetes document.
+* CRUD - perform create, read list, update, patch or delete on a specified Kubernetes document.
 
 * exec - run the command and args on a specified pod.
 
-* watch - watch a specified kubernetes resource
+* watch - watch a specified Kubernetes resource
 
 * Files - CRUD using file handlebar templates
 
@@ -67,5 +67,5 @@ The KubeClient functionality is available in both direct and batch mode except w
 
 ## Status Reporting
 
-The KubeClient can be supplied with an instance of the Status object. Status object maintains the state of the execution of a command stack for display on the command line or other real time status display.
+The KubeClient can be supplied with an instance of the Status object. The Status object maintains the state of the execution of a command stack for display on the command line or other real-time status display.
 
