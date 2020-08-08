@@ -21,7 +21,7 @@
     "docs"
   ],
   "author": "Narayan Sainaney",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/c6o/docs/issues"
   },
