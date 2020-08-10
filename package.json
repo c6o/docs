@@ -1,24 +1,36 @@
 {
   "name": "@traxitt/docs",
   "version": "0.0.1",
-  "description": "Documentation for traxitt",
+  "description": "Documentation for CodeZero",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --raw 'docsify serve .' 'sleep 1' 'open http://localhost:3000'",
-    "publish": "git push public"
+    "start": "npx http-server -p 3000 -r .",
+    "precopy-kubeclient-docs": "rm -rf content/kubeclient && (cd ../node-monorepo/packages/kubeclient/ && yarn generate-docs)",
+    "copy-kubeclient-docs": "mv ../node-monorepo/packages/kubeclient/docs content/kubeclient",
+    "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
+    "docker-build": "docker build -t traxitt/docs .",
+    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",
+    "docker-push": "docker push gcr.io/traxitt-staging/traxitt/docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/traxitt/docs.git"
+    "url": "git+https://github.com/c6o/docs.git"
   },
   "keywords": [
-    "traxitt",
+    "codezero",
     "docs"
   ],
   "author": "Narayan Sainaney",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/traxitt/docs/issues"
+    "url": "https://github.com/c6o/docs/issues"
   },
-  "homepage": "https://github.com/traxitt/docs#readme"
+  "homepage": "https://github.com/c6o/docs#readme",
+  "dependencies": {
+    "docsify-cli": "^4.4.1",
+    "http-server": "^0.11.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  }
 }
