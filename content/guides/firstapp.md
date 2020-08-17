@@ -1,10 +1,16 @@
-# Creating your First CodeZero App
+# Your First Application
 
-To publish your application in CodeZero, you need to create and publish an application manifest and a provisioner npm package.
+Any existing Kubernetes application can become a CodeZero application. Unlike Deployments, Services and PersistenVolumes, Applications are not a first class resource type in Kubernetes.
+
+In order to publish an Application, you need to:
+
+1. Write a Provisioner for your Application
+1. Create an Application Manifest that defines the parameters of your Application
+1. Register your Application on the [CodeZero Hub](https://hub.codezero.io)
 
 This guide assumes familiarity with Kubernetes concepts, and implementing npm modules using Typescript.
 
-## General
+## Concepts
 
 There are some general principles to follow when creating new applications for CodeZero to provide a great user experience.
 
