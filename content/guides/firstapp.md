@@ -59,7 +59,7 @@ spec:
 The `metadata` section contains information such as the Edition, Display Name and icon used in the CodeZero Marina.
 
 The `spec` section contains several subsections used by CodeZero:
-* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  For example, in this example, `storage` and `projects` are specific to the Node-Red Provisioner.
+* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  For example, in this example, `storage` and `projects` are specific to the Node-RED Provisioner.
 * `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
 * `routes` - defines how the network will be configured to access the application. In this case, `simple` http routing is used to access the application service `node-red`
 
@@ -92,7 +92,7 @@ The Node-RED provisioner module directory layout is as follows:
 
 First, we want to focus on the Kubernetes Resource Templates.  These templates define the native Kubernetes resource definitions that you are likely already be familiar with.  However, the templates use [Handlebars](https://handlebarsjs.com/) as a templating language, which are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
 
-For a relatively simple application like Node-Red, our Provisioner will need to setup and manage three underlying Kubernetes resources:
+For a relatively simple application like Node-RED, our Provisioner will need to setup and manage three underlying Kubernetes resources:
 1. *Deployment* - that specifies the docker image, replicas, and volumes used.
 1. *Persistent Volume Claim* - to store persistent data.
 1. *Service* - that exposes the Application to the cluster and outside world.
