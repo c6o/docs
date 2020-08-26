@@ -1,34 +1,35 @@
 # Your First Application
 
-Any existing Kubernetes application can become a CodeZero application. Unlike Deployments, Services and PersistenVolumes, Applications are not a first class resource type in Kubernetes.
+Any existing Kubernetes application can become a CodeZero Application. Unlike Deployments, Services and PersistenVolumes, Applications are not a first-class resource type in Kubernetes.
 
 In order to publish an Application, you need to:
 
-1. Write a Provisioner for your Application
 1. Create an Application Manifest that defines the parameters of your Application
+1. Write a Provisioner for your Application
 1. Register your Application on the [CodeZero Hub](https://hub.codezero.io)
 
 This guide assumes familiarity with Kubernetes concepts, and implementing npm modules using Typescript.
 
-## Concepts
+## Design Principles
 
-There are some general principles to follow when creating new applications for CodeZero to provide a great user experience.
+There are some general design principles to follow when creating new Applications for CodeZero to provide a great user experience.
 
-* Applications should simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
+* Applications should be simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
 
-* Applications should be well defined. Applications should not install more or less than is required for the application. If applications require other components or applications to extend functionality, for example, logging or metrics they should use application linking when possible.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible.  A commong example of this might be for logging or metrics.
 
-* Status reporting and error handling. Application provisioners should report status and handle errors in case of failure.
+* Status reporting and error handling. Application Provisioners should report status and handle errors in case of failure.
 
-To get started, we'll have a look at the Node-RED example application spec and provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event-driven IoT applications.
 
 ## A Simple CodeZero Application
 
-### Application Spec
+To get started, we'll have a look at the Node-RED example Application Manifest and Provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event-driven IoT applications.
 
-The application spec is inserted in a c6o cluster by the c6o Store to trigger application installation. To get started, it's best to create an application spec manually for development and testing before publishing it to Hub.
+### Application Manifest
 
-An example Node-RED manifest that supports installation, removal and launch from the c6o Marina desktop is as follows:
+The Application Manifest is used to define an Application installed on a CodeZero cluster.  The manifest is created and managed by the CodeZero Store when an Application is installed. To get started, it's easiest to create an Application Manifest manually for development and testing before publishing to the Hub.
+
+An example Node-RED Manifest that supports installation, removal and launch from the CodeZero Marina desktop is as follows:
 
 ```yaml
 apiVersion: system.codezero.io/v1
@@ -55,32 +56,50 @@ spec:
       type: inline
 ```
 
-The `metadata` section contains information such as the edition, display name and icon used in the c6o Marina.
-The `spec` section contains several subsections used by c6o:
+The `metadata` section contains information such as the Edition, Display Name and icon used in the CodeZero Marina.
 
-* `provisioner` - this section contains provisioner-specific configuration options such as storage size, specific features and configuration options. While there are some reserved fields such as `package` and `tag-prefix` (see Application Spec), most of the fields in this section are defined by the provisioner.
+The `spec` section contains several subsections used by CodeZero:
+* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  For example, in this example, `storage` and `projects` are specific to the Node-RED Provisioner.
 * `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
-* `routes` - this section tells the provisioner how to configure networking within the cluster to access the application. In this case, simple http routing is used to access the application service `node-red`
+* `routes` - defines how the network will be configured to access the application. In this case, `simple` http routing is used to access the application service `node-red`
 
-For more information on the application spec see the [reference](/reference/appspec.md).
+For more information on the Application Manifest see the [reference](/reference/appspec.md).
 
 ### The Provisioner
 
-A provisioner is an npm module consisting of Kubernetes resource templates, and implementations of methods of the base `Provisioner` object to support provisioning *actions* that occur in different stages.
+A Provisioner is an npm module consisting of three primary components:
+1. Kubernetes resource templates
+1. Implementations of the base `Provisioner` object that support provisioning *actions* that occur for different stages of the Applications life cycle.
+1. UI web components needed to support web-based provisioning flow.
 
-For example to install an application from the CLI the provisioner would implement the following *create* action methods:
+#### Provisioner File Structure
 
-* `createInquire` - ask the CLI user for configuration options in the provisioner section that are not specified in the application spec.
-* `createValidate` - ensure all needed application options are valid, and/or fill in any default options.
-* `createApply` - use the kubeclient module to install Kubernetes resources configured using the application spec.
+We'll focus on implementing the create action for Node-RED to install Node-RED with the CLI using the Node-RED provisioner module as a reference.
 
-### Kubernetes Resources
+The Node-RED provisioner module directory layout is as follows:
 
-First create and test the needed Kubernetes resources that will be installed and managed by your Provisioner. For a simple application like Node-RED we'll need a *deployment* to specify the docker image, replicas and volumes used, a *persistent volume claim* to store data, and a *service* that exposes the application to the cluster and the outside world.
+* `/node-red`
+  * `/k8s` - Kubernetes templates
+  * `/src` - Typescript source code
+    * `/mixins` - Provisioner method implementations
+    * `/ui` - Provisioner UI web components
+    * `index.ts` - Provisioner entry point
+  * `package.json`
+  * `README.md`
+  * `tsconfig.json`
 
-#### Deployment
+#### Kubernetes Resource Templates
 
-The deployment template we'll use is as follows:
+First, we want to focus on the Kubernetes Resource Templates.  These templates define the native Kubernetes resource definitions that you are likely already be familiar with.  However, the templates use [Handlebars](https://handlebarsjs.com/) as a templating language, which are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
+
+For a relatively simple application like Node-RED, our Provisioner will need to setup and manage three underlying Kubernetes resources:
+1. *Deployment* - that specifies the docker image, replicas, and volumes used.
+1. *Persistent Volume Claim* - to store persistent data.
+1. *Service* - that exposes the Application to the cluster and outside world.
+
+##### Deployment Template
+
+The Deployment template for Node-RED looks like the following:
 
 ```yaml
 apiVersion: apps/v1
@@ -123,9 +142,11 @@ spec:
             claimName: node-red-pvc
 ```
 
-Note the template markers for the `namespace` and `projects` fields. These are filled in by the provisioner with values when the resources are added. For manual testing, these can be filled in and the resource applied to the cluster using the `kubectl` command.
+Note the template markers for the `namespace` and `projects` fields. These are filled in by the Provisioner with the appropriate values when the resources are added. For manual testing, these can be filled in and the resource applied to the cluster using the `kubectl` command.
 
-#### Persistent Volume Claim
+##### Persistent Volume Claim
+
+The Persitent Volume Claim is used to provide Node-RED with persistent storage that will survive pod restarts or reassignment:
 
 ```yaml
 apiVersion: v1
@@ -144,7 +165,9 @@ spec:
 
 Note the templating used for specifying the `storage` size, and `namespace` here.
 
-#### Service
+##### Service
+
+Finally, the Service tells Kubernetes how to expose Node-RED within the cluster.  In this case, we want to expose a Node-RED to other applications within our cluster on port 80.
 
 ```yaml
 apiVersion: v1
@@ -169,56 +192,19 @@ The service exposes Node-RED to other applications on the cluster on port 80.
 
 Once these specifications are tested on a cluster, you're ready to use them in a Provisioner.
 
-### Provisioner
+#### Provisioner Action Implementations
 
-We'll focus on implementing the create action for Node-RED to install Node-RED with the CLI using the Node-RED provisioner module as a reference.
+Once the Kubernetes Resource Templates have been setup, we are ready to create our Provisioner Implementations that will consume the templates and manage our Application.
 
-The Node-RED provisioner module directory layout is as follows:
+The simplest way to get started is to create a Provisioner that is capable of installing an Application from the CLI.  In this case, we will need to implement the following *create* action methods:
+* `createInquire` - ask the user to set any configuration options required by the Provisioner that are not already specified in the Application Manifest.
+* `createApply` - generate all Kubernetes Resources Definitions based on the Provisioner configuration and Resource Templates, then apply and manage the cluster changes.
 
-* `/node-red`
-  * `/k8s` - Kubernetes templates above
-  * `/src` - Typescript source
-    * `/mixins` - provisioner method implementations
-    * `/ui` - provisioner UI web components
-    * `index.ts` - provisioner entry point
-  * `package.json`
-  * `README.md`
-  * `tsconfig.json`
+##### `createInqure.ts`
 
-#### `index.ts`
+First, lets create a `createInquire.ts` file in the `src/mixins/` directory.  In this file we'll make a `createInquireMixin`, that implements a `createInquire` method.  This method is used to asks the CLI user for any options that have not been specified in the Application Manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
 
-The provisioner npm module exports a Provisioner class that implements several methods in `index.ts`. The Node-RED provisioner uses mixin classes to implement Provisioner methods. In the example below, the provisioner supports remove and create actions as well as command-line help.
-
-```typescript
-import { mix } from 'mixwith'
-import { ProvisionerBase } from '@provisioner/common'
-
-import {
-    removeInquireMixin,
-    removeApplyMixin,
-    createApplyMixin,
-    createInquireMixin,
-    helpMixin
-} from './mixins'
-
-export type baseProvisionerType = new (...a) => Provisioner & ProvisionerBase
-
-export class Provisioner extends mix(ProvisionerBase).with( 
-  helpMixin,
-  removeInquireMixin,
-  removeApplyMixin,
-  createInquireMixin,
-  createApplyMixin,) {
-}
-```
-
-### Create Action
-
-Installing an application is implemented using the `createInquire` and `createApply` methods.
-
-#### `createInqure.ts`
-
-In the `createInquireMixin`, the `createInquire` method asks the CLI user for any options that have not been specified in the application manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
+Our Node-RED implementation looks like:
 
 ```typescript
 import { baseProvisionerType } from '..'
@@ -251,15 +237,15 @@ export const createInquireMixin = (base: baseProvisionerType) => class extends b
 }
 ```
 
-#### `createApply.ts`
+##### `createApply.ts`
 
-The `createApplyMixin` is where the action happens.  Here the  provisioner installs the Kubernetes resources for your application.
+Next, we'll make a `createApplyMixin`, which is where the real action happens.  Here the  provisioner installs the Kubernetes Resources for the Application.
 
-The method first calls the base class `ensureServiceNamespacesExist()` provided with the [provisioner base class](/reference/provisioners.md)  to ensure the target namespace exists and create it if needed.
+The method first calls the base class `ensureServiceNamespacesExist()` provided with the [provisioner base class](/reference/provisioners.md)  to ensure the target namespace exists, or create it if needed.
 
-It then uses `ensureNodeRedIsInstalled()`.  This method uses the  [kubeclient library](/reference/kubeclient.md) to install the Kubernetes resoures with the template values filled in.
+It then uses `ensureNodeRedIsInstalled()`.  This method uses the  [kubeclient library](/reference/kubeclient.md) to install the Kubernetes Resoures using the Resource Templates with the templated values filled in, and applying them to the Kubernetes cluster.
 
-The kubeclient is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
+The `kubeclient` is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
 
 Finally, the method calls `ensureNodeRedIsRunning()` to wait for the cluster to successfully launch a Node-RED pod. Once a Node-RED pod is running, we can assume its available to CodeZero users.
 
@@ -320,17 +306,39 @@ export const createApplyMixin = (base: baseProvisionerType) => class extends bas
 }
 ```
 
-> TODO: should add resources with the application as an owner for uninstall.
+##### Bringing It Together
 
-### Other actions
+Lastly, we need to connect all these methods together into a single `Provisioner` class that extends the `ProvisionerBase`.  To accomplish this, we use mixin classes to bring it all together with the `index.ts` file:
 
-The remove action is implemented in a similar way.
+```typescript
+import { mix } from 'mixwith'
+import { ProvisionerBase } from '@provisioner/common'
 
-TODO: only need to remove resources that are not linked to the app as an owner.
+import {
+    removeInquireMixin,
+    removeApplyMixin
+} from './mixins'
+
+export type baseProvisionerType = new (...a) => Provisioner & ProvisionerBase
+
+export class Provisioner extends mix(ProvisionerBase).with( 
+  createInquireMixin,
+  createApplyMixin,) {
+}
+```
+
+### Testing the CLI
+
+Now that we have created a very basic provisioner, we can go ahead and test it out on the CLI.  To do this, first make sure we have the CLI installed and configured.  Then run the command:
+
+`czctl provision <app-manifest.yaml> --package <path-to-provisioner-package>`
+
+For example, if you an Application Manifest called `nodered.yaml` in the root of your provisioner project, you might run:
+`czctl provision nodered.yaml --package ./`
 
 ### Web User Interface
 
-Applications should have at least an install web UI. Other UIs for removal and configuration are optional, depending on the capabilities of the application or what features you would like to expose.
+For an application to be accessible to our user base, every Application Provisioner should be installable through the Web UI.  Unfortunately, the `createInquire` implementation we have created so far is only used by the CLI tool.  Instead, we need to also create the web components that will allow a user to configure the application through the web UI.
 
 For Node-RED, we've implemented the install web component in the `/ui/index.ts` file as shown below. Here, the component tag name is `node-red-install-main`. The convention for naming web components for provisioners is `{application-name}-{action}-main` using the application name in the manifest metadata, the action is either `install`, `uninstall` or `settings` depending on the UI panel supported.
 
@@ -373,3 +381,7 @@ export class NodeRedSettings extends LitElement implements StoreFlowStep {
     }
 }
 ```
+
+### Testing the Web UI
+
+In order to test the Web UI, you'll now need to publish the Provisioner package to an NPM repository, and create your Application in the Hub.  More instructions on this process coming soon.
