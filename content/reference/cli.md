@@ -4,6 +4,14 @@
 
 The base command for the c6o CLI.
 
+### Installation
+
+Install the CLI tool using NPM
+
+```
+npm install -g @c6o/cli
+```
+
 ### Commands
 
 | Command | Description |
@@ -19,22 +27,22 @@ The base command for the c6o CLI.
 ## c6o auth
 
 ```bash
-c6o auth login
-c6o auth logout
+czctl auth login
+czctl auth logout
 ```
 
 <a name="install" id="install"></a>
 ## c6o install
 
 ```bash
-c6o install APPNAME [OPTIONS]
+czctl install APPNAME [OPTIONS]
 ```
 
 <a name="provision" id="provision"></a>
 ## c6o provision
 
 ```bash
-c6o provision PATH [OPTIONS] 
+czctl provision PATH [--package SRC_DIR] [OPTIONS]
 ```
 
 To configure and run a provisioner from the CLI, the user creates a file containing an application spec and runs the provisioner.
@@ -45,7 +53,7 @@ If there are options not specified either on the command line, or in the applica
 ## c6o uninstall
 
 ```bash
-c6o uninstall APPNAME [OPTIONS]
+czctl uninstall APPNAME [OPTIONS]
 ```
 
 This will look for an application in the cluster. If there is more than one with this name the CLI will prompt for a namespace if required.
@@ -53,16 +61,16 @@ This will look for an application in the cluster. If there is more than one with
 If there are deprovisioning options that are available but not specified in the manifest or on the command line, the CLI will prompt.
 
 <a name="update" id="update"></a>
-## c6o update
+## czctl update
 
 ```bash
-c6o update PATH [OPTIONS]
+czctl update PATH [OPTIONS]
 ```
 
-## <a name="publish" id="publish"></a> c6o publish
+## <a name="publish" id="publish"></a> czctl publish
 
 ```bash
-c6o publish PATH [OPTIONS]
+czctl publish PATH [OPTIONS]
 ```
 
 > TODO: Not implemented yet.
