@@ -1,8 +1,8 @@
 # CodeZero CLI Reference
 
-## c6o
+## czctl
 
-The base command for the c6o CLI.
+The base command for the CodeZero CLI.
 
 ### Installation
 
@@ -24,7 +24,7 @@ npm install -g @c6o/cli
 | [publish](#publish) | publish a new application spec or edition to Hub |
 
 <a name="auth" id="auth"></a>
-## c6o auth
+## czctl auth
 
 ```bash
 czctl auth login
@@ -32,14 +32,14 @@ czctl auth logout
 ```
 
 <a name="install" id="install"></a>
-## c6o install
+## czctl install
 
 ```bash
 czctl install APPNAME [OPTIONS]
 ```
 
 <a name="provision" id="provision"></a>
-## c6o provision
+## czctl provision
 
 ```bash
 czctl provision PATH [--package SRC_DIR] [OPTIONS]
@@ -50,7 +50,7 @@ To configure and run a provisioner from the CLI, the user creates a file contain
 If there are options not specified either on the command line, or in the application spec, the provisioner will prompt the user to supply values.
 
 <a name="uninstall" id="uninstall"></a>
-## c6o uninstall
+## czctl uninstall
 
 ```bash
 czctl uninstall APPNAME [OPTIONS]
