@@ -2,7 +2,15 @@
 
 ## czctl
 
-The base command for the c6o CLI.
+The base command for the CodeZero CLI.
+
+### Installation
+
+Install the CLI tool using NPM
+
+```
+npm install -g @c6o/cli
+```
 
 ### Installation
 
