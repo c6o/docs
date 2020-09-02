@@ -1,8 +1,27 @@
 # CodeZero CLI Reference
 
-## c6o
+## czctl
 
 The base command for the c6o CLI.
+
+### Installation
+
+The CLI tool is published as a public NPM package called `@c6o/cli`.
+
+#### Prerequisits
+
+* NPM (Version 6.14+)
+* Node (Version 12.16+)
+* Linux requires "libsecret-1-dev" (On Ubuntu run `sudo apt-get install libsecret-1-dev`)
+
+#### Install using NPM
+
+```
+sudo npm install -g @c6o/cli --unsafe-perm=true
+```
+
+NOTE: '--unsafe-perm' is currently required to allow the dependency 'keytar' to build successfully.
+
 
 ### Commands
 
@@ -16,25 +35,25 @@ The base command for the c6o CLI.
 | [publish](#publish) | publish a new application spec or edition to Hub |
 
 <a name="auth" id="auth"></a>
-## c6o auth
+## czctl auth
 
 ```bash
-c6o auth login
-c6o auth logout
+czctl auth login
+czctl auth logout
 ```
 
 <a name="install" id="install"></a>
-## c6o install
+## czctl install
 
 ```bash
-c6o install APPNAME [OPTIONS]
+czctl install APPNAME [OPTIONS]
 ```
 
 <a name="provision" id="provision"></a>
-## c6o provision
+## czctl provision
 
 ```bash
-c6o provision PATH [OPTIONS] 
+czctl provision PATH [--package SRC_DIR] [OPTIONS]
 ```
 
 To configure and run a provisioner from the CLI, the user creates a file containing an application spec and runs the provisioner.
@@ -42,10 +61,10 @@ To configure and run a provisioner from the CLI, the user creates a file contain
 If there are options not specified either on the command line, or in the application spec, the provisioner will prompt the user to supply values.
 
 <a name="uninstall" id="uninstall"></a>
-## c6o uninstall
+## czctl uninstall
 
 ```bash
-c6o uninstall APPNAME [OPTIONS]
+czctl uninstall APPNAME [OPTIONS]
 ```
 
 This will look for an application in the cluster. If there is more than one with this name the CLI will prompt for a namespace if required.
@@ -53,16 +72,17 @@ This will look for an application in the cluster. If there is more than one with
 If there are deprovisioning options that are available but not specified in the manifest or on the command line, the CLI will prompt.
 
 <a name="update" id="update"></a>
-## c6o update
+## czctl update
 
 ```bash
-c6o update PATH [OPTIONS]
+czctl update PATH [OPTIONS]
 ```
 
-## <a name="publish" id="publish"></a> c6o publish
+<a name="publish" id="publish"></a> 
+## czctl publish
 
 ```bash
-c6o publish PATH [OPTIONS]
+czctl publish PATH [OPTIONS]
 ```
 
 > TODO: Not implemented yet.
