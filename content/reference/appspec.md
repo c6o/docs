@@ -99,24 +99,40 @@ spec:
 
 ### Routes
 
-The routes section defines how the application is accessed within the cluster.
+The routes section defines how the app can be accessed from outisde of the cluster.  Multiple ingress routes are support and, currently, http-based routing and TCP-based routing is supported.  Http-based routing is performed by hostname whereas TCP-based routing is based on the port.
 
 Example:
 
 ```yaml
 # ...
 spec:
-    routes:
-        simple:
-            http:
-                service: 'system-store',
-                prefix: '/store',
-                rewrite: '/'
+  routes:
+    - type: 'http'
+      targetService: 'node-red'
+    - type: 'tcp'
+      targetService: 'node-red'
+      tcp:
+        name: 'tcp-main'
+        port: 1533
+    - type: 'tcp'
+      targetService: 'node-red'
+      tcp:
+        name: 'tcp-alternate'
+        port: 1655
 ```
 
 | Field | Description |
 |-------|-----------------------------------------------|
-| routes.simple | configuration used by the internal Istio virtual service for configuring ingress to the application |
+| routes | an array of routes to access one or more hosted services |
+| route.type | Must be 'http' or 'tcp'. Note that http routing covers http and https |
+| route.disabled | When present and set to true, the route is disabled; otherwise the route is enabled |
+| route.targetService | the target service name |
+| route.targetPort | optional field specifying the target service port, which is needed when multiple service ports are available |
+| route.http.prefix | optional http field specifying matching prefix for a URL rewrite, e.g.: /api/ |
+| route.http.rewrite | optional http field specifying URL rewrite destination, e.g.: /api/v1/ |
+| route.tcp.name | mandatory tcp field specifying the TCP route name. Although arbitrary but must be unique withing an app spec. |
+| route.tcp.port | optional tcp field specifying the incoming TCP port. If not present or set to zero (0) then  the port is automatically assigned. |
+| route.tcp.strictPort | optional tcp field specifying whether incoming TCP port can be reassigned in case of a port conflict. |
 
 ### Navstation
 
