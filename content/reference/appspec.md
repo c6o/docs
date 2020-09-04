@@ -99,7 +99,7 @@ spec:
 
 ### Routes
 
-The routes section defines how the app can be accessed from outisde of the cluster.  Multiple ingress routes are support and, currently, http-based routing and TCP-based routing is supported.  Http-based routing is performed by hostname whereas TCP-based routing is based on the port.
+The routes section defines how the app can be accessed from outisde of the cluster.  Multiple hosts can listen on the same external https port.  Requests are routed to a designated service however, TCP based applications have to request unique ports or accept randomly assigned external ports.
 
 Example:
 
@@ -124,7 +124,7 @@ spec:
 | Field | Description |
 |-------|-----------------------------------------------|
 | routes | an array of routes to access one or more hosted services |
-| route.type | Must be 'http' or 'tcp'. Note that http routing covers http and https |
+| route.type | Must be 'http' or 'tcp'. Note that http routing implies and https |
 | route.disabled | When present and set to true, the route is disabled; otherwise the route is enabled |
 | route.targetService | the target service name |
 | route.targetPort | optional field specifying the target service port, which is needed when multiple service ports are available |
