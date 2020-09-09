@@ -1,25 +1,26 @@
 # Your First Application
 
-Any existing Kubernetes application can become a CodeZero Application. Unlike Deployments, Services and PersistenVolumes, Applications are not a first-class resource type in Kubernetes.
+Any existing Kubernetes *application* can become a *CodeZero Application*. Unlike Kubernetes *deployments*, *services* and *Persistent Volumes*, *applications* are not a first-class resource type in Kubernetes. CodeZero treats applications as first class resources within Kubernetes so that it can become a *Cloud Application* in any cloud where Kubernetes is available.
 
-In order to publish an Application, you need to:
+In order to turn any Kubernetes application into a *Cloud Application*, the application needs to be published to CodeZero's Marketplace so that it can be installed and used by end users in a cloud. 
 
-1. Create an Application Manifest that defines the parameters of your Application
-1. Write a Provisioner for your Application
-1. Register your Application on the [CodeZero Hub](https://hub.codezero.io)
+To become a Cloud Application, you need to:
+
+1. Create a *Cloud Application Manifest* that defines the parameters of your application
+1. Write a *CodeZero Provisioner* for your application that will turn it into a CodeZero available *Cloud Application*
+1. Register your application as a *Cloud Application* on the [CodeZero Hub](https://hub.codezero.io)
 
 This guide assumes familiarity with Kubernetes concepts, and implementing npm modules using Typescript.
 
 ## Design Principles
 
-There are some general design principles to follow when creating new Applications for CodeZero to provide a great user experience.
+There are some general design principles to follow when creating new Applications for CodeZero in order to provide users with great experiences.
 
-* Applications should be simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
+* Applications should be simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon and acronyms where possible.
 
-* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible.  A commong example of this might be for logging or metrics.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible. A commong example of this might be for logging or metrics.
 
 * Status reporting and error handling. Application Provisioners should report status and handle errors in case of failure.
-
 
 ## A Simple CodeZero Application
 
