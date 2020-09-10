@@ -10,7 +10,7 @@ CodeZero software is designed to co-exist with your existing Kubernetes applicat
 
 ## Our Values ##
 
-The followin core values help guide the overall architecture of CodeZero:
+The following core values help guide the overall architecture of CodeZero:
 
 * Deliver an excellent development experience
 * Make it easy for developers to publish their applications
