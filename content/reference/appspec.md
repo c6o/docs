@@ -39,7 +39,7 @@ spec:
 
 ### Fields
 
-These are standard k8s metadata fields and how they are used by c6o
+These are standard k8s metadata fields and how they are used by CodeZero (c6o)
 
 | Name      | Description                                  |
 |-----------|----------------------------------------------|
