@@ -18,7 +18,7 @@ There are some general design principles to follow when creating new Application
 
 * Applications should be simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon and acronyms where possible.
 
-* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible. A commong example of this might be for logging or metrics.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible. A common example of this might be for logging or metrics.
 
 * Status reporting and error handling. Application Provisioners should report status and handle errors in case of failure.
 
