@@ -1,6 +1,6 @@
 # Your First Application
 
-Any existing Kubernetes *application* can become a *CodeZero Application*. Unlike Kubernetes *deployments*, *services* and *Persistent Volumes*, *applications* are not a first-class resource type in Kubernetes. CodeZero treats applications as first class resources within Kubernetes so that it can become a *Cloud Application* in any cloud where Kubernetes is available.
+Any existing Kubernetes *application* can become a *CodeZero Application*. Unlike Kubernetes *deployments*, *services* and *Persistent Volumes*, *applications* are not a first-class resource type in Kubernetes. CodeZero treats applications as first class resources within Kubernetes so that they can become *Cloud Applications* in any cloud where Kubernetes is available.
 
 In order to turn any Kubernetes application into a *Cloud Application*, the application needs to be published to CodeZero's Marketplace so that it can be installed and used by end users in a cloud. 
 
