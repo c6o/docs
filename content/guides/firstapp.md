@@ -24,11 +24,11 @@ There are some general design principles to follow when creating new Application
 
 ## A Simple CodeZero Application
 
-To get started, we'll have a look at the Node-RED example Application Manifest and Provisioner. [Node-RED](http://nodered.org) is a low-code programming tool for building event-driven IoT applications.
+To get started, we'll have a look at the Node-RED example Application Manifest and Provisioner. [Node-RED](http://nodered.org) is a low-code visual programming tool for building event-driven IoT applications.
 
 ### Application Manifest
 
-The Application Manifest is used to define an Application installed on a CodeZero cluster.  The manifest is created and managed by the CodeZero Store when an Application is installed. To get started, it's easiest to create an Application Manifest manually for development and testing before publishing to the Hub.
+The *Application Manifest* is used to define an Application installed on a CodeZero cluster. The manifest is created and managed by the CodeZero Store when an Application is installed. To get started, it's easiest to create an Application Manifest manually for development and testing before publishing to the Hub.
 
 An example Node-RED Manifest that supports installation, removal and launch from the CodeZero Marina desktop is as follows:
 
@@ -60,9 +60,9 @@ spec:
 The `metadata` section contains information such as the Edition, Display Name and icon used in the CodeZero Marina.
 
 The `spec` section contains several subsections used by CodeZero:
-* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  For example, in this example, `storage` and `projects` are specific to the Node-RED Provisioner.
-* `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type.
-* `routes` - defines how the network will be configured to access the application. In this case, `simple` http routing is used to access the application service `node-red`
+* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  Here, for example, `storage` and `projects` are specific to the Node-RED Provisioner. (see: [reference](/reference/appspec.md#provisioner))
+* `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type. (see: [reference](/reference/appspec.md#marina))
+* `routes` - defines how the network will be configured to access the application. In this case, `simple` http routing is used to access the application service `node-red`. (see: [reference](/reference/appspec.md#routes))
 
 For more information on the Application Manifest see the [reference](/reference/appspec.md).
 
@@ -91,7 +91,7 @@ The Node-RED provisioner module directory layout is as follows:
 
 #### Kubernetes Resource Templates
 
-First, we want to focus on the Kubernetes Resource Templates.  These templates define the native Kubernetes resource definitions that you are likely already be familiar with.  However, the templates use [Handlebars](https://handlebarsjs.com/) as a templating language, which are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
+First, let's focus on the Kubernetes Resource Templates. These templates define the native Kubernetes resource definitions that you are likely already be familiar with. However, the templates use [Handlebars](https://handlebarsjs.com/) language as a means of merging configuration and template together to create the kubernetes definition. These templates are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
 
 For a relatively simple application like Node-RED, our Provisioner will need to setup and manage three underlying Kubernetes resources:
 1. *Deployment* - that specifies the docker image, replicas, and volumes used.
@@ -197,13 +197,13 @@ Once these specifications are tested on a cluster, you're ready to use them in a
 
 Once the Kubernetes Resource Templates have been setup, we are ready to create our Provisioner Implementations that will consume the templates and manage our Application.
 
-The simplest way to get started is to create a Provisioner that is capable of installing an Application from the CLI.  In this case, we will need to implement the following *create* action methods:
+The simplest way to get started is to create a Provisioner that is capable of installing an Application from a command line interface (CLI). In this case, we will need to implement the following *create* action methods:
 * `createInquire` - ask the user to set any configuration options required by the Provisioner that are not already specified in the Application Manifest.
 * `createApply` - generate all Kubernetes Resources Definitions based on the Provisioner configuration and Resource Templates, then apply and manage the cluster changes.
 
 ##### `createInqure.ts`
 
-First, lets create a `createInquire.ts` file in the `src/mixins/` directory.  In this file we'll make a `createInquireMixin`, that implements a `createInquire` method.  This method is used to asks the CLI user for any options that have not been specified in the Application Manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
+First, lets create a `createInquire.ts` file in the `src/mixins/` directory.  In this file we'll make a `createInquireMixin`, that implements a `createInquire` method. This method is used to asks the CLI user for any options that have not been specified in the Application Manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
 
 Our Node-RED implementation looks like:
 
@@ -240,11 +240,11 @@ export const createInquireMixin = (base: baseProvisionerType) => class extends b
 
 ##### `createApply.ts`
 
-Next, we'll make a `createApplyMixin`, which is where the real action happens.  Here the  provisioner installs the Kubernetes Resources for the Application.
+Next, we'll make a `createApplyMixin`, which is where the real action happens. Here the  provisioner installs the Kubernetes Resources for the Application.
 
-The method first calls the base class `ensureServiceNamespacesExist()` provided with the [provisioner base class](/reference/provisioners.md)  to ensure the target namespace exists, or create it if needed.
+The method first calls the base class `ensureServiceNamespacesExist()` provided with the [provisioner base class](/reference/provisioners.md) to ensure the target namespace exists, or create it if needed.
 
-It then uses `ensureNodeRedIsInstalled()`.  This method uses the  [kubeclient library](/reference/kubeclient.md) to install the Kubernetes Resoures using the Resource Templates with the templated values filled in, and applying them to the Kubernetes cluster.
+It then uses `ensureNodeRedIsInstalled()`. This method uses the [kubeclient library](/reference/kubeclient.md) to install the Kubernetes Resoures using the Resource Templates with the templated values filled in, and applying them to the Kubernetes cluster.
 
 The `kubeclient` is key to making provisioners easy to write since it provides simple CRUD abstractions for interacting with the cluster either interactively or in a batch mode using a fluid interface as shown.
 
@@ -324,13 +324,14 @@ export type baseProvisionerType = new (...a) => Provisioner & ProvisionerBase
 
 export class Provisioner extends mix(ProvisionerBase).with( 
   createInquireMixin,
-  createApplyMixin,) {
+  createApplyMixin,) 
+{
 }
 ```
 
 ### Testing the CLI
 
-Now that we have created a very basic provisioner, we can go ahead and test it out on the CLI.  To do this, first make sure we have the CLI installed and configured.  Then run the command:
+Now that we have created a very basic provisioner, we can go ahead and test it out on the CLI. To do this, first make sure we have the CLI installed and configured. Then run the command:
 
 `czctl provision <app-manifest.yaml> --package <path-to-provisioner-package>`
 
