@@ -3,6 +3,7 @@
 Welcome to CodeZero!
 
 [whatiscodezero](_fragments/whatiscodezero.md ':include')
+[codezeroisos](_fragments/codezeroisos.md ':include')
 
 Our [Quick Start Guide](/welcome/quickstart.md) guide is a great place to start if you want to jump right into getting your clouds installed and applications running.
 
