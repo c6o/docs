@@ -44,7 +44,7 @@ These are standard k8s metadata fields and how they are used by CodeZero (c6o)
 | Name      | Description                                  |
 |-----------|----------------------------------------------|
 | name      | Globally unique application name             |
-| namespace | Namespace where the application is installed. This is used to distinguish your application components from other developer's applications |
+| namespace | Namespace where the application is installed. This is a logical parittion used to distinguish your application from other developer's applications |
 | finalizers | set to `finalizer.app.codezero.io` after install |
 
 ### Labels
