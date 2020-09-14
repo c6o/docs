@@ -12,6 +12,25 @@ Install the CLI tool using NPM
 npm install -g @c6o/cli
 ```
 
+### Installation
+
+The CLI tool is published as a public NPM package called `@c6o/cli`.
+
+#### Prerequisits
+
+* NPM (Version 6.14+)
+* Node (Version 12.16+)
+* Linux requires "libsecret-1-dev" (On Ubuntu run `sudo apt-get install libsecret-1-dev`)
+
+#### Install using NPM
+
+```
+sudo npm install -g @c6o/cli --unsafe-perm=true
+```
+
+NOTE: '--unsafe-perm' is currently required to allow the dependency 'keytar' to build successfully.
+
+
 ### Commands
 
 | Command | Description |
@@ -67,7 +86,8 @@ If there are deprovisioning options that are available but not specified in the 
 czctl update PATH [OPTIONS]
 ```
 
-## <a name="publish" id="publish"></a> czctl publish
+<a name="publish" id="publish"></a> 
+## czctl publish
 
 ```bash
 czctl publish PATH [OPTIONS]
