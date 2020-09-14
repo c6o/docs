@@ -1,6 +1,6 @@
 # Application Spec Reference
 
-The CodeZero Application's *Provisioning Manifest*, or *Custom Resource Definition* (CRD) is used by CodeZero to configure applications and provide information to the CodeZero apps for display. This will be part of creating and uploading your application package when creating an application in the CodeZero Hub. 
+The CodeZero Application's *Provisioning Manifest* is a Kubernetes *Custom Resource Definition* (CRD) and is used by CodeZero to configure applications and provide information to the CodeZero apps for display. This will be part of creating and uploading your application package when creating an application in the CodeZero Hub. 
 
 The provisioning system uses all of the fields in this manifest to deploy your application. There are two top level sections: 
 * *metadata* used to describe your application to the CodeZero interfaces
