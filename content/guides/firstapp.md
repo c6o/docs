@@ -4,10 +4,17 @@ Any existing Kubernetes *application* can become a *CodeZero Application*. Unlik
 
 In order to turn any Kubernetes application into a *Cloud Application*, only the application's manifest needs to be published to CodeZero's Marketplace so that it can be installed and used by end users using the CodeZero operating system to access them in the cloud. (Your application, and other information about, it will be picked up from the docker and npm registries where it is publically available).
 
+Prerequisites:
+
+1. A working application that is well tested
+1. The applicatoin runs inside a docker container with a Dockerfile and is published to Docker Hub
+1. The application runs inside of a Kubernetes cluster and has a Kubernetes CRD
+
 To become a Cloud Application, you need to:
 
 1. Create a *Cloud Application Manifest* that defines the parameters of your application
 1. Write a *CodeZero Provisioner* for your application that will turn it into a CodeZero available *Cloud Application*
+1. Publish your *Cloud Application Manifest* to NPM 
 1. Register your application as a *Cloud Application* on the [CodeZero Hub](https://hub.codezero.io)
 
 This guide assumes familiarity with Kubernetes concepts, and implementing npm modules using Typescript.
