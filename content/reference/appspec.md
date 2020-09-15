@@ -19,11 +19,10 @@ metadata:
     system.codezero.io/iconUrl: "https://hub.codezero.io/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
 spec:
   routes:
-    simple:
-      http:
-        service: node-red
+    - type: 'http'
+      targetService: 'node-red'
   provisioner:
-    storage: 4Gi
+    storage: 1Gi
     projects: false
     package: "@provisioner/node-red"
   marina:
