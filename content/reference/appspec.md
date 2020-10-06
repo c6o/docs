@@ -21,6 +21,8 @@ spec:
   routes:
     - type: 'http'
       targetService: 'node-red'
+      http:
+        public: true
   provisioner:
     storage: 1Gi
     projects: false
@@ -100,6 +102,8 @@ spec:
 
 The routes section defines how the app can be accessed from outisde of the cluster.  Multiple hosts can listen on the same external https port.  Requests are routed to a designated service however, TCP based applications have to request unique ports or accept randomly assigned external ports.
 
+Note that, at this time, at most one http route is permitted per app.
+
 Example:
 
 ```yaml
@@ -108,6 +112,8 @@ spec:
   routes:
     - type: 'http'
       targetService: 'node-red'
+      http:
+        public: true
     - type: 'tcp'
       targetService: 'node-red'
       tcp:
@@ -127,6 +133,7 @@ spec:
 | route.disabled | When present and set to true, the route is disabled; otherwise the route is enabled |
 | route.targetService | the target service name |
 | route.targetPort | optional field specifying the target service port, which is needed when multiple service ports are available |
+| route.http.public | optional http field specifying whether the app is publicly accessible |
 | route.http.prefix | optional http field specifying matching prefix for a URL rewrite, e.g.: /api/ |
 | route.http.rewrite | optional http field specifying URL rewrite destination, e.g.: /api/v1/ |
 | route.tcp.name | mandatory tcp field specifying the TCP route name. Although arbitrary but must be unique withing an app spec. |
