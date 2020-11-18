@@ -32,7 +32,7 @@ All developers must write their own unit tests prior to implementing the code fo
 
 Developers should manually run unit tests locally prior to merging and collapsing their code.
 
-Running the unit tests must be part of the continuous integration build process (on the master and develop branches) and if any of the unit tests fail then the build process should stop and notify the team of the error so that it can be resolved.
+Running the unit tests must be part of the continuous integration build process (on the main and develop branches) and if any of the unit tests fail then the build process should stop and notify the team of the error so that it can be resolved.
 
 ### System and Integration Testing
 
