@@ -15,7 +15,6 @@
 
   <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-
   <style>
     /* Override some of the theme elements */
 
@@ -91,7 +90,22 @@
         }
       ],
       'flexible-alerts': {
-        style: 'flat'
+        style: "callout",
+        protip: {
+          label: 'Protip',
+          icon: 'icon-tip',
+          className: 'tip'
+        },
+        wip: {
+          label: 'Work in Progress',
+          icon: 'icon-wip',
+          className: 'wip'
+        },
+        expert: {
+          label: 'Expert',
+          icon: 'icon-expert',
+          className: 'expert',
+        }
       },
       markdown: {
         renderer: {
