@@ -48,16 +48,16 @@ czctl app publish path/to/manifest.yaml
 | status           | public|private         | private  | Edition visibility in the Marketplace.
 | spec             | [Spec](#Edition-Spec) | REQUIRED | Editions specifications
 
-#### Edition Spec
+### Edition Spec
 
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
 | navstation       | Boolean                | false   | When the spec.navstation field is set to true, the application and associated UI panel will appear in the NavStation settings 
-| routes           | [Route](#Edition-Spec-Route)[] |  | Array of routing information to instruct how CodeZero should route public traffic to the application
-| provisioner      | [ProvisionerSpec](#Edition-Spec-Provisioner) | REQUIRED | Provisioner specific properties
-| marina           | [Marina](#Edition-Spec-Marina) |      | Defines how this edition behaves in the Marina
+| routes           | [Route](#Edition-Route)[] |  | Array of routing information to instruct how CodeZero should route public traffic to the application
+| provisioner      | [ProvisionerSpec](#Provisioner-Spec) | REQUIRED | Provisioner specific properties
+| marina           | [Marina](#Edition-Marina) |      | Defines how this edition behaves in the Marina
 
-#### Edition Spec Route
+### Edition Route
 
 | Property      | Value(s) | Default  | Description
 | --------      | -------- | -------  | -----------
@@ -68,22 +68,22 @@ czctl app publish path/to/manifest.yaml
 | http          | [HttpRewrite](#Route-Http-Rewrite) | | Allows specifying more advanced HTTP routing rules
 | tcp           | [TcpRules](#Route-TCP-Rules) | | Required if type is TCP.
 
-#### Route HTTP Rewrite
+### Route HTTP Rewrite
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
 | prefix    | String   | URL prefix to match for a URL rewrite.
 | rewrite   | String   | Rewrite destination
 
-#### Route TCP Rules
+### Route TCP Rules
 
 | Property      | Value(s) | Default  | Description
 | --------      | -------- | -------  | -----------
 | name          | String   | REQUIRED | Arbitrary name for the route, but must be unique.
 | port          | Int      |          | Incoming TCP port. If it is not present, is set to zero (0), or conflicts with an existing port, then the port is automatically assigned with a random value.
-| strictPort    | Int      | REQUIRED | Same as above, but do not allow reassigning of the port if there is a conflict.  Installation will FAIL if the system cannot allocate this port.
+| strictPort    | Int      |          | Same as above, but do not allow reassigning of the port if there is a conflict.  Installation will FAIL if the system cannot allocate this port.
 
-#### Edition Spec Provisioner
+### Provisioner Spec
 
 The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define it's schema.  For example, see [App Engine's Schema](./appengine.md/#Provisioner-Spec).
 
@@ -95,7 +95,7 @@ However, there are a few reserved properties used by CodeZero interally as well:
 | ui        | String   | If set to "ignore", the customer will skip the UI components during installation.
 | tag       | String   | Flags current docker image version, has specially meaning when managing image updates.
 
-#### Edition Spec Marina
+#### Edition Marina
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------

@@ -5,6 +5,13 @@
 
 In this guide, we walk through the steps to publish a basic application to CodeZero.  By the end of this guide, you will create and publish a provisioner for [NodeRED](https://nodered.org/) to the CodeZero marketplace.
 
+## Prerequisits
+
+You'll need to:
+
+1. setup a [CodeZero Cluster](https://docs.docker.com/engine/install/), and
+1. install and configure the [CodeZero CLI](https://nodejs.org/en/),
+
 ## Getting Started
 
 As with all CodeZero applications, there are three main components we need to consider and address:
@@ -13,14 +20,14 @@ As with all CodeZero applications, there are three main components we need to co
 1. Provisioner Package
 1. Application Manifest
 
-### The Containerized Application
+## The Containerized Application
 
-The first component we need for any CodeZero Application is a containerized application.  In this guide, we are using [NodeRED](https://nodered.org/) as an example.  Additionally, the community has already created the docker hub image "[nodered/node-red](https://hub.docker.com/r/nodered/node-red)" that we will use for this guide.
+The first component we need for any CodeZero Application is a containerized application.  In this guide, we will use [NodeRED](https://nodered.org/) as an example, which the community has already created a docker hub image for "[nodered/node-red](https://hub.docker.com/r/nodered/node-red)" that will .
 
 > [!EXPERT]
-> To learn how to create your own containerized applications, check out our [NodeJS Hello World](./0.5-docker.md) docker guide.
+> To learn how to create your own containerized applications, check out our [NodeJS Hello World](./hello-world.md) docker guide.
 
-#### Configuring NodeRED
+### Configuring NodeRED
 
 NodeRED is a simple web application that does not take much to configure.  There are just a few properties we will want to be aware of as we continue with setting up this application to run in CodeZero:
 
@@ -28,7 +35,7 @@ NodeRED is a simple web application that does not take much to configure.  There
 1. **Environment Variables:**  We can use the `NODE_RED_ENABLE_PROJECTS` environment variable to control whether NodeRED has [projects](https://nodered.org/docs/user-guide/projects/) enabled or disabled.
 1. **Persistent Data:**  NodeRED stores user data in the `/data` directory, which we will want to make sure gets persisted between container restarts/upgrades/etc.
 
-### Application Provisioner
+## Application Provisioner
 
 The Application Provisioner is responsible for handling the installation and management of the application in a customers CodeZero cluster.  Instead of writting a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexiblity to manage this NodeRED application.
 
@@ -38,20 +45,18 @@ The Application Provisioner is responsible for handling the installation and man
 > [!EXPERT]
 > Learn how to create a custom provisioner with our [Custom Provisioner guide](./3-codegen.md).
 
-### Application Manifest
+## Application Manifest
 
-The Application Manifest consists of a YAML file that describes our Application within the CodeZero ecosystem.  It may also contain additional asset files (ex: icons, images, etc).
+The Application Manifest consists of a YAML file that describes our Application within the CodeZero ecosystem.  It may also contain additional asset files (ex: icons, images, etc).  This file can be named anything, recommended convention is to either have `c6o.yaml` in the root of your project, or place it in a folder at `c6o/app.yaml`;
 
 > [!NOTE]
 > Check out the [Application Manifest specification](../references/application-manifest.md) for a full list of properties and configurations.
 
-## Creating the Application
+### Application Manifest Basics
 
 In this guide, we only need to create an Application Manifest, as we are using `@provisioner/appengine` and the docker image `nodered/node-red` for our provisioner and containerized application respectively.
 
-So, let's first create a file basic YAML file to contain our Application Manifest.  This file can be named anything for example: `c6o-nodered.yaml`.
-
-### Application Manifest Basics
+So, let's first create a file basic YAML file to contain our Application Manifest.  This file can be named anything for example: `c6o.yaml`.
 
 ```yaml
 name: Node Red
@@ -74,9 +79,9 @@ editions:
       # Marina configuration goes here
 ```
 
-#### Editions
+### Edition
 
-The `editions` property constains an array of possible editions a customer can install.  Each edition has it's own configuration and settings.  For this guide, we only need one edition, which we call "preview".
+The `editions` property constains an array of possible editions a customer can install.  Each edition has it's own configuration and settings.  As a starting point, we only need one edition, which we will call "preview".
 
 > [!NOTE]
 > For more details about how to use editions, checkout the [editions](../references/editions.md) reference.
@@ -241,7 +246,7 @@ editions:
 ## Publish the Application
 
 ```bash
-czctl app publish ./c6o-nodered.yaml
+czctl app publish ./c6o.yaml
 ```
 
 ### Install the Application

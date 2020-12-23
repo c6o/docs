@@ -1,6 +1,6 @@
-# Building an Application
+# A CodeZero Application
 
-Introducing an Application into the CodeZero ecosystem consists of 3 main components. A manifest that describe the application, a provisioner to install and manage the applicaiton, and a containerized application that will actually run and perform the applications function(s).
+An Application in the CodeZero ecosystem consists of 3 main components.  First off, there is the core application itself, which can be developed in any number of ways, so long as it is executable in a container environment.  Then there is the CodeZero Provisioner, which is responsible for orchestrating the installation and management of your application in a end-users cluster.  And lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.
 
 ## Components
 
@@ -25,6 +25,6 @@ graph TD
 
 ## Getting Started Guides
 
-1. [Creating a Containerized Application](./guide/0.5-docker)
-1. [Publishing a Basic Application using App Engine](./guide/1-basic)
-1. [Creating a Custom Provisioner](./guide/3-codegen.md)
+1. [Hello World Example](../guides/hello-world)
+1. [Publishing a Basic Application using App Engine](../guides/appengine)
+1. [Creating a Custom Provisioner](../guides/custom-provisioner)

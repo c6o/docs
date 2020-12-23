@@ -27,14 +27,9 @@ One CodeZero application may consist of multiple multiple container images, espe
 
 If an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together.  For example, if building a Wordpress provisioner, it may be tempting to directly include a MySQL container. However, a much better design should define the MySQL service as a dependency, so it can leverage the power of existing MySQL instances.
 
-
 How to develop the actual application logic that will run in a customers cluster is a very broad topic, and is not new or specific to CodeZero.
 
 Therefore, instead of trying to explain all of this ourselves, we will just cover the basics, and provide  some helpful links to learn more.
-
-## What is a Container
-
-A container is 
 
 ## Types of Containers
 
@@ -47,6 +42,8 @@ Developing the application code that will be running on a customers cluster is a
 ## Getting Started
 
 The simplest way to get started with CodeZero application development, is to first get familiar with the provisioner processes using an existing docker hub image.
+
+See our NodeRED 
 
 ## Helpful Links
 

@@ -161,7 +161,7 @@ editions:
       # ...
       ports:
       - port: 80
-        protocol: http
+        protocol: tcp
 ```
 
 ### Volume
