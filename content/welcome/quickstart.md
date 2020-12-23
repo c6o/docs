@@ -1,31 +1,31 @@
 # Quick Start Guide #
 
-CodeZero (c6o) lets you create your own Cloud to host your applications. Your CodeZero Cloud is a Kubernetes (k8s) cluster enhanced with the CodeZero platform. Your cloud can run on the k8s provider of your choice: Digital Ocean, Amazon EKS, Google's GKE, Azure Kubernetes Service, or even bare metal.
+CodeZero (c6o) lets you create your own Cloud to host your applications. Your CodeZero Cloud is a Kubernetes (k8s) cluster enhanced with the CodeZero platform. Your cloud can run on the Kubernetes provider of your choice: Digital Ocean, Amazon EKS, Google's GKE, Azure Kubernetes Service, or even bare metal.
 
-This guide assumes you have no knowledge of operating a Kubernetes cluster, but understand how to create one, and download the Configuration file for the k8s cluster on your chosen provider. For more information on creating a cluster see the following for each provider:
+This guide assumes you have no knowledge of operating a Kubernetes cluster, but understand how to create one, and download the Configuration file for the cluster on your chosen provider. For more information on creating a cluster see the following for each provider:
 
-* [Digital Ocean Kubernetes Setup]()
-* [Google GKE Setup]()
-* [Amazon EKS Setup]()
-* [Azure Kubernetes Service Setup]()
+* [Digital Ocean](https://www.digitalocean.com/products/kubernetes/)
+* [Google GKE Setup](https://cloud.google.com/kubernetes-engine)
+* [Amazon EKS Setup](https://aws.amazon.com/eks/)
+* [Azure Kubernetes Service Setup](https://azure.microsoft.com/en-us/services/kubernetes-service/)
 
-## Installation ##
+For a limited time, you can get a [$100 credit on DigitalOcean](https://try.digitalocean.com/codezero/)
 
-To install, create an account on the CodeZero Hub. Click on MyClouds, and then 'Install CodeZero'. Fill in the form, creating a name and URL for your cloud. You must upload a kubeconfig file for Hub to install the c6o system components and applications.
+## Installing CodeZero ##
 
-***TODO: screen shot of MyCloud***
+To install, create an account on the [CodeZero Hub](https://hub.codezero.io). Click on My Clouds, and then 'Install CodeZero'. Follow the on-screen instructions to set up CodeZero.
 
-> Note that the c6o Hub does not store your kubeconfig file after installation, keeping it only long enough to install the c6o platform.
+![Install Screen](../_media/install.png ':size=800px')
+
+> Note that the Hub does not store your Kubeconfig file after installation, keeping it only long enough to install the platform.
 
 Hub will then install the system components and indicate when it is ready on the Hub.
 
-Once your Cloud is ready, click on the Cloud name in the MyClouds list to take you to the Marina, which is the CodeZero desktop application for managing your cloud.
+Once your Cloud is ready, click on the Cloud name in the My Clouds list to take you to the Marina, which is the CodeZero desktop application for managing your cloud.
 
-## Deploying your first CodeZero Application ##
+## Installing Applications ##
 
-In the Marina desktop application, you'll see a number of icons, click on the System icon to view the system applications on your Cloud.
-
-Open the Store application to view the applications that can be installed in your Cloud.
+In the Marina desktop application, you'll see a number of icons, click on the Store icon in order to install applications in your Cloud.
 
 To get started, lets try installing the open source Node-RED application. Click on the install link for Node-RED. Choose the edition and namespace (folder) where you would like Node-RED to be installed.
 

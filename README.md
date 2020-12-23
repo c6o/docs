@@ -1,6 +1,6 @@
 # CodeZero Docs #
 
-This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [http://docs.codezero.io](http://docs.codezero.io) website.
+This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [https://docs.codezero.io](https://docs.codezero.io) website.
 
 All modifications should be submitted via a pull request and are subject to review prior to publishing.
 
@@ -13,12 +13,12 @@ If however, you would like to preview the site, clone this repo and run the foll
 ``` bash
 git clone ...
 cd docs
-npm install
-npm run develop
+yarn install
+yarn run develop
 
 OR
 
-npm install -g docsify-cli
+yarn install -g docsify-cli
 docsify serve .
 ```
 
