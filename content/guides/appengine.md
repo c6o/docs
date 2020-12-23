@@ -25,10 +25,10 @@ As with all CodeZero applications, there are three main components we need to co
 
 ## The Containerized Application
 
-The first component we need for any CodeZero Application is a containerized application.  In this guide, we will use [NodeRED](https://nodered.org/) as an example, which the community has already created a docker hub image for "[nodered/node-red](https://hub.docker.com/r/nodered/node-red)".
+The first component we need for any CodeZero Application is a containerized application.  In this guide, we will use [NodeRED](https://nodered.org/) as an example, which the community has already created and published a docker hub image for us ([nodered/node-red](https://hub.docker.com/r/nodered/node-red)).
 
 > [!EXPERT]
-> To learn how to create your own containerized applications, check out our [NodeJS Hello World](./hello-world.md) docker guide.
+> To learn how to create your own containerized applications, check out our [NodeJS Hello World](./hello-world) docker guide.
 
 ### Configuring NodeRED
 
@@ -59,7 +59,7 @@ The Application Manifest consists of a YAML file that describes our Application 
 
 In this guide, we only need to create an Application Manifest, as we are using `@provisioner/appengine` and the docker image `nodered/node-red` for our provisioner and containerized application respectively.
 
-So, let's first create a file basic YAML file to contain our Application Manifest.  This file can be named anything for example: `c6o.yaml`.
+So, let's first create a basic YAML file for our Application Manifest: `c6o.yaml`.
 
 ```yaml
 name: Node Red

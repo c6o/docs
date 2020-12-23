@@ -99,8 +99,8 @@ npm-debug.log
 With the Dockerfile created, we can now build and run our application in docker.
 
 ```bash
-docker build -t <your username>/nodejs-hello-world ./
-docker run -p 12345:8080 -d <your username>/nodejs-hello-world
+docker build -t <your-docker-username>/nodejs-hello-world ./
+docker run -p 12345:8080 -d <your-docker-username>/nodejs-hello-world
 ```
 
 Navigate to <http://localhost:12345/>, our application is now containerized in Docker!
@@ -109,7 +109,7 @@ Navigate to <http://localhost:12345/>, our application is now containerized in D
 
 ```bash
 docker login
-docker push <your username>/nodejs-hello-world
+docker push <your-docker-username>/nodejs-hello-world
 ```
 
 ## Application Manifest using AppEngine
@@ -118,7 +118,7 @@ We need to create an Application Manifest in order to describe how our Applicati
 
 ```yaml
 name: Hello World
-appId: <your-username>-helloworld  # replace this so it's unique
+appId: <your-c6o-username>-hello-world  # replace this so it's unique
 
 description:
   Hello World!
@@ -129,16 +129,16 @@ editions:
   spec:
     provisioner:
       package: @provisioner/appengine           # Provision using App Engine
-      name: helloworld                          # Likely same as appId
-      image: <your username>/nodejs-hello-world # Docker Hub image
+      name: hello-world                          # Likely same as appId
+      image: <your-docker-username>/nodejs-hello-world # Docker Hub image
       automated: true                           # should always be true
       ports:
       - port: 8080
-        type: http
+        protocol: tcp
 
     routes:
     - type: http
-      targetService: nodered
+      targetService: hello-world
       targetPort: 8080
 
     marina:
@@ -179,7 +179,7 @@ Navigate to the [Marketplace](https://codezero.io/marketplace), find your applic
 > You will need the [CLI setup](./setup-cli) to connect with a CodeZero cluster using `KUBECONFIG`.
 
 ```bash
-czctl install <your username>/nodejs-hello-world
+czctl install <your-c6o-username>-hello-world
 ```
 
 ## All Done
