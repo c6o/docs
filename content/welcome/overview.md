@@ -1,49 +1,46 @@
 # Overview #
 
-[whatiscodezero](../_fragments/whatiscodezero.md ':include')
+Welcome to CodeZero's documentation!  This documentation is geared towards a technical audience, and is intended for users interested in publishing an application in the CodeZero ecosystem, or wanting to understand how CodeZero works under the hood.
 
-CodeZero builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io). Key to the CodeZero platform is introducing the concept of CodeZero *Applications* used to simplify the installation and management of the various resources associated with a service running on Kubernetes.
+## Getting Started
 
-CodeZero takes a user-centric and developer view to cluster computing while maintaining DevOps control over the aspects that they are accustomed to.
+Our [Getting Started](../guides/getting-started) guide is a great place to start to get setup with a CodeZero Cloud, and install the basic tools you'll need to start developing with CodeZero.
 
-CodeZero software is designed to co-exist with your existing Kubernetes applications so you can leverage your current investment in these excellent technologies.
+### Guides
 
-## Our Values ##
+These guides will walk you through creating and publishing an application to CodeZero.
 
-These core values help guide the overall architecture of CodeZero.
+* [Create an end-to-end Hello World web application](../guides/hello-world)
+* [Publish an existing docker application](../guides/appengine)
+* [Develop a custom application provisioner](../guides/custom-provisioner)
 
-* Deliver an excellent development experience
-* Make it easy for Developers to publish their applications
-* Empower everyone to use Cloud applications
-* Leverage and contribute to existing open source technologies
-* Provide a seamless experience throughout the development lifecycle
-* Allow  everyone to run Cloud Applications on their cloud provider of choice or on-premise
+### Core Concepts
 
-## The Operating System ##
+Learn more about the core concepts of CodeZero:
 
-Over time, traditional Operating Systems have gone from handling single CPU computers, to multi-core processors and now, any number of CPU and GPU combinations. At CodeZero, we asked ourselves what this means in the age of Cloud Computing where software spans multiple computers or *nodes*
+* [What makes up a CodeZero Application](../concepts/applications).
+* [How to monetize your Applications with CodeZero](../concepts/monetization).
+* [Go under the hood, and learn more how the CodeZero system works](../concepts/codezero-system).
 
-Just as Operating systems abstract away low-level aspects of underlying computing hardware for applications and services, CodeZero provides an OS-like abstraction for Cloud applications.
+### Sample Provisioners
 
-Fortunately there is a good deal of technology already developed to help manage clusters of computers. Technologies such as [Kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io) have made it much easier to manage and orchestrate a cluster of machines.
+If you prefer to learn by example, you can browse our full list of CodeZero applications in our GitHub repository [c6o/provisioners](https://github.com/c6o/provisioners).
 
-Despite that, we felt there was more that can be done to improve the overall experience.
+## Community and Support
 
-## Applications and Provisioners ##
+If you need any help getting started with CodeZero, please reach out to Connery and our developer support team at [email](mailto:support@codezero.io)
 
-Any existing Kubernetes application can become a CodeZero application. Before CodeZero, publishing a Kubernetes application means writing up a page of instruction on how to install the app.
+> [!WIP]
+> More community support tools coming soon.
 
-Some of us might recall this was how things were in the 80's. In order to run applications, one had to painstakingly type in the source code of the application in order to run it. Now, if you wish to use software on your Mac or PC, typically, the software vendor publishes an Installer. User's run installers to setup software.
+### Found an Issue?
 
-We took inspiration from this 1990's technology and came up with CodeZero Provisioners. A Provisioner is software that performs supporting functions such as installation and configuration of an Application.
+Please report any issues you come across to our [Github Issues](https://github.com/c6o/provisioners/issues), and we will try to get them resovled as soon as possible.
 
-> Provisioners provide a user friendly experience that empower non-technical users to deploy and manage Applications on a cluster of computers running Kubernetes.
+> [!PROTIP]
+> Every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.
 
-## Key Features ##
+### Feature Requests
 
-The Key Features of CodeZero are:
-
-* Defines Applications as a first class resource in Kubernetes
-* Abstracts away cloud computing, networking and storage resources
-* Discover, install, configure, and uninstall applications with ease
-* Provide an easy to use CLI and GUI for accessing Cloud applications
+> [!WIP]
+> Ability to submit feature requests is coming soon.  For now, feel free to send us an [email](mailto:support@codezero.io).

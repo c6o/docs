@@ -85,7 +85,7 @@ czctl app publish path/to/manifest.yaml
 
 ### Provisioner Spec
 
-The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define it's schema.  For example, see [App Engine's Schema](./appengine.md/#Provisioner-Spec).
+The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define it's schema.  For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
 
 However, there are a few reserved properties used by CodeZero interally as well:
 

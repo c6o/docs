@@ -1,9 +1,9 @@
-# Publishing a Basic Application
+# Publishing a Standard Application
 
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-In this guide, we walk through the steps to publish a basic application to CodeZero.  By the end of this guide, you will create and publish a provisioner for [NodeRED](https://nodered.org/) to the CodeZero marketplace.
+In this guide, we walk through the steps to publish a standard application to CodeZero.  By the end of this guide, you will create and publish a provisioner for [NodeRED](https://nodered.org/) to the CodeZero marketplace.
 
 ## Prerequisits
 
@@ -19,6 +19,9 @@ As with all CodeZero applications, there are three main components we need to co
 1. Containerized Application
 1. Provisioner Package
 1. Application Manifest
+
+> [!Protip]
+> See more information about what makes up a CodeZero application [here](../concepts/applications).
 
 ## The Containerized Application
 
@@ -40,7 +43,7 @@ NodeRED is a simple web application that does not take much to configure.  There
 The Application Provisioner is responsible for handling the installation and management of the application in a customers CodeZero cluster.  Instead of writting a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexiblity to manage this NodeRED application.
 
 > [!NOTE]
-> Check out the [App Engine documentation](../references/appengine.md) to learn more about App Engine.
+> Check out the [App Engine documentation](../references/appengine) to learn more about App Engine.
 
 > [!EXPERT]
 > Learn how to create a custom provisioner with our [Custom Provisioner guide](./3-codegen.md).
@@ -84,18 +87,21 @@ editions:
 The `editions` property constains an array of possible editions a customer can install.  Each edition has it's own configuration and settings.  As a starting point, we only need one edition, which we will call "preview".
 
 > [!NOTE]
+> Learn more about what editions are for and how they should be used [here](../concepts/editions.md).
+
+> [!EXPERT]
 > For more details about how to use editions, checkout the [editions](../references/editions.md) reference.
 
 ### Provisioner Spec
 
 The `provisioner` property contains configuration settings that are specific to the provisioner project.  We are using the App Engine provisioner, so all properties here will be dictated by the `@provisioner/appengine` project.
 
-> [!NOTE]
+> [!EXPERT]
 > For a full description of App Engine, checkout the [App Engine](../references/editions.md) documentation.
 
 #### App Engine Basics
 
-To get started with the App Engine provisioner, we instruct CodeZero to use the App Engine NPM package (`@provisioner/appengine`) and the Containerized Application image (`nodered/node-red`).
+First, we need to define in our Application Manifest that we want to use the App Engine NPM package (`@provisioner/appengine`) as the underlying provisioner.  Next, we need to define the Docker Hub image (`nodered/node-red`) that we want App Engine to setup.
 
 ```yaml
 #...
@@ -111,7 +117,7 @@ editions:
 
 ```
 
-#### App Engine Configs
+#### Environment Variables
 
 App Engine has the ability to define any number of environment variables.  We will enable the NodeRED projects feature using:
 
@@ -127,7 +133,7 @@ editions:
         value: true
 ```
 
-#### App Engine Volumes
+#### Mounted Volumes
 
 In order to persist data stored at `/data`, the provisioner should create a persistent volume that is mounted at this path.  Persistent volumes are automatically provisioned with the customers cloud provider at the size specified, then mounted to container at the path specified.
 
@@ -138,12 +144,13 @@ editions:
   spec:
     # ...
     provisioner:
+      # ...
       volumes:
       - mountPath: /data
         size: 5Gi
 ```
 
-#### App Engine Ports
+#### Exposed Ports
 
 The NodeRED application image contains a webserver running on port `1880`.  So we need to instruct Kubernetes that there is an http service available on port `1880` of our application.
 
@@ -154,15 +161,16 @@ editions:
   spec:
     # ...
     provisioner:
+      # ...
       ports:
       - port: 1880
-        type: http
+        protocol: tcp
 ```
 
 > [!TIP]
-> As a shorthand, we could just set `port: 1880`, 
+> If the application only needs to expose a single TCP port, we can skip the `ports` property, and just define `port: 1880`, as a short-hand.
 
-### Routes Spec
+### Public Routes
 
 Above, we used App Engine to expose the NodeRED webserver running on port `1880` within the cluster.  However, we need to use `routes` in order to expose our service to the outside world.
 
@@ -183,7 +191,7 @@ editions:
 
 ### Marina
 
-Lastly, once the application is up and running in a customers cluster.  The application will be added to their Marina (CodeZero desktop).  When the customer clicks on the NodeRED icon, we want it to launch NodeRED in a new popup window.
+Lastly, once the application is up and running in your user's cluster.  The application will be added to their Marina (CodeZero desktop).  When the customer clicks on the NodeRED icon within their Marina, we want it to launch NodeRED in a new popup window.
 
 To accomplish this, we use the `marina` property as follows:
 
@@ -201,7 +209,7 @@ editions:
 
 ## Final Product
 
-That's it!  Now we should have a `c6o-nodered.yaml` file that contains something similar to:
+That's it!  Now we should have a `c6o.yaml` file that contains something similar to:
 
 ```yaml
 name: Node Red
@@ -249,8 +257,22 @@ editions:
 czctl app publish ./c6o.yaml
 ```
 
-### Install the Application
+### Test the Applicatoin
+
+There are two ways to test installing your application:
+
+1. Using the CLI
+1. Using the Store
+
+### From the Marketplace
+
+Navigate to the [Marketplace](https://codezero.io/marketplace), find your application, and begin the installation processes.
+
+### Using the CLI
+
+> [!NOTE]
+> You will need the [CLI setup](./setup-cli) to connect with a CodeZero cluster using `KUBECONFIG`.
 
 ```bash
-czctl install <your-username>-nodered
+czctl install <your username>/nodejs-hello-world
 ```

@@ -1,9 +1,0 @@
-- [Overview](/applications/overview)
-- [Quick Start Guide](/applications/guide/1-basic)
-    - [Hello World Docker App](/applications/guide/0.5-docker)
-    - [Publishing a Basic Application](/applications/guide/1-basic)
-- References
-    - [Application Manifest](/applications/references/application-manifest)
-    - [Editions](/applications/references/editions)
-    - [App Engine](/applications/references/appengine)
-    - [Containers](/applications/references/containers)

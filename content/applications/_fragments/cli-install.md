@@ -1,1 +1,0 @@
-To install the CLI, the

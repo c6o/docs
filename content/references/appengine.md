@@ -3,7 +3,7 @@
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-App Engine is a highly configurable provisioner project created by CodeZero that provides developers with a fast and easy way to onboard their applications without needing to create a customer provisioner of their own.
+App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without needing to create a customer provisioner of their own.
 
 > [!NOTE]
 > Check out the [Creating a Basic Application Guide](../guide/1-basic) to see App Engine in action.
@@ -30,11 +30,11 @@ A custom provisioner may be required for any applications that:
 * expose a custom API for other applications
 
 > [!EXPERT]
-> You can read more about creating custom provisioners [here](./provisioner-code.md).
+> You can read more about creating custom provisioners [here](../guides/custom-provisioner).
 
 ## Provisioner Specification
 
-All the configuration for an App Engine application is stored in the provisioner spec of the [Application Manifest](./application-manifest.md#Edition-Spec-Provisioner).
+All the configuration for an App Engine application is stored in the provisioner spec of the [Application Manifest](./application-manifest.md#Provisioner-Spec).
 
 ```yaml
 name: packageName

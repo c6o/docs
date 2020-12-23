@@ -1,4 +1,4 @@
-# Overview #
+# About Us #
 
 [whatiscodezero](../_fragments/whatiscodezero.md ':include')
 
@@ -23,7 +23,7 @@ These core values help guide the overall architecture of CodeZero.
   * Minikube
   * Just-a-bunch-of-Machines (JBOMs)
 
-## Code Zero Platform
+## CodeZero Platform
 
 Over time, traditional Operating Systems have gone from handling single CPU computers, to multi-core processors and now, any number of CPU and GPU combinations. At CodeZero, we asked ourselves what this means in the age of Cloud Computing.
 
@@ -32,6 +32,9 @@ Just as Operating systems abstract away low-level aspects of underlying computin
 Fortunately there is a good deal of technology already developed to help manage clusters of computers. Technologies such as [kubernetes](http://kubernetes.io), [Istio](http://istio.io) and [Docker](http://docker.com) have made it much easier to manage and orchestrate a cluster of machines.
 
 Despite that, we felt there was more that can be done to improve the overall experience.
+
+> [!EXPERT]
+> Read more about how the CodeZero system works [here](../concepts/codezero-system).
 
 ## CodeZero Features
 
@@ -44,7 +47,7 @@ Key Features of a CodeZero:
 
 ## Our Inspiration and Tools ##
 
-* kubernetes
+* Kubernetes
 * Docker
 * Istio
 * nodejs/npm

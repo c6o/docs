@@ -1,4 +1,4 @@
-## NodeJS Hello World
+# Hello World Web Application
 
 > [!WIP]
 > This document is still being developed and may be incomplete.
@@ -7,17 +7,17 @@ In this tutorial, we are going to create a very basic Hello World application in
 
 Despite the fact that we are using NodeJS in this example, you are not limited to this for your own applications, and can develop your application in pretty much any language/environment you choose, so long as it can be packaged in a docker container.  For more advanced examples, checkout the [Docker](https://docs.docker.com/) documentation.
 
-## Prerequisits
+## Prerequisites
 
 You'll need to:
 
 1. install [NPM](https://nodejs.org/en/),
-2. install [Docker](https://docs.docker.com/engine/install/), and
-3. setup a [Docker Hub account](https://hub.docker.com/signup).
+1. install [Docker](https://docs.docker.com/engine/install/), and
+1. setup a [Docker Hub account](https://hub.docker.com/signup).
 
 ## Create a NodeJS Application
 
-First things first, create a new folder for the project, and add a `package.json` with `express` added as a dependency:
+First things first, create a new folder for the project, create a `package.json`, and add `express` as a dependency:
 
 ```json
 {
@@ -34,7 +34,7 @@ First things first, create a new folder for the project, and add a `package.json
 }
 ```
 
-Next, lets create the applications 'logic' by creating a `server.js` file that contains:
+Next, lets create the application's business logic by creating a `server.js` file that contains:
 
 ```js
 const express = require('express');
@@ -61,11 +61,11 @@ npm install
 npm start
 ```
 
-Now checkout <http://localhost:8080/>, you should see "Hello World"!
+Now checkout <http://localhost:8080/>, you should see "Hello World" in your browser!
 
 ## Create a Dockerfile
 
-Now lets configure our application to run in Docker.  First create a file called `Dockerfile` (there is no file extension), with the contents:
+Next, lets configure our application to run in a Docker container.  First create a file called `Dockerfile` (there is no file extension), with the contents:
 
 ```docker
 # Base docker image
@@ -87,8 +87,6 @@ EXPOSE 8080
 CMD [ "node", "server.js" ]
 ```
 
-### Fine tune
-
 Notice how we call `COPY . .`, this will copy all of the files in our project directory.  However, we don't necessarily want to copy everything, so we should setup a `.dockerignore` file to ignore the files we don't want to copy over:
 
 ```text
@@ -96,7 +94,7 @@ node_modules
 npm-debug.log
 ```
 
-### Build and run the Docker Image
+### Build and Run in Docker
 
 With the Dockerfile created, we can now build and run our application in docker.
 
@@ -150,10 +148,10 @@ editions:
 ```
 
 > [!NOTE]
-> Check out the [Public Application using AppEngine](./appengine.md) for a little more details about what these properties do.
+> Check out the [Public Application using AppEngine](./appengine) for a little more details about what these properties do.
 
 > [!EXPERT]
-> Check out the [Application Manifest specification](../references/application-manifest.md) and [Application Manifest specification](../references/appengine.md) for a full list of properties and configurations.
+> Check out the [Application Manifest specification](../references/application-manifest.md) and [App Engine references](../references/appengine) for a full list of properties and configurations.
 
 ## Publish the Application
 
@@ -161,7 +159,10 @@ editions:
 czctl app publish ./c6o.yaml
 ```
 
-## Test the Applicatoin
+> [!NOTE]
+> You'll need to have your CLI authenticated with your CodeZero account.  See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
+
+## Test the Application
 
 There are two ways to install your application:
 
@@ -181,6 +182,6 @@ Navigate to the [Marketplace](https://codezero.io/marketplace), find your applic
 czctl install <your username>/nodejs-hello-world
 ```
 
-## All Done!
+## All Done
 
 Congrats, you've created your first CodeZero application!
