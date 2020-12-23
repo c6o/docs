@@ -23,7 +23,7 @@ A container image represents binary data that encapsulates your application and 
 
 ### Multiple Images
 
-One CodeZero application may consist of multiple multiple container images, especially if the application is using a microservice architecture.
+One CodeZero application may consist of one or multiple container images, especially if the application is using a microservice architecture.
 
 If an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together.  For example, if building a Wordpress provisioner, it may be tempting to directly include a MySQL container. However, a much better design should define the MySQL service as a dependency, so it can leverage the power of existing MySQL instances.
 
