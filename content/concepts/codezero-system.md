@@ -29,7 +29,7 @@ Components that are installed and operate in a customers cluster:
 The other major component of CodeZero is the CodeZero Hub.  This is the backend system that powers the https://codezero.io and https://developer.codezero.io/ web applications.  This portion of the CodeZero system is controlled and operated by CodeZero and provides APIs for creating a new cluster, sharing and finding CodeZero applications, managing pricing and billing, and by default provides the initial authentication mechanism for a CodeZero cluster.
 
 > [!NOTE]
-> With the exception of when a user first installs a cloud using the web interface (via https://codezero.io/), CodeZero never stores or maintains access to a customers cluster.
+> Except when a user first installs a cloud using the web interface (via https://codezero.io/), CodeZero never stores or maintains access to a customers cluster.
 
 ## Architecture
 
@@ -65,6 +65,6 @@ graph TB
     npm-->system
 ```
 
-Developers publish their applications by publishing application manifests to the CodeZero Hub, and the associated provisioner module to the npm registry.
+Developers publish their applications by publishing application manifests to the CodeZero Hub, and the associated provisioner module to the NPM registry.
 
 CodeZero Cloud users install applications by using the CodeZero Store. The store accesses Hub to find available applications for installation.  When the application is installed, the application manifest is added to the cluster. The system then downloads needed provisioner modules to install the Kubernetes resources.  Kubernetes then downloads needed application container images from container repositories such as Docker.

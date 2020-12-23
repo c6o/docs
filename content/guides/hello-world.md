@@ -11,9 +11,9 @@ Despite the fact that we are using NodeJS in this example, you are not limited t
 
 You'll need to:
 
-1. install [NPM](https://nodejs.org/en/),
-1. install [Docker](https://docs.docker.com/engine/install/), and
-1. setup a [Docker Hub account](https://hub.docker.com/signup).
+1. Install [NPM](https://nodejs.org/en/),
+1. Install [Docker](https://docs.docker.com/engine/install/), and
+1. Set up a [Docker Hub account](https://hub.docker.com/signup).
 
 ## Create a NodeJS Application
 
@@ -52,7 +52,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-This will create a very basic webserver running on port 8080.  The server will respond with "Hello World" when the root is requested.
+This will create a very basic web server running on port 8080.  The server will respond with "Hello World" when the root is requested.
 
 ### Test Your Application
 
@@ -87,7 +87,7 @@ EXPOSE 8080
 CMD [ "node", "server.js" ]
 ```
 
-Notice how we call `COPY . .`, this will copy all of the files in our project directory.  However, we don't necessarily want to copy everything, so we should setup a `.dockerignore` file to ignore the files we don't want to copy over:
+Notice how we call `COPY . .`, this will copy all the files in our project directory.  However, we don't necessarily want to copy everything, so we should set up a `.dockerignore` file to ignore the files we don't want to copy over:
 
 ```text
 node_modules
@@ -114,7 +114,7 @@ docker push <your username>/nodejs-hello-world
 
 ## Application Manifest using AppEngine
 
-We need to create an Application Manifest in order to describe how our Application is defined and behaves in the CodeZer ecosystem.  We do this by creating a simple YAML file called `c6o.yaml`:
+We need to create an Application Manifest in order to describe how our Application is defined and behaves in the CodeZero ecosystem.  We do this by creating a simple YAML file called `c6o.yaml`:
 
 ```yaml
 name: Hello World

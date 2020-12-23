@@ -6,14 +6,14 @@ Before getting started, there are a few things that you should setup first.
 
 ### Install CodeZero
 
-To setup your first CodeZero Cloud, create a [CodeZero account](https://codezero.io), and follow the onboarding processes to create create and setup your first Cloud.
+To set up your first CodeZero Cloud, create a [CodeZero account](https://codezero.io), and follow the onboarding processes to create and set up your first Cloud.
 
 > [!NOTE]
-> This process will involved creating a Kubernetes Cluster from the provider of your choice.
+> This process will involve creating a Kubernetes Cluster from the provider of your choice.
 
 ### Install an Application
 
-Once your Cloud is ready, click on the Cloud name in the My Clouds list to take you to the Marina, which is the CodeZero desktop application for managing your cloud.  From here, you can navigate your apps, or checkout the Store to install additional applications.
+Once your Cloud is ready, click on the Cloud name in My Clouds to take you to the Marina, which is the CodeZero desktop application for managing your cloud.  From here, you can navigate your apps, or checkout the Store to install additional applications.
 
 ## The CodeZero CLI
 
@@ -29,7 +29,7 @@ CodeZero provides a simple CLI tool to help manage the development and testing o
 
 ### Configure the CLI
 
-Once installed, there are two types of authenitcation that may be required for certain commands.  Some commands operate on a CodeZero Cloud, while others need access to the CodeZero Hub API, and must be authenticated with your CodeZero Account.
+Once installed, there are two types of authentication that may be required for certain commands.  Some commands operate on a CodeZero Cloud, while others need access to the CodeZero Hub API, and must be authenticated with your CodeZero Account.
 
 #### Connect to the Hub API
 

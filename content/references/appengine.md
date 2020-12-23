@@ -12,10 +12,10 @@ App Engine is a highly configurable provisioner created by CodeZero that provide
 
 App Engine is intended to support the most common application use-cases. It is ideal for any application that:
 
-1. is contained in a single docker image,
-2. exposes any number of TCP or HTTP endpoints,
-3. is configurable using Environment variables, and
-4. only requires basic user interaction/input during installation.
+1. Is contained in a single docker image,
+2. Exposes any number of TCP or HTTP endpoints,
+3. Is configurable using Environment variables, and
+4. Only requires basic user interaction/input during installation.
 
 ### Not supported
 
@@ -59,14 +59,14 @@ editions:
 
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
-| name             | String                 | REQUIRED | Internal application name
-| image            | String                 | REQUIRED | Docker image name.  Can also include tag  (ex: `image:latest`)
-| package          | String                 | REQUIRED | Must alwyas be set to `@provisioner/appengine` when using App Engine.
+| name             | String                 | REQUIRED | Internal application name.
+| image            | String                 | REQUIRED | Docker image name.  Can also include tag (ex: `image:latest`).
+| package          | String                 | REQUIRED | Must always be set to `@provisioner/appengine` when using AppEngine.
 | automated        | Boolean                | REQUIRED | For now, this property should always be set to true.
-| ports            | [Port](#Port)[]   | []       | List of ports to expose for the application
-| configs          | [Config](#Config)[] | []       | Container environment variables
-| secrets          | [Secret](#Secret)[] | []       | List of Secret environment variables
-| volumes          | [Volume](#Volume)[] | []       | List of Volume Mounts
+| ports            | [Port](#Port)[]   | []       | List of ports to expose for the application.
+| configs          | [Config](#Config)[] | []       | Container environment variables.
+| secrets          | [Secret](#Secret)[] | []       | List of Secret environment variables.
+| volumes          | [Volume](#Volume)[] | []       | List of Volume Mounts.
 
 > [!PROTIP]
 > If your service only exposes a single HTTP endpoint, you can specify a port, which just takes an integer for the port (ex: `port: 8080`).
@@ -75,13 +75,13 @@ editions:
 
 | Property | Value(s) | Default  | Description
 | -------- | -------- | -------  | -----------
-| name     | String   | REQUIRED | Configuration name
-| env      | String   | REQUIRED | Environment variable name
-| value    | String   |          | Configuration value
+| name     | String   | REQUIRED | Configuration name.
+| env      | String   | REQUIRED | Environment variable name.
+| value    | String   |          | Configuration value.
 | label    | String   |          | Text label displayed to the user during installation.
 | hint     | String   |          | A text hint displayed to the user during installation.
-| fieldType | String  |          | Field type to display to user.  Currently supports 'text' or 'password'.  If empty, the user will not be prompted for this field.  (NOTE if you select password, you should probably consider having this stored as a secret as well)
-| autoselect | Boolean | false   | Set to true to have the customers cursor automatically select this field on load.  Only one field should have this set to `true`.
+| fieldType | String  |          | Field type to display to user.  Currently, supports 'text' or 'password'.  If empty, the user will not be prompted for this field (NOTE if you select password, you should probably consider having this stored as a secret as well).
+| autoselect | Boolean | false   | Set to true to have the customer's cursor automatically select this field on load.  Only one field should have this set to `true`.
 | required | Boolean  | false    | If true, the end-user must enter a value during installation.
 
 #### Config Example
@@ -115,7 +115,7 @@ editions:
 | value    | String   |          | Secret value (special value: `%RANDOM`)
 | label    | String   |          | Text label displayed to the user during installation.
 | hint     | String   |          | A text hint displayed to the user during installation.
-| fieldType | String  |          | Field type to display to user.  Currently supports 'text' or 'password'.  If empty, the user will not be prompted for this field.
+| fieldType | String  |          | Field type to display to user.  Currently, supports 'text' or 'password'.  If empty, the user will not be prompted for this field.
 | autoselect | Boolean | false   | True if user should auto select this field.
 | required | Boolean  | false    | If true, the end-user must enter a value during installation.
 
@@ -145,8 +145,8 @@ editions:
 | Property   | Value(s) | Default  | Description
 | --------   | -------- | -------  | -----------
 | port       | Int      | REQUIRED | Port your service exposes.
-| protocol   | String   | http     | Protocol type (HTTP or TCP)
-| name       | String   |          | Internal port label
+| protocol   | String   | http     | Protocol type (HTTP or TCP).
+| name       | String   |          | Internal port label.
 | targetPort | Int      |          | If using TCP and the port exposed by your application differs from what you want to expose publicly, set the internal port here.
 
 #### Port Example

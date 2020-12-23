@@ -7,7 +7,7 @@ The CodeZero marketplace allows software vendors to easily set pricing details f
 
 ## Revenue
 
-Revenue is managed via Stripe, and every developer that wishes to monetize an application will need to setup a Stripe account and link it with their CodeZero account.
+Revenue is managed via Stripe, and every developer that wishes to monetize an application will need to set up a Stripe account and link it with their CodeZero account.
 
 Revenue earned through the CodeZero marketplace will then be deposited to your stripe account after a short holding period.
 
@@ -18,7 +18,7 @@ Revenue earned through the CodeZero marketplace will then be deposited to your s
 
 ## Editions
 
-Editions enables application developers to created multiple tiers of features and pricing for their applications.  The goal of editions is to enable application developers to provide customers with a choice between different feature sets and capabilities.
+Editions enable application developers to create multiple tiers of features and pricing for their applications.  The goal of editions is to enable application developers to provide customers with a choice between different feature sets and capabilities.
 
 A simple example could be a MySQL provisioner with three editions:
 
@@ -35,7 +35,7 @@ CodeZero Applications should follow a few standard conventions when naming their
 
 ### Pricing per Edition
 
-Each edition can have distinctly different pricing structures.  However, each edition can only contain a single type of tiering system.
+Each edition can have distinctly different pricing structures.  However, each edition can only contain a single type of tier.
 
 > [!WIP]
 > Advanced pricing mechanisms are still in progress

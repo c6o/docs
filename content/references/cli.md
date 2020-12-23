@@ -14,7 +14,7 @@ The CodeZero CLI provides simple access to the CodeZero API.
 
 ### Configure the CLI
 
-Once installed, there are two types of authenitcation that may be required for certain commands.  Some commands attempt to operate on a CodeZero kubernetes cluster, while others talk to the CodeZero hub API, and must be authenticated with your CodeZero Account.
+Once installed, there are two types of authentication that may be required for certain commands.  Some commands attempt to operate on a CodeZero Kubernetes cluster, while others talk to the CodeZero hub API, and must be authenticated with your CodeZero Account.
 
 #### Connect to CodeZero Cluster
 
@@ -51,7 +51,7 @@ czctl app publish ./c6o.yaml
 
 ### Install an Application
 
-To install an application use the `install` command, and supply the appId of the application you'd like to install.
+To install an application use the `install` command, and supply the `appId` of the application you'd like to install.
 
 ```bash
 czctl install nodered
@@ -67,7 +67,7 @@ czctl auth login
 
 #### Using a Raw Token
 
-If you are running in a headless environment, or otherwise cannot launch a browser successfuly to complete the authentication, instead you can supply a raw token.
+If you are running in a headless environment, or otherwise cannot launch a browser successfully to complete the authentication, instead you can supply a raw token.
 
 ```bash
 czctl auth login --token <your-token-here>

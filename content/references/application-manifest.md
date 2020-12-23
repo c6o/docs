@@ -3,12 +3,12 @@
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-The application manifest is a yaml definition file that describes all the attributes of an application and how it interacts with CodeZero.  Namely, it covers:
+The application manifest is a YAML definition file that describes all the attributes of an application and how it interacts with CodeZero.  Namely, it covers:
 
-1. how it is displayed in the Marketplace,
-2. what is used to perform provisioning and management,
-3. how it behaves in the Marina, and
-4. how CodeZero exposes the service to the world.
+1. How it is displayed in the Marketplace,
+2. What is used to perform provisioning and management,
+3. How it behaves in the Marina, and
+4. How CodeZero exposes the service to the world.
 
 ## Publishing
 
@@ -22,21 +22,21 @@ czctl app publish path/to/manifest.yaml
 
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
-| name             | String                 | REQUIRED | Application's display name
-| appId            | String                 | REQUIRED | Application's internal ID (must be unique)
-| package          | String                 | REQUIRED | NPM package name containing the provisioner
+| name             | String                 | REQUIRED | Application's display name.
+| appId            | String                 | REQUIRED | Application's internal ID (must be unique).
+| package          | String                 | REQUIRED | NPM package name containing the provisioner.
 | icon             | [Artwork](#Artwork) |          | SVG or URL.  Must scale well to 100x100.
 | description      | Text                   |          | Application description displayed in the Marketplace.
 | summary          | Text                   |          | Application summary displayed in the Marketplace.
 | category         | [Category](#Categories)|          | Application category.
-| screenshots      | [Artworkd](#Artwork)[] |        | Array of screenshots to display in the Marketplace
-| video            | [Video](#Video)      |          | Video demo to display in the Marketplace
-| keyworks         | String[]               | []       | Keywords
-| repo             | URL                    |          | URL to application repository
-| license          | URL|Text               |          | Application license agreement
-| terms            | URL|Text               |          | Application terms of use
-| privacy          | URL|Text               |          | Application privacy policy
-| support          | URL                    |          | Support URL
+| screenshots      | [Artworkd](#Artwork)[] |        | Array of screenshots to display in the Marketplace.
+| video            | [Video](#Video)      |          | Video demo to display in the Marketplace.
+| keyworks         | String[]               | []       | Keywords.
+| repo             | URL                    |          | URL to application repository.
+| license          | URL|Text               |          | Application license agreement.
+| terms            | URL|Text               |          | Application terms of use.
+| privacy          | URL|Text               |          | Application privacy policy.
+| support          | URL                    |          | Support URL.
 | provisioner      | [Provisioner](#Provisioner-Details) |   | Details about the provisioner code specifically.
 | editions         | [Edition](#Edition)[] | REQUIRED | Array of application edition(s).  At least one edition is required.
 
@@ -44,36 +44,36 @@ czctl app publish path/to/manifest.yaml
 
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
-| name             | String                 | REQUIRED | Edition's display name
+| name             | String                 | REQUIRED | Edition's display name.
 | status           | public|private         | private  | Edition visibility in the Marketplace.
-| spec             | [Spec](#Edition-Spec) | REQUIRED | Editions specifications
+| spec             | [Spec](#Edition-Spec) | REQUIRED | Editions specifications.
 
 ### Edition Spec
 
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
-| navstation       | Boolean                | false   | When the spec.navstation field is set to true, the application and associated UI panel will appear in the NavStation settings 
+| navstation       | Boolean                | false   | When the `spec.navstation` field is set to true, the application and associated UI panel will appear in the NavStation settings.
 | routes           | [Route](#Edition-Route)[] |  | Array of routing information to instruct how CodeZero should route public traffic to the application
-| provisioner      | [ProvisionerSpec](#Provisioner-Spec) | REQUIRED | Provisioner specific properties
-| marina           | [Marina](#Edition-Marina) |      | Defines how this edition behaves in the Marina
+| provisioner      | [ProvisionerSpec](#Provisioner-Spec) | REQUIRED | Provisioner specific properties.
+| marina           | [Marina](#Edition-Marina) |      | Defines how this edition behaves in the Marina.
 
 ### Edition Route
 
 | Property      | Value(s) | Default  | Description
 | --------      | -------- | -------  | -----------
-| type          | Boolean  | REQUIRED | Must be http or tcp.  Note: http routing actually exposes an https endpoint externally.
-| disabled      | Boolean  | false    | When present and set to true, the route is disabled
-| targetService | String   | REQUIRED | The target service port to route traffic to.  Typically the name of the NodePort service.
-| targetPort    | Int      |          | The target service port.  Required if the targetService exposes multiple service ports
-| http          | [HttpRewrite](#Route-Http-Rewrite) | | Allows specifying more advanced HTTP routing rules
+| type          | Boolean  | REQUIRED | Must be HTTP or TCP.  Note: HTTP routing actually exposes an HTTPS endpoint externally.
+| disabled      | Boolean  | false    | When present and set to true, the route is disabled.
+| targetService | String   | REQUIRED | The target service port to route traffic to. Typically, the name of the NodePort service.
+| targetPort    | Int      |          | The target service port.  Required if the targetService exposes multiple service ports.
+| http          | [HttpRewrite](#Route-Http-Rewrite) | | Allows specifying more advanced HTTP routing rules.
 | tcp           | [TcpRules](#Route-TCP-Rules) | | Required if type is TCP.
 
 ### Route HTTP Rewrite
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
-| prefix    | String   | URL prefix to match for a URL rewrite.
-| rewrite   | String   | Rewrite destination
+| prefix    | String   | The URL prefix to match for a URL rewrite.
+| rewrite   | String   | Rewrite destination.
 
 ### Route TCP Rules
 
@@ -85,7 +85,7 @@ czctl app publish path/to/manifest.yaml
 
 ### Provisioner Spec
 
-The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define it's schema.  For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
+The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define its schema.  For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
 
 However, there are a few reserved properties used by CodeZero interally as well:
 
@@ -105,8 +105,8 @@ However, there are a few reserved properties used by CodeZero interally as well:
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
-| type      | String   | Type of launch behaviour.  Currently only "inline" is available.
-| popUp     | Boolean  | If true, the application will launch in a new tab, rather than in the Marina desktop iFrame
+| type      | String   | Type of launch behaviour.  Currently, only "inline" is available.
+| popUp     | Boolean  | If true, the application will launch in a new tab, rather than in the Marina desktop iFrame.
 | port      | Int      | Port to use in the URL.
 | path      | String   | Path to use in the URL.
 
@@ -114,11 +114,11 @@ However, there are a few reserved properties used by CodeZero interally as well:
 
 | Property         | Value(s) | Description
 | --------         | -------- | -----------
-| repo             | URL      | URL to application repository
-| license          | URL|Text | Application license agreement
-| terms            | URL|Text | Application terms of use
-| privacy          | URL|Text | Application privacy policy
-| support          | URL      | Support URL
+| repo             | URL      | URL to application repository.
+| license          | URL|Text | Application license agreement.
+| terms            | URL|Text | Application terms of use.
+| privacy          | URL|Text | Application privacy policy.
+| support          | URL      | Support URL.
 
 ### Categories
 

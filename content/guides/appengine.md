@@ -25,7 +25,7 @@ As with all CodeZero applications, there are three main components we need to co
 
 ## The Containerized Application
 
-The first component we need for any CodeZero Application is a containerized application.  In this guide, we will use [NodeRED](https://nodered.org/) as an example, which the community has already created a docker hub image for "[nodered/node-red](https://hub.docker.com/r/nodered/node-red)" that will .
+The first component we need for any CodeZero Application is a containerized application.  In this guide, we will use [NodeRED](https://nodered.org/) as an example, which the community has already created a docker hub image for "[nodered/node-red](https://hub.docker.com/r/nodered/node-red)".
 
 > [!EXPERT]
 > To learn how to create your own containerized applications, check out our [NodeJS Hello World](./hello-world.md) docker guide.
@@ -40,7 +40,7 @@ NodeRED is a simple web application that does not take much to configure.  There
 
 ## Application Provisioner
 
-The Application Provisioner is responsible for handling the installation and management of the application in a customers CodeZero cluster.  Instead of writting a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexiblity to manage this NodeRED application.
+The Application Provisioner is responsible for handling the installation and management of the application in a customer's CodeZero Cloud.  Instead of writing a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexibility to manage this NodeRED application.
 
 > [!NOTE]
 > Check out the [App Engine documentation](../references/appengine) to learn more about App Engine.
@@ -84,7 +84,7 @@ editions:
 
 ### Edition
 
-The `editions` property constains an array of possible editions a customer can install.  Each edition has it's own configuration and settings.  As a starting point, we only need one edition, which we will call "preview".
+The `editions` property contains an array of possible editions a customer can install.  Each edition has its own configuration and settings.  As a starting point, we only need one edition, which we will call "preview".
 
 > [!NOTE]
 > Learn more about what editions are for and how they should be used [here](../concepts/editions.md).
@@ -101,7 +101,7 @@ The `provisioner` property contains configuration settings that are specific to 
 
 #### App Engine Basics
 
-First, we need to define in our Application Manifest that we want to use the App Engine NPM package (`@provisioner/appengine`) as the underlying provisioner.  Next, we need to define the Docker Hub image (`nodered/node-red`) that we want App Engine to setup.
+First, we need to define in our Application Manifest that we want to use the App Engine NPM package (`@provisioner/appengine`) as the underlying provisioner.  Next, we need to define the Docker Hub image (`nodered/node-red`) that we want App Engine to set up.
 
 ```yaml
 #...
@@ -152,7 +152,7 @@ editions:
 
 #### Exposed Ports
 
-The NodeRED application image contains a webserver running on port `1880`.  So we need to instruct Kubernetes that there is an http service available on port `1880` of our application.
+The NodeRED application image contains a web server running on port `1880`.  So we need to instruct Kubernetes that there is an HTTP service available on port `1880` of our application.
 
 ```yaml
 #...
@@ -172,7 +172,7 @@ editions:
 
 ### Public Routes
 
-Above, we used App Engine to expose the NodeRED webserver running on port `1880` within the cluster.  However, we need to use `routes` in order to expose our service to the outside world.
+Above, we used App Engine to expose the NodeRED web server running on port `1880` within the cluster.  However, we need to use `routes` in order to expose our service to the outside world.
 
 ```yaml
 #...
@@ -257,7 +257,7 @@ editions:
 czctl app publish ./c6o.yaml
 ```
 
-### Test the Applicatoin
+### Test the Application
 
 There are two ways to test installing your application:
 

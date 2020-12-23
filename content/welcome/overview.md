@@ -28,14 +28,14 @@ If you prefer to learn by example, you can browse our full list of CodeZero appl
 
 ## Community and Support
 
-If you need any help getting started with CodeZero, please reach out to Connery and our developer support team at [email](mailto:support@codezero.io)
+If you need any help to get started with CodeZero, please reach out to Connery and our developer support team at [email](mailto:support@codezero.io)
 
 > [!WIP]
 > More community support tools coming soon.
 
 ### Found an Issue?
 
-Please report any issues you come across to our [Github Issues](https://github.com/c6o/provisioners/issues), and we will try to get them resovled as soon as possible.
+Please report any issues you come across to our [GitHub Issues](https://github.com/c6o/provisioners/issues), and we will try to get them resolved as soon as possible.
 
 > [!PROTIP]
 > Every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.
@@ -43,4 +43,4 @@ Please report any issues you come across to our [Github Issues](https://github.c
 ### Feature Requests
 
 > [!WIP]
-> Ability to submit feature requests is coming soon.  For now, feel free to send us an [email](mailto:support@codezero.io).
+> Ability to submit feature requests is coming soon.  For now, feel free to [email us](mailto:support@codezero.io).

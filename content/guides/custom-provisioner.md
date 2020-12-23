@@ -7,10 +7,10 @@ The strategy for implementing a provisioner is as follows:
 
 * Create and test the set of Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets and others needed to deploy your application.
 * Parameterize these resources using handlebars `{{}}` to allow users to configure the applications on install. This includes allowing users to deploy them in different namespaces, different cloud environments with varying storage options.
-* Create a new provisioner npm module.
+* Create a new provisioner NPM module.
 * Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and `createApply` provisioner implementation.
 * Test and debug using the CLI using a local file application manifest.
-* Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently these must be tested with a system server running locally.
+* Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently, these must be tested with a system server running locally.
 * When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
 
 ## Provisioner Methods
@@ -43,11 +43,12 @@ A provisioner can provide UI web components for installation, configuration (upd
 
 ### Install Web Component
 
-The install web component is displayed during the install process. The c6o Store displays this panel on install
+The `install` web component is displayed during the installation process. The CodeZero Store displays this panel on installation.
 
-The install tag should be named {app}-install-main.
+The `install` tag should be named {app}-install-main.
 
-> NOTE: To change the tag prefix from something other than the application name, the `tag-prefix` provisioner field can be used as documented [here](/references/appspec.md).
+> [!NOTE]
+> To change the tag prefix from something other than the application name, the `tag-prefix` provisioner field can be used as documented [here](/references/appspec.md).
 
 The c6o Store injects the `StoreFlowMediator` mediator as shown. The mediator provides access to the provisioner section of the application spec.
 
@@ -242,7 +243,7 @@ export class IstioSettings extends LitElement {
 
 ## Uninstall Component
 
-A provisioner can implement an uninstall web component. This component allows the user to select advanced uninstall options. For example, in the VSCode provisioner, you can decide whether or not to keep the allocated volume and IP address.
+A provisioner can implement an `uninstall` web component. This component allows the user to select advanced uninstallation options. For example, in the VSCode provisioner, you can decide whether to keep the allocated volume and IP address.
 
 ```javascript
 import { LitElement, html, customElement } from 'lit-element'
@@ -287,7 +288,7 @@ Much of the development of a provisioner is manipulating resources on the cluste
 
 ### Inquirer
 
-Interactive CLI support is provided by the npm Inquirer package. Documentation on this library can be found [here](https://github.com/SBoudrias/Inquirer.js#readme).
+Interactive CLI support is provided by the NPM Inquirer package. Documentation on this library can be found [here](https://github.com/SBoudrias/Inquirer.js#readme).
 
 ## Provisioner Organization
 
