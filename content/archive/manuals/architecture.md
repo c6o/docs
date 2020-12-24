@@ -1,6 +1,6 @@
 # Architecture
 
-CodeZero is a cloud application management system built on Kubernetes.  This diagram illustrates the relationship between the c6o Hub Application Registry, and your Kubernetes cluster running the c6o Store, the c6o Marina Desktop and System and installed apps.
+CodeZero is a cloud application management system built on Kubernetes.  This diagram illustrates the relationship between the CodeZero Hub Application Registry, and your Kubernetes cluster running the CodeZero Store, the CodeZero Marina Desktop and System and installed apps.
 
 ```mermaid
 graph TB
