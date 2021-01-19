@@ -72,6 +72,7 @@ czctl app publish path/to/manifest.yaml
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
+| public    | Boolean  | Specifying whether the app is accessible to the public.  Defaults to `false`.
 | prefix    | String   | The URL prefix to match for a URL rewrite.
 | rewrite   | String   | Rewrite destination.
 
@@ -212,6 +213,7 @@ editions:
           targetService: http-service    #Required. the target service name; typically the name of the NodePort to point our ingress-gateway to
           targetPort: 80    #optional; specifying the target service port, which is needed when multiple service ports are available
           http:             #optional, only used when child props are needed
+            public: true  #optional http field specifying whether the app is publicly accessible
             prefix: /api  #optional http field specifying matching prefix for a URL rewrite, e.g.: /api/
             rewrite: /api/v1/  #optional http field specifying URL rewrite destination, e.g.: /api/v1/
         - type: tcp
