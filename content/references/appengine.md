@@ -34,7 +34,7 @@ A custom provisioner may be required for any applications that:
 
 ## Provisioner Specification
 
-The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) contains all the App Engine application configuration.
+The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) defines the App Engine specific configuration and controls the provisioners behaviour.
 
 ```yaml
 name: packageName
@@ -73,12 +73,15 @@ editions:
 
 Configs are a KeyValue pair to define environment variables for the application.  The value is either a string or object of type [Generator](#Generator).
 
-There are also several special string values.
+> [!NOTE]
+> If the variable value contains sensitive information (ex: passwords, keys, etc), then use the [secrets](#Secret) property instead.
+
+There are several special reserved values that inject specific values during install time:
 
 | Value         | Description
 | -----         | -----------
-| $PUBLIC_FQDN  | Resolves to the application instance's fully qualified domain name (ex: `myapp-anamespace.mycloud.codezero.cloud`).
-| $PUBLIC_URL   | URL to access this application instance, if a public HTTP route is provided (ex: `https://myapp-anamespace.mycloud.codezero.cloud`).  
+| $PUBLIC_FQDN  | Resolves to the application instance's fully qualified domain name (ex: `myapp-mynamespace.mycloud.codezero.cloud`).
+| $PUBLIC_URL   | URL to access this application instance, if a public HTTP route is provided (ex: `https://myapp-mynamespace.mycloud.codezero.cloud`).  
 
 #### Config Example
 
@@ -129,7 +132,7 @@ editions:
 
 ### Secret
 
-Secrets are the exact same as [Config](#Config), just under the `secrets` property.  Any properties that contain sensitive information should be defined as a Secret instead of just a standard [Config](#Config).
+Secrets are the same structure as [Configs](#Config), just under the `secrets` property.  However, if a variable contains any sensitive information then it should be defined as a secret instead of a standard [Config](#Config).
 
 > [!EXPERT]
 > Under the hood, Kubernetes will store these values as a `Secret`.  Checkout the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
@@ -144,7 +147,7 @@ editions:
     # ...
     provisioner:
       # ...
-      configs:
+      secrets:
         ADMIN_PASSWORD:
           generate:
             length: 12
@@ -155,10 +158,10 @@ editions:
 
 | Property   | Value(s) | Default  | Description
 | --------   | -------- | -------  | -----------
-| port       | Int      | REQUIRED | The port the application service exposes.
-| protocol   | String   | `TCP`    | Protocol type.
-| name       | String   |          | Internal port label.
-| containerPort | Int   |          | If the port exposed by your application inside the container differs from what you want to expose publicly, set the internal port here.
+| port       | Int      | REQUIRED | The port to expose.
+| protocol   | String   | `TCP`    | Protocol type (`tcp` or `udp`).
+| name       | String   |          | Internal label.
+| containerPort | Int   |          | The port that the application is listening to in the container (if different than `port`).
 
 #### Ports Example
 
@@ -202,18 +205,18 @@ editions:
 
 ### Flows
 
-Flows are responsible for defining what responses needed from the customer and how should it be collected.
+Flows are responsible for defining what questions the end user needs to answer during installation.
 
 Flows are broken up into an array of [Steps](Step), where each step defines one or more [Prompts](#Prompt) that the user must answer.
 
-The answer to these prompts have the ability to control and alter which steps and prompts are displayed to the user.
+> [!PROTIP] The answer to prompts can alter which steps and prompts are later displayed to the user.
 
 > [!EXPERT]
-> Prompts control the user installation experience whether the user is using the Web UI or the CLI, so you only need to write one set of rules.
+> The WebUI and CLI both use the flows configuration to determine how to interact with the end-user, so you only need to write one set of rules for both uses.
 
 ### Step
 
-A step defines a collection of questions, and can optionally group those questions by individual sections.
+A step defines a collection of questions, and can even group sets of questions into separate sections.
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
@@ -222,7 +225,7 @@ A step defines a collection of questions, and can optionally group those questio
 | sections  | [Section](#Section)[] | A section allows the developer to group a set of questions within the step.
 | prompts   | [Prompt](#Prompt)[]   | If no sections are required, simply list a set of prompts for this step.
 
-> [!WARN]
+> [!WARNING]
 > You cannot use both `sections` and `prompts` in the same step.
 
 > [!PROTIP]
@@ -277,6 +280,7 @@ editions:
           - name: LAST_NAME
             message: What is your last name?
 ```
+
 ### Prompt
 
 | Property  | Value(s) | Default  | Description
