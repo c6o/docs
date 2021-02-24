@@ -10,7 +10,7 @@ App Engine is a highly configurable provisioner created by CodeZero that provide
 
 ## When to use App Engine
 
-App Engine supports most common application use-cases. It is ideal for any application that:
+App Engine supports the most common application use-cases. It is ideal for any application that:
 
 1. Is contained in a single docker image,
 2. Exposes any number of TCP or HTTP endpoints,
@@ -19,9 +19,9 @@ App Engine supports most common application use-cases. It is ideal for any appli
 
 ### Not supported
 
-App Engine does not cover every possible use-case though (yet).  If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
+App Engine does not cover every possible use-case (yet).  If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
 
-A custom provisioner may be required for any applications that:
+A custom provisioner may be necessary for any applications that:
 
 * have multiple pods or containers per application,
 * need advanced user interaction during the installation process,
@@ -34,7 +34,7 @@ A custom provisioner may be required for any applications that:
 
 ## Provisioner Specification
 
-The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) defines the App Engine specific configuration and controls the provisioners behaviour.
+The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) defines the App Engine specific configuration and controls the provisioner's behaviour.
 
 ```yaml
 name: packageName
@@ -76,7 +76,7 @@ Configs are a KeyValue pair to define environment variables for the application.
 > [!NOTE]
 > If the variable value contains sensitive information (ex: passwords, keys, etc), then use the [secrets](#Secret) property instead.
 
-There are several special reserved values that inject specific values during install time:
+Several reserved values have special meaning.  If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
 
 | Value         | Description
 | -----         | -----------
@@ -132,10 +132,10 @@ editions:
 
 ### Secret
 
-Secrets are the same structure as [Configs](#Config), just under the `secrets` property.  However, if a variable contains any sensitive information then it should be defined as a secret instead of a standard [Config](#Config).
+Secrets are the same structure as [Configs](#Config), just under the `secrets` property.  Store variables that contain potentially sensitive information as a secret instead of a standard [Config](#Config).
 
 > [!EXPERT]
-> Under the hood, Kubernetes will store these values as a `Secret`.  Checkout the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
+> Under the hood, Kubernetes stores these values as a `Secret`.  Check out the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
 
 #### Secret Example
 
@@ -159,7 +159,7 @@ editions:
 | Property   | Value(s) | Default  | Description
 | --------   | -------- | -------  | -----------
 | port       | Int      | REQUIRED | The port to expose.
-| protocol   | String   | `TCP`    | Protocol type (`tcp` or `udp`).
+| protocol   | String   | `TCP`    | Protocol type (`TCP` or `UDP`).
 | name       | String   |          | Internal label.
 | containerPort | Int   |          | The port that the application is listening to in the container (if different than `port`).
 
@@ -205,25 +205,25 @@ editions:
 
 ### Flows
 
-Flows are responsible for defining what questions the end user needs to answer during installation.
+Flows are responsible for defining a list of questions presented to the end-user during installation.
 
-Flows are broken up into an array of [Steps](Step), where each step defines one or more [Prompts](#Prompt) that the user must answer.
+Flows is an array of [Steps](Step), where each step defines one or more [Prompts](#Prompt) that the user must answer.
 
-> [!PROTIP] The answer to prompts can alter which steps and prompts are later displayed to the user.
+> [!PROTIP] The answer to prompts can alter which steps and prompts display to the user.
 
 > [!EXPERT]
-> The WebUI and CLI both use the flows configuration to determine how to interact with the end-user, so you only need to write one set of rules for both uses.
+> The WebUI and CLI use the Flows configuration to determine how to interact with the end-user, so you only need to write one set of rules for both uses.
 
 ### Step
 
-A step defines a collection of questions, and can even group sets of questions into separate sections.
+A step defines a collection of questions and can even group sets of questions into separate sections.
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
 | name      | String   | Title for this step of the installation processes.
-| skip      | function | A function expression, if it resovles to true, this step will be skipped.
+| skip      | function | A function expression, if it resolves to true, this step is skipped.
 | sections  | [Section](#Section)[] | A section allows the developer to group a set of questions within the step.
-| prompts   | [Prompt](#Prompt)[]   | If no sections are required, simply list a set of prompts for this step.
+| prompts   | [Prompt](#Prompt)[]   | If no sections are required, list a set of prompts for this step.
 
 > [!WARNING]
 > You cannot use both `sections` and `prompts` in the same step.
@@ -256,7 +256,7 @@ editions:
 | prompts   | [Prompt](#Prompt)[] | A list of questions to ask the user.
 
 > [!PROTIP]
-> `prompts` can be an array of prompts, or a single prompt.
+> `prompts` can be an array of prompts or a single prompt.
 
 #### Section Example
 
@@ -286,12 +286,12 @@ editions:
 | Property  | Value(s) | Default  | Description
 | --------  | -------- | -------  | -----------
 | type      | String   | `input`    | Supported types: `input`, `number`, `confirm`, `list`, `rawlist`, `expand`, `checkbox`, `password`, or `editor`.
-| name      | String   | REQUIRED | Environment variable name that will contain the answer.
+| name      | String   | REQUIRED | Environment variable name that contains the answer.
 | message   | String   |          | Short message used to prompt the user for an answer.
-| default   | String   |          | A default value to prefill the input field with.
-| choices   | String[] |          | List of potential answers for the user to choose from.
-| validate  | function |          | Validation function, if returns false, do not allow user to proceed.
-| when      | function  |         | Function to determine if the user should be asked this prompt.  If the function returns false, the field will be hidden.
+| default   | String   |          | A default value for the prompt.
+| choices   | String[] |          | List of potential answers available.
+| validate  | function |          | Validation function.  If the result is false, do not allow the user to proceed.
+| when      | function  |         | Present this prompt if the function resolves to `true`.
 | askAnswered | Boolean | `false`   | Even if already answered, ask again.
 | mask      | Char      |         | Character to use to hide the user's actual input.
 | c6o       | [C6O](#Prompt-Extensions) | | Object containing C6O specific properties.
@@ -328,17 +328,17 @@ editions:
 | --------  | -------- | -------  | -----------
 | target    | String   | `configs`| Where should the variable be stored?  Valid values: `configs`, `secrets`, `transient`.
 | label     | String   |          | An additional label use when displaying the input field.
-| required  | Boolean  | `false`  | Require a response in order to proceed.
+| required  | Boolean  | `false`  | Require a response.
 | generate  | [Generator](#Generator) |   | Provide the user an option to auto-generate a value.
 | generateMessage | String |      | Message to the user regarding the auto-generation of the value.
 | value     | String    |         | 
 | maxlength | Int       |         | Maximum length allowed.
-| min       | Int       | `1`     | Require value to be larger than min value (when prompt type is `number`).
-| max       | Int       | `32767` | Require value to be less than max value (when prompt type is `number`).
+| min       | Int       | `1`     | Require the response to be larger than `min` (when the prompt type is `number`).
+| max       | Int       | `32767` | Require the response to be less than `max` (when the prompt type is `number`).
 | hasControls | Boolean | `true`  | Display numeric toggle controls (when prompt type is `number`).
-| step      | Int       | `1`     | Amount to increase/decrease value by on each step (when hasControls is `true` and prompt type is `number`).
+| step      | Int       | `1`     | Amount to increase/decrease the value by each step (when hasControls is `true` and prompt type is `number`).
 | errorMessage | String |         | Message to display when there is a validation error.
-| dataSource  | [DataSource](#Data-Sources)  |         | Populate a list of choices using an external data source (currently only `timezone` is supported)
+| dataSource  | [DataSource](#Data-Sources)  |         | Populate a list of choices using an external data source (currently, only `timezone` is supported)
 
 #### Prompt Extensions Example
 
@@ -367,7 +367,7 @@ editions:
 
 ### Data Sources
 
-Data Sources are used to automatically populate list options with commonly used values.  Currently the only supported data source is `timezone`, but more to come.
+Data Sources are used to populate the list options with commonly used values automatically.  Currently, the only supported data source is `timezone`, but more to come.
 
 #### Timezone Example
 
