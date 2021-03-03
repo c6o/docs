@@ -3,19 +3,19 @@
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without needing to create a customer provisioner of their own.
+App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without creating a customer provisioner of their own.
 
 > [!NOTE]
-> Check out the [Creating a Basic Application Guide](../guide/1-basic) to see App Engine in action.
+> Check out the [Creating a Basic Application Guide](../guides/appengine) to see App Engine in action.
 
 ## When to use App Engine
 
 App Engine supports the most common application use-cases. It is ideal for any application that:
 
-1. Is contained in a single docker image,
-2. Exposes any number of TCP or HTTP endpoints,
-3. Is configurable using Environment variables, and
-4. Only requires standard user interaction/input during installation.
+1. is contained in a single docker image,
+2. exposes any number of TCP or HTTP endpoints,
+3. configurable using Environment variables, and
+4. only requires standard user interaction/input during installation.
 
 ### Not supported
 
@@ -74,7 +74,7 @@ editions:
 Configs are a KeyValue pair to define environment variables for the application.  The value is either a string or object of type [Generator](#Generator).
 
 > [!NOTE]
-> If the variable value contains sensitive information (ex: passwords, keys, etc), then use the [secrets](#Secret) property instead.
+> If the variable value contains sensitive information (ex: passwords, keys, tokens), then use the [secrets](#Secret) property instead.
 
 Several reserved values have special meaning.  If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
 

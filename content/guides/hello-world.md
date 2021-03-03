@@ -52,7 +52,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-This will create a very basic web server running on port 8080.  The server will respond with "Hello World" when the root is requested.
+This creates a very basic webserver running on port 8080.  The server responds with "Hello World" when the root is requested.
 
 ### Test Your Application
 
@@ -61,11 +61,11 @@ npm install
 npm start
 ```
 
-Now checkout <http://localhost:8080/>, you should see "Hello World" in your browser!
+Now check out http://localhost:8080/, you should see "Hello World" in your browser!
 
 ## Create a Dockerfile
 
-Next, lets configure our application to run in a Docker container.  First create a file called `Dockerfile` (there is no file extension), with the contents:
+Next, to configure the application to run in a Docker container, create a file called `Dockerfile` (there is no file extension), with the contents:
 
 ```docker
 # Base docker image
@@ -96,16 +96,18 @@ npm-debug.log
 
 ### Build and Run in Docker
 
-With the Dockerfile created, we can now build and run our application in docker.
+With the Dockerfile created, we can build and run the application in Docker:
 
 ```bash
 docker build -t <your-docker-username>/nodejs-hello-world ./
 docker run -p 12345:8080 -d <your-docker-username>/nodejs-hello-world
 ```
 
-Navigate to <http://localhost:12345/>, our application is now containerized in Docker!
+Navigate to http://localhost:12345/ to verify the application is running in Docker!
 
 ### Publish to Docker Hub
+
+To make the container available publicly, publish the container to docker:
 
 ```bash
 docker login
@@ -114,7 +116,7 @@ docker push <your-docker-username>/nodejs-hello-world
 
 ## Application Manifest using AppEngine
 
-We need to create an Application Manifest in order to describe how our Application is defined and behaves in the CodeZero ecosystem.  We do this by creating a simple YAML file called `c6o.yaml`:
+To get the application into the CodeZero ecosystem, an Application Manifest describes how our application is defined and behaves.  We do this by creating a simple YAML file called `c6o.yaml`:
 
 ```yaml
 name: Hello World
@@ -131,29 +133,44 @@ editions:
       package: @provisioner/appengine           # Provision using App Engine
       name: hello-world                          # Likely same as appId
       image: <your-docker-username>/nodejs-hello-world # Docker Hub image
-      automated: true                           # should always be true
       ports:
       - port: 8080
         protocol: tcp
 
     routes:
     - type: http
-      targetService: hello-world
+      targetService: hello-world  # same as spec.provisioner.name
       targetPort: 8080
 
     marina:
       launch:
         type: inline
-        popup: true
+        popUp: true
 ```
 
 > [!NOTE]
-> Check out the [Public Application using AppEngine](./appengine) for a little more details about what these properties do.
+> Check out the [Public Application using AppEngine](./appengine) guide for a more thorough description of what these properties do.
 
 > [!EXPERT]
 > Check out the [Application Manifest specification](../references/application-manifest.md) and [App Engine references](../references/appengine) for a full list of properties and configurations.
 
+## Test the Application
+
+To test the application, we instruct the CLI to install an application from a local manifest.
+
+```bash
+czctl install --local ./c6o.yaml
+```
+
+> [!NOTE]
+> You'll need to have your KUBECONFIG configured to work with the CLI.  See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
+
+> [!WIP]
+> The Marina does not display the application's icon correctly when an installation is performed locally like this.
+
 ## Publish the Application
+
+Once the application installs correctly, you are ready to publish to the CodeZero marketplace.
 
 ```bash
 czctl app publish ./c6o.yaml
@@ -162,25 +179,25 @@ czctl app publish ./c6o.yaml
 > [!NOTE]
 > You'll need to have your CLI authenticated with your CodeZero account.  See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
 
-## Test the Application
+> [!PROTIP]
+> Change the edition's `scope` to `public` if you want other's to see and install your application from the marketplace.
 
-There are two ways to install your application:
+### Verify the Application Published
+
+There are two ways to verify that the application is published correctly:
 
 1. Using the CLI
-1. Using the Store
-
-### From the Marketplace
-
-Navigate to the [Marketplace](https://codezero.io/marketplace), find your application, and begin the installation processes.
+1. Using the Marketplace
 
 ### Using the CLI
 
-> [!NOTE]
-> You will need the [CLI setup](./setup-cli) to connect with a CodeZero cluster using `KUBECONFIG`.
-
 ```bash
-czctl install <your-c6o-username>-hello-world
+czctl install <your username>/nodejs-hello-world
 ```
+
+### From the Marketplace
+
+Navigate to the [Marketplace](https://codezero.io/marketplace), find your application, and begin the installation processes using the Web UI.
 
 ## All Done
 

@@ -1,6 +1,6 @@
 # A CodeZero Application
 
-An Application in the CodeZero ecosystem consists of 3 main components.  First off, there is the core application itself, which can be developed in any number of ways, so long as it is executable in a container environment.  Then there is the CodeZero Provisioner, which is responsible for orchestrating the installation and management of your application in an end-users cluster.  And lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.
+An Application in the CodeZero ecosystem consists of 3 main components.  First off, there is the core application itself, which can be developed in many ways, so long as it is executable in a container environment.  Then there is the CodeZero Provisioner, responsible for orchestrating the installation and management of your application in an end-users cluster.  Lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.
 
 ## Components
 
@@ -21,9 +21,9 @@ graph TD
     IMAGE -.-> |published to| DOCKER[(Docker Hub)]
 ```
 
-### Containerized Image
+### Container Image
 
-A container image represents binary data that encapsulates your application and all its software dependencies.  CodeZero supports any containerized technology that Kubernetes supports (for example: Docker, containerd, CRI-O).  However, for simplicity, we will focus our documentation and support on applications using Docker and published to Docker Hub.
+A container image represents binary data that encapsulates your application and all its software dependencies.  CodeZero supports any container technology that runs on Kubernetes (for example, Docker, containerd, CRI-O).  However, we focus our documentation on applications published to Docker Hub for simplicity.
 
 > [!NOTE]
 > Checkout the [Hello World Guide](../guides/hello-world) for an example of creating an application from scratch and publishing through Docker Hub.
@@ -39,40 +39,38 @@ Therefore, instead of trying to explain all of this ourselves, we will just cove
 
 ### Provisioner
 
-A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications.  In this regard, it is similar Helm.  However, CodeZero provides several important features that improve on existing tools:
+A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications.  In this regard, it is similar Helm.  However, CodeZero provides several essential features that improve on existing tools:
 
 1. User-friendly UI: allow both technical and non-technical audiences to install and manage your applications with ease
-1. Not just a template: take control the provisioning processes using JavaScript/NodeJS.
+1. Not just a template: take control of the provisioning processes using JavaScript/NodeJS.
 1. Powerful API: the CodeZero provisioner API for powerful and flexible application management.
-
-Once a provisioner is created, it can be accessed by the CLI or from within the CodeZero desktop UI in order to create and manage the application.
 
 #### App Engine
 
-App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without needing to create a customer provisioner of their own.
+App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without creating a customer provisioner of their own.
 
 > [!NOTE]
-> Check out the [Creating a Basic Application Guide](../guide/appengine) to see App Engine in action.
+> Check out the [Creating a Basic Application Guide](../guides/appengine.md) to see App Engine in action.
 
 > [!EXPERT]
-> Check out the [App Engine reference](../references/appengine) for a full list of App Engine features and configuration.
+> Check out the [App Engine reference](../references/appengine.md) for a full list of App Engine features and configuration.
 
 #### Provisioner API
 
-If your application requires more advanced customization, you can create your own provisioner package, and leverage the full power of our Provisioner API.
+If an application requires advanced customization not supported by App Engine, create a custom provisioner package to leverage our Provisioner API's full power.
 
 > [!NOTE]
-> Check out the [Creating a Custom Provisioner](../guide/custom-provisioner) to see App Engine in action.
+> Check out the [Creating a Custom Provisioner](../guides/custom-provisioner.md) to see how to create a Custom Provisioner.
 
 > [!EXPERT]
-> Check out the [Provisioner API documentation](../references/provisioner) for more advanced features.
+> Check out the [Provisioner API documentation](../references/provisioner.md) to learn about the provisioner APIs.
 
 ### Application Manifest
 
-The Application Manifest describes how an Application behaves in the CodeZero ecosystem.  It includes all the metadata needed to display an application in the Marketplace (ex: the applications name, description, icon, category, tags, etc).  It also defines the provisioner responsible for installing and managing the application, how the user interacts with the application (ex: what happens when the user clicks on the icon on their desktop), and how/what to expose to the outside world.
+The Application Manifest describes how an Application behaves in the CodeZero ecosystem.  It includes all the metadata needed to display an application in the Marketplace (ex: the applications name, description, icon, category, tags, etc), defines the provisioner responsible for installing and managing the application, describes how the user interacts with the application (ex: what happens when the user clicks on the icon on their desktop), and how/what to expose to the outside world.
 
 > [!NOTE]
-> Check out the [Creating a Basic Application Guide](../guide/appengine) to see what a basic Application Manifest looks like.
+> Check out the [Creating a Basic Application Guide](../guides/appengine.md) to see how basic Application Manifest looks.
 
 > [!EXPERT]
 > See [here](../references/application-manifest) for a full description of the Application Manifest and all its properties.
@@ -81,11 +79,11 @@ The Application Manifest describes how an Application behaves in the CodeZero ec
 
 ### Guides
 
-We have created a few walkthrough guides to help get you started with publishing an application on CodeZero:
+These walkthrough guides should get you started with publishing an application on CodeZero:
 
 1. [Hello World Example](../guides/hello-world)
 1. [Publishing a Standard Application](../guides/appengine)
-1. [Creating a Custom Provisioner](../guides/custom-provisioner) 
+1. [Creating a Custom Provisioner](../guides/custom-provisioner)
 
 ### Monetize your Application
 
