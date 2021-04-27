@@ -291,7 +291,7 @@ Interactive CLI support is provided by the npm Inquirer package. Documentation o
 A provisioner module is typically organized as follows.
 
 * /provisioner-name
-  * /k8s - kubernetes templates
+  * /k8s - Kubernetes templates
   * /src - source
     * /mixins - provisioner method implementations
     * /ui - provisioner UI web components

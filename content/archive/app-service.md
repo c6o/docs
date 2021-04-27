@@ -61,7 +61,7 @@ AMS manages two resources:
 
 ### Security Considerations
 
-Where necessary, role based access control supported by kubernetes will be used to secure internal services used by CodeZero components and installed applications.
+Where necessary, role based access control supported by Kubernetes will be used to secure internal services used by CodeZero components and installed applications.
 
 The AMS and CodeZero Store UI will support authentication and access control. The assumption is that a single CodeZero customer organization will own the cluster, but the customer will want to provide access to different capabilities and access to applications and instances to different users in their organization based on roles such as owner/admin, user, guest for example.
 
@@ -89,11 +89,11 @@ Open issues for discussion:
 
 The user will bootstrap the CodeZero system using either the CLI or using the CodeZero Hub.
 
-The customer will provision their k8s cluster on any cloud such as Digital Ocean, AWS, Azure or Google Cloud. Once provisioned, they will retrieve their kubernetes configuration file.
+The customer will provision their k8s cluster on any cloud such as Digital Ocean, AWS, Azure or Google Cloud. Once provisioned, they will retrieve their Kubernetes configuration file.
 
 #### CLI bootstrap
 
-Using the traxitt CLI, they can set the `KUBECONFIG` environment variable to point to the kubernetes configuration file then issue the following command to bootstrap the system:
+Using the traxitt CLI, they can set the `KUBECONFIG` environment variable to point to the Kubernetes configuration file then issue the following command to bootstrap the system:
 
 ``` bash
 traxitt bootstrap
@@ -284,7 +284,7 @@ Lists the instances of applications and their current state (configured, running
 
 ## Application Manifest
 
-App manifests contain the information needed deploy an application. An application typically corresponds to a kubernetes *deployment*.
+App manifests contain the information needed deploy an application. An application typically corresponds to a Kubernetes *deployment*.
 
 - packaging information including icon, application type, name, description, authors, and other data needed for provisioners, the hub UI.
 - docker images for the provisioner to install

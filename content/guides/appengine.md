@@ -20,7 +20,7 @@ As with all CodeZero applications, there are three main components we need to co
 1. Provisioner Package
 1. Application Manifest
 
-> [!Protip]
+> [!PROTIP]
 > See more information about what makes up a CodeZero application [here](../concepts/applications).
 
 ## The Containerized Application
