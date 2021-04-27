@@ -89,7 +89,7 @@ The Node-RED provisioner module directory layout is as follows:
 
 #### Kubernetes Resource Templates
 
-First, let's focus on the Kubernetes Resource Templates. These templates define the native Kubernetes resource definitions that you are likely already be familiar with. However, the templates use [Handlebars](https://handlebarsjs.com/) language as a means of merging configuration and template together to create the kubernetes definition. These templates are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
+First, let's focus on the Kubernetes Resource Templates. These templates define the native Kubernetes resource definitions that you are likely already be familiar with. However, the templates use [Handlebars](https://handlebarsjs.com/) language as a means of merging configuration and template together to create the Kubernetes definition. These templates are consumed by the Provisioner Implementations to manage and apply changes to the Application within the user's Cluster. 
 
 For a relatively simple application like Node-RED, our Provisioner will need to setup and manage three underlying Kubernetes resources:
 1. *Deployment* - that specifies the docker image, replicas, and volumes used.

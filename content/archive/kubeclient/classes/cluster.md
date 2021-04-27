@@ -62,7 +62,7 @@ Delete a Kubernetes resource
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource to delete  |
+`document` | KubeDocument | The Kubernetes resource to delete  |
 
 **Returns:** *Promise‹[Result](result.md)›*
 
@@ -96,7 +96,7 @@ Gets a list of a given document kind. document.metadata.name is ignored
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource |
+`document` | KubeDocument | The Kubernetes resource |
 `options?` | listOptions | Flags for the list operation  |
 
 **Returns:** *Promise‹[Result](result.md)›*
@@ -113,7 +113,7 @@ Patch a Kubernetes resource
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource to patch |
+`document` | KubeDocument | The Kubernetes resource to patch |
 `patch` | Partial‹KubeObject› | Fields to patch  |
 
 **Returns:** *Promise‹[Result](result.md)›*
@@ -145,8 +145,8 @@ Replaces a Kubernetes resource
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource to match exactly |
-`newDoc` | KubeDocument | The kubernetes resource to replace |
+`document` | KubeDocument | The Kubernetes resource to match exactly |
+`newDoc` | KubeDocument | The Kubernetes resource to replace |
 `params?` | putOptions | Additional options for the put call  |
 
 **Returns:** *Promise‹[Result](result.md)›*
@@ -163,7 +163,7 @@ Gets a given resource
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`document` | KubeDocument | The kubernetes resource  |
+`document` | KubeDocument | The Kubernetes resource  |
 
 **Returns:** *Promise‹[Result](result.md)›*
 

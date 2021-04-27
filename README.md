@@ -4,11 +4,11 @@ This documentation is published by CodeZero Technologies Inc. and covers all asp
 
 All modifications should be submitted via a pull request and are subject to review prior to publishing.
 
-## Running the site locally ##
+## Running the Site Locally ##
 
-This documentation is put together using [docsify](docsifyjs.com) and is all in `markdown`. You may edit the markdown files in the `content/` folder using the standard github markdown editor and submit a pull request.
+This documentation is put together using [docsify](docsifyjs.com) and uses `markdown`. You can edit the markdown files in the `content/` folder using the GitHub markdown editor, and submit a pull request.
 
-If however, you would like to preview the site, clone this repo and run the following:
+If you would like to preview the site or make your changes locally, clone this repo and run the following:
 
 ``` bash
 git clone ...
@@ -18,7 +18,7 @@ yarn run develop
 
 OR
 
-yarn install -g docsify-cli
+yarn global add docsify-cli
 docsify serve .
 ```
 
@@ -28,4 +28,4 @@ The site will run locally at `http://localhost:3000`
 
 These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2020 CodeZero Technologies Inc. All Rights Reserved
+© Copyright 2021 CodeZero Technologies Inc. All Rights Reserved
