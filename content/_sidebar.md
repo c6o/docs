@@ -19,6 +19,9 @@
   - Equinix Metal
     - [Overview](/partners/equinix)
     - [Technical Details](/partners/equinix-details)
+- Changelogs
+  - [CLI](/changelogs/cli)
 - Legal
   - [Privacy](/legal/privacy)
   - [Terms of Use](/legal/terms)
+  
