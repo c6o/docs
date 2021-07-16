@@ -9,7 +9,7 @@ This document contains the release notes for the CodeZero CLI.
 
 ### Bug Fixes
 
-* Fix error reporting for unsupported Node versions (>= 12.x)
+* Fix error messaging to users of unsupported Node versions (<= 12.x)
 * Fixed several `czctl deployment` arguments not being properly recognized [#1834, #1837]
 
 ### New Features
