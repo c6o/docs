@@ -10,7 +10,7 @@ This document contains the release notes for the CodeZero CLI.
 ### Bug Fixes
 
 * Fix error messaging to users of unsupported Node versions (<= 12.x)
-* Fixed several `czctl deployment` arguments not being properly recognized [#1834, #1837]
+* Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
 
 ### New Features
 
@@ -22,7 +22,7 @@ This document contains the release notes for the CodeZero CLI.
 
 * NodesJS <= 12.x is not supported.
 * Cannot intercept more than 4 services simultaneously from the same machine.
-* Cannot teleport to an external service (workload must have an in-cluster pod)
+* Cannot teleport to headless services yet
 
 > [!WARNING]
 > We expect the cli commands to change in the next release. We are considering reversing the commands from `<resource> <action>` to `<action> <resource>` and dropping the term `intercept`.
