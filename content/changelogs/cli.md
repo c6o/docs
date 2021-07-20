@@ -3,7 +3,35 @@
 This document contains the release notes for the CodeZero CLI.
 
 > [!WIP]
-> The CLI is currently in an alpha pre-release state, and may include breaking changes between releases.
+> The CLI is currently in an alpha state, and may include breaking changes between releases.
+
+## Release Notes for v0.2.6
+
+### BREAKING CHANGES
+
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
+
+### Bug Fixes
+
+* Fix error messaging to users of unsupported Node versions (<= 12.x)
+* Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
+
+### New Features
+
+* Teleport provides feedback to the user once all connections are fully setup [#1766, #1827]
+* Teleport auto-detects when new intercepts are added/removed, so restart is no longer required [#1808]
+* Extended teleport to work with other workloads (pods, cronjobs, jobs, statefulsets) [#1778]
+
+### Outstanding Issues
+
+* NodesJS <= 12.x is not supported.
+* Cannot intercept more than 4 services simultaneously from the same machine.
+* Cannot teleport to headless services yet
+
+> [!WARNING]
+> We expect the cli commands to change in the next release. We are considering reversing the commands from `<resource> <action>` to `<action> <resource>` and dropping the term `intercept`.
+> For instance, you will run: `czctl teleport deployment ...` and `czctl teleport service ...` and the parameters will change depending on the resource.
+> We may also use a generic term like `connect` so as not to confuse our tool with tools like `goteleport.com`.
 
 ## Release Notes for v0.2.5
 
@@ -34,8 +62,3 @@ This document contains the release notes for the CodeZero CLI.
 * Cannot intercept more than 4 services simultaneously from the same machine.
 * Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
 * Teleport should provide feedback to the user so they know when all services have been fully setup.
-
-> [!WARNING]
-> We expect the cli commands to change in the next release. We are considering reversing the commands from `<resource> <action>` to `<action> <resource>` and dropping the term `intercept`.
-> For instance, you will run: `czctl teleport deployment ...` and `czctl teleport service ...` and the parameters will change depending on the resource.
-> We may also use a generic term like `connect` so as not to confuse our tool with tools like `goteleport.com`.
