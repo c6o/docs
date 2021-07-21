@@ -1,30 +1,24 @@
-# Overview #
+# Overview
 
-Welcome to CodeZero's documentation!  This documentation is geared towards a technical audience, and is intended for users interested in publishing an application in the CodeZero ecosystem, or wanting to understand how CodeZero works under the hood.
+Welcome to CodeZero's documentation!  This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI to improve their development cycle by leveraging the CodeZero CLI toolset to develop and locally.
 
 ## Getting Started
 
-Our [Getting Started](../guides/getting-started) guide is a great place to start to get setup with a CodeZero Cloud, and install the basic tools you'll need to start developing with CodeZero.
+Our [Getting Started](../guides/getting-started) guide is a great place to start to get the CLI installed and running.
 
 ### Guides
 
-These guides will walk you through creating and publishing an application to CodeZero.
+These guides will walk you through more specific use-cases.
 
-* [Create an end-to-end Hello World web application](../guides/hello-world)
-* [Publish an existing docker application](../guides/appengine)
-* [Develop a custom application provisioner](../guides/custom-provisioner)
+* [Getting Started with the CLI](../guides/getting-started)
+* [Walk through a full demo](../guides/halyard-demo)
 
 ### Core Concepts
 
 Learn more about the core concepts of CodeZero:
 
-* [What makes up a CodeZero Application](../concepts/applications).
-* [How to monetize your Applications with CodeZero](../concepts/monetization).
-* [Go under the hood, and learn more how the CodeZero system works](../concepts/codezero-system).
-
-### Sample Provisioners
-
-If you prefer to learn by example, you can browse our full list of CodeZero applications in our GitHub repository [c6o/provisioners](https://github.com/c6o/provisioners).
+* [Teleporting your local environment into a Cluster](../concepts/teleport).
+* [Intercept traffic for an existing service to your local machine](../guides/intercept).
 
 ## Community and Support
 
@@ -35,12 +29,18 @@ If you need any help to get started with CodeZero, please reach out to Connery a
 
 ### Found an Issue?
 
-Please report any issues you come across to our [GitHub Issues](https://github.com/c6o/provisioners/issues), and we will try to get them resolved as soon as possible.
+Please report any issues you come across to our [GitHub Issues](https://github.com/c6o/roadmap/issues), and we will try to get them resolved as soon as possible.
 
 > [!PROTIP]
-> Every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.
+> Every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are very welcome.
 
-### Feature Requests
+### Roadmap
+
+Checkout our [public roadmap](https://github.com/c6o/roadmap/) to see what is coming down the pipe, and help us prioritize what is important to you!
+
+#### Feature Requests
+
+[Open a new issue](https://github.com/c6o/roadmap/issues/new?assignees=&labels=feature&template=feature.md&title=) to propose a new features.  We ask that you please search the existing open features first, to see if there is already an existing request for the same feature.
 
 > [!WIP]
 > Ability to submit feature requests is coming soon.  For now, feel free to [email us](mailto:support@codezero.io).
