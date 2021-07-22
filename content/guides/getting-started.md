@@ -1,50 +1,36 @@
-# Getting Started with CodeZero
+# Getting Started with the CodeZero CLI
 
-Before getting started, there are a few things that you should setup first.
+CodeZero provides a simple CLI tool to help manage the development and testing of CodeZero applications.  Install it globally from NPM using `npm install -g @c6o/cli`.
 
-## Your Private Cloud
+```bash
+> npm install -g @c6o/cli
+```
 
-### Install CodeZero
-
-To set up your first CodeZero Cloud, create a [CodeZero account](https://codezero.io), and follow the onboarding processes to create and set up your first Cloud.
-
-> [!NOTE]
-> This process will involve creating a Kubernetes Cluster from the provider of your choice.
-
-### Install an Application
-
-Once your Cloud is ready, click on the Cloud name in My Clouds to take you to the Marina, which is the CodeZero desktop application for managing your cloud.  From here, you can navigate your apps, or checkout the Store to install additional applications.
-
-## The CodeZero CLI
-
-CodeZero provides a simple CLI tool to help manage the development and testing of CodeZero applications.  This CLI is published in NPM as `@c6o/cli`, and it should be installed globally.
-
-### Requirements
+## Requirements
 
 [cluster-requirements](../_fragments/cli-requirements.md ':include')
 
-### Install the CLI
+## Install the CLI
 
 [cluster-install](../_fragments/cli-install.md ':include')
 
-### Configure the CLI
+## Configure the CLI
 
-Once installed, there are two types of authentication that may be required for certain commands.  Some commands operate on a CodeZero Cloud, while others need access to the CodeZero Hub API, and must be authenticated with your CodeZero Account.
+### Initialize the CLI
 
-#### Connect to the Hub API
-
-Some operations, such as `czctl app publish`, access to the CodeZero API, which must be authenticated with CodeZero.  
+After installing the CLI, run:
 
 ```bash
-czctl auth login
+> sudo czctl init
 ```
 
 > [!NOTE]
-> See the [auth commands](../references/cli#Authentication) reference for more details.
+> The CLI requires `sudo` access to modify your systems `hosts` file.  The `hosts` file
+> is used to define in-cluster DNS information on your local machine during a teleport session.
 
-#### Connect to your Private Cloud
+### Access Your Cluster
 
-In order to allow the CLI to perform operations such as `install`, the CLI requires access to a Kubernetes Cluster.  In order to do this, you must configure the `KUBECONFIG` environment variable appropriately.
+Many CLI commands need to interact with a Kubernetes cluster.  Therefore, the CLI requires access to a `kubeconfig` for your cluster.  Specify this vile via the `KUBECONFIG` environment variable.
 
 ```bash
 export KUBECONFIG=/path/to/kube.config
@@ -53,9 +39,36 @@ export KUBECONFIG=/path/to/kube.config
 > [!NOTE]
 > This is the same as configuring the `kubectl` CLI.  See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
 
-## Development Environment
+## Using the CLI
 
-You can develop your application in any environment you would like, however we recommend using Visual Studio Code.
+The CLI is called via the name `czctl`.  To get more information about individual commands, check out the CLI reference, or run:
 
-> [!WIP]
-> Development environment recommendations coming soon.
+```bash
+> czctl help
+```
+
+### Teleport
+
+To get started with teleport, run:
+
+```bash
+> czctl namespace teleport
+```
+
+And follow the prompts.  For a full list of teleport flags and options, check out the [teleport CLI references](../references/teleport).
+
+> [!NOTE]
+> Learn more about `teleport`, and why you might want to use it [here](../concepts/teleport).
+
+### Intercept
+
+To get started with intercept, run:
+
+```bash
+> czctl service intercept
+```
+
+And follow the prompts.  For a full list of intercept flags and arguments, check out the [intercept CLI references](../references/intercept).
+
+> [!NOTE]
+> Learn more about `intercept`, and why you might want to use it [here](../concepts/intercept).

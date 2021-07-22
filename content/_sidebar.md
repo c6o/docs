@@ -3,18 +3,14 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Getting Started](/guides/getting-started)
-  - [Hello World](/guides/hello-world)
-  - [Standard Application](/guides/appengine)
-  - [Custom Provisioner](/guides/custom-provisioner)
+  - [Halyard Demo](/guides/hello-world)
 - Concepts
-  - [Application Development](/concepts/applications)
-  - [Monetization](/concepts/monetization)
-  - [CodeZero System](/concepts/codezero-system)
+  - [Teleport](/concepts/applications)
+  - [Intercept](/concepts/monetization)
 - References
-  - [Application Manifest](/references/application-manifest)
-  - [App Engine](/references/appengine)
-  - [CLI](/references/cli)
-  - [Provisioner API](/references/provisioner)
+  - Commands
+    - [Intercept](/references/intercept)
+    - [Teleport](/references/teleport)
 - Partners
   - Equinix Metal
     - [Overview](/partners/equinix)
