@@ -52,7 +52,7 @@ The CLI is called via the name `czctl`.  To get more information about individua
 To get started with teleport, run:
 
 ```bash
-> czctl namespace teleport
+> czctl deployment teleport
 ```
 
 And follow the prompts.  For a full list of teleport flags and options, check out the [teleport CLI references](../references/teleport).

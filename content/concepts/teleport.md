@@ -37,7 +37,7 @@ In-cluster services can communicate with other in-cluster services.  However, ou
 CodeZero teleport creates a local tunnel into a remote cluster, so developers can communicate with back-end services as though they are in the cluster.
 
 ```bash
-> czctl namespace teleport my-namespace
+> czctl deployment teleport my-deployment -n my-namespace
 ```
 
 ### Persistent Volumes
