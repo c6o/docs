@@ -27,10 +27,10 @@
   },
   "homepage": "https://github.com/c6o/docs#readme",
   "dependencies": {
-    "docsify-cli": "^4.4.1",
-    "http-server": "^0.11.1"
+    "docsify-cli": "^4.4.3",
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
-    "concurrently": "^5.0.0"
+    "concurrently": "^6.2.0"
   }
 }

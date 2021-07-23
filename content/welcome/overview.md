@@ -17,8 +17,8 @@ These guides will walk you through more specific use-cases.
 
 Learn more about the core concepts of CodeZero:
 
-* [Teleporting your local environment into a Cluster](../concepts/teleport).
-* [Intercept traffic for an existing service to your local machine](../guides/intercept).
+* [Intercept traffic for an existing service to your local machine](../concepts/intercept)
+* [Teleporting your local environment into a Cluster](../concepts/teleport)
 
 ## Community and Support
 
