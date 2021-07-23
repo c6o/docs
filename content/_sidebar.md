@@ -3,10 +3,10 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Getting Started](/guides/getting-started)
-  - [Halyard Demo](/guides/hello-world)
+  - [Halyard Demo](/guides/halyard-demo)
 - Concepts
-  - [Teleport](/concepts/applications)
-  - [Intercept](/concepts/monetization)
+  - [Intercept](/concepts/intercept)
+  - [Teleport](/concepts/teleport)
 - References
   - Commands
     - [Intercept](/references/intercept)
