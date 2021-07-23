@@ -18,7 +18,7 @@ Revenue earned through the CodeZero marketplace will then be deposited to your s
 
 ## Editions
 
-Editions enable application developers to create multiple tiers of features and pricing for their applications.  The goal of editions is to enable application developers to provide customers with a choice between different feature sets and capabilities.
+Editions enable application developers to create multiple tiers of features and pricing for their applications. The goal of editions is to enable application developers to provide customers with a choice between different feature sets and capabilities.
 
 A simple example could be a MySQL provisioner with three editions:
 
@@ -30,12 +30,12 @@ A simple example could be a MySQL provisioner with three editions:
 
 CodeZero Applications should follow a few standard conventions when naming their conventions:
 
-1. Editions should contain material differences.  For example, one version may run as a single node, while another provides a HA cluster.
+1. Editions should contain material differences. For example, one version may run as a single node, while another provides a HA cluster.
 1. An edition named `preview` should be used to provide a free version with minimal configuration needed, so customers can easily tryout the application.
 
 ### Pricing per Edition
 
-Each edition can have distinctly different pricing structures.  However, each edition can only contain a single type of tier.
+Each edition can have distinctly different pricing structures. However, each edition can only contain a single type of tier.
 
 > [!WIP]
 > Advanced pricing mechanisms are still in progress

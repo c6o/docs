@@ -16,7 +16,7 @@ There are some general design principles to follow when creating new Application
 
 * Applications should be simple to set up and use. Provisioners should hide the complexity of application installation, removal and configuration. Documentation should avoid the use of jargon where possible.
 
-* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible.  A common example of this might be adding additional functionality for for logging or metrics.
+* Applications should be well defined. Applications should not install more or less than is required for the application. If Applications require other components or other Applications to extend functionality, they should use Application Linking when possible. A common example of this might be adding additional functionality for for logging or metrics.
 
 * Application Provisioners should report status of an installation and handle errors in case of failure.
 
@@ -58,7 +58,7 @@ spec:
 The `metadata` section contains information such as the Edition, Display Name and icon used in the CodeZero Marina.
 
 The `spec` section contains several subsections used by CodeZero:
-* `provisioner` - contains provisioner-specific configuration options.  There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner.  Here, for example, `storage` and `projects` are specific to the Node-RED Provisioner. (see: [reference](/reference/appspec.md#provisioner))
+* `provisioner` - contains provisioner-specific configuration options. There are some reserved fields, such as `package` and `tag-prefix` (see [Application Spec](/reference/appspec.md)), however, the rest of the fields in this section are defined and used by the Provisioner. Here, for example, `storage` and `projects` are specific to the Node-RED Provisioner. (see: [reference](/reference/appspec.md#provisioner))
 * `marina` - tells the Marina desktop how to view (launch) the application in the browser. In this case, Node-RED can be viewed in an iFrame, and so is an inline type. (see: [reference](/reference/appspec.md#marina))
 * `routes` - defines how the network will be configured to access the application. In this case, `simple` http routing is used to access the application service `node-red`. (see: [reference](/reference/appspec.md#routes))
 
@@ -166,7 +166,7 @@ Note the templating used for specifying the `storage` size, and `namespace` here
 
 ##### Service
 
-Finally, the Service tells Kubernetes how to expose Node-RED within the cluster.  In this case, we want to expose a Node-RED to other applications within our cluster on port 80.
+Finally, the Service tells Kubernetes how to expose Node-RED within the cluster. In this case, we want to expose a Node-RED to other applications within our cluster on port 80.
 
 ```yaml
 apiVersion: v1
@@ -201,7 +201,7 @@ The simplest way to get started is to create a Provisioner that is capable of in
 
 ##### `createInqure.ts`
 
-First, lets create a `createInquire.ts` file in the `src/mixins/` directory.  In this file we'll make a `createInquireMixin`, that implements a `createInquire` method. This method is used to asks the CLI user for any options that have not been specified in the Application Manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
+First, lets create a `createInquire.ts` file in the `src/mixins/` directory. In this file we'll make a `createInquireMixin`, that implements a `createInquire` method. This method is used to asks the CLI user for any options that have not been specified in the Application Manifest or in command-line options. It makes use of the [inquirer](https://github.com/SBoudrias/Inquirer.js#readme) library to query the user from the CLI.
 
 Our Node-RED implementation looks like:
 
@@ -307,7 +307,7 @@ export const createApplyMixin = (base: baseProvisionerType) => class extends bas
 
 ##### Bringing It Together
 
-Lastly, we need to connect all these methods together into a single `Provisioner` class that extends the `ProvisionerBase`.  To accomplish this, we use mixin classes to bring it all together with the `index.ts` file:
+Lastly, we need to connect all these methods together into a single `Provisioner` class that extends the `ProvisionerBase`. To accomplish this, we use mixin classes to bring it all together with the `index.ts` file:
 
 ```typescript
 import { mix } from 'mixwith'
@@ -338,7 +338,7 @@ For example, if you an Application Manifest called `nodered.yaml` in the root of
 
 ### Web User Interface
 
-For an application to be accessible to our user base, every Application Provisioner should be installable through the Web UI.  Unfortunately, the `createInquire` implementation we have created so far is only used by the CLI tool.  Instead, we need to also create the web components that will allow a user to configure the application through the web UI.
+For an application to be accessible to our user base, every Application Provisioner should be installable through the Web UI. Unfortunately, the `createInquire` implementation we have created so far is only used by the CLI tool. Instead, we need to also create the web components that will allow a user to configure the application through the web UI.
 
 For Node-RED, we've implemented the install web component in the `/ui/index.ts` file as shown below. Here, the component tag name is `node-red-install-main`. The convention for naming web components for provisioners is `{application-name}-{action}-main` using the application name in the manifest metadata, the action is either `install`, `uninstall` or `settings` depending on the UI panel supported.
 
@@ -384,4 +384,4 @@ export class NodeRedSettings extends LitElement implements StoreFlowStep {
 
 ### Testing the Web UI
 
-In order to test the Web UI, you'll now need to publish the Provisioner package to an NPM repository, and create your Application in the Hub.  More instructions on this process coming soon.
+In order to test the Web UI, you'll now need to publish the Provisioner package to an NPM repository, and create your Application in the Hub. More instructions on this process coming soon.

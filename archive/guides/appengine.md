@@ -3,7 +3,7 @@
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-In this guide, we walk through the steps to publish a standard application to CodeZero.  By the end of this guide, you will create and publish a provisioner for [NodeRED](https://nodered.org/) to the CodeZero marketplace.
+In this guide, we walk through the steps to publish a standard application to CodeZero. By the end of this guide, you will create and publish a provisioner for [NodeRED](https://nodered.org/) to the CodeZero marketplace.
 
 ## Prerequisites
 
@@ -25,14 +25,14 @@ As with all CodeZero applications, there are three main components we need to co
 
 ## The Containerized Application
 
-The first component we need for any CodeZero Application is a containerized application.  In this guide, we use [NodeRED](https://nodered.org/) as an example.  The NodeRED community has already created and published a docker hub image for us ([nodered/node-red](https://hub.docker.com/r/nodered/node-red)).
+The first component we need for any CodeZero Application is a containerized application. In this guide, we use [NodeRED](https://nodered.org/) as an example. The NodeRED community has already created and published a docker hub image for us ([nodered/node-red](https://hub.docker.com/r/nodered/node-red)).
 
 > [!EXPERT]
 > To learn how to create your own containerized applications, check out our [NodeJS Hello World](./hello-world) docker guide.
 
 ### Configuring NodeRED
 
-NodeRED is a simple web application that does not take much to configure.  There are just a few properties we need to be aware of as we continue with setting up this application to run in CodeZero:
+NodeRED is a simple web application that does not take much to configure. There are just a few properties we need to be aware of as we continue with setting up this application to run in CodeZero:
 
 1. **Application Port:**  NodeRED runs a basic web application on port `1880`.
 1. **Environment Variables:**  We can use the `NODE_RED_ENABLE_PROJECTS` environment variable to control whether NodeRED has [projects](https://nodered.org/docs/user-guide/projects/) enabled or disabled.
@@ -40,7 +40,7 @@ NodeRED is a simple web application that does not take much to configure.  There
 
 ## Application Provisioner
 
-The "Application Provisioner" is a NodeJS package responsible for installing and managing the application in a customer's CodeZero Cloud.  Instead of writing a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexibility to manage this NodeRED application.
+The "Application Provisioner" is a NodeJS package responsible for installing and managing the application in a customer's CodeZero Cloud. Instead of writing a full Provisioner yourself, CodeZero has built a highly configurable Provisioner called AppEngine (`@provisioner/appengine`) that provides more than enough flexibility to manage this NodeRED application.
 
 > [!NOTE]
 > Check out the [App Engine documentation](../references/appengine) to learn more about how App Engine.
@@ -50,7 +50,7 @@ The "Application Provisioner" is a NodeJS package responsible for installing and
 
 ## Application Manifest
 
-The Application Manifest consists of a YAML file that describes the application within the CodeZero ecosystem.  It may also contain additional asset files (ex: icons, images, etc).  This file can be named anything, however, the recommended convention is either have `c6o.yaml` in the root of your project or place it in a `c6o` folder (ex: `c6o/app.yaml`);
+The Application Manifest consists of a YAML file that describes the application within the CodeZero ecosystem. It may also contain additional asset files (ex: icons, images, etc). This file can be named anything, however, the recommended convention is either have `c6o.yaml` in the root of your project or place it in a `c6o` folder (ex: `c6o/app.yaml`);
 
 ### Application Manifest Basics
 
@@ -84,7 +84,7 @@ editions:
 
 ### Edition
 
-The `editions` property contains an array of possible editions that an end-user can choose from.  Each edition has a set of configuration and settings.  As a starting point, we only need one edition, which we call "preview".
+The `editions` property contains an array of possible editions that an end-user can choose from. Each edition has a set of configuration and settings. As a starting point, we only need one edition, which we call "preview".
 
 > [!NOTE]
 > Learn more about what editions are for [here](../concepts/editions.md).
@@ -94,14 +94,14 @@ The `editions` property contains an array of possible editions that an end-user 
 
 ### Provisioner Spec
 
-The `provisioner` property contains configuration settings that are specific to the provisioner project.  We are using the App Engine provisioner, so all properties here are related to the `@provisioner/appengine` project.
+The `provisioner` property contains configuration settings that are specific to the provisioner project. We are using the App Engine provisioner, so all properties here are related to the `@provisioner/appengine` project.
 
 > [!EXPERT]
 > For a full description of App Engine, checkout the [App Engine](../references/editions.md) documentation.
 
 #### App Engine Basics
 
-First, we need to define the provisioner package to use during installation.  In this case, we are using App Engine NPM (`@provisioner/appengine`) as the applications underlying provisioner.  Additionally, we need to define the Docker Hub image (`nodered/node-red`) that we want App Engine to use.
+First, we need to define the provisioner package to use during installation. In this case, we are using App Engine NPM (`@provisioner/appengine`) as the applications underlying provisioner. Additionally, we need to define the Docker Hub image (`nodered/node-red`) that we want App Engine to use.
 
 ```yaml
 #...
@@ -117,7 +117,7 @@ editions:
 
 #### Environment Variables
 
-App Engine can define any number of environment variables as a simple key-value pair.  We enable the NodeRED [projects feature](https://nodered.org/docs/user-guide/projects/) by adding:
+App Engine can define any number of environment variables as a simple key-value pair. We enable the NodeRED [projects feature](https://nodered.org/docs/user-guide/projects/) by adding:
 
 ```yaml
 #...
@@ -132,7 +132,7 @@ editions:
 
 #### Mounted Volumes
 
-App Engine can create persistent volume claims and mount them to our applications using the `volumes` property.  To persist data stored at `/data`, we add to the Application Manifest:
+App Engine can create persistent volume claims and mount them to our applications using the `volumes` property. To persist data stored at `/data`, we add to the Application Manifest:
 
 ```yaml
 #...
@@ -149,7 +149,7 @@ editions:
 
 #### Exposed Ports
 
-The NodeRED application image contains a web server running on port `1880`.  So we need to instruct CodeZero (and in turn, Kubernetes) that there is an HTTP service available on port `1880` of our application.  App Engine does this by specifying the `ports` property.
+The NodeRED application image contains a web server running on port `1880`. So we need to instruct CodeZero (and in turn, Kubernetes) that there is an HTTP service available on port `1880` of our application. App Engine does this by specifying the `ports` property.
 
 ```yaml
 #...
@@ -169,7 +169,7 @@ editions:
 
 ### Public Routes
 
-Above, we used App Engine to expose the NodeRED web server running on port `1880` within the cluster.  If we want CodeZero to expose this route to the outside world, we add configuration to the Application Manifest's `routes`:
+Above, we used App Engine to expose the NodeRED web server running on port `1880` within the cluster. If we want CodeZero to expose this route to the outside world, we add configuration to the Application Manifest's `routes`:
 
 ```yaml
 #...
@@ -188,7 +188,7 @@ editions:
 
 ### Marina
 
-Lastly, once the application is up and running in your user's cluster.  The application displays in their Marina (CodeZero desktop).  When the customer clicks on the NodeRED icon within the Marina, we want it to launch NodeRED in a new popup window.
+Lastly, once the application is up and running in your user's cluster. The application displays in their Marina (CodeZero desktop). When the customer clicks on the NodeRED icon within the Marina, we want it to launch NodeRED in a new popup window.
 
 To accomplish this, we use the `marina` property as follows:
 
@@ -255,7 +255,7 @@ czctl install --local ./c6o.yaml
 ```
 
 > [!NOTE]
-> You'll need to have your KUBECONFIG configured to work with the CLI.  See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
+> You'll need to have your KUBECONFIG configured to work with the CLI. See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
 
 > [!WIP]
 > The Marina does not display the application's icon correctly when an installation is performed locally like this.
@@ -269,7 +269,7 @@ czctl app publish ./c6o.yaml
 ```
 
 > [!NOTE]
-> You'll need to have your CLI authenticated with your CodeZero account.  See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
+> You'll need to have your CLI authenticated with your CodeZero account. See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
 
 > [!PROTIP]
 > Change the edition's `scope` to `public` if you want other's to see and install your application from the Marketplace.

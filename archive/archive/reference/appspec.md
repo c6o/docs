@@ -98,7 +98,7 @@ spec:
 
 ### Routes
 
-The routes section defines how the app can be accessed from outisde of the cluster.  Multiple hosts can listen on the same external https port.  Requests are routed to a designated service however, TCP based applications have to request unique ports or accept randomly assigned external ports.
+The routes section defines how the app can be accessed from outisde of the cluster. Multiple hosts can listen on the same external https port. Requests are routed to a designated service however, TCP based applications have to request unique ports or accept randomly assigned external ports.
 
 Example:
 

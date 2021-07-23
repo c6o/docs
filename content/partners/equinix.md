@@ -34,7 +34,7 @@ CodeZero will guide you through the steps to configure your Equinix Metal cluste
 
 ### Create an Account with CodeZero ###
 
-The first step is to create a CodeZero account.  Creating an account with CodeZero is easy and completely free.
+The first step is to create a CodeZero account. Creating an account with CodeZero is easy and completely free.
 
 1. Navigate to `https://codezero.io`.
 1. Click “Get Started”.
@@ -68,13 +68,13 @@ CodeZero needs a little information about your Equinix Metal account to get star
 
 ### Name your Cloud ###
 
-Provide a name for your CodeZero cloud.  This name will be used as part of the URL to access your Cloud and applications once the Cloud is up and running.
+Provide a name for your CodeZero cloud. This name will be used as part of the URL to access your Cloud and applications once the Cloud is up and running.
 
 ![Name Cloud ><](../_media/partners/equinix/image4.png ':size=500')
 
 ### Create the Cloud ###
 
-Once the cloud creation starts, you’ll see the progress of the installation processes. This process generally takes less than 10 minutes to complete.  You can safely close this window, and we will notify you by email when the cluster is ready.
+Once the cloud creation starts, you’ll see the progress of the installation processes. This process generally takes less than 10 minutes to complete. You can safely close this window, and we will notify you by email when the cluster is ready.
 
 ![Create Cloud ><](../_media/partners/equinix/image10.png ':size=500')
 
@@ -84,7 +84,7 @@ Once the cloud creation starts, you’ll see the progress of the installation pr
 
 When your Cloud is ready, we’ll send you an email with a link to your cloud. This link will be the same link you’d chosen during the “Name your Cloud” stage.
 
-You can also see the status of your clouds in your CodeZero dashboard. Once all the sails turn green the cloud “name” will be clickable.   Clicking on the cloud name will launch you into your Cloud desktop.
+You can also see the status of your clouds in your CodeZero dashboard. Once all the sails turn green the cloud “name” will be clickable.  Clicking on the cloud name will launch you into your Cloud desktop.
 
 ![Launch ><](../_media/partners/equinix/image3.png ':size=500')
 
@@ -96,7 +96,7 @@ When you first launch your cloud desktop, you’ll need to authenticate using yo
 
 ### The Desktop ###
 
-Once logged in, you’ll have a full view of all the applications installed in your Cloud.  Initially, only the system applications are installed, but you can easily change that by going to the “Store” application and installing the applications you want.
+Once logged in, you’ll have a full view of all the applications installed in your Cloud. Initially, only the system applications are installed, but you can easily change that by going to the “Store” application and installing the applications you want.
 
 ![Desktop ><](../_media/partners/equinix/image2.png ':size=500')
 
@@ -115,12 +115,12 @@ To install an Application in your CodeZero Cloud:
 
 ### Uninstall an Application ###
 
-To uninstall an application, find the application on your Cloud desktop, and right-click on the icon.   You can also uninstall an entire folder (namespace) at once by right-clicking on the folder.
+To uninstall an application, find the application on your Cloud desktop, and right-click on the icon.  You can also uninstall an entire folder (namespace) at once by right-clicking on the folder.
 
 ![Uninstall ><](../_media/partners/equinix/image5.png ':size=500')
 
 ### Launch an Application ###
 
-Most applications consist of some sort of web dashboard.  To launch into this dashboard, open the folder (namespace) that you installed the application and click on its icon.  Depending on the application, this may open a new pop-up window or open the application in-line.
+Most applications consist of some sort of web dashboard. To launch into this dashboard, open the folder (namespace) that you installed the application and click on its icon. Depending on the application, this may open a new pop-up window or open the application in-line.
 
 NOTE: some applications may take a minute or two to finish installing.

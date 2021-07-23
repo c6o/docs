@@ -2,7 +2,7 @@
 
 ## Testing and Debugging using the CLI
 
-The easiest way to test your provisioner is to use the CodeZero CLI (`czctl`).  See setting up the CLI tool for more details on getting configured.
+The easiest way to test your provisioner is to use the CodeZero CLI (`czctl`). See setting up the CLI tool for more details on getting configured.
 
 ```
 czctl provision <app-manifest.yaml> --package <path-to-provisioner-source>

@@ -14,22 +14,22 @@ The CodeZero CLI provides simple access to the CodeZero API.
 
 ### Configure the CLI
 
-Once installed, there are two types of authentication that may be required for certain commands.  Some commands attempt to operate on a CodeZero Kubernetes cluster, while others talk to the CodeZero hub API, and must be authenticated with your CodeZero Account.
+Once installed, there are two types of authentication that may be required for certain commands. Some commands attempt to operate on a CodeZero Kubernetes cluster, while others talk to the CodeZero hub API, and must be authenticated with your CodeZero Account.
 
 #### Connect to CodeZero Cluster
 
-In order to allow the CLI to perform operations such as `install`, the CLI requires access to a Kubernetes Cluster.  In order to do this, you must configure the `KUBECONFIG` environment variable appropriately.
+In order to allow the CLI to perform operations such as `install`, the CLI requires access to a Kubernetes Cluster. In order to do this, you must configure the `KUBECONFIG` environment variable appropriately.
 
 ```bash
 export KUBECONFIG=/path/to/kube.config
 ```
 
 > [!NOTE]
-> This is the same as configuring the `kubectl` CLI.  See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
+> This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
 
 #### Authenticate to CodeZero Hub
 
-Some operations, such as `czctl app publish`, access to the CodeZero API, which must be authenticated with CodeZero.  In order to login/logout, see the [auth commands](#Authentication).
+Some operations, such as `czctl app publish`, access to the CodeZero API, which must be authenticated with CodeZero. In order to login/logout, see the [auth commands](#Authentication).
 
 ## Commands
 

@@ -39,7 +39,7 @@ NOTE: '--unsafe-perm' is currently required to allow the dependency 'keytar' to 
 | [install](#install) | install an application that is published on Hub |
 | [provision](#provision) | install (provision) an application using a local application spec file during development |
 | [uninstall](#uninstall) | uninstall application in the cluster |
-| [update](#update) | update an application in the cluster with the application spec patch during development.  This may cause the application to reconfigure itself and restart |
+| [update](#update) | update an application in the cluster with the application spec patch during development. This may cause the application to reconfigure itself and restart |
 | [publish](#publish) | publish a new application spec or edition to Hub |
 
 <a name="auth" id="auth"></a>

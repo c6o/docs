@@ -194,7 +194,7 @@ One an application is installed, an instance of it is created on configuration o
 traxitt bootstrap
 ```
 
-Bootstrap the Traxitt OS into a Kubernetes cluster. This installs the minimum required components required to bootstrap the rest of the system (the AMS).  Once these components are loaded, they will pull in other Traxitt OS components including the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications. Just export the `KUBECONFIG` environment variable and execute this command to get up and running.
+Bootstrap the Traxitt OS into a Kubernetes cluster. This installs the minimum required components required to bootstrap the rest of the system (the AMS). Once these components are loaded, they will pull in other Traxitt OS components including the pub/sub system, monitoring tools and other traxitt cloud OS facilities needed by traxitt applications. Just export the `KUBECONFIG` environment variable and execute this command to get up and running.
 
 No authentication is required.
 

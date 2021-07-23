@@ -19,7 +19,7 @@ App Engine supports the most common application use-cases. It is ideal for any a
 
 ### Not supported
 
-App Engine does not cover every possible use-case (yet).  If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
+App Engine does not cover every possible use-case (yet). If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
 
 A custom provisioner may be necessary for any applications that:
 
@@ -60,28 +60,28 @@ editions:
 | Property         | Value(s)               | Default  | Description
 | --------         | --------               | -------  | -----------
 | name             | String                 | REQUIRED | Internal application name.
-| image            | String                 | REQUIRED | Docker image name.  Can also include tag (ex: `image:latest`).
+| image            | String                 | REQUIRED | Docker image name. Can also include tag (ex: `image:latest`).
 | package          | String                 | REQUIRED | Must always be set to `@provisioner/appengine` when using AppEngine.
 | automated        | Boolean                | REQUIRED | For now, this property should always be set to true.
 | ports            | [Port](#Port)[]   | []       | List of ports to expose for the application.
 | volumes          | [Volume](#Volume)[] | []       | List of volumes to mount.
 | flow             | [Flow](#Flow)       |          | List of values and controls to inquiry from the end user.
 | configs          | [Config](#Config)[] | []       | Name value pair of environment variables.
-| secrets          | [Config](#Config)[] | []       | Name value pair of secret environment variables.  Same as configs, except they will be stored as a secret within Kubernetes.
+| secrets          | [Config](#Config)[] | []       | Name value pair of secret environment variables. Same as configs, except they will be stored as a secret within Kubernetes.
 
 ### Config
 
-Configs are a KeyValue pair to define environment variables for the application.  The value is either a string or object of type [Generator](#Generator).
+Configs are a KeyValue pair to define environment variables for the application. The value is either a string or object of type [Generator](#Generator).
 
 > [!NOTE]
 > If the variable value contains sensitive information (ex: passwords, keys, tokens), then use the [secrets](#Secret) property instead.
 
-Several reserved values have special meaning.  If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
+Several reserved values have special meaning. If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
 
 | Value         | Description
 | -----         | -----------
 | $PUBLIC_FQDN  | Resolves to the application instance's fully qualified domain name (ex: `myapp-mynamespace.mycloud.codezero.cloud`).
-| $PUBLIC_URL   | URL to access this application instance, if a public HTTP route is provided (ex: `https://myapp-mynamespace.mycloud.codezero.cloud`).  
+| $PUBLIC_URL   | URL to access this application instance, if a public HTTP route is provided (ex: `https://myapp-mynamespace.mycloud.codezero.cloud`). 
 
 #### Config Example
 
@@ -132,10 +132,10 @@ editions:
 
 ### Secret
 
-Secrets are the same structure as [Configs](#Config), just under the `secrets` property.  Store variables that contain potentially sensitive information as a secret instead of a standard [Config](#Config).
+Secrets are the same structure as [Configs](#Config), just under the `secrets` property. Store variables that contain potentially sensitive information as a secret instead of a standard [Config](#Config).
 
 > [!EXPERT]
-> Under the hood, Kubernetes stores these values as a `Secret`.  Check out the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
+> Under the hood, Kubernetes stores these values as a `Secret`. Check out the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
 
 #### Secret Example
 
@@ -290,7 +290,7 @@ editions:
 | message   | String   |          | Short message used to prompt the user for an answer.
 | default   | String   |          | A default value for the prompt.
 | choices   | String[] |          | List of potential answers available.
-| validate  | function |          | Validation function.  If the result is false, do not allow the user to proceed.
+| validate  | function |          | Validation function. If the result is false, do not allow the user to proceed.
 | when      | function  |         | Present this prompt if the function resolves to `true`.
 | askAnswered | Boolean | `false`   | Even if already answered, ask again.
 | mask      | Char      |         | Character to use to hide the user's actual input.
@@ -367,7 +367,7 @@ editions:
 
 ### Data Sources
 
-Data Sources are used to populate the list options with commonly used values automatically.  Currently, the only supported data source is `timezone`, but more to come.
+Data Sources are used to populate the list options with commonly used values automatically. Currently, the only supported data source is `timezone`, but more to come.
 
 #### Timezone Example
 

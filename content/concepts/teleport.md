@@ -4,7 +4,7 @@ The primary concept behind Teleport is to allow developers to develop and debug 
 
 ## Use-Case
 
-More often than not, developers still need to run their entire stack of services whenever developing/debugging locally.  This means developers need to maintain the domain knowledge and capability of building and running the entire service stack, even if they only are concerned about a tiny piece of the system.
+More often than not, developers still need to run their entire stack of services whenever developing/debugging locally. This means developers need to maintain the domain knowledge and capability of building and running the entire service stack, even if they only are concerned about a tiny piece of the system.
 
 CodeZero resolves this by allowing developers to only run the workloads they are concerned with, while maintaining connectivity to the remaining services within a remote environment.
 
@@ -15,16 +15,16 @@ CodeZero resolves this by allowing developers to only run the workloads they are
 There are several primary aspects to replicate the remote environment of a Kubernetes workload.
 
 1. Workload configuration.
-2. Access remote services.  
+2. Access remote services. 
 3. Persistent volumes.
 
 > [!NOTE]
 > The last piece is discoverability within the cluster, allowing other services
-> to call into your local environment.  See [intercept](../concepts/intercept) for more details on how this works.
+> to call into your local environment. See [intercept](../concepts/intercept) for more details on how this works.
 
 ### Workload Configuration
 
-Every workload can be given a specific configuration.  Typically this is done via ConfigMaps and Secrets.  CodeZero teleport allows you to collect all the relevant configuration for a specific workload (deployment, pod, job, etc), and export it to your local machine (using `.env` or directly sourcing it to your environment).
+Every workload can be given a specific configuration. Typically this is done via ConfigMaps and Secrets. CodeZero teleport allows you to collect all the relevant configuration for a specific workload (deployment, pod, job, etc), and export it to your local machine (using `.env` or directly sourcing it to your environment).
 
 ```bash
 > czctl deployment teleport my-service -n my-namespace -f ./my-service.env
@@ -32,7 +32,7 @@ Every workload can be given a specific configuration.  Typically this is done vi
 
 ### Access Remote Services
 
-In-cluster services can communicate with other in-cluster services.  However, outside the cluster, only publicly exposed services are accessible.  When developing a service that requires access to other back-end services, developers must run all dependent services locally.
+In-cluster services can communicate with other in-cluster services. However, outside the cluster, only publicly exposed services are accessible. When developing a service that requires access to other back-end services, developers must run all dependent services locally.
 
 CodeZero teleport creates a local tunnel into a remote cluster, so developers can communicate with back-end services as though they are in the cluster.
 
@@ -62,4 +62,4 @@ In order to route local traffic to in cluster resources, Teleport does several t
 Teleport requires access to make modifications to your local `hosts` file, which can only be done with elevated root access.
 
 > [!EXPERT]
-> Root access is only required once.  During `init`, the permissions of the `kubefwd` binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
+> Root access is only required once. During `init`, the permissions of the `kubefwd` binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.

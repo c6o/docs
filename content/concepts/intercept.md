@@ -2,9 +2,9 @@
 
 Intercept allows developers to run a service locally and selectively intercept traffic from a remote environment to their local instance.
 
-## Use-Case
+## Use Case
 
-Some services are not easy to debug by calling directly, and instead, it's far easier to rely on the interactions from higher-level services to call into our service.  For example, a backend API is often easier to test by clicking through the frontend application.
+Some services are not easy to debug by calling directly, and instead, it's far easier to rely on the interactions from higher-level services to call into our service. For example, a backend API is often easier to test by clicking through the frontend application.
 
 Intercept allows developers to selectively intercept traffic for a remote service, so they do not need to run the entire stack locally, and they can debug against real-world traffic experienced within the remote environment.
 
@@ -20,31 +20,25 @@ A few scenarios are possible
 1. Specify a customer intercept header, so that multiple developers can intercept the same services (as long as each developer uses a different header/value pair).
 1. Intercept all traffic for a service to my local machine.
 
-## Under the hood
+## How it Works
 
-Intercept works by:
+When an Intercept Session is initiated, we
 
-1. Intercepting traffic for a remote service.
-2. Inspecting the traffic headers, and directing traffic to:
-    a. the original (in-cluster) service.
-    b. forwarding the request through a reverse tunnel to a developer's local machine.
+1. Open a Local Tunnel and give that tunnel a random DNS name. This local tunnel proxies requests through any NAT or firewall to a single locally running service.
+1. Deploy a proxy service in the cluster
+1. Create a decoy Service that routes to the intercepted Service selectors
+1. Hijack the existing service by setting the service selectors to route traffic to the proxy service Deployment
+1. Create a Session record that stores all the changes made to the Kubernetes cluster
 
-### Intercepting Traffic
+The Proxy service selectively routes traffic based on the request headers.
 
-In order to route local traffic to in cluster resources, teleport does several things:
+## Closing Intercept
 
-1. Creates a lightweight NGINX deployment.
-2. Modifies the existing Kubernetes Service resource to direct traffic to this proxy.
+Run `czctl session close` to end the Intercept session. The session close command will clean up all the residue added to the Kubernetes cluster and restore the intercepted service to its original state.
 
-> [!NOTE]
-> We try to minimize any modifications and residue in your cluster.  However, if any sessions close unexpectedly, run `czctl session close` to clean up any leftover residue.
+## Local Tunnel
 
-### Reverse Tunnel
-
-When a teleport session is opened, the developer's local machine creates an `ngrok` tunnel to receive traffic requests from the remote cluster without changing any firewall or routing settings.
+We currently use `ngrok` to create a local tunnel however this will change in time.
 
 > [!PROTIP]
-> A bonus of using `ngrok` under the hood, is it provides a simple web dashboard to view and inspect incoming traffic.  When an intercept session is running, check out http://localhost:4040.
-
-> [!EXPERT]
-> To learn more about how `ngrok` works, see [https://ngrok.com/](https://ngrok.com/).
+> A bonus of using `ngrok` under the hood, is it provides a simple web dashboard to view and inspect incoming traffic. When an intercept session is running, check out http://localhost:4040.

@@ -50,4 +50,4 @@ Please report any issues you come across to our [GitHub Issues](https://github.c
 ### Feature Requests
 
 > [!WIP]
-> Ability to submit feature requests is coming soon.  For now, feel free to [email us](mailto:support@codezero.io).
+> Ability to submit feature requests is coming soon. For now, feel free to [email us](mailto:support@codezero.io).

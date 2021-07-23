@@ -24,11 +24,11 @@ $ czctl service intercept [service-name]
 
 | Flags  | Alias | Description
 | -----  | ----- | -----------
-| --namespace | -n | The Kubernetes namespace that contain the specific workload.  This field is ignored when the workload type is namespace, otherwise defaults to 'default'
-| --remotePort | -r    | The remote port number of the remote service to be intercepted.  This is optional if the service only exposes a single port.
+| --namespace | -n | The Kubernetes namespace that contain the specific workload. This field is ignored when the workload type is namespace, otherwise defaults to 'default'
+| --remotePort | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
 | --localPort | -l    | The local port number that traffic should be fowarded to on this machine.
 | --header | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
-| --kubeconfig | -k | Path to a specific the kubeconfig file to use for cluster credentials.  Defaults to using the KUBECONFIG environment variable.
+| --kubeconfig | -k | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --all  | -a | Intercept all traffic to this service, no matter what headers are provided.
 | --clean  | -c | Close and clean up existing teleport session.
 | --quiet  | -q | Only display error message.
@@ -51,7 +51,7 @@ In order to route local traffic to in cluster resources, teleport does several t
 2. Modifies the existing Kubernetes Service resource to direct traffic to this proxy.
 
 > [!NOTE]
-> We try to minimize any modifications to your cluster, and revert all changes once finished.  However, if any sessions close unexpectedly, run `czctl session close` to cleanup any leftover residue.
+> We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to cleanup any leftover residue.
 
 ### Reverse Tunnel
 

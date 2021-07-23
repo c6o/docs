@@ -1,6 +1,6 @@
 # A CodeZero Application
 
-An Application in the CodeZero ecosystem consists of 3 main components.  First off, there is the core application itself, which can be developed in many ways, so long as it is executable in a container environment.  Then there is the CodeZero Provisioner, responsible for orchestrating the installation and management of your application in an end-users cluster.  Lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.
+An Application in the CodeZero ecosystem consists of 3 main components. First off, there is the core application itself, which can be developed in many ways, so long as it is executable in a container environment. Then there is the CodeZero Provisioner, responsible for orchestrating the installation and management of your application in an end-users cluster. Lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.
 
 ## Components
 
@@ -23,14 +23,14 @@ graph TD
 
 ### Container Image
 
-A container image represents binary data that encapsulates your application and all its software dependencies.  CodeZero supports any container technology that runs on Kubernetes (for example, Docker, containerd, CRI-O).  However, we focus our documentation on applications published to Docker Hub for simplicity.
+A container image represents binary data that encapsulates your application and all its software dependencies. CodeZero supports any container technology that runs on Kubernetes (for example, Docker, containerd, CRI-O). However, we focus our documentation on applications published to Docker Hub for simplicity.
 
 > [!NOTE]
 > Checkout the [Hello World Guide](../guides/hello-world) for an example of creating an application from scratch and publishing through Docker Hub.
 
 <!-- ### Multiple Images
 
-A CodeZero Application may consist of one or multiple container images.  However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together.  
+A CodeZero Application may consist of one or multiple container images. However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together. 
 For example, if building a Wordpress provisioner, it may be tempting to directly include a MySQL container. However, a much better design should define the MySQL service as a dependency, so it can leverage the power of existing MySQL instances.
 
 How to develop the actual application logic that will run in a customers cluster is a very broad topic, and is not new or specific to CodeZero.
@@ -39,7 +39,7 @@ Therefore, instead of trying to explain all of this ourselves, we will just cove
 
 ### Provisioner
 
-A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications.  In this regard, it is similar Helm.  However, CodeZero provides several essential features that improve on existing tools:
+A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications. In this regard, it is similar Helm. However, CodeZero provides several essential features that improve on existing tools:
 
 1. User-friendly UI: allow both technical and non-technical audiences to install and manage your applications with ease
 1. Not just a template: take control of the provisioning processes using JavaScript/NodeJS.
@@ -67,7 +67,7 @@ If an application requires advanced customization not supported by App Engine, c
 
 ### Application Manifest
 
-The Application Manifest describes how an Application behaves in the CodeZero ecosystem.  It includes all the metadata needed to display an application in the Marketplace (ex: the applications name, description, icon, category, tags, etc), defines the provisioner responsible for installing and managing the application, describes how the user interacts with the application (ex: what happens when the user clicks on the icon on their desktop), and how/what to expose to the outside world.
+The Application Manifest describes how an Application behaves in the CodeZero ecosystem. It includes all the metadata needed to display an application in the Marketplace (ex: the applications name, description, icon, category, tags, etc), defines the provisioner responsible for installing and managing the application, describes how the user interacts with the application (ex: what happens when the user clicks on the icon on their desktop), and how/what to expose to the outside world.
 
 > [!NOTE]
 > Check out the [Creating a Basic Application Guide](../guides/appengine.md) to see how basic Application Manifest looks.
@@ -87,4 +87,4 @@ These walkthrough guides should get you started with publishing an application o
 
 ### Monetize your Application
 
-CodeZero makes it possible for developers to monetize their applications using simple pricing and billing options.  See more about this feature [here](../concepts/monetization).
+CodeZero makes it possible for developers to monetize their applications using simple pricing and billing options. See more about this feature [here](../concepts/monetization).

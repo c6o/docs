@@ -5,7 +5,7 @@
 
 In this tutorial, we are going to create a very basic Hello World application in NodeJS using Express, and publish it to CodeZero.
 
-Despite the fact that we are using NodeJS in this example, you are not limited to this for your own applications, and can develop your application in pretty much any language/environment you choose, so long as it can be packaged in a docker container.  For more advanced examples, checkout the [Docker](https://docs.docker.com/) documentation.
+Despite the fact that we are using NodeJS in this example, you are not limited to this for your own applications, and can develop your application in pretty much any language/environment you choose, so long as it can be packaged in a docker container. For more advanced examples, checkout the [Docker](https://docs.docker.com/) documentation.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
 ```
 
-This creates a very basic webserver running on port 8080.  The server responds with "Hello World" when the root is requested.
+This creates a very basic webserver running on port 8080. The server responds with "Hello World" when the root is requested.
 
 ### Test Your Application
 
@@ -87,7 +87,7 @@ EXPOSE 8080
 CMD [ "node", "server.js" ]
 ```
 
-Notice how we call `COPY . .`, this will copy all the files in our project directory.  However, we don't necessarily want to copy everything, so we should set up a `.dockerignore` file to ignore the files we don't want to copy over:
+Notice how we call `COPY . .`, this will copy all the files in our project directory. However, we don't necessarily want to copy everything, so we should set up a `.dockerignore` file to ignore the files we don't want to copy over:
 
 ```text
 node_modules
@@ -116,7 +116,7 @@ docker push <your-docker-username>/nodejs-hello-world
 
 ## Application Manifest using AppEngine
 
-To get the application into the CodeZero ecosystem, an Application Manifest describes how our application is defined and behaves.  We do this by creating a simple YAML file called `c6o.yaml`:
+To get the application into the CodeZero ecosystem, an Application Manifest describes how our application is defined and behaves. We do this by creating a simple YAML file called `c6o.yaml`:
 
 ```yaml
 name: Hello World
@@ -163,7 +163,7 @@ czctl install --local ./c6o.yaml
 ```
 
 > [!NOTE]
-> You'll need to have your KUBECONFIG configured to work with the CLI.  See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
+> You'll need to have your KUBECONFIG configured to work with the CLI. See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
 
 > [!WIP]
 > The Marina does not display the application's icon correctly when an installation is performed locally like this.
@@ -177,7 +177,7 @@ czctl app publish ./c6o.yaml
 ```
 
 > [!NOTE]
-> You'll need to have your CLI authenticated with your CodeZero account.  See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
+> You'll need to have your CLI authenticated with your CodeZero account. See the [Getting Started Guide](../guides/getting-started#Connect-to-the-Hub-API) for more instructions.
 
 > [!PROTIP]
 > Change the edition's `scope` to `public` if you want other's to see and install your application from the marketplace.

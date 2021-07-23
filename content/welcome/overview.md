@@ -40,7 +40,7 @@ Checkout our [public roadmap](https://github.com/c6o/roadmap/) to see what is co
 
 #### Feature Requests
 
-[Open a new issue](https://github.com/c6o/roadmap/issues/new?assignees=&labels=feature&template=feature.md&title=) to propose a new features.  We ask that you please search the existing open features first, to see if there is already an existing request for the same feature.
+[Open a new issue](https://github.com/c6o/roadmap/issues/new?assignees=&labels=feature&template=feature.md&title=) to propose a new features. We ask that you please search the existing open features first, to see if there is already an existing request for the same feature.
 
 > [!WIP]
-> Ability to submit feature requests is coming soon.  For now, feel free to [email us](mailto:support@codezero.io).
+> Ability to submit feature requests is coming soon. For now, feel free to [email us](mailto:support@codezero.io).

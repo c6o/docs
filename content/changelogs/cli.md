@@ -37,7 +37,7 @@ This document contains the release notes for the CodeZero CLI.
 
 ### BREAKING CHANGES
 
-* `czctl service intercept` port flags changed.  `-p` is now `-r` for remote and `-o` is now `-l` for local.
+* `czctl service intercept` port flags changed. `-p` is now `-r` for remote and `-o` is now `-l` for local.
 * We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl init` once and from then on, sudo is no longer required. [#1744]
 
 ### Bug Fixes
@@ -50,10 +50,10 @@ This document contains the release notes for the CodeZero CLI.
 
 ### New Features
 
-* Support multiple users intercepting the same service(s).  Requires users to use the same header key but different values. [#1711, #1757]
+* Support multiple users intercepting the same service(s). Requires users to use the same header key but different values. [#1711, #1757]
 * Cluster based session management, so user can list and clean up sessions created by other users. [#1688]
 * Allow intercepting up to 4 services simultaneously per machine. [#1783]
-* `sudo -E` is no longer required for `czctl teleport`.  [#1744]
+* `sudo -E` is no longer required for `czctl teleport`. [#1744]
 * Teleport no longer requires the environment file flag (-f).
 
 ### Outstanding Issues

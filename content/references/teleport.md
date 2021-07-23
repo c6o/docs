@@ -25,9 +25,9 @@ $ czctl [worload] teleport [name]
 
 | Flags  | Alias | Description
 | -----  | ----- | -----------
-| --namespace | -n | The Kubernetes namespace that contains the specific workload.  This defaults to 'default'.
+| --namespace | -n | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --file | -f    | Write environment variables related to the workload to a file.
-| --kubeconfig | -k | Path to a specific the `kubeconfig` file to use for cluster credentials.  Defaults to using the KUBECONFIG environment variable.
+| --kubeconfig | -k | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --clean  | -c | Close and clean up existing teleport session.
 | --quiet  | -q | Only display error message.
 | --wait   | -w | Wait for terminate signal and then clean up.
@@ -49,11 +49,11 @@ Teleport does several things to route local traffic to in cluster resources:
 
 ### Root Permissions
 
-Teleport requires permission to modify the local `hosts` file, which can only be done with elevated root access.  Therefore, to run teleport, you must first initialize the CLI using:
+Teleport requires permission to modify the local `hosts` file, which can only be done with elevated root access. Therefore, to run teleport, you must first initialize the CLI using:
 
 ```bash
 > sudo czctl init
 ```
 
 > [!EXPERT]
-> Root access is only required once.  During `init` the permissions of the `kubefwd` binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
+> Root access is only required once. During `init` the permissions of the `kubefwd` binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.

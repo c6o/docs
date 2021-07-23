@@ -3,7 +3,7 @@
 > [!WIP]
 > This document is still being developed and may be incomplete.
 
-The application manifest is a YAML definition file that describes all the attributes of an application and how it interacts with CodeZero.  Namely, it covers:
+The application manifest is a YAML definition file that describes all the attributes of an application and how it interacts with CodeZero. Namely, it covers:
 
 1. How it is displayed in the Marketplace,
 2. What is used to perform provisioning and management,
@@ -25,7 +25,7 @@ czctl app publish path/to/manifest.yaml
 | name             | String                 | REQUIRED | Application's display name.
 | appId            | String                 | REQUIRED | Application's internal ID (must be unique).
 | package          | String                 | REQUIRED | NPM package name containing the provisioner.
-| icon             | [Artwork](#Artwork) |          | SVG or URL.  Must scale well to 100x100.
+| icon             | [Artwork](#Artwork) |          | SVG or URL. Must scale well to 100x100.
 | description      | Text                   |          | Application description displayed in the Marketplace.
 | summary          | Text                   |          | Application summary displayed in the Marketplace.
 | category         | [Category](#Categories)|          | Application category.
@@ -38,7 +38,7 @@ czctl app publish path/to/manifest.yaml
 | privacy          | URL|Text               |          | Application privacy policy.
 | support          | URL                    |          | Support URL.
 | provisioner      | [Provisioner](#Provisioner-Details) |   | Details about the provisioner code specifically.
-| editions         | [Edition](#Edition)[] | REQUIRED | Array of application edition(s).  At least one edition is required.
+| editions         | [Edition](#Edition)[] | REQUIRED | Array of application edition(s). At least one edition is required.
 
 ### Edition
 
@@ -61,10 +61,10 @@ czctl app publish path/to/manifest.yaml
 
 | Property      | Value(s) | Default  | Description
 | --------      | -------- | -------  | -----------
-| type          | Boolean  | REQUIRED | Must be HTTP or TCP.  Note: HTTP routing actually exposes an HTTPS endpoint externally.
+| type          | Boolean  | REQUIRED | Must be HTTP or TCP. Note: HTTP routing actually exposes an HTTPS endpoint externally.
 | disabled      | Boolean  | false    | When present and set to true, the route is disabled.
 | targetService | String   | REQUIRED | The target service port to route traffic to. Typically, the name of the NodePort service.
-| targetPort    | Int      |          | The target service port.  Required if the targetService exposes multiple service ports.
+| targetPort    | Int      |          | The target service port. Required if the targetService exposes multiple service ports.
 | http          | [HttpRewrite](#Route-Http-Rewrite) | | Allows specifying more advanced HTTP routing rules.
 | tcp           | [TcpRules](#Route-TCP-Rules) | | Required if type is TCP.
 
@@ -72,7 +72,7 @@ czctl app publish path/to/manifest.yaml
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
-| private   | Boolean  | Specify whether the app is protected by the CodeZero Cloud's authentication.  Defaults to `false`.
+| private   | Boolean  | Specify whether the app is protected by the CodeZero Cloud's authentication. Defaults to `false`.
 | prefix    | String   | The URL prefix to match for a URL rewrite.
 | rewrite   | String   | Rewrite destination.
 
@@ -82,17 +82,17 @@ czctl app publish path/to/manifest.yaml
 | --------      | -------- | -------  | -----------
 | name          | String   | REQUIRED | Arbitrary name for the route, but must be unique.
 | port          | Int      |          | Incoming TCP port. If it is not present, is set to zero (0), or conflicts with an existing port, then the port is automatically assigned with a random value.
-| strictPort    | Int      |          | Same as above, but do not allow reassigning of the port if there is a conflict.  Installation will FAIL if the system cannot allocate this port.
+| strictPort    | Int      |          | Same as above, but do not allow reassigning of the port if there is a conflict. Installation will FAIL if the system cannot allocate this port.
 
 ### Provisioner Spec
 
-The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define its schema.  For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
+The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define its schema. For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
 
 However, there are a few reserved properties used by CodeZero interally as well:
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
-| package   | String   | NPM provisioner package.  Allows overriding the default NPM package.
+| package   | String   | NPM provisioner package. Allows overriding the default NPM package.
 | ui        | String   | If set to "ignore", the customer will skip the UI components during installation.
 | tag       | String   | Flags current docker image version, has specially meaning when managing image updates.
 
@@ -106,7 +106,7 @@ However, there are a few reserved properties used by CodeZero interally as well:
 
 | Property  | Value(s) | Description
 | --------  | -------- | -----------
-| type      | String   | Type of launch behaviour.  Currently, only "inline" is available.
+| type      | String   | Type of launch behaviour. Currently, only "inline" is available.
 | popUp     | Boolean  | If true, the application will launch in a new tab, rather than in the Marina desktop iFrame.
 | port      | Int      | Port to use in the URL.
 | path      | String   | Path to use in the URL.
@@ -123,7 +123,7 @@ However, there are a few reserved properties used by CodeZero interally as well:
 
 ### Categories
 
-Each application should be placed into a related category.  Each of available categories to choose from are listed below.
+Each application should be placed into a related category. Each of available categories to choose from are listed below.
 
 **Business Applications:**
 blockchain, crm, comm, contact-center, cms, dms, e-comm, e-learning, human-resources
@@ -154,7 +154,7 @@ Artwork can be provided in several different formats:
 ```yaml
 appId: sample-service        # App internal name (all lower, no spaces); minimum 5 characters
 name: FOO App Display Name   # display name
-package: npm-package         # the NPM package name.  Typically id and package-name are the same, but not required.
+package: npm-package         # the NPM package name. Typically id and package-name are the same, but not required.
 icon: icon.svg               # see art section for rules for the values here
 screenshots:
     - URL to image (PNG JPG, etc..)
@@ -222,7 +222,7 @@ editions:
           tcp:
             name: tcp-name  #mandatory tcp field specifying the TCP route name. Although arbitrary but must be unique withing an app spec.
             port: 1533      #optional tcp field specifying the incoming TCP port. If not present or set to zero (0) then the port is automatically assigned.
-            strictPort: 89  #optional tcp field specifying whether incoming TCP port can be reassigned in case of a port conflict.  Installation will BREAK if the system cannot allocate this port.
+            strictPort: 89  #optional tcp field specifying whether incoming TCP port can be reassigned in case of a port conflict. Installation will BREAK if the system cannot allocate this port.
       provisioner:          #default values for the provisioner to use, they are all going to be specific to the app, and will NEVER cause a bump in the version needed
         storage: 1Gi
         provisionerPropertyName: defaultValue
