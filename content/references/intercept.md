@@ -78,3 +78,155 @@ When a teleport session is openned, the developers local machine creates a tunne
 
 > [!EXPERT]
 > To learn more about how ngrok works, see [https://ngrok.com/](https://ngrok.com/).
+
+## Residue
+
+This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
+
+The intercept command creates three resource files within the namespace of the deployment that is intercepted:
+1. A session file
+2. A redirector deployment with its corresponding pods
+3. A decoy service for routing un re-directed traffic to the original deployment
+
+The intercept command modifies the service in front of the deployment by backing up and then modifying the selectors to point to the redirector deployment. This accompishes the task of creating diversions with requests containing the header specified by the command.
+
+Specifically, the following selector is used:
+```yaml
+app: interceptor,
+system.codezero.io/session: [Session hash, something like: 29ad008882b59faa516d733051a9d14b2d3b6836]
+```
+
+The ports will be pointed at port 80 by the interceptor if the targetPort is different:
+```yaml
+  ports:
+  - port: [Some port]
+    protocol: TCP
+    targetPort: 80
+```
+
+The hash is stored in a session file defined by a Session.CRD, which you can see by issuing the command `kubectl get session intercept-[your namespace]-[your workload name] -o yaml`.
+
+You will see in the namespace these resources:
+
+* `service/interceptor-[your workload name]-decoy` (this will create endpoint: `endpoints/interceptor-[your workload name]-decoy` )
+* `deployment/interceptor-[your workload name]` (this run some pods, like: `pod/interceptor-[your workload name]-6cd6c6b947-8gzcq`)
+* `configmap/interceptor-[your workload name]`
+
+These have the following responsibilities respectively:
+
+* The service is responsible for getting traffic to the original deployment
+* The interceptor for the workload type (like a deployment) is responsible for directing traffic based on the headers in the request
+* The config map configures the redirector's pods
+
+## Cleanup
+
+Cleanup is accomplished by reissuing the command with a `--clean` parameter or using the `czctl session close` or `czctl session close --all` command. If this doesn't work, it is necessary to first correct the selector to point to the original deployment and then delete the three resource files the intercept has created:
+
+First correct the selector and the ports updated by the interceptor. Get the original values from the session:
+```bash
+> kubectl get session -n [your namespace] -o yaml
+```
+```yaml
+...
+ restore-service:
+      ops:
+      - op: replace
+        path: /spec/selector
+        value:
+          [some key1]: [some value1]
+          [some key2]: [some value2]
+      - op: replace
+        path: /spec/ports
+        value:
+        - name: unsecure
+          port: [some port]
+          protocol: TCP
+          targetPort: [some port]
+      service:
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: [workload name]
+          namespace: [your namespace
+...
+```
+```bash
+kubectl edit service [your service name] -n [your namespace]
+```
+
+Find the section that has this:
+```yaml
+  selector:
+    app: interceptor
+    system.codezero.io/session: [some hash, like: 29ad008882b59faa516d733051a9d14b2d3b6836]
+```
+and set it to the original, correct the selector to:
+
+```yaml
+  selector:
+    [some key1]: [some value1]
+    [some key2]: [some value2]
+    ...
+```
+and the ports section will be directed to port 80:
+```yaml
+  ports:
+  - name: unsecure
+    port: [some port]
+    protocol: TCP
+    targetPort: 80
+```
+Correct this to the original port given in the session file.
+```yaml
+  ports:
+  - name: unsecure
+    port: [some port]
+    protocol: TCP
+    targetPort: [some port]
+```
+
+Then delete the residue files
+```bash
+kubectl delete service interceptor-[your workload name]-decoy -n [your namespace]
+kubectl delete deployment interceptor-[your workload name] -n [your namespace]
+kubectl delete configmap interceptor-[your workload name] -n [your namespace]
+kubectl delete session interceptor-[your workload name] -n [your namespace]
+```
+
+The pods and endpoints will clean up upon deletion of the decoy service and the interceptor deployment.
+
+### Example Cleanup
+
+First correct the selector:
+```bash
+kubectl edit service service/halyard-backend -n halyard
+```
+
+The selector and ports looks like so when intercept is active:
+```yaml
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: interceptor
+    system.codezero.io/session: 29ad008882b59faa516d733051a9d14b2d3b6836
+```
+In this example, it should look like so when corrected:
+```yaml
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: halyard
+    component: backend
+```
+Then delete the residue files
+```bash
+kubectl delete service interceptor-halyard-backend-decoy -n halyard
+kubectl delete deployment interceptor-halyard-backend -n halyard
+kubectl delete configmap interceptor-halyard-backend -n halyard
+kubectl delete session intercept-halyard-halyard-backend -n halyard
+```
+
