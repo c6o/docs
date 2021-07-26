@@ -187,10 +187,10 @@ Correct this to the original port given in the session file.
 
 Then delete the residue files
 ```bash
-kubectl delete service interceptor-[your workload name]-decoy -n [your namespace]
-kubectl delete deployment interceptor-[your workload name] -n [your namespace]
-kubectl delete configmap interceptor-[your workload name] -n [your namespace]
-kubectl delete session interceptor-[your workload name] -n [your namespace]
+> kubectl delete service interceptor-[your workload name]-decoy -n [your namespace]
+> kubectl delete deployment interceptor-[your workload name] -n [your namespace]
+> kubectl delete configmap interceptor-[your workload name] -n [your namespace]
+> kubectl delete session interceptor-[your workload name] -n [your namespace]
 ```
 
 The pods and endpoints will clean up upon deletion of the decoy service and the interceptor deployment.
@@ -199,7 +199,7 @@ The pods and endpoints will clean up upon deletion of the decoy service and the 
 
 First correct the selector:
 ```bash
-kubectl edit service service/halyard-backend -n halyard
+> kubectl edit service service/halyard-backend -n halyard
 ```
 
 The selector and ports looks like so when intercept is active:
@@ -224,9 +224,9 @@ In this example, it should look like so when corrected:
 ```
 Then delete the residue files
 ```bash
-kubectl delete service interceptor-halyard-backend-decoy -n halyard
-kubectl delete deployment interceptor-halyard-backend -n halyard
-kubectl delete configmap interceptor-halyard-backend -n halyard
-kubectl delete session intercept-halyard-halyard-backend -n halyard
+> kubectl delete service interceptor-halyard-backend-decoy -n halyard
+> kubectl delete deployment interceptor-halyard-backend -n halyard
+> kubectl delete configmap interceptor-halyard-backend -n halyard
+> kubectl delete session intercept-halyard-halyard-backend -n halyard
 ```
 
