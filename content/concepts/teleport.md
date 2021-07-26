@@ -4,9 +4,9 @@ The primary concept behind Teleport is to allow developers to develop and debug 
 
 ## Use-Case
 
-More often than not, developers still need to run their entire stack of services whenever developing/debugging locally. This means developers need to maintain the domain knowledge and capability of building and running the entire service stack, even if they only are concerned about a tiny piece of the system.
+One problem developers encounter is the need to run their entire stack of services whenever developing/debugging locally. This means developers need to maintain the domain knowledge and capability of building and running the entire service stack, even if they only are concerned about a tiny piece of the system.
 
-CodeZero resolves this by allowing developers to only run the workloads they are concerned with, while maintaining connectivity to the remaining services within a remote environment.
+CodeZero resolves this by enabling developers to only run the workloads they are concerned with, while maintaining connectivity to the remaining services within a remote environment.
 
 ![Teleport Dataflow](../_media/teleport.png ':size=500')
 
@@ -30,11 +30,13 @@ Every workload can be given a specific configuration. Typically this is done via
 > czctl deployment teleport my-service -n my-namespace -f ./my-service.env
 ```
 
+The user can specify one of four formats for the file where the environment variables will be written with the -m flag, specifying one of four formats: sh (sourceable shell), env (.env format file), json, and yaml. Note, that the environment file will be updated as environment variables are updated and changed in the cluster.
+
 ### Access Remote Services
 
-In-cluster services can communicate with other in-cluster services. However, outside the cluster, only publicly exposed services are accessible. When developing a service that requires access to other back-end services, developers must run all dependent services locally.
+In a cluster, In-cluster services can communicate with other in-cluster services. However a problem occurs if you are outside the cluster: only publicly exposed services are accessible. This creates a problem if a locally running service needs to communicate to a non-exposed back-end service. This means that when developing a service that requires access to other back-end services, developers must run all dependent services locally.
 
-CodeZero teleport creates a local tunnel into a remote cluster, so developers can communicate with back-end services as though they are in the cluster.
+CodeZero teleport solves this problem by creating a local tunnel into a remote cluster, so developers can communicate with back-end services as though they are in the cluster.
 
 ```bash
 > czctl deployment teleport my-deployment -n my-namespace
@@ -59,7 +61,13 @@ In order to route local traffic to in cluster resources, Teleport does several t
 
 ### Why is `sudo` required?
 
-Teleport requires access to make modifications to your local `hosts` file, which can only be done with elevated root access.
+Teleport requires access to make modifications to your local `hosts` file, which can only be done with elevated root access. 
+
+Root access is only required once to elevate the `czctl` command's priviledge by issuing the command:
+
+```bash
+sudo czctl init
+```
 
 > [!EXPERT]
-> Root access is only required once. During `init`, the permissions of the `kubefwd` binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
+> Root access is only required once. During `init`, the permissions of the tunneler binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
