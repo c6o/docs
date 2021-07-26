@@ -5,13 +5,13 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 ## Usage
 
 ```bash
-$ czctl service intercept [service-name]
+> czctl service intercept [service-name]
 ```
 
 ### Example
 
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3000
+> czctl service intercept my-service -n my-namespace -l 3010
 ```
 
 ### Arguments
@@ -23,8 +23,8 @@ $ czctl service intercept [service-name]
 ### Flags
 
 | Flags        | Alias | Description
-| -----        | ----- | -----------
-| --namespace  | -n    | The Kubernetes namespace that contain the specific workload. This field is ignored when the workload type is namespace, otherwise defaults to 'default'
+| ------------ | ----- | -----------
+| --namespace  | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --remotePort | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
 | --localPort  | -l    | The local port number that traffic should be fowarded to on this machine.
 | --header     | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
@@ -34,9 +34,22 @@ $ czctl service intercept [service-name]
 
 ## More Examples
 
+Intercept the remote service's port 3000 and route to localhost:3010
+
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3000
+> czctl service intercept my-service -n my-namespace -l 3010 -r 3000
 ```
+
+Clean up the previous session above:
+```bash
+> czctl service intercept my-service -n my-namespace -l 3010 -r 3000 --clean
+```
+
+Give your own custom header: 
+```bash
+> czctl service intercept my-service -n my-namespace -l 3010 -h X-MY-HEADER:ME
+```
+This routes to `x_my_header:me` or `x-my-header:me`
 
 ## Under the hood
 
