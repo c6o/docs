@@ -151,7 +151,7 @@ First correct the selector and the ports updated by the interceptor. Get the ori
 ...
 ```
 ```bash
-kubectl edit service [your service name] -n [your namespace]
+> kubectl edit service [your service name] -n [your namespace]
 ```
 
 Find the section that has this:
