@@ -8,7 +8,7 @@ Some services are not easy to debug by calling directly, and instead, it's far e
 
 Intercept allows developers to selectively intercept traffic for a remote service, so they do not need to run the entire stack locally, and they can debug against real-world traffic experienced within the remote environment.
 
-![Intercept Dataflow](../_media/intercept.png ':size=500')
+![Intercept Dataflow](../../_media/intercept.png ':size=500')
 
 ## Overview
 

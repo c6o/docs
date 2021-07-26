@@ -4,11 +4,11 @@ CodeZero provides a simple CLI tool to help manage the development and testing o
 
 ## Install the CLI
 
-[cluster-install](../_fragments/cli-install.md ':include')
+[cluster-install](../../_fragments/cli-install.md ':include')
 
 ## Requirements
 
-[cluster-requirements](../_fragments/cli-requirements.md ':include')
+[cluster-requirements](../../_fragments/cli-requirements.md ':include')
 
 ## Configure the CLI
 
