@@ -5,13 +5,13 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 ## Usage
 
 ```bash
-$ czctl [workload] teleport [name]
+> czctl [workload] teleport [name]
 ```
 
 ### Example
 
 ```bash
-> czctl deployment teleport my-deployment -n my-namespace -f my-deployment.env -m sh
+> czctl deployment teleport my-deployment -n my-namespace -f my-deployment.env
 ```
 
 ### Arguments
@@ -24,7 +24,7 @@ $ czctl [workload] teleport [name]
 ### Flags
 
 | Flags        | Alias | Description
-| --------     | ----- | -----------
+| ------------ | ----- | -----------
 | --namespace  | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --file       | -f    | Write environment variables related to the workload to a file.
 | --format     | -m    | Format of the environment file: sh, env, json, yaml. sh is a sourceable bash file, env is a .env file.
@@ -32,6 +32,50 @@ $ czctl [workload] teleport [name]
 | --clean      | -c    | Close and clean up existing teleport session.
 | --quiet      | -q.   | Only display error message.
 
+## More Examples
+
+Enable access to a deployment and download the environment to a sourceable shell file:
+```bash
+> czctl deployment teleport my-deployment -n my-namespace -f my-deployment.env -m sh
+```
+The file will be in this format:
+```bash
+export MY_ENV_VAR1="foo"
+export MY_ENV_VAR2="bar"
+```
+Cleanup the residue from the last command:
+```bash
+> czctl deployment teleport halyard-frontend -n halyard -f env.sh -m sh --clean
+```
+or
+```bash
+> czctl session close
+```
+To close all czctl sessions, use
+```bash
+> czctl session close --all
+```
+Enable access to a deployment and download the environment to an.env file:
+```bash
+> czctl deployment teleport my-deployment -n my-namespace -f my-deployment.env -m env
+```
+The file will be in this format:
+```bash
+MY_ENV_VAR1="foo"
+MY_ENV_VAR2="bar"
+```
+Enable access to other workloads:
+```bash
+> czctl cronjob teleport myjob -n my-namespace
+...
+> czctl job teleport myjob -n my-namespace
+...
+> czctl namespace teleport myjob -n my-namespace
+...
+> czctl pod teleport myjob -n my-namespace
+...
+> czctl statefulset teleport myjob -n my-namespace
+```
 ## Under the hood
 
 Teleport works by creating a tunnel from your local machine into the remote cluster.
