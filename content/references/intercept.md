@@ -5,7 +5,7 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 ## Usage
 
 ```bash
-$ czctl service intercept [service-name]
+> czctl service intercept [service-name]
 ```
 
 ### Example
