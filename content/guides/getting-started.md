@@ -2,9 +2,9 @@
 
 CodeZero provides a simple CLI tool to help manage the development and testing of CodeZero applications. Install it globally from NPM using `npm install -g @c6o/cli`.
 
-```bash
-> npm install -g @c6o/cli
-```
+## Install the CLI
+
+[cluster-install](../_fragments/cli-install.md ':include')
 
 ## Requirements
 
