@@ -7,6 +7,10 @@ This document contains the release notes for the CodeZero CLI.
 
 ## Release Notes for v0.2.7
 
+### BREAKING CHANGES
+
+* Any scripting that assumes that all namespaces will be teleported needs to be modified to use the new flags to add namespaces other than the one being referenced in the teleport command. The `--all` flag allows you to connect to all namespaces. You can also add more namespaces with additional `-a namespace1 -a namespace2` 
+
 ### Bug Fixes
 
 * Fix for teleport cleanup
