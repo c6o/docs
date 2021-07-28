@@ -66,11 +66,11 @@ The teleport command makes no changes to your existing Resources in the cluster,
 
 If the user issues a `czctl [workload] teleport --clean`, a `czctl session close`, or a `czctl session close --all` command, the `/etc/hosts` file will be restored to its original state and the named environment file (with `-f [some filename]`) will be deleted. 
 
-The teleport command also starts up an "ngrok" service that creates a tunnel to the users local computer and presents a tunnel inspection interface on `http://localhost:4040`. The `--clean` and `session close` commands also terminate this process.
+The teleport command also starts up a tunnelling service that creates a tunnel to the users local computer and presents a tunnel inspection interface on `http://localhost:4040`. The `--clean` and `session close` commands also terminate this process.
 
 ## Cleanup
 
-From time to time you may find that an old `kubefwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still laying around. Cleanup is a matter of killing both the kubefwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually.
+From time to time you may find that an old `kubefwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still laying around. Cleanup is a matter of killing both the kubefwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually. (Your `/etc/hosts` file is backed up in `~/hosts.original`, see below for more detail)
 
 The environment output file can simply be deleted or renamed.  The `/etc/hosts` file will need to be edited with root privledges and the additional DNS entries removed.
 
@@ -84,8 +84,8 @@ If you have used the -f flag, you will need to find the process id and do a `kil
 Here's an example of getting the process ids and using `kill -9` to end these processes.
 
 ```bash
-> ps xau | grep 'ngrok\|kubefwd\|env' 
-username       39531   0.0  0.0 408113552   1456 s007  S+    2:57pm   0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox ngrok\|kubefwd\|env
+> ps xau | grep 'kubefwd\|env' 
+username       39531   0.0  0.0 408113552   1456 s007  S+    2:57pm   0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox kubefwd\|env
 root             37102   0.0  0.2 408720272  34208   ??  Ss    2:41pm   0:01.96 /Users/robblovell/code/node-monorepo/node_modules/@c6o/kubefwd/bin/kubefwd svc -n halyard -n c6o-seed -n c6o-system -n default -n halyard2 -n istio-system -n kube-node-lease -n kube-public -n kube-system
 username       37093   0.0  0.2 409128256  28240   ??  Ss    2:41pm   0:00.70 /Users/robblovell/.nvm/versions/node/v16.2.0/bin/node /Users/robblovell/code/node-monorepo/packages/tools/cli/lib/services/monitors/env/child.js
 ```
@@ -95,6 +95,8 @@ username       37093   0.0  0.2 409128256  28240   ??  Ss    2:41pm   0:00.70 /U
 ```
 
 If the `/etc/hosts` file has not cleaned up after killing the tunnel process, edit this file directly with `sudo vi /etc/hosts` or use your favorite editor.
+
+The tunneller process creates a backup of your `/etc/hosts` file in `~/hosts.original` that can be copied to the `/etc/hosts` using `sudo cp ~/hosts.original /etc/hosts`
 
 After a teleport has been issued, the file will look something like this:
 ```
@@ -115,7 +117,7 @@ After a teleport has been issued, the file will look something like this:
 127.1.31.5       halyard-echo.halyard2 halyard-echo.halyard2.svc halyard-echo.halyard2.svc.cluster.local halyard-echo.halyard2.do-tor1-kittens halyard-echo.halyard2.svc.do-tor1-kittens halyard-echo.halyard2.svc.cluster.do-tor1-kittens
 127.1.31.6       halyard-database.halyard2 halyard-database.halyard2.svc halyard-database.halyard2.svc.cluster.local halyard-database.halyard2.do-tor1-kittens halyard-database.halyard2.svc.do-tor1-kittens halyard-database.halyard2.svc.cluster.do-tor1-kittens
 ```
-Remove the long lines that reference services in your cluster:
+If the backup file is corrupted, you can remove the long lines that reference services in your cluster. Either way, the /etc/hosts file should look like this after restoration:
 ```
 ##
 # Host Database
