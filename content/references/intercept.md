@@ -84,7 +84,7 @@ When a teleport session is openned, the developers local machine creates a tunne
 This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
 
 The intercept command creates three resource files within the namespace of the deployment that is intercepted:
-1. A session file
+1. A Session resource
 2. A reverse-proxy Deployment
 3. A decoy Service for routing un re-directed traffic to the original Deployment
 
