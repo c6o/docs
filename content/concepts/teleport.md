@@ -8,7 +8,7 @@ More often than not, developers still need to run their entire stack of services
 
 CodeZero resolves this by allowing developers to only run the workloads they are concerned with, while maintaining connectivity to the remaining services within a remote environment.
 
-![Teleport Dataflow](../_media/teleport.png ':size=500')
+![Teleport Dataflow](../../_media/teleport.png ':size=500')
 
 ## Overview
 

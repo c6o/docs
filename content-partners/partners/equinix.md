@@ -14,7 +14,7 @@ Besides having an active Equinix Metal account, CodeZero requires a few pieces o
 
 ### Creating an Equinix Metal API Key ###
 
-![API Keys >](../_media/partners/equinix/image11.png ':size=300')
+![API Keys >](../../_media/partners/equinix/image11.png ':size=300')
 
 CodeZero requires a user-level API Key to create and provision your CodeZero cloud on Equinix Metal. To create a new key:
 
@@ -44,18 +44,18 @@ The first step is to create a CodeZero account. Creating an account with CodeZer
 
 When creating a new CodeZero Cloud, select Equinix Metal from the provider list.
 
-![Equinix Metal ><](../_media/partners/equinix/image6.png ':size=600')
+![Equinix Metal ><](../../_media/partners/equinix/image6.png ':size=600')
 
 NOTE: If you’ve already created a cloud before, you can create another by navigating to your [“My Clouds”](https://codezero.io/clouds) page:
 
-![My Clouds](../_media/partners/equinix/image7.png ':size=400')
-![My Clouds](../_media/partners/equinix/image13.png ':size=400')
+![My Clouds](../../_media/partners/equinix/image7.png ':size=400')
+![My Clouds](../../_media/partners/equinix/image13.png ':size=400')
 
 ### Configure the Equinix Metal Cluster ###
 
 CodeZero needs a little information about your Equinix Metal account to get started. You can also provide a few customizations to control the size and location of your Kubernetes cluster. Fill in the required information and click Continue.
 
-![Provider Options ><](../_media/partners/equinix/image12.png ':size=500')
+![Provider Options ><](../../_media/partners/equinix/image12.png ':size=500')
 
 |Field|Description|
 |---|---|
@@ -70,13 +70,13 @@ CodeZero needs a little information about your Equinix Metal account to get star
 
 Provide a name for your CodeZero cloud. This name will be used as part of the URL to access your Cloud and applications once the Cloud is up and running.
 
-![Name Cloud ><](../_media/partners/equinix/image4.png ':size=500')
+![Name Cloud ><](../../_media/partners/equinix/image4.png ':size=500')
 
 ### Create the Cloud ###
 
 Once the cloud creation starts, you’ll see the progress of the installation processes. This process generally takes less than 10 minutes to complete. You can safely close this window, and we will notify you by email when the cluster is ready.
 
-![Create Cloud ><](../_media/partners/equinix/image10.png ':size=500')
+![Create Cloud ><](../../_media/partners/equinix/image10.png ':size=500')
 
 ## Navigating your CodeZero Cloud ##
 
@@ -86,19 +86,19 @@ When your Cloud is ready, we’ll send you an email with a link to your cloud. T
 
 You can also see the status of your clouds in your CodeZero dashboard. Once all the sails turn green the cloud “name” will be clickable.  Clicking on the cloud name will launch you into your Cloud desktop.
 
-![Launch ><](../_media/partners/equinix/image3.png ':size=500')
+![Launch ><](../../_media/partners/equinix/image3.png ':size=500')
 
 ### Log in to your Cloud ###
 
 When you first launch your cloud desktop, you’ll need to authenticate using your CodeZero account.
 
-![Login ><](../_media/partners/equinix/image1.png ':size=500')
+![Login ><](../../_media/partners/equinix/image1.png ':size=500')
 
 ### The Desktop ###
 
 Once logged in, you’ll have a full view of all the applications installed in your Cloud. Initially, only the system applications are installed, but you can easily change that by going to the “Store” application and installing the applications you want.
 
-![Desktop ><](../_media/partners/equinix/image2.png ':size=500')
+![Desktop ><](../../_media/partners/equinix/image2.png ':size=500')
 
 ### Install an Application ###
 
@@ -117,7 +117,7 @@ To install an Application in your CodeZero Cloud:
 
 To uninstall an application, find the application on your Cloud desktop, and right-click on the icon.  You can also uninstall an entire folder (namespace) at once by right-clicking on the folder.
 
-![Uninstall ><](../_media/partners/equinix/image5.png ':size=500')
+![Uninstall ><](../../_media/partners/equinix/image5.png ':size=500')
 
 ### Launch an Application ###
 
