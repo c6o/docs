@@ -5,6 +5,28 @@ This document contains the release notes for the CodeZero CLI.
 > [!WIP]
 > The CLI is currently in an alpha state, and may include breaking changes between releases.
 
+## Release Notes for v0.2.7
+
+### Bug Fixes
+
+* Fix for teleport cleanup
+
+### Migration notes from v0.2.6 to v0.2.7
+
+To upgrade from 0.2.6 to 0.2.7 you will need to:
+
+1. Close your current sessions: `czctl session close --all`
+1. Restore your `/etc/hosts` and remove the Kubernetes services referenced there. You can copy `~/hosts.original` to `/etc/hosts` or edit the `/etc/hosts` file directly using sudo. Make sure that `~/hosts.original` is correct before using it to restore things using `sudo cp ~/hosts.original /etc/hosts`. If the `hosts.original` files is not correct, then edit the `/etc/hosts` file directly (use sudo to edit this file with your favourite editor: `sudo vi /etc/hosts`
+1. Remove `~/hosts.original`
+
+You can do this before or after installing the new @c6o/cli version 0.2.7: `npm update -g @c6o/cli`, `npm install -g @c6o/cli@0.2.7` or `npm install -g @c6o/cli@latest`
+
+To make sure you have the right version, use czctl version . The output should look something like this:
+```bash
+> czctl version
+@c6o/cli/0.2.7 darwin-arm64 node-v16.2.0
+```
+
 ## Release Notes for v0.2.6
 
 ### BREAKING CHANGES
