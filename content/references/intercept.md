@@ -28,7 +28,7 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 | --remotePort | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
 | --localPort  | -l    | The local port number that traffic should be fowarded to on this machine.
 | --header     | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
-| --kubeconfig | -k    | Path to a specific the kubeconfig resource to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
+| --kubeconfig | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --clean      | -c    | Close and clean up existing teleport session.
 | --quiet      | -q    | Only display error message.
 
