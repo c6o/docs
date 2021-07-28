@@ -62,7 +62,7 @@ Teleport requires permission to modify the local `hosts` file, which can only be
 
 This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
 
-The teleport command makes no changes to your existing resource files in the cluster, but does add endpoints to create tunnels to pods running in the cluster. It also modifies the user's local `/etc/hosts` file. A locally runnin `kubefwd` process is run in the background to maintain the tunnels to pods and manage any changes such as new services, or termination/restarts of pods. Additionally, if you have issued a `-f [some filename]` as part of the teleport command, this file will be created.
+The teleport command makes no changes to your existing Resources in the cluster, but does add endpoints to create tunnels to pods running in the cluster. It also modifies the user's local `/etc/hosts` file. A locally running `kubefwd` process is run in the background to maintain the tunnels to pods and manage any changes such as new services, or termination/restarts of pods. Additionally, if you have issued a `-f [some filename]` as part of the teleport command, this file will be created.
 
 If the user issues a `czctl [workload] teleport --clean`, a `czctl session close`, or a `czctl session close --all` command, the `/etc/hosts` file will be restored to its original state and the named environment file (with `-f [some filename]`) will be deleted. 
 
