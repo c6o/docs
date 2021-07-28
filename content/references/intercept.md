@@ -85,7 +85,7 @@ This section describes what the intercept command creates within a cluster to ac
 
 The intercept command creates three resource files within the namespace of the deployment that is intercepted:
 1. A session file
-2. A redirector deployment with its corresponding pods
+2. A reverse-proxy Deployment
 3. A decoy service for routing un re-directed traffic to the original deployment
 
 The intercept command modifies the service in front of the deployment by backing up and then modifying the selectors to point to the redirector deployment. This accompishes the task of creating diversions with requests containing the header specified by the command.
@@ -229,4 +229,3 @@ Then delete the residue files
 > kubectl delete configmap interceptor-halyard-backend -n halyard
 > kubectl delete session intercept-halyard-halyard-backend -n halyard
 ```
-
