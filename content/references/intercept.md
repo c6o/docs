@@ -28,7 +28,7 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 | --remotePort | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
 | --localPort  | -l    | The local port number that traffic should be fowarded to on this machine.
 | --header     | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
-| --kubeconfig | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
+| --kubeconfig | -k    | Path to a specific the kubeconfig resource to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --clean      | -c    | Close and clean up existing teleport session.
 | --quiet      | -q    | Only display error message.
 
@@ -83,7 +83,7 @@ When a teleport session is openned, the developers local machine creates a tunne
 
 This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
 
-The intercept command creates three resource files within the namespace of the deployment that is intercepted:
+The intercept command creates three resources within the namespace of the deployment that is intercepted:
 1. A Session resource
 2. A reverse-proxy Deployment
 3. A decoy Service for routing un re-directed traffic to the original Deployment
@@ -104,7 +104,7 @@ The ports will be pointed at port 80 by the interceptor if the targetPort is dif
     targetPort: 80
 ```
 
-The hash is stored in a session file defined by a Session.CRD, which you can see by issuing the command `kubectl get session intercept-[your namespace]-[your workload name] -o yaml`.
+The hash is stored in a Session resource defined by a Session.CRD, which you can see by issuing the command `kubectl get session intercept-[your namespace]-[your workload name] -o yaml`.
 
 You will see in the namespace these resources:
 
@@ -122,7 +122,7 @@ These have the following responsibilities respectively:
 
 Cleanup is accomplished by reissuing the command with a `--clean` parameter or using the `czctl session close` or `czctl session close --all` command. If this doesn't work, it is necessary to first correct the selector to point to the original deployment and then delete the three resource files the intercept has created:
 
-First correct the selector and the ports updated by the interceptor. Get the original values from the session:
+First correct the selector and the ports updated by the interceptor. Get the original values from the Session:
 ```bash
 > kubectl get session -n [your namespace] -o yaml
 ```
@@ -176,7 +176,7 @@ and the ports section will be directed to port 80:
     protocol: TCP
     targetPort: 80
 ```
-Correct this to the original port given in the session file.
+Correct this to the original port given in the Session resource.
 ```yaml
   ports:
   - name: unsecure
@@ -222,7 +222,7 @@ In this example, it should look like so when corrected:
     app: halyard
     component: backend
 ```
-Then delete the residue files
+Then delete the residue resources
 ```bash
 > kubectl delete service interceptor-halyard-backend-decoy -n halyard
 > kubectl delete deployment interceptor-halyard-backend -n halyard
