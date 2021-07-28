@@ -88,7 +88,7 @@ The intercept command creates three resource files within the namespace of the d
 2. A reverse-proxy Deployment
 3. A decoy Service for routing un re-directed traffic to the original Deployment
 
-The intercept command modifies the service in front of the deployment by backing up and then modifying the selectors to point to the redirector deployment. This accompishes the task of creating diversions with requests containing the header specified by the command.
+The intercept command modifies the Service in front of the Deployment by backing up and then modifying the selectors to point to the intercept Deployment. This accomplishes the task of routing requests based on headers specified by the command.
 
 Specifically, the following selector is used:
 ```yaml
