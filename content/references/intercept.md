@@ -185,7 +185,7 @@ Correct this to the original port given in the session file.
     targetPort: [some port]
 ```
 
-Then delete the residue files
+Then delete the intercept residue resources
 ```bash
 > kubectl delete service interceptor-[your workload name]-decoy -n [your namespace]
 > kubectl delete deployment interceptor-[your workload name] -n [your namespace]
