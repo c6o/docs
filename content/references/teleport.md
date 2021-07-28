@@ -25,12 +25,14 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 
 | Flags        | Alias | Description
 | ------------ | ----- | -----------
+| --additional | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.
 | --namespace  | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --file       | -f    | Write environment variables related to the workload to a file.
 | --format     | -m    | Format of the environment file: sh, env, json, yaml. sh is a sourceable bash file, env is a .env file.
 | --kubeconfig | -k.   | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --clean      | -c    | Close and clean up existing teleport session.
 | --quiet      | -q.   | Only display error message.
+| --all        |       | Include all other namespaces as secondary namespaces
 
 ## More Examples
 
