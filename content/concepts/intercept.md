@@ -18,7 +18,6 @@ A few scenarios are possible
 
 1. Intercept traffic with the `X-C6O-INTERCEPT` header to my local machine.
 1. Specify a customer intercept header, so that multiple developers can intercept the same services (as long as each developer uses a different header/value pair).
-1. Intercept all traffic for a service to my local machine.
 
 ## How it Works
 
