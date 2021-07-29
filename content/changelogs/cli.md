@@ -5,6 +5,14 @@ This document contains the release notes for the CodeZero CLI.
 > [!WIP]
 > The CLI is currently in an alpha state, and may include breaking changes between releases.
 
+## Release Notes for v0.2.8
+
+### New Features
+
+* Support for headless services
+* Increase the timeout of the teleport tunneller.
+* Stability Improvements
+
 ## Release Notes for v0.2.7
 
 ### BREAKING CHANGES
