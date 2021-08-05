@@ -5,6 +5,21 @@ This document contains the release notes for the CodeZero CLI.
 > [!WIP]
 > The CLI is currently in an alpha state, and may include breaking changes between releases.
 
+
+## Release Notes for v0.3.0
+
+### BREAKING CHANGES
+
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
+
+### New Features
+
+* Support teleporting to headless and podless services
+
+### Known Issues
+
+* Cannot *intercept* a headless and podless service
+
 ## Release Notes for v0.2.8
 
 ### New Features
