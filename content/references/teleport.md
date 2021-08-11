@@ -91,7 +91,7 @@ Teleport does several things to route local traffic to in cluster resources:
 3. Modifies your local `hosts` file to direct DNS entries to the appropriate local IPs.
 
 > [!EXPERT]
-> See more details about the inner workings of the tunneling logic at (https://github.com/c6o/kubefwd).
+> See more details about the inner workings of the tunneling logic at (https://github.com/c6o/czfwd).
 
 ### Root Permissions
 
@@ -108,7 +108,7 @@ Teleport requires permission to modify the local `hosts` file, which can only be
 
 This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
 
-The teleport command makes no changes to your existing Resources in the cluster, but does add endpoints to create tunnels to pods running in the cluster. It also modifies the user's local `/etc/hosts` file. A locally running `kubefwd` process is run in the background to maintain the tunnels to pods and manage any changes such as new services, or termination/restarts of pods. Additionally, if you have issued a `-f [some filename]` as part of the teleport command, this file will be created.
+The teleport command makes no changes to your existing Resources in the cluster, but does add endpoints to create tunnels to pods running in the cluster. It also modifies the user's local `/etc/hosts` file. A locally running `czfwd` process is run in the background to maintain the tunnels to pods and manage any changes such as new services, or termination/restarts of pods. Additionally, if you have issued a `-f [some filename]` as part of the teleport command, this file will be created.
 
 If the user issues a `czctl [workload] teleport --clean`, a `czctl session close`, or a `czctl session close --all` command, the `/etc/hosts` file will be restored to its original state and the named environment file (with `-f [some filename]`) will be deleted. 
 
@@ -116,13 +116,13 @@ The teleport command also starts up a tunnelling service that creates a tunnel t
 
 ## Cleanup
 
-From time to time you may find that an old `kubefwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still laying around. Cleanup is a matter of killing both the kubefwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually. (Your `/etc/hosts` file is backed up in `~/hosts.original`, see below for more detail)
+From time to time you may find that an old `czfwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still laying around. Cleanup is a matter of killing both the czfwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually. (Your `/etc/hosts` file is backed up in `~/hosts.original`, see below for more detail)
 
 The environment output file can simply be deleted or renamed.  The `/etc/hosts` file will need to be edited with root privledges and the additional DNS entries removed.
 
 Killing the tunnel process:
 ```bash
-> sudo killall kubefwd
+> sudo killall czfwd
 ```
 
 If you have used the -f flag, you will need to find the process id and do a `kill -9` of the environment monitor process. 
@@ -130,9 +130,9 @@ If you have used the -f flag, you will need to find the process id and do a `kil
 Here's an example of getting the process ids and using `kill -9` to end these processes.
 
 ```bash
-> ps xau | grep 'kubefwd\|env' 
-username       39531   0.0  0.0 408113552   1456 s007  S+    2:57pm   0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox kubefwd\|env
-root             37102   0.0  0.2 408720272  34208   ??  Ss    2:41pm   0:01.96 /Users/robblovell/code/node-monorepo/node_modules/@c6o/kubefwd/bin/kubefwd svc -n halyard -n c6o-seed -n c6o-system -n default -n halyard2 -n istio-system -n kube-node-lease -n kube-public -n kube-system
+> ps xau | grep 'czfwd\|env'
+username       39531   0.0  0.0 408113552   1456 s007  S+    2:57pm   0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox czfwd\|env
+root             37102   0.0  0.2 408720272  34208   ??  Ss    2:41pm   0:01.96 /Users/robblovell/code/node-monorepo/node_modules/@c6o/czfwd/bin/czfwd svc -n halyard -n c6o-seed -n c6o-system -n default -n halyard2 -n istio-system -n kube-node-lease -n kube-public -n kube-system
 username       37093   0.0  0.2 409128256  28240   ??  Ss    2:41pm   0:00.70 /Users/robblovell/.nvm/versions/node/v16.2.0/bin/node /Users/robblovell/code/node-monorepo/packages/tools/cli/lib/services/monitors/env/child.js
 ```
 ```bash

@@ -1,6 +1,6 @@
 # Walkthough Demo
 
-This guide walks through setting up a dummy application with several services, and demonstrate using intercept and teleport to debug/develop the code.
+This guide walks through setting up a demo application with several services to demonstrate using intercept and teleport commands to debug/develop the code.
 
 > [!WIP]
 > This walk through is a work in progress, some sections are incomplete.
@@ -10,9 +10,9 @@ This guide walks through setting up a dummy application with several services, a
 ### Requirements
 
 For this walkthrough, you need:
-1. A Kubernetes Cluster with access to a valid kubeconfig.
+1. A Kubernetes cluster that is accessible via a kubeconfig.
 1. The CodeZero CLI installed (see [getting started](../guides/getting-started) for more details)
-1. Kubectl installed.
+1. Kubernetes CLI (kubectl) installed (see [kubernetes.io Install kubectl Tool](https://kubernetes.io/docs/tasks/tools/))
 1. Git installed.
 
 ### Getting Setup
@@ -28,7 +28,7 @@ kubectl apply -f k8s/
 
 ### Project Architecture
 
-The halyard demo project attempts to mimic several major component types that might commonly be found in a microservices system.
+The halyard demo project attempts to mimic several major component types that might typically be found in a microservices architecture.
 
 In this case, it consists of 5 simple services:
 * halyard-frontend
@@ -44,7 +44,7 @@ In this case, it consists of 5 simple services:
 
 ### Teleport
 
-Without teleport, you do not have access to any internal services (ex: halyard-echo).
+Without teleport, you do not have access to any internal services running in the cluster (ex: halyard-echo).
 
 ```bash
 > curl http://halyard-echo:8080/
@@ -54,7 +54,7 @@ curl: (6) Could not resolve host: halyard-echo
 Teleport enables your local machine to interact with remote services as though you are in the cluster.
 
 ```bash
-> czctl deployment teleport halyard-backend
+> czctl deployment teleport halyard-echo
 > curl http://halyard-echo:8080
 ```
 

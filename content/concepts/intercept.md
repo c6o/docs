@@ -12,18 +12,18 @@ Intercept allows developers to selectively intercept traffic for a remote servic
 
 ## Overview
 
-Intercept works by creating an intermediate proxy for a service to inspect traffic and determine if the request should be directed to the original in-cluster service, or tunnelled to a developer's local machine.
+Intercept works by creating an intermediate proxy for the service to inspect traffic and determine if the request should be directed to the original in-cluster service, or tunnelled to a developer's local machine.
 
 A few scenarios are possible
 
 1. Intercept traffic with the `X-C6O-INTERCEPT` header to my local machine.
-1. Specify a customer intercept header, so that multiple developers can intercept the same services (as long as each developer uses a different header/value pair).
+1. Specify a custom intercept header, instead, so that multiple developers can intercept the same services (as long as each developer uses a different header key/value pair).
 
 ## How it Works
 
 When an Intercept Session is initiated, we
 
-1. Open a Local Tunnel and give that tunnel a random DNS name. This local tunnel proxies requests through any NAT or firewall to a single locally running service.
+1. Open a local tunnel and give that tunnel a random DNS name. This local tunnel proxies requests through any NAT or firewall to a single locally running service.
 1. Deploy a proxy service in the cluster
 1. Create a decoy Service that routes to the intercepted Service selectors
 1. Hijack the existing service by setting the service selectors to route traffic to the proxy service Deployment
@@ -41,3 +41,5 @@ We currently use `ngrok` to create a local tunnel however this will change in ti
 
 > [!PROTIP]
 > A bonus of using `ngrok` under the hood, is it provides a simple web dashboard to view and inspect incoming traffic. When an intercept session is running, check out http://localhost:4040.
+> You can have a maximum of 4 concurrent intercept tunnels running
+> A tunnel expires after 24 hours.  Restart intercept to continue after expiry.

@@ -1,6 +1,6 @@
 # Overview
 
-Welcome to CodeZero's documentation!  This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI to improve their development cycle by leveraging the CodeZero CLI toolset to develop and locally.
+This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI to improve their development cycle by leveraging the CodeZero CLI toolset to develop and debug locally.
 
 ## Getting Started
 
