@@ -35,6 +35,7 @@ The user can specify one of four formats for the file where the environment vari
 1. env (.env format file)
 1. json
 1. yaml
+
 Whilst teleport is running, the environment file will be kept in sync as environment variables are updated and changed in the cluster.
 
 ### Access Remote Services
