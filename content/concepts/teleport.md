@@ -30,7 +30,7 @@ Every workload can be given a specific configuration. Typically this is done via
 > czctl deployment teleport my-service -n my-namespace -f ./my-service.env
 ```
 
-The user can specify one of four formats for the file where the environment variables will be written with the -m flag, specifying one of four formats:
+The user can specify one of four formats for the environment variables output, using the -m flag:
 1. sh (sourceable shell), DEFAULT
 1. env (.env format file)
 1. json

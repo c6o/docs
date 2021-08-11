@@ -90,8 +90,6 @@ Teleport does several things to route local traffic to in cluster resources:
 2. Binds a proxy service from this IP to the remote service (similar to `kubectl port-foward`)
 3. Modifies your local `hosts` file to direct DNS entries to the appropriate local IPs.
 
-> [!EXPERT]
-> See more details about the inner workings of the tunneling logic at (https://github.com/c6o/czfwd).
 
 ### Root Permissions
 
