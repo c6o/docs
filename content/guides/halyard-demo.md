@@ -63,8 +63,40 @@ Teleport enables your local machine to interact with remote services as though y
 
 ### Intercept
 
-> [!WIP]
-> Examples of running intercept and viewing changes is coming soon.
+Setup and run a local copy of halyard-backend on port 3010
+```bash
+> cd ./halyard-backend/
+> source ./startdev.sh
+> env|grep HALYARD
+    HALYARD_VERSION=version 3010
+    HALYARD_API_PORT=3010
+> npm start
+    halyard-backend@1.0.0 start
+    node server.js
+    listening on 3010
+    version  version 3010
+```
+
+Test before intercept
+```bash
+> curl -L http://halyard-backend:3000/ -H X-C6O-INTERCEPT:yes
+    {"data":"Halyard-Backend: Version 1.1"}
+```
+
+Run intercept (and teleport if you didn't run it previously)
+```bash
+> czctl service intercept -n halyard halyard-backend -l 3010
+> czctl teleport -n halyard halyard-backend
+```
+
+Test after intercept
+```bash
+> curl -L http://halyard-backend:3000/ -H X-C6O-INTERCEPT:yes
+{"data":"Halyard-Backend: Version 3010"}
+> curl -L http://halyard-backend:3000/ -H SOME-OTHER-HEADER:value
+{"data":"Halyard-Backend: Version 3010"}
+```
+Note that your local server will log the request when you send the request with the `X-C6O-INTERCEPT:yes` header in curl
 
 ### Cleanup Sessions
 
