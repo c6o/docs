@@ -1,6 +1,6 @@
 # Getting Started with the CodeZero CLI
 
-CodeZero provides a simple CLI tool to help manage the development and testing of CodeZero applications. Install it globally from NPM using `npm install -g @c6o/cli`.
+CodeZero provides a simple CLI tool to help manage the development and testing of CodeZero applications. Install the latest version globally from NPM using `npm install -g @c6o/cli`.
 
 ## Install the CLI
 
@@ -21,7 +21,7 @@ After installing the CLI, run:
 ```
 
 > [!NOTE]
-> The CLI requires `sudo` access to modify your systems `hosts` file. The `hosts` file
+> The CLI requires `sudo` access to modify your system's `hosts` file. The `hosts` file
 > is used to define in-cluster DNS information on your local machine during a teleport session.
 
 ### Access Your Cluster
