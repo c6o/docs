@@ -2,130 +2,129 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>CodeZero Docs</title>
-  <link rel="shortcut icon" type="image/png" href="/_media/favicon.png" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="CodeZero Documentation">
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>CodeZero Docs</title>
+    <link rel="shortcut icon" type="image/png" href="/_media/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="CodeZero Documentation">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-  <link rel="stylesheet" href="theme.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.css">
 
-  <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="//unpkg.com/docsify-edit-on-github@1.0.1/index.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133770312-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133770312-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    gtag('config', 'UA-133770312-3');
-  </script>
+        gtag('config', 'UA-133770312-3');
+    </script>
 </head>
 
 <body>
+    <nav>
+        <a href="/">Docs</a>
+        <a href="https://developer.codezero.io">Developer</a>
+        <a href="https://codezero.io">Marketplace</a>
+        <a href="/partners.html">Partners</a>
+        <a href="/apps.html">Apps</a>
+    </nav>
 
-  <nav>
-    <a href="https://developer.codezero.io">Developer</a>
-    <a href="https://docs.codezero.io/index.html">Docs</a>
-    <a href="https://codezero.io">Marketplace</a>
-    <a href="https://docs.codezero.io/partners.html">Partners</a>
-  </nav>
+    <div id="app"></div>
 
-  <div id="app"></div>
+    <script>
+        // Mermaid
+        var mermaid_num = 0;
+        mermaid.initialize({
+            startOnLoad: false,
+            // https://github.com/mermaid-js/mermaid/issues/790
+            themeCSS: ".label foreignObject { font-size: 14px; }"
+        })
 
-  <script>
-    // Mermaid
-    var mermaid_num = 0;
-    mermaid.initialize({
-      startOnLoad: false,
-      // https://github.com/mermaid-js/mermaid/issues/790
-      themeCSS: ".label foreignObject { font-size: 14px; }"
-    })
+        window.$docsify = {
+            name: 'CodeZero Docs',
+            repo: 'c6o/docs',
+            basePath: 'content',
+            homepage: 'welcome/overview.md',
+            auto2top: true,
+            relativePath: true,
+            maxLevel: 4,
+            subMaxLevel: 3,
+            logo: 'codezero.png',
+            loadSidebar: true,
+            plugins: [
+                EditOnGithubPlugin.create(
+                    'https://github.com/c6o/docs/blob/main/content',
+                    null,
+                    'Edit'
+                ),
+                function (hook) {
+                    const footer = [
+                        '<footer>',
+                        '<span>&copy; Copyright 2021, <a href="https://codezero.io">CodeZero Technologies Inc</a>. All Rights Reserved.</span>',
+                        '<span style="float:right"> Published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+                        '</footer>'
+                    ].join('')
 
-    window.$docsify = {
-      name: 'CodeZero Docs',
-      repo: 'c6o/docs',
-      basePath: 'content',
-      homepage: 'welcome/overview.md',
-      auto2top: true,
-      relativePath: true,
-      maxLevel: 4,
-      subMaxLevel: 3,
-      logo: 'codezero.png',
-      loadSidebar: true,
-      plugins: [
-        EditOnGithubPlugin.create(
-          'https://github.com/c6o/docs/blob/main/content',
-          null,
-          'Edit'
-        ),
-        function (hook) {
-          const footer = [
-            '<footer>',
-            '<span>&copy; Copyright 2021, <a href="https://codezero.io">CodeZero Technologies Inc</a>. All Rights Reserved.</span>',
-            '<span style="float:right"> Published with <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
-            '</footer>'
-          ].join('')
-
-          hook.afterEach(function (html) {
-            return html + footer;
-          })
-        }
-      ],
-      'flexible-alerts': {
-        style: "callout",
-        protip: {
-          label: 'Pro Tip',
-          icon: 'icon-tip',
-          className: 'tip'
-        },
-        wip: {
-          label: 'Work in Progress',
-          icon: 'icon-wip',
-          className: 'wip'
-        },
-        expert: {
-          label: 'Expert',
-          icon: 'icon-expert',
-          className: 'expert',
-        }
-      },
-      markdown: {
-        renderer: {
-          code: function (code, lang) {
-            if (lang === "mermaid") {
-              return (
-                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + mermaid_num++, code) + "</div>"
-              );
+                    hook.afterEach(function (html) {
+                        return html + footer;
+                    })
+                }
+            ],
+            'flexible-alerts': {
+                style: "callout",
+                protip: {
+                    label: 'Pro Tip',
+                    icon: 'icon-tip',
+                    className: 'tip'
+                },
+                wip: {
+                    label: 'Work in Progress',
+                    icon: 'icon-wip',
+                    className: 'wip'
+                },
+                expert: {
+                    label: 'Expert',
+                    icon: 'icon-expert',
+                    className: 'expert',
+                }
+            },
+            markdown: {
+                renderer: {
+                    code: function (code, lang) {
+                        if (lang === "mermaid") {
+                            return (
+                                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + mermaid_num++, code) + "</div>"
+                            );
+                        }
+                        return this.origin.code.apply(this, arguments)
+                    }
+                }
+            },
+            tabs: {
+                persist: true,      // default
+                sync: true,         // default
+                theme: 'material',  // default
+                tabComments: true,  // default
+                tabHeadings: true   // default
             }
-            return this.origin.code.apply(this, arguments)
-          }
         }
-      },
-      tabs: {
-        persist: true,      // default
-        sync: true,      // default
-        theme: 'material', // default
-        tabComments: true,      // default
-        tabHeadings: true       // default
-      }
-    }
-  </script>
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify-copy-code"></script>
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
-  <script src="//unpkg.com/docsify-plugin-flexible-alerts"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+    </script>
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify-copy-code"></script>
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+    <script src="//unpkg.com/docsify-plugin-flexible-alerts"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
 
-  <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
-  <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
 </body>
 
 </html>

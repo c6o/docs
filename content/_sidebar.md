@@ -16,4 +16,3 @@
 - Legal
   - [Privacy](/legal/privacy)
   - [Terms of Use](/legal/terms)
-  
