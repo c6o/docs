@@ -2,6 +2,12 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.0.2
+
+### Bug Fixes
+
+* Don't allow names over 63 characters as this will be used in a selector.(#1974)
+
 ## Release Notes for v1.0.1
 
 ### New Features
