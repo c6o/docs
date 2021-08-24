@@ -2,9 +2,28 @@
 
 This document contains the release notes for the CodeZero CLI.
 
-> [!WIP]
-> The CLI is currently in an alpha state, and may include breaking changes between releases.
+## Release Notes for v1.0.2
 
+### Bug Fixes
+
+* Don't allow names over 63 characters as this will be used in a selector.(#1974)
+
+## Release Notes for v1.0.1
+
+### New Features
+
+* Multi-port services support (#1945)
+    
+## Release Notes for v1.0.0
+
+### New Features
+
+* Tunnel supports purge to restore hosts file and loopback interface #1909 (#1957)
+
+### Bug Fixes
+
+* The success contextual banner shows and fades out as expected (#1955)
+* Intercept supports HTTPS / TLS (#1951)
 
 ## Release Notes for v0.3.0
 
