@@ -6,18 +6,17 @@ This document contains the release notes for the CodeZero CLI.
 
 ### New Features
 
-Support for intercepting all traffic (#1997)
+* Support for intercepting all traffic (#1997)
 
 ### Bug Fixes
 
-Environment monitor now checks process rather than the file to determine if a session is open (#2000)
+* Environment monitor now checks process rather than the file to determine if a session is open (#2000)
 
 ## Release Notes for v1.0.3
 
 ### Bug Fixes
 
-Fixed so that the index.js and index.css files could be found on nested routes (#1978)
-Changed the newsletter contact form to use Google Forms (#1976)
+* Increased timeouts for pod-less decoy (#1982)
 
 ## Release Notes for v1.0.2
 
