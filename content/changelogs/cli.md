@@ -12,6 +12,7 @@ the `workload name` is the name of the workolad, the `mount root` is a local dir
 and the `namespace` is the namespace where the workload resides.
 
 Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.  
+
 Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
 Note: Make sure you have a teleport session open before using the mount commmand: `czctl [workload] teleport [workload name] -n [namespace]`
 
