@@ -11,6 +11,7 @@ Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting 
 the `mount root` is a local directory where the volumes should be mounted, and the `namespace` is the namespace where the workload resides.
 
 Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.  
+Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
 
 ## Release Notes for v1.0.4
 
