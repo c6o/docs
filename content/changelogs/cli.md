@@ -2,6 +2,17 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.1.0
+
+### New Features
+
+* Volume mount command: You can now mount persistent volumes that any workload has mounted: `czctl [workload] mount [mount root] -n [namespace]` 
+Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting all volumes in a namespace is not supported), 
+the `mount root` is a local directory where the volumes should be mounted, and the `namespace` is the namespace where the workload resides.
+
+Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.  
+Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
+
 ## Release Notes for v1.0.4
 
 ### New Features
