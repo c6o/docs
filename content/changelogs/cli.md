@@ -17,6 +17,8 @@ Note: On first read or write to a mounted volume there will be a delay, but on s
 
 Note: Make sure you have a teleport session open before using the mount commmand: `czctl [workload] teleport [workload name] -n [namespace]`
 
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session. 
+
 ## Release Notes for v1.0.4
 
 ### New Features
