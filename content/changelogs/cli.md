@@ -2,6 +2,12 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.1.1
+
+### Bug Fixes
+
+* Update package.json "pack" script to avoid conflict with brew installation (#2071)
+
 ## Release Notes for v1.1.0
 
 ### New Features
