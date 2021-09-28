@@ -14,5 +14,5 @@
 - Changelogs
   - [CLI](/changelogs/cli)
 - Legal
-  - [Privacy](/legal/privacy)
-  - [Terms of Use](/legal/terms)
+  - [Privacy](https://codezero.io/privacy)
+  - [Terms of Use](https://codezero.io/terms)
