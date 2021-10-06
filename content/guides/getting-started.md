@@ -17,7 +17,7 @@ CodeZero provides a simple CLI tool to help manage the development and testing o
 After installing the CLI, run:
 
 ```bash
-> sudo czctl init
+> sudo czctl start
 ```
 
 > [!NOTE]

@@ -7,10 +7,12 @@
 - Concepts
   - [Intercept](/concepts/intercept)
   - [Teleport](/concepts/teleport)
+  - [Mount](/concepts/mount)
 - References
   - Commands
     - [Intercept](/references/intercept)
     - [Teleport](/references/teleport)
+    - [Mount](/references/mount)
 - Changelogs
   - [CLI](/changelogs/cli)
 - Legal

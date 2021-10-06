@@ -19,6 +19,7 @@ Learn more about the core concepts of CodeZero:
 
 * [Intercept traffic for an existing service to your local machine](../concepts/intercept)
 * [Teleporting your local environment into a Cluster](../concepts/teleport)
+* [Mounting remote volumes on your local environment](../concepts/mount)
 
 ## Community and Support
 
