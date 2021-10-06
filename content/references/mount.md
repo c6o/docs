@@ -33,7 +33,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 ## More Examples
 
-Enable access to a deployment and download the environment to a sourceable shell file:
+Mount all the volumes of a specific deployment within the folder `./folder-name`
 ```bash
 > czctl deployment mount my-deployment -n my-namespace ./folder-name
 ```
