@@ -116,7 +116,7 @@ To make sure you have the right version, use czctl version . The output should l
 
 ### BREAKING CHANGES
 
-* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl start`.
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
 
 ### Bug Fixes
 
