@@ -68,7 +68,7 @@ Note (Known Issue): If you have mounted some volumes, do not use `czctl session 
 
 ### BREAKING CHANGES
 
-* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl start`.
 
 ### New Features
 
@@ -116,7 +116,7 @@ To make sure you have the right version, use czctl version . The output should l
 
 ### BREAKING CHANGES
 
-* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl start`.
 
 ### Bug Fixes
 
@@ -145,7 +145,7 @@ To make sure you have the right version, use czctl version . The output should l
 ### BREAKING CHANGES
 
 * `czctl service intercept` port flags changed. `-p` is now `-r` for remote and `-o` is now `-l` for local.
-* We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl init` once and from then on, sudo is no longer required. [#1744]
+* We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl start` once and from then on, sudo is no longer required. [#1744]
 
 ### Bug Fixes
 
