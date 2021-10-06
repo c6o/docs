@@ -68,7 +68,7 @@ Note (Known Issue): If you have mounted some volumes, do not use `czctl session 
 
 ### BREAKING CHANGES
 
-* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl start`.
+* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
 
 ### New Features
 
