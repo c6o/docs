@@ -8,7 +8,7 @@ Mount is complimentary to Teleport.  Since your local code may need to read from
 
 ## Overview
 
-Mount works by creating an intermediate proxy for the service to inspect traffic and determine if the request should be directed to the original in-cluster service, or tunnelled to a developer's local machine.
+Mount works by creating a lightweight NFS server in-cluster that mounts and shares all the volumes of a workload you choose.   Via the NFS server, your local system then mounts these volumes locally for you to access.
 
 ## How it Works
 
