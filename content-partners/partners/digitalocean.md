@@ -17,7 +17,7 @@ When it comes to volumes, CodeZero's mount feature gives you the ability to moun
 1. Mount remote volumes from your cluster into your local workstation
 
 ## Prerequisites
-1. A Kubernetes cluster such as [DigitalOcean Kubernetes](https://www.digitalocean.com/products/kubernetes/). We will use DigitalOcean Kubernetes for the tutorial, but you can also use an existing Kubernetes cluster (another provider.
+1. A Kubernetes cluster such as [DigitalOcean Kubernetes](https://www.digitalocean.com/products/kubernetes/). We will use DigitalOcean Kubernetes for the tutorial, but you can also use an existing Kubernetes cluster with any other provider.
 1. [kubectl](https://kubernetes.io/docs/tasks/tools/}) installed locally on your workstation and configured to connect to the Kubernetes cluster
 1. A local development environment for Node.js. You can follow [How to Install Node.js and Create a Local Development Environment](https://www.digitalocean.com/community/tutorial_series/how-to-install-node-js-and-create-a-local-development-environment).
 1. One or more of your workloads running in the cluster, e.g.: Deployment, Job, CronJob, Pod, etc.  If you don't have anything yet then simply install our sample project by running: `kubectl apply -f https://github.com/c6o/project-demo/k8s/onefile.yaml -n your-namespace`
