@@ -306,7 +306,7 @@ With this information, the application can be displayed in the traxitt store, an
 
 ## AMS UI
 
-The Traxitt Store serves as the UI for the AMS. It displays applications avaiable for installation from the traxitt repository (Hub), as well as applications currently installed and managed by the AMS.
+The Traxitt Store serves as the UI for the AMS. It displays applications available for installation from the traxitt repository (Hub), as well as applications currently installed and managed by the AMS.
 
 Using the UI, the user can search for apps in the registry, install and uninstall apps, configure, run, stop, delete instances.
 
