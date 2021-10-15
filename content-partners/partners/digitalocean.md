@@ -1,4 +1,4 @@
-# Hot To Use CodeZero on Kubernetes for Remote Development
+# How To Use CodeZero on Kubernetes for Remote Development
 
 ### Introduction
 As a developer you like writing code. However, you now also need to wear so many other hats to get your code running in the cluster. Kubernetes does a lot to take care of scaling and running your code in the cluster. However, troubleshooting various issues that occur in any of your cluster environments can be a daunting and exhausting process. You can take on the goal of learning the ins and outs of Kubernetes but this isn't practical nor typically a developer role in most organizations. In that case, you can work closely with your DevOps team to assist you in this. But, there is a different approach, which is so much easier and simpler.
