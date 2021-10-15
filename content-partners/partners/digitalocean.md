@@ -151,7 +151,7 @@ with output similar to the following:
 ✔    Connecting remote service to local tunnel.                              Done
 ```
 
-Now, depending on your code, you can access all of the remote services in the cluster locally by using just the service name.  For example, if your deployment has a service called `service-name` and it's a web-based service, then open up a browser on your local workstation and navigate to (http://service-name/), assuming it's on port 80; otherwise navigate to (http://service-name:1234/) where 1234 is the service port number.
+Now any in-cluster traffic destined for the service my-service that includes the header header-name:header-value will instead be rerouted to your local machine; whilst all other traffic will continue as normal.  For example, if an incoming request to  `service-name` with header `header-name:header-value` will be forwarded on to your local workstation on the same port as the server.  You can specify to use a different port, using the `-r` intercept argument.
 
 Of course, if your service isn't web-based then access it how you normally would in cluster, for example via TCP connection.
 
