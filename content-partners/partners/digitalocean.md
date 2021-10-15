@@ -28,7 +28,7 @@ In this step you will download the latest version of the CodeZero CLI (command l
 
 Open up your favourite terminal and enter the following command to install `czctl` globally:
 ```bash
-$ npm install -g @c6o/cli
+$ brew install c6o/tools/czctl
 ```
 
 Test it out by running:
