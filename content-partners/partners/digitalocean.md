@@ -155,7 +155,7 @@ Now, depending on your code, you can access all of the remote services in the cl
 
 Of course, if your service isn't web-based then access it how you normally would in cluster, for example via TCP connection.
 
-Once you're done, close this teleport session by running either of the following commands:
+Once you're done, close this intercept session by running either of the following commands:
 ```bash
 $ czctl service intercept -n your-namespace your-service -x header-name:header-value --close
 ```
