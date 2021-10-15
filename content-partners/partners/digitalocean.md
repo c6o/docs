@@ -1,7 +1,7 @@
 # Hot To Use CodeZero on Kubernetes for Remote Development
 
 ### Introduction
-As a developer you like writing code. However, you now also need to wear so many other hats to get your code running in the cluster. Kubernetes does a lot to take care of scaling and running your code in the cluster. However, troubleshooting various issues that occur in any of your cluster environments can be a daunting and exhausting process. You can take on the goal of learning the ins and outs of Kubernetes but this isn't practical nor typically a developer role in most organizations. In that case, you can work closely with your Dev Ops team to assist you in this. But, there is a different approach, which is so much easier and simpler.
+As a developer you like writing code. However, you now also need to wear so many other hats to get your code running in the cluster. Kubernetes does a lot to take care of scaling and running your code in the cluster. However, troubleshooting various issues that occur in any of your cluster environments can be a daunting and exhausting process. You can take on the goal of learning the ins and outs of Kubernetes but this isn't practical nor typically a developer role in most organizations. In that case, you can work closely with your DevOps team to assist you in this. But, there is a different approach, which is so much easier and simpler.
 
 CodeZero allows you to run or debug your local code against your remote cluster. How is this achieved? The software's teleport feature registers the necessary DNS entries on your local machine and listens for your code connecting to these entries and tunnels them into your cluster. In addition, your remote cluster configuration is loaded locally too. So, that's pretty cool.
 
