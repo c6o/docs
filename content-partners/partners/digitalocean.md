@@ -129,7 +129,7 @@ Now, depending on your code, you can access all of the remote volumes in the clu
 
 Once you're done, close this mount session by running either of the following commands:
 ```bash
-$ czctl deployment mount -n your-namespace your-deployment ./mounts --clean
+$ czctl deployment mount -n your-namespace your-deployment ./mounts --close
 ```
 or
 ```bash
