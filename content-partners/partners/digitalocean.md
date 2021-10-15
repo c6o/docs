@@ -9,7 +9,6 @@ Teleport is great when trying to access services that have already been deployed
 
 When it comes to volumes, CodeZero's mount feature gives you the ability to mount in cluster volumes on your local machine.
 
-CodeZero empowers developers to easily and quickly run, test, and debug code in their Kubernetes clusters without having to learn or worry about the details of Kubernetes.
 
 ### Goals
 1. Download and install the CodeZero CLI
