@@ -7,7 +7,7 @@ CodeZero allows you to run or debug your local code against your remote cluster.
 
 Teleport is great when trying to access services that have already been deployed to the cluster. If, however, you would like to have cluster services access to something running locally, you'll need Intercept. CodeZero's intercept feature can hijack calls in your cluster and route them to your local machine. This can be done based on the request's header key/value pair without impacting the normal cluster traffic.
 
-That's great but what do you do if your code needs access to remote volumes in the cluster? CodeZero's mount feature takes care of that too since it has the ability to mount these remote volumes on your local machine so that you can read from, or write to, these volumes to ensure a comprehensive debugging experience.
+When it comes to volumes, CodeZero's mount feature gives you the ability to mount in cluster volumes on your local machine.
 
 CodeZero empowers developers to easily and quickly run, test, and debug code in their Kubernetes clusters without having to learn or worry about the details of Kubernetes.
 
