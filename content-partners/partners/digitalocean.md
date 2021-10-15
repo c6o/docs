@@ -157,7 +157,7 @@ Of course, if your service isn't web-based then access it how you normally would
 
 Once you're done, close this teleport session by running either of the following commands:
 ```bash
-$ czctl deployment teleport -n your-namespace your-deployment --clean
+$ czctl service intercept -n your-namespace your-service -x header-name:header-value --close
 ```
 or
 ```bash
