@@ -35,7 +35,7 @@ Test it out by running:
 ```bash
 $ czctl version
 ```
-and you should see output similar tot he following:
+and you should see output similar to the following:
 ```bash
 @c6o/cli/1.1.1 darwin-arm64 node-v16.6.2
 ```
