@@ -199,7 +199,7 @@ The pods and endpoints will clean up upon deletion of the decoy service and the 
 
 First correct the selector:
 ```bash
-> kubectl edit service service/halyard-backend -n halyard
+> kubectl edit service service/sample-project-server -n sample-project
 ```
 
 The selector and ports looks like so when intercept is active:
@@ -219,13 +219,13 @@ In this example, it should look like so when corrected:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: halyard
+    app: sample-project
     component: backend
 ```
 Then delete the residue resources
 ```bash
-> kubectl delete service interceptor-halyard-backend-decoy -n halyard
-> kubectl delete deployment interceptor-halyard-backend -n halyard
-> kubectl delete configmap interceptor-halyard-backend -n halyard
-> kubectl delete session intercept-halyard-halyard-backend -n halyard
+> kubectl delete service interceptor-sample-project-server-decoy -n sample-project
+> kubectl delete deployment interceptor-sample-project-server -n sample-project
+> kubectl delete configmap interceptor-sample-project-server -n sample-project
+> kubectl delete session intercept-sample-project-server -n sample-project
 ```

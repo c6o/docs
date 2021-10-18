@@ -11,7 +11,7 @@ Our [Getting Started](../guides/getting-started) guide is a great place to start
 These guides will walk you through more specific use-cases.
 
 * [Getting Started with the CLI](../guides/getting-started)
-* [Walk through a full demo](../guides/halyard-demo)
+* [Walk through a full demo](../guides/sample-project-demo)
 
 ### Core Concepts
 
