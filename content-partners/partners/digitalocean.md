@@ -1,20 +1,19 @@
 # How To Use CodeZero on Kubernetes for Remote Development
 
 ### Introduction
-As a developer you like writing code. However, you now also need to wear so many other hats to get your code running in the cluster. Kubernetes does a lot to take care of scaling and running your code in the cluster. However, troubleshooting various issues that occur in any of your cluster environments can be a daunting and exhausting process. You can take on the goal of learning the ins and outs of Kubernetes but this isn't practical nor typically a developer role in most organizations. In that case, you can work closely with your DevOps team to assist you in this. But, there is a different approach, which is so much easier and simpler.
+As a developer you like writing code. However, you now also need to wear so many other hats to get your code running in the cluster. Kubernetes does a lot to take care of scaling and running your code in a cluster. However, troubleshooting various issues that occur in any of your cluster environments can be a daunting and an exhausting process. You can take on the goal of learning the ins and outs of Kubernetes but this isn't practical nor is this typically a developer role in most organizations. In that case, you can work closely with your DevOps team to assist you in this. But, there is a different approach, which is so much easier and simpler.
 
-CodeZero allows you to run or debug your local code against your remote cluster. The software's Teleport feature registers the necessary DNS entries on your local machine and listens for your code connecting to these entries and tunnels them into your cluster. In addition, your remote cluster configuration and secrets can be made available locally if required.
+CodeZero allows you to run or debug your local code against your remote cluster. The software's Teleport feature registers DNS entries on your local machine and listens for your code connecting to these entries. When your code connects to one of these entries, Teleport tunnels them into your cluster. In addition, your remote cluster configuration and secrets can be made available locally if required.
 
-Teleport is great when trying to access services that have already been deployed to the cluster. If, however, you would like to have cluster services access to something running locally, you'll need Intercept. CodeZero's intercept feature can hijack calls in your cluster and route them to your local machine. This can be done based on the request's header key/value pair without impacting the normal cluster traffic.
+Teleport is great when trying to access services that have already been deployed to the cluster. If, however, you would like to have cluster services have access to something running locally, you'll need Intercept. CodeZero's intercept feature hijacks calls in your cluster and routes them to your local machine. This is done based on the request's header key/value pair without impacting the normal cluster traffic.
 
 When it comes to volumes, CodeZero's mount feature gives you the ability to mount in cluster volumes on your local machine.
 
-
 ### Goals
 1. Download and install the CodeZero CLI
-1. Teleport from your code to run against a workload in your cluster
-1. Intercept code from your cluster into your local workstation
-1. Mount remote volumes from your cluster into your local workstation
+1. Teleport your machine into the cluster to run your code against a workload in a cluster
+1. Intercept code from a cluster into your local workstation
+1. Mount remote volumes from a cluster into your local workstation
 
 ## Prerequisites
 1. A Kubernetes cluster such as [DigitalOcean Kubernetes](https://www.digitalocean.com/products/kubernetes/). We will use DigitalOcean Kubernetes for the tutorial, but you can also use an existing Kubernetes cluster with any other provider.
