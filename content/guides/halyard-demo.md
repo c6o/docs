@@ -81,7 +81,7 @@ Setup and run a local copy of sample-project-server on port 3010
 Test before intercept
 ```bash
 > curl -L http://sample-project-server:3000/ -H X-C6O-INTERCEPT:yes
-    {"data":"Sample-Project-Backend: Version 1.1"}
+    {"data":"Sample-Project-Server: Version Production"}
 ```
 
 Run intercept (and teleport if you didn't run it previously)
@@ -93,9 +93,9 @@ Run intercept (and teleport if you didn't run it previously)
 Test after intercept
 ```bash
 > curl -L http://sample-project-server:3000/ -H X-C6O-INTERCEPT:yes
-{"data":"Sample-Project-Server: Version 3010"}
+    {"data":"Sample-Project-Server: Local workstation"}
 > curl -L http://sample-project-server:3000/ -H SOME-OTHER-HEADER:value
-{"data":"Sample-Project-Server-Backend: Version 3010"}
+    {"data":"Sample-Project-Server: Version Production"}
 ```
 Note that your local server will log the request when you send the request with the `X-C6O-INTERCEPT:yes` header in curl
 
