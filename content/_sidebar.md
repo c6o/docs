@@ -3,7 +3,7 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Getting Started](/guides/getting-started)
-  - [Halyard Demo](/guides/halyard-demo)
+  - [Sample Project Demo](/guides/sample-project-demo)
 - Concepts
   - [Intercept](/concepts/intercept)
   - [Teleport](/concepts/teleport)

@@ -47,7 +47,7 @@ export MY_ENV_VAR2="bar"
 ```
 Cleanup the residue from the last command:
 ```bash
-> czctl deployment teleport halyard-frontend -n halyard -f env.sh -m sh --clean
+> czctl deployment teleport sample-project-web -n sample-project -f env.sh -m sh --clean
 ```
 or
 ```bash
@@ -130,7 +130,7 @@ Here's an example of getting the process ids and using `kill -9` to end these pr
 ```bash
 > ps xau | grep 'czfwd\|env'
 username       39531   0.0  0.0 408113552   1456 s007  S+    2:57pm   0:00.00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox czfwd\|env
-root             37102   0.0  0.2 408720272  34208   ??  Ss    2:41pm   0:01.96 /Users/robblovell/code/node-monorepo/node_modules/@c6o/czfwd/bin/czfwd svc -n halyard -n c6o-seed -n c6o-system -n default -n halyard2 -n istio-system -n kube-node-lease -n kube-public -n kube-system
+root             37102   0.0  0.2 408720272  34208   ??  Ss    2:41pm   0:01.96 /Users/robblovell/code/node-monorepo/node_modules/@c6o/czfwd/bin/czfwd svc -n sample-project -n c6o-seed -n c6o-system -n default -n sample-project2 -n istio-system -n kube-node-lease -n kube-public -n kube-system
 username       37093   0.0  0.2 409128256  28240   ??  Ss    2:41pm   0:00.70 /Users/robblovell/.nvm/versions/node/v16.2.0/bin/node /Users/robblovell/code/node-monorepo/packages/tools/cli/lib/services/monitors/env/child.js
 ```
 ```bash
@@ -154,12 +154,12 @@ After a teleport has been issued, the file will look something like this:
 255.255.255.255  broadcasthost
 ::1              localhost
 127.0.0.1        kubernetes.docker.internal
-127.1.31.1       halyard-frontend.halyard2 halyard-frontend.halyard2.svc halyard-frontend.halyard2.svc.cluster.local halyard-frontend.halyard2.do-tor1-kittens halyard-frontend.halyard2.svc.do-tor1-kittens halyard-frontend.halyard2.svc.cluster.do-tor1-kittens
-127.1.31.2       halyard-sockets.halyard2 halyard-sockets.halyard2.svc halyard-sockets.halyard2.svc.cluster.local halyard-sockets.halyard2.do-tor1-kittens halyard-sockets.halyard2.svc.do-tor1-kittens halyard-sockets.halyard2.svc.cluster.do-tor1-kittens
-127.1.31.3       halyard-backend.halyard2 halyard-backend.halyard2.svc halyard-backend.halyard2.svc.cluster.local halyard-backend.halyard2.do-tor1-kittens halyard-backend.halyard2.svc.do-tor1-kittens halyard-backend.halyard2.svc.cluster.do-tor1-kittens
-127.1.31.4       halyard-sails.halyard2 halyard-sails.halyard2.svc halyard-sails.halyard2.svc.cluster.local halyard-sails.halyard2.do-tor1-kittens halyard-sails.halyard2.svc.do-tor1-kittens halyard-sails.halyard2.svc.cluster.do-tor1-kittens
-127.1.31.5       halyard-echo.halyard2 halyard-echo.halyard2.svc halyard-echo.halyard2.svc.cluster.local halyard-echo.halyard2.do-tor1-kittens halyard-echo.halyard2.svc.do-tor1-kittens halyard-echo.halyard2.svc.cluster.do-tor1-kittens
-127.1.31.6       halyard-database.halyard2 halyard-database.halyard2.svc halyard-database.halyard2.svc.cluster.local halyard-database.halyard2.do-tor1-kittens halyard-database.halyard2.svc.do-tor1-kittens halyard-database.halyard2.svc.cluster.do-tor1-kittens
+127.1.31.1       sample-project-web.sample-project sample-project-web.sample-project.svc sample-project-web.sample-project.svc.cluster.local
+127.1.31.2       sample-project-sockets.sample-project sample-project-sockets.sample-project.svc sample-project-sockets.sample-project.svc.cluster.local
+127.1.31.3       sample-project-server.sample-project sample-project-server.sample-project.svc sample-project-server.sample-project.svc.cluster.local
+127.1.31.4       sample-project-sails.sample-project sample-project-sails.sample-project.svc sample-project-sails.sample-project.svc.cluster.local
+127.1.31.5       sample-project-echo.sample-project sample-project-echo.sample-project.svc sample-project-echo.sample-project.svc.cluster.local
+127.1.31.6       sample-project-database.sample-project sample-project-database.sample-project.svc sample-project-database.sample-project.svc.cluster.local
 ```
 If the backup file is corrupted, you can remove the long lines that reference services in your cluster. Either way, the /etc/hosts file should look like this after restoration:
 ```
