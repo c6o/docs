@@ -44,9 +44,13 @@
             auto2top: true,
             relativePath: true,
             maxLevel: 4,
-            subMaxLevel: 3,
+            subMaxLevel: 0,
             logo: 'codezero.png',
             loadSidebar: true,
+            toc: {
+                tocMaxLevel: 5,
+                target: 'h2, h3, h4, h5, h6'
+            },
             plugins: [
                 EditOnGithubPlugin.create(
                     'https://github.com/c6o/docs/blob/main/content',
@@ -112,6 +116,8 @@
     <script src="//unpkg.com/docsify-tabs@1"></script>
     <script src="//unpkg.com/docsify-plugin-flexible-alerts"></script>
     <script src="//unpkg.com/docsify/lib/plugins/emoji.min.js"></script>
+    <script src="//unpkg.com/docsify-plugin-toc"></script>
+
 
     <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-yaml.min.js"></script>
