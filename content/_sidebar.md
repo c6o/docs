@@ -3,6 +3,7 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Getting Started](/guides/getting-started)
+  - [Development Profiles](/guides/development-profiles)
   - [Sample Project Demo](/guides/sample-project-demo)
 - Concepts
   - [Intercept](/concepts/intercept)
