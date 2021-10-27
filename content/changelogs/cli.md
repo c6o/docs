@@ -2,6 +2,27 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.2.0
+
+### BREAKING CHANGES
+
+* Please use `czctl start` instead of `sudo czctl init` when starting up the CLI.  The `start` command does not need to be run with `sudo` explicitly, as the command will prompt you for your password if permission elevation is required.
+
+### New Features
+
+* This release introduces a long-running daemon service on your local machine to manages the long running sessions.  Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage it's lifecycle.
+* Volume mount command: now works on Linux without `sudo`.
+* Auto-Restart interceptor to avoid tunnel timeout.
+* `sudo` is no longer required to startup the CLI.
+
+### Bug Fixes
+
+* Fixed podless services with no endpoint causing crash
+* Fixed issue when registering configuration watcher
+* Fixed intercept session cleanup on close
+
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
+
 ## Release Notes for v1.1.1
 
 ### Bug Fixes
