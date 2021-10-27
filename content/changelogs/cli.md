@@ -10,9 +10,10 @@ This document contains the release notes for the CodeZero CLI.
 
 ### New Features
 
-* This release introduces a long-running daemon service on your local machine to manages the long running sessions.  Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage it's lifecycle.
+* This release introduces a daemon service on your local machine to manage the long running sessions.  
+* Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
 * Volume mount command: now works on Linux without `sudo`.
-* Auto-Restart interceptor to avoid tunnel timeout.
+* Auto-Restart interceptor tunnel to avoid tunnel timeout.
 * `sudo` is no longer required to startup the CLI.
 
 ### Bug Fixes
@@ -20,6 +21,7 @@ This document contains the release notes for the CodeZero CLI.
 * Fixed podless services with no endpoint causing crash
 * Fixed issue when registering configuration watcher
 * Fixed intercept session cleanup on close
+* Fixed NVM environments unable to reliably initialize the CLI
 
 Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
 
