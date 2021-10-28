@@ -25,6 +25,8 @@ This document contains the release notes for the CodeZero CLI.
 
 Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session. [[#27](https://github.com/c6o/roadmap/issues/27)]
 
+Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [[#24](https://github.com/c6o/roadmap/issues/27)]
+
 ## Release Notes for v1.1.1
 
 ### Bug Fixes
