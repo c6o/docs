@@ -10,20 +10,20 @@ This document contains the release notes for the CodeZero CLI.
 
 ### New Features
 
-* This release introduces a daemon service on your local machine to manage the long running sessions.  
+* This release introduces a daemon service on your local machine to manage the long running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
 * Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
-* Volume mount command: now works on Linux without `sudo`.
-* Auto-Restart interceptor tunnel to avoid tunnel timeout.
-* `sudo` is no longer required to startup the CLI.
+* Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
+* Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
+* `sudo` is no longer required to startup the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
 
 ### Bug Fixes
 
 * Fixed podless services with no endpoint causing crash
 * Fixed issue when registering configuration watcher
 * Fixed intercept session cleanup on close
-* Fixed NVM environments unable to reliably initialize the CLI
+* Fixed NVM environments unable to reliably initialize the CLI [[#23](https://github.com/c6o/roadmap/issues/23)]
 
-Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session. [[#27](https://github.com/c6o/roadmap/issues/27)]
 
 ## Release Notes for v1.1.1
 
