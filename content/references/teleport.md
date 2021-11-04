@@ -96,11 +96,11 @@ Teleport does several things to route local traffic to in cluster resources:
 Teleport requires permission to modify the local `hosts` file, which can only be done with elevated root access. Therefore, to run teleport, you must first initialize the CLI using:
 
 ```bash
-> sudo czctl init
+> sudo czctl start
 ```
 
 > [!EXPERT]
-> Root access is only required once. During `init` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
+> Root access is only required once. During `start` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
 
 ## Residue
 
