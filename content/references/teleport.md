@@ -96,7 +96,7 @@ Teleport does several things to route local traffic to in cluster resources:
 Teleport requires permission to modify the local `hosts` file, which can only be done with elevated root access. Therefore, to run teleport, you must first initialize the CLI using:
 
 ```bash
-> sudo czctl start
+> czctl start
 ```
 
 > [!EXPERT]

@@ -73,7 +73,7 @@ Mount works as follows:
 On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
 
 ```bash
-> sudo czctl start
+> czctl start
 ```
 
 > [!EXPERT]

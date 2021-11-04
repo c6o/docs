@@ -70,7 +70,7 @@ Teleport requires access to make modifications to your local `hosts` file, which
 Root access is only required once to elevate the `czctl` command's priviledge by issuing the command:
 
 ```bash
-sudo czctl start
+czctl start
 ```
 
 > [!EXPERT]
