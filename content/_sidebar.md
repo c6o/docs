@@ -3,6 +3,7 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Getting Started](/guides/getting-started)
+  - [Installing the CLI](/guides/installing-cli)
   - [Sample Project Demo](/guides/sample-project-demo)
 - Concepts
   - [Intercept](/concepts/intercept)
