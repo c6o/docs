@@ -15,6 +15,7 @@ This document contains the release notes for the CodeZero CLI.
 * Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
 * Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
 * `sudo` is no longer required to startup the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
+* Added `--save-profile` flag to `teleport`, `intercept` and `mount` commands to prepare for use of Development Profiles.
 
 ### Bug Fixes
 
