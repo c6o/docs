@@ -1,4 +1,4 @@
-# Walkthough Demo
+# Walkthrough Demo
 
 This guide walks through setting up a demo project with several services to demonstrate using intercept and teleport commands to debug/develop the code.
 

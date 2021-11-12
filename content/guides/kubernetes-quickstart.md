@@ -1,6 +1,4 @@
-# Getting Started
-
-When it comes to learning Kubernetes and CodeZero, nothing beats having an actual Kubernetes cluster. If you already have a cluster set up, you can skip this guide and simply use a learning namespace within your existing cluster to get to know CodeZero.
+# Kubernetes Cluster QuickStart
 
 CodeZero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
 
