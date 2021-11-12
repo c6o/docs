@@ -5,6 +5,7 @@
   - [Kubernetes QuickStart](/guides/kubernetes-quickstart)
   - [Installing the CLI](/guides/installing-cli)
 - Concepts
+  - [Environments](/concepts/environments)
   - [Sessions](/concepts/sessions)
   - [Teleport](/concepts/teleport)
   - [Intercept](/concepts/intercept)
