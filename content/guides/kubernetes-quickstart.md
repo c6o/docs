@@ -55,6 +55,7 @@ export KUBECONFIG=$PWD/my-cluster-kubeconfig.yaml
 
 > [!NOTE]
 > The Kubeconfig file may be available before your cluster is ready for use.
+
 > [!NOTE]
 > Be sure to add `*-kubeconfig.yaml` and `*-kubeconfig.yml` to your `.gitignore` so you do not accidentally check in your credentials file!
 

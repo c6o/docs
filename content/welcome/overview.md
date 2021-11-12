@@ -2,17 +2,21 @@
 
 CodeZero is a Modern Development Platform for Kubernetes. Before Kubernetes and Cloud computing, most software development has been possible on a single developer workstation. As software complexity grows and organizations move to Microservices Architectures designed to run on cluster of computers, it is no longer feasible to run these applications on a single workstation. This makes developing new features and diagnosing issues challenging.
 
-Debugging applications on remote environments is painful. Despite modern observability and logging tools, nothing matches the local development experience. For instance, you cannot set breakpoints on remote applications running in distributed environments. Developers do not have access to their local tooling in these environments and setting a breakpoint would block inbound requests.
+This documentation is geared towards a technical audience and we assume you have a working knowledge of Kubernetes.
 
-CodeZero allows developers to work on software in a Kubernetes Cluster while getting the benefits and ergonomics of the local development experience. The tools and techniques described in this documentation will allow you to work as if your development workstation is a part of the cluster. CodeZero's advanced traffic shaping allow you to carve out traffic in the cluster and direct it to services under development on your local machine. You will be able to collaborate and work with team members on any part of the application without impacting other developers or end-users. Finally, you will experience a tighter feedback loop when developing as you will be able to test changes to services without having to deploy changes to the cluster each time.
+## Modern Development
 
-This documentation is geared towards a technical audience.
+Debugging applications on remote environments is painful. Despite  observability and logging tools, nothing matches the local development experience. For instance, you cannot set breakpoints on remote applications running in distributed environments and you do not have access to local tooling in these environments.
+
+CodeZero allows developers to work on software in a Kubernetes Cluster while getting the benefits and ergonomics of the local development experience. The tools and techniques described in this documentation will allow you to work as if your development workstation is a part of the cluster. CodeZero's advanced traffic shaping allow you to carve out traffic in the cluster and direct it to services under development on your local machine.
+
+You can now collaborate with team members and work on any part of the application without impacting other developers or end-users. Finally, you will experience a tighter feedback loop when developing as you will be able to test changes to services without having to deploy changes to the cluster each time.
 
 ## Getting Started
 
-Our goal hear is to walk you through the basics of Modern Development using CodeZero for Kubernetes. This documentation is a manual for the CodeZero tools as well as includes hands on tutorials.
+Our goal hear is to walk you through the basics of Modern Development using CodeZero for Kubernetes. This documentation is a manual for the CodeZero tools and includes hands on tutorials.
 
-We recommend you go through this documentation in the order it is put together as we build on previously defined concepts. Happy Learning!
+We recommend you go through this documentation in the order it is presented as we build on previously defined concepts. Happy Learning!
 
 ### Guides
 
