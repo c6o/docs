@@ -1,0 +1,712 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="547.9167px" preserveAspectRatio="none" style="width:1690px;height:547px;background:#00000000;" version="1.1" viewBox="0 0 1690 547" width="1690.625px" zoomAndPan="magnify"><defs/><g><!--MD5=[ae7709657f611b622ade1638c535e86e]
+    cluster cluster--><rect fill="#FFFFFF" height="457.2917" rx="13.0208" ry="13.0208" style="stroke:#326CE5;stroke-width:2.0833333333333335;" width="1392.7083" x="291.6667" y="7.2917"/><text fill="#000000" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="160.4167" x="907.8125" y="28.1199">Kubernetes Cluster</text><!--MD5=[0e77cd041dc5ea57a52568fb2d3c6599]
+    cluster nsBackEnd--><rect fill="#FFFFFF" height="377.0833" rx="13.0208" ry="13.0208" style="stroke:#FF4216;stroke-width:2.0833333333333335;" width="1342.7083" x="316.6667" y="62.5"/><text fill="#000000" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="127.0833" x="924.4792" y="83.3282">sample-project</text><text fill="#000000" font-family="Verdana" font-size="12.5" font-weight="bold" lengthAdjust="spacing" textLength="97.9167" x="939.0625" y="98.3704">[Namespace]</text><!--MD5=[ea19deeb053b6d935524ddb2281a69ee]
+    entity traefik--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="333.3333" y="217.7083"/><image height="68.75" width="72.9167" x="348.9583" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEYklEQVR4Xt1aS25UMRDM3ecEuQAn4AScIKxYkQ0rpJFYsSBBoAiEaU0nPf36U277eUaQUi3gYft12d3lfgk37dXhxj74/3FxSXdfng7vvzHffPz+8PTHjliNC0rSYjRvPzzef/1lR6/DRSS9+/zTK7masJWSKKnefvrho8ekw7QL7cMaSSSG6sSHWycdrF10FnslHR9/Uwr5EOdIh7zfP+YlUSUsFKO50xhnJJEYH8dykjBKAfvuAsYkZb68n9mBTxhjSdKclQ2R4gb7NSSsI2m/lRXJEXfNpuL4SNJ1xDDlEGgTsSoirrFU0jX1HJQkRjfPgSXGkmiCX+Wi9KWCuyrSbMYLYknGpml1SuKQQ4dJcdBSIcNdx7eFHf2CWJI59/B9jErqM0m8nVwAWD+LKpZUnMygYvXvM6Sw8CIYYS5kJrFAUitcwdnr6/CllZVTIMnveldSi14p9KU/B5+BdsQJgSQfXEVSS9Kjcjl2kVWUHXdCIMnPLEpqbiOz3BgC8L0wnxdLMhdafWIGnzKa4YejleQLyRPbl97UzLi5l9MM97vbQ9BEO8dL6noXM4uVoRfxuRcWhrGQh3K7rGcxrCT/sow+Vg29wcYhwldoSd1+XNPni5Xk5wBiN9PbLBFnuSQDimki9DFsJJnirjCsAYZJMBoJap0lZYIBfTltJI3uENMfvUCbDc6l0Q5Y07x0I2luUb9PGnPbNESzpxtJfnSR2ABBvi2hccuzpIlC0gxvPcHc+RdpNvQsCfQdReL2FNcS/tcu9YvOkibc5nDaIWNravENcBbQduzJT11OZ0l+XJe3p85Ix8pPZE0DkAh8wmAApk6QXZLkTCp9HSMzQIkpbJe61K3Ms6RKt2poKkenTb1XylabsBOZ+yxpNI9DfwN9nYGP2FvLaEgy8VmSH6FJsWqGehg6Z3yUAsou/lmXMKzALEtDShWUJIXvC2GCqE/MUO/KZQdXSvIFiXulIh5q3072lPARVyRlToUNsI7QVDRl5NnEwU5UJIHpoPaGEG4ZU1/xm7Y1m9OV1N1CYBUVZCnANO66kaT7AE0sCSetEPRKGNgh/B24kdSiEj9ASfUWBvdKGfB+hfZjJbVoFaoTczUJ/WsAb7c/6NIMz7C7vp1wQiCpFdZaTlNsFePOzjyW1HKruBC1JFw8frxBKqn17t+1lBArxYlvBSQpM8Au78f/Lw5LqrSq3bsbSWq1PVtCelG3eA6JxRl0JLXazhnyKZHHkHnSn6k2ZGvoCf31bvxX10wbXIS+pAabnZAUNPu+3PrsYPSE7z3e7FFfzSzOoCSpDRqgSJLD4Sd0MnLm9GRIErA4g6qkNmKAyyVhizMYkBT2SiEzSRQZPxlKvK7FGQxIalGvFFLbAz8RMxB7YJF+rmHF4gzGJLUpAxRSfDIdfy8Ii5agMSypjRugJnv6Ef6uSXiMetkuZiS1QQOco/mwq2NS0nSvVOSQxRlMSmJUkmeU2bdTHbsk/Zt4hZL+AnWxd51GGtzuAAAAAElFTkSuQmCC" y="233.3333"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="353.125" y="313.6861"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="61.4583" x="348.9583" y="330.1707">Ingress</text><!--MD5=[cbf816744ab61e3b23f57067f0ff864f]
+    entity svcFront--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="105.2083" x="517.7083" y="217.7083"/><image height="68.75" width="72.9167" x="533.3333" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAADgElEQVR4Xt2aQY7bMAxF5+4+QS4wJ+gJ5gTtqqt601WBAl110UzRYtCiKmGOZZmkJJKyHE2IjyBwJEsvEr+kxA/h7uKBXnj70R3p/beX6cMP1OOnn9eXf7TE0dERKYVJdfn4PH//Q0sfF12Qnr785iSngR2JBJPq3edfvPdlwWDSG7XFMUgAA3nCu6sXDCy9qTdakb4+/4UpxLvoEwxyu3/4kSATDoRJ1WiMHiSA4f04XAAGU4C2rQgbUs6X+8lhjCokn5UdKBNYBandyo6VxvFLSEPBpCrnWBZpWB5UwRJlJKjA71IVzHioaJXPciC3aafXkJF8Ng1I9EaK8LUFojdaQ0by+dvJSNfM3JOReH2NTkbKmcQbRsqlk4AE9Ly+RicjTZl0EpA0BzhR4yLxmkoVTDwsC4Mon4mjxHQ6EimnuD3jHzVKPDhSJHciFdQPSZzqFKllGuTUD2mS0oki9TiodkXCRE2DIvE67eqKxI8bO6Sra7daVVcknk47JH0iwY2gMPRVozg3+Ec5mdbGFCEQJP0ZiQ/34cEbzYmk0w6Jl84JkfDrrAoLQ8P8I1HYGb1RzfufJTYkUyJhL5UTFQbfdH/sjx4J7x9jQ5ote62hkGIVjA3JdOwbDSlNpw2JlytoNKQ0ne4EKT0OviJpdqvQRlRESi/mCmN7+B+HWJiUxy4VCotaiVakp9rSFlsqRNo233qRSFO3uspprCsWfkXiJYjGR4rHwftBig5xP0h0lKreNT5SLLyZeHnPOjhS+rvKbttasMuRkUj1HVJhNbws/8OVRZrhBVKlkwLweIFUhTWG/+a6Qwq6NXcciXOHIgWFVYwj2vUlBKRg3JXfSrl0lZFC0SpG0Jz/gz2LFBTr760UD/NilJAKBnhDkWM5jxJSqC0I50u0OBIVpKA4dxCBtcBKAMKvI30UbF6epMKHg0AOa6Wdk6KOFGp7Jd4qvgE2qAj9xi/lcXl+a1qcCiHJgltVzuJIqJCCxQChozACgIFVcEymZT+BF30pWrA4ElqkYDFA6Df0/ro+f4TDgq8+pLLFkTAgafZKl+VnCXwfpxy84lYNr0dUuKJZ06sWR8KAFHR7JQCI9oBzD0cm9t5kDxqLI2FDCnYDbJTSEtIwIwWjAbYoPdjpw4MULAboVvVcmAsnksO1TDJZHAknEkaPvILx9823GE1IY8YdIv0HU9Woezrwps8AAAAASUVORK5CYII=" y="233.3333"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="537.5" y="313.6861"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="73.9583" x="533.3333" y="330.1707">frontend</text><!--MD5=[6eabeb1c1b3b650a2425a6d1029c98a3]
+    entity svcCore--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="923.9583" y="291.6667"/><image height="68.75" width="72.9167" x="939.5833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAADgElEQVR4Xt2aQY7bMAxF5+4+QS4wJ+gJ5gTtqqt601WBAl110UzRYtCiKmGOZZmkJJKyHE2IjyBwJEsvEr+kxA/h7uKBXnj70R3p/beX6cMP1OOnn9eXf7TE0dERKYVJdfn4PH//Q0sfF12Qnr785iSngR2JBJPq3edfvPdlwWDSG7XFMUgAA3nCu6sXDCy9qTdakb4+/4UpxLvoEwxyu3/4kSATDoRJ1WiMHiSA4f04XAAGU4C2rQgbUs6X+8lhjCokn5UdKBNYBandyo6VxvFLSEPBpCrnWBZpWB5UwRJlJKjA71IVzHioaJXPciC3aafXkJF8Ng1I9EaK8LUFojdaQ0by+dvJSNfM3JOReH2NTkbKmcQbRsqlk4AE9Ly+RicjTZl0EpA0BzhR4yLxmkoVTDwsC4Mon4mjxHQ6EimnuD3jHzVKPDhSJHciFdQPSZzqFKllGuTUD2mS0oki9TiodkXCRE2DIvE67eqKxI8bO6Sra7daVVcknk47JH0iwY2gMPRVozg3+Ec5mdbGFCEQJP0ZiQ/34cEbzYmk0w6Jl84JkfDrrAoLQ8P8I1HYGb1RzfufJTYkUyJhL5UTFQbfdH/sjx4J7x9jQ5ote62hkGIVjA3JdOwbDSlNpw2JlytoNKQ0ne4EKT0OviJpdqvQRlRESi/mCmN7+B+HWJiUxy4VCotaiVakp9rSFlsqRNo233qRSFO3uspprCsWfkXiJYjGR4rHwftBig5xP0h0lKreNT5SLLyZeHnPOjhS+rvKbttasMuRkUj1HVJhNbws/8OVRZrhBVKlkwLweIFUhTWG/+a6Qwq6NXcciXOHIgWFVYwj2vUlBKRg3JXfSrl0lZFC0SpG0Jz/gz2LFBTr760UD/NilJAKBnhDkWM5jxJSqC0I50u0OBIVpKA4dxCBtcBKAMKvI30UbF6epMKHg0AOa6Wdk6KOFGp7Jd4qvgE2qAj9xi/lcXl+a1qcCiHJgltVzuJIqJCCxQChozACgIFVcEymZT+BF30pWrA4ElqkYDFA6Df0/ro+f4TDgq8+pLLFkTAgafZKl+VnCXwfpxy84lYNr0dUuKJZ06sWR8KAFHR7JQCI9oBzD0cm9t5kDxqLI2FDCnYDbJTSEtIwIwWjAbYoPdjpw4MULAboVvVcmAsnksO1TDJZHAknEkaPvILx9823GE1IY8YdIv0HU9Woezrwps8AAAAASUVORK5CYII=" y="307.2917"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="943.75" y="387.6444"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="36.4583" x="939.5833" y="404.129">core</text><!--MD5=[eda27b5e8ddfd31f351e3f8e247ee14a]
+    entity svcLeaf--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="1344.7917" y="291.6667"/><image height="68.75" width="72.9167" x="1360.4167" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAADgElEQVR4Xt2aQY7bMAxF5+4+QS4wJ+gJ5gTtqqt601WBAl110UzRYtCiKmGOZZmkJJKyHE2IjyBwJEsvEr+kxA/h7uKBXnj70R3p/beX6cMP1OOnn9eXf7TE0dERKYVJdfn4PH//Q0sfF12Qnr785iSngR2JBJPq3edfvPdlwWDSG7XFMUgAA3nCu6sXDCy9qTdakb4+/4UpxLvoEwxyu3/4kSATDoRJ1WiMHiSA4f04XAAGU4C2rQgbUs6X+8lhjCokn5UdKBNYBandyo6VxvFLSEPBpCrnWBZpWB5UwRJlJKjA71IVzHioaJXPciC3aafXkJF8Ng1I9EaK8LUFojdaQ0by+dvJSNfM3JOReH2NTkbKmcQbRsqlk4AE9Ly+RicjTZl0EpA0BzhR4yLxmkoVTDwsC4Mon4mjxHQ6EimnuD3jHzVKPDhSJHciFdQPSZzqFKllGuTUD2mS0oki9TiodkXCRE2DIvE67eqKxI8bO6Sra7daVVcknk47JH0iwY2gMPRVozg3+Ec5mdbGFCEQJP0ZiQ/34cEbzYmk0w6Jl84JkfDrrAoLQ8P8I1HYGb1RzfufJTYkUyJhL5UTFQbfdH/sjx4J7x9jQ5ote62hkGIVjA3JdOwbDSlNpw2JlytoNKQ0ne4EKT0OviJpdqvQRlRESi/mCmN7+B+HWJiUxy4VCotaiVakp9rSFlsqRNo233qRSFO3uspprCsWfkXiJYjGR4rHwftBig5xP0h0lKreNT5SLLyZeHnPOjhS+rvKbttasMuRkUj1HVJhNbws/8OVRZrhBVKlkwLweIFUhTWG/+a6Qwq6NXcciXOHIgWFVYwj2vUlBKRg3JXfSrl0lZFC0SpG0Jz/gz2LFBTr760UD/NilJAKBnhDkWM5jxJSqC0I50u0OBIVpKA4dxCBtcBKAMKvI30UbF6epMKHg0AOa6Wdk6KOFGp7Jd4qvgE2qAj9xi/lcXl+a1qcCiHJgltVzuJIqJCCxQChozACgIFVcEymZT+BF30pWrA4ElqkYDFA6Df0/ro+f4TDgq8+pLLFkTAgafZKl+VnCXwfpxy84lYNr0dUuKJZ06sWR8KAFHR7JQCI9oBzD0cm9t5kDxqLI2FDCnYDbJTSEtIwIwWjAbYoPdjpw4MULAboVvVcmAsnksO1TDJZHAknEkaPvILx9823GE1IY8YdIv0HU9Woezrwps8AAAAASUVORK5CYII=" y="307.2917"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1364.5833" y="387.6444"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="32.2917" x="1360.4167" y="404.129">leaf</text><!--MD5=[8f9982da1aaba7c9e00f4c82b70be554]
+    entity svcDb--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="110.4167" x="1341.6667" y="123.9583"/><image height="68.75" width="72.9167" x="1357.2917" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAADgElEQVR4Xt2aQY7bMAxF5+4+QS4wJ+gJ5gTtqqt601WBAl110UzRYtCiKmGOZZmkJJKyHE2IjyBwJEsvEr+kxA/h7uKBXnj70R3p/beX6cMP1OOnn9eXf7TE0dERKYVJdfn4PH//Q0sfF12Qnr785iSngR2JBJPq3edfvPdlwWDSG7XFMUgAA3nCu6sXDCy9qTdakb4+/4UpxLvoEwxyu3/4kSATDoRJ1WiMHiSA4f04XAAGU4C2rQgbUs6X+8lhjCokn5UdKBNYBandyo6VxvFLSEPBpCrnWBZpWB5UwRJlJKjA71IVzHioaJXPciC3aafXkJF8Ng1I9EaK8LUFojdaQ0by+dvJSNfM3JOReH2NTkbKmcQbRsqlk4AE9Ly+RicjTZl0EpA0BzhR4yLxmkoVTDwsC4Mon4mjxHQ6EimnuD3jHzVKPDhSJHciFdQPSZzqFKllGuTUD2mS0oki9TiodkXCRE2DIvE67eqKxI8bO6Sra7daVVcknk47JH0iwY2gMPRVozg3+Ec5mdbGFCEQJP0ZiQ/34cEbzYmk0w6Jl84JkfDrrAoLQ8P8I1HYGb1RzfufJTYkUyJhL5UTFQbfdH/sjx4J7x9jQ5ote62hkGIVjA3JdOwbDSlNpw2JlytoNKQ0ne4EKT0OviJpdqvQRlRESi/mCmN7+B+HWJiUxy4VCotaiVakp9rSFlsqRNo233qRSFO3uspprCsWfkXiJYjGR4rHwftBig5xP0h0lKreNT5SLLyZeHnPOjhS+rvKbttasMuRkUj1HVJhNbws/8OVRZrhBVKlkwLweIFUhTWG/+a6Qwq6NXcciXOHIgWFVYwj2vUlBKRg3JXfSrl0lZFC0SpG0Jz/gz2LFBTr760UD/NilJAKBnhDkWM5jxJSqC0I50u0OBIVpKA4dxCBtcBKAMKvI30UbF6epMKHg0AOa6Wdk6KOFGp7Jd4qvgE2qAj9xi/lcXl+a1qcCiHJgltVzuJIqJCCxQChozACgIFVcEymZT+BF30pWrA4ElqkYDFA6Df0/ro+f4TDgq8+pLLFkTAgafZKl+VnCXwfpxy84lYNr0dUuKJZ06sWR8KAFHR7JQCI9oBzD0cm9t5kDxqLI2FDCnYDbJTSEtIwIwWjAbYoPdjpw4MULAboVvVcmAsnksO1TDJZHAknEkaPvILx9823GE1IY8YdIv0HU9Woezrwps8AAAAASUVORK5CYII=" y="139.5833"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1361.4583" y="219.9361"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="79.1667" x="1357.2917" y="236.4207">database</text><!--MD5=[aa47480fbfca86c9aaa58c8f81615e9a]
+    entity svcSoc--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="923.9583" y="123.9583"/><image height="68.75" width="72.9167" x="939.5833" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAADgElEQVR4Xt2aQY7bMAxF5+4+QS4wJ+gJ5gTtqqt601WBAl110UzRYtCiKmGOZZmkJJKyHE2IjyBwJEsvEr+kxA/h7uKBXnj70R3p/beX6cMP1OOnn9eXf7TE0dERKYVJdfn4PH//Q0sfF12Qnr785iSngR2JBJPq3edfvPdlwWDSG7XFMUgAA3nCu6sXDCy9qTdakb4+/4UpxLvoEwxyu3/4kSATDoRJ1WiMHiSA4f04XAAGU4C2rQgbUs6X+8lhjCokn5UdKBNYBandyo6VxvFLSEPBpCrnWBZpWB5UwRJlJKjA71IVzHioaJXPciC3aafXkJF8Ng1I9EaK8LUFojdaQ0by+dvJSNfM3JOReH2NTkbKmcQbRsqlk4AE9Ly+RicjTZl0EpA0BzhR4yLxmkoVTDwsC4Mon4mjxHQ6EimnuD3jHzVKPDhSJHciFdQPSZzqFKllGuTUD2mS0oki9TiodkXCRE2DIvE67eqKxI8bO6Sra7daVVcknk47JH0iwY2gMPRVozg3+Ec5mdbGFCEQJP0ZiQ/34cEbzYmk0w6Jl84JkfDrrAoLQ8P8I1HYGb1RzfufJTYkUyJhL5UTFQbfdH/sjx4J7x9jQ5ote62hkGIVjA3JdOwbDSlNpw2JlytoNKQ0ne4EKT0OviJpdqvQRlRESi/mCmN7+B+HWJiUxy4VCotaiVakp9rSFlsqRNo233qRSFO3uspprCsWfkXiJYjGR4rHwftBig5xP0h0lKreNT5SLLyZeHnPOjhS+rvKbttasMuRkUj1HVJhNbws/8OVRZrhBVKlkwLweIFUhTWG/+a6Qwq6NXcciXOHIgWFVYwj2vUlBKRg3JXfSrl0lZFC0SpG0Jz/gz2LFBTr760UD/NilJAKBnhDkWM5jxJSqC0I50u0OBIVpKA4dxCBtcBKAMKvI30UbF6epMKHg0AOa6Wdk6KOFGp7Jd4qvgE2qAj9xi/lcXl+a1qcCiHJgltVzuJIqJCCxQChozACgIFVcEymZT+BF30pWrA4ElqkYDFA6Df0/ro+f4TDgq8+pLLFkTAgafZKl+VnCXwfpxy84lYNr0dUuKJZ06sWR8KAFHR7JQCI9oBzD0cm9t5kDxqLI2FDCnYDbJTSEtIwIwWjAbYoPdjpw4MULAboVvVcmAsnksO1TDJZHAknEkaPvILx9823GE1IY8YdIv0HU9Woezrwps8AAAAASUVORK5CYII=" y="139.5833"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="943.75" y="219.9361"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="65.625" x="939.5833" y="236.4207">sockets</text><!--MD5=[e2b6d030184da02174530a2fa79a4b6a]
+    entity depFront--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="105.2083" x="703.125" y="217.7083"/><image height="68.75" width="72.9167" x="718.75" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEaElEQVR4Xt2aTW4UMRCFc3efIBfICXKCnCCsWDEbVkiRWLFggkARCFPql/G468/lnxkgpbdIOm23P7vq2T2Tm/zm4oZf+P/j4kiPn1/Su6/Q3Ydvx5ff/I7VcUGkGqbW7fvnw5ef/O51cRGkh08/JMnVwFYiUVLdf/wuR++LFpN3NBdrkAiG6kQONy5aWN7paMwiPT3/ohSSQxwTLfK8f4wjUSUshKk1aYwjSAQjx7FcBEYpwJ8diD4ky5cvpwFjDCGNWdlCdYE1kOatbK0iju8hTcLQ1FIPpOUu4teYiTTGQ61oItVH0oJT8tD+s4TQsUQdiRrIXnzRWJ3HsJjfAKi2eaen0JG6bHp4G5n0T97dKXSkuL9F6tUJmovh5bLmUUeS7VXFjdWPsbpVKzbPIK3iQQxQWeWkIBG9bM/UPDjD3ygt6U7LA+sYy0DeyxYKUvMFjmaUt6mCAKzB+QftLk+CeBdbKEiyJZM15cGjhuMokea11JF0I1kZ3PXiZOVtJOeb/XCkZqfqxFDEeSBrrboWih7K20skf/tTu8g9+1gtta78AUjx9hLJn2x1oZsLa0nN4d6zmJwXjiTb1FL3oqZDOuJ9beFPK5NM4B1Sc4bUQuoaAZM6R5PltENq5rFc5dxa2Fp49aiFOaJui+gK9uii5pSx8eyQmtMziZTE45sRyWo2qh2SvNtvHGxVS6a+ExGeJLL3jNQspLSilvzDVB1BHtnnGSlyxFKrOf5sSJ0XFs2qZqrbnpEi2+WSfUndjuro5Un7ijgjyfukpGMiItNRS61JxABP2qdPH1Iy0ubY+bZjmUQk+VXVK/+KFE8eK23iPSRjtYd5oNLPK1JXiasLlcPvSxBzmkmeJJHkHY58I47s96yTeZ5UTfQIUrKLoQQ94HH74MFxDphEV8Y6Kss+iJRE5ljhjJiAnb/2iq/SvHVaETmULFF54tnE45Vdq5mB10GqHWt3bI2UtVTzM3HZZK3YtO6QZmbU+eZC3rxQcp/cIWW3miPCSx5jk7etkrplc6Q8ahVSt6dvAeWfVokPfQsFKfcfQ/+KrDzXkfKoVVxNzv5hIuVL1sCk1Ne2Eh5S3ADjpkKj6ToiS/knzOwj5fCBMoeXFAc/eT0o1eJYNJCy/d5xt/2Pz2H73j9vSLfb/5BAMDoA0K90JyynINGvdBGnW1wvnuQcdvngtGgjZeOsVEZZkMpwiQ1JCxhcyZvl4B7cAAfCpGCC0LP1jmxZHIsQUtYMsFzEcPHIw+mDUvwVw8X9NGJsxFiEktLlZ5DUbLUci2MRRcqiWrKGROPD9oqF7UJ62L7VrTOwCIkQjA4kNnky8QoAEgxXMFw18dBP3eq4fSxePyUFLI5FB1IW//Rd7KEUDIqn0CIPcRHjxhIlYQ8Fr/4VffJBtKIPKdsGqKpOvIikMQQtoY5upGwYoKo40v32/wOsip6Mj6L8GEHKmgEuF2xzIAaRZBGvVZfFsRhEQgSTqku0/mP5VmIK6d+MN4j0B+XE28Mffh8OAAAAAElFTkSuQmCC" y="233.3333"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="722.9167" y="313.6861"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="73.9583" x="718.75" y="330.1707">frontend</text><!--MD5=[92c1f690ec28b7e90bcb18cc08cbda9c]
+    entity depCore--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="1108.3333" y="291.6667"/><image height="68.75" width="72.9167" x="1123.9583" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEaElEQVR4Xt2aTW4UMRCFc3efIBfICXKCnCCsWDEbVkiRWLFggkARCFPql/G468/lnxkgpbdIOm23P7vq2T2Tm/zm4oZf+P/j4kiPn1/Su6/Q3Ydvx5ff/I7VcUGkGqbW7fvnw5ef/O51cRGkh08/JMnVwFYiUVLdf/wuR++LFpN3NBdrkAiG6kQONy5aWN7paMwiPT3/ohSSQxwTLfK8f4wjUSUshKk1aYwjSAQjx7FcBEYpwJ8diD4ky5cvpwFjDCGNWdlCdYE1kOatbK0iju8hTcLQ1FIPpOUu4teYiTTGQ61oItVH0oJT8tD+s4TQsUQdiRrIXnzRWJ3HsJjfAKi2eaen0JG6bHp4G5n0T97dKXSkuL9F6tUJmovh5bLmUUeS7VXFjdWPsbpVKzbPIK3iQQxQWeWkIBG9bM/UPDjD3ygt6U7LA+sYy0DeyxYKUvMFjmaUt6mCAKzB+QftLk+CeBdbKEiyJZM15cGjhuMokea11JF0I1kZ3PXiZOVtJOeb/XCkZqfqxFDEeSBrrboWih7K20skf/tTu8g9+1gtta78AUjx9hLJn2x1oZsLa0nN4d6zmJwXjiTb1FL3oqZDOuJ9beFPK5NM4B1Sc4bUQuoaAZM6R5PltENq5rFc5dxa2Fp49aiFOaJui+gK9uii5pSx8eyQmtMziZTE45sRyWo2qh2SvNtvHGxVS6a+ExGeJLL3jNQspLSilvzDVB1BHtnnGSlyxFKrOf5sSJ0XFs2qZqrbnpEi2+WSfUndjuro5Un7ijgjyfukpGMiItNRS61JxABP2qdPH1Iy0ubY+bZjmUQk+VXVK/+KFE8eK23iPSRjtYd5oNLPK1JXiasLlcPvSxBzmkmeJJHkHY58I47s96yTeZ5UTfQIUrKLoQQ94HH74MFxDphEV8Y6Kss+iJRE5ljhjJiAnb/2iq/SvHVaETmULFF54tnE45Vdq5mB10GqHWt3bI2UtVTzM3HZZK3YtO6QZmbU+eZC3rxQcp/cIWW3miPCSx5jk7etkrplc6Q8ahVSt6dvAeWfVokPfQsFKfcfQ/+KrDzXkfKoVVxNzv5hIuVL1sCk1Ne2Eh5S3ADjpkKj6ToiS/knzOwj5fCBMoeXFAc/eT0o1eJYNJCy/d5xt/2Pz2H73j9vSLfb/5BAMDoA0K90JyynINGvdBGnW1wvnuQcdvngtGgjZeOsVEZZkMpwiQ1JCxhcyZvl4B7cAAfCpGCC0LP1jmxZHIsQUtYMsFzEcPHIw+mDUvwVw8X9NGJsxFiEktLlZ5DUbLUci2MRRcqiWrKGROPD9oqF7UJ62L7VrTOwCIkQjA4kNnky8QoAEgxXMFw18dBP3eq4fSxePyUFLI5FB1IW//Rd7KEUDIqn0CIPcRHjxhIlYQ8Fr/4VffJBtKIPKdsGqKpOvIikMQQtoY5upGwYoKo40v32/wOsip6Mj6L8GEHKmgEuF2xzIAaRZBGvVZfFsRhEQgSTqku0/mP5VmIK6d+MN4j0B+XE28Mffh8OAAAAAElFTkSuQmCC" y="307.2917"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1128.125" y="387.6444"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="36.4583" x="1123.9583" y="404.129">core</text><!--MD5=[baddf9ab3dd07fafb5d1252c45331d3d]
+    entity depLeaf--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="1535.4167" y="291.6667"/><image height="68.75" width="72.9167" x="1551.0417" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEaElEQVR4Xt2aTW4UMRCFc3efIBfICXKCnCCsWDEbVkiRWLFggkARCFPql/G468/lnxkgpbdIOm23P7vq2T2Tm/zm4oZf+P/j4kiPn1/Su6/Q3Ydvx5ff/I7VcUGkGqbW7fvnw5ef/O51cRGkh08/JMnVwFYiUVLdf/wuR++LFpN3NBdrkAiG6kQONy5aWN7paMwiPT3/ohSSQxwTLfK8f4wjUSUshKk1aYwjSAQjx7FcBEYpwJ8diD4ky5cvpwFjDCGNWdlCdYE1kOatbK0iju8hTcLQ1FIPpOUu4teYiTTGQ61oItVH0oJT8tD+s4TQsUQdiRrIXnzRWJ3HsJjfAKi2eaen0JG6bHp4G5n0T97dKXSkuL9F6tUJmovh5bLmUUeS7VXFjdWPsbpVKzbPIK3iQQxQWeWkIBG9bM/UPDjD3ygt6U7LA+sYy0DeyxYKUvMFjmaUt6mCAKzB+QftLk+CeBdbKEiyJZM15cGjhuMokea11JF0I1kZ3PXiZOVtJOeb/XCkZqfqxFDEeSBrrboWih7K20skf/tTu8g9+1gtta78AUjx9hLJn2x1oZsLa0nN4d6zmJwXjiTb1FL3oqZDOuJ9beFPK5NM4B1Sc4bUQuoaAZM6R5PltENq5rFc5dxa2Fp49aiFOaJui+gK9uii5pSx8eyQmtMziZTE45sRyWo2qh2SvNtvHGxVS6a+ExGeJLL3jNQspLSilvzDVB1BHtnnGSlyxFKrOf5sSJ0XFs2qZqrbnpEi2+WSfUndjuro5Un7ijgjyfukpGMiItNRS61JxABP2qdPH1Iy0ubY+bZjmUQk+VXVK/+KFE8eK23iPSRjtYd5oNLPK1JXiasLlcPvSxBzmkmeJJHkHY58I47s96yTeZ5UTfQIUrKLoQQ94HH74MFxDphEV8Y6Kss+iJRE5ljhjJiAnb/2iq/SvHVaETmULFF54tnE45Vdq5mB10GqHWt3bI2UtVTzM3HZZK3YtO6QZmbU+eZC3rxQcp/cIWW3miPCSx5jk7etkrplc6Q8ahVSt6dvAeWfVokPfQsFKfcfQ/+KrDzXkfKoVVxNzv5hIuVL1sCk1Ne2Eh5S3ADjpkKj6ToiS/knzOwj5fCBMoeXFAc/eT0o1eJYNJCy/d5xt/2Pz2H73j9vSLfb/5BAMDoA0K90JyynINGvdBGnW1wvnuQcdvngtGgjZeOsVEZZkMpwiQ1JCxhcyZvl4B7cAAfCpGCC0LP1jmxZHIsQUtYMsFzEcPHIw+mDUvwVw8X9NGJsxFiEktLlZ5DUbLUci2MRRcqiWrKGROPD9oqF7UJ62L7VrTOwCIkQjA4kNnky8QoAEgxXMFw18dBP3eq4fSxePyUFLI5FB1IW//Rd7KEUDIqn0CIPcRHjxhIlYQ8Fr/4VffJBtKIPKdsGqKpOvIikMQQtoY5upGwYoKo40v32/wOsip6Mj6L8GEHKmgEuF2xzIAaRZBGvVZfFsRhEQgSTqku0/mP5VmIK6d+MN4j0B+XE28Mffh8OAAAAAElFTkSuQmCC" y="307.2917"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1555.2083" y="387.6444"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="32.2917" x="1551.0417" y="404.129">leaf</text><!--MD5=[d46a14a0db6cfd296303de5f851b271b]
+    entity depDb--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="110.4167" x="1532.2917" y="123.9583"/><image height="68.75" width="72.9167" x="1547.9167" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEaElEQVR4Xt2aTW4UMRCFc3efIBfICXKCnCCsWDEbVkiRWLFggkARCFPql/G468/lnxkgpbdIOm23P7vq2T2Tm/zm4oZf+P/j4kiPn1/Su6/Q3Ydvx5ff/I7VcUGkGqbW7fvnw5ef/O51cRGkh08/JMnVwFYiUVLdf/wuR++LFpN3NBdrkAiG6kQONy5aWN7paMwiPT3/ohSSQxwTLfK8f4wjUSUshKk1aYwjSAQjx7FcBEYpwJ8diD4ky5cvpwFjDCGNWdlCdYE1kOatbK0iju8hTcLQ1FIPpOUu4teYiTTGQ61oItVH0oJT8tD+s4TQsUQdiRrIXnzRWJ3HsJjfAKi2eaen0JG6bHp4G5n0T97dKXSkuL9F6tUJmovh5bLmUUeS7VXFjdWPsbpVKzbPIK3iQQxQWeWkIBG9bM/UPDjD3ygt6U7LA+sYy0DeyxYKUvMFjmaUt6mCAKzB+QftLk+CeBdbKEiyJZM15cGjhuMokea11JF0I1kZ3PXiZOVtJOeb/XCkZqfqxFDEeSBrrboWih7K20skf/tTu8g9+1gtta78AUjx9hLJn2x1oZsLa0nN4d6zmJwXjiTb1FL3oqZDOuJ9beFPK5NM4B1Sc4bUQuoaAZM6R5PltENq5rFc5dxa2Fp49aiFOaJui+gK9uii5pSx8eyQmtMziZTE45sRyWo2qh2SvNtvHGxVS6a+ExGeJLL3jNQspLSilvzDVB1BHtnnGSlyxFKrOf5sSJ0XFs2qZqrbnpEi2+WSfUndjuro5Un7ijgjyfukpGMiItNRS61JxABP2qdPH1Iy0ubY+bZjmUQk+VXVK/+KFE8eK23iPSRjtYd5oNLPK1JXiasLlcPvSxBzmkmeJJHkHY58I47s96yTeZ5UTfQIUrKLoQQ94HH74MFxDphEV8Y6Kss+iJRE5ljhjJiAnb/2iq/SvHVaETmULFF54tnE45Vdq5mB10GqHWt3bI2UtVTzM3HZZK3YtO6QZmbU+eZC3rxQcp/cIWW3miPCSx5jk7etkrplc6Q8ahVSt6dvAeWfVokPfQsFKfcfQ/+KrDzXkfKoVVxNzv5hIuVL1sCk1Ne2Eh5S3ADjpkKj6ToiS/knzOwj5fCBMoeXFAc/eT0o1eJYNJCy/d5xt/2Pz2H73j9vSLfb/5BAMDoA0K90JyynINGvdBGnW1wvnuQcdvngtGgjZeOsVEZZkMpwiQ1JCxhcyZvl4B7cAAfCpGCC0LP1jmxZHIsQUtYMsFzEcPHIw+mDUvwVw8X9NGJsxFiEktLlZ5DUbLUci2MRRcqiWrKGROPD9oqF7UJ62L7VrTOwCIkQjA4kNnky8QoAEgxXMFw18dBP3eq4fSxePyUFLI5FB1IW//Rd7KEUDIqn0CIPcRHjxhIlYQ8Fr/4VffJBtKIPKdsGqKpOvIikMQQtoY5upGwYoKo40v32/wOsip6Mj6L8GEHKmgEuF2xzIAaRZBGvVZfFsRhEQgSTqku0/mP5VmIK6d+MN4j0B+XE28Mffh8OAAAAAElFTkSuQmCC" y="139.5833"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1552.0833" y="219.9361"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="79.1667" x="1547.9167" y="236.4207">database</text><!--MD5=[7da7a0854f2174d2a011ef4b56ff89d7]
+    entity depSoc--><rect fill="#FFFFFF" height="131.5267" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="1108.3333" y="123.9583"/><image height="68.75" width="72.9167" x="1123.9583" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABCCAIAAABl3TfFAAAEaElEQVR4Xt2aTW4UMRCFc3efIBfICXKCnCCsWDEbVkiRWLFggkARCFPql/G468/lnxkgpbdIOm23P7vq2T2Tm/zm4oZf+P/j4kiPn1/Su6/Q3Ydvx5ff/I7VcUGkGqbW7fvnw5ef/O51cRGkh08/JMnVwFYiUVLdf/wuR++LFpN3NBdrkAiG6kQONy5aWN7paMwiPT3/ohSSQxwTLfK8f4wjUSUshKk1aYwjSAQjx7FcBEYpwJ8diD4ky5cvpwFjDCGNWdlCdYE1kOatbK0iju8hTcLQ1FIPpOUu4teYiTTGQ61oItVH0oJT8tD+s4TQsUQdiRrIXnzRWJ3HsJjfAKi2eaen0JG6bHp4G5n0T97dKXSkuL9F6tUJmovh5bLmUUeS7VXFjdWPsbpVKzbPIK3iQQxQWeWkIBG9bM/UPDjD3ygt6U7LA+sYy0DeyxYKUvMFjmaUt6mCAKzB+QftLk+CeBdbKEiyJZM15cGjhuMokea11JF0I1kZ3PXiZOVtJOeb/XCkZqfqxFDEeSBrrboWih7K20skf/tTu8g9+1gtta78AUjx9hLJn2x1oZsLa0nN4d6zmJwXjiTb1FL3oqZDOuJ9beFPK5NM4B1Sc4bUQuoaAZM6R5PltENq5rFc5dxa2Fp49aiFOaJui+gK9uii5pSx8eyQmtMziZTE45sRyWo2qh2SvNtvHGxVS6a+ExGeJLL3jNQspLSilvzDVB1BHtnnGSlyxFKrOf5sSJ0XFs2qZqrbnpEi2+WSfUndjuro5Un7ijgjyfukpGMiItNRS61JxABP2qdPH1Iy0ubY+bZjmUQk+VXVK/+KFE8eK23iPSRjtYd5oNLPK1JXiasLlcPvSxBzmkmeJJHkHY58I47s96yTeZ5UTfQIUrKLoQQ94HH74MFxDphEV8Y6Kss+iJRE5ljhjJiAnb/2iq/SvHVaETmULFF54tnE45Vdq5mB10GqHWt3bI2UtVTzM3HZZK3YtO6QZmbU+eZC3rxQcp/cIWW3miPCSx5jk7etkrplc6Q8ahVSt6dvAeWfVokPfQsFKfcfQ/+KrDzXkfKoVVxNzv5hIuVL1sCk1Ne2Eh5S3ADjpkKj6ToiS/knzOwj5fCBMoeXFAc/eT0o1eJYNJCy/d5xt/2Pz2H73j9vSLfb/5BAMDoA0K90JyynINGvdBGnW1wvnuQcdvngtGgjZeOsVEZZkMpwiQ1JCxhcyZvl4B7cAAfCpGCC0LP1jmxZHIsQUtYMsFzEcPHIw+mDUvwVw8X9NGJsxFiEktLlZ5DUbLUci2MRRcqiWrKGROPD9oqF7UJ62L7VrTOwCIkQjA4kNnky8QoAEgxXMFw18dBP3eq4fSxePyUFLI5FB1IW//Rd7KEUDIqn0CIPcRHjxhIlYQ8Fr/4VffJBtKIPKdsGqKpOvIikMQQtoY5upGwYoKo40v32/wOsip6Mj6L8GEHKmgEuF2xzIAaRZBGvVZfFsRhEQgSTqku0/mP5VmIK6d+MN4j0B+XE28Mffh8OAAAAAElFTkSuQmCC" y="139.5833"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="1128.125" y="219.9361"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="65.625" x="1123.9583" y="236.4207">sockets</text><!--MD5=[8fc3522a43f8c7199df5e09e5bb0188e]
+    entity user--><ellipse cx="21.3542" cy="248.4375" rx="8.3333" ry="8.3333" style="stroke:#2FA4E7;stroke-width:1.5625;fill:none;"/><path d="M21.3542,256.7708 L21.3542,284.8958 M7.8125,265.1042 L34.8958,265.1042 M21.3542,284.8958 L7.8125,300.5208 M21.3542,284.8958 L34.8958,300.5208 " fill="none" style="stroke:#2FA4E7;stroke-width:1.5625;"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="30.2083" x="6.25" y="319.9361">User</text><!--MD5=[e9b9a1fb5c2eb8b368965da252d1b6d4]
+    entity alb--><rect fill="#FFFFFF" height="150.2441" rx="4.1667" ry="4.1667" style="stroke:#00000000;stroke-width:2.0833333333333335;" width="104.1667" x="121.875" y="208.3333"/><image height="72.9167" width="72.9167" x="137.5" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAIAAAD+THXTAAAEAUlEQVR4Xs3bPW5UMRAH8L2kr7BX4ApcgZI2tHQr0dKkoCVSCoQokAClQIgC6Z/JOvE6ng+P7XHEaBRFb/3G81tv3vNbKQdsjuuvv19/+HZ8d0v56v2Xq08/fv351w4KjUN7IDQIk95+bpJsp5u7dmhcbCSJnpK0XO0JQbGLZHu2qraQPJ59qniS37NJFUzSPHRJ0F4KV0WStKbJQ5dyGvDm43f+argqjNT15HgBVQzJ6cmxWxVAGvLk2KpaJU14cuxTLZGmPTk2qeZJi54cO1STpBBPjnDVDEnz5CZuf/6tkz9K0JFmjF2wOb0bwyRjejF5T/TUxIcZySvYMUYa9YgNjZLEIkYMkCY8SepmgpSkOlp4SXOeJLUyR0pSKTFcpGlPkvqYJiWpGo8+acWTpCZWSEkq2ESHtOhJUgeLpCTVrMMirXuSNP06KUllS6ikEE+S5g4hJalyDpmkeWi/ww9qSYOvpC8iTzd3oyptXlElkDQP9UHd8ONi0s6NY+qgraDWKE9jMFe1JMODcx/8JZ7Nl6lkoxMpaTvXHHcuFw2mc52qZyTbAx+pnoDGN01TW80CelR5pFN1IXU9cJCoSBlM0/ABOamzsmJGoyVLTWNwUT2SPB44SOXtNzw5a1V38KUDh+qBpD2ENR70SGWJCMZf5Vnqd8dfOjiHoaIOD1qX3APp6a3OskTae8SzPALTL3RR0fLSwVNoKjp4ED9yoscf4mRiEr492R2a6sCPLnoo+DRa1peTiRBVAmlxGrwgiT7qvP+DeFtYnIlPo+WWD572pyyq/v/LA+VBXLucXKVdHpvxNB9/leeOizjVfLgvnfTNaKOySZS3T3fP7kLVt9ru4EsHpoeO07vzuHsw7t+1qkuqBxuNHqsvZY0WS5aa1/qWvLxHlz2eR9Ulpec7SFp/3gFVK+vj3IyX2Xm1nPWaP9uJd1UeUmK7fZqMbHSQftZ7cKcnnUlOD/jzkq0y/ur44Lp7HuICamkMbjzgJJgqra6YR/ZolOM0/qCuJfdAJMFUjWbzIYTvmc+TogcaCXGqTSTNA4OEINUOkuGBTUKEKpxke9AlYVkVS+p64CFhTRVI8njgJGFWJTYRWEoMLwnjrRzPm8i2yjn8t+xSyunBEAmDqrIxFcNfasiDURLcrfBnLR6evcioBxMk+FSePrp1JjyYI8HRTXuCFPa+fs6DaRJ6qna0FAZp2oMVEkyVpyHt9BUPFknQ2/J8myXecxc9WCdBURk3pRzirWndgxASFBUtgqYSn7pDPIgiQVEd2X+MEFL85ijKg0ASFFVOWjFKvjLhHsSSYKq0jPUgnIRBVbgHO0hwq3Z4sIkEh2qTB/tIMFX7PNhKgnL/Me5XIXEP3m2COEQxg7gAAAAASUVORK5CYII=" y="223.9583"/><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="0" x="141.6667" y="308.4778"/><text fill="#2FA4E7" font-family="Verdana" font-size="14.5833" font-weight="bold" lengthAdjust="spacing" textLength="40.625" x="137.5" y="324.9624">Load</text><text fill="#2FA4E7" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="54.1667" x="137.5" y="340.0045">Balancer</text><path d="M352.6042,485.4167 L352.6042,512.4674 A4.1667,4.1667 0 0 0 356.7708,516.6341 L414.0625,516.6341 A4.1667,4.1667 0 0 0 418.2292,512.4674 L418.2292,491.6667 L407.8125,481.25 L356.7708,481.25 A4.1667,4.1667 0 0 0 352.6042,485.4167 " style="stroke:#033C73;stroke-width:1.0416666666666667;fill:none;"/><path d="M407.8125,481.25 L407.8125,489.5833 A2.0833,2.0833 0 0 0 409.8958,491.6667 L418.2292,491.6667 L407.8125,481.25 " style="stroke:#033C73;stroke-width:1.0416666666666667;fill:none;"/><text fill="#033C73" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="33.3333" x="364.0625" y="503.2694">edge</text><!--MD5=[d20a0619f9d8e34850b0d046ad9ec797]
+    link svcFront to depFront--><path d="M623.4,283.3333 C646.5281,283.3333 673.824,283.3333 697.5188,283.3333 " fill="none" id="svcFront-to-depFront" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="702.8292,283.3333,693.4542,279.1667,697.6208,283.3333,693.4542,287.5,702.8292,283.3333" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="665.625" y="274.028"/><!--MD5=[b12b19fb042366de129af4f40340944c]
+    link svcCore to depCore--><path d="M1028.3469,357.2917 C1051.5521,357.2917 1079.0521,357.2917 1102.8438,357.2917 " fill="none" id="svcCore-to-depCore" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1108.1771,357.2917,1098.8021,353.125,1102.9688,357.2917,1098.8021,361.4583,1108.1771,357.2917" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="1070.8333" y="347.9863"/><!--MD5=[fe161fc0b8e580c22f95b716769a3c7c]
+    link svcLeaf to depLeaf--><path d="M1449.4375,357.2917 C1474.375,357.2917 1504.375,357.2917 1529.9479,357.2917 " fill="none" id="svcLeaf-to-depLeaf" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1535.3229,357.2917,1525.9479,353.125,1530.1146,357.2917,1525.9479,361.4583,1535.3229,357.2917" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="1494.7917" y="347.9863"/><!--MD5=[2a7f777f6120ccdc66a2fea179c75503]
+    link svcDb to depDb--><path d="M1452.4479,189.5833 C1475.7083,189.5833 1502.9063,189.5833 1526.7083,189.5833 " fill="none" id="svcDb-to-depDb" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1532.0417,189.5833,1522.6667,185.4167,1526.8333,189.5833,1522.6667,193.75,1532.0417,189.5833" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="1494.7917" y="180.278"/><!--MD5=[8cbe90f3d97b81fa0f8b6d548898e7bb]
+    link svcSoc to depSoc--><path d="M1028.3469,189.5833 C1051.5521,189.5833 1079.0521,189.5833 1102.8438,189.5833 " fill="none" id="svcSoc-to-depSoc" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1108.1771,189.5833,1098.8021,185.4167,1102.9688,189.5833,1098.8021,193.75,1108.1771,189.5833" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="1070.8333" y="180.278"/><!--MD5=[632eb7d84767d2927dd844c25680f8f5]
+    link traefik to svcFront--><path d="M437.8688,283.3333 C461.0396,283.3333 488.4823,283.3333 512.2802,283.3333 " fill="none" id="traefik-to-svcFront" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="517.6135,283.3333,508.2385,279.1667,512.4052,283.3333,508.2385,287.5,517.6135,283.3333" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="480.2083" y="274.028"/><!--MD5=[f984a6d8a6ded0bea3624621ed374377]
+    link traefik to svcCore--><path d="M437.625,325.9438 C460.6083,342.4 488.9885,359.2729 517.7083,367.7083 C657.2198,408.6833 831.101,385.7146 918.8146,369.3125 " fill="none" id="traefik-to-svcCore" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="923.9531,368.3406,913.9667,365.9904,918.8357,369.3094,915.5167,374.1783,923.9531,368.3406" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="665.625" y="379.2363"/><!--MD5=[08ad54f0f78585b811d8e081ed488d72]
+    link traefik to svcSoc--><path d="M437.7469,241.1271 C460.751,224.7417 489.1146,207.8104 517.7083,198.9583 C656.4635,156.0021 830.4021,169.6469 918.4021,180.9375 " fill="none" id="traefik-to-svcSoc" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="923.8146,181.6427,915.0576,176.2978,918.65,180.9687,913.9792,184.5611,923.8146,181.6427" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="665.625" y="163.6113"/><!--MD5=[e3cb83bf4a0fae8cb793fdb4283186ed]
+    link depFront to svcCore--><path d="M808.4885,300.8604 C841.6448,312.0969 884.6865,326.6844 918.7031,338.2125 " fill="none" id="depFront-to-svcCore" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="923.6542,339.8906,916.1117,332.9363,918.7212,338.2195,913.4379,340.829,923.6542,339.8906" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="40.625" x="845.8333" y="302.153">REST</text><!--MD5=[9310c4e663c79cc7b03bd1416f57fe20]
+    link depFront to svcSoc--><path d="M808.4885,261.1156 C841.6448,246.8719 884.6865,228.3813 918.7031,213.7688 " fill="none" id="depFront-to-svcSoc" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="923.6542,211.6417,913.3957,211.5149,918.869,213.698,916.6859,219.1712,923.6542,211.6417" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="23.9583" x="854.1667" y="216.7363">WS</text><!--MD5=[643690f835a0f58b50906df28eac6f58]
+    link depCore to svcLeaf--><path d="M1212.6042,357.2917 C1249.8333,357.2917 1300.2708,357.2917 1338.8021,357.2917 " fill="none" id="depCore-to-svcLeaf" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1344.3958,357.2917,1335.0208,353.125,1339.1875,357.2917,1335.0208,361.4583,1344.3958,357.2917" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="40.625" x="1256.7708" y="347.9863">REST</text><!--MD5=[d762e953db595673bb02c9e9631e816e]
+    link depCore to svcDb--><path d="M1212.6042,320.6948 C1249.2292,294.4844 1298.6458,259.1292 1336.9271,231.7375 " fill="none" id="depCore-to-svcDb" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="1341.5313,228.4375,1331.4838,230.5111,1337.2976,231.4711,1336.3375,237.2849,1341.5313,228.4375" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="54.1667" x="1250" y="243.8197">mongo</text><!--MD5=[f136af954abeb7144a025b560e56fae4]
+    link alb to traefik--><path d="M226.2188,283.3333 C257.0042,283.3333 296.2219,283.3333 327.9031,283.3333 " fill="none" id="alb-to-traefik" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="333.3229,283.3333,323.9479,279.1667,328.1146,283.3333,323.9479,287.5,333.3229,283.3333" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="268.75" y="274.028"/><!--MD5=[0b34816b2334b8a4547e067964834c3a]
+    link user to alb--><path d="M41.7656,283.3333 C60.5201,283.3333 89.8825,283.3333 116.074,283.3333 " fill="none" id="user-to-alb" style="stroke:#666666;stroke-width:3.125;"/><polygon fill="#666666" points="121.6104,283.3333,112.2354,279.1667,116.4021,283.3333,112.2354,287.5,121.6104,283.3333" style="stroke:#666666;stroke-width:3.125;"/><text fill="#666666" font-family="Verdana" font-size="13.5417" font-weight="bold" lengthAdjust="spacing" textLength="0" x="84.375" y="274.028"/><!--MD5=[894d0149c52c400748cf2fcac8443902]
+    link GMN10837 to svcFront--><path d="M401.9146,481.0682 C412.0594,469.3033 425.6031,453.5557 437.5,439.5833 C463.9552,408.5125 493.2333,373.826 517.4594,345.0427 " fill="none" id="GMN10837-svcFront" style="stroke:#666666;stroke-width:3.125;stroke-dasharray:7.0,7.0;"/><text fill="#888888" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="416.6667" x="630.2083" y="539.6952">All resources start with sample-project (e.g. sample-project-core)</text><!--MD5=[250ed97a2515a0fbc55ff0f1f6461a02]
+    @startuml
+    ' Include the theme explicitly as it changes
+    !includeurl https://raw.githubusercontent.com/plantuml/plantuml/10aa96e31d9be66e7c103bac011cc5effae33421/themes/puml-theme-cerulean-outline.puml
+    ' !theme cerulean-outline
+    
+    
+    left to right direction
+    footer All resources start with sample-project (e.g. sample-project-core)
+    
+    ' Azure
+    !define AzurePuml https://raw.githubusercontent.com/RicardoNiepel/Azure-PlantUML/release/2-1/dist
+    !includeurl AzurePuml/AzureCommon.puml
+    !includeurl AzurePuml/AzureSimplified.puml
+    !includeurl AzurePuml/Networking/AzureLoadBalancer.puml
+    
+    ' Kubernetes
+    !define KubernetesPuml https://raw.githubusercontent.com/dcasati/kubernetes-PlantUML/master/dist
+    
+    !includeurl KubernetesPuml/kubernetes_Context.puml
+    !includeurl KubernetesPuml/kubernetes_Simplified.puml
+    
+    !includeurl KubernetesPuml/OSS/KubernetesApi.puml
+    !includeurl KubernetesPuml/OSS/KubernetesSvc.puml
+    !includeurl KubernetesPuml/OSS/KubernetesIng.puml
+    !includeurl KubernetesPuml/OSS/KubernetesPod.puml
+    !includeurl KubernetesPuml/OSS/KubernetesDeploy.puml
+    
+    
+    actor "User" as user
+    
+    ' Kubernetes Components
+    Cluster_Boundary(cluster, "Kubernetes Cluster") {
+    
+        Namespace_Boundary(nsBackEnd, "sample-project") {
+        
+            KubernetesIng(traefik, "Ingress", "")
+    
+            KubernetesSvc(svcFront, "frontend", "")
+            KubernetesSvc(svcCore, "core", "")
+            KubernetesSvc(svcLeaf, "leaf", "")
+            KubernetesSvc(svcDb, "database", "")
+            KubernetesSvc(svcSoc, "sockets", "")
+    
+            KubernetesDeploy(depFront, "frontend", "")
+            KubernetesDeploy(depCore, "core", "")
+            KubernetesDeploy(depLeaf, "leaf", "")
+            KubernetesDeploy(depDb, "database", "")
+            KubernetesDeploy(depSoc, "sockets", "")
+        }
+    }
+    
+    AzureLoadBalancer(alb, "Load\nBalancer", "")
+    Rel(svcFront, depFront, " ")
+    Rel(svcCore, depCore, " ")
+    Rel(svcLeaf, depLeaf, " ")
+    Rel(svcDb, depDb, " ")
+    Rel(svcSoc, depSoc, " ")
+    
+    Rel(traefik, svcFront, " ")
+    Rel(traefik, svcCore, " ")
+    Rel(traefik, svcSoc, " ")
+    
+    Rel(depFront, svcCore, "REST")
+    Rel(depFront, svcSoc, "WS")
+    Rel(depCore, svcLeaf, "REST")
+    Rel(depCore, svcDb, "mongo")
+    
+    Rel(alb, traefik, " ")
+    Rel(user, alb, " ")
+    
+    note left of svcFront
+    edge
+    end note
+    @enduml
+    
+    @startuml
+    
+    
+    
+    skinparam backgroundColor transparent
+    skinparam useBetaStyle false
+    
+    
+    
+    
+    
+    
+    
+    skinparam defaultFontName       "Verdana"
+    skinparam defaultFontSize       12
+    skinparam dpi                   100
+    skinparam shadowing             false
+    skinparam roundcorner           8
+    skinparam ParticipantPadding    40
+    skinparam BoxPadding            40
+    skinparam Padding               5
+    skinparam ArrowColor            #868E96
+    skinparam stereotype {
+        CBackgroundColor #EDF0F2
+        CBorderColor #BABDBF
+        ABackgroundColor #8FB961
+        ABorderColor $SUCCESS_DARK
+        IBackgroundColor #D2494E
+        IBorderColor $DANGER_DARK
+        EBackgroundColor #E47833
+        EBorderColor $WARNING_DARK
+        NBackgroundColor #35638F
+        NBorderColor $INFO_DARK
+    }
+    skinparam title {
+        FontColor	                 #2FA4E7
+        BorderColor	                 #BABDBF
+        FontSize	    	         20
+        BorderRoundCorner            8
+        BorderThickness 	         1
+        BackgroundColor              transparent
+    }
+    
+    skinparam legend {
+        BackgroundColor transparent
+        BorderColor #BABDBF
+        FontColor #343A40
+    }
+    
+    skinparam swimlane {
+        BorderColor #033C73
+        BorderThickness 2
+        TitleBackgroundColor  #EDF0F2-#E9ECEF
+        TitleFontColor #2FA4E7
+    }
+    
+    
+    skinparam activity {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        BarColor #73A839
+        StartColor #033C73
+        EndColor #033C73
+        DiamondBackgroundColor transparent
+          DiamondBorderColor #BABDBF
+        DiamondFontColor #BABDBF
+    }
+    
+    
+    skinparam participant {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        ParticipantBorderThickness 2
+    }
+    
+    
+    skinparam actor {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam arrow {
+        Thickness 3
+        Color #2FA4E7
+        FontColor #343A40
+    }
+    
+    
+    skinparam sequence {
+        BorderColor #2FA4E7
+        TitleFontColor #2FA4E7
+        BackgroundColor transparent
+        StartColor #2FA4E7
+        EndColor #2FA4E7
+        BoxBackgroundColor transparent
+        BoxBorderColor #868E96
+        BoxFontColor #343A40
+        DelayFontColor #343A40
+        LifeLineBorderColor #BABDBF
+        LifeLineBorderThickness 2
+        LifeLineBackgroundColor transparent
+        GroupBorderColor #868E96
+        GroupFontColor #343A40
+        GroupHeaderFontColor #033C73
+        DividerBackgroundColor transparent
+        DividerBorderColor #868E96
+        DividerBorderThickness 2
+        DividerFontColor #343A40
+        ReferenceBackgroundColor transparent
+        ReferenceBorderColor #868E96
+        ReferenceFontColor #343A40
+        ReferenceHeaderFontColor #033C73
+        StereotypeFontColor #2FA4E7
+    }
+    
+    
+    skinparam partition {
+        BorderColor #2FA4E7
+        FontColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam collections {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam control {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam entity {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam boundary {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam agent {
+        BackgroundColor transparent
+        BorderColor #999999
+        FontColor #333333
+    }
+    
+    
+    skinparam note {
+        BorderThickness 1
+        BackgroundColor transparent
+        BorderColor #033C73
+        FontColor #033C73
+    }
+    
+    
+    skinparam artifact {
+        BackgroundColor transparent
+        BorderColor #868E96
+        FontColor #868E96
+    }
+    
+    
+    skinparam component {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam interface {
+        BackgroundColor  transparent
+        BorderColor  #C71C22
+        FontColor #343A40
+    }
+    
+    
+    skinparam storage {
+        BackgroundColor transparent
+          BorderColor #DD5600
+        FontColor #DD5600
+    }
+    
+    
+    skinparam node {
+        BackgroundColor transparent
+        BorderColor #343A40
+        FontColor #343A40
+    }
+    
+    
+    skinparam cloud {
+        BackgroundColor #F2FCFE-#eeeeee
+        BorderColor #F2FCFE
+        FontColor #343A40
+    }
+    
+    
+    skinparam database {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam class {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        FontColor #F8F9FA
+        HeaderBackgroundColor #2FA4E7-#2683B9
+        StereotypeFontColor #343A40
+        BorderThickness 1
+        AttributeFontColor #343A40
+        AttributeFontSize 11
+    }
+    
+    
+    skinparam object {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        StereotypeFontColor #343A40
+        BorderThickness 1
+        AttributeFontColor #BABDBF
+        AttributeFontSize 11
+    }
+    
+    
+    skinparam usecase {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        BorderThickness 2
+        StereotypeFontColor #2FA4E7
+    }
+    
+    
+    skinparam rectangle {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        BorderThickness 2
+        StereotypeFontColor #2FA4E7
+    }
+    
+    
+    skinparam package {
+        BackgroundColor transparent
+          BorderColor #2FA4E7
+        FontColor #2FA4E7
+        BorderThickness 2
+    }
+    
+    
+    skinparam folder {
+        BackgroundColor transparent
+          BorderColor #DD5600
+        FontColor #DD5600
+        BorderThickness 2
+    }
+    
+    
+    skinparam frame {
+        BackgroundColor transparent
+          BorderColor #033C73
+        FontColor #033C73
+        BorderThickness 2
+    }
+    
+    
+    skinparam state {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+        StartColor #033C73
+        EndColor #033C73
+        AttributeFontColor #BABDBF
+        AttributeFontSize 11
+    }
+    
+    
+    skinparam queue {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    skinparam card {
+        BackgroundColor transparent
+        BorderColor #033C73
+        FontColor #033C73
+    }
+    
+    
+    skinparam file {
+        BackgroundColor transparent
+        BorderColor #868E96
+        FontColor #868E96
+    }
+    
+    
+    skinparam stack {
+            FontColor #2FA4E7
+        BorderColor #2FA4E7
+        BackgroundColor transparent
+    }
+    
+    
+    
+    
+    
+    left to right direction
+    footer All resources start with sample-project (e.g. sample-project-core)
+    
+    
+    
+    
+    
+    skinparam defaultTextAlignment center
+    
+    skinparam wrapWidth 200
+    skinparam maxMessageSize 150
+    
+    skinparam rectangle {
+        StereotypeFontSize 12
+    }
+    
+    skinparam Arrow {
+        Color #666666
+        FontColor #666666
+        FontSize 12
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    hide stereotype
+    
+    
+    
+    
+    sprite $AzureLoadBalancer [70x70/16z] {
+    fTI7TW8X58JXeNDv__TDvxZ_IQ8EZjrTFZfwa38YPajwAMDz9Ufho4vx7I7Z8s3E4JBdI0mmXqXH1tE82Cmf0kOO8NECa3b6o1mZP6p4PuYibZ-Jz9cKFpF0
+    -Cj-6fk121M30KB5O81GkSyGCHGmG0m531130GF4KCW0yHGoH68XqP8-K-TYWWoHMN5lJzefz0iP8YhhaYf9gPJyzOdcA8CX0gL9AbzbeoTnS0I629GXgUqV
+    aNUvhO010YLf8vjfKC3q6m9bI6bTCl5RO4e1efHtajGvBLAfEm8J0mWJKBeGCa2OXGmXO09ts4hwQGLkEUrHNs3EHdUb08EPpi_Ez5Iz5OEoCXeJ_0aahWjq
+    K1cwb8loQmUKk5G0vjTkh3zpcCLDBI9aFXKoohNL915Pln0mbKiaQQTosYiGChzFp8uJ4m42nZYzWO0n521W30K864CXGiPGY91n52BtcSXtBZpBHDgBpa1-
+    CGKNY3p9y0GC0o6JyJyGWz4b1OZ1K05YCEmH48VfkcK2SPX8sgb0F6PkfWGGauagIQal7-4GpuaprcOG82v3v9GXSiuGEMVE4QwJcNGtxm
+    }
+    
+    skinparam rectangle<<AzureLoadBalancer>> {
+        BackgroundColor #FFFFFF
+        BorderColor transparent
+        Shadowing false
+    }
+    
+    
+    
+    
+    
+    
+    
+    skinparam defaultTextAlignment left
+    
+    skinparam wrapWidth 200
+    skinparam maxMessageSize 150
+    
+    skinparam rectangle {
+        StereotypeFontSize 12
+        shadowing false
+    }
+    
+    skinparam database {
+        StereotypeFontSize 12
+        shadowing false
+    }
+    
+    skinparam Arrow {
+        Color #666666
+        FontColor #666666
+        FontSize 12
+    }
+    
+    skinparam rectangle<<boundary>> {
+        Shadowing false
+        StereotypeFontSize 0
+        FontColor #444444
+        BorderColor #444444
+        BorderStyle dashed
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    skinparam rectangle<<cluster>> {
+        StereotypeFontColor #000000
+        FontColor #000000
+        BorderStyle line
+        BorderColor #326CE5
+        BackgroundColor #FFFFFF
+        RoundCorner 25
+    }
+    
+    skinparam rectangle<<namespace>> {
+        StereotypeFontColor #000000
+        FontColor #000000
+        BorderStyle line
+        BorderColor #FF4216
+        BackgroundColor #FFFFFF
+        RoundCorner 25
+    }
+    
+    skinparam rectangle<<node>> {
+        StereotypeFontColor #000000
+        FontColor #000000
+        BorderStyle line
+        BorderColor #096B24
+        BackgroundColor #FFFFFF
+        RoundCorner 25
+    }
+    
+    skinparam rectangle<<service>> {
+        StereotypeFontColor #000000
+        FontColor #000000
+        BorderStyle line
+        BorderColor #096B24
+        BackgroundColor #FFFFFF
+        RoundCorner 25
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    hide stereotype
+    
+    
+    
+    
+    
+    sprite $KubernetesApi [70x66/16z] {
+    rLU7iYCn20iT_l-7RxOaEyV88UMgNY-MXOJnvlOVGQigw6kE7IcVSrYT-9o7l1hqVOue07kBWxCMy9UDbgmLNWvCQaBm7EqhI1bZUPzdZgL2CJSE7dCuR_nM
+    43oHz5mLvjRZ8jHZDENl8D-fJpcge_r7Sp0xH-V19VtC0Up7F8nOS2q4pXWqXkj2zlIsg3GO5W_c4PPoxXtma2mBagubQ3iR2fk20GlodVBWkiYp2vzjuJmS
+    D8TTaOjvuDsLE9VwP4mYM-Zkknng4nf3pss9aaTDQkcEZL5u57ENxEBdFvmwU7LS4jeIP_T4rcbhQPRb9NrbJBJeQ1_qNE6oRPpCNaKuqg9Lpt7nkMLSCsDg
+    Kce29UlSCWyjfhjBB4XyW0cLnqvqQD7ABBiMqXDZlFMSn_w5CZQR_Oet2HgpcYrKwHitInO_zlUdne1v75Lk6uCzgf1YFANzajTwqNTHl7q3j30OuOQkAdbS
+    kNRbaYTZ0fP-0_ScvUjRWHSWDvO-CiXLien9l89OMgGd1B2WmTvwfO7nhxMnx8yDSf4sj7w60rpt4kFUIGcaDC_X11VULilYNzlTq8E2S6pYgjYO7iPxeDXX
+    U-tn4qh5GNN5s3ziMtX3WYmxwatWgcbOOQyb83K0nZFdcC8SPIPiPOxZcH-StIkub2jlgRQEPmZALAYszUngotY6e4GpJfPGMyOpD1Pj9nbM56-yFd8MPrDf
+    xe9uvWEd1Xf_GimiF52WeD0vdK5ldvxPcuxasp-E7m
+    }
+    
+    skinparam rectangle<<KubernetesApi>> {
+        BackgroundColor KUBERNETES_BG_COLOR
+        BorderColor transparent
+        Shadowing false
+    }
+    sprite $KubernetesSvc [70x66/16z] {
+    rPS7aYCn30CPHUB_7xvyOx6irOYRkv9ZbmqeqZV200I_te6Vf58RnqNJmmC5EtS4dk1qWYGM3AQRQ6B5xS8KEqBsrTuXzQ2MZeS3E_R51uwHdgHIws9KaYk6
+    ojZsctV60CsCdeLf0ZsBj2thOAHbgS7ucrY0TTDKcbu7WpNwuhjUOkbPaYwiRG5TPD_29PQUnSfKx5bo4KkQFi94Ek6BOE9iyre4Ws9HVy28_P7QXJwFnUP_
+    6ENzQebhVZGiDPZHijHWy3gBlebbrAc8_8cHvK_-FHqa-PF_RnFbJr23yUSpDET9CkQHfDM2rrhaJIpwTh_5tYGNYjTPvFf2ts9KfsFg1NvYrzC0CCeYKtP7
+    GPSiXy8UcvD7xp2LQA1KmJbEL66S4lG4xTLJSSmC4OKae1aYXW8j24mGCC8SmU24nhAU5ujIyKG8p9EtzQoBIkS09sVoqQrDS946cCDL0GxesDIpc0ekeeda
+    0PHqapPuO-3tRZX2Ux9rlQhmmUpfPfD2NvmV
+    }
+    
+    skinparam rectangle<<KubernetesSvc>> {
+        BackgroundColor KUBERNETES_BG_COLOR
+        BorderColor transparent
+        Shadowing false
+    }
+    sprite $KubernetesIng [70x66/16z] {
+    rPM7ijqm24Gle0B__yE9PvmnrZ4ZfoSdzTsobdOfd_-85X5JVbxZmEt7DNgS_BYEZ5Xetwyn8qZ_BWtrA1YlZJQFYjU1MUoO-YRQ6aTW-rY8DGRFM7ROwNiT
+    _0n2bOyaw_MT25M-agwznYL1Y2sDCPxoxUraETZe9x8Mmw8oRWSKZyHa4FvyfUKrZGkNEWijL5XzMamD6gCuNxyxIfp6TDvo1ckBpl128NpOsBIixbGalRJG
+    CRVgI2obh7wWLrcSU3KFvktbaMqmTYtyPbsFY6Zf0vQdALp0iCz1sNK5unXhTIlgBL1DjOCvvh3bGhBlQJ3D0EdSxvzGFp38H6rKMB85zBTJSARg8eOwo0xH
+    c45zlmLrAVVQ67ehWbOupsS1h53Ht4C73Pi4fQwFuXsjSBv3jrEKI6UW5T8ceKewsq6_eab1ITuaBTWlrQfhzPHIXmE5YgPM03BNixH75V5YfR78BkUWCXUp
+    WQzZnAaoRjScuXXJ0fM632fx1tO0IXwB6WznlZp7ITpnRt2JmF8zt2G2oxTmaz3uboh6Zij807Eez6LM0eijDh4dGETPHZErYAQjSQmKpBYZSuY7pA7XI54-
+    5GuLE_vkFK87Z2xPgp0UeeygtTAD60zfgxiHRHxkwYOU10MyHuXld4LGm5GxHmLXK3Nj0uW4OJnxUjIuVlvnlW
+    }
+    
+    skinparam rectangle<<KubernetesIng>> {
+        BackgroundColor KUBERNETES_BG_COLOR
+        BorderColor transparent
+        Shadowing false
+    }
+    sprite $KubernetesPod [70x66/16z] {
+    rPTdckCm34CfTjp_m5kdoGuYorld_SxtGW4kj7mY742DNtRye4rk4tZXlcSa3lY-e_20a1sqGSZBGLk3SRammuhITRLNQDkgPTyp2XkGuWlRA95iCcHcu0v9
+    -jr4PXA4hIE1aJui6WIzOEcmrzWiBmIZ3uUG2OrQ11DiY9bXsU0Mp9IJ6_SKaN9B5z1fCZCyWIvC18-bH3GQgD1fY0ez_hJvyw1U_ljb9FKFiocFjq-M5rxI
+    h53Mvk3XJe7EpqYbpuVnp3AGCbbOCBvbOS7KbeK5Wr-n68bbOI4_jZqB2IRtB2GO_9h5xbZ8aqflMkPW0YU2MhI81O-8auKv0AKMj9yiR1amRW7QPak0eCzN
+    bj9tYuEoVD7d-6cnNcyE3KuQqlhA6ZDmdoINqXPDbi8z_iJc8OqRc1p1FY4d1XPeOwRkhEwZUJryYOam3S1K4stcetazVETrHKkxeqUxewHvFRme3q1B2z3K
+    F9x8X7FP4l84lNYYklnzvFOnNNLhNWyloWEC8IjgRL5PqnkVLvonTVTm0fnM-S_v2W
+    }
+    
+    skinparam rectangle<<KubernetesPod>> {
+        BackgroundColor KUBERNETES_BG_COLOR
+        BorderColor transparent
+        Shadowing false
+    }
+    sprite $KubernetesDeploy [70x66/16z] {
+    rPPNWYqv24DDCcZ_2-uSAJ0ry_BvwgXh90nU_n0AmEd7DPu9MVyRmoV_KuSs4lhVDHm5jluB76ZOjusMGCVjm0GJpdEqTmWPO_an7N9CpC6N6k4UQE4R8gvl
+    VqLYZLIEYv0mkf7-FkVhT2-zz3TxDevYB0bVwLBqoTyiKkDdOxY-k2HgogUYkddadtx6vIBBKQKebRoosq_6N2lbAESJ7-OMNyMp0reV9igEYjm_kJMqDoRo
+    2RdjTkhxxj8hrdTxTFE1BhO4hiXWZ5uEc6V4Cxpe2HPz8WfZV531IbXb32OLxKKWoPRU5qyYrUy4OqPy65Uvm_f-sLcaD67iNKeYr-DNPwUckQHhQYxFpcLp
+    2Geg9xbUbTAA81UKPrtwiHnMv67_ijh-z9TH8vKAf9phniTrhKSPmaYth7HM6MPitjCOqDFd6TrJsSd2Z2lDAd7dKHZkE5AyF2RcnrJWVo0hW_-EhKGEYl4L
+    CnJu-7HV-8hQ44ynbPt55a9476h26shOp0hTmCVz71vSl64BQWY2C6A5Mb10p1cWgEF9GQr0B92ehX03sDMs05j0uPpYAVYgijqTISLKTugdW3yh4aCeHDuh
+    0iGGH2cU4drpbn72l24gRB3zwYuWckAfIPbA-fuYErlZ1vLDE-tRbfZdqWrel3ttCFG4hx-SHm
+    }
+    
+    skinparam rectangle<<KubernetesDeploy>> {
+        BackgroundColor KUBERNETES_BG_COLOR
+        BorderColor transparent
+        Shadowing false
+    }
+    
+    
+    actor "User" as user
+    
+    rectangle "==Kubernetes Cluster" <<cluster>> as cluster {
+    
+        rectangle "==sample-project\n<size:12>[Namespace]</size>" <<namespace>> as nsBackEnd {
+        
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesIng></color>\n\n==Ingress" <<KubernetesIng>> as traefik
+    
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesSvc></color>\n\n==frontend" <<KubernetesSvc>> as svcFront
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesSvc></color>\n\n==core" <<KubernetesSvc>> as svcCore
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesSvc></color>\n\n==leaf" <<KubernetesSvc>> as svcLeaf
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesSvc></color>\n\n==database" <<KubernetesSvc>> as svcDb
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesSvc></color>\n\n==sockets" <<KubernetesSvc>> as svcSoc
+    
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesDeploy></color>\n\n==frontend" <<KubernetesDeploy>> as depFront
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesDeploy></color>\n\n==core" <<KubernetesDeploy>> as depCore
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesDeploy></color>\n\n==leaf" <<KubernetesDeploy>> as depLeaf
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesDeploy></color>\n\n==database" <<KubernetesDeploy>> as depDb
+            rectangle "<color:KUBERNETES_SYMBOL_COLOR><$KubernetesDeploy></color>\n\n==sockets" <<KubernetesDeploy>> as depSoc
+        }
+    }
+    
+    rectangle "<color:#0072C6><$AzureLoadBalancer></color>\n\n==Load\nBalancer" <<AzureLoadBalancer>> as alb
+    svcFront - -> depFront : "=== "
+    svcCore - -> depCore : "=== "
+    svcLeaf - -> depLeaf : "=== "
+    svcDb - -> depDb : "=== "
+    svcSoc - -> depSoc : "=== "
+    
+    traefik - -> svcFront : "=== "
+    traefik - -> svcCore : "=== "
+    traefik - -> svcSoc : "=== "
+    
+    depFront - -> svcCore : "===REST"
+    depFront - -> svcSoc : "===WS"
+    depCore - -> svcLeaf : "===REST"
+    depCore - -> svcDb : "===mongo"
+    
+    alb - -> traefik : "=== "
+    user - -> alb : "=== "
+    
+    note left of svcFront
+    edge
+    end note
+    @enduml
+    
+    PlantUML version 1.2021.14(Fri Nov 12 16:46:50 UTC 2021)
+    (GPL source distribution)
+    Java Runtime: Java(TM) SE Runtime Environment
+    JVM: Java HotSpot(TM) 64-Bit Server VM
+    Default Encoding: UTF-8
+    Language: en
+    Country: US
+    --></g></svg>

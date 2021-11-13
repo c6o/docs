@@ -6,13 +6,14 @@
   - [Installing the CLI](/guides/installing-cli)
 - Concepts
   - [Environments](/concepts/environments)
+  - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)
   - [Teleport](/concepts/teleport)
   - [Intercept](/concepts/intercept)
   - [Mount](/concepts/mount)
 - Tutorials
-  - [Sample Kubernetes Project](/practical/sample-project)
-  - [Edge](practical/edge.md)
+  - [Sample Kubernetes Project](/tutorials/sample-project)
+  - [Edge](/tutorials/edge.md)
 - References
   - Commands  
     - [Intercept](/references/intercept)

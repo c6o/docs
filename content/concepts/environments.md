@@ -20,7 +20,7 @@ Some benefits of Ephemeral Environments are
 
 Services running in Kubernetes form a graph. The following simplified graph represents the Sample Kubernetes Project from the Tutorials section of these documents.
 
-![Simple Architecture](../_media/simple-architecture.svg)
+![Simple Architecture](../_media/sample-simple-architecture.svg)
 
 Typically, each pre-Production environment has an exact replica or a subset of the application Microservices Graph. However, we would like you to consider alterations to this graph within a physical environment as a new Logical Ephemeral Environment.
 
