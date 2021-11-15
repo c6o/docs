@@ -13,7 +13,7 @@
   - [Mount](/concepts/mount)
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project)
-  - [Edge](/tutorials/edge.md)
+  - [Developing Edge Services](/tutorials/edge.md)
 - References
   - Commands  
     - [Intercept](/references/intercept)
