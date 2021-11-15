@@ -2,14 +2,20 @@
   - [Overview](/welcome/overview)
   - [About Us](/welcome/about-us)
 - Guides
-  - [Getting Started](/guides/getting-started)
-  - [Sample Project Demo](/guides/sample-project-demo)
+  - [Kubernetes QuickStart](/guides/kubernetes-quickstart)
+  - [Installing the CLI](/guides/installing-cli)
 - Concepts
-  - [Intercept](/concepts/intercept)
+  - [Environments](/concepts/environments)
+  - [Services](/concepts/services)
+  - [Sessions](/concepts/sessions)
   - [Teleport](/concepts/teleport)
+  - [Intercept](/concepts/intercept)
   - [Mount](/concepts/mount)
+- Tutorials
+  - [Sample Kubernetes Project](/tutorials/sample-project)
+  - [Developing Edge Services](/tutorials/edge.md)
 - References
-  - Commands
+  - Commands  
     - [Intercept](/references/intercept)
     - [Teleport](/references/teleport)
     - [Mount](/references/mount)
