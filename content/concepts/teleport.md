@@ -70,8 +70,8 @@ Teleport requires access to make modifications to your local `hosts` file, which
 Root access is only required once to elevate the `czctl` command's priviledge by issuing the command:
 
 ```bash
-sudo czctl init
+czctl start
 ```
 
 > [!EXPERT]
-> Root access is only required once. During `init`, the permissions of the tunneler binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
+> Root access is only required once. During `start`, the permissions of the tunneler binary are elevated to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent teleport calls can be run via the current user.
