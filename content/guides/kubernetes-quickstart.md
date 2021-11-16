@@ -2,7 +2,7 @@
 
 CodeZero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
 
-If you do not have a Kubernetes cluster, here is a lit of providers who provide managed Kubernetes. Most will give you more than enough credits to get the basics. Of course, you can also follow the [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) guide if you would like to set up your own cluster from scratch.
+If you do not have a Kubernetes cluster, here is a list of providers who provide managed Kubernetes. Most will give you more than enough credits to get the basics. Of course, you can also follow the [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) guide if you would like to set up your own cluster from scratch.
 
 * [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
 * [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/#overview)
