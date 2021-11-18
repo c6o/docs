@@ -73,11 +73,11 @@ Mount works as follows:
 On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
 
 ```bash
-> sudo czctl init
+> czctl start
 ```
 
 > [!EXPERT]
-> Root access is only required once. During `init` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent mount calls can be run via the current user.
+> Root access is only required once. During `start` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent mount calls can be run via the current user.
 
 ## Residue and Cleanup
 

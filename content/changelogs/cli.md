@@ -2,6 +2,32 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.2.0
+
+### BREAKING CHANGES
+
+* Please use `czctl start` instead of `sudo czctl init` when starting up the CLI.  The `start` command does not need to be run with `sudo` explicitly, as the command will prompt you for your password if permission elevation is required.
+
+### New Features
+
+* This release introduces a daemon service on your local machine to manage the long running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
+* Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
+* Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
+* Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
+* `sudo` is no longer required to startup the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
+* Added `--save-profile` flag to `teleport`, `intercept` and `mount` commands to prepare for use of Development Profiles.
+
+### Bug Fixes
+
+* Fixed podless services with no endpoint causing crash
+* Fixed issue when registering configuration watcher
+* Fixed intercept session cleanup on close
+* Fixed NVM environments unable to reliably initialize the CLI [[#23](https://github.com/c6o/roadmap/issues/23)]
+
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session. [[#27](https://github.com/c6o/roadmap/issues/27)]
+
+Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
+
 ## Release Notes for v1.1.1
 
 ### Bug Fixes
