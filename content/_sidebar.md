@@ -4,7 +4,10 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Kubernetes QuickStart](/guides/kubernetes-quickstart)
-  - [Installing the CLI](/guides/installing-cli)
+  - [Installing CodeZero](/guides/installing-app)
+  - [Using the CLI](/guides/using-cli)
+  - [Using the Dashboard](/guides/using-dashboard)
+  - [Development Profiles](/guides/development-profiles)
 - Concepts
   - [Environments](/concepts/environments)
   - [Services](/concepts/services)

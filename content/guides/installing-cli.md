@@ -1,6 +1,6 @@
 # Installing the CodeZero CLI
 
-CodeZero provides a simple CLI tool to help manage the development and testing of Kubernetes applications. Install the latest version globally from NPM using `npm install -g @c6o/cli`.
+CodeZero provides a simple CLI tool to help manage the development and testing of Kubernetes applications.
 
 ## Install the CLI
 
