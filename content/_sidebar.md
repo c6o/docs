@@ -1,10 +1,10 @@
 - Welcome
   - [Overview](/welcome/overview)
+  - [Getting Help](/welcome/getting-help)
   - [About Us](/welcome/about-us)
 - Guides
   - [Kubernetes QuickStart](/guides/kubernetes-quickstart)
   - [Installing the CLI](/guides/installing-cli)
-  - [Development Profiles](/guides/development-profiles)
 - Concepts
   - [Environments](/concepts/environments)
   - [Services](/concepts/services)
