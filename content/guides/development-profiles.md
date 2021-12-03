@@ -15,16 +15,41 @@ Creating a Development Profile is as simple as using `czctl` just as you would n
 > [!NOTE]
 > See [Getting Started](./getting-started) for more information on getting started with the CLI.
 
+A development profile is created through running CLI commands with a --save-profile flag:
+
 ### Examples
 
 ```bash
-> czctl development teleport -n sample-project sample-project-echo -f ./project-env.env --save-profile echo-profile.yaml
-> czctl service intercept -n sample-project sample-project-echo --save-profile
+➜  czctl namespace teleport sample-project -f env.sh --save-profile dev-profile.yaml
+
+Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
 
 > [!PROTIP]
 > If you just supply a profile name (without '.yaml'), a profile file will automatically be
 > be created and placed in a folder inside `.codezero/develop/`.
+
+### Appending More
+
+Commands can be added by running another command and saving to the same profile with a "save-profile-mode" flag
+with the value "append". Other values for this falg are 'create' amd 'replace'.
+
+```bash
+➜  czctl service intercept sample-project-core -l 3010 -n sample-project --save-profile dev-profile.yaml --save-profile-mode append
+
+Command has been saved to a Development Profile. (dev-profile.yaml)
+```
+
+If you forget this flag, the CLI will ask you if you are
+appending or replacing the contents of the Development Profile file.
+
+```bash
+czctl service intercept sample-project-leaf -n sample-project --save-profile dev-profile.yaml
+? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
+❯ append 
+  replace 
+```
+
 
 ## Sharing a Profile
 
