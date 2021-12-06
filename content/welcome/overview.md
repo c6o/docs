@@ -14,7 +14,7 @@ You can now collaborate with team members and work on any part of the applicatio
 
 ## Getting Started
 
-Our goal hear is to walk you through the basics of Modern Development using CodeZero for Kubernetes. This documentation is a manual for the CodeZero tools and includes hands on tutorials.
+Our goal here is to walk you through the basics of Modern Development using CodeZero for Kubernetes. This documentation is a manual for the CodeZero tools and includes hands on tutorials.
 
 We recommend you go through this documentation in the order it is presented as we build on previously defined concepts. Happy Learning!
 
