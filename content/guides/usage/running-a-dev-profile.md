@@ -1,7 +1,7 @@
 ## Running a Development Profile
 
-Dev Profiles are read from the .codezero/develop directory and contain instructions to startup various CodeZero commands.
-See [Creating Dev Profiles](./running-a-dev-profile.md) for more information on creating dev profiles.
+Development Profiles are read from the .codezero/develop directory and contain instructions to startup various CodeZero commands.
+See [Creating Development Profiles](./running-a-dev-profile.md) for more information on creating dev profiles.
 
 
 Open the dashboard window to see the development profile sessions:
@@ -12,7 +12,7 @@ A dashboard opens, and if you have no sessions running, you will see a getting s
 
 ![](../../_media/app/dashboard-getting-started.png)
 
-To run a dev profile, select one from the "Development Profiles" menu items.
+To run a Development Profile, select one from the "Development Profiles" menu items.
 ![](../../_media/app/menu-dev-profile-run.png)
 
 The command will start running and the dashboard will show a "busy" indicator while the session starts up:
@@ -24,7 +24,7 @@ sessions that are running:
 
 ![](../../_media/app/dashboard-teleport.png)
 
-Other dev profiles can be run and these will show up too:
+Other Development Profiles can be run and these will show up too:
 ![](../../_media/app/dashboard-teleport-intercept.png)
 
 

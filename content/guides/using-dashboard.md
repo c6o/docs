@@ -15,5 +15,5 @@ is doing. In the dashboard you are able to:
 
 #### [Adding a Cluster](./usage/adding-a-cluster.md)
 #### [Adding a Workspace](./usage/adding-a-workspace.md)
-#### [Running a Dev Profile](./usage/running-a-dev-profile.md)
-#### [Creating a Dev Profile](./usage/creating-a-dev-profile.md)
+#### [Running a Development Profile](./usage/running-a-dev-profile.md)
+#### [Creating a Development Profile](./usage/creating-a-dev-profile.md)
