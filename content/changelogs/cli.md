@@ -2,6 +2,26 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.2.1
+
+### BREAKING CHANGES
+
+* Close the existing CodeZero background process **before** upgrading (`czctl stop`).  In case of issues, the old background service can be shutdown using: `sudo npx pm2 kill`.
+
+### Features
+
+* Better daemon management, so the CLI and desktop app can share the same binary and detect when an upgrade needs to be performed.
+
+### Bug Fixes
+
+* Fix teleport environment output file not being created [#2237]
+* Fix teleport output file path resolution to support relative paths [#2237]
+* Session close with namespace error [#2309]
+* Multiple fixes for saving of development profiles [#2346]
+* Teleporting to non-existent workload produces no error [#2373]
+* Fix closing existing sessions if the active cluster changes [#2208]
+* Various fixes related to the desktop application (coming soon)
+
 ## Release Notes for v1.2.0
 
 ### BREAKING CHANGES
