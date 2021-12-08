@@ -2,7 +2,7 @@
 
 This document contains the release notes for the CodeZero CLI.
 
-## Release Notes for v1.2.0
+## Release Notes for v1.2.1
 
 ### BREAKING CHANGES
 
