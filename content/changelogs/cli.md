@@ -2,6 +2,12 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.2.3
+
+### Bug Fixes
+
+* Fixed a critical bug with the @oclif/plugin-help dependency that was preventing all previous versions of the CLI from installing correctly.
+
 ## Release Notes for v1.2.2
 
 ### Features
