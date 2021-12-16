@@ -2,6 +2,22 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.2.2
+
+### Features
+
+* Check for git repository root when creating development profiles [#2413]
+* Enable Desktop application's ability to auto-launch the CodeZero daemon.
+* Prompt user if namespace is missing, rather than throw an error.
+
+### Bug Fixes
+
+* Fix teleport environment variable output if path does not exist. [#2389]
+* Ensure mount is cleaned up prior to teleport session. [#2276]
+* Fix CLI checks for intercept and teleport versions.
+* Gracefully handle errors when checking Daemon version.
+* Improved reliability for detecting if Daemon is already running.
+
 ## Release Notes for v1.2.1
 
 ### BREAKING CHANGES
