@@ -2,7 +2,7 @@
 
 ### Concepts
 
-A development profile is a collection of CodeZero commands that coordinate together to create a specific development scenario. 
+A development profile is a collection of CodeZero commands that coordinate together to create a specific development scenario.
 For instance, a developer may want to teleport their machine into a cluster and intercept a particular service.
 A development profile remembers the parameters required so that the developer doesn't have to remember the parameters
 to recreate a scenario when they want to debug something.
@@ -15,6 +15,7 @@ czctl namespace teleport sample-project -f env.sh
 czctl service intercept sample-project-core -l 3010 -n sample-project
 czctl deployment mount sample-project-core ./mnt -n sample-project
 ```
+
 But a development profile with the same information could be run from the dashboard or via the cli with just the click of
 a mouse or a simple `czctl profile run` command.
 
@@ -30,7 +31,7 @@ Command has been saved to a Development Profile. (dev-profile.yaml)
 
 ### Appending More
 
-Commands can be added by running another command and saving to the same profile with a "save-profile-mode" flag 
+Commands can be added by running another command and saving to the same profile with a "save-profile-mode" flag
 with the value "append". Other values for this falg are 'create' amd 'replace'.
 
 ```bash
@@ -49,7 +50,6 @@ appending or replacing the contents of the Development Profile file.
 ```bash
 czctl service intercept sample-project-leaf -n sample-project --save-profile dev-profile.yaml
 ? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
-❯ append 
-  replace 
+❯ append
+  replace
 ```
-
