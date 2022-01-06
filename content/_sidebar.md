@@ -10,7 +10,7 @@
     - [Adding a Configuration](/guides/using-desktop/adding-a-configuration.md)
     - [Adding a Workspace](/guides/using-desktop/adding-a-workspace.md)
     - [Running a Development Profile](/guides/using-desktop/running-a-dev-profile.md)
-
+  - [Security](/guides/security)
 - Concepts
   - [Development Profiles](/concepts/development-profiles)
   - [Environments](/concepts/environments)
