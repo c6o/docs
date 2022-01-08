@@ -114,8 +114,8 @@ spec:
 
 ### Creating By Manually Editing
 
-If you wish to manually edit this file, it can be simplified down by removing `version`, `output`, 
-`namespaceResourceId`, and `resourceQuery` to the following:
+If you wish to manually edit this file, it can be simplified by removing `version`, `output`, 
+`namespaceResourceId`, and `resourceQuery` as they are not required to run the development profile.
 
 ```yaml
 apiVersion: system.codezero.io/v1alpha1
