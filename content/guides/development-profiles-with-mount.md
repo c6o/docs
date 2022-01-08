@@ -4,7 +4,7 @@
 
 A development profile is a collection of CodeZero commands that coordinate together to create a specific development scenario.
 For instance, a developer may want to teleport their machine into a cluster and intercept a particular service.
-A development profile remembers the parameters required so that the developer doesn't have to remember the parameters
+A development profile records the specifications for running one ore more commands so that the developer doesn't have to remember all of the required parameters
 to recreate a scenario when they want to debug something.
 
 For instance a teleport and intercept into a service named "sample-project-core", and mount the deployments volumes
