@@ -3,16 +3,16 @@
 A development profile is created through running CLI commands with a --save-profile flag:
 
 ```bash
-➜ czctl development teleport sample-project-core -f env.sh -n sample-project --save-profile profile1.yaml
+➜ czctl deployment teleport sample-project-core -f env.sh -n sample-project --save-profile profile-example.yaml
 
-Command has been saved to a Development Profile. (profile1.yaml)
+Command has been saved to a Development Profile. (profile-example.yaml)
 ```
 ```yaml
-➜ cat profile1.yaml
+➜ cat profile-example.yaml
 apiVersion: system.codezero.io/v1alpha1
 kind: DevelopmentProfile
 metadata:
-  name: profile1
+  name: profile-example
 spec:
   commands:
     - command: Teleport
@@ -21,7 +21,7 @@ spec:
         envFile: env.sh
         namespace: sample-project
         output: false
-        version: 1.2.0
+        version: 1.2.3
         kind: Deployment
         namespaceResourceId:
           apiVersion: v1
@@ -30,6 +30,7 @@ spec:
             name: sample-project
             labels:
               kubernetes.io/metadata.name: sample-project
+              system.codezero.io/type: environment
         resourceQuery:
           apiVersion: apps/v1
           kind: Deployment
@@ -41,7 +42,7 @@ spec:
               component: core
 ```
 > [!NOTE]
-> The namespaceResourceId and resourceQuery sections of the development profile above are note needed.
+> The namespaceResourceId and resourceQuery sections of the development profile above are not not needed.
 
 ### Appending More
 
@@ -49,7 +50,7 @@ Commands can be added by running another command and saving to the same profile.
 appending or replacing the contents of the Development Profile file.
 
 ```bash
-czctl service intercept sample-project-leaf -n sample-project --save-profile profile1.yaml
+czctl service intercept sample-project-leaf -n sample-project --save-profile profile-example.yaml
 ? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
 ❯ append 
   replace 
@@ -57,10 +58,14 @@ czctl service intercept sample-project-leaf -n sample-project --save-profile pro
 ...
 ```yaml
 ? This profile already exists.  What would you like to do with the existing profile? append
+Command has been saved to a Development Profile. (profile-example.yaml)
+```
+```yaml
+➜ cat profile-example.yaml
 apiVersion: system.codezero.io/v1alpha1
 kind: DevelopmentProfile
 metadata:
-  name: profile1
+  name: profile-example
 spec:
   commands:
     - command: Teleport
@@ -69,7 +74,7 @@ spec:
         envFile: env.sh
         namespace: sample-project
         output: false
-        version: 1.2.0
+        version: 1.2.3
         kind: Deployment
         namespaceResourceId:
           apiVersion: v1
@@ -78,6 +83,7 @@ spec:
             name: sample-project
             labels:
               kubernetes.io/metadata.name: sample-project
+              system.codezero.io/type: environment
         resourceQuery:
           apiVersion: apps/v1
           kind: Deployment
@@ -90,10 +96,8 @@ spec:
     - command: Intercept
       params:
         remoteService: sample-project-leaf
-        localPort: 3010
-        remotePort: 3000
         namespace: sample-project
-        version: 1.2.0
+        version: 1.2.3
         namespaceResourceId:
           apiVersion: v1
           kind: Namespace
@@ -101,6 +105,7 @@ spec:
             name: sample-project
             labels:
               kubernetes.io/metadata.name: sample-project
+              system.codezero.io/type: environment
         resourceQuery:
           apiVersion: v1
           kind: Service
@@ -121,7 +126,7 @@ If you wish to manually edit this file, it can be simplified down by removing `v
 apiVersion: system.codezero.io/v1alpha1
 kind: DevelopmentProfile
 metadata:
-  name: profile1
+  name: profile-example
 spec:
   commands:
     - command: Teleport
