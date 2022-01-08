@@ -6,11 +6,11 @@ The CodeZero CLI provides simple access to the CodeZero API.
 
 ### Requirements
 
-[cli-requirements](../../_fragments/cli-requirements.md ':include')
+[cli-requirements](../_fragments/cli-requirements.md ':include')
 
 ### Install the CLI
 
-[cli-install](../../_fragments/cli-install.md ':include')
+[cli-install](../_fragments/cli-install.md ':include')
 
 ### Configure the CLI
 

@@ -4,11 +4,11 @@ CodeZero provides a simple CLI tool to help manage the development and testing o
 
 ## Install the CLI
 
-[cluster-install](../../_fragments/cli-install.md ':include')
+[cli-install](../_fragments/cli-install.md ':include')
 
 ## Requirements
 
-[cluster-requirements](../../_fragments/cli-requirements.md ':include')
+[cli-requirements](../_fragments/cli-requirements.md ':include')
 
 ## Configure the CLI
 
@@ -43,13 +43,17 @@ The CLI is invoked via the `czctl` command. To get more information about indivi
 ```bash
 > czctl help
 ```
-The czctl command loosely follows the conventions of the kubectl command where each command refereneces a kubernetes resource 
-(like a deployment or service) and where a namespace is given (with a -n flag). With each kubernetes resource there are a number of actions that can be taken. Use `czctl <resource> --help` to see the actions available for a command and `czctl <resource> <action> --help` to see the flags 
+
+The czctl command loosely follows the conventions of the kubectl command where each command refereneces a kubernetes resource
+(like a deployment or service) and where a namespace is given (with a -n flag). With each kubernetes resource there are a number of actions that can be taken. Use `czctl <resource> --help` to see the actions available for a command and `czctl <resource> <action> --help` to see the flags
 available for that action. For example:
+
 ```bash
 > czctl deployment teleport --help
 ```
+
 or
+
 ```bash
 > czctl service intercept --help
 ```

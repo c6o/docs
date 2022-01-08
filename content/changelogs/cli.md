@@ -80,18 +80,18 @@ Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [
 
 ### New Features
 
-* Volume mount command: You can now mount persistent volumes that any workload has mounted: `czctl [workload] mount [workload name] [mount root] -n [namespace]` 
-Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting all volumes in a namespace is not supported), 
-the `workload name` is the name of the workolad, the `mount root` is a local directory where the volumes should be mounted, 
+* Volume mount command: You can now mount persistent volumes that any workload has mounted: `czctl [workload] mount [workload name] [mount root] -n [namespace]`
+Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting all volumes in a namespace is not supported),
+the `workload name` is the name of the workolad, the `mount root` is a local directory where the volumes should be mounted,
 and the `namespace` is the namespace where the workload resides.
 
-Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.  
+Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.
 
 Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
 
 Note: Make sure you have a teleport session open before using the mount commmand: `czctl [workload] teleport [workload name] -n [namespace]`
 
-Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session. 
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
 
 ## Release Notes for v1.0.4
 
@@ -120,7 +120,7 @@ Note (Known Issue): If you have mounted some volumes, do not use `czctl session 
 ### New Features
 
 * Multi-port services support (#1945)
-    
+
 ## Release Notes for v1.0.0
 
 ### New Features
@@ -158,7 +158,7 @@ Note (Known Issue): If you have mounted some volumes, do not use `czctl session 
 
 ### BREAKING CHANGES
 
-* Any scripting that assumes that all namespaces will be teleported needs to be modified to use the new flags to add namespaces other than the one being referenced in the teleport command. The `--all` flag allows you to connect to all namespaces. You can also add more namespaces with additional `-a namespace1 -a namespace2` 
+* Any scripting that assumes that all namespaces will be teleported needs to be modified to use the new flags to add namespaces other than the one being referenced in the teleport command. The `--all` flag allows you to connect to all namespaces. You can also add more namespaces with additional `-a namespace1 -a namespace2`
 
 ### Bug Fixes
 

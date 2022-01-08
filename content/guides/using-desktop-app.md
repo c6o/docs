@@ -14,6 +14,7 @@ is doing. With the app you can:
 ### Getting Started with the Desktop App
 
 #### [Adding a Configuration](./usage/adding-a-configuration.md)
+
 #### [Adding a Workspace](./usage/adding-a-workspace.md)
+
 #### [Running a Development Profile](./usage/running-a-dev-profile.md)
-#### [Creating a Development Profile](./usage/creating-a-dev-profile.md)

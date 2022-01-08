@@ -1,8 +1,9 @@
 ```bash
-brew install c6o/tools/cz
+brew install c6o/tools/czctl
 ```
 
-You can also use npm to install the cli:
+You can also use npm to install the CLI:
+
 ```bash
 npm install -g @c6o/app
 ```
