@@ -82,7 +82,7 @@ Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [
 
 * Volume mount command: You can now mount persistent volumes that any workload has mounted: `czctl [workload] mount [workload name] [mount root] -n [namespace]`
 Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting all volumes in a namespace is not supported),
-the `workload name` is the name of the workolad, the `mount root` is a local directory where the volumes should be mounted,
+the `workload name` is the name of the workload, the `mount root` is a local directory where the volumes should be mounted,
 and the `namespace` is the namespace where the workload resides.
 
 Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.
