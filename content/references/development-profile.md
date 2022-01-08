@@ -56,7 +56,7 @@ czctl service intercept sample-project-leaf -n sample-project --save-profile pro
 ```
 ...
 ```yaml
-? This profile already exists.  What would you like to do with the existing profile? append
+? This profile already exists. What would you like to do with the existing profile? append
 apiVersion: system.codezero.io/v1alpha1
 kind: DevelopmentProfile
 metadata:
