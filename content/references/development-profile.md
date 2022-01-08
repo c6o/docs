@@ -1,6 +1,6 @@
 ## Creating a Development Profile
 
-A development profile is created through running CLI commands with a --save-profile flag:
+A development profile is created by running CLI commands with a --save-profile flag:
 
 ```bash
 ➜ czctl development teleport sample-project-core -f env.sh -n sample-project --save-profile profile1.yaml
