@@ -32,7 +32,7 @@ Command has been saved to a Development Profile. (dev-profile.yaml)
 ### Appending More
 
 Commands can be added by running another command and saving to the same profile with a "save-profile-mode" flag
-with the value "append". Other values for this falg are 'create' amd 'replace'.
+with the value "append". Other values for this flag are 'create' and 'replace'.
 
 ```bash
 ➜  czctl service intercept sample-project-core -l 3010 -n sample-project --save-profile dev-profile.yaml --save-profile-mode append
