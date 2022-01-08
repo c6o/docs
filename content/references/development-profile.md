@@ -42,7 +42,7 @@ spec:
               component: core
 ```
 > [!NOTE]
-> The namespaceResourceId and resourceQuery sections of the development profile above are not not needed.
+> The namespaceResourceId and resourceQuery sections of the development profile above are not needed.
 
 ### Appending More
 
