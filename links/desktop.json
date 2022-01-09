@@ -1,0 +1,40 @@
+{
+    "dashboard-null": {
+        "left": {
+            "title": "Getting Started",
+            "items": [{
+                "title": "Adding a Configuration",
+                "URL": "/#/guides/usage/adding-a-configuration",
+                "icon": "vaadin:cluster"
+            }, {
+                "title": "Adding a Workspace",
+                "URL": "/#/guides/usage/adding-a-workspace",
+                "icon": "vaadin:workplace"
+            }, {
+                "title": "Running a Development Profile",
+                "URL": "/#/guides/usage/running-a-dev-profile",
+                "icon": "vaadin:file-movie"
+            }, {
+                "title": "Creating a Development Profile",
+                "URL": "/#/guides/development-profiles",
+                "icon": "vaadin:file-code"
+            }]
+        },
+        "right": {
+            "title": "Documentation",
+            "items": [{
+                "title": "Teleport",
+                "URL": "/#/concepts/teleport",
+                "icon": "vaadin:location-arrow"
+            }, {
+                "title": "Intercept",
+                "URL": "/#/concepts/intercept",
+                "icon": "vaadin:sign-in-alt"
+            }, {
+                "title": "Volume Mount",
+                "URL": "/#/concepts/mount",
+                "icon": "vaadin:harddrive"
+            }]
+        }
+    }
+}
