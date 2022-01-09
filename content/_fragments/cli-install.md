@@ -1,4 +1,9 @@
 ```bash
+brew install c6o/tools/czctl
+```
+
+You can also use npm to install the cli:
+```bash
 npm install -g @c6o/cli
 ```
 
@@ -6,4 +11,4 @@ npm install -g @c6o/cli
 > You may need to use `sudo npm install -g @c6o/cli` if your current user doesn't have permission to the installation folders.
 
 > [!WIP]
-> Yarn fails to install the @c6o/cli, so please use npm for now.
+> Yarn currently does not work to install the cli, please use homebrew or npm.

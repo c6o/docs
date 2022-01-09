@@ -4,8 +4,15 @@
   - [About Us](/welcome/about-us)
 - Guides
   - [Kubernetes QuickStart](/guides/kubernetes-quickstart)
-  - [Installing the CLI](/guides/installing-cli)
+  - [Installing CodeZero](/guides/installing)
+  - [Using the CLI](/guides/using-cli)
+  - [Using the Desktop App](/guides/using-desktop-app)
+    - [Adding a Configuration](/guides/using-desktop/adding-a-configuration.md)
+    - [Adding a Workspace](/guides/using-desktop/adding-a-workspace.md)
+    - [Running a Development Profile](/guides/using-desktop/running-a-dev-profile.md)
+
 - Concepts
+  - [Development Profiles](/concepts/development-profiles)
   - [Environments](/concepts/environments)
   - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)
@@ -16,7 +23,7 @@
   - [Sample Kubernetes Project](/tutorials/sample-project)
   - [Developing Edge Services](/tutorials/edge.md)
 - References
-  - Commands  
+  - Commands
     - [Intercept](/references/intercept)
     - [Teleport](/references/teleport)
     - [Mount](/references/mount)

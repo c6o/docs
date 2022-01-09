@@ -1,30 +1,6 @@
-# Installing the CodeZero CLI
+## Using the CLI
 
-CodeZero provides a simple CLI tool to help manage the development and testing of Kubernetes applications.
-
-## Install the CLI
-
-[cli-install](../_fragments/cli-install.md ':include')
-
-## Requirements
-
-[cli-requirements](../_fragments/cli-requirements.md ':include')
-
-## Configure the CLI
-
-### Initialize the CLI
-
-After installing the CLI, run:
-
-```bash
-> czctl start
-```
-
-> [!NOTE]
-> The CLI requires `sudo` access to modify your system's `hosts` file. The `hosts` file
-> is used to define in-cluster DNS information on your local machine during a teleport session.
-
-### Access Your Cluster
+### Accessing Your Cluster
 
 Many CLI commands need to interact with a Kubernetes cluster. Therefore, the CLI requires access to a `kubeconfig` for your cluster. By default, we use the default cluster in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to your `kubeconfig` file.
 
@@ -36,7 +12,7 @@ export KUBECONFIG=<path to kubeconfig>
 > Some commands let you explicitly specify a kubeconfig file.
 > This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
 
-## Using the CLI
+### Getting Help
 
 The CLI is invoked via the `czctl` command. To get more information about individual commands, check out the CLI reference, or run:
 
@@ -46,14 +22,16 @@ The CLI is invoked via the `czctl` command. To get more information about indivi
 
 The czctl command loosely follows the conventions of the kubectl command where each command refereneces a Kubernetes resource
 (like a deployment or service) and where a namespace is given (with a -n flag). With each Kubernetes resource there are a number of actions that can be taken. Use `czctl <resource> --help` to see the actions available for a command and `czctl <resource> <action> --help` to see the flags
-available for that action. For example:
+available for that action. Try:
 
 ```bash
 > czctl deployment teleport --help
 ```
 
-or
-
 ```bash
 > czctl service intercept --help
+```
+
+```bash
+> czctl service mount --help
 ```
