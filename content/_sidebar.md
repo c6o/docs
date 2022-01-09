@@ -7,8 +7,12 @@
   - [Installing CodeZero](/guides/installing)
   - [Using the CLI](/guides/using-cli)
   - [Using the Desktop App](/guides/using-desktop-app)
-  - [Development Profiles](/guides/development-profiles)
+    - [Adding a Configuration](/guides/using-desktop/adding-a-configuration.md)
+    - [Adding a Workspace](/guides/using-desktop/adding-a-workspace.md)
+    - [Running a Development Profile](/guides/using-desktop/running-a-dev-profile.md)
+
 - Concepts
+  - [Development Profiles](/concepts/development-profiles)
   - [Environments](/concepts/environments)
   - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)

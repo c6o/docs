@@ -22,9 +22,3 @@ After installing the CodeZero CLI, run:
 > [!NOTE]
 > CodeZero requires `sudo` access to modify your system's `hosts` file. The `hosts` file
 > is used to define in-cluster DNS information on your local machine during a teleport session.
-
-## Next Steps
-
-#### [Using the Desktop App](./using-desktop-app.md)
-
-#### [Using the CLI](./using-cli.md)

@@ -1,20 +1,16 @@
-## Using the CodeZero Desktop App
+# Using the CodeZero Desktop App
 
-### What you can do with the Desktop App
+## What you can do with the Desktop App
 
-CodeZero Desktop is a visual way to help you debug your code and see what the CodeZero tool
-is doing. With the app you can:
+The Desktop App gives you a graphical interface for some of the functions available in the CLI.
 
-1. Manage Kubernetes configuration files to access and switch between clusters.
-2. Access, run and manage CodeZero development profiles within CodeZero workspaces.
-3. Manage your user profile and how you appear to other developers.
-4. See what's running locally and in remote clusters, and see other users that are using the CodeZero tool in remote clusters.
-5. See a record of your debugging activity with the CodeZero tool.
+With the app you can:
 
-### Getting Started with the Desktop App
-
-#### [Adding a Configuration](./usage/adding-a-configuration.md)
-
-#### [Adding a Workspace](./usage/adding-a-workspace.md)
-
-#### [Running a Development Profile](./usage/running-a-dev-profile.md)
+1. Merge `kubeconfig` Configuration files into your user `kubeconfig` at `~/.kube/config`
+1. Switch contexts in your user `kubeconfig`
+1. Add *Workspaces* containing *Development Profiles* to the app
+1. Run *Development Profiles*
+1. See active *Sessions* belonging to you or other users working in the cluster
+1. Close runnings *Sessions*
+1. See logs from *Sessions*
+1. Manage your user profile
