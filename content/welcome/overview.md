@@ -28,6 +28,6 @@ We strive to limit the jargon that developers have to learn in order to benefit 
 
 ### Tutorials
 
-We have put together a [Sample Kubernetes Project](../lessons/sample-project.md) that comprises of some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This project is used in all the Tutorials and Videos in this documentation.
+We have put together a [Sample Kubernetes Project](../tutorials/sample-project.md) that comprises of some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This project is used in all the Tutorials and Videos in this documentation.
 
 The Tutorials walk you through how to Develop and Debug the various types of services you will encounter in just about any Kubernetes application.
