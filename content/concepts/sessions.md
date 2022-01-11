@@ -5,7 +5,7 @@ The Residue created by the command are recorded in Sessions Resources which are 
 Session Custom Resource Definitions in 
 the Cluster or in lock files in your home CodeZero directory.
 
-For example, when using Teleport, the Development Workstation DNS host file is altered so that you can resolve services 
+For example, when using Teleport, the local workstation DNS host file is altered so that you can resolve services 
 in the cluster. Closing the Teleport Session cleans up all the residue added to the DNS host file.
 
 Sessions are also used to allow team members to collaborate with each other. 
