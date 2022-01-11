@@ -98,7 +98,7 @@ configuration is written and the watcher process.
 However, if the environment watcher continues to run after a clean/close has been performed, 
 you will need to find the process id and do a `kill -9` of the environment monitor process.
 
-Here's an example of getting the process ids and using `kill -9` to end these processes.
+Here's an example of getting the process ids and using `kill -9` to end these processes:
 
 ```bash
 > ps xau | grep 'child.js' | grep -v 'grep' |  awk '{print $2 " -> " $11, $12}'
