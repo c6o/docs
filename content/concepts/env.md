@@ -27,7 +27,7 @@ have the local configuration files update as they change on the server.
 
 There are several formats in which the local file can be written: 
 yaml (.yaml or .yml), bash shell script (.sh), environment (.env), and JSON (.json)
-The default is yaml, but you can modify this wit the --format or -m flag:
+The default is yaml, but you can modify this with the --format or -m flag:
 
 ```bash
 > czctl environment deployment sample-project-core env.json -n sample-project --format json
