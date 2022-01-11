@@ -17,17 +17,17 @@ Intercept works by creating an intermediate proxy for the service to inspect tra
 A few scenarios are possible
 
 1. Intercept traffic with the `X-C6O-INTERCEPT` header to my local machine.
-1. Specify a custom intercept header, instead, so that multiple developers can intercept the same services (as long as each developer uses a different header key/value pair).
+1. Specify a custom intercept header instead, so that multiple developers can intercept the same services (as long as each developer uses a different header key/value pair).
 
 ## How it Works
 
 When an Intercept Session is initiated, we
 
 1. Open a local tunnel and give that tunnel a random DNS name. This local tunnel proxies requests through any NAT or firewall to a single locally running service.
-1. Deploy a proxy service in the cluster
-1. Create a decoy Service that routes to the intercepted Service selectors
-1. Hijack the existing service by setting the service selectors to route traffic to the proxy service Deployment
-1. Create a Session record that stores all the changes made to the Kubernetes cluster
+1. Deploy a proxy service in the cluster.
+1. Create a decoy Service that routes to the intercepted Service selectors.
+1. Hijack the existing service by setting the service selectors to route traffic to the proxy service Deployment.
+1. Create a Session record that stores all the changes made to the Kubernetes cluster.
 
 The Proxy service selectively routes traffic based on the request headers.
 

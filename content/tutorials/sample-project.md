@@ -11,4 +11,4 @@ The tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sample-
 
 The following diagram depicts all the components of the sample project
 
-![Simple Architecture](../_media/sample-architecture.svg)
+![Simple Architecture](../_media/architecture/sample-architecture.svg)

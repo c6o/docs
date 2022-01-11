@@ -11,8 +11,9 @@ For instance a teleport and intercept into a service named "sample-project-core"
 require the following commands:
 
 ```bash
-czctl namespace teleport sample-project -f env.sh
-czctl service intercept sample-project-core -l 3010 -n sample-project
+czctl teleport namespace sample-project
+czctl environment deployment sample-project-core env.sh -n sample-project
+czctl service intercept sample-project-core -l 4000 -n sample-project
 ```
 But a development profile with the same information could be run from the dashboard or via the cli with just the click of
 a mouse or a simple `czctl profile run` command.
@@ -20,4 +21,4 @@ a mouse or a simple `czctl profile run` command.
 For more, see:
 
 * [Creating a Development Profile](../guides/development-profiles.md)
-* [Development Profile Reference](../reference/development-profile.md)
+* [Development Profile Reference](../references/development-profile.md)

@@ -5,13 +5,13 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 ## Usage
 
 ```bash
-> czctl service intercept [service-name]
+> czctl intercept service [service-name]
 ```
 
 ### Example
 
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3010
+> czctl intercept service sample-project-leaf -n sample-project -l 3010
 ```
 
 ### Arguments
@@ -22,32 +22,38 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 
 ### Flags
 
-| Flags        | Alias | Description
-| ------------ | ----- | -----------
-| --namespace  | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --remotePort | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
-| --localPort  | -l    | The local port number that traffic should be fowarded to on this machine.
-| --header     | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
-| --kubeconfig | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --clean      | -c    | Close and clean up existing teleport session.
-| --quiet      | -q    | Only display error message.
+| Flags          | Alias | Description
+| -------------- | ----- | -----------
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
+| --remotePort   | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
+| --localPort    | -l    | The local port number that traffic should be fowarded to on this machine.
+| --header       | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
+| --kubeconfig   | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
+| --context      |       | The name of the Kubernetes context to use.
+| --clean        | -c    | Close and clean up existing teleport session.
+| --quiet        | -q    | Only display error message.
+| --save-profile | -s    | Save this command to a development profile.
 
 ## More Examples
 
-Intercept the remote service's port 3000 and route to localhost:3010
+Intercept the remote service's port 3000 and route to localhost:4000
 
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3010 -r 3000
+> czctl intercept service sample-project-core -n sample-project -l 4000
+```
+or to select another port
+```bash
+> czctl intercept service sample-project-core -n sample-project -r 3000 -l 4000
 ```
 
 Clean up the previous session above:
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3010 -r 3000 --clean
+> czctl intercept service sample-project-core -n sample-project -r 3000 -l 4000 --clean
 ```
 
 Give your own custom header: 
 ```bash
-> czctl service intercept my-service -n my-namespace -l 3010 -h X-MY-HEADER:ME
+> czctl intercept service sample-project-leaf -n sample-project -l 3010 -h X-MY-HEADER:ME
 ```
 This routes to `x_my_header:me` or `x-my-header:me`
 
@@ -71,7 +77,8 @@ In order to route local traffic to in cluster resources, teleport does several t
 
 ### Reverse Tunnel
 
-When a teleport session is openned, the developers local machine creates a tunnel so it can receive traffic requests from the remote cluster without needing to change any firwarll or routing settings.
+When a teleport session is opened, the developer's local machine creates a tunnel 
+so that it can receive traffic requests from the remote cluster without needing to change any firewall or routing settings.
 
 > [!PROTIP]
 > Ngrok is used under the hood which exposes a simple web dashboard to view and inspect incoming traffic at http://localhost:4040.
@@ -228,4 +235,12 @@ Then delete the residue resources
 > kubectl delete deployment interceptor-sample-project-server -n sample-project
 > kubectl delete configmap interceptor-sample-project-server -n sample-project
 > kubectl delete session intercept-sample-project-server -n sample-project
+```
+
+Ngrok may also be left running and can be stopped by force if necessary: 
+
+```bash
+➜ ps xau | grep 'ngrok' | grep -v 'grep' |  awk '{print $2 " -> " $11, $12}'
+67103 -> /Users/username/.codezero/bin/ngrok/ngrok start
+➜ sudo kill -9 67103
 ```

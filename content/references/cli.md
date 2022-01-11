@@ -6,11 +6,11 @@ The CodeZero CLI provides simple access to the CodeZero API.
 
 ### Requirements
 
-[cli-requirements](../_fragments/cli-requirements.md ':include')
+[cli-requirements](../_fragments/cli-requirements ':include')
 
 ### Install the CLI
 
-[cli-install](../_fragments/cli-install.md ':include')
+[cli-install](../_fragments/cli-install ':include')
 
 ### Configure the CLI
 
@@ -33,10 +33,11 @@ Some operations, such as `czctl app publish`, access to the CodeZero API, which 
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| [teleport](#teleport) | teleport your local environment into a cluster |
+| Command | Description   |
+|---------|---------------|
+| [teleport](#teleport)   | teleport your local environment into a cluster |
 | [intercept](#intercept) | intercept traffic for a remote service to your local machine |
+| [mount](#mount)         | mount a remote persistent volume locally |
 
 | [auth](#auth) | authenticate the CLI against the c6o Hub |
 | [install](#install) | install an application that is published on Hub |
