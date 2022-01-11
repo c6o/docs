@@ -37,7 +37,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 Mount all the volumes of a specific deployment within the folder `./folder-name`
 ```bash
-> czctl mount deployment sample-project-core ./folder-name -n sample-project
+> czctl mount deployment -n sample-project sample-project-core ./folder-name
 ...
 > ls -la ./folder-name
 total 0
@@ -47,7 +47,7 @@ drwxr-xr-x   2 root        staff   64 10 Jan 18:55 data
 ```
 Cleanup the residue from the last command:
 ```bash
-> czctl mount deployment sample-project-core ./folder-name -n sample-project  --clean
+> czctl mount deployment -n sample-project sample-project-core ./folder-name --clean
 ```
 or
 ```bash

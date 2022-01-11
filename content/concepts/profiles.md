@@ -12,8 +12,8 @@ require the following commands:
 
 ```bash
 czctl teleport namespace sample-project
-czctl environment deployment sample-project-core env.sh -n sample-project
-czctl service intercept sample-project-core -l 4000 -n sample-project
+czctl environment deployment -n sample-project sample-project-core env.sh
+czctl service intercept -n sample-project sample-project-core -l 4000
 ```
 But a development profile with the same information could be run from the dashboard or via the cli with just the click of
 a mouse or a simple `czctl profile run` command.

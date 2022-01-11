@@ -11,7 +11,7 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 ### Example
 
 ```bash
-> czctl intercept service sample-project-leaf -n sample-project -l 3010
+> czctl intercept service -n sample-project sample-project-leaf -l 3010
 ```
 
 ### Arguments
@@ -39,21 +39,21 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 Intercept the remote service's port 3000 and route to localhost:4000
 
 ```bash
-> czctl intercept service sample-project-core -n sample-project -l 4000
+> czctl intercept service -n sample-project sample-project-core -l 4000
 ```
 or to select another port
 ```bash
-> czctl intercept service sample-project-core -n sample-project -r 3000 -l 4000
+> czctl intercept service -n sample-project sample-project-core -r 3000 -l 4000
 ```
 
 Clean up the previous session above:
 ```bash
-> czctl intercept service sample-project-core -n sample-project -r 3000 -l 4000 --clean
+> czctl intercept service -n sample-project sample-project-core -r 3000 -l 4000 --clean
 ```
 
 Give your own custom header: 
 ```bash
-> czctl intercept service sample-project-leaf -n sample-project -l 3010 -h X-MY-HEADER:ME
+> czctl intercept service -n sample-project sample-project-leaf -l 3010 -h X-MY-HEADER:ME
 ```
 This routes to `x_my_header:me` or `x-my-header:me`
 
@@ -206,7 +206,7 @@ The pods and endpoints will clean up upon deletion of the decoy service and the 
 
 First correct the selector:
 ```bash
-> kubectl edit service service/sample-project-server -n sample-project
+> kubectl edit service -n sample-project service/sample-project-server
 ```
 
 The selector and ports looks like so when intercept is active:
@@ -231,10 +231,10 @@ In this example, it should look like so when corrected:
 ```
 Then delete the residue resources
 ```bash
-> kubectl delete service interceptor-sample-project-server-decoy -n sample-project
-> kubectl delete deployment interceptor-sample-project-server -n sample-project
-> kubectl delete configmap interceptor-sample-project-server -n sample-project
-> kubectl delete session intercept-sample-project-server -n sample-project
+> kubectl delete service -n sample-project interceptor-sample-project-server-decoy 
+> kubectl delete deployment -n sample-project interceptor-sample-project-server
+> kubectl delete configmap -n sample-project interceptor-sample-project-server
+> kubectl delete session -n sample-project intercept-sample-project-server
 ```
 
 Ngrok may also be left running and can be stopped by force if necessary: 

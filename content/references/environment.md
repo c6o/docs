@@ -11,7 +11,7 @@ The Environment command brings down cluster workload configuration files.
 ### Example
 
 ```bash
-> czctl environment deployment sample-project-core env.json --format json -n sample-project
+> czctl environment deployment -n sample-project sample-project-core env.json --format json
 ```
 
 ### Arguments
@@ -38,7 +38,7 @@ The Environment command brings down cluster workload configuration files.
 
 Download and watch the environment to a sourceable shell file:
 ```bash
-> czctl environment deployment sample-project-core core.sh --format sh -n sample-project
+> czctl environment deployment -n sample-project sample-project-core core.sh --format sh
 ```
 The file will be in this format:
 ```bash
@@ -51,7 +51,7 @@ export "SP_DB_URL=mongodb://sample-project-database:27017/sample-project-databas
 ```
 Cleanup the residue from the last command:
 ```bash
-> czctl environment deployment sample-project-core core.sh --format sh -n sample-project --clean
+> czctl environment deployment -n sample-project sample-project-core core.sh --format sh --clean
 ```
 or
 ```bash
@@ -63,7 +63,7 @@ To close all czctl sessions, use
 ```
 Enable access to a deployment and download the environment to an.env file:
 ```bash
-> czctl environment deployment sample-project-core core.env --format env -n sample-project
+> czctl environment deployment -n sample-project sample-project-core core.env --format env
 ```
 The file will be in this format:
 ```bash

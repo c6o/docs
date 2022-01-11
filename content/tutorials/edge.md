@@ -27,24 +27,24 @@ The tutorial assumes you are at the root of the Sample Project repo.
 
 ```bash
 kubectl create ns sample-project
-kubectl apply -f ./k8s -n sample-project
-kubectl apply -f ./k8s/loadbalance -n sample-project
+kubectl apply -n sample-project -f ./k8s
+kubectl apply -n sample-project -f ./k8s/loadbalance
 ```
 
 If using LoadBalance as the Service type, you can get the Frontend IP using:
 
 ```bash
-kubectl get svc sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}' -n sample-project
+kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 > [!NOTE]
 > It may take a bit of time for the load balancer to obtain an address. 
 > You can use the following command to determine if the load balancer has an external address:
-> `kubectl get svc sample-project-frontend -n sample-project`
+> `kubectl get svc -n sample-project sample-project-frontend`
 
 On MacOS, you can access the service using:
 
 ```bash
-open http://$(kubectl get svc sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}') -n sample-project
+open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
 ### Run Edge Service locally

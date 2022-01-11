@@ -12,8 +12,8 @@ in namespace "sample-project" would require the following commands:
 
 ```bash
 czctl namespace teleport sample-project -f env.sh
-czctl service intercept sample-project-core -l 3010 -n sample-project
-czctl deployment mount sample-project-core ./mnt -n sample-project
+czctl service intercept -n sample-project sample-project-core -l 3010
+czctl deployment mount -n sample-project sample-project-core ./mnt
 ```
 
 But a development profile with the same information could be run from the dashboard or via the cli with just the click of
@@ -35,11 +35,11 @@ Commands can be added by running another command and saving to the same profile 
 with the value "append". Other values for this flag are 'create' and 'replace'.
 
 ```bash
-➜  czctl service intercept sample-project-core -l 3010 -n sample-project --save-profile dev-profile.yaml --save-profile-mode append
+➜  czctl service intercept sample-project-core -n sample-project -l 3010 --save-profile dev-profile.yaml --save-profile-mode append
 
 Command has been saved to a Development Profile. (dev-profile.yaml)
 
-➜  czctl deployment mount sample-project-core ./mnt -n sample-project --save-profile dev-profile.yaml --save-profile-mode append
+➜  czctl deployment mount -n sample-project sample-project-core ./mnt --save-profile dev-profile.yaml --save-profile-mode append
 
 Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
@@ -48,7 +48,7 @@ If you forget this flag, the CLI will ask you if you are
 appending or replacing the contents of the Development Profile file.
 
 ```bash
-czctl service intercept sample-project-leaf -n sample-project --save-profile dev-profile.yaml
+czctl service intercept -n sample-project sample-project-leaf --save-profile dev-profile.yaml
 ? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
 ❯ append
   replace

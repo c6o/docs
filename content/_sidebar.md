@@ -13,21 +13,22 @@
   - [Development Profiles](/guides/development-profiles)
   - [Security](/guides/security)
 - Concepts
-  - [Ephemeral Environments](/concepts/environments)
+  - [Environments](/concepts/environments)
   - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)
   - [Teleport](/concepts/teleport)
   - [Intercept](/concepts/intercept)
   - [Mount](/concepts/mount)
-  - [Configuration](/concepts/env)
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project)
   - [Developing Edge Services](/tutorials/edge.md)
 - References
   - Commands
+    - [Environment](/references/environment)
     - [Intercept](/references/intercept)
-    - [Teleport](/references/teleport)
     - [Mount](/references/mount)
+    - [Profile](/references/development-profile)
+    - [Teleport](/references/teleport)
 - Changelogs
   - [CLI](/changelogs/cli)
 - Legal

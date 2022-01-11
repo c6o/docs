@@ -33,7 +33,7 @@ Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
 
 ```bash
-➜  czctl env deployment sample-project-core env.sh -n sample-project --save-profile dev-profile2.yaml
+➜  czctl env deployment -n sample-project sample-project-core env.sh --save-profile dev-profile2.yaml
 
 Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
@@ -48,7 +48,7 @@ Commands can be added by running another command and saving to the same profile 
 with the value "append". Other values for this flag are 'create' amd 'replace'.
 
 ```bash
-➜  czctl intercept service sample-project-core -l 3010 -n sample-project --save-profile dev-profile.yaml --save-profile-mode append
+➜  czctl intercept service sample-project-core -n sample-project -l 3010 --save-profile dev-profile.yaml --save-profile-mode append
 
 Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
@@ -57,7 +57,7 @@ If you forget this flag, the CLI will ask you if you are
 appending or replacing the contents of the Development Profile file.
 
 ```bash
-czctl mount deployment sample-project-core ./mnt -n sample-project --save-profile dev-profile.yaml
+czctl mount deployment -n sample-project sample-project-core ./mnt --save-profile dev-profile.yaml
 ? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
 ❯ append 
   replace 
