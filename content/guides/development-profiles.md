@@ -20,7 +20,7 @@ Development Profiles solve this by capturing a set of related CodeZero commands 
 Creating a Development Profile is as simple as using `czctl` just as you would normally, but appending the `--save-profile [name]` flag.
 
 > [!NOTE]
-> See [Getting Started](./getting-started) for more information on getting started with the CLI.
+> See [CodeZero Overview](../welcome/overview.md) and [Installing CodeZero](./installing.md) for more information on getting started with the CLI.
 
 A development profile is created through running CLI commands with a --save-profile flag:
 
