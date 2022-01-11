@@ -52,10 +52,3 @@ export KUBECONFIG=/path/to/kube.config
 
 > [!NOTE]
 > This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
-
-## Development Environment
-
-You can develop your application in any environment you would like, however we recommend using Visual Studio Code.
-
-> [!WIP]
-> Development environment recommendations coming soon.

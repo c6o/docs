@@ -14,7 +14,7 @@ CodeZero resolves this by enabling developers to only run the workloads they are
 
 There are several primary aspects to replicate the remote environment of a Kubernetes workload.
 
-1. Workload configuration
+1. Workload configuration See [Environment](../concepts/environments)
 1. Access remote services
 1. Persistent volumes.  See [Mount](../concepts/mount)
 
@@ -22,36 +22,20 @@ There are several primary aspects to replicate the remote environment of a Kuber
 > The last piece is discoverability within the cluster, allowing other services
 > to call into your local environment. See [intercept](../concepts/intercept) for more details on how this works.
 
-### Workload Configuration
-
-Every workload can be given a specific configuration. Typically this is done via ConfigMaps and Secrets. CodeZero teleport allows you to collect all the relevant configuration for a specific workload (deployment, pod, job, etc), and export it to your local machine (using `.env` or directly sourcing it to your environment).
-
-```bash
-> czctl deployment teleport my-service -n my-namespace -f ./my-service.env
-```
-
-The user can specify one of four formats for the environment variables output, using the -m flag:
-1. sh (sourceable shell), DEFAULT
-1. env (.env format file)
-1. json
-1. yaml
-
-Whilst teleport is running, the environment file will be kept in sync as environment variables are updated and changed in the cluster.
-
 ### Access Remote Services
 
-In a cluster, in-cluster services can communicate with other in-cluster services. However a problem occurs if you are outside the cluster: only publicly exposed services are accessible. This creates a problem if a locally running service needs to communicate to a non-exposed back-end service. This means that when developing a service that requires access to other back-end services, developers must run all dependent services locally.
+In a cluster, in-cluster services can communicate with other in-cluster services. 
+However, a problem occurs if you are outside the cluster: only publicly exposed services are accessible. 
+This creates a problem if a locally running service needs to communicate to a non-exposed back-end service. 
+This means that when developing a service that requires access to other back-end services, 
+developers must run all dependent services locally.
 
-CodeZero teleport solves this problem by creating a local tunnel into a remote cluster for each service, so developers can communicate with back-end services as though they are in the cluster.
+CodeZero teleport solves this problem by creating a local tunnel into a remote cluster for each service in a namespace 
+so developers can communicate with back-end services as though they are in the cluster.
 
 ```bash
-> czctl deployment teleport -n my-namespace my-deployment
+> czctl teleport namespace sample-project
 ```
-
-### Persistent Volumes
-
-> [!WIP]
-> Locally mounting of cluster volumes is a work in progress and will be coming soon.
 
 ## Under the hood
 
