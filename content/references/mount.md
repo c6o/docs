@@ -68,14 +68,6 @@ Enable access to other workloads:
 > czctl mount statefulset some-statefulset ./mnt -n some-namespace
 ...
 ```
-## Under the hood
-
-Mount works as follows:
-
-1. If you don't have an existing Teleport session into your cluster then one will be automatically started; however, if there is an existing Teleport session but it isn't based on the same namespace and workload then you will need to stop that Teleport session first
-1. Start a Mount session for the specified namespace and workload
-1. An NFS server deployment is started with a single pod, which mounts all of the volumes referenced by that workload
-1. Local mounts are created that point to each of the remote NFS server volumes
 
 ### Root Permissions
 

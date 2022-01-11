@@ -8,7 +8,21 @@ The Environment command brings down cluster workload configuration files.
 > czctl environment [workload-kind] [name] [local-file] -n namespace
 ```
 
+> [!PROTIP]
+> The environment command can be shortened from 'environment' to 'env'
+
 ### Example
+
+```bash
+> czctl environment deployment -n sample-project sample-project-core env.sh
+```
+
+There are several formats in which the local file can be written using the --format(-m) flag:
+
+1. sh (sourceable shell)
+2. env (.env format file)
+3. json
+4. yaml
 
 ```bash
 > czctl environment deployment -n sample-project sample-project-core env.json --format json
@@ -26,13 +40,19 @@ The Environment command brings down cluster workload configuration files.
 
 | Flags          | Alias | Description
 | ------------   | ----- | -----------
-| --additional   | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.
+| --format       | -m    |     The format of the environment file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format).
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --context      |       | The name of the Kubernetes context to use.
 | --clean        | -c    | Close and clean up existing teleport session.
 | --quiet        | -q    | Only display error message.
 | --save-profile | -s    | Save this command to a development profile.
+
+### alias
+
+```bash
+> czctl env [workload-kind] [name] [local-file] -n namespace
+```
 
 ## More Examples
 

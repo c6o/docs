@@ -1,4 +1,4 @@
-# Ephemeral Environments
+# Environments
 
 It is common practice in Modern Development to have a Production environment and pre-production environments like Staging and Development. Advanced DevOps teams would take advantage of Infrastructure as Code and Ephemeral Environments in order to improve team velocity.
 
