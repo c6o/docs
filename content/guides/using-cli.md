@@ -39,3 +39,7 @@ available for that action. Try:
 ```bash
 > czctl env --help
 ```
+
+```bash
+> czctl session --help
+```
