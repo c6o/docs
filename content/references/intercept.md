@@ -77,7 +77,7 @@ In order to route local traffic to in cluster resources, teleport does several t
 
 ### Reverse Tunnel
 
-When a teleport session is opened, the developers local machine creates a tunnel 
+When a teleport session is opened, the developer's local machine creates a tunnel 
 so that it can receive traffic requests from the remote cluster without needing to change any firewall or routing settings.
 
 > [!PROTIP]
