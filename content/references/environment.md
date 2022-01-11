@@ -29,7 +29,7 @@ The Environment command brings down cluster workload configuration files.
 | --additional   | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the kubernetes context to use.
+| --context      |       | The name of the Kubernetes context to use.
 | --clean        | -c    | Close and clean up existing teleport session.
 | --quiet        | -q    | Only display error message.
 | --save-profile | -s    | Save this command to a development profile.
