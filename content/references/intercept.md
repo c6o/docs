@@ -32,7 +32,7 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 | --context      |       | The name of the kubernetes context to use.
 | --clean        | -c    | Close and clean up existing teleport session.
 | --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile
+| --save-profile | -s    | Save this command to a development profile.
 
 ## More Examples
 

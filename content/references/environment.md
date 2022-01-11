@@ -20,7 +20,7 @@ The Environment command brings down cluster workload configuration files.
 | --------       | -----------
 | workload-kind  | Type of workload you want to teleport as.
 | name           | The name of the workload you want to teleport as.
-| local-file     | The name of the local file to which the configuration will be written
+| local-file     | The name of the local file to which the configuration will be written.
 
 ### Flags
 
@@ -32,7 +32,7 @@ The Environment command brings down cluster workload configuration files.
 | --context      |       | The name of the kubernetes context to use.
 | --clean        | -c    | Close and clean up existing teleport session.
 | --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile
+| --save-profile | -s    | Save this command to a development profile.
 
 ## More Examples
 

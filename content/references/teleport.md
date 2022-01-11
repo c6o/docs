@@ -31,7 +31,7 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 | --context      |       | The name of the kubernetes context to use.
 | --clean        | -c    | Close and clean up existing teleport session.
 | --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile
+| --save-profile | -s    | Save this command to a development profile.
 
 ## More Examples
 

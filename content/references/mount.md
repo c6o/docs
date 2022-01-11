@@ -31,7 +31,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 | --context      |       | The name of the kubernetes context to use.
 | --clean        | -c    | Close and clean up existing mount session.
 | --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile
+| --save-profile | -s    | Save this command to a development profile.
 
 ## More Examples
 
