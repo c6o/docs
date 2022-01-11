@@ -11,6 +11,6 @@ With the app you can:
 1. Add *Workspaces* containing *Development Profiles* to the app
 1. Run *Development Profiles*
 1. See active *Sessions* belonging to you or other users working in the cluster
-1. Close runnings *Sessions*
+1. Close running *Sessions*
 1. See logs from *Sessions*
 1. Manage your user profile
