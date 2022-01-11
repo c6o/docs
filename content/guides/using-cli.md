@@ -25,13 +25,21 @@ The czctl command loosely follows the conventions of the kubectl command where e
 available for that action. Try:
 
 ```bash
-> czctl deployment teleport --help
+> czctl teleport --help
 ```
 
 ```bash
-> czctl service intercept --help
+> czctl intercept --help
 ```
 
 ```bash
-> czctl service mount --help
+> czctl mount --help
+```
+
+```bash
+> czctl env --help
+```
+
+```bash
+> czctl session --help
 ```
