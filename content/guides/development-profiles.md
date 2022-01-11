@@ -39,7 +39,7 @@ Command has been saved to a Development Profile. (dev-profile.yaml)
 ```
 
 > [!PROTIP]
-> If you are running the command from a directory with a .codezero/ directory, a profile file will automatically be
+> If you are running the command from a directory within a .codezero/ directory, a profile file will automatically be
 > created and placed in a folder inside `.codezero/develop/`.
 
 ### Appending More
