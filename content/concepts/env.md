@@ -7,7 +7,7 @@ The environment command is often used in conjunction with [Teleport](../concepts
 > [!PROTIP]
 > The environment command can be shortened from 'environment' to 'env'
 
-## Use-Case
+## Use Case
 
 One problem that developers encounter is that they need to use the same configuration that a remotely deployed service uses locally.
 Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task. 
