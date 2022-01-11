@@ -17,7 +17,7 @@ Via the NFS server, your local system then mounts these volumes locally for you 
 
 ## How it Works
 
-1. If you don't have an existing Teleport session into your cluster then one will be automatically started; however, if there is an existing Teleport session, but it isn't based on the same namespace and workload then you will need to stop that Teleport session first
+1. If you don't have an existing Teleport session into your cluster then one will be automatically started; however, if there is an existing Teleport session, and it isn't based on the same namespace and workload, then you will need to stop that Teleport session first.
 1. Start a Mount session for the specified namespace and workload
 1. An NFS server deployment is started with a single pod, which mounts all the volumes referenced by that workload
 1. Local mounts are created that point to each of the remote NFS server volumes
