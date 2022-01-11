@@ -9,11 +9,12 @@ The environment command is often used in conjunction with [Teleport](../concepts
 
 ## Use-Case
 
-One problem that developers encounter need to use the same configuration that a remotely deployed service uses locally.
-Finding the configuration and setting the local service to use it is a time-consuming task. 
+One problem that developers encounter is that they need to use the same configuration that a remotely deployed service uses locally.
+Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task. 
 Additionally, if the configuration changes on the server, the developer may not be aware of those changes when they occur.
+Configurations need to be updated locally as they change remotely.
 
-CodeZero resolves this by enabling developers to bring down environment variables from workloads they are developing and
+CodeZero resolves this by enabling developers to bring down environment variables from workloads they are modifying and
 have the local configuration files update as they change on the server.
 
 ### Access Remote Workload Configurations
