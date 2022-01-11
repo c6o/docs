@@ -1,10 +1,17 @@
 # Development Profiles
 
-A Development Profile is a simple manifest file that defines a specific set of reproducible CodeZero commands. This allows developers to easily get several commands running for the tasks at hand without having to remember all the command line parameters for the command line tool. Just record a series of commands to create a Development Profile to be used later to rerun those commands again.
+A Development Profile is a simple manifest file that defines a specific set of reproducible CodeZero commands. 
+This allows developers to easily get several commands running for the tasks at hand without having to remember all the 
+command line parameters for the command line tool. Just record a series of commands to create a Development Profile to 
+be used later to rerun those commands again.
 
 ## Overview
 
-As developers go about their day, each development task may require a combination of teleports, intercepts, and mounts etc. Developers often spend the majority of their time developing a common set of primary services. The intercepts, teleports and mounts are the same for these services day in and day out, so needing to always run the individual commands can become tedious and prone to error. As new developers come into the team, or certain sets of infrastructure have reduced work on them, it can become hard to remember commands.
+As developers go about their day, each development task may require a combination of commands like teleport, intercept, environment, or mount. 
+Developers often spend the majority of their time developing a common set of primary services. 
+The intercepts, teleports and mounts are the same for these services day in and day out, so needing to always run the 
+individual commands can become tedious and prone to error. As new developers come into the team, or certain sets of 
+infrastructure have reduced work on them, it can become hard to remember commands.
 
 Development Profiles solve this by capturing a set of related CodeZero commands into a single runnable "Development Profile".
 
