@@ -20,7 +20,7 @@ We recommend you go through this documentation in the order it is presented as w
 
 ### Guides
 
-Nothing beats having an actual Kubernetes cluster when it comes to learning CodeZero and Kubernetes. If you already have a cluster set up, you can simply use a *Namespace* within your existing cluster and move on to [Installing the CLI](../guides/installing-cli.md). Otherwise, the [Kubernetes QuickStart](../guides/kubernetes-quickstart.md) has several options to get started with a learning Cluster.
+Nothing beats having an actual Kubernetes cluster when it comes to learning CodeZero and Kubernetes. If you already have a cluster set up, you can simply use a *Namespace* within your existing cluster and move on to [Installing the CLI](../guides/installing.md). Otherwise, the [Kubernetes QuickStart](../guides/kubernetes-quickstart.md) has several options to get started with a learning Cluster.
 
 ### Concepts
 
