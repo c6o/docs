@@ -1,6 +1,6 @@
 # Session Close Reference
 
-Commands to help you list and close open sessions (sessions are started by running commands like teleport, intercept, etc.).
+Commands to help you close open sessions (sessions are started by running commands like teleport, intercept, etc.).
 
 ## Usage
 ```bash
