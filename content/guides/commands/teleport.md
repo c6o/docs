@@ -20,7 +20,7 @@ In order to route local traffic to in cluster resources, Teleport does several t
 
 ### Why is `sudo` required?
 
-Teleport requires access to make modifications to your local `hosts` file, which can only be done with elevated root access.
+Teleport makes modifications to your operating system's DNS in order to resolve in-cluster resources. This can only be done with elevated permissions.
 
 Root access is only required once to elevate the `czctl` command's priviledge by issuing the command:
 
