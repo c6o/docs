@@ -68,7 +68,7 @@ Here's an example of getting the process ids and using `kill -9` to end these pr
 
 If the `/etc/hosts` file has not cleaned up after killing the tunnel process, edit this file directly with `sudo vi /etc/hosts` or use your favorite editor.
 
-The tunneller process creates a backup of your `/etc/hosts` file in `~/hosts.original` that can be copied to the `/etc/hosts` using `sudo cp ~/hosts.original /etc/hosts`
+The tunnel process creates a backup of your `/etc/hosts` file in `~/hosts.original` that can be copied to the `/etc/hosts` using `sudo cp ~/hosts.original /etc/hosts`
 
 After a teleport has been issued, the file will look something like this:
 ```
