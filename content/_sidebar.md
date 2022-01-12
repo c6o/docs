@@ -21,7 +21,7 @@
   - [Services](/concepts/services.md)
   - [Sessions](/concepts/sessions.md)
   - [Teleporting](/concepts/teleporting.md)
-  - [Profiles](/concepts/profiles.md)
+  - [Development Profiles](/concepts/profiles.md)
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project.md)
   - [Developing Edge Services](/tutorials/edge.md)
