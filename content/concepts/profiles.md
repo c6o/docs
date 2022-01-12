@@ -1,24 +1,25 @@
-## Development Profile
+# Development Profiles
 
-### Concepts
+## Overview
 
-A development profile is a collection of CodeZero commands that coordinate together to create a specific development scenario.
-For instance, a developer may want to teleport their machine into a cluster and intercept a particular service.
-A development profile remembers the parameters required so that the developer doesn't have to remember the parameters
-to recreate a scenario when they want to debug something.
+Development Profiles are groups of actions that need to be taken allow developers to prepare the environment around the modifying of a particular piece of code.
 
-For instance a teleport and intercept into a service named "sample-project-core" in namespace "sample-project" would
-require the following commands:
+As developers go about their day, each development task may require a combination of commands like teleport, intercept, environment, or mount.
+Developers often spend the majority of their time developing a common set of primary services.
+The intercepts, teleports and mounts are the same for these services day in and day out, so needing to always run the
+individual commands can become tedious and prone to error. As new developers come into the team, or certain sets of
+infrastructure have reduced work on them, it can become hard to remember commands.
+
+Development Profiles solve this by capturing a set of related CodeZero commands into a single runnable **Development Profile**.
+
+## Illustration
+
+For instance a teleport and intercept into a service named `sample-project-core` in namespace `sample-project would require the following commands:
 
 ```bash
-czctl teleport namespace sample-project
-czctl environment deployment sample-project-core env.sh -n sample-project
-czctl service intercept sample-project-core -l 4000 -n sample-project
+czctl teleport namespace my-namespace
+czctl environment deployment -n my-namespace my-deployment env.sh -m yaml
+czctl service intercept -n my-namespace my-service -l 4000
 ```
-But a development profile with the same information could be run from the dashboard or via the cli with just the click of
-a mouse or a simple `czctl profile run` command.
 
-For more, see:
-
-* [Creating a Development Profile](../guides/development-profiles.md)
-* [Development Profile Reference](../references/development-profile.md)
+But a development profile with the same information could be run from the dashboard or via the cli with just the click of a mouse or a simple `czctl profile run` command.

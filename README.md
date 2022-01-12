@@ -24,6 +24,21 @@ docsify serve .
 
 The site will run locally at `http://localhost:3000`
 
+## Finding broken links ##
+
+The tool linkinator can be used to make sure that all the links work. It doesn't work with the sidebars because of the absolute pathing, but this can be worked around by temporarily chaging (/ to (./ in the sidebar. Make sure this is changed back when committing changes.
+
+```bash
+linkinator ./content/**/*.md --markdown
+```
+
+## Organization of the Documentation ##
+
+Concepts => Thought leadership to train, educate and evangelize best practices to DevOps, Architects
+Guides => Multi step complex scenarios/tasks
+Tutorials => Exercises to try with the sample-project
+Reference => Detail information on a single command (a more graphical view of czctl <command> --help)
+
 ## Legal Stuff ##
 
 These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.

@@ -1,4 +1,4 @@
-# Mount Reference
+# Mount
 
 Mount sets up remote volumes on your local workstation so that your code can access these volumes just like it does in-cluster.
 
@@ -16,7 +16,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 ### Arguments
 
-| Argments       | Description
+| Arguments       | Description
 | -------------- | -----------
 | workload-kind  | Type of workload you want to target.
 | name           | The name of the workload you want to target.
@@ -36,8 +36,9 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 ## More Examples
 
 Mount all the volumes of a specific deployment within the folder `./folder-name`
+
 ```bash
-> czctl mount deployment sample-project-core ./folder-name -n sample-project
+> czctl mount deployment -n sample-project sample-project-core ./folder-name
 ...
 > ls -la ./folder-name
 total 0
@@ -45,19 +46,27 @@ drwxr-xr-x   3 root        staff   96 10 Jan 18:55 .
 drwxr-xr-x  23 robblovell  staff  736 10 Jan 18:55 ..
 drwxr-xr-x   2 root        staff   64 10 Jan 18:55 data
 ```
+
 Cleanup the residue from the last command:
+
 ```bash
-> czctl mount deployment sample-project-core ./folder-name -n sample-project  --clean
+> czctl mount deployment -n sample-project sample-project-core ./folder-name --clean
 ```
+
 or
+
 ```bash
 > czctl session close
 ```
+
 To close all czctl sessions, use
+
 ```bash
 > czctl session close --all
 ```
+
 Enable access to other workloads:
+
 ```bash
 > czctl mount cronjob some-cronjob ./mnt -n some-namespace
 ...
@@ -68,41 +77,3 @@ Enable access to other workloads:
 > czctl mount statefulset some-statefulset ./mnt -n some-namespace
 ...
 ```
-## Under the hood
-
-Mount works as follows:
-
-1. If you don't have an existing Teleport session into your cluster then one will be automatically started; however, if there is an existing Teleport session but it isn't based on the same namespace and workload then you will need to stop that Teleport session first
-1. Start a Mount session for the specified namespace and workload
-1. An NFS server deployment is started with a single pod, which mounts all of the volumes referenced by that workload
-1. Local mounts are created that point to each of the remote NFS server volumes
-
-### Root Permissions
-
-On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
-
-```bash
-> czctl start
-```
-
-> [!EXPERT]
-> Root access is only required once. During `start` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent mount calls can be run via the current user.
-
-## Residue and Cleanup
-
-If any mounts remain after running Mount with the `--clean` parameter (or `session close` command), you can see them:
-```bash
-mount
-...
-nfs-server-deployment-nfsserviceproxy:/volumes/volume1 on .../folder-name/volume1 (nfs)
-nfs-server-deployment-nfsserviceproxy:/volumes/volume2 on .../folder-name/volume2 (nfs)
-```
-
-Then you can go ahead and unmount using:
-```bash
-umount folder-name/volume1
-umount folder-name/volume2
-```
-
-> [!EXPERT]
-> Be sure to first unmount all cluster volume first before ending your Teleport session; otherwise, your system will be unable to unmount the volumes properly.

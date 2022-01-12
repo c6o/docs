@@ -28,7 +28,8 @@
   "homepage": "https://github.com/c6o/docs#readme",
   "dependencies": {
     "docsify-cli": "^4.4.3",
-    "http-server": "^0.12.3"
+    "http-server": "^0.12.3",
+    "linkinator": "^3.0.3"
   },
   "devDependencies": {
     "concurrently": "^6.2.0"
