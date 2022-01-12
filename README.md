@@ -24,7 +24,7 @@ docsify serve .
 
 The site will run locally at `http://localhost:3000`
 
-## Finding broken links
+## Finding broken links ##
 
 The tool linkinator can be used to make sure that all the links work. It doesn't work with the sidebars because of the absolute pathing, but this can be worked around by temporarily chaging (/ to (./ in the sidebar. Make sure this is changed back when committing changes.
 
