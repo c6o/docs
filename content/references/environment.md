@@ -105,26 +105,3 @@ Obtain configuration from other workloads:
 > czctl environment statefulset some-statefulset config.sh -n some-namespace
 ...
 ```
-## Under the hood
-
-The Environment command starts a watch of the configuration files of the workload and writes to the given environment file
-as configuration changes in the cluster.
-
-## Residue
-
-The environment command makes no changes to your remote cluster and the only residue is the file where the 
-configuration is written and the watcher process.
-
-However, if the environment watcher continues to run after a clean/close has been performed, 
-you will need to find the process id and do a `kill -9` of the environment monitor process.
-
-Here's an example of getting the process ids and using `kill -9` to end these processes:
-
-```bash
-> ps xau | grep 'child.js' | grep -v 'grep' |  awk '{print $2 " -> " $11, $12}'
-65120 -> /Users/username/.codezero/bin/czdaemon/czdaemon /snapshot/node-monorepo/gulpfile.js/tmp/czdaemon/package/lib/engine/services/monitors/env/child.js
-```
-
-```bash
-> sudo kill -9 65120
-```

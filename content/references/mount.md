@@ -68,33 +68,3 @@ Enable access to other workloads:
 > czctl mount statefulset some-statefulset ./mnt -n some-namespace
 ...
 ```
-
-### Root Permissions
-
-On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
-
-```bash
-> czctl start
-```
-
-> [!EXPERT]
-> Root access is only required once. During `start` the permissions of the tunneler binary elevate to always run as root (See [Set-UID](https://en.wikipedia.org/wiki/Setuid) for more details), so subsequent mount calls can be run via the current user.
-
-## Residue and Cleanup
-
-If any mounts remain after running Mount with the `--clean` parameter (or `session close` command), you can see them:
-```bash
-mount
-...
-nfs-server-deployment-nfsserviceproxy:/volumes/volume1 on .../folder-name/volume1 (nfs)
-nfs-server-deployment-nfsserviceproxy:/volumes/volume2 on .../folder-name/volume2 (nfs)
-```
-
-Then you can go ahead and unmount using:
-```bash
-umount folder-name/volume1
-umount folder-name/volume2
-```
-
-> [!EXPERT]
-> Be sure to first unmount all cluster volume first before ending your Teleport session; otherwise, your system will be unable to unmount the volumes properly.

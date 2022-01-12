@@ -29,7 +29,9 @@ CodeZero teleport solves this problem by creating a local tunnel into a remote c
 
 ### Workload Persistent Volumes
 
-Every workload can mount storage drives through the use of PersistentVolumes. CodeZero allows you to mount any workloads persistent volumes as if they are locally mounted hard drives.
+Every workload can mount storage drives through the use of PersistentVolumes. Persistent volumes are pieces of storage in a cluster that are available to Pods to read and write. They are of a fixed size and behave like mounted hard drives on a computer where the data continues to exist as Pods are created and destroyed. They can be mounted with different access modes like ReadWriteOnce, ReadWriteMany, and ReadOnlyMany.
+
+CodeZero allows you to mount any workloads persistent volumes as if they are locally mounted hard drives.
 
 ### Discoverability
 
