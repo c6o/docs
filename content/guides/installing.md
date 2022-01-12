@@ -27,7 +27,7 @@ After installing the CodeZero CLI, run:
 
 ### Access Your Cluster
 
-Many CLI commands need to interact with a Kubernetes cluster. Therefore, the CLI requires access to a `kubeconfig` for your cluster. By default, we use the default cluster in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to your `kubeconfig` file.
+Many CLI commands need to interact with a Kubernetes cluster. Therefore, the CLI requires access to a `kubeconfig` for your cluster. By default, we use the current context in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to the location of the `kubeconfig` file.
 
 ```bash
 export KUBECONFIG=<path to kubeconfig>
