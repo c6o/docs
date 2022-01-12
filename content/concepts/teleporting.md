@@ -12,8 +12,8 @@ CodeZero resolves this by enabling developers to only run the workloads they are
 
 There are several primary aspects to replicate the remote environment of a Kubernetes workload.
 
-1. Workload configuration
-2. Access remote services
+1. Workload configuration.
+2. Access remote services.
 3. Persistent volumes.  
 4. Discoverability.
 
