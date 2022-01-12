@@ -17,11 +17,15 @@
   - [Development Profiles](/guides/development-profiles.md)
   - [Security](/guides/security.md)   
 - Concepts
+  - [Development Profiles](/concepts/profiles.md)
   - [Environments](/concepts/environments.md)
   - [Services](/concepts/services.md)
   - [Sessions](/concepts/sessions.md)
   - [Teleporting](/concepts/teleporting.md)
-  - [Development Profiles](/concepts/profiles.md)
+    - [Configuration](/concepts/teleporting/configuration.md)
+    - [Intercept](/concepts/teleporting/intercept.md)
+    - [Mount](/concepts/teleporting/mount.md)
+    - [Teleport](/concepts/teleporting/teleport.md)
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project.md)
   - [Developing Edge Services](/tutorials/edge.md)

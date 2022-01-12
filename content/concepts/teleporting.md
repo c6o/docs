@@ -1,6 +1,6 @@
 # Teleporting
 
-The primary concept behind Teleport is to allow developers to develop and debug their code locally as though they are inside the cluster.
+The primary concept behind Teleporting is to allow developers to develop and debug their code locally as though they are inside the cluster.
 
 ## Overview
 
