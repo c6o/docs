@@ -1,4 +1,4 @@
-# Teleport Reference
+# Teleport
 
 Teleport sets up your local machine to feels like it's running in-cluster.
 
@@ -16,7 +16,7 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 
 ### Arguments
 
-| Argments  | Description
+| Arguments  | Description
 | --------  | -----------
 | workload  | Type of workload you want to teleport as.
 | name      | The name of the workload you want to teleport as.
@@ -36,13 +36,13 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 ## More Examples
 
 Cleanup the residue from the last command:
+
 ```bash
 > czctl teleport namespace sample-project --clean
 ```
+
 or
+
 ```bash
 > czctl session close
 ```
-
-
-

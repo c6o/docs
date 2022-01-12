@@ -1,4 +1,4 @@
-# Mount Guide
+# Mount
 
 Mount allows developers to locally mount cluster volumes in their local workstation so that their local code can read or write to these volumes.
 

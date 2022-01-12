@@ -1,4 +1,4 @@
-# Intercept Guide
+# Intercept
 
 Intercept allows developers to run a service locally and selectively intercept traffic from a remote environment to their local instance.
 

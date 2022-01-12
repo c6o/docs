@@ -1,7 +1,7 @@
 # Services
 
-[Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) route traffic to Pods based on 
-a DNS name and load-balance across them. Service Resources typically work with Endpoints or Workloads 
+[Kubernetes Services](https://kubernetes.io/docs/concepts/services-networking/service/) route traffic to Pods based on
+a DNS name and load-balance across them. Service Resources typically work with Endpoints or Workloads
 (Deployments, DaemonSets, Pods, CronJobs, Jobs).
 
 For the purposes of the tutorials and diagrams, we omit the Workload unless it is relevant to the lesson at hand.

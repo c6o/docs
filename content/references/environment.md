@@ -1,4 +1,4 @@
-# Environment Reference
+# Environment
 
 The Environment command brings down cluster workload configuration files.
 
@@ -30,7 +30,7 @@ There are several formats in which the local file can be written using the --for
 
 ### Arguments
 
-| Argments       | Description
+| Arguments       | Description
 | --------       | -----------
 | workload-kind  | Type of workload you want to teleport as.
 | name           | The name of the workload you want to teleport as.
@@ -57,10 +57,13 @@ There are several formats in which the local file can be written using the --for
 ## More Examples
 
 Download and watch the environment to a sourceable shell file:
+
 ```bash
 > czctl environment deployment -n sample-project sample-project-core core.sh --format sh
 ```
+
 The file will be in this format:
+
 ```bash
 export "SAMPLE1_KEY=VALUE1"
 export "SAMPLE2_KEY=VALUE2"
@@ -69,23 +72,33 @@ export "SAMPLE_PROJECT_VERSION=Version Production"
 export "SP_LEAF_URL=http://sample-project-leaf:3010"
 export "SP_DB_URL=mongodb://sample-project-database:27017/sample-project-database"
 ```
+
 Cleanup the residue from the last command:
+
 ```bash
 > czctl environment deployment -n sample-project sample-project-core core.sh --format sh --clean
 ```
+
 or
+
 ```bash
 > czctl session close
 ```
+
 To close all czctl sessions, use
+
 ```bash
 > czctl session close --all
 ```
+
 Enable access to a deployment and download the environment to an.env file:
+
 ```bash
 > czctl environment deployment -n sample-project sample-project-core core.env --format env
 ```
+
 The file will be in this format:
+
 ```bash
 SAMPLE1_KEY=VALUE1
 SAMPLE2_KEY=VALUE2
@@ -94,7 +107,9 @@ SAMPLE_PROJECT_VERSION=Version Production
 SP_LEAF_URL=http://sample-project-leaf:3010
 SP_DB_URL=mongodb://sample-project-database:27017/sample-project-database
 ```
+
 Obtain configuration from other workloads:
+
 ```bash
 > czctl environment cronjob some-cronjob config.sh -n some-namespace
 ...

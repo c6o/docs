@@ -1,4 +1,4 @@
-# Environment Guide
+# Environment
 
 The primary concept behind the Environment command is to help developers to develop and debug their code locally by bringing in configuration from a workload.
 

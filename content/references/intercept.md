@@ -1,4 +1,4 @@
-# Intercept Reference
+# Intercept
 
 Intercept allows you to selectively intercept traffic to a remote service and redirect it to your local machine.
 
@@ -41,19 +41,23 @@ Intercept the remote service's port 3000 and route to localhost:4000
 ```bash
 > czctl intercept service -n sample-project sample-project-core -l 4000
 ```
+
 or to select another port
+
 ```bash
 > czctl intercept service -n sample-project sample-project-core -r 3000 -l 4000
 ```
 
 Clean up the previous session above:
+
 ```bash
 > czctl intercept service -n sample-project sample-project-core -r 3000 -l 4000 --clean
 ```
 
-Give your own custom header: 
+Give your own custom header:
+
 ```bash
 > czctl intercept service -n sample-project sample-project-leaf -l 3010 -h X-MY-HEADER:ME
 ```
-This routes to `x_my_header:me` or `x-my-header:me`
 
+This routes to `x-my-header:me`
