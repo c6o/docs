@@ -55,7 +55,7 @@ export KUBECONFIG=/path/to/kube.config
 
 ## Development Environment
 
-You can develop your application in any environment you would like, however we recommend using an id like Visual Studio Code or any JetBrains ide like Webstorm or Intellij.
+You can develop your application in any environment you would like, however we recommend using an IDE like Visual Studio Code or any JetBrains IDE like Webstorm or Intellij.
 
 > [!WIP]
 > Development environment recommendations coming soon.
