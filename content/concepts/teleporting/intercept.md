@@ -20,7 +20,7 @@ On the remote cluster a proxy must determine if a request coming into a service 
 
 In the diagram below, a sidecar is inserted that looks for traffic with a particular header. If this header matches, it is routed to the developer's local workstationg. The header can be made specific to one developer or a team of developers depending on the use case.
 
-![Intercept](../../_media/concepts/intercept-routing.jpg ':size=300px')
+![Intercept](../../_media/concepts/intercept-routing.jpg ':size=500px')
 
 ## Hurdles
 
