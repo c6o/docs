@@ -2,6 +2,36 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.3.0
+
+### Breaking Changes
+* Re-order czctl command argument order to `czctl [command] [workload type]` 
+  NOTE: The previous ordering will continue to be supported, but documentation going forward will prefer this new order
+
+### Features
+
+* Add and remove workspaces from Desktop App
+* Add and remove clusters from Desktop app
+* Backup kubeconfigs on edit
+* Show notifications in dashboard when open
+* Remove extra sessions rom main dashboard screen
+* Detect start/stop of daemon via Desktop App
+* Dynamically load doc links, to stay up to date with latest docs
+* Consolidated analytics across CLI, Desktop App, and VSCode
+* More descriptive session display information with --details flag
+* Clean up `czctl help` documentation
+* Added standalone `czctl environment [workloadtype] [workload]` to output environment variables without being tied to a teleport session
+
+### Bug Fixes
+
+* Clean up redundant messaging on czctl start
+* CLI to report clear messaging when run on Windows
+* Ensure mount command reports failure if there was an internal error
+* Teleport to missing resource returns no output
+* Return an error if mounting a workload that has no mounts
+* Ensure teleport runs before mount command, when in the same development profile
+* Error during startup when kubeconfig is missing from home directory
+
 ## Release Notes for v1.2.3
 
 ### Bug Fixes
