@@ -24,15 +24,15 @@
             "title": "Documentation",
             "items": [{
                 "title": "Teleport",
-                "URL": "/#/guide/teleport",
+                "URL": "/#/guides/teleport",
                 "icon": "vaadin:location-arrow"
             }, {
                 "title": "Intercept",
-                "URL": "/#/guide/intercept",
+                "URL": "/#/guides/intercept",
                 "icon": "vaadin:sign-in-alt"
             }, {
                 "title": "Volume Mount",
-                "URL": "/#/guide/mount",
+                "URL": "/#/guides/mount",
                 "icon": "vaadin:harddrive"
             }]
         }
