@@ -2,6 +2,17 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.3.1
+
+### Breaking Changes
+
+* Mounted volume locations will now maintain the directory structure of the related workload:
+  Example:  For example, a pod with mounts at `/var/lib/my-app` and `/data`, when mounted with `czctl mount deployment [name] /mnt/test` will create the local mounts at `/mnt/test/var/lib/my-app` and `/mnt/test/data`.
+
+### Bug Fixes
+
+* Fix warning and stack trace related to a module not found error returned at the end of each command. [[#39](https://github.com/c6o/roadmap/issues/39)]
+
 ## Release Notes for v1.3.0
 
 ### Breaking Changes
