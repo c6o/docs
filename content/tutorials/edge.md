@@ -1,9 +1,9 @@
 # Developing Edge Services
 
-In this tutorial, we get to experience how a frontend developer could use CodeZero when developing an Edge Service. 
+In this tutorial, we get to experience how a frontend developer could use CodeZero when developing an Edge Service.
 In the Sample Project, the Frontend Service is an Edge Service that makes calls to the Core and Socket services.
 
-Currently, you have to run all these services either locally or in cluster. 
+Currently, you have to run all these services either locally or in cluster.
 We would like to be able to run the Frontend Service locally and make use of the other services in the cluster.
 
 ## Objectives
@@ -37,7 +37,7 @@ If using LoadBalance as the Service type, you can get the Frontend IP using:
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 > [!NOTE]
-> It may take a bit of time for the load balancer to obtain an address. 
+> It may take a bit of time for the load balancer to obtain an address.
 > You can use the following command to determine if the load balancer has an external address:
 > `kubectl get svc -n sample-project sample-project-frontend`
 
@@ -49,19 +49,17 @@ open http://$(kubectl get svc -n sample-project sample-project-frontend --output
 
 ### Run Edge Service locally
 
-This is all fun and good however, we would like to make changes to the Frontend service locally. 
+This is all fun and good however, we would like to make changes to the Frontend service locally.
 First, let's run it locally using:
 
 ```bash
 yarn start-frontend
 ```
 
-You should be able to access to local Frontend service at `http://localhost:3030` however, 
-you should see that the Socket and Core sections show errors. 
-This is because the Frontend is not able to access the upstream services.
+You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
 
-This is an opportunity to use the CodeZero Teleport function. 
-First, we need the local frontend service to know that we wish to use the teleported configuration 
+This is an opportunity to use the CodeZero Teleport function.
+First, we need the local frontend service to know that we wish to use the teleported configuration
 by accessing `http://localhost:3030?t=1` or `http://localhost:3030?teleport=1`
 
 This will reference the following upstream services:
@@ -86,9 +84,9 @@ You can now teleport using the following command
 czctl teleport namespace sample-project
 ```
 
-You should now see the failed connections on the web page start to work. 
-Launch your favorite IDE and make changes to the code in `packages/frontend`. 
-You can make changes to the front end code and see that you are able to test against 
+You should now see the failed connections on the web page start to work.
+Launch your favorite IDE and make changes to the code in `packages/frontend`.
+You can make changes to the front end code and see that you are able to test against
 the in cluster `sockets` and `core` services.
 
 ### Cleanup
