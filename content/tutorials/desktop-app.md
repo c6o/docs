@@ -20,7 +20,7 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI](/guides/installing).
+If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Deskop app](/guides/installing).
 
 For this tutorial you will also need to be using MacOS or Linux, and have NodeJS 16+.
 
@@ -34,13 +34,11 @@ If you have already installed the Sample Project to a cluster, you can skip to t
 
 If you haven't already, go through the [Developing Edge Services](https://docs.codezero.io/#/tutorials/edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but using the Desktop app.
 
-### Install the Desktop app
+### Launch the Desktop app
 
-Head over to the [CodeZero website](https://codezero.io/platform/desktop) and download the Desktop app for your platform. Run the installer.
+If you haven't aleady, [install the Deskop app](/guides/installing) and launch it.
 
-Launch the app. You will likely be prompted to provide your password to give the app elevated priviledges; this is so that the app can install the CodeZero daemon (background service).
-
-Once the app is running you will see a CodeZero icon in your system tray. Click on the tray icon and select "Dashboard" to open up the UI.
+Click on the CodeZero icon in your system tray and select "Dashboard" to open up the UI.
 
 ### Add your Configuration
 

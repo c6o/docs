@@ -1,6 +1,6 @@
 # Installing CodeZero
 
-CodeZero's developer tool helps in the development and testing of Kubernetes applications through
+CodeZero's developer tools help in the development and testing of Kubernetes applications through
 a Command Line Interface (CLI) and a Desktop application.
 
 ## Install the CodeZero CLI
@@ -36,3 +36,13 @@ export KUBECONFIG=<path to kubeconfig>
 > [!NOTE]
 > Some commands let you explicitly specify a kubeconfig file.
 > This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
+
+### Install the Desktop app
+
+Head over to the [CodeZero website](https://codezero.io/platform/desktop) and download the Desktop app for your platform. Run the installer.
+
+Launch the app. You will likely be prompted to provide your password to give the app elevated priviledges; this is so that the app can install the CodeZero daemon (background service).
+
+Once the app is running you will see a CodeZero icon in your system tray. Click on the tray icon and select "Dashboard" to open up the UI.
+
+For next steps, read about [Using the CodeZero Desktop App](/guides/using-desktop-app).
