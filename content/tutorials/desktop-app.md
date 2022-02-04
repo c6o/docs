@@ -28,50 +28,11 @@ For this tutorial you will also need to be using MacOS or Linux, and have NodeJS
 
 ### Set up the Sample Project
 
-If you have already installed the Sample Project to a cluster, you can skip to the next section. If not, we are going to go through the steps in the Sample Project's README.
-
-After cloning the repo, go into the project root in a terminal and build and run the services:
-
-```bash
-yarn install
-yarn start
-
-# On MacOS
-open http://localhost:3030
-```
-
-Hit Ctrl-C to exit.
-
-We are going to now install the Sample Project to a cluster.
-
-1. To make things easier, grab the kubeconfig file for your cluster and copy it to the root of the Sample Project repo.
-1. In your terminal, run `export KUBECONFIG=$PWD/dev-kubeconfig.yaml`.
-1. Install the Sample Project to your cluster:
-
-```bash
-kubectl create ns sample-project
-kubectl -n sample-project apply -f ./k8s
-```
-
-This will install all the services and deployment but will not set up ingress. If your cluster is on service provider like DigitalOcean, you can use a generic LoadBalance service by running the following:
-
-```bash
-kubectl -n sample-project apply -f ./k8s/loadbalance
-```
-
-You will then need to obtain the appropriate ingress service IP address or the LoadBalancer IP address and go to `http://IP-ADDRESS` in a browser.
-
-```bash
-kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
-```
+If you have already installed the Sample Project to a cluster, you can skip to the next section. If not, head on over to the [GitHub repo](https://github.com/c6o/sample-project) and go through the steps in the Sample Project's README.
 
 ### Run a Service Locally
 
-```bash
-yarn start-frontend
-```
-
-You should be able to access the local front-end service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the front-end is not able to access the upstream services (as expected).
+If you haven't already, go through the [Developing Edge Services](https://docs.codezero.io/#/tutorials/edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but using the Desktop app.
 
 ### Install the Desktop app
 
@@ -83,7 +44,7 @@ Once the app is running you will see a CodeZero icon in your system tray. Click 
 
 ### Add your Configuration
 
-Click on the tray icon again and select Configurations -> + Add Configuration. Select your cluster's kubeconfig file.
+Click on the tray icon again and select Configurations -> + Add Configuration. Select your cluster's kubeconfig file. If your kubeconfig is not selectable in the file chooser dialog try changing the dialog option to "show all files".
 
 ### Add a Workspace
 
@@ -93,45 +54,47 @@ Click on the tray icon again and select Workspaces -> + Add Workspace. Select th
 
 ### Run a Development Profile
 
-The Sample Project comes with an example Development Profile with just a single Teleport command:
+Run the Sample Project's front-end service locally by going to the root of the repo in your terminal and running `yarn start-frontend`. Like in the previous tutorial, if you go to `http://localhost:3030/` in a browser you should see that the Socket and Core sections show errors.
 
-```yaml
-apiVersion: system.codezero.io/v1alpha1
-kind: DebugProfile
-metadata:
-  name: teleport
-  namespace: sample-project
-spec:
-  commands:
-  - command: Teleport
-    params:
-      namespace: sample-project
-      resourceName: sample-project-core
-      kind: Deployment
-      envFile: ./env.sh
-```
+The Sample Project comes with an example Development Profile with just a single Teleport command. Let's run it now. Click the tray icon and select Development Profiles -> teleport. Go back to the Dashboard window and watch as your Teleport session is started.
 
-Let's run it now. Click the tray icon and select Development Profiles -> teleport. Go back to the Dashboard window and watch as your Teleport session is initiated.
+ Let's revisit localhost now, but we want to go to `http://localhost:3030?teleport=1` this time, and refresh the page. We should see the connections all working. If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL paramater to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
 
-Assuming our front-end service is still running locally, if we now go back to `http://localhost:3030/` and refresh the page, we should see the connections working.
+Launch your favorite IDE and make changes to the code in `packages/frontend` in the Sample Project. You can make changes to the front-end code and see that you are able to test against the in-cluster sockets and core services.
 
-Launch your favorite IDE and make changes to the code in `packages/frontend` in the Sample Project. You can make changes to the front-end code and see that you are able to test against the in cluster sockets and core services.
+When you are done, click the 'Close' button to stop your Teleport session.
 
 ### Create a New Development Profile
 
-In your terminal, in the Sample Project root, run
+In your terminal, in the Sample Project root, stop the frontend service (CTRL-C) and run:
 
 ```bash
-czctl intercept service sample-project-core -n sample-project -p 3000 --save-profile test-intercept-profile
+czctl intercept service sample-project-core -n sample-project -p 3000 --save-profile intercept
 ```
 
-This will create a new Development Profile containing a single Intercept command.
+This will create a new Development Profile containing a single Intercept command targeting the sample-project-core service in our cluster. Since we are going to be routing traffic from the cluster to our local machine, we need to get the core service running locally. In your terminal, run:
 
-Back in the Desktop app, click on the tray icon and run this new profile.
+```bash
+yarn start-core
+```
+
+You should see the output `Core API cluster listening on http://localhost:3000`.
+
+> When running `yarn start-core`, if you see an error related to "port already in use", check that you aren't debugging some other service on port 9229. The 'start-core' script is configured to start up in inspect mode.
+
+Back in the Desktop app, click on the tray icon and run the new 'intercept' profile under the Development Profiles menu option.
+
+> If for some reason you don't see the new profile, make sure the intercept profile that was created ends in *.yaml, or try switching workspaces and coming back.
+
+Once the Intercept is running, you will see an entry for it on the Dashboard, and an ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
+
+Open up `sample-project/packages/core/index.js` and make a change to the `where` variable. Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key.
+
+What's happening under the hood is you're hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service.
 
 ### View Activity
 
-From the Desktop app dashboard, click on the Activity tab to see all the commands that you have run so far. Try running the teleport Development Profile again to purposefully generate an error.
+From the Desktop app dashboard, click on the Activity tab to see all the commands that you have run so far. Try running the intercept Development Profile again to purposefully generate an error. Click on the command with the error to see what caused it.
 
 ### Wrapping Up
 
