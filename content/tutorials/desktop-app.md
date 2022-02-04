@@ -56,7 +56,9 @@ Click on the tray icon again and select Workspaces -> + Add Workspace. Select th
 
 Run the Sample Project's front-end service locally by going to the root of the repo in your terminal and running `yarn start-frontend`. Like in the previous tutorial, if you go to `http://localhost:3030/` in a browser you should see that the Socket and Core sections show errors.
 
-The Sample Project comes with an example Development Profile with just a single Teleport command. Let's run it now. Click the tray icon and select Development Profiles -> teleport. Go back to the Dashboard window and watch as your Teleport session is started.
+The Sample Project comes with an example Development Profile called "teleport", which opens a basic teleport session to the `sample-project` namespace and exports the `sample-project-core` deployment's environment variables to the file `./env.sh`.
+
+Let's run it now. Click the tray icon and select Development Profiles -> teleport. Go back to the Dashboard window and watch as your Teleport session is started.
 
  Let's revisit localhost now, but we want to go to `http://localhost:3030?teleport=1` this time, and refresh the page. We should see the connections all working. If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL paramater to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
 
