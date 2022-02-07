@@ -37,15 +37,39 @@ export KUBECONFIG=<path to kubeconfig>
 > Some commands let you explicitly specify a kubeconfig file.
 > This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
 
-## Install the Desktop app
+## Install the Desktop App
 
-Head over to the [CodeZero website](https://codezero.io/platform/desktop) and download the Desktop app for your platform. Run the installer.
+> [!NOTE] The Desktop App is currently in Developer Preview. You will have to start the CodeZero Daemon using the CLI `czctl start` command. The Desktop App Installer does not install the CLI at this time.
 
-> [!NOTE]
-> At this time only MacOS and Linux are supported. The CodeZero CLI can be run on Windows using WSL, but the Desktop app requires a native Mac or Linux operating system.
+You can download the Desktop App Installer for your platform from our [Desktop App downloads page](https://codezero.io/platform/desktop).
 
-Launch the app. You will likely be prompted to provide your password to give the app elevated priviledges; this is so that the app can install the CodeZero daemon (background service).
+We are happy to provide support for MacOS and Linux at this time. The CodeZero CLI can be run on Windows using Windows Subsystem for Linux (WSL), but the Desktop App requires a native Mac or Linux operating system.
 
-Once the app is running you will see a CodeZero icon in your system tray. Click on the tray icon and select "Dashboard" to open up the UI.
+## Canary vs Stable Releases
 
-For next steps, read about [Using the CodeZero Desktop App](/guides/using-desktop-app).
+We are constantly adding new features and addressing issues and strive to have a fairly rapid (weekly) release of our tools. There are times where we want to get your feedback on new features or issues particularly when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Canary and Latest releases.
+
+These releases all bear version numbers and you can tell canary releases from pre-release labels in the semantic versions of the release (e.g. 1.3.1-alpha.0 vs 1.3.1). In the previous enable, 1.3.1 would be considered the latest Stable release until 1.3.2 is published.
+
+### Canary
+
+Canary releases are typically used for our own internal testing however, you are welcome to try them out especially if we need your feedback. Please note that Canary releases have only undergone light testing and may contain features that are a work in progress or instabilities. Please do not use these releases on important clusters (e.g. your engineering team's primary development cluster)
+
+> [!WARNING]
+> Canary release may contain security vulnerabilities or may result in loss of data. Use with caution!
+
+We welcome feedback on these releases however, we will provide limited support for these releases unless we are actively working with you to address an outstanding issue.
+
+If you are a DevOps or Engineering Lead, we do not recommend you make canary releases widely available to your teams.
+
+### Stable
+
+In contrast, Stable releases have undergone our normal testing but may contain features that are explicitly marked **Preview**. Preview features may contain instabilities, be work-in-progress and may disappear in subsequent releases.
+
+### Canary Installation
+
+The installation instructions above describe Stable releases. Canary releases are explicitly marked and depending on the tool, you will have to explicitly request canary releases. For example, when using NPM, the command is:
+
+``` bash
+npm install -g @c6o/cli@canary
+```
