@@ -1,3 +1,4 @@
+<!-- Keep the *.md file extensions for broken link checking -->
 - Welcome
   - [Overview](/welcome/overview.md)
   - [Getting Help](/welcome/getting-help.md)
@@ -15,7 +16,7 @@
     - [Adding a Workspace](/guides/usage/adding-a-workspace.md)
     - [Running a Development Profile](/guides/usage/running-a-dev-profile.md)
   - [Development Profiles](/guides/development-profiles.md)
-  - [Security](/guides/security.md)   
+  - [Security](/guides/security.md)
 - Concepts
   - [Environments](/concepts/environments.md)
   - [Services](/concepts/services.md)
@@ -25,6 +26,7 @@
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project.md)
   - [Developing Edge Services](/tutorials/edge.md)
+  - [Using the Desktop App](/tutorials/desktop-app)
 - References
   - Commands
     - [Environment](/references/environment.md)
