@@ -34,8 +34,9 @@ The Proxy service selectively routes traffic based on the request headers.
 ## Under the hood
 
 Intercept works by:
-1. intercepting traffic for a remote service
-2. inspecting for given traffic headers, and directing traffic to
+
+1. Intercepting traffic for a remote service
+1. Inspecting for given traffic headers, and directing traffic to
    a. the original (in-cluster) service if no re-direct headers are found
    b. forwarding the request through a reverse tunnel to a developers local machine if a redirect header flag is given
 
@@ -44,7 +45,7 @@ Intercept works by:
 In order to route local traffic to in cluster resources, teleport does several things:
 
 1. Creates a small light weight NGINX deployment to inspect headers and direct traffic.
-2. Modifies the existing Kubernetes Service resource to direct traffic to this proxy.
+1. Modifies the existing Kubernetes Service resource to direct traffic to this proxy.
 
 > [!NOTE]
 > We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to cleanup any leftover residue or reissue the same command with a --close flag.
@@ -64,19 +65,22 @@ When a teleport session is opened, the developer's local machine creates a tunne
 This section describes what the intercept command creates within a cluster to accomplish its task and instructions on what to do if something breaks.
 
 The intercept command creates three resources within the namespace of the deployment that is intercepted:
+
 1. A Session resource
-2. A reverse-proxy Deployment
-3. A decoy Service for routing un re-directed traffic to the original Deployment
+1. A reverse-proxy Deployment
+1. A decoy Service for routing un re-directed traffic to the original Deployment
 
 The intercept command modifies the Service in front of the Deployment by backing up and then modifying the selectors to point to the intercept Deployment. This accomplishes the task of routing requests based on headers specified by the command.
 
 Specifically, the following selector is used:
+
 ```yaml
 app: interceptor,
 system.codezero.io/session: [Session hash, something like: 29ad008882b59faa516d733051a9d14b2d3b6836]
 ```
 
 The ports will be pointed at port 80 by the interceptor if the targetPort is different:
+
 ```yaml
   ports:
   - port: [Some port]
@@ -103,9 +107,11 @@ These have the following responsibilities respectively:
 Cleanup is accomplished by reissuing the command with a `--clean` parameter or using the `czctl session close` or `czctl session close --all` command. If this doesn't work, it is necessary to first correct the selector to point to the original deployment and then delete the three resource files the intercept has created:
 
 First correct the selector and the ports updated by the interceptor. Get the original values from the Session:
+
 ```bash
 > kubectl get session -n [your namespace] -o yaml
 ```
+
 ```yaml
 ...
  restore-service:
@@ -130,16 +136,19 @@ First correct the selector and the ports updated by the interceptor. Get the ori
           namespace: [your namespace
 ...
 ```
+
 ```bash
 > kubectl edit service [your service name] -n [your namespace]
 ```
 
 Find the section that has this:
+
 ```yaml
   selector:
     app: interceptor
     system.codezero.io/session: [some hash, like: 29ad008882b59faa516d733051a9d14b2d3b6836]
 ```
+
 and set it to the original, correct the selector to:
 
 ```yaml
@@ -148,7 +157,9 @@ and set it to the original, correct the selector to:
     [some key2]: [some value2]
     ...
 ```
+
 and the ports section will be directed to port 80:
+
 ```yaml
   ports:
   - name: unsecure
@@ -156,7 +167,9 @@ and the ports section will be directed to port 80:
     protocol: TCP
     targetPort: 80
 ```
+
 Correct this to the original port given in the Session resource.
+
 ```yaml
   ports:
   - name: unsecure
@@ -166,6 +179,7 @@ Correct this to the original port given in the Session resource.
 ```
 
 Then delete the intercept residue resources
+
 ```bash
 > kubectl delete service interceptor-[your workload name]-decoy -n [your namespace]
 > kubectl delete deployment interceptor-[your workload name] -n [your namespace]
@@ -178,11 +192,13 @@ The pods and endpoints will clean up upon deletion of the decoy service and the 
 ### Example Cleanup
 
 First correct the selector:
+
 ```bash
 > kubectl edit service -n sample-project service/sample-project-server
 ```
 
 The selector and ports looks like so when intercept is active:
+
 ```yaml
   ports:
   - port: 3000
@@ -192,7 +208,9 @@ The selector and ports looks like so when intercept is active:
     app: interceptor
     system.codezero.io/session: 29ad008882b59faa516d733051a9d14b2d3b6836
 ```
+
 In this example, it should look like so when corrected:
+
 ```yaml
   ports:
   - port: 3000
@@ -202,9 +220,11 @@ In this example, it should look like so when corrected:
     app: sample-project
     component: backend
 ```
+
 Then delete the residue resources
+
 ```bash
-> kubectl delete service -n sample-project interceptor-sample-project-server-decoy 
+> kubectl delete service -n sample-project interceptor-sample-project-server-decoy
 > kubectl delete deployment -n sample-project interceptor-sample-project-server
 > kubectl delete configmap -n sample-project interceptor-sample-project-server
 > kubectl delete session -n sample-project intercept-sample-project-server
@@ -221,5 +241,3 @@ Ngrok may also be left running and can be stopped by force if necessary:
 ## Closing Intercept
 
 Run `czctl session close` to end the Intercept session or reissue the same command with a --close flag. The session close command will clean up all the residue added to the Kubernetes cluster and restore the intercepted service to its original state.
-
-
