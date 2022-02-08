@@ -7,11 +7,11 @@ a Command Line Interface (CLI) and a Desktop application.
 
 [app-install](../_fragments/app-install.md ':include')
 
-## Requirements
+### Requirements
 
 [app-requirements](../_fragments/app-requirements.md ':include')
 
-## Initialize the CLI
+### Initialize the CLI
 
 After installing the CodeZero CLI, run:
 
@@ -23,9 +23,9 @@ After installing the CodeZero CLI, run:
 > CodeZero requires `sudo` access to modify your system's `hosts` file. The `hosts` file
 > is used to define in-cluster DNS information on your local machine during a teleport session.
 
-## Configure the CLI
+### Configure the CLI
 
-### Access Your Cluster
+#### Access Your Cluster
 
 Many CLI commands need to interact with a Kubernetes cluster. Therefore, the CLI requires access to a `kubeconfig` for your cluster. By default, we use the current context in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to the location of the `kubeconfig` file.
 
@@ -37,7 +37,7 @@ export KUBECONFIG=<path to kubeconfig>
 > Some commands let you explicitly specify a kubeconfig file.
 > This is the same as configuring the `kubectl` CLI. See [here](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for more information.
 
-### Install the Desktop app
+## Install the Desktop app
 
 Head over to the [CodeZero website](https://codezero.io/platform/desktop) and download the Desktop app for your platform. Run the installer.
 
