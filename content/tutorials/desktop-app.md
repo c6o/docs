@@ -22,21 +22,17 @@ It is assumed you have the standard prerequisites:
 
 If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Deskop app](/guides/installing).
 
-For this tutorial you will also need to be using MacOS or Linux, and have NodeJS 16+.
+For this tutorial you will also need to be using MacOS or Linux, have NodeJS 16+, and have yarn installed.
+
+### Developing Edge Services Tutorial
+
+If you haven't already, go through the [Developing Edge Services](https://docs.codezero.io/#/tutorials/edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but this time using the Desktop app.
 
 ## Tutorial
 
-### Set up the Sample Project
-
-If you have already installed the Sample Project to a cluster, you can skip to the next section. If not, head on over to the [GitHub repo](https://github.com/c6o/sample-project) and go through the steps in the Sample Project's README.
-
-### Run a Service Locally
-
-If you haven't already, go through the [Developing Edge Services](https://docs.codezero.io/#/tutorials/edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but using the Desktop app.
-
 ### Launch the Desktop app
 
-If you haven't aleady, [install the Deskop app](/guides/installing) and launch it.
+[Install the Deskop app](/guides/installing) and launch it.
 
 Click on the CodeZero icon in your system tray and select "Dashboard" to open up the UI.
 
