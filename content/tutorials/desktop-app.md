@@ -1,4 +1,4 @@
-# CodeZero Desktop App Tutorial
+# Using the Desktop App
 
 With the [CodeZero Desktop](https://codezero.io/platform/desktop) app you can run commands like Teleport, Intercept, and Mount from your system tray, launch a visual dashboard for the state of your sessions, and view the activity of other collaborators in your cluster.
 

@@ -41,6 +41,9 @@ export KUBECONFIG=<path to kubeconfig>
 
 Head over to the [CodeZero website](https://codezero.io/platform/desktop) and download the Desktop app for your platform. Run the installer.
 
+> [!NOTE]
+> At this time only MacOS and Linux are supported. The CodeZero CLI can be run on Windows using WSL, but the Desktop app requires a native Mac or Linux operating system.
+
 Launch the app. You will likely be prompted to provide your password to give the app elevated priviledges; this is so that the app can install the CodeZero daemon (background service).
 
 Once the app is running you will see a CodeZero icon in your system tray. Click on the tray icon and select "Dashboard" to open up the UI.
