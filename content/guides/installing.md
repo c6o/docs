@@ -47,28 +47,28 @@ We are happy to provide support for MacOS and Linux at this time. The CodeZero C
 
 ## Canary vs Stable Releases
 
-We are constantly adding new features and addressing issues and strive to have a fairly rapid (weekly) release of our tools. There are times where we want to get your feedback on new features or issues particularly when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Canary and Latest releases.
+We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid  release of our tools. There are times where we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
 
-These releases all bear version numbers and you can tell canary releases from pre-release labels in the semantic versions of the release (e.g. 1.3.1-alpha.0 vs 1.3.1). In the previous enable, 1.3.1 would be considered the latest Stable release until 1.3.2 is published.
+You can tell Stable versus Canary releases by the version numbers. Canary releases have pre-release labels in the semantic versions (e.g. 1.3.1-alpha.0 vs 1.3.1). In the previous example, 1.3.1 would be considered the latest Stable release until 1.3.2 is published.
 
 ### Canary
 
-Canary releases are typically used for our own internal testing however, you are welcome to try them out especially if we need your feedback. Please note that Canary releases have only undergone light testing and may contain features that are a work in progress or instabilities. Please do not use these releases on important clusters (e.g. your engineering team's primary development cluster)
+Canary releases are used for internal testing however, you are welcome to try them out. Please note that Canary releases have generally undergone light testing and may contain instabilities or features that are a work in progress.
 
 > [!WARNING]
-> Canary release may contain security vulnerabilities or may result in loss of data. Use with caution!
+> Canary release may contain security vulnerabilities or may result in loss of data. Please do not use these releases on important clusters (e.g. your primary development cluster) and we do not recommend you make Canary releases available in your organization apart from testing.
 
-We welcome feedback on these releases however, we will provide limited support for these releases unless we are actively working with you to address an outstanding issue.
-
-If you are a DevOps or Engineering Lead, we do not recommend you make canary releases widely available to your teams.
+We welcome feedback and bug reports related to Canary releases.
 
 ### Stable
 
-In contrast, Stable releases have undergone our normal testing but may contain features that are explicitly marked **Preview**. Preview features may contain instabilities, be work-in-progress and may disappear in subsequent releases.
+In contrast, Stable releases have undergone our normal testing but may contain features that are explicitly marked **Preview**. Preview features may be work-in-progress and may disappear in subsequent releases but should be considered stable for use.
 
 ### Canary Installation
 
-The installation instructions above describe Stable releases. Canary releases are explicitly marked and depending on the tool, you will have to explicitly request canary releases. For example, when using NPM, the command is:
+The installation instructions above describe Stable releases.
+
+Currently, Canary releases are only available via npm install. The install command is:
 
 ``` bash
 npm install -g @c6o/cli@canary
