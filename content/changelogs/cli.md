@@ -2,6 +2,41 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## [1.3.2](https://github.com/c6o/node-monorepo/compare/v1.3.1...v1.3.2) (2022-02-10)
+
+### Breaking Changes
+
+* Before upgrading, ensure existing CodeZero instance is fully stopped (run `czctl stop`)
+
+### ✨ Features
+
+* Added support for pre-release canary builds (full details in [our docs](https://docs.codezero.io/#/guides/installing?id=canary-vs-stable-releases))
+* **cli:** Return non-zero status code on errors ([#41](https://github.com/c6o/roadmap/issues/41))
+* **daemon:** Backup existing kubeconfig on startup, so it can be restored if needed [#2491]
+* **daemon:** Use the current context's default namespace, if set [#2191]
+* **desktop:** Don't show "podless-service" remote sessions in the dashboard [#2558]
+* **desktop:** When the dashboard is open, show notifications there instead of in system notifications [#2507]
+* **desktop:** Add activity feed screen null experience.
+* **desktop:** Supply additional information in the intercept display description [#2572]
+
+### 🐛 Bug Fixes
+
+* **cli:** CLI fails with `Expected columns` error when output is piped/captured ([#40](https://github.com/c6o/roadmap/issues/40))
+* **cli:** Prompt the user for resource name and local directory if they are not given [#2495]
+* **cli:** Improved error message when run from windows [#2610]
+* **cli:** Fix error and status propogation from backend to CLI response and remove redundant messages [#2538]
+* **cli:** session flag fixed for sub-sessions, environment command descriptions updated. ([#2624]
+* **daemon:** Graceful shutdown, exit codes and dealing with older daemons [#2718]
+* **daemon:** properly detect locally running daemon via port [#2575]
+* **daemon:** fix error handling when dealing with problems with clusters, namespaces and resources on the server [#2506]
+* **daemon:** gracefully handle kubeconfigs that are missing clusters, contexts and/or users [#2504]
+* **desktop:** Don't show notification on dialog cancel [#2762]
+* **desktop:** Fix a typo in the UI for the local and remote ports [#2716]
+* **desktop:** Fix the version displaying in the screen from the About CodeZero menu [#2663]
+* **mount:** No error is reported if the NFS server is not available locally yet ([#2619]
+* **vscode:** Modify vscode to work with new daemon API [#2696]
+* **vscode:** Fix vscode sourcemap resolution for sub-dependencies
+
 ## Release Notes for v1.3.1
 
 ### Breaking Changes
