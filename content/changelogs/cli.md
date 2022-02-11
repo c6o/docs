@@ -8,6 +8,8 @@ This document contains the release notes for the CodeZero CLI.
 
 * Before upgrading, ensure existing CodeZero instance is fully stopped (run `czctl stop`)
 
+KNOWN ISSUES: This stable release does not fix the issue where performing the same intercept twice kills the first intercept. We are aware of this issue and are working on a resolution (See: [#44](https://github.com/c6o/roadmap/issues/44) for details)
+
 ### ✨ Features
 
 * Added support for pre-release canary builds (full details in [our docs](https://docs.codezero.io/#/guides/installing?id=canary-vs-stable-releases))
