@@ -2,7 +2,7 @@
 
 This document contains the release notes for the CodeZero CLI.
 
-## [1.3.2](https://github.com/c6o/node-monorepo/compare/v1.3.1...v1.3.2) (2022-02-10)
+## Release Notes for v1.3.2
 
 ### Breaking Changes
 
@@ -10,7 +10,7 @@ This document contains the release notes for the CodeZero CLI.
 
 KNOWN ISSUES: This stable release does not fix the issue where performing the same intercept twice kills the first intercept. We are aware of this issue and are working on a resolution (See: [#44](https://github.com/c6o/roadmap/issues/44) for details)
 
-### ✨ Features
+### Features
 
 * Added support for pre-release canary builds (full details in [our docs](https://docs.codezero.io/#/guides/installing?id=canary-vs-stable-releases))
 * **cli:** Return non-zero status code on errors ([#41](https://github.com/c6o/roadmap/issues/41))
@@ -21,7 +21,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 * **desktop:** Add activity feed screen null experience.
 * **desktop:** Supply additional information in the intercept display description [#2572]
 
-### 🐛 Bug Fixes
+### Bug Fixes
 
 * **cli:** CLI fails with `Expected columns` error when output is piped/captured ([#40](https://github.com/c6o/roadmap/issues/40))
 * **cli:** Prompt the user for resource name and local directory if they are not given [#2495]
