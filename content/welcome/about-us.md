@@ -1,4 +1,4 @@
-# About Us #
+# About Us
 
 CodeZero builds on top of the great work done at [kubernetes](http://kubernetes.io), [Docker](http://docker.com) and [Istio](http://istio.io). Key to the CodeZero toolset is enabling developers to close the develop/debug loop by running and testing their code in their local development environment they love, but with the same context and access as though they are actually running in-cluster.
 
@@ -6,7 +6,7 @@ CodeZero strives to deliver an excellent Development experience and to keep thin
 
 We have taken care to reuse what is already available so you can leverage your investment in these excellent technologies.
 
-## Our Values ##
+## Our Values
 
 These core values help guide the overall architecture of CodeZero.
 
@@ -15,7 +15,7 @@ These core values help guide the overall architecture of CodeZero.
 * Provide a seamless experience throughout the development lifecycle
 * Work with your Kubernetes provider of choice:
 
-## Our Inspiration and Tools ##
+## Our Inspiration and Tools
 
 * Kubernetes
 * Docker
