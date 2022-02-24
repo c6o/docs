@@ -8,7 +8,7 @@ We would like to be able to run the Frontend Service locally and make use of the
 
 ## Objectives
 
-In this tutorial, you will learn
+In this tutorial, you will learn:
 
 * How to develop and Edge Service locally while it accesses Services in Cluster
 * How to configure a service based on local and in-cluster environments

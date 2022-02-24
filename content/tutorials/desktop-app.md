@@ -6,7 +6,7 @@ In this tutorial we are going to install the [CodeZero Desktop](https://codezero
 
 ## Objectives
 
-In this tutorial, you will learn
+In this tutorial, you will learn:
 
 * How to install and run the CodeZero Desktop app
 * How to add a cluster configuration to the Desktop app
