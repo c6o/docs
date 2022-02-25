@@ -1,16 +1,15 @@
 # Developing Edge Services
 
-In this tutorial, we get to experience how a frontend developer could use CodeZero when developing an Edge Service.
+In this tutorial we get to experience how a frontend developer could use CodeZero when developing an Edge Service.
 In the Sample Project, the Frontend Service is an Edge Service that makes calls to the Core and Socket services.
 
-Currently, you have to run all these services either locally or in cluster.
-We would like to be able to run the Frontend Service locally and make use of the other services in the cluster.
+Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service locally and make use of the other services in the cluster.
 
 ## Objectives
 
 In this tutorial, you will learn:
 
-* How to develop and Edge Service locally while it accesses Services in Cluster
+* How to develop an Edge Service locally while it accesses Services in Cluster
 * How to configure a service based on local and in-cluster environments
 
 ## Prerequisites
@@ -19,38 +18,13 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-The tutorial assumes you are at the root of the Sample Project repo.
+The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](/tutorials/sample-project.md).
 
 ## Tutorial
 
-### Deploy the Project
+### Run the Edge Service Locally
 
-```bash
-kubectl create ns sample-project
-kubectl apply -n sample-project -f ./k8s
-kubectl apply -n sample-project -f ./k8s/loadbalance
-```
-
-If using LoadBalance as the Service type, you can get the Frontend IP using:
-
-```bash
-kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
-```
-> [!NOTE]
-> It may take a bit of time for the load balancer to obtain an address.
-> You can use the following command to determine if the load balancer has an external address:
-> `kubectl get svc -n sample-project sample-project-frontend`
-
-On MacOS, you can access the service using:
-
-```bash
-open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
-
-### Run Edge Service locally
-
-This is all fun and good however, we would like to make changes to the Frontend service locally.
-First, let's run it locally using:
+Let start by running the Frontend service locally:
 
 ```bash
 yarn start-frontend
@@ -58,36 +32,56 @@ yarn start-frontend
 
 You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
 
-This is an opportunity to use the CodeZero Teleport function.
-First, we need the local frontend service to know that we wish to use the teleported configuration
-by accessing `http://localhost:3030?t=1` or `http://localhost:3030?teleport=1`
+This is an opportunity to use the CodeZero **Teleport** function. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=` or `teleport=1` as a URL parameter:
 
-This will reference the following upstream services:
+> [http://localhost:3030?t=1](http://localhost:3030?t=1)
+> or
+> [http://localhost:3030?teleport=1](http://localhost:3030?teleport=1)
+
+This will tell the Frontend service to reference the following upstream services:
 
 ```bash
 http://sample-project-core:3030/api
 http://sample-project-sockets:8999/sockets
 ```
 
-instead of
+...instead of trying to access those services locally:
 
 ```bash
 http://localhost:3030/api
 http://localhost:8999/sockets
 ```
 
+### Start the CodeZero Daemon
+
+Assuming you have already installed the CLI (`brew install c6o/tools/czctl`), run:
+
+```bash
+czctl start
+```
+
+To verify that the daemon is running:
+
+```bash
+czctl session list
+```
+
+You should see a message that you have no running sessions. Reminder that you can run `czctl help` if you ever get stuck.
+
 ### Teleport into the Cluster
 
-You can now teleport using the following command
+You can now teleport into the sample-project namespace using the following command:
 
 ```bash
 czctl teleport namespace sample-project
 ```
 
-You should now see the failed connections on the web page start to work.
-Launch your favorite IDE and make changes to the code in `packages/frontend`.
-You can make changes to the front end code and see that you are able to test against
-the in cluster `sockets` and `core` services.
+You should now see the failed connections on the webpage start to work. This is because we are teleporting into all the services running in-cluster, and our Frontend has services to talk to.
+
+> [!Note]
+> You will see an error under File, but don't worry about that as will fix it in a future tutorial.
+
+Launch your favorite IDE and make changes to the code in `packages/frontend`. You can make changes to the frontend code and see that you are able to test against the in-cluster `sockets` and `core` services.
 
 ### Cleanup
 
