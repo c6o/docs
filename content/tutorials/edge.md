@@ -32,7 +32,7 @@ yarn start-frontend
 
 You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
 
-This is an opportunity to use the CodeZero **Teleport** function. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=` or `teleport=1` as a URL parameter:
+This is an opportunity to use the CodeZero **Teleport** function. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a URL parameter:
 
 > [http://localhost:3030?t=1](http://localhost:3030?t=1)
 > or
@@ -79,7 +79,7 @@ czctl teleport namespace sample-project
 You should now see the failed connections on the webpage start to work. This is because we are teleporting into all the services running in-cluster, and our Frontend has services to talk to.
 
 > [!Note]
-> You will see an error under File, but don't worry about that as will fix it in a future tutorial.
+> You will see an error under File, but don't worry about that as we will fix it in a future tutorial.
 
 Launch your favorite IDE and make changes to the code in `packages/frontend`. You can make changes to the frontend code and see that you are able to test against the in-cluster `sockets` and `core` services.
 
