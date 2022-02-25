@@ -3,7 +3,7 @@
 In this tutorial we get to experience how a frontend developer could use CodeZero when developing an Edge Service.
 In the Sample Project, the Frontend Service is an Edge Service that makes calls to the Core and Socket services.
 
-Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service locally and make use of the other services in the cluster.
+Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service and teleport the other services in the cluster to your local machine.
 
 ## Objectives
 
@@ -32,7 +32,7 @@ yarn start-frontend
 
 You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
 
-This is an opportunity to use the CodeZero **Teleport** function. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a URL parameter:
+This is where you would use CodeZero's **Teleport**. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a URL parameter:
 
 > [http://localhost:3030?t=1](http://localhost:3030?t=1)
 > or
@@ -76,7 +76,7 @@ You can now teleport into the sample-project namespace using the following comma
 czctl teleport namespace sample-project
 ```
 
-You should now see the failed connections on the webpage start to work. This is because we are teleporting into all the services running in-cluster, and our Frontend has services to talk to.
+You should now see the failed connections on the webpage start to work because the in-cluster services can now be accessed by your local Frontend.
 
 > [!Note]
 > You will see an error under File, but don't worry about that as we will fix it in a future tutorial.
