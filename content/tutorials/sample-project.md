@@ -51,7 +51,7 @@ Hit Ctrl-C now to stop the services and exit.
 
 ### Kubernetes Setup
 
-This project uses Persistent Volumes, and for [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) it can use either LoadBalancer services (e.g. for clusters on DigitalOcean) or Traefik V2 (e.g. for clusters on Civo).
+This project uses Persistent Volumes, and for [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) it can use either LoadBalancer services (e.g. for clusters on DigitalOcean) or Traefik V2.
 
 Once your cluster is set up, install the sample project in-cluster. From the root of the repo, run:
 
