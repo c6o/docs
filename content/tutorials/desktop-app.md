@@ -54,7 +54,11 @@ The Sample Project comes with an example Development Profile called "teleport", 
 
 Let's run it now. Click the tray icon and select Development Profiles -> teleport. Go back to the Dashboard window and watch as your Teleport session is started.
 
- Let's revisit localhost now, but we want to go to `http://localhost:3030?teleport=1` this time, and refresh the page. We should see the connections all working. If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL paramater to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
+#### Teleported
+
+Let's revisit localhost now, but we want to go to `http://localhost:3030?teleport=1` this time, and refresh the page. We should see the connections all working.
+
+If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL paramater to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
 
 Launch your favorite IDE and make changes to the code in `packages/frontend` in the Sample Project. You can make changes to the front-end code and see that you are able to test against the in-cluster sockets and core services.
 
@@ -76,15 +80,17 @@ yarn start-core
 
 You should see the output `Core API cluster listening on http://localhost:3000`.
 
+> [!Note]
 > When running `yarn start-core`, if you see an error related to "port already in use", check that you aren't debugging some other service on port 9229. The 'start-core' script is configured to start up in inspect mode.
 
 Back in the Desktop app, click on the tray icon and run the new 'intercept' profile under the Development Profiles menu option.
 
+> [!Note]
 > If for some reason you don't see the new profile, make sure the intercept profile that was created ends in *.yaml, or try switching workspaces and coming back.
 
 Once the Intercept is running, you will see an entry for it on the Dashboard, and an ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
 
-> [!Note]
+> [!WARNING]
 > ngrok might try to redirect you to an https link, so make sure your URL is http only when hitting the api.
 
 Open up `sample-project/packages/core/index.js` and make a change to the `where` variable (any string will do). Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key.
