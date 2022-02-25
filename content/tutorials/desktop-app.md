@@ -32,9 +32,9 @@ If you haven't already, go through the [Developing Edge Services](https://docs.c
 
 ### Launch the Desktop app
 
-[Install the Deskop app](/guides/installing) and launch it.
+[Install the Deskop app](/guides/installing) and launch it. You should see a CodeZero icon appear in your system tray (on a Mac this is the row of icons at the top right of your desktop screen).
 
-Click on the CodeZero icon in your system tray and select "Dashboard" to open up the UI.
+If the Desktop Dashboard hasn't already appeared in a window, you can click on the CodeZero tray icon and select "Dashboard" to open it. In the tray menu is also a "Getting Started" link that opens a window describing the key onboarding steps, but we will go through these steps ourselves in this tutorial.
 
 ### Add your Configuration
 
@@ -93,9 +93,7 @@ Once the Intercept is running, you will see an entry for it on the Dashboard, an
 > [!WARNING]
 > ngrok might try to redirect you to an https link, so make sure your URL is http only when hitting the api.
 
-Open up `sample-project/packages/core/index.js` and make a change to the `where` variable (any string will do). Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key.
-
-What's happening under the hood is you're hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service. Cool, eh?
+Open up `sample-project/packages/core/index.js` and make a change to the `where` variable (any string will do). Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key, as you are now hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service. CodeZero has set up a publicly accessible endpoint that proxies traffic to the service running on your local machine.
 
 ### View Activity
 
