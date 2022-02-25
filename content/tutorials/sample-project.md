@@ -51,7 +51,7 @@ Hit Ctrl-C now to stop the services and exit.
 
 ### Kubernetes Setup
 
-This project uses Persistent Volumes and either LoadBalancer services (DigitalOcean) or Traefik V2 (Civo) for [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/).
+This project uses Persistent Volumes, and for [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) it can use either LoadBalancer services (e.g. for clusters on DigitalOcean) or Traefik V2.
 
 Once your cluster is set up, install the sample project in-cluster. From the root of the repo, run:
 
@@ -60,7 +60,9 @@ kubectl create ns sample-project
 kubectl -n sample-project apply -f ./k8s
 ```
 
-This will install all the services and deployment, but will not set up ingress.
+#### Set Up Ingress (optional)
+
+The above commands will install all the services and deployment, but will not set up ingress. You won't need ingress for performing a Teleport, but you will need it for performing other commands like Intercept.
 
 If you're using TraefikV2, run the following:
 
@@ -74,14 +76,32 @@ Or if you use an Ingress Controller, run the following:
 kubectl -n sample-project apply -f ./k8s/ingress
 ```
 
-To use a generic LoadBalance service, run the following:
+To use a generic LoadBalance service (for example if your cluster is on DigitalOcean), run the following:
 
 ```bash
 kubectl -n sample-project apply -f ./k8s/loadbalance
 ```
 
-The above assumes port 80 is avaiable. If you'd like an alternative port, edit the port in `k8s/loadbalance/frontend.yaml`
+> [!Note]
+> The above assumes port 80 is avaiable. If you'd like an alternative port, edit the port in `k8s/loadbalance/frontend.yaml`
 
-You will then need to obtain the appropriate ingress service IP address or the LoadBalancer IP address and go to `http://IP-ADDRESS` in a browser. You should see all the microservices running.
+You will then need to obtain the appropriate ingress service IP address or the LoadBalancer IP address, and go to `http://IP-ADDRESS` in a browser, where you should see all the microservices running.
+
+If using LoadBalance as the Service type, you can get the Frontend IP using:
+
+```bash
+kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
+```
+
+> [!NOTE]
+> It may take a bit of time for the load balancer to obtain an address.
+> You can use the following command to determine if the load balancer has an external address:
+> `kubectl get svc -n sample-project sample-project-frontend`
+
+On MacOS, you can access the service using:
+
+```bash
+open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
+```
 
 Congratulations, you are now ready to move on to the [Developing Edge Services](/tutorials/edge.md) tutorial.

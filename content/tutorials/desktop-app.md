@@ -84,9 +84,12 @@ Back in the Desktop app, click on the tray icon and run the new 'intercept' prof
 
 Once the Intercept is running, you will see an entry for it on the Dashboard, and an ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
 
-Open up `sample-project/packages/core/index.js` and make a change to the `where` variable. Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key.
+> [!Note]
+> ngrok might try to redirect you to an https link, so make sure your URL is http only when hitting the api.
 
-What's happening under the hood is you're hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service.
+Open up `sample-project/packages/core/index.js` and make a change to the `where` variable (any string will do). Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key.
+
+What's happening under the hood is you're hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service. Cool, eh?
 
 ### View Activity
 
