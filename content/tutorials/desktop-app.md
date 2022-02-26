@@ -69,7 +69,7 @@ When you are done, click the 'Close' button to stop your Teleport session.
 In your terminal, in the Sample Project root, stop the frontend service (CTRL-C) and run:
 
 ```bash
-czctl intercept service sample-project-core -n sample-project -p 3000 --save-profile intercept
+czctl intercept service sample-project-core -n sample-project -p 3000 --save-profile intercept.yaml
 ```
 
 This will create a new Development Profile containing a single Intercept command targeting the sample-project-core service in our cluster. Since we are going to be routing traffic from the cluster to our local machine, we need to get the core service running locally. In your terminal, run:
