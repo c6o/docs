@@ -71,5 +71,5 @@ The installation instructions above describe Stable releases.
 Currently, Canary releases are only available via npm install. The installation command is:
 
 ``` bash
-npm install -g @c6o/cli@canary
+brew install c6o/tools/czctl-canary
 ```

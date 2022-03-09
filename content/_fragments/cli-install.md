@@ -2,13 +2,11 @@
 brew install c6o/tools/czctl
 ```
 
-You can also use npm to install the cli:
+Or, you can run:
+
 ```bash
-npm install -g @c6o/cli
+`/bin/bash -c "$(curl https://storage.googleapis.com/c6o-releases/install-headless.sh)"
 ```
 
-> [!NOTE]
-> You may need to use `sudo npm install -g @c6o/cli` if your current user doesn't have permission to the installation folders.
-
-> [!WIP]
-> Yarn currently does not work to install the cli, please use homebrew or npm.
+> [!PROTIP]
+> If you want to play around with pre-releases, you can install our canary version using: `brew install c6o/tools/czctl-canary`.  But bewarned, it has not been fully tested and may cause unexpected behaviour.
