@@ -68,7 +68,7 @@ In contrast, Stable releases have undergone our normal testing but may contain f
 
 The installation instructions above describe Stable releases.
 
-Currently, Canary releases are only available via npm install. The installation command is:
+Currently, Canary releases are only available via brew. The install command is:
 
 ``` bash
 brew install c6o/tools/czctl-canary
