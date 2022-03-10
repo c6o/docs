@@ -5,7 +5,7 @@ Request access to a Kubernetes cluster securely. Send your public key to your cl
 ## Usage
 
 ```bash
-> czctl context request [FILENAME]
+> czctl context request [KEY-FILENAME]
 ```
 
 ## Examples
@@ -20,7 +20,7 @@ Request access to a Kubernetes cluster securely. Send your public key to your cl
 
 | Argument      | Description
 | -------       | -----------
-| filename      | The filename (e.g. public-key.pem) to write your public key to (if not provided, the public key will be copied to the clipboard).
+| key-filename  | The filename (e.g. public-key.pem) to write your public key to (if not provided, the public key will be copied to the clipboard).
 
 ## Flags
 

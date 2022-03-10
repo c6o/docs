@@ -5,7 +5,7 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 ## Usage
 
 ```bash
-> czctl context share -k [KEY] -c [CONTEXT] [FILENAME]
+> czctl context share -k [KEY] -c [CONTEXT] [ENCRYPTED-CONTEXT]
 ```
 
 ## Examples
@@ -18,9 +18,9 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 
 ## Arguments
 
-| Argument      | Description
-| -------       | -----------
-| filename      | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used).
+| Argument          | Description
+| -----------       | -----------
+| encrypted-context | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used).
 
 ## Flags
 
