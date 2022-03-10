@@ -12,11 +12,12 @@
     - [Mount](/guides/commands/mount.md)
     - [Teleport](/guides/commands/teleport.md)
   - [Using the Desktop App](/guides/using-desktop-app.md)
-    - [Adding a Configuration](/guides/usage/adding-a-configuration.md)
+    - [Adding a Context](/guides/usage/adding-a-context.md)
     - [Adding a Workspace](/guides/usage/adding-a-workspace.md)
     - [Running a Development Profile](/guides/usage/running-a-dev-profile.md)
   - [Development Profiles](/guides/development-profiles.md)
   - [Security](/guides/security.md)
+  - [Securely Sharing Contexts](/guides/usage/securely-sharing-contexts.md)
 - Concepts
   - [Environments](/concepts/environments.md)
   - [Services](/concepts/services.md)
@@ -29,7 +30,9 @@
   - [Using the Desktop App](/tutorials/desktop-app)
 - References
   - Commands
-    - [Environment](/references/environment.md)
+    - [Adding a Context](/references/context-add.md)
+    - [Requesting a Context](/references/context-request.md)
+    - [Sharing a Context](/references/context-share.md)
     - [Intercept](/references/intercept.md)
     - [Mount](/references/mount.md)
     - [Session Close](/references/session-close.md)

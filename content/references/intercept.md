@@ -5,22 +5,26 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 ## Usage
 
 ```bash
-> czctl intercept service [service-name]
+> czctl intercept service [SERVICE]
 ```
 
-### Example
+## Examples
 
 ```bash
-> czctl intercept service -n sample-project sample-project-leaf -l 3010
+> czctl intercept service sample-project-leaf -n sample-project
+> czctl intercept service sample-project-leaf -r 3010 -l 4010 -n sample-project
+> czctl intercept service sample-project-core --remotePort 3000 --localPort 4000 --namespace sample-project
 ```
 
-### Arguments
+## Arguments
 
-| Argument      | Description                                    |
-|--------------|------------------------------------------------|
-| service-name | The name of the service you want to intercept. |
+| Argument      | Description
+| -------       | -----------
+| service       | The name of the service you want to intercept.
 
-### Flags
+## Flags
+
+<div class="flags-table">
 
 | Flags          | Alias | Description                                                                                                                   |
 |----------------|-------|-------------------------------------------------------------------------------------------------------------------------------|
@@ -34,6 +38,8 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 | --quiet        | -q    | Only display error message.                                                                                                   |
 | --save-profile | -s    | Save this command to a development profile.                                                                                   |
 
+</div>
+
 ## More Examples
 
 Intercept the remote service's port 3000 and route to localhost:4000
@@ -42,10 +48,10 @@ Intercept the remote service's port 3000 and route to localhost:4000
 > czctl intercept service -n sample-project sample-project-core -l 4000
 ```
 
-or to select another port
+or to select a different remote port:
 
 ```bash
-> czctl intercept service -n sample-project sample-project-core -r 3000 -l 4000
+> czctl intercept service -n sample-project sample-project-core -r 3010 -l 4000
 ```
 
 Clean up the previous session above:

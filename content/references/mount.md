@@ -5,24 +5,26 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 ## Usage
 
 ```bash
-> czctl mount [workload-kind] [name] [folder-name]
+> czctl mount [KIND] [RESOURCENAME] [LOCALDIRECTORY]
 ```
 
-### Example
+## Example
 
 ```bash
-> czctl deployment mount my-deployment -n my-namespace folder-name
+> czctl mount deployment sample-project-core ./mnt -n sample-project
 ```
 
-### Arguments
+## Arguments
 
-| Arguments     | Description                                                |
-|---------------|------------------------------------------------------------|
-| workload-kind | Type of workload you want to target.                       |
-| name          | The name of the workload you want to target.               |
-| folder-name   | The name of the local folder in which to mount the volume. |
+| Arguments      | Description
+| -------------- | -----------
+| kind           | Type of workload you want to target.
+| resourceName   | The name of the workload you want to target.
+| localDirectory | The name of the local folder in which to mount the volume.
 
-### Flags
+## Flags
+
+<div class="flags-table">
 
 | Flags          | Alias | Description                                                                                                                     |
 |----------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
@@ -32,6 +34,8 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 | --clean        | -c    | Close and clean up existing mount session.                                                                                      |
 | --quiet        | -q    | Only display error message.                                                                                                     |
 | --save-profile | -s    | Save this command to a development profile.                                                                                     |
+
+</div>
 
 ## More Examples
 
@@ -51,18 +55,6 @@ Cleanup the residue from the last command:
 
 ```bash
 > czctl mount deployment -n sample-project sample-project-core ./folder-name --clean
-```
-
-or
-
-```bash
-> czctl session close
-```
-
-To close all czctl sessions, use
-
-```bash
-> czctl session close --all
 ```
 
 Enable access to other workloads:
