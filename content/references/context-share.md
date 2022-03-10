@@ -12,7 +12,7 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 
 ```bash
 > czctl context share -k ./public-key.pem -c ./dev-kubeconfig.yaml ./encrypted-context.pem
-> czctl context share --key ./public-key.pem --context ./a-kubeconfig.yaml ./context.pem
+> czctl context share --key ./public-key.pem --context ./a-kubeconfig.yaml ./encrypted-context.pem
 > czctl context share
 ```
 

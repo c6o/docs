@@ -1,6 +1,6 @@
 # Request a Context
 
-Generate a request for access to a Kubernetes cluster. Send the generated request to your cluster administrator to receive encrypted credentials to a cluster.
+Request access to a Kubernetes cluster securely. Send your public key to your cluster administrator to receive an encrypted kubeconfig context.
 
 ## Usage
 
