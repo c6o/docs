@@ -5,13 +5,13 @@ Add a plaintext or encrypted kubeconfig context to your user kubeconfig located 
 ## Usage
 
 ```bash
-> czctl context add [CONTEXT]
+> czctl context add [FILENAME]
 ```
 
 ## Examples
 
 ```bash
-> czctl context add ./context.czconfig
+> czctl context add ./encrypted-context.pem
 > czctl context add ./my-regular-kubeconfig.yaml
 > czctl context add
 ```
@@ -20,7 +20,7 @@ Add a plaintext or encrypted kubeconfig context to your user kubeconfig located 
 
 | Argument      | Description
 | -------       | -----------
-| context       | The plaintext or encrypted kubeconfig filename.
+| filename      | The plaintext or encrypted kubeconfig filename.
 
 ## Flags
 
