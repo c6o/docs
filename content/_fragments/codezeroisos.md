@@ -4,4 +4,4 @@ But, unlike those other operating systems, it acts as an interface between you a
 
 > CodeZero is installed into your cloud to give you ease of access to install and run applications that help you get work done. 
 Like your machine's operating system it simplifies your organization's view of your hardware and provides a window to your applications. 
-CodeZero simplifes your view of your applications in the cloud.
+CodeZero simplifies your view of your applications in the cloud.

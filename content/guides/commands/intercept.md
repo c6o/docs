@@ -48,7 +48,7 @@ In order to route local traffic to in cluster resources, teleport does several t
 1. Modifies the existing Kubernetes Service resource to direct traffic to this proxy.
 
 > [!NOTE]
-> We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to cleanup any leftover residue or reissue the same command with a --close flag.
+> We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to clean up any leftover residue or reissue the same command with a --close flag.
 
 ### Reverse Tunnel
 
@@ -158,7 +158,7 @@ and set it to the original, correct the selector to:
     ...
 ```
 
-and the ports section will be directed to port 80:
+and the ports' section will be directed to port 80:
 
 ```yaml
   ports:
