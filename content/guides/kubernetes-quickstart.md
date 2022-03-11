@@ -40,7 +40,7 @@ The above assumes you would like to set up a cluster in San Francisco.
 
 
 > [!NOTE] 
-> if you get this err: **"422 region has insufficient capacity for requested cluster"**,
+> if you get this error: **"422 region has insufficient capacity for requested cluster"**,
 > list the regions (see below) and select the highest number slug for that region. 
 > (The sfo region has sfo1, sfo2, and sfo3 as of this writing, but at some point sfo4 may be required).
 
@@ -55,7 +55,7 @@ doctl compute size list
 ### Obtain Credentials
 
 If you had the `--update-kubeconfig=false` in the cluster create command, the `doctl` command line will **not** merge the new cluster credentials into your user's default Kubernetes config. 
-The following command will download the Kubeconfig file and you can use it by setting the `KUBECONFIG` environment variable:
+The following command will download the kubeconfig file, and you can use it by setting the `KUBECONFIG` environment variable:
 
 ```bash
 doctl k8s cluster kubeconfig show my-cluster > my-cluster-kubeconfig.yaml
@@ -79,7 +79,7 @@ To tear down your cluster, issue the following command:
 doctl k8s cluster delete my-cluster
 ```
 
-We have found that occasionally, DigitalOcean does not remove Volumes and Load Balancers used by the cluster. This is perhaps so you do not lose any important data and IP Addresses. You can clear out these resources with the following commands:
+We have found that occasionally, DigitalOcean does not remove Volumes and Load Balancers used by the cluster. This may be so you do not lose any important data and IP Addresses. You can clear out these resources with the following commands:
 
 > [!WARNING]
 > Be careful with the commands below as these commands will remove resources that were not part of the Kubernetes cluster!
@@ -103,7 +103,7 @@ Civo has an excellent and succinct getting started guide
 ### Set Up a Cluster
 
 The following command sets up a single node cluster and installs Traefik-v2 on it which is optional. 
-We found it better to separate the installation of Traefik from the create step.
+We found it better to separate the installation of Traefik from the creation step.
 
 ```bash
 #!/bin/bash

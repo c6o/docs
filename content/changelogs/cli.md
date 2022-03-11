@@ -26,7 +26,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 * **cli:** CLI fails with `Expected columns` error when output is piped/captured ([#40](https://github.com/c6o/roadmap/issues/40))
 * **cli:** Prompt the user for resource name and local directory if they are not given [#2495]
 * **cli:** Improved error message when run from windows [#2610]
-* **cli:** Fix error and status propogation from backend to CLI response and remove redundant messages [#2538]
+* **cli:** Fix error and status propagation from backend to CLI response and remove redundant messages [#2538]
 * **cli:** session flag fixed for sub-sessions, environment command descriptions updated. ([#2624]
 * **daemon:** Graceful shutdown, exit codes and dealing with older daemons [#2718]
 * **daemon:** properly detect locally running daemon via port [#2575]
@@ -64,7 +64,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 * Show notifications in dashboard when open
 * Remove extra sessions rom main dashboard screen
 * Detect start/stop of daemon via Desktop App
-* Dynamically load doc links, to stay up to date with latest docs
+* Dynamically load doc links, to stay up to date with the latest docs
 * Consolidated analytics across CLI, Desktop App, and VSCode
 * More descriptive session display information with --details flag
 * Clean up `czctl help` documentation
@@ -130,11 +130,11 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 
 ### New Features
 
-* This release introduces a daemon service on your local machine to manage the long running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
+* This release introduces a daemon service on your local machine to manage the long-running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
 * Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
 * Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
 * Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
-* `sudo` is no longer required to startup the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
+* `sudo` is no longer required to start up the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
 * Added `--save-profile` flag to `teleport`, `intercept` and `mount` commands to prepare for use of Development Profiles.
 
 ### Bug Fixes
@@ -144,7 +144,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 * Fixed intercept session cleanup on close
 * Fixed NVM environments unable to reliably initialize the CLI [[#23](https://github.com/c6o/roadmap/issues/23)]
 
-Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
+Note (Known Issue): Intercept currently does NOT work with Node 17.x on macOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
 
 ## Release Notes for v1.1.1
 
@@ -165,9 +165,9 @@ Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount c
 
 Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
 
-Note: Make sure you have a teleport session open before using the mount commmand: `czctl [workload] teleport [workload name] -n [namespace]`
+Note: Make sure you have a teleport session open before using the mount command: `czctl [workload] teleport [workload name] -n [namespace]`
 
-Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and explicitly close the mount session first and then the teleport session.
 
 ## Release Notes for v1.0.4
 
@@ -312,4 +312,4 @@ To make sure you have the right version, use czctl version . The output should l
 * NodesJS <= 12.x is not supported.
 * Cannot intercept more than 4 services simultaneously from the same machine.
 * Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
-* Teleport should provide feedback to the user so they know when all services have been fully setup.
+* Teleport should provide feedback to the user, so they know when all services have been fully setup.

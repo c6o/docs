@@ -59,7 +59,7 @@ czctl mount deployment -n sample-project sample-project-core ./mnt --save-profil
 
 ## Sharing a Profile
 
-We recommend storing session profiles in the folder `.codezero/develop/` at the root of your code repository as the CodeZero desktop application looks at this folder to find profiles and profiles can be shared amoung the development team more easily this way.
+We recommend storing session profiles in the folder `.codezero/develop/` at the root of your code repository as the CodeZero desktop application looks at this folder to find profiles and profiles can be shared among the development team more easily this way.
 
 ## Running a Profile
 

@@ -55,5 +55,5 @@ The NavStation API is injected into the settings web component. It provides acce
 
 * `manifest` - the current application manifest
 * `watchManifest(callback: (manifest) => void)` - watch for manifest changes, when changes, call callback with the updated manifest
-* `patchManifest(patch)` - patch the manifest with the provided specification)
+* `patchManifest(patch)` - patch the manifest with the provided specification
 * `createService(provisionerService)` - create a feathers service client to the provisioner web API service specified.

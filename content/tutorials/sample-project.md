@@ -1,6 +1,6 @@
 # Sample Kubernetes Project
 
-All of the tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub. For the remainder of these tutorials, you will need:
+All the tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub. For the remainder of these tutorials, you will need:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
@@ -23,13 +23,13 @@ The following diagram depicts all the components of the sample project:
 
 ## Tutorial
 
-If you haven't already, clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) repo on GitHub, and set up a Kubernetes cluster. For development we recommend using either [Civo](https://civo.com) or [DigitalOcean](https://digitalocean.com), but any k8s or k3s Kubernetes cluster will do.
+If you haven't already, clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) repo on GitHub, and set up a Kubernetes cluster. For development, we recommend using either [Civo](https://civo.com) or [DigitalOcean](https://digitalocean.com), but any k8s or k3s Kubernetes cluster will do.
 
 Getting to know Kubernetes and setting up a cluster is beyond the scope of this README, however you can check out the beginner articles on our [Blog](https://blog.codezero.io/tag/learning/).
 
 ### Local Setup
 
-This project requires NodeJS 16+ and yarn, has been tested on MacOS (BigSur), Linux, and Windows Subsystem for Linux (WSL).
+This project requires NodeJS 16+ and yarn, has been tested on macOS (BigSur), Linux, and Windows Subsystem for Linux (WSL).
 
 ```bash
 npm install -g yarn
@@ -83,7 +83,7 @@ kubectl -n sample-project apply -f ./k8s/loadbalance
 ```
 
 > [!Note]
-> The above assumes port 80 is avaiable. If you'd like an alternative port, edit the port in `k8s/loadbalance/frontend.yaml`
+> The above assumes port 80 is available. If you'd like an alternative port, edit the port in `k8s/loadbalance/frontend.yaml`
 
 You will then need to obtain the appropriate ingress service IP address or the LoadBalancer IP address, and go to `http://IP-ADDRESS` in a browser, where you should see all the microservices running.
 
@@ -98,7 +98,7 @@ kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.s
 > You can use the following command to determine if the load balancer has an external address:
 > `kubectl get svc -n sample-project sample-project-frontend`
 
-On MacOS, you can access the service using:
+On macOS, you can access the service using:
 
 ```bash
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
