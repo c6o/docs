@@ -24,13 +24,15 @@ jobs:
         uses: megalinter/megalinter/flavors/documentation@v5
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          ENABLE_LINTERS: >-
+          ENABLE_LINTERS: |-
             ACTION_ACTIONLINT,
             DOCKERFILE_HADOLINT,
             GIT_GIT_DIFF,
             JSON_JSONLINT,
             MARKDOWN_MARKDOWNLINT,
-            SPELL_MISSPELL
+            MARKDOWN_MARKDOWN_TABLE_FORMATTER,
+            SPELL_MISSPELL,
+            CREDENTIALS_SECRETLINT
           VALIDATE_ALL_CODEBASE: true
           PRINT_ALPACA: false
           MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
