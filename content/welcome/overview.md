@@ -24,7 +24,7 @@ Nothing beats having an actual Kubernetes cluster when it comes to learning Code
 
 ### Concepts
 
-We strive to limit the jargon that developers have to learn in order to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the CodeZero and Kubernetes context. We cover various terms in the concepts section of this documentation.
+We strive to limit the jargon that developers have to learn in order to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the CodeZero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation.
 
 ### Tutorials
 
