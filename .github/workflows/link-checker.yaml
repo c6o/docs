@@ -8,7 +8,7 @@ on:
     - cron: "0 0 * * *"
 
 jobs:
-  linkChecker:
+  link-checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,8 +18,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.3.2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        with:
-          args: --exclude-all-private --exclude sample-leaf-* --exclude-file ./archive --exclude-file ./apps
       - name: Find Link Checker Issue
         id: link-checker-issue
         uses: micalevisk/last-issue-action@v1
