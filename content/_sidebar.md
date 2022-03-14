@@ -39,4 +39,4 @@
   - [CLI](/changelogs/cli.md)
 - Legal
   - [Privacy](https://codezero.io/privacy)
-  - [Terms of Use](https://codezero.io/term)
+  - [Terms of Use](https://codezero.io/terms)
