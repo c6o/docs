@@ -19,7 +19,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          args:  --no-progress --exclude-all-private
+          args:  --no-progress --exclude-all-private './**/*.md' './**/*.html'
           format: markdown
       - name: Find Link Checker Issue
         id: link-checker-issue
