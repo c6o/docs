@@ -20,106 +20,106 @@ czctl app publish path/to/manifest.yaml
 
 ## Properties
 
-| Property         | Value(s)               | Default  | Description
-| --------         | --------               | -------  | -----------
-| name             | String                 | REQUIRED | Application's display name.
-| appId            | String                 | REQUIRED | Application's internal ID (must be unique).
-| package          | String                 | REQUIRED | NPM package name containing the provisioner.
-| icon             | [Artwork](#Artwork) |          | SVG or URL. Must scale well to 100x100.
-| description      | Text                   |          | Application description displayed in the Marketplace.
-| summary          | Text                   |          | Application summary displayed in the Marketplace.
-| category         | [Category](#Categories)|          | Application category.
-| screenshots      | [Artworkd](#Artwork)[] |        | Array of screenshots to display in the Marketplace.
-| video            | [Video](#Video)      |          | Video demo to display in the Marketplace.
-| keyworks         | String[]               | []       | Keywords.
-| repo             | URL                    |          | URL to application repository.
-| license          | URL|Text               |          | Application license agreement.
-| terms            | URL|Text               |          | Application terms of use.
-| privacy          | URL|Text               |          | Application privacy policy.
-| support          | URL                    |          | Support URL.
-| provisioner      | [Provisioner](#Provisioner-Details) |   | Details about the provisioner code specifically.
-| editions         | [Edition](#Edition)[] | REQUIRED | Array of application edition(s). At least one edition is required.
+| Property    | Value(s)                            | Default  | Description                                                        |
+|-------------|-------------------------------------|----------|--------------------------------------------------------------------|
+| name        | String                              | REQUIRED | Application's display name.                                        |
+| appId       | String                              | REQUIRED | Application's internal ID (must be unique).                        |
+| package     | String                              | REQUIRED | NPM package name containing the provisioner.                       |
+| icon        | [Artwork](#Artwork)                 |          | SVG or URL. Must scale well to 100x100.                            |
+| description | Text                                |          | Application description displayed in the Marketplace.              |
+| summary     | Text                                |          | Application summary displayed in the Marketplace.                  |
+| category    | [Category](#Categories)             |          | Application category.                                              |
+| screenshots | [Artworkd](#Artwork)[]              |          | Array of screenshots to display in the Marketplace.                |
+| video       | [Video](#Video)                     |          | Video demo to display in the Marketplace.                          |
+| keyworks    | String[]                            | []       | Keywords.                                                          |
+| repo        | URL                                 |          | URL to application repository.                                     |
+| license     | URL                                 | Text     |                                                                    | Application license agreement.
+| terms       | URL                                 | Text     |                                                                    | Application terms of use.
+| privacy     | URL                                 | Text     |                                                                    | Application privacy policy.
+| support     | URL                                 |          | Support URL.                                                       |
+| provisioner | [Provisioner](#Provisioner-Details) |          | Details about the provisioner code specifically.                   |
+| editions    | [Edition](#Edition)[]               | REQUIRED | Array of application edition(s). At least one edition is required. |
 
 ### Edition
 
-| Property         | Value(s)               | Default  | Description
-| --------         | --------               | -------  | -----------
-| name             | String                 | REQUIRED | Edition's display name.
-| status           | public|private         | private  | Edition visibility in the Marketplace.
-| spec             | [Spec](#Edition-Spec) | REQUIRED | Editions specifications.
+| Property | Value(s)              | Default  | Description              |
+|----------|-----------------------|----------|--------------------------|
+| name     | String                | REQUIRED | Edition's display name.  |
+| status   | public                | private  | private                  | Edition visibility in the Marketplace.
+| spec     | [Spec](#Edition-Spec) | REQUIRED | Editions specifications. |
 
 ### Edition Spec
 
-| Property         | Value(s)               | Default  | Description
-| --------         | --------               | -------  | -----------
-| navstation       | Boolean                | false   | When the `spec.navstation` field is set to true, the application and associated UI panel will appear in the NavStation settings.
-| routes           | [Route](#Edition-Route)[] |  | Array of routing information to instruct how CodeZero should route public traffic to the application
-| provisioner      | [ProvisionerSpec](#Provisioner-Spec) | REQUIRED | Provisioner specific properties.
-| marina           | [Marina](#Edition-Marina) |      | Defines how this edition behaves in the Marina.
+| Property    | Value(s)                             | Default  | Description                                                                                                                      |
+|-------------|--------------------------------------|----------|----------------------------------------------------------------------------------------------------------------------------------|
+| navstation  | Boolean                              | false    | When the `spec.navstation` field is set to true, the application and associated UI panel will appear in the NavStation settings. |
+| routes      | [Route](#Edition-Route)[]            |          | Array of routing information to instruct how CodeZero should route public traffic to the application                             |
+| provisioner | [ProvisionerSpec](#Provisioner-Spec) | REQUIRED | Provisioner specific properties.                                                                                                 |
+| marina      | [Marina](#Edition-Marina)            |          | Defines how this edition behaves in the Marina.                                                                                  |
 
 ### Edition Route
 
-| Property      | Value(s) | Default  | Description
-| --------      | -------- | -------  | -----------
-| type          | Boolean  | REQUIRED | Must be HTTP or TCP. Note: HTTP routing actually exposes an HTTPS endpoint externally.
-| disabled      | Boolean  | false    | When present and set to true, the route is disabled.
-| targetService | String   | REQUIRED | The target service port to route traffic to. Typically, the name of the NodePort service.
-| targetPort    | Int      |          | The target service port. Required if the targetService exposes multiple service ports.
-| http          | [HttpRewrite](#Route-Http-Rewrite) | | Allows specifying more advanced HTTP routing rules.
-| tcp           | [TcpRules](#Route-TCP-Rules) | | Required if type is TCP.
+| Property      | Value(s)                           | Default  | Description                                                                               |
+|---------------|------------------------------------|----------|-------------------------------------------------------------------------------------------|
+| type          | Boolean                            | REQUIRED | Must be HTTP or TCP. Note: HTTP routing actually exposes an HTTPS endpoint externally.    |
+| disabled      | Boolean                            | false    | When present and set to true, the route is disabled.                                      |
+| targetService | String                             | REQUIRED | The target service port to route traffic to. Typically, the name of the NodePort service. |
+| targetPort    | Int                                |          | The target service port. Required if the targetService exposes multiple service ports.    |
+| http          | [HttpRewrite](#Route-Http-Rewrite) |          | Allows specifying more advanced HTTP routing rules.                                       |
+| tcp           | [TcpRules](#Route-TCP-Rules)       |          | Required if type is TCP.                                                                  |
 
 ### Route HTTP Rewrite
 
-| Property  | Value(s) | Description
-| --------  | -------- | -----------
-| private   | Boolean  | Specify whether the app is protected by the CodeZero Cloud's authentication. Defaults to `false`.
-| prefix    | String   | The URL prefix to match for a URL rewrite.
-| rewrite   | String   | Rewrite destination.
+| Property | Value(s) | Description                                                                                       |
+|----------|----------|---------------------------------------------------------------------------------------------------|
+| private  | Boolean  | Specify whether the app is protected by the CodeZero Cloud's authentication. Defaults to `false`. |
+| prefix   | String   | The URL prefix to match for a URL rewrite.                                                        |
+| rewrite  | String   | Rewrite destination.                                                                              |
 
 ### Route TCP Rules
 
-| Property      | Value(s) | Default  | Description
-| --------      | -------- | -------  | -----------
-| name          | String   | REQUIRED | Arbitrary name for the route, but must be unique.
-| port          | Int      |          | Incoming TCP port. If it is not present, is set to zero (0), or conflicts with an existing port, then the port is automatically assigned with a random value.
-| strictPort    | Int      |          | Same as above, but do not allow reassigning of the port if there is a conflict. Installation will FAIL if the system cannot allocate this port.
+| Property   | Value(s) | Default  | Description                                                                                                                                                   |
+|------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name       | String   | REQUIRED | Arbitrary name for the route, but must be unique.                                                                                                             |
+| port       | Int      |          | Incoming TCP port. If it is not present, is set to zero (0), or conflicts with an existing port, then the port is automatically assigned with a random value. |
+| strictPort | Int      |          | Same as above, but do not allow reassigning of the port if there is a conflict. Installation will FAIL if the system cannot allocate this port.               |
 
 ### Provisioner Spec
 
 The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define its schema. For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
 
-However, there are a few reserved properties used by CodeZero interally as well:
+However, there are a few reserved properties used by CodeZero internally as well:
 
-| Property  | Value(s) | Description
-| --------  | -------- | -----------
-| package   | String   | NPM provisioner package. Allows overriding the default NPM package.
-| ui        | String   | If set to "ignore", the customer will skip the UI components during installation.
-| tag       | String   | Flags current docker image version, has specially meaning when managing image updates.
+| Property | Value(s) | Description                                                                            |
+|----------|----------|----------------------------------------------------------------------------------------|
+| package  | String   | NPM provisioner package. Allows overriding the default NPM package.                    |
+| ui       | String   | If set to "ignore", the customer will skip the UI components during installation.      |
+| tag      | String   | Flags current docker image version, has specially meaning when managing image updates. |
 
 #### Edition Marina
 
-| Property  | Value(s) | Description
-| --------  | -------- | -----------
-| launch    | [Launch](#Marina-Launch) | Describes how the application should be launched by the Marina desktop
+| Property | Value(s)                 | Description                                                            |
+|----------|--------------------------|------------------------------------------------------------------------|
+| launch   | [Launch](#Marina-Launch) | Describes how the application should be launched by the Marina desktop |
 
 #### Marina Launch
 
-| Property  | Value(s) | Description
-| --------  | -------- | -----------
-| type      | String   | Type of launch behaviour. Currently, only "inline" is available.
-| popUp     | Boolean  | If true, the application will launch in a new tab, rather than in the Marina desktop iFrame.
-| port      | Int      | Port to use in the URL.
-| path      | String   | Path to use in the URL.
+| Property | Value(s) | Description                                                                                  |
+|----------|----------|----------------------------------------------------------------------------------------------|
+| type     | String   | Type of launch behaviour. Currently, only "inline" is available.                             |
+| popUp    | Boolean  | If true, the application will launch in a new tab, rather than in the Marina desktop iFrame. |
+| port     | Int      | Port to use in the URL.                                                                      |
+| path     | String   | Path to use in the URL.                                                                      |
 
 ### Provisioner Details
 
-| Property         | Value(s) | Description
-| --------         | -------- | -----------
-| repo             | URL      | URL to application repository.
-| license          | URL|Text | Application license agreement.
-| terms            | URL|Text | Application terms of use.
-| privacy          | URL|Text | Application privacy policy.
-| support          | URL      | Support URL.
+| Property | Value(s) | Description                    |
+|----------|----------|--------------------------------|
+| repo     | URL      | URL to application repository. |
+| license  | URL      | Text                           | Application license agreement.
+| terms    | URL      | Text                           | Application terms of use.
+| privacy  | URL      | Text                           | Application privacy policy.
+| support  | URL      | Support URL.                   |
 
 ### Categories
 
@@ -129,7 +129,7 @@ Each application should be placed into a related category. Each of available cat
 blockchain, crm, comm, contact-center, cms, dms, e-comm, e-learning, human-resources
 
 **Technical Applications:**
-analytics, ai, dashboards, databases, etl, identity, integration, iot, location, messaging, monitoring, rendering, reporting, security, storage
+analytics, AI, dashboards, databases, etl, identity, integration, iot, location, messaging, monitoring, rendering, reporting, security, storage
 
 **Vertical Solutions:**
 education, healthcare, finance, manufacturing, media, water
@@ -139,9 +139,9 @@ dev-tools, devops
 
 ### Artwork
 
-Artwork can be provided in several different formats:
+Artwork can be provided in several formats:
 
-* URL to an image (PNG JPG, SVG, etc..)
+* URL to an image (PNG JPG, SVG, etc.)
 * relative path to a local image file (./logo.svg, ./art/logo.jpg)
 * raw SVG markup
 * base 64 encoded image
@@ -154,7 +154,7 @@ Artwork can be provided in several different formats:
 ```yaml
 appId: sample-service        # App internal name (all lower, no spaces); minimum 5 characters
 name: FOO App Display Name   # display name
-package: npm-package         # the NPM package name. Typically id and package-name are the same, but not required.
+package: npm-package         # the NPM package name. Typically, id and package-name are the same, but not required.
 icon: icon.svg               # see art section for rules for the values here
 screenshots:
     - URL to image (PNG JPG, etc..)

@@ -43,11 +43,11 @@ export KUBECONFIG=<path to kubeconfig>
 
 You can download the Desktop App Installer for your platform from our [Desktop App downloads page](https://codezero.io/platform/desktop).
 
-We are happy to provide support for MacOS and Linux at this time. The CodeZero CLI can be run on Windows using Windows Subsystem for Linux (WSL), but the Desktop App requires a native Mac or Linux operating system.
+We are happy to provide support for macOS and Linux at this time. The CodeZero CLI can be run on Windows using Windows Subsystem for Linux (WSL), but the Desktop App requires a native Mac or Linux operating system.
 
 ## Canary vs Stable Releases
 
-We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid  release of our tools. There are times where we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
+We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid  release of our tools. There are times when we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
 
 You can tell Stable versus Canary releases by the version numbers. Canary releases have pre-release labels in the semantic versions (e.g. 1.3.1-alpha.0 vs 1.3.1). In the previous example, 1.3.1 would be considered the latest Stable release until 1.3.2 is published.
 
@@ -68,7 +68,7 @@ In contrast, Stable releases have undergone our normal testing but may contain f
 
 The installation instructions above describe Stable releases.
 
-Currently, Canary releases are only available via npm install. The install command is:
+Currently, Canary releases are only available via npm install. The installation command is:
 
 ``` bash
 npm install -g @c6o/cli@canary

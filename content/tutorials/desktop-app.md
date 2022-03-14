@@ -20,9 +20,9 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Deskop app](/guides/installing).
+If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Desktop app](/guides/installing).
 
-For this tutorial you will also need to be using MacOS or Linux, have NodeJS 16+, and have yarn installed.
+For this tutorial you will also need to be using macOS or Linux, have NodeJS 16+, and have yarn installed.
 
 ### Developing Edge Services Tutorial
 
@@ -32,7 +32,7 @@ If you haven't already, go through the [Developing Edge Services](https://docs.c
 
 ### Launch the Desktop app
 
-[Install the Deskop app](/guides/installing) and launch it. You should see a CodeZero icon appear in your system tray (on a Mac this is the row of icons at the top right of your desktop screen).
+[Install the Desktop app](/guides/installing) and launch it. You should see a CodeZero icon appear in your system tray (on a Mac this is the row of icons at the top right of your desktop screen).
 
 If the Desktop Dashboard hasn't already appeared in a window, you can click on the CodeZero tray icon and select "Dashboard" to open it. In the tray menu is also a "Getting Started" link that opens a window describing the key onboarding steps, but we will go through these steps ourselves in this tutorial.
 
@@ -58,7 +58,7 @@ Let's run it now. Click the tray icon and select Development Profiles -> telepor
 
 Let's revisit localhost now, but we want to go to `http://localhost:3030?teleport=1` this time, and refresh the page. We should see the connections all working.
 
-If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL paramater to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
+If you're curious what's happening under the hood, have a look at `index.js` in the frontend folder, and you will see code that uses this URL parameter to tell the frontend service to talk to `http://sample-project-core` now instead of `http://localhost:3030` because we are teleported.
 
 Launch your favorite IDE and make changes to the code in `packages/frontend` in the Sample Project. You can make changes to the front-end code and see that you are able to test against the in-cluster sockets and core services.
 

@@ -1,6 +1,6 @@
 # Getting Help
 
-We love hearing from Developers! Feedback from developers like you significantly influences our product roadmap. Without your feedback, our team is relegated to long and drawn out meetings where we debate each others ill conceived opinions. Take it from us, we would rather be working on your request.
+We love hearing from Developers! Feedback from developers like you significantly influences our product roadmap. Without your feedback, our team is relegated to long and drawn out meetings where we debate each other's ill-conceived opinions. Take it from us, we would rather be working on your request.
 
 ## Community and Support
 
@@ -15,7 +15,7 @@ Please report any issues you come across to our [GitHub Issues](https://github.c
 
 ### Feature Requests and Discussion
 
-Please use our [Github Discussion Board](https://github.com/c6o/roadmap/discussions) to propose a new features or to discuss any aspect that is not an issue.
+Please use our [GitHub Discussion Board](https://github.com/c6o/roadmap/discussions) to propose a new features or to discuss any aspect that is not an issue.
 
 ### Roadmap
 
