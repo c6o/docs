@@ -36,4 +36,3 @@ CodeZero allows you to mount any workloads persistent volumes as if they are loc
 ### Discoverability
 
 When services are run locally not only do they need to be able to make requests to services in the cluster, they also need to be accessible by cluster services. This enables two-way communication between cluster and the local system. Local services can be made accessible through exposing the local machine through a proxy to the cluster. Additionally, proxy services that sit in front of cluster services can redirect "flagged" traffic to the local system so that only a subset of the calls going out that are related to development are redirected to the local development environment.
-
