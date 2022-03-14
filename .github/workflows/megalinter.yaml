@@ -23,7 +23,6 @@ jobs:
       - name: MegaLinter
         uses: megalinter/megalinter/flavors/documentation@v5
         env:
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'workflow_dispatch' }}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ENABLE_LINTERS: >-
             ACTION_ACTIONLINT,
@@ -32,6 +31,7 @@ jobs:
             JSON_JSONLINT,
             MARKDOWN_MARKDOWNLINT,
             SPELL_MISSPELL
+          VALIDATE_ALL_CODEBASE: true
           MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
