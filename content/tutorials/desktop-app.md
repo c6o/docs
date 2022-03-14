@@ -91,7 +91,7 @@ Back in the Desktop app, click on the tray icon and run the new 'intercept' prof
 Once the Intercept is running, you will see an entry for it on the Dashboard, and a ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
 
 > [!WARNING]
-> ngrok might try to redirect you to a https link, so make sure your URL is http only when hitting the api.
+> ngrok might try to redirect you to an https link, so make sure your URL is http only when hitting the api.
 
 Open up `sample-project/packages/core/index.js` and make a change to the `where` variable (any string will do). Restart your locally running core service (`yarn start-core`) and go back and refresh your ngrok URL ending with `/api`. You should see your change for the "where" key, as you are now hitting a public internet address that tunnels back to your local machine and returns whatever is output by your locally running service. CodeZero has set up a publicly accessible endpoint that proxies traffic to the service running on your local machine.
 
