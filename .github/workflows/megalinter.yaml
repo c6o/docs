@@ -32,6 +32,7 @@ jobs:
             MARKDOWN_MARKDOWNLINT,
             SPELL_MISSPELL
           VALIDATE_ALL_CODEBASE: true
+          PRINT_ALPACA: false
           MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
