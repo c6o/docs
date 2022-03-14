@@ -2,6 +2,7 @@
 name: Link Checker
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: "0 0 * * *"
@@ -17,8 +18,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.3.2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        with:
-          output: ./lychee.md
       - name: Find Link Checker Issue
         id: link-checker-issue
         uses: micalevisk/last-issue-action@v1
@@ -31,7 +30,7 @@ jobs:
         with:
           title: Broken links detected in docs 🔗
           issue-number: "${{ steps.link-checker-issue.outputs.issue_number }}"
-          content-filepath: ./lychee.md
+          content-filepath: ./lychee/out.md
           token: ${{secrets.GITHUB_TOKEN}}
           labels: |
             link-checker
