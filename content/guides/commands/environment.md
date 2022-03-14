@@ -31,5 +31,3 @@ Here's an example of getting the process ids and using `kill -9` to end these pr
 ```bash
 > sudo kill -9 65120
 ```
-
-

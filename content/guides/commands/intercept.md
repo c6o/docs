@@ -55,7 +55,7 @@ In order to route local traffic to in cluster resources, teleport does several t
 When a teleport session is opened, the developer's local machine creates a tunnel so that it can receive traffic requests from the remote cluster without needing to change any firewall or routing settings. We currently use `ngrok` to create a local tunnel however this will change in time.
 
 > [!PROTIP]
-> A bonus of using `ngrok` under the hood, is it provides a simple web dashboard to view and inspect incoming traffic. When an intercept session is running, check out http://localhost:4040. You can have a maximum of 4 concurrent intercept tunnels running A tunnel expires after 24 hours.  Restart intercept to continue after expiry.
+> A bonus of using `ngrok` under the hood, is it provides a simple web dashboard to view and inspect incoming traffic. When an intercept session is running, check out <http://localhost:4040>. You can have a maximum of 4 concurrent intercept tunnels running A tunnel expires after 24 hours. Restart intercept to continue after expiry.
 
 > [!EXPERT]
 > To learn more about how ngrok works, see [https://ngrok.com/](https://ngrok.com/).
@@ -76,13 +76,14 @@ Specifically, the following selector is used:
 
 ```yaml
 app: interceptor,
-system.codezero.io/session: [Session hash, something like: 29ad008882b59faa516d733051a9d14b2d3b6836]
+system.codezero.io/session:
+  [Session hash, something like: 29ad008882b59faa516d733051a9d14b2d3b6836]
 ```
 
 The ports will be pointed at port 80 by the interceptor if the targetPort is different:
 
 ```yaml
-  ports:
+ports:
   - port: [Some port]
     protocol: TCP
     targetPort: 80
@@ -92,15 +93,15 @@ The hash is stored in a Session resource defined by a Session.CRD, which you can
 
 You will see in the namespace these resources:
 
-* `service/interceptor-[your workload name]-decoy` (this will create endpoint: `endpoints/interceptor-[your workload name]-decoy` )
-* `deployment/interceptor-[your workload name]` (this run some pods, like: `pod/interceptor-[your workload name]-6cd6c6b947-8gzcq`)
-* `configmap/interceptor-[your workload name]`
+- `service/interceptor-[your workload name]-decoy` (this will create endpoint: `endpoints/interceptor-[your workload name]-decoy` )
+- `deployment/interceptor-[your workload name]` (this run some pods, like: `pod/interceptor-[your workload name]-6cd6c6b947-8gzcq`)
+- `configmap/interceptor-[your workload name]`
 
 These have the following responsibilities respectively:
 
-* The service is responsible for getting traffic to the original deployment
-* The interceptor for the workload type (like a deployment) is responsible for directing traffic based on the headers in the request
-* The config map configures the redirector's pods
+- The service is responsible for getting traffic to the original deployment
+- The interceptor for the workload type (like a deployment) is responsible for directing traffic based on the headers in the request
+- The config map configures the redirector's pods
 
 ## Cleanup
 
@@ -144,9 +145,10 @@ First correct the selector and the ports updated by the interceptor. Get the ori
 Find the section that has this:
 
 ```yaml
-  selector:
-    app: interceptor
-    system.codezero.io/session: [some hash, like: 29ad008882b59faa516d733051a9d14b2d3b6836]
+selector:
+  app: interceptor
+  system.codezero.io/session:
+    [some hash, like: 29ad008882b59faa516d733051a9d14b2d3b6836]
 ```
 
 and set it to the original, correct the selector to:
@@ -161,7 +163,7 @@ and set it to the original, correct the selector to:
 and the ports' section will be directed to port 80:
 
 ```yaml
-  ports:
+ports:
   - name: unsecure
     port: [some port]
     protocol: TCP
@@ -171,7 +173,7 @@ and the ports' section will be directed to port 80:
 Correct this to the original port given in the Session resource.
 
 ```yaml
-  ports:
+ports:
   - name: unsecure
     port: [some port]
     protocol: TCP
@@ -200,25 +202,25 @@ First correct the selector:
 The selector and ports looks like so when intercept is active:
 
 ```yaml
-  ports:
+ports:
   - port: 3000
     protocol: TCP
     targetPort: 80
-  selector:
-    app: interceptor
-    system.codezero.io/session: 29ad008882b59faa516d733051a9d14b2d3b6836
+selector:
+  app: interceptor
+  system.codezero.io/session: 29ad008882b59faa516d733051a9d14b2d3b6836
 ```
 
 In this example, it should look like so when corrected:
 
 ```yaml
-  ports:
+ports:
   - port: 3000
     protocol: TCP
     targetPort: 3000
-  selector:
-    app: sample-project
-    component: backend
+selector:
+  app: sample-project
+  component: backend
 ```
 
 Then delete the residue resources

@@ -5,11 +5,11 @@ a Command Line Interface (CLI) and a Desktop application.
 
 ## Install the CodeZero CLI
 
-[app-install](../_fragments/app-install.md ':include')
+[app-install](../_fragments/app-install.md ":include")
 
 ### Requirements
 
-[app-requirements](../_fragments/app-requirements.md ':include')
+[app-requirements](../_fragments/app-requirements.md ":include")
 
 ### Initialize the CLI
 
@@ -47,7 +47,7 @@ We are happy to provide support for macOS and Linux at this time. The CodeZero C
 
 ## Canary vs Stable Releases
 
-We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid  release of our tools. There are times when we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
+We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid release of our tools. There are times when we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
 
 You can tell Stable versus Canary releases by the version numbers. Canary releases have pre-release labels in the semantic versions (e.g. 1.3.1-alpha.0 vs 1.3.1). In the previous example, 1.3.1 would be considered the latest Stable release until 1.3.2 is published.
 
@@ -70,6 +70,6 @@ The installation instructions above describe Stable releases.
 
 Currently, Canary releases are only available via npm install. The installation command is:
 
-``` bash
+```bash
 npm install -g @c6o/cli@canary
 ```

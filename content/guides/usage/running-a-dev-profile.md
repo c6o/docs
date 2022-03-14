@@ -1,8 +1,8 @@
 # Running a Development Profile
 
-*Development Profiles* are read from the `.codezero/develop` directory within Workspaces. The following describes how to run a Development Profile.
+_Development Profiles_ are read from the `.codezero/develop` directory within Workspaces. The following describes how to run a Development Profile.
 
-Open the Dashboard window to see your current *Sessions*:
+Open the Dashboard window to see your current _Sessions_:
 
 ![Menu Dashboard](../../_media/app/tray-menu.png)
 

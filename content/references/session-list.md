@@ -17,7 +17,7 @@ Commands to help you list open sessions (sessions are started by running command
 ### Flags
 
 | Flags        | Alias | Description                                                                                                                     |
-|--------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
 | --detail     | -d    | Show a detailed breakdown for sessions.                                                                                         |
 | --verbose    | -s    | Show more verbose information about the session's parameters values.                                                            |
 | --kubeconfig | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |

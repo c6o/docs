@@ -2,7 +2,7 @@
 
 All the tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub. For the remainder of these tutorials, you will need:
 
-[prerequisites](_fragments/prerequisites.md ':include')
+[prerequisites](_fragments/prerequisites.md ":include")
 
 > [!Note]
 > Tutorials are a work in progress and do not represent everything you can do with CodeZero. If you are new to CodeZero, it is best that you go through the tutorials in the order they are presented.
@@ -11,7 +11,7 @@ All the tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sam
 
 In this tutorial, you will learn:
 
-* How to perform local development against an application running in a Kubernetes cluster
+- How to perform local development against an application running in a Kubernetes cluster
 
 By the end of the tutorial you should have successfully run the application locally, and also in your cluster.
 
@@ -104,4 +104,4 @@ On macOS, you can access the service using:
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
-Congratulations, you are now ready to move on to the [Developing Edge Services](/tutorials/edge.md) tutorial.
+Congratulations, you are now ready to move on to the [Developing Edge Services](/tutorials/edge) tutorial.

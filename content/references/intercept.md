@@ -16,14 +16,14 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 
 ### Arguments
 
-| Argument      | Description                                    |
-|--------------|------------------------------------------------|
+| Argument     | Description                                    |
+| ------------ | ---------------------------------------------- |
 | service-name | The name of the service you want to intercept. |
 
 ### Flags
 
 | Flags          | Alias | Description                                                                                                                   |
-|----------------|-------|-------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------- |
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                     |
 | --remotePort   | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.   |
 | --localPort    | -l    | The local port number that traffic should be forwarded to on this machine.                                                    |

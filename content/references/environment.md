@@ -31,7 +31,7 @@ There are several formats in which the local file can be written using the --for
 ### Arguments
 
 | Arguments     | Description                                                            |
-|---------------|------------------------------------------------------------------------|
+| ------------- | ---------------------------------------------------------------------- |
 | workload-kind | Type of workload you want to teleport as.                              |
 | name          | The name of the workload you want to teleport as.                      |
 | local-file    | The name of the local file to which the configuration will be written. |
@@ -39,7 +39,7 @@ There are several formats in which the local file can be written using the --for
 ### Flags
 
 | Flags          | Alias | Description                                                                                                                                                     |
-|----------------|-------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | --format       | -m    | The format of the environment file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format). |
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                                                       |
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.                                 |

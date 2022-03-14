@@ -17,7 +17,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 ### Arguments
 
 | Arguments     | Description                                                |
-|---------------|------------------------------------------------------------|
+| ------------- | ---------------------------------------------------------- |
 | workload-kind | Type of workload you want to target.                       |
 | name          | The name of the workload you want to target.               |
 | folder-name   | The name of the local folder in which to mount the volume. |
@@ -25,7 +25,7 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 ### Flags
 
 | Flags          | Alias | Description                                                                                                                     |
-|----------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                       |
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
 | --context      |       | The name of the Kubernetes context to use.                                                                                      |

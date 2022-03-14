@@ -1,6 +1,6 @@
 # Adding a Workspace
 
-*Workspaces* are git repos that may contain *Development Profiles* at the root of the repository in the `.codezero/develop` folder.
+_Workspaces_ are git repos that may contain _Development Profiles_ at the root of the repository in the `.codezero/develop` folder.
 
 Workspaces are managed in the system tray menu under **Workspaces**. The following describes how to add and select the current workspace in the app.
 

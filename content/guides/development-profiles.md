@@ -13,7 +13,6 @@ Creating a Development Profile is as simple as using `czctl` just as you would n
 > [!NOTE]
 > See [CodeZero Overview](../welcome/overview.md) and [Installing CodeZero](./installing.md) for more information on getting started with the CLI.
 
-
 ### Examples
 
 A development profile is created through running CLI commands with a --save-profile flag:
@@ -63,4 +62,4 @@ We recommend storing session profiles in the folder `.codezero/develop/` at the 
 
 ## Running a Profile
 
-Currently, running a Development Profiles is best accomplished via the Desktop app. First launch the Desktop application and load a workspace by selecting your current project directory (the directory that contains a .codezero folder).  This will automatically search for all Development Profiles located in the `.codezero/develop/` folder of this workspace.
+Currently, running a Development Profiles is best accomplished via the Desktop app. First launch the Desktop application and load a workspace by selecting your current project directory (the directory that contains a .codezero folder). This will automatically search for all Development Profiles located in the `.codezero/develop/` folder of this workspace.

@@ -14,12 +14,12 @@ There are several primary aspects to replicate the remote environment of a Kuber
 
 1. Workload configuration.
 2. Access remote services.
-3. Persistent volumes.  
+3. Persistent volumes.
 4. Discoverability.
 
 ### Workload Configuration
 
-Every workload can be given a specific configuration. Typically, this is done via ConfigMaps and Secrets. CodeZero allows you to collect all the relevant configuration for a specific workload (deployment, pod, job, etc.), and export it to your local machine (using `.env` or directly sourcing it to your environment). 
+Every workload can be given a specific configuration. Typically, this is done via ConfigMaps and Secrets. CodeZero allows you to collect all the relevant configuration for a specific workload (deployment, pod, job, etc.), and export it to your local machine (using `.env` or directly sourcing it to your environment).
 
 ### Access Remote Services
 

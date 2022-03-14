@@ -2,7 +2,7 @@
 
 The primary concept behind the Environment command is to help developers to develop and debug their code locally by
 bringing in configuration from a workload.
-The environment command is often used in conjunction with [Teleport](../concepts/teleport) and [Intercept](../concepts/intercept).
+The environment command is often used in conjunction with [Teleport](/concepts/teleporting) and [Intercept](../concepts/intercept).
 
 > [!PROTIP]
 > The environment command can be shortened from 'environment' to 'env'
@@ -25,7 +25,7 @@ have the local configuration files update as they change on the server.
 
 ### Options
 
-There are several formats in which the local file can be written: 
+There are several formats in which the local file can be written:
 yaml (.yaml or .yml), bash shell script (.sh), environment (.env), and JSON (.json)
 The default is yaml, but you can modify this with the --format or -m flag:
 

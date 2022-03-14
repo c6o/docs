@@ -8,9 +8,9 @@ For the purposes of the tutorials and diagrams, we omit the Workload unless it i
 
 We categorize Services into the following three types based on their inputs and outputs:
 
-* Edge
-* Core
-* Leaf
+- Edge
+- Core
+- Leaf
 
 ## Edge
 

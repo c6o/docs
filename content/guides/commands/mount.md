@@ -45,6 +45,7 @@ On Linux, Mount requires permission to mount volumes locally, which can only be 
 ## Residue and Cleanup
 
 If any mounts remain after running Mount with the `--clean` parameter (or `session close` command), you can see them:
+
 ```bash
 mount
 ...

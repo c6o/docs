@@ -17,14 +17,14 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 ### Arguments
 
 | Arguments | Description                                       |
-|-----------|---------------------------------------------------|
+| --------- | ------------------------------------------------- |
 | workload  | Type of workload you want to teleport as.         |
 | name      | The name of the workload you want to teleport as. |
 
 ### Flags
 
 | Flags          | Alias | Description                                                                                                                     |
-|----------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
 | --additional   | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.                                               |
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                       |
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |

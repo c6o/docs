@@ -17,7 +17,7 @@ Commands to help you close open sessions (sessions are started by running comman
 ### Flags
 
 | Flags        | Alias | Description                                                                                                                     |
-|--------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
 | --all        | -a    | Show more about the session.                                                                                                    |
 | --kubeconfig | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
 | --context    |       | The name of the Kubernetes context to use.                                                                                      |
@@ -28,4 +28,3 @@ Commands to help you close open sessions (sessions are started by running comman
 ```bash
 > czctl session clean
 ```
-

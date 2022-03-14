@@ -4,7 +4,7 @@ Teleport's purpose is to allow developers to develop and debug their code locall
 
 ## Use-Case
 
-Local running services that are being modified need to talk to services that are deployed in a cluster so that developers only need to run what they are changing. 
+Local running services that are being modified need to talk to services that are deployed in a cluster so that developers only need to run what they are changing.
 
 ## Under the hood
 
@@ -49,9 +49,10 @@ The teleport command also starts up a tunnelling service that creates a tunnel t
 
 From time to time you may find that an old `czfwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still lying around. Cleanup is a matter of killing both the czfwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually. (Your `/etc/hosts` file is backed up in `~/hosts.original`, see below for more detail)
 
-The environment output file can simply be deleted or renamed.  The `/etc/hosts` file will need to be edited with root privileges and the additional DNS entries removed.
+The environment output file can simply be deleted or renamed. The `/etc/hosts` file will need to be edited with root privileges and the additional DNS entries removed.
 
 Killing the tunnel process:
+
 ```bash
 > sudo killall czfwd
 ```
@@ -62,6 +63,7 @@ Here's an example of getting the process ids and using `kill -9` to end these pr
 > ps xau | grep 'czfwd' | grep -v 'grep' |  awk '{print $2 " -> " $11, $12}'
 65374 -> /Users/username/.codezero/bin/czfwd/czfwd svc
 ```
+
 ```bash
 > sudo kill -9 65374
 ```
@@ -71,6 +73,7 @@ If the `/etc/hosts` file has not cleaned up after killing the tunnel process, ed
 The tunnel process creates a backup of your `/etc/hosts` file in `~/hosts.original` that can be copied to the `/etc/hosts` using `sudo cp ~/hosts.original /etc/hosts`
 
 After a teleport has been issued, the file will look something like this:
+
 ```
 ##
 # Host Database
@@ -89,7 +92,9 @@ After a teleport has been issued, the file will look something like this:
 127.1.31.5       sample-project-echo.sample-project sample-project-echo.sample-project.svc sample-project-echo.sample-project.svc.cluster.local
 127.1.31.6       sample-project-database.sample-project sample-project-database.sample-project.svc sample-project-database.sample-project.svc.cluster.local
 ```
+
 If the backup file is corrupted, you can remove the long lines that reference services in your cluster. Either way, the /etc/hosts file should look like this after restoration:
+
 ```
 ##
 # Host Database
