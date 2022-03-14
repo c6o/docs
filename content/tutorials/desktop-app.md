@@ -88,7 +88,7 @@ Back in the Desktop app, click on the tray icon and run the new 'intercept' prof
 > [!Note]
 > If for some reason you don't see the new profile, make sure the intercept profile that was created ends in *.yaml, or try switching workspaces and coming back.
 
-Once the Intercept is running, you will see an entry for it on the Dashboard, and a ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
+Once the Intercept is running, you will see an entry for it on the Dashboard, and an ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
 
 > [!WARNING]
 > ngrok might try to redirect you to an https link, so make sure your URL is http only when hitting the api.
