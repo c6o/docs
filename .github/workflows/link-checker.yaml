@@ -18,6 +18,9 @@ jobs:
         uses: lycheeverse/lychee-action@v1.3.2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          args:  --no-progress --exclude-all-private
+          format: markdown
       - name: Find Link Checker Issue
         id: link-checker-issue
         uses: micalevisk/last-issue-action@v1
