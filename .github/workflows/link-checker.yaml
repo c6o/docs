@@ -29,6 +29,6 @@ jobs:
           title: Broken links detected in docs 🔗
           issue-number: "${{ steps.link-checker-issue.outputs.issue_number }}"
           content-filepath: ./lychee.md
-          token: "${{ steps.generate-token.outputs.token }}"
+          token: ${{secrets.GITHUB_TOKEN}}
           labels: |
             link-checker
