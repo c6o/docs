@@ -1,6 +1,6 @@
 # Environment Command
 
-The primary concept behind the Environment command is to help developers to develop and debug their code locally by 
+The primary concept behind the Environment command is to help developers to develop and debug their code locally by
 bringing in configuration from a workload.
 The environment command is often used in conjunction with [Teleport](../concepts/teleport) and [Intercept](../concepts/intercept).
 
@@ -10,7 +10,7 @@ The environment command is often used in conjunction with [Teleport](../concepts
 ## Use Case
 
 One problem that developers encounter is that they need to locally use the same configuration that a remotely deployed service uses.
-Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task. 
+Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task.
 Additionally, if the configuration changes on the server, the developer may not be aware of those changes when they occur.
 Configurations need to be updated locally as they change remotely.
 
