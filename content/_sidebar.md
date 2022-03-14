@@ -38,5 +38,5 @@
 - Changelogs
   - [CLI](/changelogs/cli.md)
 - Legal
-  - [Privacy](https://codezero.io/privacy.md)
-  - [Terms of Use](https://codezero.io/terms.md)
+  - [Privacy](https://codezero.io/privacy)
+  - [Terms of Use](https://codezero.io/term)
