@@ -1,15 +1,16 @@
-```bash
-brew install c6o/tools/czctl
-```
+To install the full desktop application, visit our [downloads page](https://codezero.io/platform/desktop#download-app), and install the appropriate installer for your Operating System.
 
-You can also use npm to install the CLI:
+Or run:
 
 ```bash
-npm install -g @c6o/cli
+curl -L https://releases.codezero.io/install.sh | /bin/bash
 ```
 
 > [!NOTE]
-> You may need to use `sudo npm install -g @c6o/cli` if your current user doesn't have permission to the installation folders.
+> If you are in a headless environment, or otherwise don't want to install the GUI, you can run: `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` to install a headless version of the tool (only includes `czctl` and background services)
 
-> [!WIP]
-> Yarn currently does not work to install CodeZero's CLI. Please use homebrew or npm.
+> [!PROTIP]
+> If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`.  But bewarned, it has not been fully tested and may cause unexpected behaviour.
+
+> [!WARNING]
+> Previous versions of CodeZero could be installed via npm and/or brew. However, since version 1.4.0, this is no longer available.
