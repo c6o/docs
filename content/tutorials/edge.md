@@ -54,7 +54,7 @@ http://localhost:8999/sockets
 
 ### Start the CodeZero Daemon
 
-Assuming you have already installed the CLI (`brew install c6o/tools/czctl`), run:
+Assuming you have already [installed the CLI](../guides/installing.md), run:
 
 ```bash
 czctl start
