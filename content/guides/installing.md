@@ -68,8 +68,8 @@ In contrast, Stable releases have undergone our normal testing but may contain f
 
 The installation instructions above describe Stable releases.
 
-Currently, Canary releases are only available via brew. The install command is:
+If you'd like to try out pre-release builds, you can upgrade to the latest Canary releases with:
 
 ``` bash
-brew install c6o/tools/czctl-canary
+`curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s canary`
 ```

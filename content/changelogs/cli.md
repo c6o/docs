@@ -6,16 +6,17 @@ This document contains the release notes for the CodeZero CLI.
 
 ### Breaking Changes
 
-* CodeZero is no longer distributed via NPM.  Please use one of:
+* CodeZero is no longer distributed via NPM. You should uninstall CodeZero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
+* Instead, please install CodeZero via one of:
   - [Download](https://codezero.io/platform/desktop#download-app) and run the appropriate installer
-  - Use `brew install c6o/tools/desktop` (MacOS only)
-  - Use `brew install c6o/tools/czctl` (does not include desktop GUI)
-  - Run `/bin/bash -c "$(curl https://storage.googleapis.com/c6o-releases/install-headless.sh)"` (does not include desktop)
+  - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
+  - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
 
 ### Features
 
-* Create installers experience that bundles all Desktop components as a single binary ([#2851])
+* Create an installation experience that bundles all Desktop components as a single binary ([#2851])
 * **cli:** Added `--force` flag to `czctl session close` to close sessions that have entered a bad state ([#38](https://github.com/c6o/roadmap/issues/38)]
+* **cli:** Add `czctl upgrade` to provide an easier upgrade experience for future releases
 * **teleport:** Exclusion of one or more services by name when teleporting to avoid port conflict issues when running locally ([#45](https://github.com/c6o/roadmap/issues/45))
 * **desktop:** Allow for secure kubeconfig request and distribution (documetation and official release coming soon) ([#2860])
 
