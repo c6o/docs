@@ -13,4 +13,4 @@ curl -L https://releases.codezero.io/install.sh | /bin/bash
 > If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`.  But bewarned, it has not been fully tested and may cause unexpected behaviour.
 
 > [!WARNING]
-> Previous versions allowed using npm and/or brew to install/update the CLI. Since version 1.4.0, this is no longer possible.
+> Previous versions of CodeZero could be installed via npm and/or brew. However, since version 1.4.0, this is no longer available.
