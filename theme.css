@@ -1119,3 +1119,7 @@ img[alt$="><"] {
 	margin: auto;
 	float: none !important;
 }
+
+.flags-table td:first-child {
+	white-space: nowrap;
+}

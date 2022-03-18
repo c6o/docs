@@ -31,7 +31,7 @@ When an Intercept Session is initiated, we
 
 The Proxy service selectively routes traffic based on the request headers.
 
-## Under the hood
+## Under the Hood
 
 Intercept works by:
 
