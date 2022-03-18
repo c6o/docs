@@ -18,7 +18,7 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](/tutorials/sample-project.md).
+The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](./sample-project.md).
 
 ## Tutorial
 

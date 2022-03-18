@@ -10,13 +10,13 @@ CodeZero resolves this by enabling developers to bring down environment variable
 
 ## Under the Hood
 
-The Environment command starts a watch of the configuration files of the workload and writes to the given environment file as configuration changes in the cluster.
+The Configuration command starts a watch of the configuration files of the workload and writes to the given environment file as configuration changes in the cluster.
 
 ## Residue
 
-The environment command makes no changes to your remote cluster and the only residue is the file where the configuration is written and the watcher process.
+The configuration command makes no changes to your remote cluster and the only residue is the file where the configuration is written and the watcher process.
 
-However, if the environment watcher continues to run after a clean/close has been performed, you will need to find the process id and do a `kill -9` of the environment monitor process.
+However, if the configuration watcher continues to run after a clean/close has been performed, you will need to find the process id and do a `kill -9` of the configuration monitor process.
 
 Here's an example of getting the process ids and using `kill -9` to end these processes:
 

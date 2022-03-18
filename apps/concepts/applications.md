@@ -16,9 +16,9 @@ graph TD
         IMAGE["Containerized Application"] ==> |referenced by| CODE("Provisioner Code")
         CODE ==> |referenced by| MANIFEST(Application Manifest)
     end
-    MANIFEST -.-> |published to| C6O[(CodeZero Hub)]
-    CODE -.-> |published to| NPM[(NPM Repository)]
-    IMAGE -.-> |published to| DOCKER[(Docker Hub)]
+    MANIFEST --> |published to| C6O[(CodeZero Hub)]
+    CODE --> |published to| NPM[(NPM Repository)]
+    IMAGE --> |published to| DOCKER[(Docker Hub)]
 ```
 
 ### Container Image
