@@ -4,25 +4,25 @@ A result can be a KubeObject, error or other
 
 ## Properties
 
-###  error
+### error
 
-• **error**: *any*
+• **error**: _any_
 
 The resulting error
 
-___
+---
 
-###  object
+### object
 
-• **object**: *KubeObject*
+• **object**: _KubeObject_
 
 The resulting Kubernetes resource
 
-___
+---
 
-###  other
+### other
 
-• **other**: *any*
+• **other**: _any_
 
 A non-Kubernetes resource result
 
@@ -30,14 +30,14 @@ A non-Kubernetes resource result
 
 ### `Static` from
 
-▸ **from**(`fn`: any): *Promise‹[Result](result.md)›*
+▸ **from**(`fn`: any): _Promise‹[Result](result.md)›_
 
 Executes a function and generates a result
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`fn` | any | Function to safely execute  |
+| Name | Type | Description                |
+| ---- | ---- | -------------------------- |
+| `fn` | any  | Function to safely execute |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_

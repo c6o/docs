@@ -10,7 +10,7 @@ curl -L https://releases.codezero.io/install.sh | /bin/bash
 > If you are in a headless environment, or otherwise don't want to install the GUI, you can run: `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` to install a headless version of the tool (only includes `czctl` and background services)
 
 > [!PROTIP]
-> If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`.  But bewarned, it has not been fully tested and may cause unexpected behaviour.
+> If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`. But bewarned, it has not been fully tested and may cause unexpected behaviour.
 
 > [!WARNING]
 > Previous versions of CodeZero could be installed via npm and/or brew. However, since version 1.4.0, this is no longer available.

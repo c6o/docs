@@ -16,20 +16,20 @@ A CodeZero Cloud is a Kubernetes (k8s) cluster enhanced with the CodeZero platfo
 
 Components that are installed and operate in a customers cluster:
 
-| **Application**   | **Description** | **Linux Analogy**
-| ---------------   | --------------- | -----------------
-| CodeZero System   | This is the operating system of a CodeZero Cloud | Ubuntu
-| Marina            | A web UI that provides a desktop like experience to CodeZero | GNOME
-| Store             | Responsible for finding and installing applications from the CodeZero hub | APT
-| Harbour Master (coming soon)    | User/access control |  
-| Coast Guard (coming soon)       | Network security management | UFW
+| **Application**              | **Description**                                                           | **Linux Analogy** |
+| ---------------------------- | ------------------------------------------------------------------------- | ----------------- |
+| CodeZero System              | This is the operating system of a CodeZero Cloud                          | Ubuntu            |
+| Marina                       | A web UI that provides a desktop like experience to CodeZero              | GNOME             |
+| Store                        | Responsible for finding and installing applications from the CodeZero hub | APT               |
+| Harbour Master (coming soon) | User/access control                                                       |
+| Coast Guard (coming soon)    | Network security management                                               | UFW               |
 
 ## CodeZero Hub
 
-The other major component of CodeZero is the CodeZero Hub. This is the backend system that powers the https://codezero.io and https://developer.codezero.io/ web applications. This portion of the CodeZero system is controlled and operated by CodeZero and provides APIs for creating a new cluster, sharing and finding CodeZero applications, managing pricing and billing, and by default provides the initial authentication mechanism for a CodeZero cluster.
+The other major component of CodeZero is the CodeZero Hub. This is the backend system that powers the <https://codezero.io> and <https://developer.codezero.io/> web applications. This portion of the CodeZero system is controlled and operated by CodeZero and provides APIs for creating a new cluster, sharing and finding CodeZero applications, managing pricing and billing, and by default provides the initial authentication mechanism for a CodeZero cluster.
 
 > [!NOTE]
-> Except when a user first installs a cloud using the web interface (via https://codezero.io/), CodeZero never stores or maintains access to a customers cluster.
+> Except when a user first installs a cloud using the web interface (via <https://codezero.io/>), CodeZero never stores or maintains access to a customers cluster.
 
 ## Architecture
 

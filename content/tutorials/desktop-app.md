@@ -26,7 +26,7 @@ For this tutorial you will also need to be using macOS or Linux, have NodeJS 16+
 
 ### Developing Edge Services Tutorial
 
-If you haven't already, go through the [Developing Edge Services](edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but this time using the Desktop app.
+If you haven't already, go through the [Developing Edge Services](/edge) tutorial, which will show you how to run a teleport command using the CodeZero CLI to debug a locally running service. Close the teleport at the end because we are going to run it again in this tutorial, but this time using the Desktop app.
 
 ## Tutorial
 

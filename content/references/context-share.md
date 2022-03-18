@@ -18,18 +18,18 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 
 ## Arguments
 
-| Argument          | Description
-| -----------       | -----------
-| encrypted-context | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used).
+| Argument          | Description                                                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| encrypted-context | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used). |
 
 ## Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --key          | -k    | The recipient's public key
-| --context      | -c    | The plaintext kubeconfig filename
-| --quiet        | -q    | Only display error message.
+| Flags     | Alias | Description                       |
+| --------- | ----- | --------------------------------- |
+| --key     | -k    | The recipient's public key        |
+| --context | -c    | The plaintext kubeconfig filename |
+| --quiet   | -q    | Only display error message.       |
 
 </div>

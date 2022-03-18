@@ -30,25 +30,25 @@ There are several formats in which the local file can be written using the --for
 
 ## Arguments
 
-| Arguments      | Description
-| --------       | -----------
-| kind           | The kind of workload you want to teleport as.
-| resourceName   | The name of the workload you want to teleport as.
-| envFile        | The name of the local file to which the configuration will be written.
+| Arguments    | Description                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| kind         | The kind of workload you want to teleport as.                          |
+| resourceName | The name of the workload you want to teleport as.                      |
+| envFile      | The name of the local file to which the configuration will be written. |
 
 ## Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-|----------------|-------|------------
-| --format       | -m    | The format of the environment file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format).
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --clean        | -c    | Close and clean up existing teleport session.
-| --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                                                     |
+| -------------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --format       | -m    | The format of the environment file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format). |
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                                                       |
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.                                 |
+| --context      |       | The name of the Kubernetes context to use.                                                                                                                      |
+| --clean        | -c    | Close and clean up existing teleport session.                                                                                                                   |
+| --quiet        | -q    | Only display error message.                                                                                                                                     |
+| --save-profile | -s    | Save this command to a development profile.                                                                                                                     |
 
 </div>
 

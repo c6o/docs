@@ -19,8 +19,8 @@ metadata:
     system.codezero.io/iconUrl: "https://hub.codezero.io/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
 spec:
   routes:
-    - type: 'http'
-      targetService: 'node-red'
+    - type: "http"
+      targetService: "node-red"
   provisioner:
     storage: 1Gi
     projects: false
@@ -36,42 +36,41 @@ spec:
 
 These are standard k8s metadata fields and how they are used by c6o
 
-| Name      | Description                                  |
-|-----------|----------------------------------------------|
-| name      | Globally unique application name             |
-| namespace | Namespace where the application is installed |
+| Name       | Description                                      |
+| ---------- | ------------------------------------------------ |
+| name       | Globally unique application name                 |
+| namespace  | Namespace where the application is installed     |
 | finalizers | set to `finalizer.app.codezero.io` after install |
 
 ### Labels
 
-| Label                          | Description                                   |
-|--------------------------------|-----------------------------------------------|
-| system.codezero.io/edition     | application spec edition                      |
+| Label                                        | Description                                                                                   |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| system.codezero.io/edition                   | application spec edition                                                                      |
 | system.codezero.io/interface-{interfaceName} | label for identifying applications that expose a documented service interface {interfaceName} |
 
 ### Annotations
 
-| Annotation                     | Description |
-|--------------------------------|-----------------------------------------------|
-| system.codezero.io/description | Description of the application                 |
+| Annotation                     | Description                                   |
+| ------------------------------ | --------------------------------------------- |
+| system.codezero.io/description | Description of the application                |
 | system.codezero.io/iconUrl     | Icon for display in the Marina and other apps |
-| system.codezero.io/appId | Application identifier assigned by Hub |
-
+| system.codezero.io/appId       | Application identifier assigned by Hub        |
 
 ## Spec Section
 
 ### Provisioner
 
-| Field | Description |
-|-------|-----------------------------------------------|
-| ignore | When the provisioner section set to `ignore` the system will not call a provisioner on install |
-| name | provisioner name to overrides app spec name |
-| namespace | namespace to override chosen namespace for app |
-| services | deprecated - list of additional provisioner sections used to install the application |
-| tag-prefix | prefix to use for provisioner UI web components. When not set, this is the application name |
-| package | npm package to use for provisioning. When not set, it is @provisioner/{app-name} |
-| $unset | field that is to be removed during provisioning |
-| *other* | All other provisioner fields and sub fields are provisioner specific |
+| Field      | Description                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| ignore     | When the provisioner section set to `ignore` the system will not call a provisioner on install |
+| name       | provisioner name to overrides app spec name                                                    |
+| namespace  | namespace to override chosen namespace for app                                                 |
+| services   | deprecated - list of additional provisioner sections used to install the application           |
+| tag-prefix | prefix to use for provisioner UI web components. When not set, this is the application name    |
+| package    | npm package to use for provisioning. When not set, it is @provisioner/{app-name}               |
+| $unset     | field that is to be removed during provisioning                                                |
+| _other_    | All other provisioner fields and sub fields are provisioner specific                           |
 
 ### Marina
 
@@ -87,14 +86,14 @@ spec:
             popUp: true
 ```
 
-| Field | Description |
-|-------|-----------------------------------------------|
-| launch | Section describing how the application should be launched by the Marina desktop |
-| launch.type | `inline` - launch by browser |
-| launch.popup | `true` - launch in a new tab, default - launch in a Marina desktop iFrame |
-| launch.port | port to use in the URL |
-| launch.path | path to use in the URL |
-| launch.tag | TODO |
+| Field        | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| launch       | Section describing how the application should be launched by the Marina desktop |
+| launch.type  | `inline` - launch by browser                                                    |
+| launch.popup | `true` - launch in a new tab, default - launch in a Marina desktop iFrame       |
+| launch.port  | port to use in the URL                                                          |
+| launch.path  | path to use in the URL                                                          |
+| launch.tag   | TODO                                                                            |
 
 ### Routes
 
@@ -106,32 +105,32 @@ Example:
 # ...
 spec:
   routes:
-    - type: 'http'
-      targetService: 'node-red'
-    - type: 'tcp'
-      targetService: 'node-red'
+    - type: "http"
+      targetService: "node-red"
+    - type: "tcp"
+      targetService: "node-red"
       tcp:
-        name: 'tcp-main'
+        name: "tcp-main"
         port: 1533
-    - type: 'tcp'
-      targetService: 'node-red'
+    - type: "tcp"
+      targetService: "node-red"
       tcp:
-        name: 'tcp-alternate'
+        name: "tcp-alternate"
         port: 1655
 ```
 
-| Field | Description |
-|-------|-----------------------------------------------|
-| routes | an array of routes to access one or more hosted services |
-| route.type | Must be 'http' or 'tcp'. Note that http routing implies and https |
-| route.disabled | When present and set to true, the route is disabled; otherwise the route is enabled |
-| route.targetService | the target service name |
-| route.targetPort | optional field specifying the target service port, which is needed when multiple service ports are available |
-| route.http.prefix | optional http field specifying matching prefix for a URL rewrite, e.g.: /api/ |
-| route.http.rewrite | optional http field specifying URL rewrite destination, e.g.: /api/v1/ |
-| route.tcp.name | mandatory tcp field specifying the TCP route name. Although arbitrary but must be unique withing an app spec. |
-| route.tcp.port | optional tcp field specifying the incoming TCP port. If not present or set to zero (0) then  the port is automatically assigned. |
-| route.tcp.strictPort | optional tcp field specifying whether incoming TCP port can be reassigned in case of a port conflict. |
+| Field                | Description                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| routes               | an array of routes to access one or more hosted services                                                                        |
+| route.type           | Must be 'http' or 'tcp'. Note that http routing implies and https                                                               |
+| route.disabled       | When present and set to true, the route is disabled; otherwise the route is enabled                                             |
+| route.targetService  | the target service name                                                                                                         |
+| route.targetPort     | optional field specifying the target service port, which is needed when multiple service ports are available                    |
+| route.http.prefix    | optional http field specifying matching prefix for a URL rewrite, e.g.: /api/                                                   |
+| route.http.rewrite   | optional http field specifying URL rewrite destination, e.g.: /api/v1/                                                          |
+| route.tcp.name       | mandatory tcp field specifying the TCP route name. Although arbitrary but must be unique withing an app spec.                   |
+| route.tcp.port       | optional tcp field specifying the incoming TCP port. If not present or set to zero (0) then the port is automatically assigned. |
+| route.tcp.strictPort | optional tcp field specifying whether incoming TCP port can be reassigned in case of a port conflict.                           |
 
 ### Navstation
 
@@ -146,12 +145,11 @@ For example, for the `npm-registry` interface, the metadata label section will i
 ```yaml
 # ...
 spec:
-    # ...
-    services:
-        npm-registry':
-            protocol: 'http'
-            service: 'verdaccio-service'
-            auth: ['basic']
-            port: 80
+  # ...
+  services:
+    npm-registry':
+      protocol: "http"
+      service: "verdaccio-service"
+      auth: ["basic"]
+      port: 80
 ```
-

@@ -11,7 +11,7 @@ To add a new context:
    - Select a file containing the context
 4. Click on the "Add Context" button.
 
-When adding a context, it can be either plaintext or *encrypted*.
+When adding a context, it can be either plaintext or _encrypted_.
 
 Encrypted contexts can be generated using the Desktop app for securely sharing a context with other users. Learn more about [requesting an encrypted context](/guides/usage/securely-sharing-contexts?id=requesting-a-context), or [generating an encypted context](/guides/usage/securely-sharing-contexts?id=generating-and-sharing-an-encrypted-context).
 

@@ -18,12 +18,12 @@ Add a plaintext or encrypted kubeconfig context to your user kubeconfig located 
 
 ## Arguments
 
-| Argument         | Description
-| ----------       | -----------
-| context-filename | The plaintext or encrypted kubeconfig filename.
+| Argument         | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| context-filename | The plaintext or encrypted kubeconfig filename. |
 
 ## Flags
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --quiet        | -q    | Only display error message.
+| Flags   | Alias | Description                 |
+| ------- | ----- | --------------------------- |
+| --quiet | -q    | Only display error message. |

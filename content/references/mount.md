@@ -16,24 +16,24 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 ## Arguments
 
-| Arguments      | Description
-| -------------- | -----------
-| kind           | Type of workload you want to target.
-| resourceName   | The name of the workload you want to target.
-| localDirectory | The name of the local folder in which to mount the volume.
+| Arguments      | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| kind           | Type of workload you want to target.                       |
+| resourceName   | The name of the workload you want to target.               |
+| localDirectory | The name of the local folder in which to mount the volume. |
 
 ## Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-|----------------|-------|------------
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --clean        | -c    | Close and clean up existing mount session.
-| --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                     |
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                       |
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context      |       | The name of the Kubernetes context to use.                                                                                      |
+| --clean        | -c    | Close and clean up existing mount session.                                                                                      |
+| --quiet        | -q    | Only display error message.                                                                                                     |
+| --save-profile | -s    | Save this command to a development profile.                                                                                     |
 
 </div>
 

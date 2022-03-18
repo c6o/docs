@@ -10,14 +10,14 @@ The following snippet illustrates the use of the KubeClient to retrieve the conf
 
 ```javascript
 let result = await this.manager.cluster.list({
-    kind: 'ConfigMap',
-    metadata: {
-        namespace,
-        labels: {
-            'system.codezero.io/app-name': 'grafana',
-            'system.codezero.io/app-namespace': 'monitoring',
-        }
-    }
+  kind: "ConfigMap",
+  metadata: {
+    namespace,
+    labels: {
+      "system.codezero.io/app-name": "grafana",
+      "system.codezero.io/app-namespace": "monitoring",
+    },
+  },
 })
 if (result.error) throw result.error
 ```
@@ -31,20 +31,19 @@ A command stack is created with the `begin()` method, and execution on the stack
 ```javascript
 const cluster = new Cluster({})
 cluster
-    .begin('Install dev services')
-    .list(this.devPods)
-    .do((result, processor) => {
-
-        if (result?.object?.items?.length == 0) {
-            processor
-                .upsertFile('../k8s/configMap.yaml', { namespace, publicKey })
-                .upsertFile('../k8s/pvc.yaml', { namespace, storage })
-                .upsertFile('../k8s/deployment.yaml', { namespace, image })
-                .upsertFile('../k8s/svc.yaml', { namespace })
-                .upsertFile('../k8s/devSvc.yaml', { namespace })
-        }
-    })
-    .end()
+  .begin("Install dev services")
+  .list(this.devPods)
+  .do((result, processor) => {
+    if (result?.object?.items?.length == 0) {
+      processor
+        .upsertFile("../k8s/configMap.yaml", {namespace, publicKey})
+        .upsertFile("../k8s/pvc.yaml", {namespace, storage})
+        .upsertFile("../k8s/deployment.yaml", {namespace, image})
+        .upsertFile("../k8s/svc.yaml", {namespace})
+        .upsertFile("../k8s/devSvc.yaml", {namespace})
+    }
+  })
+  .end()
 ```
 
 In some cases, you may need to execute arbitrary Typescript code in the middle of a command sequence. This is done using the `do` method as shown. You provide `do()` with a callback that has the result from the previous command, and the processor command stack.
@@ -53,19 +52,18 @@ In some cases, you may need to execute arbitrary Typescript code in the middle o
 
 The KubeClient functionality is available in both direct and batch mode except where indicated.
 
-* CRUD - perform create, read list, update, patch or delete on a specified Kubernetes document.
+- CRUD - perform create, read list, update, patch or delete on a specified Kubernetes document.
 
-* exec - run the command and args on a specified pod.
+- exec - run the command and args on a specified pod.
 
-* watch - watch a specified Kubernetes resource
+- watch - watch a specified Kubernetes resource
 
-* Files - CRUD using file handlebar templates
+- Files - CRUD using file handlebar templates
 
-* Attempt - repeatedly call a function a number of times with a delay until it succeeds
+- Attempt - repeatedly call a function a number of times with a delay until it succeeds
 
-* portForward - set up a portForward to cluster service for access
+- portForward - set up a portForward to cluster service for access
 
 ## Status Reporting
 
 The KubeClient can be supplied with an instance of the Status object. The Status object maintains the state of the execution of a command stack for display on the command line or other real-time status display.
-

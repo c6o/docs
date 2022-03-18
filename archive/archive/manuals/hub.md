@@ -9,4 +9,3 @@ Manual to describe hub, permissions, organizations, clusters, applications.
 ## Organizations and Teams
 
 ## Permissions and Access Control
-

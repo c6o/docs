@@ -11,10 +11,11 @@ TODO
 ## Scope
 
 The scope of testing includes:
-* The Traxitt Installer
-* The Traxitt Hub
-* The Publisher/Subcriber inter-app communication system
-* Traxitt apps?
+
+- The Traxitt Installer
+- The Traxitt Hub
+- The Publisher/Subcriber inter-app communication system
+- Traxitt apps?
 
 ## Testing Strategy
 
@@ -41,45 +42,47 @@ TODO
 ### Performance and Stress Tesing
 
 Load testing needs to find and help identify the breaking points of the Traxitt System. In addition, the test results can be used by other departments for their materials. Load testing results should be repeatable and consistent. Each load test must produce a report, including:
-* Date and time
-* Hardware for Traxitt System
-* * Number of nodes
-* * * Number of virtual CPUs
-* * * Memory
-* * Number of pods for:
-* * * Registry
-* * * Queueing
-* * * Publishers
-* * * Subscribers
-* * Hardware for Load Testing sofware
-* * Number of nodes and pods
-* * * Number of virtual CPUs
-* * * Memory
-* Setup the following:
-* * Start off with a single producer/consumer pairing sending a burst 1000 messages
-* * Continue to add each pairing sending a simultaneous 1000 message burst until an error threshold is exceeded
-* Chart the message throughput as follows:
-* * Average # of successful and unsuccessful messages sent end-to-end per second per pairings
-* * Corresponding CPU usage
-* * Corresponding memory usage
-* * Corresponding blocking calls
-* * Corresponding network usage
+
+- Date and time
+- Hardware for Traxitt System
+- - Number of nodes
+- - - Number of virtual CPUs
+- - - Memory
+- - Number of pods for:
+- - - Registry
+- - - Queueing
+- - - Publishers
+- - - Subscribers
+- - Hardware for Load Testing sofware
+- - Number of nodes and pods
+- - - Number of virtual CPUs
+- - - Memory
+- Setup the following:
+- - Start off with a single producer/consumer pairing sending a burst 1000 messages
+- - Continue to add each pairing sending a simultaneous 1000 message burst until an error threshold is exceeded
+- Chart the message throughput as follows:
+- - Average # of successful and unsuccessful messages sent end-to-end per second per pairings
+- - Corresponding CPU usage
+- - Corresponding memory usage
+- - Corresponding blocking calls
+- - Corresponding network usage
 
 And, for the test results close to failing and failing, the following additional reports need to be created:
-* CPU profile
-* Memory profile
-* Blocking process profile
-* And, if possible, LAN bandwidth profile
+
+- CPU profile
+- Memory profile
+- Blocking process profile
+- And, if possible, LAN bandwidth profile
 
 #### Assumptions
 
-* Load testing software must be run on independent, powerful hardware so as not to affect the results
-* Each message will be sent with a random 1kB payload
-* The message transmit error threshold is configurable and the default is 0%
-* Initially, the mapping of pods to nodes is 1:1 for each component. In other words, a subscriber pod will run on it's own node, which will also run a publisher pod and a queue pod.
-* The registry will always use exactly 3 pods/nodes
-* The queue will use as many pods as available
-* The Traxitt System components (publisher and subscriber) will use as many pods as available
+- Load testing software must be run on independent, powerful hardware so as not to affect the results
+- Each message will be sent with a random 1kB payload
+- The message transmit error threshold is configurable and the default is 0%
+- Initially, the mapping of pods to nodes is 1:1 for each component. In other words, a subscriber pod will run on it's own node, which will also run a publisher pod and a queue pod.
+- The registry will always use exactly 3 pods/nodes
+- The queue will use as many pods as available
+- The Traxitt System components (publisher and subscriber) will use as many pods as available
 
 ### Chaos Testing
 

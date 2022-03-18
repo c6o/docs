@@ -4,11 +4,11 @@ An Application in the CodeZero ecosystem consists of 3 main components. First of
 
 ## Components
 
-| Component                 | Destination   | Description | Example
-| ---------                 | -----------   | ----------- | -------
-| Containerized Image(s)    | Docker Hub    | Docker image(s) encapsulates your application's process(es), which will run in end-users' clusters. | [nodered/node-red](https://hub.docker.com/r/nodered/node-red)
-| Application Provisioner   | NPM           | Code responsible for installing, updating, and managing the application in a CodeZero customer's cluster. | [@provisioner/node-red](https://www.npmjs.com/package/@provisioner/node-red)
-| Application Manifest      | CodeZero Hub  | Detailed manifest (YAML) that describes an application in the CodeZero ecosystem. | [Node Red](https://hub.codezero.io/marketplace/01EFBMKNH606HDGHZTJK7714JZ)
+| Component               | Destination  | Description                                                                                               | Example                                                                      |
+| ----------------------- | ------------ | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Containerized Image(s)  | Docker Hub   | Docker image(s) encapsulates your application's process(es), which will run in end-users' clusters.       | [nodered/node-red](https://hub.docker.com/r/nodered/node-red)                |
+| Application Provisioner | NPM          | Code responsible for installing, updating, and managing the application in a CodeZero customer's cluster. | [@provisioner/node-red](https://www.npmjs.com/package/@provisioner/node-red) |
+| Application Manifest    | CodeZero Hub | Detailed manifest (YAML) that describes an application in the CodeZero ecosystem.                         | [Node Red](https://hub.codezero.io/marketplace/01EFBMKNH606HDGHZTJK7714JZ)   |
 
 ```mermaid
 graph TD
@@ -30,7 +30,7 @@ A container image represents binary data that encapsulates your application and 
 
 <!-- ### Multiple Images
 
-A CodeZero Application may consist of one or multiple container images. However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together. 
+A CodeZero Application may consist of one or multiple container images. However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together.
 For example, if building a Wordpress provisioner, it may be tempting to directly include a MySQL container. However, a much better design should define the MySQL service as a dependency, so it can leverage the power of existing MySQL instances.
 
 How to develop the actual application logic that will run in a customers cluster is a very broad topic, and is not new or specific to CodeZero.

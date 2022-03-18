@@ -26,4 +26,4 @@ Typically, each pre-Production environment has an exact replica or a subset of t
 
 CodeZero provides you a set of primitives: Teleport, Intercept and Mount which can be configured and composed to re-shape the Microservices Graph in order to work on a feature or an issue.
 
-Alterations to the graph are recorded in [Sessions](sessions) which, when closed, restore the physical graph to its original state.
+Alterations to the graph are recorded in [Sessions](/sessions) which, when closed, restore the physical graph to its original state.

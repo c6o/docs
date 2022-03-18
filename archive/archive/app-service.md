@@ -18,7 +18,7 @@ The AMS runs inside a standard Kubernetes cluster in the `codezero-system` names
 
 The AMS is quite different from other package managers like Helm. Helm does not support an application lifecycle. Helm applications are either running in the Kubernetes cluster or not. Using AMS, applications can be in an `installed`, `configured`, or `running` state. (The Kubernetes cluster will only manage running applications.)
 
-The configuration and logic needed to deploy and run an application in the cluster is done using *provisioners*. You can think of provisioners as installers on Windows and MacOS. Several provisioners may be required to properly install an application depending on the complexity of the application stack. Simple applications may not require provisioners.
+The configuration and logic needed to deploy and run an application in the cluster is done using _provisioners_. You can think of provisioners as installers on Windows and MacOS. Several provisioners may be required to properly install an application depending on the complexity of the application stack. Simple applications may not require provisioners.
 
 ## Architecture
 
@@ -50,7 +50,7 @@ graph TB
     docker-->ams1
 ```
 
-Users interact with the *CodeZero Store* on their cluster to install Apps and manage instances of these apps.
+Users interact with the _CodeZero Store_ on their cluster to install Apps and manage instances of these apps.
 
 The AMS manages the user experience and Apps throught the application lifecycle from installation, configuration, running to removal in the cluster. The orchestration of Apps once running, however, is managed by Kubernetes. Users will need to bootstrap new clusters and install the CodeZero Cloud OS. Once OS is installed, Users access the CodeZero Store directly via a web UI or using the CLI.
 
@@ -78,9 +78,9 @@ Roles:
 
 Open issues for discussion:
 
-- This implies that the CodeZero Store and AMS may also need a way to manage users (CRUD) and perhaps API keys. Do we want a separate service for this?  Can we leverage external authentication systems for this, or point to an org's LDAP server?
+- This implies that the CodeZero Store and AMS may also need a way to manage users (CRUD) and perhaps API keys. Do we want a separate service for this? Can we leverage external authentication systems for this, or point to an org's LDAP server?
 - Are we just controlling the capabilities of the CodeZero Store and AMS or visibilty and access control of the apps themselves?
-- Related to above, applications installed with the system will often have their own access control. Will we layer CodeZero User access control on top somehow?  Perhaps using a proxy (we did this for Node-RED)?  How then would we map our users/roles to the applications?  Would they need to log in twice?
+- Related to above, applications installed with the system will often have their own access control. Will we layer CodeZero User access control on top somehow? Perhaps using a proxy (we did this for Node-RED)? How then would we map our users/roles to the applications? Would they need to log in twice?
 - For an MVP suggest all authenticated users will be admins, and we'll assume installed applications (e.g. mongodb, dashboards) will manage their own access control separately.
 
 ## Example Use Cases
@@ -95,7 +95,7 @@ The customer will provision their k8s cluster on any cloud such as Digital Ocean
 
 Using the traxitt CLI, they can set the `KUBECONFIG` environment variable to point to the Kubernetes configuration file then issue the following command to bootstrap the system:
 
-``` bash
+```bash
 traxitt bootstrap
 ```
 
@@ -113,13 +113,13 @@ Node-RED is a Node.js application that depends on a persistent volume. The devel
 
 Developer installs the app using the CLI:
 
-``` bash
+```bash
 traxitt install node-red.yaml
 ```
 
 Once the node-red application is `installed`, developers can launch the app from the CLI:
 
-``` bash
+```bash
 traxitt launch node-red red-1
 ```
 
@@ -127,7 +127,7 @@ On launch (or configure), the Traxitt System will check to see if all configurat
 
 For example, the Traxitt CLI responds with configuration needed:
 
-``` bash
+```bash
 > Flow storage volume to mount at /data: [volume-name]
 ```
 
@@ -137,11 +137,11 @@ Once Node-RED is configured, an application instance called `red-1` is launched 
 
 ### 3. Install Dashboard Web App using Traxitt Hub
 
-In this case, OS is running in the cluster and the user is interacting with the web based Traxitt Store UI. The App they want to install, called *Dashboard*, depends on a Mongodb service and a Time Series database service.
+In this case, OS is running in the cluster and the user is interacting with the web based Traxitt Store UI. The App they want to install, called _Dashboard_, depends on a Mongodb service and a Time Series database service.
 
 The user opens the Traxitt Store UI, and searches for the Dashboard App. The Traxitt Store experience is one we already familiar with. The user clicks on `install`.
 
-Behind the scenes, the manifest is retrieved by the AMS and the system installs the Dashboard App. Note that this does not create an instance of the application in the cluster, it just allows the user to create an *instance* of the app in the cluster by configuring it and running it (launch).
+Behind the scenes, the manifest is retrieved by the AMS and the system installs the Dashboard App. Note that this does not create an instance of the application in the cluster, it just allows the user to create an _instance_ of the app in the cluster by configuring it and running it (launch).
 
 Once installed, she clicks on the Dashboard App icon and clicks on `launch`. The user can then type in the name of the instance such as `dashboard1`. The Traxitt OS sees that the manifest requires a mongodb and time series database.
 
@@ -155,7 +155,7 @@ Once all the dependencies are installed, and all the configuration requirements 
 
 ## Configuring Application Dependencies
 
-The dashboard to mongodb and time series database  use case highlights the need for a way to associate clients to the services they depend on, such as web applications to databases, or other services like traxitt pub/sub, filling in configuration parameters like connection strings, dns names, and credentials.
+The dashboard to mongodb and time series database use case highlights the need for a way to associate clients to the services they depend on, such as web applications to databases, or other services like traxitt pub/sub, filling in configuration parameters like connection strings, dns names, and credentials.
 
 Initially we'll do this manually, then we'll create k8s resources to be able to do this automatically based on configMap/secret schemas.
 
@@ -169,7 +169,7 @@ The user can then jot these down or copy/paste these to the application configur
 
 ### Automatic Configuration
 
-To make dependency configuration automatic, we can define configMap/secret *schemas* for dependencies based on the dependency type and version. For example, we can define a `mongodb/v1` schema that defines how the connection string, and root password needed by applications will be exposed in k8s configMaps and secrets to connect to it.
+To make dependency configuration automatic, we can define configMap/secret _schemas_ for dependencies based on the dependency type and version. For example, we can define a `mongodb/v1` schema that defines how the connection string, and root password needed by applications will be exposed in k8s configMaps and secrets to connect to it.
 
 When an application like dashboard is launched, it can look for its dependencies (mongodb), and if found, can retrieve the associated configMap and secret by its schema `mongodb/v1` and the instance name. It can then point its configuration to the connection string and secrets needed in the configMap and secret defined by the schema.
 
@@ -190,7 +190,7 @@ One an application is installed, an instance of it is created on configuration o
 
 ### Bootstrap Traxitt
 
-``` bash
+```bash
 traxitt bootstrap
 ```
 
@@ -200,7 +200,7 @@ No authentication is required.
 
 ### Install Application
 
-``` bash
+```bash
 traxitt install {manifest.yaml|app-package-name}
 ```
 
@@ -208,15 +208,15 @@ This command installs an application using the specified `manifest.yaml` file or
 
 ### Configurure Application and Create Instance
 
-``` bash
+```bash
 traxitt configure {app-package-name} {values.yml} {instance-name}
 ```
 
-The user can configure and create an application *instance* with the supplied values (file), or get input from the CLI to fill in configuration parameters. Once configured the instance is in the `configured` state.
+The user can configure and create an application _instance_ with the supplied values (file), or get input from the CLI to fill in configuration parameters. Once configured the instance is in the `configured` state.
 
 ### Run Instance
 
-``` bash
+```bash
 traxitt run {instance-name}
 ```
 
@@ -224,7 +224,7 @@ Run the application instance by name. It is assumed that is ready to run (config
 
 ### Launch Instance
 
-``` bash
+```bash
 traxitt launch {app-package-name} {values.yaml} {instance-name}
 ```
 
@@ -232,7 +232,7 @@ Configure and run (launch) an application instance in one step.
 
 ### Upgrade Instance
 
-``` bash
+```bash
 traxitt upgrade {instance-name} --manifest {manifest.yaml}
 ```
 
@@ -242,7 +242,7 @@ Upgrade an application by name. If no manifest is supplied directly, the new man
 
 ### Stop Instance
 
-``` bash
+```bash
 traxitt stop {instance-name}
 ```
 
@@ -252,7 +252,7 @@ This stops an instance moving it back to the `configured` state
 
 ### Delete Instance
 
-``` bash
+```bash
 traxitt delete {instance-name}
 ```
 
@@ -260,7 +260,7 @@ This deletes an instance in the `configured/stopped` state.
 
 ### Uninstall Application
 
-``` bash
+```bash
 traxitt remove {app-package-name}
 ```
 
@@ -268,7 +268,7 @@ Remove the application specified by the spec file. To use it it must be reinstal
 
 ### List installed applications
 
-``` bash
+```bash
 traxitt get apps
 ```
 
@@ -276,7 +276,7 @@ Lists the applications and their current instances state (installed, configured,
 
 ### List application instances
 
-``` bash
+```bash
 traxitt get instances
 ```
 
@@ -284,7 +284,7 @@ Lists the instances of applications and their current state (configured, running
 
 ## Application Manifest
 
-App manifests contain the information needed deploy an application. An application typically corresponds to a Kubernetes *deployment*.
+App manifests contain the information needed deploy an application. An application typically corresponds to a Kubernetes _deployment_.
 
 - packaging information including icon, application type, name, description, authors, and other data needed for provisioners, the hub UI.
 - docker images for the provisioner to install
@@ -324,9 +324,8 @@ A. Unlike helm charts that are templates describing the end state of the cluster
 
 TAS is a service that can be used as a CLI tool or used by a service such as traxitt hub to provision and manage applications in a Kubernetes cluster.
 
-TAS does not require *hooks* and associated job pods running in the cluster. Provisioners can wait for resources to be successfully deployed, or check the status of services using external probes and any other means.
+TAS does not require _hooks_ and associated job pods running in the cluster. Provisioners can wait for resources to be successfully deployed, or check the status of services using external probes and any other means.
 
 TAS can interact with the user to request configuration information during installation.
 
 Helm does not maintain the state of an application as installed or configured, it simply generates specs and deploys applications.
-

@@ -30,4 +30,3 @@ If an application has external dependencies (ex: database), we recommend applica
 CodeZero supports any containerized technology that Kubernetes supports (for example: Docker, containerd, CRI-O). However, for simplicity, we focus on applications that are containerized in Docker.
 
 ## Helpful Links
-

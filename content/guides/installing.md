@@ -70,6 +70,6 @@ The installation instructions above describe Stable releases.
 
 If you'd like to try out pre-release builds, you can upgrade to the latest Canary releases with:
 
-``` bash
+```bash
 `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s canary`
 ```

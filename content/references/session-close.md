@@ -18,12 +18,12 @@ Close open sessions (sessions are started by running commands like teleport, int
 
 <div class="flags-table">
 
-| Flags           | Alias | Description
-|-----------------|-------| -----------
-| --all           | -a    | Close any running sessions for the active context.
-| --kubeconfig    | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context       |       | The name of the Kubernetes context to use.
-| --quiet         | -q    | Only display error message.
+| Flags        | Alias | Description                                                                                                                     |
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --all        | -a    | Close any running sessions for the active context.                                                                              |
+| --kubeconfig | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context    |       | The name of the Kubernetes context to use.                                                                                      |
+| --quiet      | -q    | Only display error message.                                                                                                     |
 
 </div>
 
