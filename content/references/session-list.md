@@ -1,6 +1,6 @@
 # Session List
 
-Commands to help you list open sessions (sessions are started by running commands like teleport, intercept, etc.).
+List open sessions (sessions are started by running commands like teleport, intercept, etc.).
 
 ## Usage
 
@@ -8,18 +8,22 @@ Commands to help you list open sessions (sessions are started by running command
 > czctl session list
 ```
 
-### Example
+## Example
 
 ```bash
-> czctl session list --subsessions --detail
+> czctl session list --details
 ```
 
-### Flags
+## Flags
+
+<div class="flags-table">
 
 | Flags          | Alias | Description
 | -------------- | ----- | -----------
-| --detail       | -d    | Show more about the session.
-| --subsessions  | -s    | Show sub-session information.
+| --details      |       | Show a detailed breakdown for sessions.
+| --verbose      | -v    | Show more verbose information about the session's parameters values.
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --context      |       | The name of the Kubernetes context to use.
 | --quiet        | -q    | Only display error message.
+
+</div>

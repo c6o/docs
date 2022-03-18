@@ -9,8 +9,8 @@ In this guide, we walk through the steps to publish a standard application to Co
 
 You'll need to:
 
-1. setup a [CodeZero Cluster](./getting-started.md#Install-CodeZero), and
-1. install and configure the [CodeZero CLI](./getting-started.md#Install-CLI),
+1. setup a [CodeZero Cluster](/guides/getting-started.md#Install-CodeZero.md), and
+1. install and configure the [CodeZero CLI](/guides/getting-started.md#Install-CLI.md),
 
 ## Getting Started
 
@@ -255,7 +255,7 @@ czctl install --local ./c6o.yaml
 ```
 
 > [!NOTE]
-> You'll need to have your KUBECONFIG configured to work with the CLI. See [here](./getting-started.md#Connect-to-your-Private-Cloud) for more details.
+> You'll need to have your KUBECONFIG configured to work with the CLI. See [here](/guides/getting-started.md#Connect-to-your-Private-Cloud.md) for more details.
 
 > [!WIP]
 > The Marina does not display the application's icon correctly when an installation is performed locally like this.

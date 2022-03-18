@@ -4,8 +4,7 @@
 
 Workspaces are managed in the system tray menu under **Workspaces**. The following describes how to add and select the current workspace in the app.
 
-Select **+ Add Workspace** to add a workspace to the
-the Desktop app
+Select **+ Add Workspace** to add a workspace to the Desktop app
 
 ![Menu Empty Workspaces](../../_media/app/add-workspace.png)
 

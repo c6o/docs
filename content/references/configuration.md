@@ -1,20 +1,20 @@
-# Environment
+# Configuration
 
-The Environment command brings down cluster workload configuration files.
+The Configuration command brings down cluster workload configuration files.
 
 ## Usage
 
 ```bash
-> czctl environment [workload-kind] [name] [local-file] -n namespace
+> czctl configuration [KIND] [RESOURCENAME] [ENVFILE] -n namespace
 ```
 
 > [!PROTIP]
-> The environment command can be shortened from 'environment' to 'env'
+> The configuration command can be shortened from `configuration` to `env`
 
-### Example
+## Examples
 
 ```bash
-> czctl environment deployment -n sample-project sample-project-core env.sh
+> czctl configuration deployment sample-project-core env.sh -n sample-project 
 ```
 
 There are several formats in which the local file can be written using the --format(-m) flag:
@@ -25,22 +25,24 @@ There are several formats in which the local file can be written using the --for
 4. yaml
 
 ```bash
-> czctl environment deployment -n sample-project sample-project-core env.json --format json
+> czctl configuration deployment sample-project-core env.json -n sample-project --format json
 ```
 
-### Arguments
+## Arguments
 
-| Arguments       | Description
+| Arguments      | Description
 | --------       | -----------
-| workload-kind  | Type of workload you want to teleport as.
-| name           | The name of the workload you want to teleport as.
-| local-file     | The name of the local file to which the configuration will be written.
+| kind           | The kind of workload you want to teleport as.
+| resourceName   | The name of the workload you want to teleport as.
+| envFile        | The name of the local file to which the configuration will be written.
 
-### Flags
+## Flags
+
+<div class="flags-table">
 
 | Flags          | Alias | Description
-| ------------   | ----- | -----------
-| --format       | -m    |     The format of the environment file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format).
+|----------------|-------|------------
+| --format       | -m    | The format of the configuration file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format).
 | --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
 | --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --context      |       | The name of the Kubernetes context to use.
@@ -48,18 +50,20 @@ There are several formats in which the local file can be written using the --for
 | --quiet        | -q    | Only display error message.
 | --save-profile | -s    | Save this command to a development profile.
 
-### alias
+</div>
+
+## Aliases
 
 ```bash
-> czctl env [workload-kind] [name] [local-file] -n namespace
+> czctl env [KIND] [RESOURCENAME] [ENVFILE] -n namespace
 ```
 
 ## More Examples
 
-Download and watch the environment to a sourceable shell file:
+Download and watch the configuration to a sourceable shell file:
 
 ```bash
-> czctl environment deployment -n sample-project sample-project-core core.sh --format sh
+> czctl configuration deployment -n sample-project sample-project-core core.sh --format sh
 ```
 
 The file will be in this format:
@@ -76,7 +80,7 @@ export "SP_DB_URL=mongodb://sample-project-database:27017/sample-project-databas
 Cleanup the residue from the last command:
 
 ```bash
-> czctl environment deployment -n sample-project sample-project-core core.sh --format sh --clean
+> czctl configuration deployment -n sample-project sample-project-core core.sh --format sh --clean
 ```
 
 or
@@ -91,10 +95,10 @@ To close all czctl sessions, use
 > czctl session close --all
 ```
 
-Enable access to a deployment and download the environment to an.env file:
+Enable access to a deployment and download the configuration to an .env file:
 
 ```bash
-> czctl environment deployment -n sample-project sample-project-core core.env --format env
+> czctl configuration deployment -n sample-project sample-project-core core.env --format env
 ```
 
 The file will be in this format:
@@ -111,12 +115,12 @@ SP_DB_URL=mongodb://sample-project-database:27017/sample-project-database
 Obtain configuration from other workloads:
 
 ```bash
-> czctl environment cronjob some-cronjob config.sh -n some-namespace
+> czctl configuration cronjob some-cronjob config.sh -n some-namespace
 ...
-> czctl environment job some-job config.sh -n some-namespace
+> czctl configuration job some-job config.sh -n some-namespace
 ...
-> czctl environment pod some-pod config.sh -n some-namespace
+> czctl configuration pod some-pod config.sh -n some-namespace
 ...
-> czctl environment statefulset some-statefulset config.sh -n some-namespace
+> czctl configuration statefulset some-statefulset config.sh -n some-namespace
 ...
 ```

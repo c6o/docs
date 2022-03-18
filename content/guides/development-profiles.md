@@ -17,18 +17,20 @@ Creating a Development Profile is as simple as using `czctl` just as you would n
 ### Examples
 
 A development profile is created through running CLI commands with a --save-profile flag:
+
 ```bash
 ➜  czctl teleport namespace sample-project --save-profile dev-profile.yaml
 
-Command has been saved to a Development Profile. (dev-profile.yaml)
+Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
+
 > [!NOTE]
 > Development Profiles in preview and are subject to change.
 
 ```bash
 ➜  czctl env deployment -n sample-project sample-project-core env.sh --save-profile dev-profile2.yaml
 
-Command has been saved to a Development Profile. (dev-profile.yaml)
+Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
 
 > [!PROTIP]
@@ -42,7 +44,7 @@ with the value "append". Other values for this flag are 'create' amd 'replace'.
 ```bash
 ➜  czctl intercept service sample-project-core -n sample-project -l 3010 --save-profile dev-profile.yaml --save-profile-mode append
 
-Command has been saved to a Development Profile. (dev-profile.yaml)
+Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
 
 If you forget this flag, the CLI will ask you if you are
@@ -51,13 +53,13 @@ appending or replacing the contents of the Development Profile file.
 ```bash
 czctl mount deployment -n sample-project sample-project-core ./mnt --save-profile dev-profile.yaml
 ? This profile already exists.  What would you like to do with the existing profile? (Use arrow keys)
-❯ append 
-  replace 
+❯ append
+  replace
 ```
 
 ## Sharing a Profile
 
-We recommend storing session profiles in the folder `.codezero/develop/` at the root of your code repository as the CodeZero desktop application looks at this folder to find profiles and profiles can be shared amoung the development team more easily this way.
+We recommend storing session profiles in the folder `.codezero/develop/` at the root of your code repository as the CodeZero desktop application looks at this folder to find profiles and profiles can be shared among the development team more easily this way.
 
 ## Running a Profile
 

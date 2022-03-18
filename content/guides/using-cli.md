@@ -20,7 +20,7 @@ The CLI is invoked via the `czctl` command. To get more information about indivi
 > czctl help
 ```
 
-The czctl command loosely follows the conventions of the kubectl command where each command refereneces a Kubernetes resource
+The czctl command loosely follows the conventions of the kubectl command where each command references a Kubernetes resource
 (like a deployment or service) and where a namespace is given (with a -n flag). With each Kubernetes resource there are a number of actions that can be taken. Use `czctl <resource> --help` to see the actions available for a command and `czctl <resource> <action> --help` to see the flags
 available for that action. Try:
 

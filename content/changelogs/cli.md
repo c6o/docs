@@ -2,6 +2,118 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.4.0
+
+### Breaking Changes
+
+* CodeZero is no longer distributed via NPM. You should uninstall CodeZero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
+* Instead, please install CodeZero via one of:
+  - [Download](https://codezero.io/platform/desktop#download-app) and run the appropriate installer
+  - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
+  - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
+
+### Features
+
+* Create an installation experience that bundles all Desktop components as a single binary ([#2851])
+* **cli:** Added `--force` flag to `czctl session close` to close sessions that have entered a bad state ([#38](https://github.com/c6o/roadmap/issues/38)]
+* **cli:** Add `czctl upgrade` to provide an easier upgrade experience for future releases
+* **teleport:** Exclusion of one or more services by name when teleporting to avoid port conflict issues when running locally ([#45](https://github.com/c6o/roadmap/issues/45))
+* **desktop:** Allow for secure kubeconfig request and distribution (documetation and official release coming soon) ([#2860])
+
+
+### Bug Fixes
+
+* Fix daemon crashing when `.kube` directory does not exist ([#2854])
+* Fix running CodeZero in a docker container (buster+) ([#2829])
+* Fix extremely slow installation experience ([#42](https://github.com/c6o/roadmap/issues/42)]
+* **cli:** Save a dev profile with a yaml file extension if one isn't provided ([#2839])
+* **daemon:** Make it so that user name and email are not required to run the daemon ([#2829])
+* **desktop:** Make sure dev profiles update in the Desktop app when the content changes ([#2852])
+* **desktop:** Fix status causing infinite loop crash
+* **desktop:** ensure onboarding screens are displayed and dismissed properly ([#2862])
+* **desktop:** fix file watcher to ensure app changes when files are added/moved/renamed ([#2863])
+* **desktop:** activity tab erorr display when viewed for the first time ([#2883])
+* **mount:** Modifying files in mounted volume causes issues cleaning up; Mount gives error of: "Child has already been spawned" ([#2856])
+* **vsode:** Properly show errors if daemon not running
+
+## Release Notes for v1.3.2
+
+### Breaking Changes
+
+* Before upgrading, ensure existing CodeZero instance is fully stopped (run `czctl stop`)
+
+KNOWN ISSUES: This stable release does not fix the issue where performing the same intercept twice kills the first intercept. We are aware of this issue and are working on a resolution (See: [#44](https://github.com/c6o/roadmap/issues/44) for details)
+
+### Features
+
+* Added support for pre-release canary builds (full details in [our docs](https://docs.codezero.io/#/guides/installing?id=canary-vs-stable-releases))
+* **cli:** Return non-zero status code on errors ([#41](https://github.com/c6o/roadmap/issues/41))
+* **daemon:** Backup existing kubeconfig on startup, so it can be restored if needed [#2491]
+* **daemon:** Use the current context's default namespace, if set [#2191]
+* **desktop:** Don't show "podless-service" remote sessions in the dashboard [#2558]
+* **desktop:** When the dashboard is open, show notifications there instead of in system notifications [#2507]
+* **desktop:** Add activity feed screen null experience.
+* **desktop:** Supply additional information in the intercept display description [#2572]
+
+### Bug Fixes
+
+* **cli:** CLI fails with `Expected columns` error when output is piped/captured ([#40](https://github.com/c6o/roadmap/issues/40))
+* **cli:** Prompt the user for resource name and local directory if they are not given [#2495]
+* **cli:** Improved error message when run from windows [#2610]
+* **cli:** Fix error and status propagation from backend to CLI response and remove redundant messages [#2538]
+* **cli:** session flag fixed for sub-sessions, environment command descriptions updated. ([#2624]
+* **daemon:** Graceful shutdown, exit codes and dealing with older daemons [#2718]
+* **daemon:** properly detect locally running daemon via port [#2575]
+* **daemon:** fix error handling when dealing with problems with clusters, namespaces and resources on the server [#2506]
+* **daemon:** gracefully handle kubeconfigs that are missing clusters, contexts and/or users [#2504]
+* **desktop:** Don't show notification on dialog cancel [#2762]
+* **desktop:** Fix a typo in the UI for the local and remote ports [#2716]
+* **desktop:** Fix the version displaying in the screen from the About CodeZero menu [#2663]
+* **mount:** No error is reported if the NFS server is not available locally yet ([#2619]
+* **vscode:** Modify vscode to work with new daemon API [#2696]
+* **vscode:** Fix vscode sourcemap resolution for sub-dependencies
+
+## Release Notes for v1.3.1
+
+### Breaking Changes
+
+* Mounted volume locations will now maintain the directory structure of the related workload:
+  Example:  For example, a pod with mounts at `/var/lib/my-app` and `/data`, when mounted with `czctl mount deployment [name] /mnt/test` will create the local mounts at `/mnt/test/var/lib/my-app` and `/mnt/test/data`.
+
+### Bug Fixes
+
+* Fix warning and stack trace related to a module not found error returned at the end of each command. [[#39](https://github.com/c6o/roadmap/issues/39)]
+
+## Release Notes for v1.3.0
+
+### Breaking Changes
+* Re-order czctl command argument order to `czctl [command] [workload type]` 
+  NOTE: The previous ordering will continue to be supported, but documentation going forward will prefer this new order
+
+### Features
+
+* Add and remove workspaces from Desktop App
+* Add and remove clusters from Desktop app
+* Backup kubeconfigs on edit
+* Show notifications in dashboard when open
+* Remove extra sessions rom main dashboard screen
+* Detect start/stop of daemon via Desktop App
+* Dynamically load doc links, to stay up to date with the latest docs
+* Consolidated analytics across CLI, Desktop App, and VSCode
+* More descriptive session display information with --details flag
+* Clean up `czctl help` documentation
+* Added standalone `czctl environment [workloadtype] [workload]` to output environment variables without being tied to a teleport session
+
+### Bug Fixes
+
+* Clean up redundant messaging on czctl start
+* CLI to report clear messaging when run on Windows
+* Ensure mount command reports failure if there was an internal error
+* Teleport to missing resource returns no output
+* Return an error if mounting a workload that has no mounts
+* Ensure teleport runs before mount command, when in the same development profile
+* Error during startup when kubeconfig is missing from home directory
+
 ## Release Notes for v1.2.3
 
 ### Bug Fixes
@@ -52,11 +164,11 @@ This document contains the release notes for the CodeZero CLI.
 
 ### New Features
 
-* This release introduces a daemon service on your local machine to manage the long running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
+* This release introduces a daemon service on your local machine to manage the long-running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
 * Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
 * Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
 * Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
-* `sudo` is no longer required to startup the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
+* `sudo` is no longer required to start up the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
 * Added `--save-profile` flag to `teleport`, `intercept` and `mount` commands to prepare for use of Development Profiles.
 
 ### Bug Fixes
@@ -66,7 +178,7 @@ This document contains the release notes for the CodeZero CLI.
 * Fixed intercept session cleanup on close
 * Fixed NVM environments unable to reliably initialize the CLI [[#23](https://github.com/c6o/roadmap/issues/23)]
 
-Note (Known Issue): Intercept currently does NOT work with Node 17.x on MacOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
+Note (Known Issue): Intercept currently does NOT work with Node 17.x on macOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
 
 ## Release Notes for v1.1.1
 
@@ -87,9 +199,9 @@ Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount c
 
 Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
 
-Note: Make sure you have a teleport session open before using the mount commmand: `czctl [workload] teleport [workload name] -n [namespace]`
+Note: Make sure you have a teleport session open before using the mount command: `czctl [workload] teleport [workload name] -n [namespace]`
 
-Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and expliclty close the mount session first and then the teleport session.
+Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and explicitly close the mount session first and then the teleport session.
 
 ## Release Notes for v1.0.4
 
@@ -234,4 +346,4 @@ To make sure you have the right version, use czctl version . The output should l
 * NodesJS <= 12.x is not supported.
 * Cannot intercept more than 4 services simultaneously from the same machine.
 * Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
-* Teleport should provide feedback to the user so they know when all services have been fully setup.
+* Teleport should provide feedback to the user, so they know when all services have been fully setup.

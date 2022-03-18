@@ -1,6 +1,6 @@
 # Session Close
 
-Commands to help you close open sessions (sessions are started by running commands like teleport, intercept, etc.).
+Close open sessions (sessions are started by running commands like teleport, intercept, etc.).
 
 ## Usage
 
@@ -8,24 +8,27 @@ Commands to help you close open sessions (sessions are started by running comman
 > czctl session close
 ```
 
-### Example
+## Example
 
 ```bash
 > czctl session close --all
 ```
 
-### Flags
+## Flags
+
+<div class="flags-table">
 
 | Flags           | Alias | Description
 |-----------------|-------| -----------
-| --all           | -a    | Show more about the session.
+| --all           | -a    | Close any running sessions for the active context.
 | --kubeconfig    | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
 | --context       |       | The name of the Kubernetes context to use.
 | --quiet         | -q    | Only display error message.
 
-### alias
+</div>
+
+## Aliases
 
 ```bash
 > czctl session clean
 ```
-
