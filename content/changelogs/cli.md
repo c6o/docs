@@ -2,6 +2,40 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.4.0
+
+### Breaking Changes
+
+* CodeZero is no longer distributed via NPM. You should uninstall CodeZero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
+* Instead, please install CodeZero via one of:
+  - [Download](https://codezero.io/platform/desktop#download-app) and run the appropriate installer
+  - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
+  - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
+
+### Features
+
+* Create an installation experience that bundles all Desktop components as a single binary ([#2851])
+* **cli:** Added `--force` flag to `czctl session close` to close sessions that have entered a bad state ([#38](https://github.com/c6o/roadmap/issues/38)]
+* **cli:** Add `czctl upgrade` to provide an easier upgrade experience for future releases
+* **teleport:** Exclusion of one or more services by name when teleporting to avoid port conflict issues when running locally ([#45](https://github.com/c6o/roadmap/issues/45))
+* **desktop:** Allow for secure kubeconfig request and distribution (documetation and official release coming soon) ([#2860])
+
+
+### Bug Fixes
+
+* Fix daemon crashing when `.kube` directory does not exist ([#2854])
+* Fix running CodeZero in a docker container (buster+) ([#2829])
+* Fix extremely slow installation experience ([#42](https://github.com/c6o/roadmap/issues/42)]
+* **cli:** Save a dev profile with a yaml file extension if one isn't provided ([#2839])
+* **daemon:** Make it so that user name and email are not required to run the daemon ([#2829])
+* **desktop:** Make sure dev profiles update in the Desktop app when the content changes ([#2852])
+* **desktop:** Fix status causing infinite loop crash
+* **desktop:** ensure onboarding screens are displayed and dismissed properly ([#2862])
+* **desktop:** fix file watcher to ensure app changes when files are added/moved/renamed ([#2863])
+* **desktop:** activity tab erorr display when viewed for the first time ([#2883])
+* **mount:** Modifying files in mounted volume causes issues cleaning up; Mount gives error of: "Child has already been spawned" ([#2856])
+* **vsode:** Properly show errors if daemon not running
+
 ## Release Notes for v1.3.2
 
 ### Breaking Changes

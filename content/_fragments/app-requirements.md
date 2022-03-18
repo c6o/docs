@@ -1,6 +1,10 @@
-The CodeZero App has no prerequisites when installed via Homebrew.
+CodeZero requires:
+* MacOS or Ubuntu 18.x+ to run the full Desktop GUI
+* The CLI (`czctl`) runs on MacOS, Linux and Windows 10+ with WSL2
+* `sudo`/`root` permissions on your local system
 
-If you install via npm these are the requirements:
+> [!NOTE]
+> Running the CodeZero CLI on Windows requires WSL2. Instructions on setting up WSL2 can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-- NPM (Version 6.14+)
-- Node (Version 14+)
+> [!WIP]
+> The Desktop GUI is currently unavailble on Windows/WSL2. We expect to address this soon, as [WSLg](https://github.com/microsoft/wslg), becomes more common.
