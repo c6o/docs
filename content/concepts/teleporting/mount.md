@@ -4,6 +4,6 @@ Mount is CodeZero's mechanism for brining remote Persistent Volumes to a develop
 
 ## Overview
 
-## Hurdles
+## Current Best Practice
 
 ## Solution

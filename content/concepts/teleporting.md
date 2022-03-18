@@ -1,6 +1,8 @@
 # Teleporting
 
-The primary concept behind Teleporting is to allow developers to develop and debug their code locally as though they are inside the cluster.
+A challenge with modern development is software runs on a cluster of computers but is developed on a single machine. Scaling down and mocking services on a local machine gives developers access to local tools with makes for great developer ergonomics but this is resource-intensive and the local machine has poor Production Parity to the native environment the software is destined for.
+
+Teleporting is how developers can temporarily dock their local machine to a pre-production environment for development. This gives the developer the vantage point of the software running within the cluster with full access to their local tooling.
 
 ## Overview
 

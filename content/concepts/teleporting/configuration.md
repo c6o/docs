@@ -1,6 +1,6 @@
 # Configuration
 
-Environment is CodeZero's mechanism for bringing down remote configuration to local boxes.
+Developers use Configurations for service discovery and credentials to access Service in various Environments. This page describes the current Configuration management practices and how the Environment feature in czctl allows you to access these configurations during development and make management easier.
 
 ## Overview
 
@@ -10,7 +10,7 @@ No matter where a configuration item is stored, it is easily accessible by autho
 
 For Secrets, authentication and authorization are important because they hold sesnitive data that must be protected. Care must be taken to ensure that they aren't expose through workloads that use them. By default secrets are not encrypted, so it's important that encryption at rest be enabled. Additionally, RBAC rules for secrets should only allow access to a minimum number of need to know users.
 
-## Hurdles
+## Current Best Practice
 
 With security in place and the right access token, there are additional hurdles that developers have to leverage them in a Teleporting session. 
 
@@ -27,9 +27,9 @@ This is a fair amount of cognative overload even if all the configuration is in 
 
 If any variables change while debugging the script must be udpated so that the code works in the new way. In a collaborative setting, configuration could change based on a colleagues changes, requiring the developer to then re-download the configuration and re-form the script file they are using.
 
-## Solution
+## A Modern Approach
 
 What is needed is a process that watchies all configuration for a particular piece of code and that automatically creates the script file the developers use to run code locally they are working on while leveraging remote services.
 
-This is what CodeZero's **environment** command does. It watches a workload's configuration, whether that configuration is in a Secret, ConfigMap, or the workload resource. It is able to write that configuration in a translated format for several contexts that may be required to leverage the configuration locally (source-able shell, json, yaml or env formats). Then it updates this local configuration as it changes in the cluster.
+This is what the **czctl configuration** command does. It watches a workload's configuration, whether that configuration is in a Secret, ConfigMap, or the workload resource. It is able to write that configuration in a translated format for several contexts that may be required to leverage the configuration locally (source-able shell, json, yaml or env formats). Then it updates this local configuration as it changes in the cluster.
 

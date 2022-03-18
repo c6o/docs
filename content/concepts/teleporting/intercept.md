@@ -22,7 +22,7 @@ In the diagram below, a sidecar is inserted that looks for traffic with a partic
 
 ![Intercept](../../_media/concepts/intercept-routing.jpg ':size=500px')
 
-## Hurdles
+## Current Best Practice
 
 To accomplish this is a complicated feat. On the local workstation side, an IP address must be registered and a tunnel created. For the cluster service, a proxy must be configured to look at the header, and route traffic appropriately while still not interferring with normal traffic. Addtionally, this proxy is shared amoung several developers so as header routes are established or destroyed, other routes must maintained without interference. Additionally, the proxy must scale with the system being intercepted. 
 

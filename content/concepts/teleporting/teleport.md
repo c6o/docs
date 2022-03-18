@@ -4,6 +4,6 @@ Teleport is CodeZero's mechanism for exposing remote cluster services to a local
 
 ## Overview
 
-## Hurdles
+## Current Best Practice
 
 ## Solution
