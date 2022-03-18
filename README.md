@@ -26,10 +26,10 @@ The site will run locally at `http://localhost:3000`
 
 ## Finding broken links
 
-The tool linkinator can be used to make sure that all the links work. It doesn't work with the sidebars because of the absolute pathing, but this can be worked around by temporarily chaging (/ to (./ in the sidebar. Make sure this is changed back when committing changes.
+[Lychee](https://github.com/lycheeverse/lychee) automatically checks links in the repository and you can see of the currently broken links here [#142](https://github.com/c6o/docs/issues/142). However, Lychee can also be run locally with the following command.
 
 ```bash
-linkinator ./content/**/*.md --markdown
+lychee --exclude-all-private './content/**/*.md' -u 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0' --exclude "http://sample-project-*" "mongodb:*" "http://\$*"
 ```
 
 ## Organization of the Documentation
