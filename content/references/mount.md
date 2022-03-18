@@ -26,14 +26,14 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 <div class="flags-table">
 
-| Flags          | Alias | Description                                                                                                                     |
-|----------------|-------|---------------------------------------------------------------------------------------------------------------------------------|
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                       |
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
-| --context      |       | The name of the Kubernetes context to use.                                                                                      |
-| --clean        | -c    | Close and clean up existing mount session.                                                                                      |
-| --quiet        | -q    | Only display error message.                                                                                                     |
-| --save-profile | -s    | Save this command to a development profile.                                                                                     |
+| Flags          | Alias | Description
+|----------------|-------|------------
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
+| --context      |       | The name of the Kubernetes context to use.
+| --clean        | -c    | Close and clean up existing mount session.
+| --quiet        | -q    | Only display error message.
+| --save-profile | -s    | Save this command to a development profile.
 
 </div>
 
