@@ -57,52 +57,52 @@ The component can optionally implement a `begin` and `end` method called on the 
 An example install web component from the Prometheus installer is shown below.
 
 ```javascript
-import {LitElement, html, customElement, property} from "lit-element"
-import {StoreFlowStep, StoreFlowMediator} from "@provisioner/common"
+import { LitElement, html, customElement, property } from 'lit-element'
+import { StoreFlowStep, StoreFlowMediator } from '@provisioner/common'
 
-@customElement("prometheus-install-main")
+@customElement( 'prometheus-install-main' )
 export class PrometheusMainInstall extends LitElement implements StoreFlowStep {
   mediator: StoreFlowMediator
 
   get serviceSpec() {
-    return this.mediator.getServiceSpec("prometheus")
+    return this.mediator.getServiceSpec( 'prometheus' )
   }
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   isSimple = false
 
   render() {
     return html`
       <c6o-form-layout>
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("simpleService")}
+          @checked-changed=${this.checkHandler('simpleService')}
           ?checked=${!!this.serviceSpec.simpleService}
           >Simple Prometheus Install</c6o-checkbox
         >
         <br />
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("alertManagerEnabled")}
+          @checked-changed=${this.checkHandler('alertManagerEnabled')}
           ?checked=${!!this.serviceSpec.alertManagerEnabled}
           ?disabled=${this.isSimple}
           >Alert Manager</c6o-checkbox
         >
         <br />
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("kubeMetricsEnabled")}
+          @checked-changed=${this.checkHandler('kubeMetricsEnabled')}
           ?checked=${!!this.serviceSpec.kubeMetricsEnabled}
           ?disabled=${this.isSimple}
           >Kube State Metrics</c6o-checkbox
         >
         <br />
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("nodeExporterEnabled")}
+          @checked-changed=${this.checkHandler('nodeExporterEnabled')}
           ?checked=${!!this.serviceSpec.nodeExporterEnabled}
           ?disabled=${this.isSimple}
           >Node Exporter</c6o-checkbox
         >
         <br />
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("pushGatewayEnabled")}
+          @checked-changed=${this.checkHandler('pushGatewayEnabled')}
           ?checked=${!!this.serviceSpec.pushGatewayEnabled}
           ?disabled=${this.isSimple}
           >Push Gateway</c6o-checkbox
@@ -270,28 +270,28 @@ export class IstioSettings extends LitElement {
 A provisioner can implement an `uninstall` web component. This component allows the user to select advanced uninstallation options. For example, in the VSCode provisioner, you can decide whether to keep the allocated volume and IP address.
 
 ```javascript
-import {LitElement, html, customElement} from "lit-element"
-import {StoreFlowStep, StoreFlowMediator} from "@provisioner/common"
+import { LitElement, html, customElement } from 'lit-element'
+import { StoreFlowStep, StoreFlowMediator } from '@provisioner/common'
 
-@customElement("vscode-uninstall-main")
+@customElement('vscode-uninstall-main')
 export class UninstallVSCode extends LitElement implements StoreFlowStep {
   mediator: StoreFlowMediator
   get serviceSpec() {
-    return this.mediator.getServiceSpec("vscode")
+    return this.mediator.getServiceSpec('vscode')
   }
 
   render() {
     return html`
       <c6o-form-layout>
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("keep-ip")}
-          ?checked=${!!this.serviceSpec.deprovision["keep-ip"]}
+          @checked-changed=${this.checkHandler('keep-ip')}
+          ?checked=${!!this.serviceSpec.deprovision['keep-ip']}
           >Keep IP address</c6o-checkbox
         >
         <br />
         <c6o-checkbox
-          @checked-changed=${this.checkHandler("keep-vol")}
-          ?checked=${!!this.serviceSpec.deprovision["keep-vol"]}
+          @checked-changed=${this.checkHandler('keep-vol')}
+          ?checked=${!!this.serviceSpec.deprovision['keep-vol']}
           >Keep data volume</c6o-checkbox
         >
       </c6o-form-layout>
@@ -300,8 +300,8 @@ export class UninstallVSCode extends LitElement implements StoreFlowStep {
 
   async begin() {
     this.serviceSpec.deprovision = {
-      "keep-ip": false,
-      "keep-vol": true,
+      'keep-ip': false,
+      'keep-vol': true,
     }
   }
 
