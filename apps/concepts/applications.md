@@ -30,7 +30,7 @@ A container image represents binary data that encapsulates your application and 
 
 <!-- ### Multiple Images
 
-A CodeZero Application may consist of one or multiple container images. However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together. 
+A CodeZero Application may consist of one or multiple container images. However, if an application has external dependencies (ex: database), it's highly recommended to use application linking rather than bundling applications together.
 For example, if building a Wordpress provisioner, it may be tempting to directly include a MySQL container. However, a much better design should define the MySQL service as a dependency, so it can leverage the power of existing MySQL instances.
 
 How to develop the actual application logic that will run in a customers cluster is a very broad topic, and is not new or specific to CodeZero.
@@ -39,11 +39,11 @@ Therefore, instead of trying to explain all of this ourselves, we will just cove
 
 ### Provisioner
 
-A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications. In this regard, it is similar Helm. However, CodeZero provides several essential features that improve on existing tools:
+A Provisioner is an NPM package used by CodeZero to install, remove, and reconfigure applications. In this regard, it is similar Helm. However, CodeZero provides several essential features that improve on existing tools:
 
 1. User-friendly UI: allow both technical and non-technical audiences to install and manage your applications with ease
-1. Not just a template: take control of the provisioning processes using JavaScript/NodeJS.
-1. Powerful API: the CodeZero provisioner API for powerful and flexible application management.
+2. Not just a template: take control of the provisioning processes using JavaScript/NodeJS.
+3. Powerful API: the CodeZero provisioner API for powerful and flexible application management.
 
 #### App Engine
 

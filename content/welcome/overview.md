@@ -1,6 +1,6 @@
 # Overview
 
-CodeZero is a modern development platform for Kubernetes. Before Kubernetes and Cloud-computing it was possible to write and debug _most_ software on a single developer workstation. As software complexity has grown and organizations have moved to a microservice focused architecture designed to run on clusters of computers, it is no longer feasible to run these applications on a single workstation. This makes developing new features and diagnosing issues challenging.
+CodeZero is for modern development with Kubernetes. Before Kubernetes and Cloud-computing it was possible to write and debug _most_ software on a single developer workstation. As software complexity has grown and organizations have moved to a microservice focused architecture designed to run on clusters of computers, it is no longer feasible to run these applications on a single workstation. This makes developing new features and diagnosing issues challenging.
 
 This documentation is geared towards a technical audience, and we assume you have a working knowledge of Kubernetes.
 

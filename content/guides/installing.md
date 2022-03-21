@@ -41,7 +41,7 @@ export KUBECONFIG=<path to kubeconfig>
 
 > [!NOTE] The Desktop App is currently in Developer Preview. You will have to start the CodeZero Daemon using the CLI `czctl start` command. The Desktop App Installer does not install the CLI at this time.
 
-You can download the Desktop App Installer for your platform from our [Desktop App downloads page](https://codezero.io/platform/desktop).
+You can download the Desktop App Installer for your platform from our [Desktop App downloads page](https://codezero.io/tooling/desktop).
 
 We are happy to provide support for macOS and Linux at this time. The CodeZero CLI can be run on Windows using Windows Subsystem for Linux (WSL), but the Desktop App requires a native Mac or Linux operating system.
 

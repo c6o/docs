@@ -1,4 +1,4 @@
-To install the full desktop application, visit our [downloads page](https://codezero.io/platform/desktop#download-app), and install the appropriate installer for your Operating System.
+To install the full desktop application, visit our [downloads page](https://codezero.io/tooling/desktop#download-app), and install the appropriate installer for your Operating System.
 
 Or run:
 
