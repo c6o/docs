@@ -26,11 +26,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ENABLE_LINTERS: >-
+            MARKDOWN_MARKDOWNLINT,
             ACTION_ACTIONLINT, 
             DOCKERFILE_HADOLINT, 
             GIT_GIT_DIFF, 
             JSON_JSONLINT, 
-            MARKDOWN_MARKDOWNLINT, 
             MARKDOWN_MARKDOWN_TABLE_FORMATTER, 
             SPELL_MISSPELL, 
             CREDENTIALS_SECRETLINT
