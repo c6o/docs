@@ -8,7 +8,7 @@ This document contains the release notes for the CodeZero CLI.
 
 * CodeZero is no longer distributed via NPM. You should uninstall CodeZero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
 * Instead, please install CodeZero via one of:
-  - [Download](https://codezero.io/platform/desktop#download-app) and run the appropriate installer
+  - [Download](https://codezero.io/tooling/desktop#download-app) and run the appropriate installer
   - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
   - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
 
