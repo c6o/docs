@@ -2,7 +2,7 @@
 
 With the [CodeZero Desktop](https://codezero.io/platform/desktop) app you can run commands like Teleport, Intercept, and Mount from your system tray, launch a visual dashboard for the state of your sessions, and view the activity of other collaborators in your cluster.
 
-In this tutorial we are going to install the [CodeZero Desktop](https://codezero.io/platform/desktop) app and use it to run some [Development Profiles](/concepts/profiles) containing commands for Teleport and Intercept.
+In this tutorial we are going to install the [CodeZero Desktop](https://codezero.io/platform/desktop) app and use it to run some [Development Profiles](/concepts/profiles.md) containing commands for Teleport and Intercept.
 
 ## Objectives
 
@@ -20,7 +20,7 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-If you are missing any of these, you can [learn about getting a Kubernetes cluster](guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Desktop app](/guides/installing).
+If you are missing any of these, you can [learn about getting a Kubernetes cluster](/guides/kubernetes-quickstart.md), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Desktop app](../guides/installing.md).
 
 For this tutorial you will also need to be using macOS or Linux, have NodeJS 16+, and have yarn installed.
 
@@ -32,7 +32,7 @@ If you haven't already, go through the [Developing Edge Services](https://docs.c
 
 ### Launch the Desktop app
 
-[Install the Desktop app](/guides/installing) and launch it. You should see a CodeZero icon appear in your system tray (on a Mac this is the row of icons at the top right of your desktop screen).
+[Install the Desktop app](/guides/installing.md) and launch it. You should see a CodeZero icon appear in your system tray (on a Mac this is the row of icons at the top right of your desktop screen).
 
 If the Desktop Dashboard hasn't already appeared in a window, you can click on the CodeZero tray icon and select "Dashboard" to open it. In the tray menu is also a "Getting Started" link that opens a window describing the key onboarding steps, but we will go through these steps ourselves in this tutorial.
 
@@ -42,7 +42,7 @@ Click on the tray icon again and select Configurations -> + Add Configuration. S
 
 ### Add a Workspace
 
-A Workspace is a folder on your machine where you keep all your [Development Profiles](/concepts/profiles). Reminder that a Development Profile is a simple manifest file that defines a specific set of reproducible CodeZero commands. This allows developers to easily get several commands running for the tasks at hand without having to remember all the command line parameters for the command line tool.
+A Workspace is a folder on your machine where you keep all your [Development Profiles](/concepts/profiles.md). Reminder that a Development Profile is a simple manifest file that defines a specific set of reproducible CodeZero commands. This allows developers to easily get several commands running for the tasks at hand without having to remember all the command line parameters for the command line tool.
 
 Click on the tray icon again and select Workspaces -> + Add Workspace. Select the root of the Sample Project repo.
 

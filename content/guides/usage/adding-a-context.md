@@ -13,7 +13,7 @@ To add a new context:
 
 When adding a context, it can be either plaintext or *encrypted*.
 
-Encrypted contexts can be generated using the Desktop app for securely sharing a context with other users. Learn more about [requesting an encrypted context](/guides/usage/securely-sharing-contexts?id=requesting-a-context), or [generating an encypted context](/guides/usage/securely-sharing-contexts?id=generating-and-sharing-an-encrypted-context).
+Encrypted contexts can be generated using the Desktop app for securely sharing a context with other users. Learn more about [requesting an encrypted context](/guides/usage/securely-sharing-contexts.md?id=requesting-a-context), or [generating an encypted context](/guides/usage/securely-sharing-contexts.md?id=generating-and-sharing-an-encrypted-context).
 
 > [!PROTIP]
 > Encrypted contexts can also be requested and generated using the CodeZero CLI.
