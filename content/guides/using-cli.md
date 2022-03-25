@@ -42,17 +42,20 @@ Start the CodeZero daemon (background service) by running:
 
 ## Run commands
 
-The czctl command loosely follows the conventions of the `kubectl` command where each command references a Kubernetes resource (like a deployment or service), and where a namespace is given (with a -n flag).
+The `czctl` command loosely follows the conventions of the `kubectl` command, where each command references a Kubernetes resource (like a deployment or service), and where a namespace is given with a `-n` flag.
 
-With each Kubernetes resource there are a number of actions that can be taken. Use `czctl <resource> --help` to see the actions available for a command and `czctl <resource> <action> --help` to see the flags
-available for that action. Some examples:
+Use `czctl <command> --help` to see the options available for a given command.
+
+Most czctl commands take the form `czctl <action> <resource>`, and `czctl <action> <resource> --help` will display the argument(s) and flag(s) available for that command.
+
+Some examples:
 
 ```bash
-> czctl teleport --help
+> czctl teleport namespace --help
 ```
 
 ```bash
-> czctl intercept --help
+> czctl intercept service --help
 ```
 
 ```bash
@@ -60,9 +63,16 @@ available for that action. Some examples:
 ```
 
 ```bash
-> czctl env --help
+> czctl config --help
+```
+
+> [!NOTE]
+> Session commands are an exception in that they take the form `czctl <resource> <action>`.
+
+```bash
+> czctl session list --help
 ```
 
 ```bash
-> czctl session --help
+> czctl session close --help
 ```
