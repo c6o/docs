@@ -1,8 +1,8 @@
-# Environment
+# Configuration
 
-The primary concept behind the Environment command is to help developers to develop and debug their code locally by bringing in configuration from a workload.
+The primary concept behind the Configuration command is to help developers to develop and debug their code locally by bringing in configuration from a workload.
 
-## Use-Case
+## Use Case
 
 A problem that developers encounter is that they need to locally use the same configuration that a remotely deployed service uses. Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task. Additionally, if the configuration changes on the server, the developer may not be aware of those changes when they occur. Configurations need to be updated locally as they change remotely.
 
@@ -29,4 +29,6 @@ Here's an example of getting the process ids and using `kill -9` to end these pr
 > sudo kill -9 65120
 ```
 
+## Command Reference
 
+See the [Configuration](/references/configuration) command reference for more information.
