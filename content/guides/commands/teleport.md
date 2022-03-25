@@ -2,9 +2,9 @@
 
 Teleport's purpose is to allow developers to develop and debug their code locally as though they are inside the cluster.
 
-## Use-Case
+## Use Case
 
-Local running services that are being modified need to talk to services that are deployed in a cluster so that developers only need to run what they are changing. 
+Local running services that are being modified need to talk to services that are deployed in a cluster so that developers only need to run what they are changing.
 
 ## Under the hood
 
@@ -102,3 +102,7 @@ If the backup file is corrupted, you can remove the long lines that reference se
 ::1              localhost
 127.0.0.1        kubernetes.docker.internal
 ```
+
+## Command Reference
+
+See the [Teleport](/references/teleport) command reference for more information.

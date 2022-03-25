@@ -65,3 +65,7 @@ umount folder-name/volume2
 ## Closing Mount
 
 Run `czctl session close` to end the Mount session or reissue the same command with a --close flag. The session close command will clean up all the residue added to the Kubernetes cluster and remove your local mount points.
+
+## Command Reference
+
+See the [Mount](/references/mount) command reference for more information.

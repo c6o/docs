@@ -1,16 +1,10 @@
-To install the full desktop application, visit our [downloads page](https://codezero.io/tooling/desktop#download-app), and install the appropriate installer for your Operating System.
+To install the full Desktop application and CLI, visit our [downloads page](https://codezero.io/tooling/desktop#download-app), and install the appropriate installer for your Operating System.
 
-Or run:
+Alternatively, to install CodeZero via the command line, run:
 
 ```bash
 curl -L https://releases.codezero.io/install.sh | /bin/bash
 ```
 
-> [!NOTE]
-> If you are in a headless environment, or otherwise don't want to install the GUI, you can run: `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` to install a headless version of the tool (only includes `czctl` and background services)
-
 > [!PROTIP]
-> If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`.  But bewarned, it has not been fully tested and may cause unexpected behaviour.
-
-> [!WARNING]
-> Previous versions of CodeZero could be installed via npm and/or brew. However, since version 1.4.0, this is no longer available.
+> If you want to play around with pre-releases, you can install canary releases using: `curl -s curl -L https://releases.codezero.io/install.sh | /bin/bash -s canary`. A word of caution, however, as canary releases have not been fully tested and may cause unexpected behavior.

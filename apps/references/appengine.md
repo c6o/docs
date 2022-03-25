@@ -10,7 +10,7 @@ App Engine is a highly configurable provisioner created by CodeZero that provide
 
 ## When to use App Engine
 
-App Engine supports the most common application use-cases. It is ideal for any application that:
+App Engine supports the most common application use cases. It is ideal for any application that:
 
 1. is contained in a single docker image,
 2. exposes any number of TCP or HTTP endpoints,
@@ -19,7 +19,7 @@ App Engine supports the most common application use-cases. It is ideal for any a
 
 ### Not supported
 
-App Engine does not cover every possible use-case (yet). If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
+App Engine does not cover every possible use case (yet). If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
 
 A custom provisioner may be necessary for any applications that:
 
@@ -49,7 +49,7 @@ editions:
       name: nodered
       image: nodered/node-red
       automated: true
-      ports: 
+      ports:
       - port: 1880
         protocol: tcp
       # ... other App Engine Spec Goes here
@@ -243,7 +243,7 @@ editions:
       # ...
       flow:
       - name: Step 1
-        prompts: 
+        prompts:
         - name: USER_NAME
           message: What is your name?
 ```
@@ -270,13 +270,13 @@ editions:
       # ...
       flow:
       - name: Step 1
-        sections: 
+        sections:
         - title: Section 1
-          prompts: 
+          prompts:
           - name: FIRST_NAME
             message: What is your first name?
         - title: Section 2
-          prompts: 
+          prompts:
           - name: LAST_NAME
             message: What is your last name?
 ```
@@ -311,7 +311,7 @@ editions:
       # ...
       flow:
       - name: Step 1
-        prompts: 
+        prompts:
         - type: list
           name: DOMINANT_HAND
           message: What is your dominant hand?
@@ -352,7 +352,7 @@ editions:
       # ...
       flow:
       - name: Step 1
-        prompts: 
+        prompts:
         - type: password
           name: ADMIN_PASSWORD
           message: Initial admin password
@@ -381,7 +381,7 @@ editions:
       # ...
       flow:
       - name: Step 1
-        prompts: 
+        prompts:
         - type: list
           name: TZ
           message: What timezone are you in?

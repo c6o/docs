@@ -241,3 +241,7 @@ Ngrok may also be left running and can be stopped by force if necessary:
 ## Closing Intercept
 
 Run `czctl session close` to end the Intercept session or reissue the same command with a --close flag. The session close command will clean up all the residue added to the Kubernetes cluster and restore the intercepted service to its original state.
+
+## Command Reference
+
+See the [Intercept](/references/intercept) command reference for more information.
