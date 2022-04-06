@@ -17,8 +17,8 @@ to a cluster based leaf service. No other services will be run locally.
 
 In this tutorial, you will learn:
 
-* How to develop Leaf Service locally so that services in the cluster talk to the local service.
-* How to develop Core Service locally while it accesses Services in Cluster and talks to other cluster based services.
+* How to develop a Leaf Service locally so that services in the cluster talk to the local service.
+* How to develop a Core Service locally while it accesses Services in Cluster and talks to other cluster based services.
 * How to collaborate with a frontend developer on another machine.
 
 ## Prerequisites
