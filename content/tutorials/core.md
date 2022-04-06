@@ -188,7 +188,7 @@ As before, you will still be able to set breakpoints in your locally running cor
 
 ## Collaboration with Intercept and Teleport
 
-Assuming the backend developer has started their core service running from the previous section.
+Assuming the backend developer has started their core service running from the previous section on core services.
 
 Now, a frontend developer on another machine can teleport to the cluster and access your locally running core service. On another machine, teleport into sample-project and run the frontend locally. Access the cloud from the local box with `http://localhost:3030?t=1`
 
@@ -212,7 +212,7 @@ They should see the output from your locally running core service where you can 
 
 ## Cleanup
 
-When you are done, you can close the Teleport session using:
+When you are done, you can close all Teleports, Intercepts, and Configuration sessions using:
 
 ```bash
 czctl session close --all
