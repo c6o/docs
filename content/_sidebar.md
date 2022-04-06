@@ -27,6 +27,7 @@
 - Tutorials
   - [Sample Kubernetes Project](/tutorials/sample-project.md)
   - [Developing Edge Services](/tutorials/edge.md)
+  - [Developing Core Services](/tutorials/core.md)
   - [Using the Desktop App](/tutorials/desktop-app)
 - References
   - Commands
