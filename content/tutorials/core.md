@@ -186,7 +186,7 @@ You will see that the core output comes from your locally running service with t
 ```
 As before, you will still be able to set breakpoints in your locally running core service.
 
-#### Collaboration with Intercept and Teleport
+## Collaboration with Intercept and Teleport
 
 Assuming the backend developer has started their core service running from the previous section.
 
@@ -210,7 +210,7 @@ They should see the output from your locally running core service where you can 
 }
 ```
 
-### Cleanup
+## Cleanup
 
 When you are done, you can close the Teleport session using:
 
