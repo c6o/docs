@@ -63,7 +63,7 @@ czctl session list
 
 You should see a message that you have no running sessions. Reminder that you can run `czctl help` if you ever get stuck.
 
-### Leaf Tutorial
+### Intercepting Leaf Services
 
 Intercept sample-project-leaf service in the cluster 
 
@@ -143,7 +143,7 @@ You will see the following errors in the output without a teleport:
 ```json
 {"who":"core","where":"Robbs-MacBook-Pro.local","mongo":{"url":"mongodb://sample-project-database:27017/sample-project-database","error":"MongoNetworkError"},"leaf":{"error":"getaddrinfo ENOTFOUND sample-project-leaf"},"file":{"path":"./data/message.txt","data":"99 bugs in the code<br />\n99 bugs in the code<br />\nclone the repo, patched it around<br />\n129 bugs in the code<br />"}}
 ```
-### Teleporting With Local Services
+### Teleporting With Core Services
 
 Unlike the leaf service, the core service will need to talk to other services in the cloud and as a result
 will need a teleport. However, when a teleport is active, the services in the cloud will prevent the local system
