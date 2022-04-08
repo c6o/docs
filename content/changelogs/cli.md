@@ -2,6 +2,33 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.6.0
+
+### Features
+
+* Added support for Kubernetes >= 1.14
+* Improved UX for sharing encrypted contexts with multiple users
+
+### Bug Fixes
+
+* **cli**: Show meaningful error messages for invalid command arguments
+* **desktop**: clearing of unseen errors flag
+* **desktop**: minor UI improvement for copy/save buttons appearing cut-off
+* **mount**: provide better error messaging if no persistent volumes are available
+* **mount**: avoid errors if a workload contains mounted secrets
+
+## Release Notes for v1.5.0
+
+### Features
+
+* **desktop:** Use Fira Code font for contexts and public key
+
+### Bug Fixes
+
+* Fix closing multiple sessions may result in errors due to session parameters bleeding over
+* **cli**: Fix `czctl intercept` ignores the supplied remote port and used the first found port instead
+* **desktop**: Fix unable to save a user profile under initial conditions
+
 ## Release Notes for v1.4.0
 
 ### Breaking Changes
