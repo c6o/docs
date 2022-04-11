@@ -40,7 +40,7 @@ Intercept works by:
    a. the original (in-cluster) service if no re-direct headers are found
    b. forwarding the request through a reverse tunnel to a developers local machine if a redirect header flag is given
 
-### Intercepting Traffic
+## Intercepting Traffic
 
 In order to route local traffic to in cluster resources, teleport does several things:
 
@@ -50,7 +50,27 @@ In order to route local traffic to in cluster resources, teleport does several t
 > [!NOTE]
 > We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to clean up any leftover residue or reissue the same command with a --close flag.
 
-### Reverse Tunnel
+## Propagating Headers
+
+Unless you are intercepting *all* traffic for a particular service, the intercepted service will need receive the appropriate header in order for intercept to occur.  This is particularly important when the request is made to a service that then calls an intercepted service.  Therefore, headers need to be propagated from the called service to upstream requests; otherwise, an upstream service will not receive the request header identifying the intercept.  There are other benefits to propagating headers between services, including request performance tracking and request tracing.  Ideally, any service calls to other services should propagate the appropriate headers or you can use a library like [hpropagate](https://github.com/WealthWizardsEngineering/hpropagate)
+
+In this TypeScript example that makes an outbound call using axios, we only propagate headers that start with `x-c6o` but you should use your own convention:
+```const propagateHeaders = (headers) =>
+  Object.keys(headers)
+      .filter(key => key.startsWith('x-c6o-'))
+      .reduce((obj, key) => {
+          obj[key] = headers[key]
+          return obj
+      }, {})
+
+  ...
+  const headers = propagateHeaders(inHeaders)
+  const result = await axios({ url, headers })
+  ...
+
+```
+
+## Reverse Tunnel
 
 When a teleport session is opened, the developer's local machine creates a tunnel so that it can receive traffic requests from the remote cluster without needing to change any firewall or routing settings. We currently use `ngrok` to create a local tunnel however this will change in time.
 
