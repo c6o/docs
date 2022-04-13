@@ -52,7 +52,13 @@ In order to route local traffic to in cluster resources, teleport does several t
 
 ## Propagating Headers
 
-Unless you are intercepting *all* traffic for a particular service, the intercepted service will need receive the appropriate header in order for intercept to occur.  This is particularly important when the request is made to a different service that then calls the intercepted service.  Therefore, headers need to be propagated from the called service to upstream requests; otherwise, an upstream service will not receive the request header identifying the intercept request.  There are other benefits to propagating headers between services, including request performance tracking and request tracing.  Ideally, any service calls to other services should propagate the appropriate headers or you can use a library like [hpropagate](https://github.com/WealthWizardsEngineering/hpropagate)
+Unless you are intercepting *all* traffic for a particular service, traffic is directed to the intercepted service in-cluster vs. local depending on HTTP headers. When the intercepted service is upstream from the frontend service, these headers need to be propagated to the intercepted service to route the traffic properly.
+
+For example, if we have the following route Frontend -> Core -> Leaf, in order to intercept the Leaf service, the Core service has to propagate intercept headers when calling the Leaf service. 
+
+Header propagation is commonly used for performance tracking, tracing, and other diagnostic functions.
+
+Propagating headers is language-dependent and is not hard. It generally only requires a few lines of code.
 
 In this pseudocode example that makes an outbound REST request, we only propagate headers that start with `x-c6o` but you are free to use your own convention:
 ```
