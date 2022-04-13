@@ -54,20 +54,14 @@ In order to route local traffic to in cluster resources, teleport does several t
 
 Unless you are intercepting *all* traffic for a particular service, the intercepted service will need receive the appropriate header in order for intercept to occur.  This is particularly important when the request is made to a different service that then calls the intercepted service.  Therefore, headers need to be propagated from the called service to upstream requests; otherwise, an upstream service will not receive the request header identifying the intercept request.  There are other benefits to propagating headers between services, including request performance tracking and request tracing.  Ideally, any service calls to other services should propagate the appropriate headers or you can use a library like [hpropagate](https://github.com/WealthWizardsEngineering/hpropagate)
 
-In this TypeScript example that makes an outbound call using a REST client (axios), we only propagate headers that start with `x-c6o` but you are free to use your own convention:
-```const propagateHeaders = (headers) =>
-  Object.keys(headers)
-      .filter(key => key.startsWith('x-c6o-'))
-      .reduce((obj, key) => {
-          obj[key] = headers[key]
-          return obj
-      }, {})
+In this pseudocode example that makes an outbound REST request, we only propagate headers that start with `x-c6o` but you are free to use your own convention:
+```
+  propagatedHeaders = []
+  for each header in request.headers
+    if (header.key.startsWith('x-c6o-'))
+      propagatedHeaders.push(header)
 
-  ...
-  const headers = propagateHeaders(inHeaders)
-  const result = await axios({ url, headers })
-  ...
-
+  const result = await restRequest({ url, propagatedHeaders })
 ```
 
 ## Reverse Tunnel
