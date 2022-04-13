@@ -40,7 +40,7 @@ Intercept works by:
    a. the original (in-cluster) service if no re-direct headers are found
    b. forwarding the request through a reverse tunnel to a developers local machine if a redirect header flag is given
 
-### Intercepting Traffic
+## Intercepting Traffic
 
 In order to route local traffic to in cluster resources, teleport does several things:
 
@@ -50,7 +50,27 @@ In order to route local traffic to in cluster resources, teleport does several t
 > [!NOTE]
 > We try to minimize any modifications to your cluster, and revert all changes once finished. However, if any sessions close unexpectedly, run `czctl session close` to clean up any leftover residue or reissue the same command with a --close flag.
 
-### Reverse Tunnel
+## Propagating Headers
+
+Unless you are intercepting *all* traffic for a particular service, traffic is directed to the intercepted service in-cluster vs. local depending on HTTP headers. When the intercepted service is upstream from the frontend service, these headers need to be propagated to the intercepted service to route the traffic properly.
+
+For example, if we have the following route Frontend -> Core -> Leaf, in order to intercept the Leaf service, the Core service has to propagate intercept headers when calling the Leaf service. 
+
+Header propagation is commonly used for performance tracking, tracing, and other diagnostic functions.
+
+Propagating headers is language-dependent and is not hard. It generally only requires a few lines of code.
+
+In this pseudocode example that makes an outbound REST request, we only propagate headers that start with `x-c6o` but you are free to use your own convention:
+```
+  propagatedHeaders = []
+  for each header in request.headers
+    if (header.key.startsWith('x-c6o-'))
+      propagatedHeaders.push(header)
+
+  const result = await restRequest({ url, propagatedHeaders })
+```
+
+## Reverse Tunnel
 
 When a teleport session is opened, the developer's local machine creates a tunnel so that it can receive traffic requests from the remote cluster without needing to change any firewall or routing settings. We currently use `ngrok` to create a local tunnel however this will change in time.
 
