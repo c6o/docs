@@ -174,7 +174,7 @@ Now, as with leaf services we can set up an intercept so that the frontend servi
 czctl intercept service sample-project-core -n sample-project
 ```
 
-You can now navigate to the front end in the cloud:
+You can now navigate to the frontend in the cloud:
 
 (for zsh, make sure you remove the escape character before the open parenthesis before `kubectl` below)
 ```bash
