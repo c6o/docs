@@ -109,7 +109,8 @@ The value of "where" above will be the name of your local machine.
 
 You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the leaf service in the file `./packages/leaf/index.js`
 
-> Note: if you would like to add a teleport and run the sample-project-leaf service locally, use
+> ![NOTE]
+> if you would like to add a teleport and run the sample-project-leaf service locally, use
 > `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf` 
 > This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local leaf service port.
 
