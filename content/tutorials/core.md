@@ -11,7 +11,7 @@ In this tutorial we will show two scenarios: intercepting a leaf service, and us
 to a cluster-based leaf service. No other services will be run locally. 
 
 2. Core service: Here, the developer runs _only_ a core Service which will intercept requests
-   to a cluster based core service, but it will need to have an active teleport so that it can talk to the leaf service in the cloud. No other services will be run locally.
+   to a cluster-based core service, but it will need to have an active teleport so that it can talk to the leaf service in the cloud. No other services will be run locally.
 
 ## Objectives
 
