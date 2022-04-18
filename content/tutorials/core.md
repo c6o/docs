@@ -33,7 +33,7 @@ The tutorial assumes you are at the root of the Sample Project repo, and have co
 
 ### Run the Leaf Service Locally
 
-Lets start by running the backend leaf service locally, in the sample project root run:
+Let's start by running the backend leaf service locally. In the sample project root run:
 
 ```bash
 yarn start-leaf
