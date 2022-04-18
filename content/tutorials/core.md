@@ -104,7 +104,8 @@ You will now see a response from your local system:
 ```
 The value of "where" above will be the name of your local machine.
 
-> Note: We use an extension to add headers to the request. For Chrome, the extension `ModHeader` works well.
+> [!NOTE]
+> We use an extension to add headers to the request. For Chrome, the extension `ModHeader` works well.
 
 You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the leaf service in the file `./packages/leaf/index.js`
 
