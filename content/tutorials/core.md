@@ -39,7 +39,7 @@ Let's start by running the backend leaf service locally. In the sample project r
 yarn start-leaf
 ```
 
-You should be able to access the local Frontend service at `http://localhost:3010/api`. You should see an api response that looks something like this:
+You should be able to access the local Frontend service at `http://localhost:3010/api`. You should see an API response that looks something like this:
 
 ```json
 {"who":"leaf","where":"Somewhere-Machine.local"}
