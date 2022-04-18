@@ -168,7 +168,7 @@ Now your local core service can talk to the cluster leaf service at sample-proje
 
 ### Intercepting Core Services
 
-Now, as with leaf services we can set up an intercept so that the frontend service talks to our locally running core service.
+Now, as with leaf services, we can set up an intercept so that the frontend service talks to our locally running core service.
 
 ```bash
 czctl intercept service sample-project-core -n sample-project
