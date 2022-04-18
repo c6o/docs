@@ -65,7 +65,7 @@ You should see a message that you have no running sessions. Reminder that you ca
 
 ### Intercepting Leaf Services
 
-To intercept the sample-project-leaf service in the cluster, navigate to the url of your front end in the cluster. If you have used a load balancer, you can get the url to the frontend via a kubectl command:
+To intercept the sample-project-leaf service in the cluster, navigate to the URL of your frontend in the cluster. If you have used a load balancer, you can get the URL to the frontend via a `kubectl` command:
 
 ```bash
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
