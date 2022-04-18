@@ -192,7 +192,7 @@ As before, you will still be able to set breakpoints in your locally running cor
 
 ## Collaboration with Intercept and Teleport
 
-Assuming the backend developer has started their core service running from the previous section on core services.
+For the following, we are assuming the backend developer has started their core service running from the previous section on core services.
 
 Now, a frontend developer on another machine can teleport to the cluster and access your locally running core service. 
 
