@@ -75,7 +75,7 @@ or (for zsh, make sure you remove the escape character before the open parenthes
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
-You will see that the response of the leaf service is from the cluster based service:
+You will see that the response of the leaf service is from the cluster-based service:
 
 ```json
 {
