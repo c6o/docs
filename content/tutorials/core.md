@@ -159,7 +159,8 @@ Since the local core-service will need to listen to port 3000, we will exclude i
 czctl teleport namespace sample-project --exclude orig-sample-project-core sample-project-core
 ```
 
-> Note: When using teleport with a locally intercepted service, we need to exclude the intercept backup service at `orig-sample-project-core`
+> ![NOTE]
+> When using teleport with a locally intercepted service, we need to exclude the intercept backup service at `orig-sample-project-core`
 
 Now your local core service can talk to the cluster leaf service at sample-project-leaf, and you should see this output:
 ```json
