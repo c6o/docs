@@ -110,7 +110,7 @@ You can debug your code by attaching the debugger to port 9339 and this will all
 
 > Note: if you would like to add a teleport and run the sample-project-leaf service locally, use
 > `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf` 
-> This will allow you to listen to port 3010 locally since the cluster based service will not be using your local leaf service port.
+> This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local leaf service port.
 
 ## Core Tutorial
 
