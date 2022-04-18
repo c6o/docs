@@ -5,7 +5,7 @@ In the Sample Project, the backend includes three services that handle frontend 
 
 Traditionally the backend developer would need to run all (or many) of an application's microservices locally in order to work on one of the backend services. 
 
-In this tutorial we will show two scenarios, intercepting a leaf service and using intercept and teleport together with a core service.
+In this tutorial we will show two scenarios: intercepting a leaf service, and using intercept and teleport together with a core service.
 
 1. Leaf service: Here, the developer runs _only_ a leaf Service which will intercept requests
 to a cluster-based leaf service. No other services will be run locally. 
