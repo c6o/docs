@@ -3,8 +3,8 @@
         "left": {
             "title": "Getting Started",
             "items": [{
-                "title": "Adding a Configuration",
-                "URL": "/#/guides/usage/adding-a-configuration",
+                "title": "Adding a Context",
+                "URL": "/#/guides/usage/adding-a-context",
                 "icon": "vaadin:cluster"
             }, {
                 "title": "Adding a Workspace",
