@@ -1,24 +1,12 @@
 # Running a Development Profile
 
-*Development Profiles* are read from the `.codezero/develop` directory within Workspaces. The following describes how to run a Development Profile.
+*Development Profiles* are read from the `.codezero/develop/` directory within Workspaces. The following describes how to run a Development Profile.
 
-Open the Dashboard window to see your current *Sessions*:
+1. Click on the CodeZero system tray icon.
+2. Open the **Workspaces** menu and make sure you have the correct workspace selected.
+3. Open the **Development Profiles** menu and select the profile you wish to run.
 
-![Menu Dashboard](../../_media/app/tray-menu.png)
-
-The following shows what the Dashboard looks like when you have no active Sessions.
-
-![Getting Started](../../_media/app/dashboard-getting-started.png)
-
-To run a Development Profile, select it from the **Development Profiles** menu.
-
-![Dev Profile](../../_media/app/run-dev-profile.png)
-
-The Sessions that are part of the Development Profile will start in sequence.
-
-![Empty Dashboard](../../_media/app/dashboard-empty-busy.png)
-
-You will see various Sessions appear in the Dashboard as they start up.
+The Commands that are part of the Development Profile will start in sequence, and you will see various Sessions appear in the Dashboard as they start up.
 
 ![Teleport](../../_media/app/dashboard-teleport.png)
 
