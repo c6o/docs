@@ -22,7 +22,7 @@ export KUBECONFIG=<path to kubeconfig>
 
 ## Getting Help
 
-The CLI is invoked via the `czctl` command. To get more information about individual commands, see the associated command under References (e.g. [Teleport](https://docs.codezero.io/#/references/teleport)), or run:
+The CLI is invoked via the `czctl` command. To get more information about individual commands, see the associated command under References (e.g. [Teleport](/references/teleport)), or run:
 
 ```bash
 > czctl help
