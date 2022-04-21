@@ -4,7 +4,7 @@
 
 Workspaces are managed in the system tray menu under **Workspaces**. The following describes how to add a new workspace, and how to select the current workspace.
 
-To add a new context:
+To add a new workspace:
 
 1. Click on the CodeZero system tray icon.
 2. Open the **Workspaces** menu and select **+ Add Workspace**.
