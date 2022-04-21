@@ -1,8 +1,10 @@
 # Using the CodeZero Desktop App
 
-## What you can do with the Desktop App
-
 The Desktop App gives you a graphical interface for some of the functions available in the CLI.
+
+<img alt="Desktop App Welcome" src="/content/_media/app/dashboard-welcome.png" style="max-width: 400px">
+
+## What you can do with the Desktop App
 
 With the app you can:
 
