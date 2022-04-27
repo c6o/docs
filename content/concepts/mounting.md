@@ -22,7 +22,7 @@ Via the NFS server, your local system then mounts these volumes locally for you 
 1. An NFS server deployment is started with a single pod, which mounts all the volumes referenced by that workload.
 1. Local mounts are created that point to each of the remote NFS server volumes.
 
-### Under the hood
+### Under the Hood
 
 Mount works as follows:
 
@@ -36,7 +36,7 @@ Mount works as follows:
 On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
 
 ```bash
-> czctl start
+czctl start
 ```
 
 > [!EXPERT]

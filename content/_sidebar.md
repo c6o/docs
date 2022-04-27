@@ -14,7 +14,7 @@
   - [Developing Edge Services](/tutorials/edge)
   - [Developing Core Services](/tutorials/core)
   - [Using the Desktop App](/tutorials/desktop-app)
-  - [Developing with Remote Volumes](/tutorials/mount.md)
+  - [Developing with Remote Volumes](/tutorials/mount)
 - Concepts
   - [Environments](/concepts/environments)
   - [Intercepting](/concepts/intercepting)
