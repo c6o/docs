@@ -1,2 +1,2 @@
-* Kubernetes (Version >=1.17)
+* Kubernetes (Version >=1.14)
 * \>=2 GB available RAM

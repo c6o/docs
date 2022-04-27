@@ -1,2 +1,2 @@
 > [!NOTE]
-> This page has moved and been renamed to [Adding a Context](/guides/usage/adding-a-context).
+> This page has moved and been renamed to [Using the Desktop App](/tutorials/desktop-app?id=add-a-context).

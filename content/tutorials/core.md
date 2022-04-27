@@ -3,12 +3,12 @@
 In this tutorial we get to experience how a backend developer could use CodeZero when developing a Core Service.
 In the Sample Project, the backend includes three services that handle frontend requests: Core, Leaf, and Socket services.
 
-Traditionally the backend developer would need to run all (or many) of an application's microservices locally in order to work on one of the backend services. 
+Traditionally the backend developer would need to run all (or many) of an application's microservices locally in order to work on one of the backend services.
 
 In this tutorial we will show two scenarios: intercepting a leaf service, and using intercept and teleport together with a core service.
 
 1. Leaf service: Here, the developer runs _only_ a leaf Service which will intercept requests
-to a cluster-based leaf service. No other services will be run locally. 
+to a cluster-based leaf service. No other services will be run locally.
 
 2. Core service: Here, the developer runs _only_ a core Service which will intercept requests
    to a cluster-based core service, but it will need to have an active teleport so that it can talk to the leaf service in the cloud. No other services will be run locally.
@@ -45,7 +45,7 @@ You should be able to access the local Frontend service at `http://localhost:301
 {"who":"leaf","where":"Somewhere-Machine.local"}
 ```
 
-We are now set up to use CodeZero's **Intercept** with the leaf service. A locally running service will soon be accepting requests from the cluster. 
+We are now set up to use CodeZero's **Intercept** with the leaf service. A locally running service will soon be accepting requests from the cluster.
 
 ### Start the CodeZero Daemon
 
@@ -69,8 +69,10 @@ To intercept the sample-project-leaf service in the cluster, navigate to the URL
 
 ```bash
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
+
 ```
 or (for zsh, make sure you remove the escape character before the open parenthesis)
+
 ```bash
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
@@ -92,8 +94,9 @@ You can now intercept into the sample-project-leaf namespace using the following
 czctl intercept service sample-project-leaf -n sample-project
 ```
 
-Add a header to the frontend page request `x-c6o-intercept:yes` and refresh the frontend page. 
+Add a header to the frontend page request `x-c6o-intercept:yes` and refresh the frontend page.
 You will now see a response from your local system:
+
 ```json
 {
     "url": "http://sample-project-leaf:3010/api",
@@ -102,6 +105,7 @@ You will now see a response from your local system:
     "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
 }
 ```
+
 The value of "where" above will be the name of your local machine.
 
 > [!NOTE]
@@ -109,9 +113,9 @@ The value of "where" above will be the name of your local machine.
 
 You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the leaf service in the file `./packages/leaf/index.js`
 
-> ![NOTE]
+> [!NOTE]
 > if you would like to add a teleport and run the sample-project-leaf service locally, use
-> `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf` 
+> `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf`
 > This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local leaf service port.
 
 ## Core Tutorial

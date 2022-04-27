@@ -4,19 +4,19 @@
             "title": "Getting Started",
             "items": [{
                 "title": "Adding a Context",
-                "URL": "/#/guides/usage/adding-a-context",
+                "URL": "/#/tutorials/desktop-app?id=add-your-configuration",
                 "icon": "vaadin:cluster"
             }, {
                 "title": "Adding a Workspace",
-                "URL": "/#/guides/usage/adding-a-workspace",
+                "URL": "/#/tutorials/desktop-app?id=add-a-workspace",
                 "icon": "vaadin:workplace"
             }, {
                 "title": "Running a Development Profile",
-                "URL": "/#/guides/usage/running-a-dev-profile",
+                "URL": "/#/tutorials/desktop-app?id=run-a-development-profile",
                 "icon": "vaadin:file-movie"
             }, {
                 "title": "Creating a Development Profile",
-                "URL": "/#/guides/development-profiles",
+                "URL": "/#/tutorials/desktop-app?id=create-a-new-development-profile",
                 "icon": "vaadin:file-code"
             }]
         },
@@ -24,15 +24,15 @@
             "title": "Documentation",
             "items": [{
                 "title": "Teleport",
-                "URL": "/#/guides/commands/teleport",
+                "URL": "/#/references/command-line?id=teleport",
                 "icon": "vaadin:location-arrow"
             }, {
                 "title": "Intercept",
-                "URL": "/#/guides/commands/intercept",
+                "URL": "/#/references/command-line?id=intercept",
                 "icon": "vaadin:sign-in-alt"
             }, {
                 "title": "Volume Mount",
-                "URL": "/#/guides/commands/mount",
+                "URL": "/#/references/command-line?id=mount",
                 "icon": "vaadin:harddrive"
             }]
         }
