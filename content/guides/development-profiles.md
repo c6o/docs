@@ -8,7 +8,7 @@ A development profile creates a specific development scenario. For instance, a d
 
 ## Getting Started
 
-Creating a Development Profile is as simple as using `czctl` just as you would normally, but appending the `--save-profile [name]` flag.
+Creating a Development Profile is as simple as using `czctl` just as you would normally, but appending the `--save-profile [filename]` flag.
 
 > [!NOTE]
 > See [CodeZero Overview](../welcome/overview.md) and [Installing CodeZero](./installing.md) for more information on getting started with the CLI.
@@ -20,21 +20,19 @@ A development profile is created through running CLI commands with a --save-prof
 
 ```bash
 ➜  czctl teleport namespace sample-project --save-profile dev-profile.yaml
-
-Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
 
-> [!NOTE]
-> Development Profiles in preview and are subject to change.
+After running the command, you should see output similar to "Command has been saved to a Development Profile: (dev-profile.yaml)".
+
+> [!PROTIP]
+> If you are running the command from a directory with a `.codezero` directory, a profile file will automatically be created and placed in a folder inside `.codezero/develop/`.
 
 ```bash
 ➜  czctl env deployment -n sample-project sample-project-core env.sh --save-profile dev-profile2.yaml
-
-Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
 
-> [!PROTIP]
-> If you are running the command from a directory within a .codezero/ directory, a profile file will automatically be created and placed in a folder inside `.codezero/develop/`.
+> [!NOTE]
+> Development Profiles are still under active development and are subject to change.
 
 ### Appending More
 
@@ -43,8 +41,6 @@ with the value "append". Other values for this flag are 'create' amd 'replace'.
 
 ```bash
 ➜  czctl intercept service sample-project-core -n sample-project -l 3010 --save-profile dev-profile.yaml --save-profile-mode append
-
-Command has been saved to a Development Profile: (dev-profile.yaml)
 ```
 
 If you forget this flag, the CLI will ask you if you are
