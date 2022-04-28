@@ -10,7 +10,7 @@ CodeZero resolves visibility of persistent volume data by allowing developers to
 
 ## Overview
 
-Mount is complimentary to Teleport in that your local code may need to read from or write to volumes that a workload has in a cluster in addition to talking to that workload. Without Mount, you would need to stub out or synthesize storage read or write operations in your code to make it run properly. With Mount, there's no need to do this, you can access these remote volumes locally.
+Mount is complimentary to Teleport in that your local code may need to read from, or write to, volumes that a workload has in a cluster, in addition to talking to that workload. Without Mount, you would need to stub out or synthesize storage read or write operations in your code to make it run properly. With Mount, there's no need to do this: you can access these remote volumes locally.
 
 Mount works by creating a lightweight NFS server in-cluster that mounts and shares all the volumes of a workload that you choose.
 Via the NFS server, your local system then mounts these volumes locally for you to access.
@@ -22,7 +22,7 @@ Via the NFS server, your local system then mounts these volumes locally for you 
 1. An NFS server deployment is started with a single pod, which mounts all the volumes referenced by that workload.
 1. Local mounts are created that point to each of the remote NFS server volumes.
 
-### Under the hood
+### Under the Hood
 
 Mount works as follows:
 
@@ -36,7 +36,7 @@ Mount works as follows:
 On Linux, Mount requires permission to mount volumes locally, which can only be done with elevated root access. Therefore, to run mount, you must first initialize the CLI using:
 
 ```bash
-> czctl start
+czctl start
 ```
 
 > [!EXPERT]
@@ -45,6 +45,7 @@ On Linux, Mount requires permission to mount volumes locally, which can only be 
 ## Residue and Cleanup
 
 If any mounts remain after running Mount with the `--clean` parameter (or `session close` command), you can see them:
+
 ```bash
 mount
 ...

@@ -81,7 +81,9 @@ You should now see the failed connections on the webpage start to work because t
 > [!Note]
 > You will see an error under File, but don't worry about that as we will fix it in a future tutorial.
 
-Launch your favorite IDE and make changes to the code in `packages/frontend`. You can make changes to the frontend code and see that you are able to test against the in-cluster `sockets` and `core` services.
+Launch your favorite IDE and open the folder `packages/frontend`. You can make changes to the frontend code here and see that you are able to test against the in-cluster `sockets` and `core` services.
+
+After making changes, stop and start the frontend service, and perform a hard refresh in your browser to ensure your changes take effect.
 
 ### Cleanup
 

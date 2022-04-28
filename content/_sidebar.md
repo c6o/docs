@@ -28,7 +28,8 @@
   - [Sample Kubernetes Project](/tutorials/sample-project.md)
   - [Developing Edge Services](/tutorials/edge.md)
   - [Developing Core Services](/tutorials/core.md)
-  - [Using the Desktop App](/tutorials/desktop-app)
+  - [Using the Desktop App](/tutorials/desktop-app.md)
+  - [Developing with Remote Volumes](/tutorials/mount.md)
 - References
   - Commands
     - [Adding a Context](/references/context-add.md)
