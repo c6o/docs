@@ -65,7 +65,7 @@ You should see a message that you have no running sessions. Reminder that you ca
 
 ### Intercepting Leaf Services
 
-To intercept the sample-project-Leaf service in the cluster, navigate to the URL of your frontend in the cluster. If you have used a load balancer, you can get the URL to the frontend via a `kubectl` command:
+To intercept the sample-project-leaf service in the cluster, navigate to the URL of your frontend in the cluster. If you have used a load balancer, you can get the URL to the frontend via a `kubectl` command:
 
 ```bash
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
@@ -113,7 +113,7 @@ The value of "where" above will be the name of your local machine.
 You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the Leaf service in the file `./packages/leaf/index.js`
 
 > [!NOTE]
-> If you would like to add a Teleport and run the sample-project-Leaf service locally, use
+> If you would like to add a Teleport and run the sample-project-leaf service locally, use
 > `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf`
 > This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local Leaf service port.
 
