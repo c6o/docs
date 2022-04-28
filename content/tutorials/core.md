@@ -5,13 +5,13 @@ In the Sample Project, the backend includes three services that handle frontend 
 
 Traditionally the backend developer would need to run all (or many) of an application's microservices locally in order to work on one of the backend services.
 
-In this tutorial we will show two scenarios: intercepting a leaf service, and using intercept and teleport together with a core service.
+In this tutorial we will show two scenarios: intercepting a Leaf service, and using Intercept and Teleport together with a Core service.
 
-1. Leaf service: Here, the developer runs _only_ a leaf Service which will intercept requests
-to a cluster-based leaf service. No other services will be run locally.
+1. Leaf service: Here, the developer runs _only_ a Leaf service which will intercept requests
+to a cluster-based Leaf service. No other services will be run locally.
 
-2. Core service: Here, the developer runs _only_ a core Service which will intercept requests
-   to a cluster-based core service, but it will need to have an active teleport so that it can talk to the leaf service in the cloud. No other services will be run locally.
+2. Core service: Here, the developer runs _only_ a Core service which will intercept requests
+   to a cluster-based Core service, but it will need to have an active Teleport so that it can talk to the Leaf service in the cloud. No other services will be run locally.
 
 ## Objectives
 
@@ -27,25 +27,25 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](./sample-project.md) and that you have the sample project running in your cluster in the namespace `sample-project`.
+The tutorial assumes you are at the root of the Sample Project repo, have completed the [Sample Project tutorial](./sample-project.md), and that you have the sample project running in your cluster in the namespace `sample-project`.
 
 ## Leaf Tutorial
 
 ### Run the Leaf Service Locally
 
-Let's start by running the backend leaf service locally. In the sample project root run:
+Let's start by running the backend Leaf service locally. In the sample project root run:
 
 ```bash
 yarn start-leaf
 ```
 
-You should be able to access the local Frontend service at `http://localhost:3010/api`. You should see an API response that looks something like this:
+You should be able to access the local Leaf service at `http://localhost:3010/api`. You should see an API response that looks something like this:
 
 ```json
 {"who":"leaf","where":"Somewhere-Machine.local"}
 ```
 
-We are now set up to use CodeZero's **Intercept** with the leaf service. A locally running service will soon be accepting requests from the cluster.
+We are now set up to use CodeZero's **Intercept** with the Leaf service. A locally running service will soon be accepting requests from the cluster.
 
 ### Start the CodeZero Daemon
 
@@ -71,13 +71,14 @@ To intercept the sample-project-leaf service in the cluster, navigate to the URL
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
 
 ```
+
 or (for zsh, make sure you remove the escape character before the open parenthesis)
 
 ```bash
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
 
-You will see that the response of the leaf service is from the cluster-based service:
+You will see that the response of the Leaf service is from the cluster-based service:
 
 ```json
 {
@@ -94,8 +95,7 @@ You can now intercept into the sample-project-leaf namespace using the following
 czctl intercept service sample-project-leaf -n sample-project
 ```
 
-Add a header to the frontend page request `x-c6o-intercept:yes` and refresh the frontend page.
-You will now see a response from your local system:
+Add a header (using something like the ModHeader Chrome extension) to the frontend page request `x-c6o-intercept:yes` and refresh the frontend page. You will now see a response from your local system:
 
 ```json
 {
@@ -111,71 +111,116 @@ The value of "where" above will be the name of your local machine.
 > [!NOTE]
 > We use an extension to add headers to the request. For Chrome, the extension `ModHeader` works well.
 
-You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the leaf service in the file `./packages/leaf/index.js`
+You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the Leaf service in the file `./packages/leaf/index.js`
 
 > [!NOTE]
-> if you would like to add a teleport and run the sample-project-leaf service locally, use
+> If you would like to add a Teleport and run the sample-project-leaf service locally, use
 > `czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf`
-> This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local leaf service port.
+> This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local Leaf service port.
 
 ## Core Tutorial
 
-Intercept sample-project-core service in the cluster while Teleporting to the sample-project namespace.
+In this tutorial we will Intercept the "sample-project-core" service in the cluster while Teleporting to the "sample-project" namespace.
 
 ### Setting up a teleport
 
 This tutorial assumes you have closed all czctl sessions with `czctl session close --all` and have stopped locally
 running services.
 
-In order to start the core service locally, the cluster configuration for that service will need to be instantiated locally. 
-This will enable the locally running service to talk to cluster services without modification. 
-This is accomplished with the `configuration` command. 
+In order to start the Core service locally, the cluster configuration for that service will need to be instantiated locally.
+This will enable the locally running service to talk to cluster services without modification.
+This is accomplished with the `configuration` command.
 
-Instantiate the core service configuration with:
+Instantiate the Core service configuration with:
+
 ```bash
 czctl configuration deployment sample-project-core env-core.sh --format sh --namespace sample-project
+```
+
+When that's done run the following to set the environment variables locally:
+
+```bash
 source env-core.sh
 ```
+
 The key environment variable is `SP_LEAF_URL` (`env | grep SP_LEAF_URL`).
 
-Now, start up the core service locally:
+Now, start up the Core service locally:
 
 ```bash
 yarn start-core
 ```
 
-With the core service configuration instantiate, it will try to talk to the leaf service in the cluster.
-Note that right now, without a teleport, it will be unsuccessful.
+With the Core service configuration instantiated, it will try to talk to the Leaf service in the cluster.
+Note that right now, without a Teleport, it will be unsuccessful.
 
-Now make sure it's running correctly by opening in a browser:
+Now make sure it's running correctly by opening the local URL in a browser:
+
 ```bash
 open http://localhost:3000/api
 ```
-You will see the following errors in the output without a teleport:
+
+You will see the following errors in the output without a Teleport:
+
 ```json
-{"who":"core","where":"Robbs-MacBook-Pro.local","mongo":{"url":"mongodb://sample-project-database:27017/sample-project-database","error":"MongoNetworkError"},"leaf":{"error":"getaddrinfo ENOTFOUND sample-project-leaf"},"file":{"path":"./data/message.txt","data":"99 bugs in the code<br />\n99 bugs in the code<br />\nclone the repo, patched it around<br />\n129 bugs in the code<br />"}}
+{
+    "who":"core",
+    "where":"MacBook-Pro.local",
+    "mongo": {
+        "url":"mongodb://sample-project-database:27017/sample-project-database",
+        "error":"MongoNetworkError"},
+        "leaf": {
+            "error":"getaddrinfo ENOTFOUND sample-project-leaf"
+        },
+        "file":{
+            "path":"./data/message.txt",
+            "data":"99 bugs in the code<br />\n99 bugs in the code<br />\nclone the repo, patched it around<br />\n129 bugs in the code<br />"
+            }
+        }
+    }
+}
 ```
+
 ### Teleporting With Core Services
 
-Unlike the leaf service, the core service will need to talk to other services in the cloud and as a result will need a teleport. 
-However, when a teleport is active, the services in the cloud will prevent the local system from starting services on the same ports. 
-Since the local core-service will need to listen to port 3000, we will exclude it from the teleport.
+Unlike the Leaf service, the Core service will need to talk to other services in the cloud and as a result will need a Teleport.
+However, when a teleport is active, the services in the cloud will prevent the local system from starting services on the same ports.
+Since the local Core service will need to listen to port 3000, we will exclude it from the Teleport.
 
 ```bash
 czctl teleport namespace sample-project --exclude orig-sample-project-core sample-project-core
 ```
 
-> ![NOTE]
+> [!NOTE]
 > When using teleport with a locally intercepted service, we need to exclude the intercept backup service at `orig-sample-project-core`
 
-Now your local core service can talk to the cluster leaf service at sample-project-leaf, and you should see this output:
+Now your local Core service can talk to the cluster Leaf service at sample-project-leaf, and you should see this output:
+
 ```json
-{"who":"core","where":"Robbs-MacBook-Pro.local","mongo":{"url":"mongodb://sample-project-database:27017/sample-project-database","success":true},"leaf":{"url":"http://sample-project-leaf:3010/api","who":"leaf","where":"sample-project-leaf-6b6f85dfb5-4z9jv","propagated-headers":"{\"x-c6o-intercept\":\"yes\"}"},"file":{"path":"./data/message.txt","data":"99 bugs in the code<br />\n99 bugs in the code<br />\nclone the repo, patched it around<br />\n129 bugs in the code<br />"}}
+{
+    "who":"core",
+    "where":"MacBook-Pro.local",
+    "mongo": {
+        "url":"mongodb://sample-project-database:27017/sample-project-database",
+        "success":true
+        },
+        "leaf": {
+            "url":"http://sample-project-leaf:3010/api",
+            "who":"leaf",
+            "where":"sample-project-leaf-6b6f85dfb5-4z9jv",
+            "propagated-headers":"{\"x-c6o-intercept\":\"yes\"}",
+            "file": {
+                "path":"./data/message.txt",
+                "data":"99 bugs in the code<br />\n99 bugs in the code<br />\nclone the repo, patched it around<br />\n129 bugs in the code<br />"
+            }
+        }
+    }
+}
 ```
 
 ### Intercepting Core Services
 
-Now, as with leaf services, we can set up an intercept so that the frontend service talks to our locally running core service.
+Now, as with Leaf services, we can set up an Intercept so that the frontend service talks to our locally running Core service.
 
 ```bash
 czctl intercept service sample-project-core -n sample-project
@@ -184,10 +229,13 @@ czctl intercept service sample-project-core -n sample-project
 You can now navigate to the frontend in the cloud:
 
 (for zsh, make sure you remove the escape character before the open parenthesis before `kubectl` below)
+
 ```bash
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
+
 You will see that the core output comes from your locally running service with the response:
+
 ```json
 {
     "url": "/api",
@@ -195,13 +243,14 @@ You will see that the core output comes from your locally running service with t
     "where": "Local-Machine.local"
 }
 ```
-As before, you will still be able to set breakpoints in your locally running core service.
+
+As before, you will still be able to set breakpoints in your locally running Core service.
 
 ## Collaboration with Intercept and Teleport
 
-For the following, we are assuming the backend developer has started their core service running from the previous section on core services.
+For the following, we are assuming the backend developer has started their Core service running from the previous section on Core services.
 
-Now, a frontend developer on another machine can teleport to the cluster and access your locally running core service. 
+Now, a frontend developer on another machine can teleport to the cluster and access your locally running Core service.
 
 On another machine, teleport into sample-project and run the frontend locally.
 
@@ -209,12 +258,15 @@ On another machine, teleport into sample-project and run the frontend locally.
 czctl teleport namespace sample-project
 yarn start-frontend
 ```
+
 Navigate to `http://localhost:3030?t=1` with the header flags `x-c6o-intercept:yes`.
 
 ```bash
 open http://localhost:3030?t=1
 ```
-They should see the output from your locally running core service where you can set breakpoints.
+
+They should see the output from your locally running Core service where you can set breakpoints.
+
 ```json
 {
     "url": "/api",
