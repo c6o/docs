@@ -1,4 +1,4 @@
-# Teleporting
+# Teleport
 
 The primary concept behind Teleport is to allow developers to develop and debug their code locally as though they are inside the cluster.
 

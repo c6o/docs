@@ -1,3 +1,2 @@
 > [!NOTE]
-> This page has moved and been renamed to [Mount](/concepts/mounting).
-
+> This page has moved and been renamed to [Mount](/concepts/mount).

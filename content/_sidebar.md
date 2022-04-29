@@ -17,11 +17,11 @@
   - [Developing with Remote Volumes](/tutorials/mount)
 - Concepts
   - [Environments](/concepts/environments)
-  - [Intercepting](/concepts/intercepting)
-  - [Mounting](/concepts/mounting)
+  - [Intercept](/concepts/intercept)
+  - [Moun](/concepts/mount)
   - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)
-  - [Teleporting](/concepts/teleporting)
+  - [Teleport](/concepts/teleport)
 - References
   - [CLI Commands](/references/command-line)
 - Changelogs
