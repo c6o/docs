@@ -6,11 +6,11 @@ If you do not have a Kubernetes cluster, here is a list of providers who provide
 Most will give you more than enough credits to get the basics.
 Of course, you can also follow the [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) guide if you would like to set up your own cluster from scratch.
 
-* [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
-* [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/#overview)
-* [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
-* [DigitalOcean Kubernetes](https://try.digitalocean.com/codezero/)
-* [Civo](https://www.civo.com/)
+- [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
+- [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/#overview)
+- [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
+- [DigitalOcean Kubernetes](https://try.digitalocean.com/codezero/)
+- [Civo](https://www.civo.com/)
 
 We recommend you use the service your organization uses.
 We have put together a short guide on using DigitalOcean and Civo as we have found these to be especially easy to get started with.
@@ -38,7 +38,6 @@ doctl k8s cluster create my-cluster \
 Leave out `--update-kubeconfig` if you do not want the kubeconfig to be merged into you user Kubernetes config.
 The above assumes you would like to set up a cluster in San Francisco.
 
-
 > [!NOTE]
 > if you get this error: **"422 region has insufficient capacity for requested cluster"**,
 > list the regions (see below) and select the highest number slug for that region.
@@ -64,7 +63,7 @@ The following command will download the kubeconfig file, and you can use it by s
 doctl k8s cluster kubeconfig show my-cluster > my-cluster-kubeconfig.yaml
 ```
 
-``` bash
+```bash
 export KUBECONFIG=$PWD/my-cluster-kubeconfig.yaml
 ```
 

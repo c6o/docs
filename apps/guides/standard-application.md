@@ -34,9 +34,9 @@ The first component we need for any CodeZero Application is a containerized appl
 
 NodeRED is a simple web application that does not take much to configure. There are just a few properties we need to be aware of as we continue with setting up this application to run in CodeZero:
 
-1. **Application Port:**  NodeRED runs a basic web application on port `1880`.
-1. **Environment Variables:**  We can use the `NODE_RED_ENABLE_PROJECTS` environment variable to control whether NodeRED has [projects](https://nodered.org/docs/user-guide/projects/) enabled or disabled.
-1. **Persistent Data:**  NodeRED stores user data in the `/data` directory, which we want to make sure gets persisted if the container ever restarts or moves.
+1. **Application Port:** NodeRED runs a basic web application on port `1880`.
+1. **Environment Variables:** We can use the `NODE_RED_ENABLE_PROJECTS` environment variable to control whether NodeRED has [projects](https://nodered.org/docs/user-guide/projects/) enabled or disabled.
+1. **Persistent Data:** NodeRED stores user data in the `/data` directory, which we want to make sure gets persisted if the container ever restarts or moves.
 
 ## Application Provisioner
 
@@ -60,23 +60,22 @@ So, let's first create a simple YAML file for our Application Manifest: `c6o.yam
 
 ```yaml
 name: Node Red
-appId: <your-username>-nodered  # replace this so it's unique
+appId: <your-username>-nodered # replace this so it's unique
 
-description:
-  Basic description about the application.
+description: Basic description about the application.
 
 editions:
-- name: preview
-  scope: private
-  spec:
-    provisioner:
-      # Provisioner spec goes here
+  - name: preview
+    scope: private
+    spec:
+      provisioner:
+        # Provisioner spec goes here
 
-    routes:
-      # Routes go here
+      routes:
+        # Routes go here
 
-    marina:
-      # Marina configuration goes here
+      marina:
+        # Marina configuration goes here
 ```
 
 > [!NOTE]
@@ -122,12 +121,12 @@ App Engine can define any number of environment variables as a simple key-value 
 ```yaml
 #...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
-      configs:
-        NODE_RED_ENABLE_PROJECTS: true
+  - # ...
+    spec:
+      # ...
+      provisioner:
+        configs:
+          NODE_RED_ENABLE_PROJECTS: true
 ```
 
 #### Mounted Volumes
@@ -137,14 +136,14 @@ App Engine can create persistent volume claims and mount them to our application
 ```yaml
 #...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      volumes:
-      - mountPath: /data
-        size: 5Gi
+      provisioner:
+        # ...
+        volumes:
+          - mountPath: /data
+            size: 5Gi
 ```
 
 #### Exposed Ports
@@ -154,14 +153,14 @@ The NodeRED application image contains a web server running on port `1880`. So w
 ```yaml
 #...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      ports:
-      - port: 1880
-        protocol: tcp
+      provisioner:
+        # ...
+        ports:
+          - port: 1880
+            protocol: tcp
 ```
 
 > [!TIP]
@@ -174,13 +173,13 @@ Above, we used App Engine to expose the NodeRED web server running on port `1880
 ```yaml
 #...
 editions:
-- # ...
-  spec:
-    # ...
-    routes:
-    - type: http
-      targetService: nodered   # should match spec.provisioner.name
-      targetPort: 1880
+  - # ...
+    spec:
+      # ...
+      routes:
+        - type: http
+          targetService: nodered # should match spec.provisioner.name
+          targetPort: 1880
 ```
 
 > [!TIP]
@@ -195,55 +194,54 @@ To accomplish this, we use the `marina` property as follows:
 ```yaml
 #...
 editions:
-- # ...
-  spec:
-    # ...
-    marina:
-      launch:
-        type: inline
-        popUp: true
+  - # ...
+    spec:
+      # ...
+      marina:
+        launch:
+          type: inline
+          popUp: true
 ```
 
 ## Final Product
 
-That's it!  Now we should have a `c6o.yaml` file that contains something similar to:
+That's it! Now we should have a `c6o.yaml` file that contains something similar to:
 
 ```yaml
 name: Node Red
 appId: <your-username>-nodered # replace this so it's unique
 
-description:
-  Basic description about the application.
+description: Basic description about the application.
 
 editions:
-- name: preview
-  scope: private
-  spec:
-    routes:
-    - type: http
-      targetService: nodered
-      targetPort: 1880
+  - name: preview
+    scope: private
+    spec:
+      routes:
+        - type: http
+          targetService: nodered
+          targetPort: 1880
 
-    marina:
-      launch:
-        type: inline
-        popUp: true
+      marina:
+        launch:
+          type: inline
+          popUp: true
 
-    provisioner:
-      package: '@provisioner/appengine'
-      name: nodered
-      image: nodered/node-red
+      provisioner:
+        package: "@provisioner/appengine"
+        name: nodered
+        image: nodered/node-red
 
-      configs:
-        NODE_RED_ENABLE_PROJECTS: true
+        configs:
+          NODE_RED_ENABLE_PROJECTS: true
 
-      ports:
-      - port: 1880
-        type: http
+        ports:
+          - port: 1880
+            type: http
 
-      volumes:
-      - mountPath: /data
-        size: 5Gi
+        volumes:
+          - mountPath: /data
+            size: 5Gi
 ```
 
 ## Test the Application

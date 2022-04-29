@@ -18,7 +18,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          args:  --exclude-all-private './content/**/*.md' -u 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0' --exclude http://sample-project-* mongodb:*
+          args: --exclude-all-private './content/**/*.md' -u 'Mozilla/5.0 (X11; Linux x86_64; rv:10.0) Gecko/20100101 Firefox/10.0' --exclude http://sample-project-* mongodb:* http://$
           format: markdown
       - name: Find Link Checker Issue
         id: link-checker-issue

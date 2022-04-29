@@ -18,7 +18,7 @@ Ciao!
 
 <!-- tabs:end -->
 
-``` mermaid
+```mermaid
 sequenceDiagram
     participant Alice
     participant Bob
@@ -34,7 +34,7 @@ sequenceDiagram
 
 :octocat: Hello
 
-``` json
+```json
 {
     "foo: {
         "bar": "car"

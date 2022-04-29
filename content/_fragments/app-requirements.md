@@ -1,8 +1,8 @@
 CodeZero requires:
 
-* MacOS or Ubuntu 18.x+ to run the full Desktop GUI
-* MacOS, Linux, or Windows 10+ with WSL2 to run the CLI (`czctl`)
-* `sudo`/`root` permissions on your local system
+- MacOS or Ubuntu 18.x+ to run the full Desktop GUI
+- MacOS, Linux, or Windows 10+ with WSL2 to run the CLI (`czctl`)
+- `sudo`/`root` permissions on your local system
 
 > [!NOTE]
 > Running the CodeZero CLI on Windows requires WSL2. Instructions on setting up WSL2 can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).

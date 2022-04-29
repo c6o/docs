@@ -21,11 +21,11 @@ CodeZero provides a simple CLI tool to help manage the development and testing o
 
 ### Requirements
 
-[cluster-requirements](../_fragments/cli-requirements.md ':include')
+[cluster-requirements](../_fragments/cli-requirements.md ":include")
 
 ### Install the CLI
 
-[cluster-install](../_fragments/cli-install.md ':include')
+[cluster-install](../_fragments/cli-install.md ":include")
 
 ### Configure the CLI
 
@@ -33,7 +33,7 @@ Once installed, there are two types of authentication that may be required for c
 
 #### Connect to the Hub API
 
-Some operations, such as `czctl app publish`, access to the CodeZero API, which must be authenticated with CodeZero. 
+Some operations, such as `czctl app publish`, access to the CodeZero API, which must be authenticated with CodeZero.
 
 ```bash
 czctl auth login

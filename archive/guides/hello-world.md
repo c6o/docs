@@ -37,19 +37,19 @@ First things first, create a new folder for the project, create a `package.json`
 Next, lets create the application's business logic by creating a `server.js` file that contains:
 
 ```js
-const express = require('express');
+const express = require("express")
 
-const PORT = process.env.PORT || 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 8080
+const HOST = "0.0.0.0"
 
 // Hello World!
-const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+const app = express()
+app.get("/", (req, res) => {
+  res.send("Hello World")
+})
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+app.listen(PORT, HOST)
+console.log(`Running on http://${HOST}:${PORT}`)
 ```
 
 This creates a very basic webserver running on port 8080. The server responds with "Hello World" when the root is requested.

@@ -16,10 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/c6o/docs.git"
   },
-  "keywords": [
-    "codezero",
-    "docs"
-  ],
+  "keywords": ["codezero", "docs"],
   "author": "Narayan Sainaney",
   "license": "Apache-2.0",
   "bugs": {

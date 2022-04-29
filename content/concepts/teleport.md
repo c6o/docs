@@ -84,7 +84,7 @@ The teleport command also starts up a tunnelling service that creates a tunnel t
 
 From time to time you may find that an old `czfwd` is running, that the `/etc/hosts` file has an old tunnel registered, or an old env.sh (whatever name you have given this) file is still lying around. Cleanup is a matter of killing both the czfwd processes and the environment file monitor. Usually this will be enough to clean up the `/etc/hosts` or `[some env file]`, but occasionally these will need to be cleaned up manually. (Your `/etc/hosts` file is backed up in `~/hosts.original`, see below for more detail)
 
-The environment output file can simply be deleted or renamed.  The `/etc/hosts` file will need to be edited with root privileges and the additional DNS entries removed.
+The environment output file can simply be deleted or renamed. The `/etc/hosts` file will need to be edited with root privileges and the additional DNS entries removed.
 
 Killing the tunnel process:
 

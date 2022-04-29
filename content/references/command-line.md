@@ -16,7 +16,7 @@ The Configuration command brings down cluster workload configuration files.
 ### Examples
 
 ```bash
-> czctl configuration deployment sample-project-core env.sh -n sample-project 
+> czctl configuration deployment sample-project-core env.sh -n sample-project
 ```
 
 There are several formats in which the local file can be written using the --format(-m) flag:
@@ -32,25 +32,25 @@ There are several formats in which the local file can be written using the --for
 
 ### Arguments
 
-| Arguments      | Description
-| --------       | -----------
-| kind           | The kind of workload you want to teleport as.
-| resourceName   | The name of the workload you want to teleport as.
-| envFile        | The name of the local file to which the configuration will be written.
+| Arguments    | Description                                                            |
+| ------------ | ---------------------------------------------------------------------- |
+| kind         | The kind of workload you want to teleport as.                          |
+| resourceName | The name of the workload you want to teleport as.                      |
+| envFile      | The name of the local file to which the configuration will be written. |
 
 ### Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-|----------------|-------|------------
-| --format       | -m    | The format of the configuration file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format).
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --clean        | -c    | Close and clean up existing teleport session.
-| --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                                                       |
+| -------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --format       | -m    | The format of the configuration file. Must be one of the following: sh (source-able shell file), env (env format p=v), json (JSON format), or yaml (YAML format). |
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                                                         |
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.                                   |
+| --context      |       | The name of the Kubernetes context to use.                                                                                                                        |
+| --clean        | -c    | Close and clean up existing teleport session.                                                                                                                     |
+| --quiet        | -q    | Only display error message.                                                                                                                                       |
+| --save-profile | -s    | Save this command to a development profile.                                                                                                                       |
 
 </div>
 
@@ -151,15 +151,15 @@ Add a plaintext or encrypted kubeconfig context to your user kubeconfig located 
 
 #### Arguments
 
-| Argument         | Description
-| ----------       | -----------
-| context-filename | The plaintext or encrypted kubeconfig filename.
+| Argument         | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| context-filename | The plaintext or encrypted kubeconfig filename. |
 
 #### Flags
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --quiet        | -q    | Only display error message.
+| Flags   | Alias | Description                 |
+| ------- | ----- | --------------------------- |
+| --quiet | -q    | Only display error message. |
 
 ### Request
 
@@ -181,19 +181,19 @@ Request access to a Kubernetes cluster securely. Send your public key to your cl
 
 #### Arguments
 
-| Argument      | Description
-| -------       | -----------
-| key-filename  | The filename (e.g. public-key.pem) to write your public key to (if not provided, the public key will be copied to the clipboard).
+| Argument     | Description                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| key-filename | The filename (e.g. public-key.pem) to write your public key to (if not provided, the public key will be copied to the clipboard). |
 
 #### Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --regenerate   | -r    | Regenerate your public/private key pair
-| --output       | -o    | Output the public key to the terminal
-| --quiet        | -q    | Only display error message.
+| Flags        | Alias | Description                             |
+| ------------ | ----- | --------------------------------------- |
+| --regenerate | -r    | Regenerate your public/private key pair |
+| --output     | -o    | Output the public key to the terminal   |
+| --quiet      | -q    | Only display error message.             |
 
 </div>
 
@@ -217,19 +217,19 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 
 #### Arguments
 
-| Argument          | Description
-| -----------       | -----------
-| encrypted-context | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used).
+| Argument          | Description                                                                                                                                                       |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| encrypted-context | The filename (e.g. encrypted-context.pem) of the encrypted kubeconfig context to share with a specific user (if not provided, then standard output will be used). |
 
 #### Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --key          | -k    | The recipient's public key
-| --context      | -c    | The plaintext kubeconfig filename
-| --quiet        | -q    | Only display error message.
+| Flags     | Alias | Description                       |
+| --------- | ----- | --------------------------------- |
+| --key     | -k    | The recipient's public key        |
+| --context | -c    | The plaintext kubeconfig filename |
+| --quiet   | -q    | Only display error message.       |
 
 </div>
 
@@ -255,25 +255,25 @@ Intercept allows you to selectively intercept traffic to a remote service and re
 
 ### Arguments
 
-| Argument      | Description
-| -------       | -----------
-| service       | The name of the service you want to intercept.
+| Argument | Description                                    |
+| -------- | ---------------------------------------------- |
+| service  | The name of the service you want to intercept. |
 
 ### Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-|----------------|-------|------------
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --remotePort   | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.
-| --localPort    | -l    | The local port number that traffic should be forwarded to on this machine.
-| --header       | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.
-| --kubeconfig   | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --clean        | -c    | Close and clean up existing teleport session.
-| --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                   |
+| -------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------- |
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                     |
+| --remotePort   | -r    | The remote port number of the remote service to be intercepted. This is optional if the service only exposes a single port.   |
+| --localPort    | -l    | The local port number that traffic should be forwarded to on this machine.                                                    |
+| --header       | -x    | Custom intercept header and value header:value. Default is `X-C6O-INTERCEPT:yes`.                                             |
+| --kubeconfig   | -k    | Path to a specific the kubeconfig file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context      |       | The name of the Kubernetes context to use.                                                                                    |
+| --clean        | -c    | Close and clean up existing teleport session.                                                                                 |
+| --quiet        | -q    | Only display error message.                                                                                                   |
+| --save-profile | -s    | Save this command to a development profile.                                                                                   |
 
 </div>
 
@@ -325,24 +325,24 @@ Mount sets up remote volumes on your local workstation so that your code can acc
 
 ### Arguments
 
-| Arguments      | Description
-| -------------- | -----------
-| kind           | Type of workload you want to target.
-| resourceName   | The name of the workload you want to target.
-| localDirectory | The name of the local folder in which to mount the volume.
+| Arguments      | Description                                                |
+| -------------- | ---------------------------------------------------------- |
+| kind           | Type of workload you want to target.                       |
+| resourceName   | The name of the workload you want to target.               |
+| localDirectory | The name of the local folder in which to mount the volume. |
 
 ### Flags
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-|----------------|-------|------------
-| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --clean        | -c    | Close and clean up existing mount session.
-| --quiet        | -q    | Only display error message.
-| --save-profile | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                     |
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --namespace    | -n    | The Kubernetes namespace that contains the specific workload. This defaults to 'default'.                                       |
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context      |       | The name of the Kubernetes context to use.                                                                                      |
+| --clean        | -c    | Close and clean up existing mount session.                                                                                      |
+| --quiet        | -q    | Only display error message.                                                                                                     |
+| --save-profile | -s    | Save this command to a development profile.                                                                                     |
 
 </div>
 
@@ -401,12 +401,12 @@ Close open sessions (sessions are started by running commands like teleport, int
 
 <div class="flags-table">
 
-| Flags           | Alias | Description
-|-----------------|-------| -----------
-| --all           | -a    | Close any running sessions for the active context.
-| --kubeconfig    | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context       |       | The name of the Kubernetes context to use.
-| --quiet         | -q    | Only display error message.
+| Flags        | Alias | Description                                                                                                                     |
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --all        | -a    | Close any running sessions for the active context.                                                                              |
+| --kubeconfig | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context    |       | The name of the Kubernetes context to use.                                                                                      |
+| --quiet      | -q    | Only display error message.                                                                                                     |
 
 </div>
 
@@ -436,13 +436,13 @@ List open sessions (sessions are started by running commands like teleport, inte
 
 <div class="flags-table">
 
-| Flags          | Alias | Description
-| -------------- | ----- | -----------
-| --details      |       | Show a detailed breakdown for sessions.
-| --verbose      | -v    | Show more verbose information about the session's parameters values.
-| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context      |       | The name of the Kubernetes context to use.
-| --quiet        | -q    | Only display error message.
+| Flags        | Alias | Description                                                                                                                     |
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --details    |       | Show a detailed breakdown for sessions.                                                                                         |
+| --verbose    | -v    | Show more verbose information about the session's parameters values.                                                            |
+| --kubeconfig | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context    |       | The name of the Kubernetes context to use.                                                                                      |
+| --quiet      | -q    | Only display error message.                                                                                                     |
 
 </div>
 
@@ -466,22 +466,22 @@ Teleport sets up your local machine to feels like it's running in-cluster.
 
 ### Arguments
 
-| Arguments     | Description
-| ------------  | -----------
-| namespace     | The name of the Kubernetes namespace.
+| Arguments | Description                           |
+| --------- | ------------------------------------- |
+| namespace | The name of the Kubernetes namespace. |
 
 ### Flags
 
 <div class="flags-table">
 
-| Flags           | Alias | Description
-| --------------- | ----- | -----------
-| --additional    | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.
-| --kubeconfig    | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable.
-| --context       |       | The name of the Kubernetes context to use.
-| --clean         | -c    | Close and clean up existing teleport session.
-| --quiet         | -q    | Only display error message.
-| --save-profile  | -s    | Save this command to a development profile.
+| Flags          | Alias | Description                                                                                                                     |
+| -------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------- |
+| --additional   | -a    | Additional namespaces to include. Repeat this flag for each additional namespace.                                               |
+| --kubeconfig   | -k    | Path to a specific the `kubeconfig` file to use for cluster credentials. Defaults to using the KUBECONFIG environment variable. |
+| --context      |       | The name of the Kubernetes context to use.                                                                                      |
+| --clean        | -c    | Close and clean up existing teleport session.                                                                                   |
+| --quiet        | -q    | Only display error message.                                                                                                     |
+| --save-profile | -s    | Save this command to a development profile.                                                                                     |
 
 </div>
 

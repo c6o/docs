@@ -8,17 +8,17 @@ In this tutorial we are going to install the [CodeZero Desktop](https://codezero
 
 In this tutorial, you will learn:
 
-* How to install and run the CodeZero Desktop app
-* How to add a cluster configuration to the Desktop app
-* How to create a Development Profile using the CLI
-* How to run a Development Profile from the Desktop app
-* How to view running sessions and command activity
+- How to install and run the CodeZero Desktop app
+- How to add a cluster configuration to the Desktop app
+- How to create a Development Profile using the CLI
+- How to run a Development Profile from the Desktop app
+- How to view running sessions and command activity
 
 ## Prerequisites
 
 It is assumed you have the standard prerequisites:
 
-[prerequisites](_fragments/prerequisites.md ':include')
+[prerequisites](_fragments/prerequisites.md ":include")
 
 If you are missing any of these, you can [learn about getting a Kubernetes cluster](/guides/kubernetes-quickstart), clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub, and follow this guide for [installing the CodeZero CLI and Desktop app](/guides/installing).
 
@@ -86,7 +86,7 @@ You should see the output `Core API cluster listening on http://localhost:3000`.
 Back in the Desktop app, click on the tray icon and run the new 'intercept' profile under the Development Profiles menu option.
 
 > [!Note]
-> If for some reason you don't see the new profile, make sure the intercept profile that was created ends in *.yaml, or try switching workspaces and coming back.
+> If for some reason you don't see the new profile, make sure the intercept profile that was created ends in \*.yaml, or try switching workspaces and coming back.
 
 Once the Intercept is running, you will see an entry for it on the Dashboard, and an ngrok URL. Click on the URL to open the link in a browser. There's no web UI here, but add `/api` to the end of your URL and you should see a JSON output.
 
