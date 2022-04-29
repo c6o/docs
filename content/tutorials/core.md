@@ -69,6 +69,7 @@ To intercept the sample-project-leaf service in the cluster, navigate to the URL
 
 ```bash
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
+
 ```
 
 or (for zsh, make sure you remove the escape character before the open parenthesis)

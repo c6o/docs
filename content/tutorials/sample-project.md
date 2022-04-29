@@ -103,8 +103,9 @@ On macOS, you can access the service using:
 ```bash
 open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ```
+
 > [!NOTE]
-> For `zsh` users, when pasting the script command into your terminal, the open parenthesis before "kubectl" 
+> For `zsh` users, when pasting the script command into your terminal, the open parenthesis before "kubectl"
 > may be escaped automatically by zsh. The escape character will need to be removed for the comand to run.
 
 Congratulations, you are now ready to move on to the [Developing Edge Services](/tutorials/edge.md) tutorial.

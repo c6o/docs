@@ -18,7 +18,7 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ':include')
 
-The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](./sample-project.md).
+The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](/sample-project.md).
 
 ## Tutorial
 
@@ -54,7 +54,7 @@ http://localhost:8999/sockets
 
 ### Start the CodeZero Daemon
 
-Assuming you have already [installed the CLI](../guides/installing.md), run:
+Assuming you have already [installed the CLI](/guides/installing.md), run:
 
 ```bash
 czctl start
