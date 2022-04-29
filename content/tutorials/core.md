@@ -8,7 +8,7 @@ Traditionally the backend developer would need to run all (or many) of an applic
 In this tutorial we will show two scenarios: intercepting a Leaf service, and using Intercept and Teleport together with a Core service.
 
 1. Leaf service: Here, the developer runs _only_ a Leaf service which will intercept requests
-to a cluster-based Leaf service. No other services will be run locally.
+   to a cluster-based Leaf service. No other services will be run locally.
 
 2. Core service: Here, the developer runs _only_ a Core service which will intercept requests
    to a cluster-based Core service, but it will need to have an active Teleport so that it can talk to the Leaf service in the cloud. No other services will be run locally.
@@ -17,15 +17,15 @@ to a cluster-based Leaf service. No other services will be run locally.
 
 In this tutorial, you will learn:
 
-* How to develop a Leaf Service locally so that services in the cluster talk to the local service.
-* How to develop a Core Service locally while it accesses services in the cluster and talks to other cluster-based services.
-* How to collaborate with a frontend developer on another machine.
+- How to develop a Leaf Service locally so that services in the cluster talk to the local service.
+- How to develop a Core Service locally while it accesses services in the cluster and talks to other cluster-based services.
+- How to collaborate with a frontend developer on another machine.
 
 ## Prerequisites
 
 It is assumed you have the standard prerequisites:
 
-[prerequisites](_fragments/prerequisites.md ':include')
+[prerequisites](_fragments/prerequisites.md ":include")
 
 The tutorial assumes you are at the root of the Sample Project repo, have completed the [Sample Project tutorial](./sample-project.md), and that you have the sample project running in your cluster in the namespace `sample-project`.
 
@@ -42,7 +42,7 @@ yarn start-leaf
 You should be able to access the local Leaf service at `http://localhost:3010/api`. You should see an API response that looks something like this:
 
 ```json
-{"who":"leaf","where":"Somewhere-Machine.local"}
+{"who": "leaf", "where": "Somewhere-Machine.local"}
 ```
 
 We are now set up to use CodeZero's **Intercept** with the Leaf service. A locally running service will soon be accepting requests from the cluster.
@@ -82,10 +82,10 @@ You will see that the response of the Leaf service is from the cluster-based ser
 
 ```json
 {
-   "url": "http://sample-project-leaf:3010/api",
-   "who": "leaf",
-   "where": "sample-project-leaf-6b6f85dfb5-4z9jv",
-   "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
+  "url": "http://sample-project-leaf:3010/api",
+  "who": "leaf",
+  "where": "sample-project-leaf-6b6f85dfb5-4z9jv",
+  "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
 }
 ```
 
@@ -99,10 +99,10 @@ Add a header (using something like the ModHeader Chrome extension) to the fronte
 
 ```json
 {
-    "url": "http://sample-project-leaf:3010/api",
-    "who": "leaf",
-    "where": "Local-Machine.local",
-    "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
+  "url": "http://sample-project-leaf:3010/api",
+  "who": "leaf",
+  "where": "Local-Machine.local",
+  "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
 }
 ```
 
@@ -238,9 +238,9 @@ You will see that the core output comes from your locally running service with t
 
 ```json
 {
-    "url": "/api",
-    "who": "core",
-    "where": "Local-Machine.local"
+  "url": "/api",
+  "who": "core",
+  "where": "Local-Machine.local"
 }
 ```
 
@@ -269,9 +269,9 @@ They should see the output from your locally running Core service where you can 
 
 ```json
 {
-    "url": "/api",
-    "who": "core",
-    "where": "Local-Machine.local"
+  "url": "/api",
+  "who": "core",
+  "where": "Local-Machine.local"
 }
 ```
 

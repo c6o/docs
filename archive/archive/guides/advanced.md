@@ -9,8 +9,15 @@ To provide an API, simply add API methods to the Provisioner. To call an API fro
 For example, the Istio provisioner calls the Grafana provisioner as follows.
 
 ```typescript
-const grafanaProvisioner = await this.manager.getAppProvisioner('grafana', grafanaNamespace)
-await grafanaProvisioner.beginConfig(grafanaNamespace, serviceNamespace, 'istio')
+const grafanaProvisioner = await this.manager.getAppProvisioner(
+  "grafana",
+  grafanaNamespace
+)
+await grafanaProvisioner.beginConfig(
+  grafanaNamespace,
+  serviceNamespace,
+  "istio"
+)
 ```
 
 First, it uses its ProvisionManager to get the provisioner for the Grafana application in the specified namespace. This will find the application spec for Grafana there, and if found will load the appropriate NPM package and instantiate the Grafana provisioner.
@@ -39,23 +46,24 @@ async remove(id, params) {}
 For example, the Istio provisioner exposes a choices service that exposes only a find method. This method uses the ProvisionManager to look for Grafana and Prometheus applications installed in the cluster.
 
 ```typescript
-import { baseProvisionerType } from '../../'
+import {baseProvisionerType} from "../../"
 
-export const choicesApiMixin = (base: baseProvisionerType) => class extends base {
-
-    'choices' = {
-        find: async () => {
-            let apps = await this.manager.getInstalledApps('grafana')
-            const grafanaOptions = apps.map(app => app.metadata.namespace) || []
-            apps = await this.manager.getInstalledApps('prometheus')
-            const prometheusOptions = apps.map(app => app.metadata.namespace) || []
-            return {
-              grafanaOptions,
-              prometheusOptions
-            }
+export const choicesApiMixin = (base: baseProvisionerType) =>
+  class extends base {
+    "choices" = {
+      find: async () => {
+        let apps = await this.manager.getInstalledApps("grafana")
+        const grafanaOptions = apps.map((app) => app.metadata.namespace) || []
+        apps = await this.manager.getInstalledApps("prometheus")
+        const prometheusOptions =
+          apps.map((app) => app.metadata.namespace) || []
+        return {
+          grafanaOptions,
+          prometheusOptions,
         }
+      },
     }
-}
+  }
 ```
 
 To call this service from the UI, the settings web component uses the UI to retrieve a client-side feathers service as shown in the web component snippet below.
@@ -74,12 +82,12 @@ See the [Implementation Strategy](/guides/implementation.md) and [Provisioner AP
 
 ## Advertising Services
 
-To indicate that an application provides a well-known API that is application-independent, applications can advertise *services* by adding labels to the application spec.
+To indicate that an application provides a well-known API that is application-independent, applications can advertise _services_ by adding labels to the application spec.
 
 For example, the Verdaccio provisioner supports the NPM registry API. To advertise this, it contains the npm-registry service label in its application spec (see the [Application Spec reference](/reference/appspec.md) for more information).
 
 To find applications that support a specific service, a client provisioner uses the ProvisionerManager `getInstalledServices` method to find applications that advertise this service. For example:
 
 ```typescript
-const apps = await this.manager.getInstalledServices('npm-registry')
+const apps = await this.manager.getInstalledServices("npm-registry")
 ```

@@ -23,11 +23,11 @@ App Engine does not cover every possible use case (yet). If an application needs
 
 A custom provisioner may be necessary for any applications that:
 
-* have multiple pods or containers per application,
-* need advanced user interaction during the installation process,
-* need to run as a Stateful Set or other advanced Kubernetes resources,
-* link to other CodeZero applications, or
-* expose a custom API for other applications
+- have multiple pods or containers per application,
+- need advanced user interaction during the installation process,
+- need to run as a Stateful Set or other advanced Kubernetes resources,
+- link to other CodeZero applications, or
+- expose a custom API for other applications
 
 > [!EXPERT]
 > You can read more about creating custom provisioners [here](../guides/custom-provisioner).
@@ -58,7 +58,7 @@ editions:
 ### App Engine Spec
 
 | Property  | Value(s)            | Default  | Description                                                                                                                 |
-|-----------|---------------------|----------|-----------------------------------------------------------------------------------------------------------------------------|
+| --------- | ------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
 | name      | String              | REQUIRED | Internal application name.                                                                                                  |
 | image     | String              | REQUIRED | Docker image name. Can also include tag (ex: `image:latest`).                                                               |
 | package   | String              | REQUIRED | Must always be set to `@provisioner/appengine` when using AppEngine.                                                        |
@@ -79,7 +79,7 @@ Configs are a KeyValue pair to define environment variables for the application.
 Several reserved values have special meaning. If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
 
 | Value        | Description                                                                                                                           |
-|--------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | $PUBLIC_FQDN | Resolves to the application instance's fully qualified domain name (ex: `myapp-mynamespace.mycloud.codezero.cloud`).                  |
 | $PUBLIC_URL  | URL to access this application instance, if a public HTTP route is provided (ex: `https://myapp-mynamespace.mycloud.codezero.cloud`). |
 
@@ -88,19 +88,19 @@ Several reserved values have special meaning. If the value matches one of these 
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      configs:
-        MY_ENV_VAR: my_value
+      provisioner:
+        # ...
+        configs:
+          MY_ENV_VAR: my_value
 ```
 
 ### Generator
 
 | Property                          | Value(s) | Default | Description                                                      |
-|-----------------------------------|----------|---------|------------------------------------------------------------------|
+| --------------------------------- | -------- | ------- | ---------------------------------------------------------------- |
 | generate.length                   | Int      | `10`    | Length of the generated string.                                  |
 | generate.numbers                  | Boolean  | `false` | Whether to include numbers.                                      |
 | generate.symbols                  | Boolean  | `false` | Whether to include symbols.                                      |
@@ -118,16 +118,16 @@ editions:
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      configs:
-        SOME_RANDOM_ENV:
-          generate:
-            length: 12
-            numbers: true
+      provisioner:
+        # ...
+        configs:
+          SOME_RANDOM_ENV:
+            generate:
+              length: 12
+              numbers: true
 ```
 
 ### Secret
@@ -142,22 +142,22 @@ Secrets are the same structure as [Configs](#Config), just under the `secrets` p
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      secrets:
-        ADMIN_PASSWORD:
-          generate:
-            length: 12
-            numbers: true
+      provisioner:
+        # ...
+        secrets:
+          ADMIN_PASSWORD:
+            generate:
+              length: 12
+              numbers: true
 ```
 
 ### Port
 
 | Property      | Value(s) | Default  | Description                                                                                |
-|---------------|----------|----------|--------------------------------------------------------------------------------------------|
+| ------------- | -------- | -------- | ------------------------------------------------------------------------------------------ |
 | port          | Int      | REQUIRED | The port to expose.                                                                        |
 | protocol      | String   | `TCP`    | Protocol type (`TCP` or `UDP`).                                                            |
 | name          | String   |          | Internal label.                                                                            |
@@ -168,20 +168,20 @@ editions:
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      ports:
-      - port: 80
-        protocol: tcp
+      provisioner:
+        # ...
+        ports:
+          - port: 80
+            protocol: tcp
 ```
 
 ### Volume
 
 | Property  | Value(s) | Default  | Description                              |
-|-----------|----------|----------|------------------------------------------|
+| --------- | -------- | -------- | ---------------------------------------- |
 | mountPath | String   | REQUIRED | Path the volume is mounted (ex: `/data`) |
 | size      | String   | REQUIRED | Volume Size (ex: 5Gi)                    |
 | name      | String   |          | Volume label                             |
@@ -192,16 +192,15 @@ editions:
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      volumes:
-      - mountPath: /var/www/data
-        size: 5Gi
+      provisioner:
+        # ...
+        volumes:
+          - mountPath: /var/www/data
+            size: 5Gi
 ```
-
 
 ### Flows
 
@@ -219,7 +218,7 @@ Flows is an array of [Steps](Step), where each step defines one or more [Prompts
 A step defines a collection of questions and can even group sets of questions into separate sections.
 
 | Property | Value(s)              | Description                                                                 |
-|----------|-----------------------|-----------------------------------------------------------------------------|
+| -------- | --------------------- | --------------------------------------------------------------------------- |
 | name     | String                | Title for this step of the installation processes.                          |
 | skip     | function              | A function expression, if it resolves to true, this step is skipped.        |
 | sections | [Section](#Section)[] | A section allows the developer to group a set of questions within the step. |
@@ -236,55 +235,54 @@ A step defines a collection of questions and can even group sets of questions in
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      flow:
-      - name: Step 1
-        prompts:
-        - name: USER_NAME
-          message: What is your name?
+      provisioner:
+        # ...
+        flow:
+          - name: Step 1
+            prompts:
+              - name: USER_NAME
+                message: What is your name?
 ```
 
 ### Section
 
 | Property | Value(s)            | Description                          |
-|----------|---------------------|--------------------------------------|
+| -------- | ------------------- | ------------------------------------ |
 | title    | String              | Title for this section.              |
 | prompts  | [Prompt](#Prompt)[] | A list of questions to ask the user. |
 
-> [!PROTIP]
-> `prompts` can be an array of prompts or a single prompt.
+> [!PROTIP] > `prompts` can be an array of prompts or a single prompt.
 
 #### Section Example
 
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      flow:
-      - name: Step 1
-        sections:
-        - title: Section 1
-          prompts:
-          - name: FIRST_NAME
-            message: What is your first name?
-        - title: Section 2
-          prompts:
-          - name: LAST_NAME
-            message: What is your last name?
+      provisioner:
+        # ...
+        flow:
+          - name: Step 1
+            sections:
+              - title: Section 1
+                prompts:
+                  - name: FIRST_NAME
+                    message: What is your first name?
+              - title: Section 2
+                prompts:
+                  - name: LAST_NAME
+                    message: What is your last name?
 ```
 
 ### Prompt
 
 | Property    | Value(s)                  | Default  | Description                                                                                                      |
-|-------------|---------------------------|----------|------------------------------------------------------------------------------------------------------------------|
+| ----------- | ------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
 | type        | String                    | `input`  | Supported types: `input`, `number`, `confirm`, `list`, `rawlist`, `expand`, `checkbox`, `password`, or `editor`. |
 | name        | String                    | REQUIRED | Environment variable name that contains the answer.                                                              |
 | message     | String                    |          | Short message used to prompt the user for an answer.                                                             |
@@ -304,29 +302,29 @@ editions:
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      flow:
-      - name: Step 1
-        prompts:
-        - type: list
-          name: DOMINANT_HAND
-          message: What is your dominant hand?
-          choices:
-          - Right
-          - Left
-          - Both
-          - Neither
+      provisioner:
+        # ...
+        flow:
+          - name: Step 1
+            prompts:
+              - type: list
+                name: DOMINANT_HAND
+                message: What is your dominant hand?
+                choices:
+                  - Right
+                  - Left
+                  - Both
+                  - Neither
 ```
 
 ### Prompt Extensions
 
 | Property        | Value(s)                    | Default   | Description                                                                                                  |
-|-----------------|-----------------------------|-----------|--------------------------------------------------------------------------------------------------------------|
-| target          | String                      | `configs` | Where should the variable be stored?  Valid values: `configs`, `secrets`, `transient`.                       |
+| --------------- | --------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| target          | String                      | `configs` | Where should the variable be stored? Valid values: `configs`, `secrets`, `transient`.                        |
 | label           | String                      |           | An additional label use when displaying the input field.                                                     |
 | required        | Boolean                     | `false`   | Require a response.                                                                                          |
 | generate        | [Generator](#Generator)     |           | Provide the user an option to auto-generate a value.                                                         |
@@ -345,24 +343,24 @@ editions:
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      flow:
-      - name: Step 1
-        prompts:
-        - type: password
-          name: ADMIN_PASSWORD
-          message: Initial admin password
-          c6o:
-            label: Admin Password
-            target: secrets
-            required: true
-            generateMessage: Generate a strong password?
-            generate:
-              length: 16
+      provisioner:
+        # ...
+        flow:
+          - name: Step 1
+            prompts:
+              - type: password
+                name: ADMIN_PASSWORD
+                message: Initial admin password
+                c6o:
+                  label: Admin Password
+                  target: secrets
+                  required: true
+                  generateMessage: Generate a strong password?
+                  generate:
+                    length: 16
 ```
 
 ### Data Sources
@@ -374,17 +372,17 @@ Data Sources are used to populate the list options with commonly used values aut
 ```yaml
 # ...
 editions:
-- # ...
-  spec:
-    # ...
-    provisioner:
+  - # ...
+    spec:
       # ...
-      flow:
-      - name: Step 1
-        prompts:
-        - type: list
-          name: TZ
-          message: What timezone are you in?
-          c6o:
-            dataSource: timezone
+      provisioner:
+        # ...
+        flow:
+          - name: Step 1
+            prompts:
+              - type: list
+                name: TZ
+                message: What timezone are you in?
+                c6o:
+                  dataSource: timezone
 ```

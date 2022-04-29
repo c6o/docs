@@ -3,7 +3,7 @@
 
 # How Provisioners Work
 
-A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the  CLI and the c6o system via the Marina desktop, Store and NavStation applications.
+A Provisioner is an NPM package used by the CodeZero platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the CLI and the c6o system via the Marina desktop, Store and NavStation applications.
 
 ## Architecture
 
@@ -70,7 +70,7 @@ In the store, users are prompted with an installation wizard to generate a compl
 
 On remove, the app manifest is deleted. The system-controller detects the deletion, and then calls the deprovision method on a provisioner. Once deprovision succeeds, the application resource is released for k8s to delete it.
 
-When the user chooses *advanced options* during uninstall, the `uninstall` web components for each provisioner used by the app is displayed in a wizard similar to the installation.
+When the user chooses _advanced options_ during uninstall, the `uninstall` web components for each provisioner used by the app is displayed in a wizard similar to the installation.
 
 #### Settings - NavStation
 
@@ -88,4 +88,4 @@ Provisioners can expose APIs to other provisioners, e.g. to support linking func
 
 ### Application Linking
 
-To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be *linked*. To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.
+To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be _linked_. To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.

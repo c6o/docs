@@ -10,16 +10,16 @@ We have taken care to reuse what is already available, so you can leverage your 
 
 These core values help guide the overall architecture of CodeZero.
 
-* Deliver an excellent development experience
-* Leverage and contribute to existing open source technologies
-* Provide a seamless experience throughout the development lifecycle
-* Work with your Kubernetes provider of choice:
+- Deliver an excellent development experience
+- Leverage and contribute to existing open source technologies
+- Provide a seamless experience throughout the development lifecycle
+- Work with your Kubernetes provider of choice:
 
 ## Our Inspiration and Tools
 
-* Kubernetes
-* Docker
-* Istio
-* nodejs/npm
-* Typescript
-* FeathersJS
+- Kubernetes
+- Docker
+- Istio
+- nodejs/npm
+- Typescript
+- FeathersJS

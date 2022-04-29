@@ -9,14 +9,14 @@ Traditionally the frontend developer would need to run all (or many) of an appli
 
 In this tutorial, you will learn:
 
-* How to develop an Edge Service locally while it accesses Services in Cluster
-* How to configure a service based on local and in-cluster environments
+- How to develop an Edge Service locally while it accesses Services in Cluster
+- How to configure a service based on local and in-cluster environments
 
 ## Prerequisites
 
 It is assumed you have the standard prerequisites:
 
-[prerequisites](_fragments/prerequisites.md ':include')
+[prerequisites](_fragments/prerequisites.md ":include")
 
 The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](/sample-project.md).
 

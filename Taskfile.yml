@@ -1,0 +1,14 @@
+---
+# Uses https://taskfile.dev/#/
+
+version: "3"
+
+vars: {}
+
+env: {}
+
+includes:
+  formatter: .taskfiles/formatter.yml
+  linter: .taskfiles/linter.yml
+
+tasks: {}

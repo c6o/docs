@@ -5,13 +5,13 @@
 
 The strategy for implementing a provisioner is as follows:
 
-* Create and test the set of Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets and others needed to deploy your application.
-* Parameterize these resources using handlebars `{{}}` to allow users to configure the applications on install. This includes allowing users to deploy them in different namespaces, different cloud environments with varying storage options.
-* Create a new provisioner NPM module.
-* Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and `createApply` provisioner implementation.
-* Test and debug using the CLI using a local file application manifest.
-* Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently, these must be tested with a system server running locally.
-* When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
+- Create and test the set of Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets and others needed to deploy your application.
+- Parameterize these resources using handlebars `{{}}` to allow users to configure the applications on install. This includes allowing users to deploy them in different namespaces, different cloud environments with varying storage options.
+- Create a new provisioner NPM module.
+- Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and `createApply` provisioner implementation.
+- Test and debug using the CLI using a local file application manifest.
+- Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently, these must be tested with a system server running locally.
+- When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
 
 ## Provisioner Methods
 
@@ -19,23 +19,23 @@ When handling a `CREATE`, `UPDATE` or `REMOVE` event from the c6o controller, or
 
 To implement a provisioner, you need to implement one or more methods corresponding to the action and stages of provisioning. There are three actions: **create**, **update** and **remove**, and three stages: **inquire**, **validate** and **apply**.
 
-*Inquire* asks the CLI user for options. It is not used by the web UI. *Validate* ensures application spec is consistent and fills in any defaults. *Apply* does the work of the action. It is the only action method that must be implemented to perform the action.
+_Inquire_ asks the CLI user for options. It is not used by the web UI. _Validate_ ensures application spec is consistent and fills in any defaults. _Apply_ does the work of the action. It is the only action method that must be implemented to perform the action.
 
 For example, for a simple provisioner that does only installation, you'd need to implement at least `createApply()`, but you may also implement `createInquire()`, `createValidate()`, as well as `updateApply()` to implement configuring applications.
 
-| Method | Description | CLI/Web |
-|--------|-------------|---------|
-| createInquire | interactively ask the user for configuration options from the command line before install | CLI |
-| createValidate | ensure provided install options are valid, and set any defaults | both |
-| createApply | add k8s resources to the cluster | both |
-| | |
-| updateInquire | interactively ask the user for configuration options from the command line before update | CLI |
-| updateValidate | ensure update options are valid, and set any defaults | both | 
-| updateApply | performs an update of the application resource, for example, changing config maps | both |
-| | |
-| removeInquire | interactively ask the user for configuration options from the command line before removal such as keeping IP addresses or data volumes | CLI |
-| removeValidate | ensure removal options are valid, and set any defaults | both | 
-| removeApply | remove the application resources from the cluster, leaving any the user wants to reuse such as IP addresses and data volumes. | both |
+| Method         | Description                                                                                                                            | CLI/Web |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| createInquire  | interactively ask the user for configuration options from the command line before install                                              | CLI     |
+| createValidate | ensure provided install options are valid, and set any defaults                                                                        | both    |
+| createApply    | add k8s resources to the cluster                                                                                                       | both    |
+|                |                                                                                                                                        |
+| updateInquire  | interactively ask the user for configuration options from the command line before update                                               | CLI     |
+| updateValidate | ensure update options are valid, and set any defaults                                                                                  | both    |
+| updateApply    | performs an update of the application resource, for example, changing config maps                                                      | both    |
+|                |                                                                                                                                        |
+| removeInquire  | interactively ask the user for configuration options from the command line before removal such as keeping IP addresses or data volumes | CLI     |
+| removeValidate | ensure removal options are valid, and set any defaults                                                                                 | both    |
+| removeApply    | remove the application resources from the cluster, leaving any the user wants to reuse such as IP addresses and data volumes.          | both    |
 
 ## User Interface Components
 
@@ -57,40 +57,64 @@ The component can optionally implement a `begin` and `end` method called on the 
 An example install web component from the Prometheus installer is shown below.
 
 ```javascript
-import { LitElement, html, customElement, property } from 'lit-element'
-import { StoreFlowStep, StoreFlowMediator } from '@provisioner/common'
+import {LitElement, html, customElement, property} from "lit-element"
+import {StoreFlowStep, StoreFlowMediator} from "@provisioner/common"
 
-@customElement('prometheus-install-main')
+@customElement("prometheus-install-main")
 export class PrometheusMainInstall extends LitElement implements StoreFlowStep {
-    mediator: StoreFlowMediator
+  mediator: StoreFlowMediator
 
-    get serviceSpec() {
-        return this.mediator.getServiceSpec('prometheus')
-    }
+  get serviceSpec() {
+    return this.mediator.getServiceSpec("prometheus")
+  }
 
-    @property({type: Boolean})
-    isSimple = false
+  @property({type: Boolean})
+  isSimple = false
 
-    render() {
-        return html`
-            <c6o-form-layout>
-                <c6o-checkbox @checked-changed=${this.checkHandler('simpleService')} ?checked=${!!this.serviceSpec.simpleService}>Simple Prometheus Install</c6o-checkbox>
-                <br />
-                <c6o-checkbox @checked-changed=${this.checkHandler('alertManagerEnabled')} ?checked=${!!this.serviceSpec.alertManagerEnabled} ?disabled=${this.isSimple}>Alert Manager</c6o-checkbox>
-                <br />
-                <c6o-checkbox @checked-changed=${this.checkHandler('kubeMetricsEnabled')} ?checked=${!!this.serviceSpec.kubeMetricsEnabled} ?disabled=${this.isSimple}>Kube State Metrics</c6o-checkbox>
-                <br />
-                <c6o-checkbox @checked-changed=${this.checkHandler('nodeExporterEnabled')} ?checked=${!!this.serviceSpec.nodeExporterEnabled} ?disabled=${this.isSimple}>Node Exporter</c6o-checkbox>
-                <br />
-                <c6o-checkbox @checked-changed=${this.checkHandler('pushGatewayEnabled')} ?checked=${!!this.serviceSpec.pushGatewayEnabled} ?disabled=${this.isSimple}>Push Gateway</c6o-checkbox>
-            </c6o-form-layout>
-        `
-    }
+  render() {
+    return html`
+      <c6o-form-layout>
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("simpleService")}
+          ?checked=${!!this.serviceSpec.simpleService}
+          >Simple Prometheus Install</c6o-checkbox
+        >
+        <br />
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("alertManagerEnabled")}
+          ?checked=${!!this.serviceSpec.alertManagerEnabled}
+          ?disabled=${this.isSimple}
+          >Alert Manager</c6o-checkbox
+        >
+        <br />
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("kubeMetricsEnabled")}
+          ?checked=${!!this.serviceSpec.kubeMetricsEnabled}
+          ?disabled=${this.isSimple}
+          >Kube State Metrics</c6o-checkbox
+        >
+        <br />
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("nodeExporterEnabled")}
+          ?checked=${!!this.serviceSpec.nodeExporterEnabled}
+          ?disabled=${this.isSimple}
+          >Node Exporter</c6o-checkbox
+        >
+        <br />
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("pushGatewayEnabled")}
+          ?checked=${!!this.serviceSpec.pushGatewayEnabled}
+          ?disabled=${this.isSimple}
+          >Push Gateway</c6o-checkbox
+        >
+      </c6o-form-layout>
+    `
+  }
 
-    checkHandler = (field) => (e) => {
-        this.serviceSpec[field] = e.detail.value
-        this.isSimple = this.serviceSpec.simpleService
-    }
+  checkHandler = (field) => (e) => {
+    this.serviceSpec[field] = e.detail.value
+    this.isSimple = this.serviceSpec.simpleService
+  }
 }
 ```
 
@@ -246,37 +270,44 @@ export class IstioSettings extends LitElement {
 A provisioner can implement an `uninstall` web component. This component allows the user to select advanced uninstallation options. For example, in the VSCode provisioner, you can decide whether to keep the allocated volume and IP address.
 
 ```javascript
-import { LitElement, html, customElement } from 'lit-element'
-import { StoreFlowStep, StoreFlowMediator } from '@provisioner/common'
+import {LitElement, html, customElement} from "lit-element"
+import {StoreFlowStep, StoreFlowMediator} from "@provisioner/common"
 
-@customElement('vscode-uninstall-main')
+@customElement("vscode-uninstall-main")
 export class UninstallVSCode extends LitElement implements StoreFlowStep {
+  mediator: StoreFlowMediator
+  get serviceSpec() {
+    return this.mediator.getServiceSpec("vscode")
+  }
 
-    mediator: StoreFlowMediator
-    get serviceSpec() {
-        return this.mediator.getServiceSpec('vscode')
-    }
-
-    render() {
-        return html`
-        <c6o-form-layout>
-        <c6o-checkbox @checked-changed=${this.checkHandler('keep-ip')} ?checked=${!!this.serviceSpec.deprovision['keep-ip']}>Keep IP address</c6o-checkbox>
+  render() {
+    return html`
+      <c6o-form-layout>
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("keep-ip")}
+          ?checked=${!!this.serviceSpec.deprovision["keep-ip"]}
+          >Keep IP address</c6o-checkbox
+        >
         <br />
-        <c6o-checkbox @checked-changed=${this.checkHandler('keep-vol')} ?checked=${!!this.serviceSpec.deprovision['keep-vol']}>Keep data volume</c6o-checkbox>
-        </c6o-form-layout>
-        `
-    }
+        <c6o-checkbox
+          @checked-changed=${this.checkHandler("keep-vol")}
+          ?checked=${!!this.serviceSpec.deprovision["keep-vol"]}
+          >Keep data volume</c6o-checkbox
+        >
+      </c6o-form-layout>
+    `
+  }
 
-    async begin() {
-        this.serviceSpec.deprovision = {
-            'keep-ip':false,
-            'keep-vol':true
-        }
+  async begin() {
+    this.serviceSpec.deprovision = {
+      "keep-ip": false,
+      "keep-vol": true,
     }
+  }
 
-    checkHandler = (field) => (e) => {
-        this.serviceSpec.deprovision[field] = e.detail.value
-    }
+  checkHandler = (field) => (e) => {
+    this.serviceSpec.deprovision[field] = e.detail.value
+  }
 }
 ```
 
@@ -294,12 +325,12 @@ Interactive CLI support is provided by the NPM Inquirer package. Documentation o
 
 A provisioner module is typically organized as follows.
 
-* /provisioner-name
-  * /k8s - Kubernetes templates
-  * /src - source
-    * /mixins - provisioner method implementations
-    * /ui - provisioner UI web components
-    * index.ts - provisioner entry point
-  * package.json
-  * README.md
-  * tsconfig.json
+- /provisioner-name
+  - /k8s - Kubernetes templates
+  - /src - source
+    - /mixins - provisioner method implementations
+    - /ui - provisioner UI web components
+    - index.ts - provisioner entry point
+  - package.json
+  - README.md
+  - tsconfig.json

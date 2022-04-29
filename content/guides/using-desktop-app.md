@@ -11,11 +11,11 @@ With the app you can:
 1. Merge `kubeconfig` contexts into your system's `kubeconfig` at `~/.kube/config`
 2. Switch the active context
 3. Securely request and share encrypted contexts with other users
-4. Add *Workspaces* containing *Development Profiles* for easily running commands
-5. Run *Development Profiles* from your computer's system tray
-6. See active *Sessions* belonging to you or other users working in the cluster
-7. Close running *Sessions*
-8. See logs from *Sessions* and previously run commands
+4. Add _Workspaces_ containing _Development Profiles_ for easily running commands
+5. Run _Development Profiles_ from your computer's system tray
+6. See active _Sessions_ belonging to you or other users working in the cluster
+7. Close running _Sessions_
+8. See logs from _Sessions_ and previously run commands
 9. Manage your user profile
 
 ---
@@ -33,7 +33,7 @@ To add a new context:
    - Select a file containing the context
 4. Click on the "Add Context" button.
 
-When adding a context, it can be either plaintext or *encrypted*.
+When adding a context, it can be either plaintext or _encrypted_.
 
 Encrypted contexts can be generated using the Desktop app for securely sharing a context with other users. Learn more about [requesting an encrypted context](/guides/collaboration?id=requesting-a-context), or [generating an encypted context](/guides/collaboration?id=generating-and-sharing-an-encrypted-context).
 
@@ -49,7 +49,7 @@ You can switch your active context using the tray menu or from the Dashboard's s
 
 ## Adding a Workspace
 
-*Workspaces* are Git repos that may contain *Development Profiles* at the root of the repository in the `.codezero/develop/` folder.
+_Workspaces_ are Git repos that may contain _Development Profiles_ at the root of the repository in the `.codezero/develop/` folder.
 
 Workspaces are managed in the system tray menu under **Workspaces**. The following describes how to add a new workspace, and how to select the current workspace.
 
@@ -74,7 +74,7 @@ You can switch between workspaces using the **Workspaces** menu.
 
 ## Running a Development Profile
 
-*Development Profiles* are read from the `.codezero/develop/` directory within Workspaces. The following describes how to run a Development Profile.
+_Development Profiles_ are read from the `.codezero/develop/` directory within Workspaces. The following describes how to run a Development Profile.
 
 1. Click on the CodeZero system tray icon.
 2. Open the **Workspaces** menu and make sure you have the correct workspace selected.

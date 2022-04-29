@@ -16,13 +16,13 @@ A CodeZero Cloud is a Kubernetes (k8s) cluster enhanced with the CodeZero platfo
 
 Components that are installed and operate in a customers cluster:
 
-| **Application**   | **Description** | **Linux Analogy**
-| ---------------   | --------------- | -----------------
-| CodeZero System   | This is the operating system of a CodeZero Cloud | Ubuntu
-| Marina            | A web UI that provides a desktop like experience to CodeZero | GNOME
-| Store             | Responsible for finding and installing applications from the CodeZero hub | APT
-| Harbour Master (coming soon)    | User/access control |  
-| Coast Guard (coming soon)       | Network security management | UFW
+| **Application**              | **Description**                                                           | **Linux Analogy** |
+| ---------------------------- | ------------------------------------------------------------------------- | ----------------- |
+| CodeZero System              | This is the operating system of a CodeZero Cloud                          | Ubuntu            |
+| Marina                       | A web UI that provides a desktop like experience to CodeZero              | GNOME             |
+| Store                        | Responsible for finding and installing applications from the CodeZero hub | APT               |
+| Harbour Master (coming soon) | User/access control                                                       |
+| Coast Guard (coming soon)    | Network security management                                               | UFW               |
 
 ## CodeZero Hub
 

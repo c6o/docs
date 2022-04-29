@@ -2,237 +2,237 @@
 
 ## Properties
 
-###  info
+### info
 
-• **info**: *[Version](version.md)*
+• **info**: _[Version](version.md)_
 
 The Kubernetes cluster-info
 
-___
+---
 
-###  processor
+### processor
 
-• **processor**: *[Processor](processor.md)*
+• **processor**: _[Processor](processor.md)_
 
 The currently executing processor. Each begin/end block starts a new processor.
 
 ## Methods
 
-###  begin
+### begin
 
-▸ **begin**(`stageName?`: string): *[Processor](processor.md)*
+▸ **begin**(`stageName?`: string): _[Processor](processor.md)_
 
 Start a new processor. A Processor is a stack of operations that execute sequentially.
 The results of each step are passed onto the next step. Begin has to have a matching end
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`stageName?` | string | Displayed in the UI  |
+| Name         | Type   | Description         |
+| ------------ | ------ | ------------------- |
+| `stageName?` | string | Displayed in the UI |
 
-**Returns:** *[Processor](processor.md)*
+**Returns:** _[Processor](processor.md)_
 
-___
+---
 
-###  create
+### create
 
-▸ **create**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): *Promise‹[Result](result.md)›*
+▸ **create**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): _Promise‹[Result](result.md)›_
 
 Create a given resource
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource |
-`owners?` | Array‹KubeDocument› | Kubernetes resource that own this resource. Deleting the owner will delete this resource  |
+| Name       | Type                | Description                                                                              |
+| ---------- | ------------------- | ---------------------------------------------------------------------------------------- |
+| `document` | KubeDocument        | The Kubernetes resource                                                                  |
+| `owners?`  | Array‹KubeDocument› | Kubernetes resource that own this resource. Deleting the owner will delete this resource |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  delete
+### delete
 
-▸ **delete**(`document`: KubeDocument): *Promise‹[Result](result.md)›*
+▸ **delete**(`document`: KubeDocument): _Promise‹[Result](result.md)›_
 
 Delete a Kubernetes resource
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource to delete  |
+| Name       | Type         | Description                       |
+| ---------- | ------------ | --------------------------------- |
+| `document` | KubeDocument | The Kubernetes resource to delete |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  exec
+### exec
 
-▸ **exec**(`document`: KubeDocument, `command`: string | string[], `stdout?`: Writable, `stderr?`: Writable, `stdin?`: Readable): *Promise‹[Result](result.md)›*
+▸ **exec**(`document`: KubeDocument, `command`: string | string[], `stdout?`: Writable, `stderr?`: Writable, `stdin?`: Readable): _Promise‹[Result](result.md)›_
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`document` | KubeDocument |
-`command` | string &#124; string[] |
-`stdout?` | Writable |
-`stderr?` | Writable |
-`stdin?` | Readable |
+| Name       | Type                   |
+| ---------- | ---------------------- |
+| `document` | KubeDocument           |
+| `command`  | string &#124; string[] |
+| `stdout?`  | Writable               |
+| `stderr?`  | Writable               |
+| `stdin?`   | Readable               |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  list
+### list
 
-▸ **list**(`document`: KubeDocument, `options?`: listOptions): *Promise‹[Result](result.md)›*
+▸ **list**(`document`: KubeDocument, `options?`: listOptions): _Promise‹[Result](result.md)›_
 
 Gets a list of a given document kind. document.metadata.name is ignored
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource |
-`options?` | listOptions | Flags for the list operation  |
+| Name       | Type         | Description                  |
+| ---------- | ------------ | ---------------------------- |
+| `document` | KubeDocument | The Kubernetes resource      |
+| `options?` | listOptions  | Flags for the list operation |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  patch
+### patch
 
-▸ **patch**(`document`: KubeDocument, `patch`: Partial‹KubeObject›): *Promise‹[Result](result.md)›*
+▸ **patch**(`document`: KubeDocument, `patch`: Partial‹KubeObject›): _Promise‹[Result](result.md)›_
 
 Patch a Kubernetes resource
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource to patch |
-`patch` | Partial‹KubeObject› | Fields to patch  |
+| Name       | Type                | Description                      |
+| ---------- | ------------------- | -------------------------------- |
+| `document` | KubeDocument        | The Kubernetes resource to patch |
+| `patch`    | Partial‹KubeObject› | Fields to patch                  |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  portForward
+### portForward
 
-▸ **portForward**(`containerPort`: number, `document`: KubeDocument): *Promise‹[Result](result.md)›*
+▸ **portForward**(`containerPort`: number, `document`: KubeDocument): _Promise‹[Result](result.md)›_
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`containerPort` | number |
-`document` | KubeDocument |
+| Name            | Type         |
+| --------------- | ------------ |
+| `containerPort` | number       |
+| `document`      | KubeDocument |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  put
+### put
 
-▸ **put**(`document`: KubeDocument, `newDoc`: KubeDocument, `params?`: putOptions): *Promise‹[Result](result.md)›*
+▸ **put**(`document`: KubeDocument, `newDoc`: KubeDocument, `params?`: putOptions): _Promise‹[Result](result.md)›_
 
 Replaces a Kubernetes resource
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource to match exactly |
-`newDoc` | KubeDocument | The Kubernetes resource to replace |
-`params?` | putOptions | Additional options for the put call  |
+| Name       | Type         | Description                              |
+| ---------- | ------------ | ---------------------------------------- |
+| `document` | KubeDocument | The Kubernetes resource to match exactly |
+| `newDoc`   | KubeDocument | The Kubernetes resource to replace       |
+| `params?`  | putOptions   | Additional options for the put call      |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  read
+### read
 
-▸ **read**(`document`: KubeDocument): *Promise‹[Result](result.md)›*
+▸ **read**(`document`: KubeDocument): _Promise‹[Result](result.md)›_
 
 Gets a given resource
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource  |
+| Name       | Type         | Description             |
+| ---------- | ------------ | ----------------------- |
+| `document` | KubeDocument | The Kubernetes resource |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  toAddress
+### toAddress
 
-▸ **toAddress**(`document`: KubeDocument): *Promise‹KubeObjectAddress›*
-
-**Parameters:**
-
-Name | Type |
------- | ------ |
-`document` | KubeDocument |
-
-**Returns:** *Promise‹KubeObjectAddress›*
-
-___
-
-###  toString
-
-▸ **toString**(`document`: KubeDocument): *string*
+▸ **toAddress**(`document`: KubeDocument): _Promise‹KubeObjectAddress›_
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`document` | KubeDocument |
+| Name       | Type         |
+| ---------- | ------------ |
+| `document` | KubeDocument |
 
-**Returns:** *string*
+**Returns:** _Promise‹KubeObjectAddress›_
 
-___
+---
 
-###  upsert
+### toString
 
-▸ **upsert**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): *Promise‹[Result](result.md)›*
+▸ **toString**(`document`: KubeDocument): _string_
+
+**Parameters:**
+
+| Name       | Type         |
+| ---------- | ------------ |
+| `document` | KubeDocument |
+
+**Returns:** _string_
+
+---
+
+### upsert
+
+▸ **upsert**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): _Promise‹[Result](result.md)›_
 
 Upsert a Kubernetes resource. This performs a read first and a create or patch depending
 on the results
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`document` | KubeDocument | The Kubernetes resource to upsert |
-`owners?` | Array‹KubeDocument› | Owners are passed to create if inserting  |
+| Name       | Type                | Description                              |
+| ---------- | ------------------- | ---------------------------------------- |
+| `document` | KubeDocument        | The Kubernetes resource to upsert        |
+| `owners?`  | Array‹KubeDocument› | Owners are passed to create if inserting |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_
 
-___
+---
 
-###  version
+### version
 
-▸ **version**(): *Promise‹[Version](version.md)›*
+▸ **version**(): _Promise‹[Version](version.md)›_
 
-**Returns:** *Promise‹[Version](version.md)›*
+**Returns:** _Promise‹[Version](version.md)›_
 
-___
+---
 
-###  watch
+### watch
 
-▸ **watch**(`document`: KubeDocument, `callback`: watchCallback, `error`: watchDone): *Promise‹[Result](result.md)›*
+▸ **watch**(`document`: KubeDocument, `callback`: watchCallback, `error`: watchDone): _Promise‹[Result](result.md)›_
 
 **Parameters:**
 
-Name | Type |
------- | ------ |
-`document` | KubeDocument |
-`callback` | watchCallback |
-`error` | watchDone |
+| Name       | Type          |
+| ---------- | ------------- |
+| `document` | KubeDocument  |
+| `callback` | watchCallback |
+| `error`    | watchDone     |
 
-**Returns:** *Promise‹[Result](result.md)›*
+**Returns:** _Promise‹[Result](result.md)›_

@@ -1,10 +1,10 @@
 # How Provisioners Work
 
-The c6o *application manifest* is a Kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage cloud applications.
+The c6o _application manifest_ is a Kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage cloud applications.
 
-The manifest contains sections used by a *provisioner* for installing, removing, and updating applications, sections for configuring internal and external access to the application, service interfaces, and status. More information on the manifest can be found [here](/reference/appspec.md).
+The manifest contains sections used by a _provisioner_ for installing, removing, and updating applications, sections for configuring internal and external access to the application, service interfaces, and status. More information on the manifest can be found [here](/reference/appspec.md).
 
-A Provisioner is an npm package used by the c6o platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the  CLI and the c6o system via the Marina desktop, Store and NavStation applications.
+A Provisioner is an npm package used by the c6o platform to install, remove, and reconfigure applications. The Provisioner module is accessed both by the CLI and the c6o system via the Marina desktop, Store and NavStation applications.
 
 ## Architecture
 
@@ -41,9 +41,9 @@ graph TD
 
 ## Provisioner Services
 
-A Provisioner exposes methods to implement the *create*, *update* and *remove* actions. The *create* action corresponds to application install, *update* to changing configuration, and *remove* to uninstalling.
+A Provisioner exposes methods to implement the _create_, _update_ and _remove_ actions. The _create_ action corresponds to application install, _update_ to changing configuration, and _remove_ to uninstalling.
 
-Each action typically has three phases: *inquire*, *validate* and *apply*. The inquire stage retrieves info from the user of the CLI; validate is used to validate the application manifest, and apply to install resources on the cluster. When using a provisioner from the web UI, the application manifest is created on the front end and added to the cluster.
+Each action typically has three phases: _inquire_, _validate_ and _apply_. The inquire stage retrieves info from the user of the CLI; validate is used to validate the application manifest, and apply to install resources on the cluster. When using a provisioner from the web UI, the application manifest is created on the front end and added to the cluster.
 
 ### Create Application Action
 
@@ -71,7 +71,7 @@ In the store, users are prompted with an install wizard to generate a complete a
 
 On remove, the app manifest is deleted. The system-controller detects the delete, and then calls the deprovision method on a provisioner. Once deprovision succeeds, the application resource is released for k8s to delete it.
 
-When the user chooses *advanced options* during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard similar to the install.
+When the user chooses _advanced options_ during uninstall, the uninstall web components for each provisioner used by the app is displayed in a wizard similar to the install.
 
 #### Settings - NavStation
 
@@ -89,4 +89,4 @@ Provisioners can expose APIs to other provisioners, e.g. to support linking func
 
 ### Application Linking
 
-To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be *linked*. To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.
+To support coordination between applications, for example configuring Prometheus and a Grafana dashboard to display application metrics, applications can be _linked_. To do this, a provisioner can find other applications installed in the cluster, and call the associated provisioners APIs for those applications for example, to add configuration and restart the applications.

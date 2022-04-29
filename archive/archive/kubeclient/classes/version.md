@@ -4,120 +4,120 @@ Represents the version and other cluster information
 
 ## Properties
 
-###  data
+### data
 
-• **data**: *any*
+• **data**: _any_
 
 The result from the cluster-info call
 
 ## Methods
 
-###  compare
+### compare
 
-▸ **compare**(`ver`: any): *number*
+▸ **compare**(`ver`: any): _number_
 
 Compare operation for a given version
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *number*
+**Returns:** _number_
 
-___
+---
 
-###  eq
+### eq
 
-▸ **eq**(`ver`: any): *boolean*
+▸ **eq**(`ver`: any): _boolean_
 
 True if the given version is equal
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-___
+---
 
-###  gt
+### gt
 
-▸ **gt**(`ver`: any): *boolean*
+▸ **gt**(`ver`: any): _boolean_
 
 True if the given version is greater than
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-___
+---
 
-###  gte
+### gte
 
-▸ **gte**(`ver`: any): *boolean*
+▸ **gte**(`ver`: any): _boolean_
 
 True if the given version is greater than or equal
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-___
+---
 
-###  lt
+### lt
 
-▸ **lt**(`ver`: any): *boolean*
+▸ **lt**(`ver`: any): _boolean_
 
 True if the given version is less than
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-___
+---
 
-###  lte
+### lte
 
-▸ **lte**(`ver`: any): *boolean*
+▸ **lte**(`ver`: any): _boolean_
 
 True if the given version is less than or equal
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_
 
-___
+---
 
-###  neq
+### neq
 
-▸ **neq**(`ver`: any): *boolean*
+▸ **neq**(`ver`: any): _boolean_
 
 True if the given version is not equal
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`ver` | any | Semantic version string  |
+| Name  | Type | Description             |
+| ----- | ---- | ----------------------- |
+| `ver` | any  | Semantic version string |
 
-**Returns:** *boolean*
+**Returns:** _boolean_

@@ -2,87 +2,87 @@
 
 ## Methods
 
-###  attempt
+### attempt
 
-▸ **attempt**(`times`: number, `sleepTime`: number, `fn`: attemptCallback): *this*
+▸ **attempt**(`times`: number, `sleepTime`: number, `fn`: attemptCallback): _this_
 
 Attempts an operation several times until it either succeeds or exceeds the attempt count
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`times` | number | Number of times execute the function |
-`sleepTime` | number | Number of milliseconds to sleep between atempts |
-`fn` | attemptCallback | The function to attempt  |
+| Name        | Type            | Description                                     |
+| ----------- | --------------- | ----------------------------------------------- |
+| `times`     | number          | Number of times execute the function            |
+| `sleepTime` | number          | Number of milliseconds to sleep between atempts |
+| `fn`        | attemptCallback | The function to attempt                         |
 
-**Returns:** *this*
+**Returns:** _this_
 
-___
+---
 
-###  createFile
+### createFile
 
-▸ **createFile**(`file`: string, `params?`: any): *this*
+▸ **createFile**(`file`: string, `params?`: any): _this_
 
 Performs the create function to each document in the file
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`file` | string | path to file |
-`params?` | any | parameters to substitute in file  |
+| Name      | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| `file`    | string | path to file                     |
+| `params?` | any    | parameters to substitute in file |
 
-**Returns:** *this*
+**Returns:** _this_
 
-___
+---
 
-###  deleteFile
+### deleteFile
 
-▸ **deleteFile**(`file`: string, `params?`: any): *this*
+▸ **deleteFile**(`file`: string, `params?`: any): _this_
 
 Performs the delete function to each document in the file
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`file` | string | path to file |
-`params?` | any | parameters to substitute in file  |
+| Name      | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| `file`    | string | path to file                     |
+| `params?` | any    | parameters to substitute in file |
 
-**Returns:** *this*
+**Returns:** _this_
 
-___
+---
 
-###  eachFile
+### eachFile
 
-▸ **eachFile**(`fn`: any, `file`: string, `params?`: any): *this*
+▸ **eachFile**(`fn`: any, `file`: string, `params?`: any): _this_
 
 Executes the provided function against documents from each file
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`fn` | any | function to call |
-`file` | string | path to file |
-`params?` | any | parameters to substitute in file  |
+| Name      | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| `fn`      | any    | function to call                 |
+| `file`    | string | path to file                     |
+| `params?` | any    | parameters to substitute in file |
 
-**Returns:** *this*
+**Returns:** _this_
 
-___
+---
 
-###  upsertFile
+### upsertFile
 
-▸ **upsertFile**(`file`: string, `params?`: any): *this*
+▸ **upsertFile**(`file`: string, `params?`: any): _this_
 
 Performs the upsert function to each document in the file
 
 **Parameters:**
 
-Name | Type | Description |
------- | ------ | ------ |
-`file` | string | path to file |
-`params?` | any | parameters to substitute in file  |
+| Name      | Type   | Description                      |
+| --------- | ------ | -------------------------------- |
+| `file`    | string | path to file                     |
+| `params?` | any    | parameters to substitute in file |
 
-**Returns:** *this*
+**Returns:** _this_

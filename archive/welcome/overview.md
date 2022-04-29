@@ -1,6 +1,6 @@
-# Overview #
+# Overview
 
-Welcome to CodeZero's documentation!  This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI publishing an application in the CodeZero ecosystem, or wanting to understand how CodeZero works under the hood.
+Welcome to CodeZero's documentation! This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI publishing an application in the CodeZero ecosystem, or wanting to understand how CodeZero works under the hood.
 
 ## Getting Started
 
@@ -10,24 +10,24 @@ Our [Getting Started](../guides/getting-started) guide is a great place to start
 
 These guides will walk you through creating and publishing an application to CodeZero.
 
-* [Getting Started with the CLI](../guides/cli)
-* [Teleport into a Cluster](../guides/teleport)
-* [Intercept traffic for an existing service](../guides/intercept)
+- [Getting Started with the CLI](../guides/cli)
+- [Teleport into a Cluster](../guides/teleport)
+- [Intercept traffic for an existing service](../guides/intercept)
 
-* [Publish an existing docker application](../guides/appengine)
-* [Develop a custom application provisioner](../guides/custom-provisioner)
+- [Publish an existing docker application](../guides/appengine)
+- [Develop a custom application provisioner](../guides/custom-provisioner)
 
-* [Create an end-to-end Hello World web application](../guides/hello-world)
-* [Publish an existing docker application](../guides/appengine)
-* [Develop a custom application provisioner](../guides/custom-provisioner)
+- [Create an end-to-end Hello World web application](../guides/hello-world)
+- [Publish an existing docker application](../guides/appengine)
+- [Develop a custom application provisioner](../guides/custom-provisioner)
 
 ### Core Concepts
 
 Learn more about the core concepts of CodeZero:
 
-* [What makes up a CodeZero Application](../concepts/applications).
-* [How to monetize your Applications with CodeZero](../concepts/monetization).
-* [Go under the hood, and learn more how the CodeZero system works](../concepts/codezero-system).
+- [What makes up a CodeZero Application](../concepts/applications).
+- [How to monetize your Applications with CodeZero](../concepts/monetization).
+- [Go under the hood, and learn more how the CodeZero system works](../concepts/codezero-system).
 
 ### Sample Provisioners
 

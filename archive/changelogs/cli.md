@@ -9,24 +9,24 @@ This document contains the release notes for the CodeZero CLI.
 
 ### BREAKING CHANGES
 
-* There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
+- There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
 
 ### Bug Fixes
 
-* Fix error messaging to users of unsupported Node versions (<= 12.x)
-* Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
+- Fix error messaging to users of unsupported Node versions (<= 12.x)
+- Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
 
 ### New Features
 
-* Teleport provides feedback to the user once all connections are fully setup [#1766, #1827]
-* Teleport auto-detects when new intercepts are added/removed, so restart is no longer required [#1808]
-* Extended teleport to work with other workloads (pods, cronjobs, jobs, statefulsets) [#1778]
+- Teleport provides feedback to the user once all connections are fully setup [#1766, #1827]
+- Teleport auto-detects when new intercepts are added/removed, so restart is no longer required [#1808]
+- Extended teleport to work with other workloads (pods, cronjobs, jobs, statefulsets) [#1778]
 
 ### Outstanding Issues
 
-* NodesJS <= 12.x is not supported.
-* Cannot intercept more than 4 services simultaneously from the same machine.
-* Cannot teleport to headless services yet
+- NodesJS <= 12.x is not supported.
+- Cannot intercept more than 4 services simultaneously from the same machine.
+- Cannot teleport to headless services yet
 
 > [!WARNING]
 > We expect the cli commands to change in the next release. We are considering reversing the commands from `<resource> <action>` to `<action> <resource>` and dropping the term `intercept`.
@@ -37,28 +37,28 @@ This document contains the release notes for the CodeZero CLI.
 
 ### BREAKING CHANGES
 
-* `czctl service intercept` port flags changed. `-p` is now `-r` for remote and `-o` is now `-l` for local.
-* We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl init` once and from then on, sudo is no longer required. [#1744]
+- `czctl service intercept` port flags changed. `-p` is now `-r` for remote and `-o` is now `-l` for local.
+- We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl init` once and from then on, sudo is no longer required. [#1744]
 
 ### Bug Fixes
 
-* Fix Teleport hanging forever on Node 14.x
-* Fix Teleport environment file flag to support absolute paths.
-* Fix intercept's ngrok tunnels closing unexpectedly.
-* Fix various CLI error messages and suggestions to display more useful information.
-* Fix namespaces and service names being passed through and displayed as 'undefined'
+- Fix Teleport hanging forever on Node 14.x
+- Fix Teleport environment file flag to support absolute paths.
+- Fix intercept's ngrok tunnels closing unexpectedly.
+- Fix various CLI error messages and suggestions to display more useful information.
+- Fix namespaces and service names being passed through and displayed as 'undefined'
 
 ### New Features
 
-* Support multiple users intercepting the same service(s). Requires users to use the same header key but different values. [#1711, #1757]
-* Cluster based session management, so user can list and clean up sessions created by other users. [#1688]
-* Allow intercepting up to 4 services simultaneously per machine. [#1783]
-* `sudo -E` is no longer required for `czctl teleport`. [#1744]
-* Teleport no longer requires the environment file flag (-f).
+- Support multiple users intercepting the same service(s). Requires users to use the same header key but different values. [#1711, #1757]
+- Cluster based session management, so user can list and clean up sessions created by other users. [#1688]
+- Allow intercepting up to 4 services simultaneously per machine. [#1783]
+- `sudo -E` is no longer required for `czctl teleport`. [#1744]
+- Teleport no longer requires the environment file flag (-f).
 
 ### Outstanding Issues
 
-* NodesJS <= 12.x is not supported.
-* Cannot intercept more than 4 services simultaneously from the same machine.
-* Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
-* Teleport should provide feedback to the user so they know when all services have been fully setup.
+- NodesJS <= 12.x is not supported.
+- Cannot intercept more than 4 services simultaneously from the same machine.
+- Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
+- Teleport should provide feedback to the user so they know when all services have been fully setup.

@@ -60,7 +60,7 @@ We recommend storing session profiles in the folder `.codezero/develop/` at the 
 
 ### Running a Profile
 
-Currently, running a Development Profiles is best accomplished via the Desktop app. First launch the Desktop application and load a workspace by selecting your current project directory (the directory that contains a .codezero folder).  This will automatically search for all Development Profiles located in the `.codezero/develop/` folder of this workspace.
+Currently, running a Development Profiles is best accomplished via the Desktop app. First launch the Desktop application and load a workspace by selecting your current project directory (the directory that contains a .codezero folder). This will automatically search for all Development Profiles located in the `.codezero/develop/` folder of this workspace.
 
 ---
 
@@ -117,7 +117,7 @@ You can choose to either restrict users to specific namespaces or give them clus
 
 ### Cluster Wide RBAC
 
-``` yaml
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -144,9 +144,9 @@ kind: ClusterRoleBinding
 metadata:
   name: c6o-cluster-role-binding
 subjects:
-- kind: User
-  name: <USERNAME>
-  apiGroup: rbac.authorization.k8s.io
+  - kind: User
+    name: <USERNAME>
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: c6o-cluster-role
@@ -157,7 +157,7 @@ roleRef:
 
 The following restricts users to create Sessions in a specific namespace.
 
-``` yaml
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -180,9 +180,9 @@ metadata:
   name: c6o-role-binding
   namespace: <NAMESPACE>
 subjects:
-- kind: User
-  name: <USERNAME>
-  apiGroup: rbac.authorization.k8s.io
+  - kind: User
+    name: <USERNAME>
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
   name: c6o-role
@@ -208,9 +208,9 @@ kind: ClusterRoleBinding
 metadata:
   name: c6o-cluster-role-binding
 subjects:
-- kind: User
-  name: <USERNAME>
-  apiGroup: rbac.authorization.k8s.io
+  - kind: User
+    name: <USERNAME>
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: c6o-cluster-role

@@ -10,14 +10,14 @@ CodeZero resolves visibility of remote data by allowing developers to mount Pers
 
 In this tutorial, you will learn:
 
-* How to mount a Persistent Volume locally so that local code can read or write to this volume, just like in-cluster.
-* Run a service locally that consumes the data located in the mounted volume.
+- How to mount a Persistent Volume locally so that local code can read or write to this volume, just like in-cluster.
+- Run a service locally that consumes the data located in the mounted volume.
 
 ## Prerequisites
 
 It is assumed you have the standard prerequisites:
 
-[prerequisites](_fragments/prerequisites.md ':include')
+[prerequisites](_fragments/prerequisites.md ":include")
 
 The tutorial assumes you are at the root of the Sample Project repo, have completed the [Sample Project tutorial](./sample-project.md), and that you have the sample project running in your cluster in the namespace `sample-project`.
 
@@ -80,8 +80,8 @@ Or we could just access the external URL for our cluster. Either way, if you vie
 
 ```json
 {
-    "path": "./data/message.txt",
-    "data": "hello world\n"
+  "path": "./data/message.txt",
+  "data": "hello world\n"
 }
 ```
 
@@ -119,7 +119,7 @@ Under the File section you should see "99 bugs in the code..." under data. This 
 Open `packages/core/file.js` in your IDE and change the `path` variable on Line 6 to the following:
 
 ```javascript
-const path = '../../mnt/usr/src/app/data/message.txt'
+const path = "../../mnt/usr/src/app/data/message.txt"
 ```
 
 Back in your browser, you should now see "hello world" for the File data.

@@ -2,11 +2,11 @@
 
 CodeZero's developer tools help in the development and testing of Kubernetes applications through a Command Line Interface (CLI) and a Desktop application.
 
-[app-install](../_fragments/app-install.md ':include')
+[app-install](../_fragments/app-install.md ":include")
 
 ## Requirements
 
-[app-requirements](../_fragments/app-requirements.md ':include')
+[app-requirements](../_fragments/app-requirements.md ":include")
 
 ## Install Only the CodeZero CLI
 
@@ -37,7 +37,7 @@ We welcome feedback and bug reports related to Canary releases.
 
 If you'd like to try out pre-release builds, you can upgrade to the latest Canary release with:
 
-``` bash
+```bash
 curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s canary
 ```
 
