@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 -->
+
 # CodeZero Docs
 
 This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [https://docs.codezero.io](https://docs.codezero.io) website.
@@ -43,4 +45,4 @@ Reference => Detail information on a single command (a more graphical view of cz
 
 These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2021 CodeZero Technologies Inc. All Rights Reserved
+© Copyright 2022 CodeZero Technologies Inc. All Rights Reserved
