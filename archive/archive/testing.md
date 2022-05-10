@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD007 -->
+
 # Testing Plan
 
 ## Introduction

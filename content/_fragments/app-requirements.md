@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 MD028 -->
+
 CodeZero requires:
 
 - MacOS or Ubuntu 18.x+ to run the full Desktop GUI

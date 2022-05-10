@@ -1,4 +1,4 @@
-<!-- Keep the * file extensions for broken link checking -->
+<!-- markdownlint-disable MD041 -->
 
 - Welcome
   - [Overview](/welcome/overview)

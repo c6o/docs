@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD040 MD024 MD033 -->
+
 # CodeZero CLI Reference
 
 ## czctl

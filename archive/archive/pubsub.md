@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD010 MD034 MD028 MD037 MD024 MD007 MD042 MD001 -->
+
 # Inter-App Communication
 
 ## Overview

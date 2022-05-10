@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD028 -->
+
 # Publishing a Standard Application
 
 > [!WIP]

@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 ```bash
 sudo npm install -g @c6o/cli
 ```

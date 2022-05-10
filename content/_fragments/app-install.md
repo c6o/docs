@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 To install the full Desktop application and CLI, visit our [downloads page](https://codezero.io/tooling/desktop#download-app), and install the appropriate installer for your Operating System.
 
 Alternatively, to install CodeZero via the command line, run:

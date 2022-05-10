@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD028 MD034 -->
+
 # Hello World Web Application
 
 > [!WIP]

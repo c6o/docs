@@ -1,5 +1,5 @@
 ---
-ignore: {}
+ignore: ['./node_modules/*', './dist/*']
 extends: default
 rules:
   truthy:

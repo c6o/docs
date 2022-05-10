@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD010 -->
+
 # How Provisioners Work
 
 The c6o _application manifest_ is a Kubernetes custom resource definition (CRD) that provides the necessary configuration and metadata needed for c6o to manage cloud applications.

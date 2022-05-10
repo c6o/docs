@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD028 -->
+
 # A CodeZero Application
 
 An Application in the CodeZero ecosystem consists of 3 main components. First off, there is the core application itself, which can be developed in many ways, so long as it is executable in a container environment. Then there is the CodeZero Provisioner, responsible for orchestrating the installation and management of your application in an end-users cluster. Lastly, there is an Application Manifest that describes the application in the CodeZero ecosystem.

@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 - [Welcome](/welcome.md)
   - [Overview](/welcome/overview.md)
   - [Quick Start Guide](/welcome/quickstart.md)

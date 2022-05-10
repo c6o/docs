@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 - [Cluster](classes/cluster.md)
 - [Processor](classes/processor.md)
 - [Result](classes/result.md)

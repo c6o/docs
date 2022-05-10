@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD036 -->
+
 # PRIVACY POLICY
 
 CodeZero Technologies Inc., (**“we”/”us”**), is committed to protecting your privacy. We make the CodeZero website, Hub and Marketplace located at www.codezero.io, including all subpages and successor pages (together the “Site”) available together with our content, software and services as further described in the CodeZero Terms of Service located at www.codezero.io/tos (the **“CodeZero Offerings”**). This Privacy Policy describes how we collect, use and disclose information about our users through the Site and in respect of the CodeZero Offerings.

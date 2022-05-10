@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 MD024 -->
+
 > Code zero is a new kind of operating system.
 > Like Windows, Mac OSX, Linux or Unix, it acts as an interface between your hardware and you.
 > But, unlike those other operating systems, it acts as an interface between you and any cloud.

@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 > [!WARNING]
 > This page is currently not displayed. TODO
 
@@ -13,26 +15,26 @@ For example, the application controller may detect a CREATE event when a new app
 
 ```mermaid
 graph TD
-	subgraph Kubernetes Cluster
-		subgraph System
-			controller[Application Controller]
-			pm[Provisioner Manager]
-			provisioner[Provisioner]
-		end
-		app(Application Spec)
-		deployment(Deployment)
-		pvc(Volume Claim)
-		service(Service)
-	end
+    subgraph Kubernetes Cluster
+        subgraph System
+            controller[Application Controller]
+            pm[Provisioner Manager]
+            provisioner[Provisioner]
+        end
+        app(Application Spec)
+        deployment(Deployment)
+        pvc(Volume Claim)
+        service(Service)
+    end
     controller -- onCreate, onUpdate, onDelete --> pm
-	npm((NPM Registry))
-	pm -- creates --> provisioner
-	npm -- provides module --> pm
-	controller -- uses --> provisioner
-	app -- CREATE, UPDATE, DELETE --> controller
-	provisioner -- create/update/remove --> deployment
-	provisioner -- create/update/remove --> pvc
-	provisioner -- create/update/remove --> service
+    npm((NPM Registry))
+    pm -- creates --> provisioner
+    npm -- provides module --> pm
+    controller -- uses --> provisioner
+    app -- CREATE, UPDATE, DELETE --> controller
+    provisioner -- create/update/remove --> deployment
+    provisioner -- create/update/remove --> pvc
+    provisioner -- create/update/remove --> service
 
 ```
 

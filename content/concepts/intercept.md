@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD028 MD034 -->
+
 # Intercept
 
 Intercept allows developers to run a service locally and selectively intercept traffic from a remote environment to their local instance.
@@ -62,7 +64,7 @@ Propagating headers is language-dependent and is not hard. It generally only req
 
 In this pseudocode example that makes an outbound REST request, we only propagate headers that start with `x-c6o` but you are free to use your own convention:
 
-```
+```js
   propagatedHeaders = []
   for each header in request.headers
     if (header.key.startsWith('x-c6o-'))

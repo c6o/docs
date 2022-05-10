@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 MD024 -->
+
 # CLI Reference Page
 
 ## Configuration
@@ -385,19 +387,19 @@ Enable access to other workloads:
 
 Close open sessions (sessions are started by running commands like teleport, intercept, etc.).
 
-#### Usage
+### Usage
 
 ```bash
 > czctl session close
 ```
 
-#### Example
+### Example
 
 ```bash
 > czctl session close --all
 ```
 
-#### Flags
+### Flags
 
 <div class="flags-table">
 
@@ -410,7 +412,7 @@ Close open sessions (sessions are started by running commands like teleport, int
 
 </div>
 
-#### Aliases
+### Aliases
 
 ```bash
 > czctl session clean

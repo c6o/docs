@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 -->
+
 # Using the CodeZero Desktop App
 
 The Desktop App gives you a graphical interface for some of the functions available in the CLI.

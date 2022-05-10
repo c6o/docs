@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 - Guides
   - [Standard Application](/guides/standard-application)
   - [Custom Provisioner](/guides/custom-provisioner)

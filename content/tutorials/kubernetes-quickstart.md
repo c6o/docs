@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD028 MD024 -->
+
 # Kubernetes Cluster QuickStart
 
 CodeZero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.

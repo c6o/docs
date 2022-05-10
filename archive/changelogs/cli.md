@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD024 -->
+
 # CLI Release Notes
 
 This document contains the release notes for the CodeZero CLI.

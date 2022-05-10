@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD010 -->
+
 # Advanced Topics
 
 Provisioners can provide APIs for use by other provisioners or that can be called from the web APIs.
