@@ -46,20 +46,16 @@ sequenceDiagram
 
 Something
 
-> [!NOTE]
-> An alert of type 'note' using global style 'callout'.
+> [!NOTE] An alert of type 'note' using global style 'callout'.
 
 Something
 
-> [!WARNING]
-> An alert of type 'note' using global style 'callout'.
+> [!WARNING] An alert of type 'note' using global style 'callout'.
 
 Tip
 
-> [!TIP]
-> An alert of type 'note' using global style 'callout'.
+> [!TIP] An alert of type 'note' using global style 'callout'.
 
 Danger
 
-> [!DANGER]
-> An alert of type 'note' using global style 'callout'.
+> [!DANGER] An alert of type 'note' using global style 'callout'.

@@ -1,16 +1,24 @@
 # Developing with Remote Volumes
 
-In this tutorial we expore how developers can locally mount cluster volumes in their local workstation so that their local code can read or write to these volumes.
+In this tutorial we expore how developers can locally mount cluster volumes in
+their local workstation so that their local code can read or write to these
+volumes.
 
-When working on a service locally, developers may want to see the data being used by the same service running in their cluster. Seeing this data locally is quite difficult, however, because the data is stored remotely in a Persistent Volume, and only visible from within running pods. Copying the data locally can be cumbersome, and is a real challenge to keep in sync.
+When working on a service locally, developers may want to see the data being
+used by the same service running in their cluster. Seeing this data locally is
+quite difficult, however, because the data is stored remotely in a Persistent
+Volume, and only visible from within running pods. Copying the data locally can
+be cumbersome, and is a real challenge to keep in sync.
 
-CodeZero resolves visibility of remote data by allowing developers to mount Persistent Volumes as local drives.
+CodeZero resolves visibility of remote data by allowing developers to mount
+Persistent Volumes as local drives.
 
 ## Objectives
 
 In this tutorial, you will learn:
 
-- How to mount a Persistent Volume locally so that local code can read or write to this volume, just like in-cluster.
+- How to mount a Persistent Volume locally so that local code can read or write
+  to this volume, just like in-cluster.
 - Run a service locally that consumes the data located in the mounted volume.
 
 ## Prerequisites
@@ -19,15 +27,20 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ":include")
 
-The tutorial assumes you are at the root of the Sample Project repo, have completed the [Sample Project tutorial](./sample-project.md), and that you have the sample project running in your cluster in the namespace `sample-project`.
+The tutorial assumes you are at the root of the Sample Project repo, have
+completed the [Sample Project tutorial](./sample-project.md), and that you have
+the sample project running in your cluster in the namespace `sample-project`.
 
 ## Mount a Volume
 
-Without Mount, when working on service that uses volumes, you would need to stub out or synthesize storage read/write operations. With Mount, you can access these remote volumes locally.
+Without Mount, when working on service that uses volumes, you would need to stub
+out or synthesize storage read/write operations. With Mount, you can access
+these remote volumes locally.
 
 ### Start the CodeZero Daemon
 
-Assuming you have already [installed the CLI](../guides/installing.md), initialize the daemon:
+Assuming you have already [installed the CLI](../guides/installing.md),
+initialize the daemon:
 
 ```bash
 czctl start
@@ -35,7 +48,8 @@ czctl start
 
 ### Run the Mount Command
 
-Mount the "sample-project-core" deployment's Persistent Volume at the local path `./mnt` by running:
+Mount the "sample-project-core" deployment's Persistent Volume at the local path
+`./mnt` by running:
 
 ```bash
 czctl mount deployment sample-project-core ./mnt -n sample-project
@@ -49,10 +63,12 @@ There are 2 local sessions:
      Mounted volumes from sample-project-core
 ```
 
-And if you launch the Desktop app you will see an entry under Volume Mounts on the dashboard (as well as the Teleport).
+And if you launch the Desktop app you will see an entry under Volume Mounts on
+the dashboard (as well as the Teleport).
 
-> [!PROTIP]
-> If you open your system's file explorer you should see the mounted volume alongside your other local volumes. In Finder on Mac, for example, you should see this volume under Locations in the left sidebar.
+> [!PROTIP] If you open your system's file explorer you should see the mounted
+> volume alongside your other local volumes. In Finder on Mac, for example, you
+> should see this volume under Locations in the left sidebar.
 
 ## Write to the Volume
 
@@ -70,13 +86,16 @@ ls ./mnt/usr/src/app/data/
 
 ### View the File Data in Cluster
 
-Since Mount also performed a Teleport in the sample-project namespace, we could easily run the frontend service locally and then visit `http://localhost:3030/?teleport=1` in a browser.
+Since Mount also performed a Teleport in the sample-project namespace, we could
+easily run the frontend service locally and then visit
+`http://localhost:3030/?teleport=1` in a browser.
 
 ```bash
 yarn start-frontend
 ```
 
-Or we could just access the external URL for our cluster. Either way, if you view the File section you should see a table and this JSON:
+Or we could just access the external URL for our cluster. Either way, if you
+view the File section you should see a table and this JSON:
 
 ```json
 {
@@ -87,19 +106,29 @@ Or we could just access the external URL for our cluster. Either way, if you vie
 
 ## Work with the Mounted Volume
 
-Let's now intercept the Core service and make some code changes that involve using the data in our volume.
+Let's now intercept the Core service and make some code changes that involve
+using the data in our volume.
 
-We could run the Intercept command in the CLI, but let's instead use the Desktop app and run the 'intercept-core' Development Profile. Click on the tray icon and select the profile from the Development Profiles menu.
+We could run the Intercept command in the CLI, but let's instead use the Desktop
+app and run the 'intercept-core' Development Profile. Click on the tray icon and
+select the profile from the Development Profiles menu.
 
-The 'intercept-core' Development Profile has two commands: an Intercept and a Teleport. When it attempts to run the Teleport it will fail because we are already teleported into the sample-project namespace. You can see the error on the Dashboard's Activity tab, and can also safely ignore it.
+The 'intercept-core' Development Profile has two commands: an Intercept and a
+Teleport. When it attempts to run the Teleport it will fail because we are
+already teleported into the sample-project namespace. You can see the error on
+the Dashboard's Activity tab, and can also safely ignore it.
 
-> [!NOTE]
-> If you don't have the Desktop installed, you can run the Intercept using the CLI using `czctl intercept service sample-project-core -n sample-project`.
+> [!NOTE] If you don't have the Desktop installed, you can run the Intercept
+> using the CLI using
+> `czctl intercept service sample-project-core -n sample-project`.
 
-Open `packages/core/index.js` in your IDE and set the port on Line 10 be equal to the local port specified in the Intercept. If you ran the Intercept using the Development Profile this port needs to be changed to `4000`.
+Open `packages/core/index.js` in your IDE and set the port on Line 10 be equal
+to the local port specified in the Intercept. If you ran the Intercept using the
+Development Profile this port needs to be changed to `4000`.
 
-> [!NOTE]
-> If you haven't already instantiated the cluster configuration for running the Core service locally, follow the steps under [Setting up a Teleport](/tutorials/core?id=setting-up-a-teleport)
+> [!NOTE] If you haven't already instantiated the cluster configuration for
+> running the Core service locally, follow the steps under
+> [Setting up a Teleport](/tutorials/core?id=setting-up-a-teleport)
 
 Run the Core service locally:
 
@@ -107,16 +136,24 @@ Run the Core service locally:
 yarn start-core
 ```
 
-In your browser, go to the URL where you previously viewed the data in the File section and this time set a header for `x-c6o-intercept:yes` using a tool like ModHeader. For example, if you are already running the Frontend service locally, go to `http://localhost:3030/?teleport=1` and set the appropriate request header.
+In your browser, go to the URL where you previously viewed the data in the File
+section and this time set a header for `x-c6o-intercept:yes` using a tool like
+ModHeader. For example, if you are already running the Frontend service locally,
+go to `http://localhost:3030/?teleport=1` and set the appropriate request
+header.
 
-> [!NOTE]
-> If you get CORS errors when running locally you may also need to set a response header for `Access-Control-Allow-Origin:*`.
+> [!NOTE] If you get CORS errors when running locally you may also need to set a
+> response header for `Access-Control-Allow-Origin:*`.
 
-Under the File section you should see "99 bugs in the code..." under data. This is coming from the "message.txt" file included in the Sample Project repo and located in the `data` directory of the Core service. We're going to change our Core service to consume the message.txt data in our mounted volume.
+Under the File section you should see "99 bugs in the code..." under data. This
+is coming from the "message.txt" file included in the Sample Project repo and
+located in the `data` directory of the Core service. We're going to change our
+Core service to consume the message.txt data in our mounted volume.
 
 ### Edit the Core Service
 
-Open `packages/core/file.js` in your IDE and change the `path` variable on Line 6 to the following:
+Open `packages/core/file.js` in your IDE and change the `path` variable on Line
+6 to the following:
 
 ```javascript
 const path = "../../mnt/usr/src/app/data/message.txt"
@@ -126,8 +163,12 @@ Back in your browser, you should now see "hello world" for the File data.
 
 ### Wrapping Up
 
-When you have finished your work, the last thing you will want to do is close your sessions. From the Sessions tab of Desktop app's dashboard, click on the "Close My Sessions" button.
+When you have finished your work, the last thing you will want to do is close
+your sessions. From the Sessions tab of Desktop app's dashboard, click on the
+"Close My Sessions" button.
 
 ## Conclusion
 
-This concludes the Developing with Remote Volumes tutorial. In this tutorial we covered mounting a remote volume, writing to it, and getting a locally running service to read from it.
+This concludes the Developing with Remote Volumes tutorial. In this tutorial we
+covered mounting a remote volume, writing to it, and getting a locally running
+service to read from it.

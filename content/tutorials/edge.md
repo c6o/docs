@@ -1,9 +1,13 @@
 # Developing Edge Services
 
-In this tutorial we get to experience how a frontend developer could use CodeZero when developing an Edge Service.
-In the Sample Project, the Frontend Service is an Edge Service that makes calls to the Core and Socket services.
+In this tutorial we get to experience how a frontend developer could use
+CodeZero when developing an Edge Service. In the Sample Project, the Frontend
+Service is an Edge Service that makes calls to the Core and Socket services.
 
-Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service and teleport the other services in the cluster to your local machine.
+Traditionally the frontend developer would need to run all (or many) of an
+application's microservices locally just to work on the single Frontend Service.
+In this tutorial we will run _only_ the Frontend Service and teleport the other
+services in the cluster to your local machine.
 
 ## Objectives
 
@@ -18,7 +22,8 @@ It is assumed you have the standard prerequisites:
 
 [prerequisites](_fragments/prerequisites.md ":include")
 
-The tutorial assumes you are at the root of the Sample Project repo, and have completed the [Sample Project tutorial](/sample-project.md).
+The tutorial assumes you are at the root of the Sample Project repo, and have
+completed the [Sample Project tutorial](/sample-project.md).
 
 ## Tutorial
 
@@ -30,15 +35,21 @@ Let start by running the Frontend service locally:
 yarn start-frontend
 ```
 
-You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
+You should be able to access the local Frontend service at
+`http://localhost:3030`, however you should see that the Socket and Core
+sections show errors. This is because the Frontend is not able to access the
+upstream services.
 
-This is where you would use CodeZero's **Teleport**. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a URL parameter:
+This is where you would use CodeZero's **Teleport**. First, we need the local
+frontend service to know that we wish to use the teleported configuration. We
+tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a
+URL parameter:
 
-> [http://localhost:3030?t=1](http://localhost:3030?t=1)
-> or
+> [http://localhost:3030?t=1](http://localhost:3030?t=1) or
 > [http://localhost:3030?teleport=1](http://localhost:3030?teleport=1)
 
-This will tell the Frontend service to reference the following upstream services:
+This will tell the Frontend service to reference the following upstream
+services:
 
 ```bash
 http://sample-project-core:3030/api
@@ -66,24 +77,30 @@ To verify that the daemon is running:
 czctl session list
 ```
 
-You should see a message that you have no running sessions. Reminder that you can run `czctl help` if you ever get stuck.
+You should see a message that you have no running sessions. Reminder that you
+can run `czctl help` if you ever get stuck.
 
 ### Teleport into the Cluster
 
-You can now teleport into the sample-project namespace using the following command:
+You can now teleport into the sample-project namespace using the following
+command:
 
 ```bash
 czctl teleport namespace sample-project
 ```
 
-You should now see the failed connections on the webpage start to work because the in-cluster services can now be accessed by your local Frontend.
+You should now see the failed connections on the webpage start to work because
+the in-cluster services can now be accessed by your local Frontend.
 
-> [!Note]
-> You will see an error under File, but don't worry about that as we will fix it in a future tutorial.
+> [!Note] You will see an error under File, but don't worry about that as we
+> will fix it in a future tutorial.
 
-Launch your favorite IDE and open the folder `packages/frontend`. You can make changes to the frontend code here and see that you are able to test against the in-cluster `sockets` and `core` services.
+Launch your favorite IDE and open the folder `packages/frontend`. You can make
+changes to the frontend code here and see that you are able to test against the
+in-cluster `sockets` and `core` services.
 
-After making changes, stop and start the frontend service, and perform a hard refresh in your browser to ensure your changes take effect.
+After making changes, stop and start the frontend service, and perform a hard
+refresh in your browser to ensure your changes take effect.
 
 ### Cleanup
 

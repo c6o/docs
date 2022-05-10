@@ -17,6 +17,10 @@ tasks:
         --list-different
         --ignore-unknown
         --parser=markdown
+        --prose-wrap='always'
+        --end-of-line='auto'
+        --print-width=80
+        --html-whitespace-sensitivity='css'
         --write '*.md' '**/*.md'
   yaml:
     desc: Format YAML

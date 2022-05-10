@@ -22,8 +22,9 @@ The currently executing processor. Each begin/end block starts a new processor.
 
 ▸ **begin**(`stageName?`: string): _[Processor](processor.md)_
 
-Start a new processor. A Processor is a stack of operations that execute sequentially.
-The results of each step are passed onto the next step. Begin has to have a matching end
+Start a new processor. A Processor is a stack of operations that execute
+sequentially. The results of each step are passed onto the next step. Begin has
+to have a matching end
 
 **Parameters:**
 
@@ -37,7 +38,8 @@ The results of each step are passed onto the next step. Begin has to have a matc
 
 ### create
 
-▸ **create**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): _Promise‹[Result](result.md)›_
+▸ **create**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›):
+_Promise‹[Result](result.md)›_
 
 Create a given resource
 
@@ -70,7 +72,9 @@ Delete a Kubernetes resource
 
 ### exec
 
-▸ **exec**(`document`: KubeDocument, `command`: string | string[], `stdout?`: Writable, `stderr?`: Writable, `stdin?`: Readable): _Promise‹[Result](result.md)›_
+▸ **exec**(`document`: KubeDocument, `command`: string | string[], `stdout?`:
+Writable, `stderr?`: Writable, `stdin?`: Readable):
+_Promise‹[Result](result.md)›_
 
 **Parameters:**
 
@@ -88,7 +92,8 @@ Delete a Kubernetes resource
 
 ### list
 
-▸ **list**(`document`: KubeDocument, `options?`: listOptions): _Promise‹[Result](result.md)›_
+▸ **list**(`document`: KubeDocument, `options?`: listOptions):
+_Promise‹[Result](result.md)›_
 
 Gets a list of a given document kind. document.metadata.name is ignored
 
@@ -105,7 +110,8 @@ Gets a list of a given document kind. document.metadata.name is ignored
 
 ### patch
 
-▸ **patch**(`document`: KubeDocument, `patch`: Partial‹KubeObject›): _Promise‹[Result](result.md)›_
+▸ **patch**(`document`: KubeDocument, `patch`: Partial‹KubeObject›):
+_Promise‹[Result](result.md)›_
 
 Patch a Kubernetes resource
 
@@ -122,7 +128,8 @@ Patch a Kubernetes resource
 
 ### portForward
 
-▸ **portForward**(`containerPort`: number, `document`: KubeDocument): _Promise‹[Result](result.md)›_
+▸ **portForward**(`containerPort`: number, `document`: KubeDocument):
+_Promise‹[Result](result.md)›_
 
 **Parameters:**
 
@@ -137,7 +144,8 @@ Patch a Kubernetes resource
 
 ### put
 
-▸ **put**(`document`: KubeDocument, `newDoc`: KubeDocument, `params?`: putOptions): _Promise‹[Result](result.md)›_
+▸ **put**(`document`: KubeDocument, `newDoc`: KubeDocument, `params?`:
+putOptions): _Promise‹[Result](result.md)›_
 
 Replaces a Kubernetes resource
 
@@ -199,10 +207,11 @@ Gets a given resource
 
 ### upsert
 
-▸ **upsert**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›): _Promise‹[Result](result.md)›_
+▸ **upsert**(`document`: KubeDocument, `owners?`: Array‹KubeDocument›):
+_Promise‹[Result](result.md)›_
 
-Upsert a Kubernetes resource. This performs a read first and a create or patch depending
-on the results
+Upsert a Kubernetes resource. This performs a read first and a create or patch
+depending on the results
 
 **Parameters:**
 
@@ -225,7 +234,8 @@ on the results
 
 ### watch
 
-▸ **watch**(`document`: KubeDocument, `callback`: watchCallback, `error`: watchDone): _Promise‹[Result](result.md)›_
+▸ **watch**(`document`: KubeDocument, `callback`: watchCallback, `error`:
+watchDone): _Promise‹[Result](result.md)›_
 
 **Parameters:**
 

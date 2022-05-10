@@ -12,8 +12,8 @@ The Configuration command brings down cluster workload configuration files.
 > czctl configuration [KIND] [RESOURCENAME] [ENVFILE] -n namespace
 ```
 
-> [!PROTIP]
-> The configuration command can be shortened from `configuration` to `env`
+> [!PROTIP] The configuration command can be shortened from `configuration` to
+> `env`
 
 ### Examples
 
@@ -21,7 +21,8 @@ The Configuration command brings down cluster workload configuration files.
 > czctl configuration deployment sample-project-core env.sh -n sample-project
 ```
 
-There are several formats in which the local file can be written using the --format(-m) flag:
+There are several formats in which the local file can be written using the
+--format(-m) flag:
 
 1. sh (sourceable shell)
 2. env (.env format file)
@@ -135,7 +136,8 @@ Obtain configuration from other workloads:
 
 ### Add
 
-Add a plaintext or encrypted kubeconfig context to your user kubeconfig located at `~/.kube/config`.
+Add a plaintext or encrypted kubeconfig context to your user kubeconfig located
+at `~/.kube/config`.
 
 #### Usage
 
@@ -165,7 +167,8 @@ Add a plaintext or encrypted kubeconfig context to your user kubeconfig located 
 
 ### Request
 
-Request access to a Kubernetes cluster securely. Send your public key to your cluster administrator to receive an encrypted kubeconfig context.
+Request access to a Kubernetes cluster securely. Send your public key to your
+cluster administrator to receive an encrypted kubeconfig context.
 
 #### Usage
 
@@ -201,7 +204,8 @@ Request access to a Kubernetes cluster securely. Send your public key to your cl
 
 ### Share
 
-Generate an encrypted kubeconfig context to securely share with another user, using their public key.
+Generate an encrypted kubeconfig context to securely share with another user,
+using their public key.
 
 #### Usage
 
@@ -239,7 +243,8 @@ Generate an encrypted kubeconfig context to securely share with another user, us
 
 ## Intercept
 
-Intercept allows you to selectively intercept traffic to a remote service and redirect it to your local machine.
+Intercept allows you to selectively intercept traffic to a remote service and
+redirect it to your local machine.
 
 ### Usage
 
@@ -311,7 +316,8 @@ This routes to `x-my-header:me`
 
 ## Mount
 
-Mount sets up remote volumes on your local workstation so that your code can access these volumes just like it does in-cluster.
+Mount sets up remote volumes on your local workstation so that your code can
+access these volumes just like it does in-cluster.
 
 ### Usage
 
@@ -385,7 +391,8 @@ Enable access to other workloads:
 
 ## Session
 
-Close open sessions (sessions are started by running commands like teleport, intercept, etc.).
+Close open sessions (sessions are started by running commands like teleport,
+intercept, etc.).
 
 ### Usage
 
@@ -420,7 +427,8 @@ Close open sessions (sessions are started by running commands like teleport, int
 
 ### List
 
-List open sessions (sessions are started by running commands like teleport, intercept, etc.).
+List open sessions (sessions are started by running commands like teleport,
+intercept, etc.).
 
 #### Usage
 

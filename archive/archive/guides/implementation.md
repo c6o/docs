@@ -2,23 +2,42 @@
 
 The strategy for implementing a provisioner is as follows:
 
-- Create and test the set of Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets and others needed to deploy your application.
-- Parameterize these resources using handlebars `{{}}` to allow users to configure the applications on install. This includes allowing users to deploy them in different namespaces, different cloud environments with varying storage options.
+- Create and test the set of Kubernetes resources such as Deployments, Services,
+  ConfigMaps, Secrets and others needed to deploy your application.
+- Parameterize these resources using handlebars `{{}}` to allow users to
+  configure the applications on install. This includes allowing users to deploy
+  them in different namespaces, different cloud environments with varying
+  storage options.
 - Create a new provisioner npm module.
-- Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and `createApply` provisioner implementation.
+- Using the [CLI](/provisioners/cli.md) to test, implement a `createInquire` and
+  `createApply` provisioner implementation.
 - Test and debug using the CLI using a local file application manifest.
-- Once the provisioner is working via the CLI, then you can add web components needed for the c6o system UI, starting with `install`. Currently these must be tested with a system server running locally.
-- When your manifest and provisioner are ready, you can publish your provisioner to NPM and add your manifest to Hub for further testing and development.
+- Once the provisioner is working via the CLI, then you can add web components
+  needed for the c6o system UI, starting with `install`. Currently these must be
+  tested with a system server running locally.
+- When your manifest and provisioner are ready, you can publish your provisioner
+  to NPM and add your manifest to Hub for further testing and development.
 
 ## Provisioner Methods
 
-When handling a `CREATE`, `UPDATE` or `REMOVE` event from the c6o controller, or corresponding call from the CLI, the Provision Manager calls provisioner methods in stages.
+When handling a `CREATE`, `UPDATE` or `REMOVE` event from the c6o controller, or
+corresponding call from the CLI, the Provision Manager calls provisioner methods
+in stages.
 
-To implement a provisioner, you need to implement one or more methods corresponding to the action and stages of provisioning. There are three actions: **create**, **update** and **remove**, and three stages: **inquire**, **validate** and **apply**.
+To implement a provisioner, you need to implement one or more methods
+corresponding to the action and stages of provisioning. There are three actions:
+**create**, **update** and **remove**, and three stages: **inquire**,
+**validate** and **apply**.
 
-_Inquire_ asks the CLI user for options. It is not used by the web UI. _Validate_ ensures application spec is consistent and fills in any defaults. _Apply_ does the work of the action. It is the only action method that must be implemented to perform the action.
+_Inquire_ asks the CLI user for options. It is not used by the web UI.
+_Validate_ ensures application spec is consistent and fills in any defaults.
+_Apply_ does the work of the action. It is the only action method that must be
+implemented to perform the action.
 
-For example, for a simple provisioner that does only installation, you'd need to implement at least `createApply()`, but you may also implement `createInquire()`, `createValidate()`, as well as `updateApply()` to implement configuring applications.
+For example, for a simple provisioner that does only installation, you'd need to
+implement at least `createApply()`, but you may also implement
+`createInquire()`, `createValidate()`, as well as `updateApply()` to implement
+configuring applications.
 
 | Method         | Description                                                                                                                            | CLI/Web |
 | -------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -36,19 +55,26 @@ For example, for a simple provisioner that does only installation, you'd need to
 
 ## User Interface Components
 
-A provisioner can provide UI web components for installation, configuration (update), and removal.
+A provisioner can provide UI web components for installation, configuration
+(update), and removal.
 
 ### Install Web Component
 
-The install web component is displayed during the install process. The c6o Store displays this panel on install
+The install web component is displayed during the install process. The c6o Store
+displays this panel on install
 
 The install tag should be named {app}-install-main.
 
-> NOTE: To change the tag prefix from something other than the application name, the `tag-prefix` provisioner field can be used as documented [here](/references/appspec.md).
+> NOTE: To change the tag prefix from something other than the application name,
+> the `tag-prefix` provisioner field can be used as documented
+> [here](/references/appspec.md).
 
-The c6o Store injects the `StoreFlowMediator` mediator as shown. The mediator provides access to the provisioner section of the application spec.
+The c6o Store injects the `StoreFlowMediator` mediator as shown. The mediator
+provides access to the provisioner section of the application spec.
 
-The component can optionally implement a `begin` and `end` method called on the panel set-up and take-down. The `end` method returns a boolean to indicate whether the UI passes validation checks.
+The component can optionally implement a `begin` and `end` method called on the
+panel set-up and take-down. The `end` method returns a boolean to indicate
+whether the UI passes validation checks.
 
 An example install web component from the Prometheus installer is shown below.
 
@@ -116,11 +142,15 @@ export class PrometheusMainInstall extends LitElement implements StoreFlowStep {
 
 ## Settings Component
 
-To support application configuration, a provisioner can implement a settings web component.
+To support application configuration, a provisioner can implement a settings web
+component.
 
-This component is shown in the NavStation Settings application. The NavStation API is injected to give the web component access to web services exposed by the provisioner.
+This component is shown in the NavStation Settings application. The NavStation
+API is injected to give the web component access to web services exposed by the
+provisioner.
 
-The web component is called `{app}-settings-main`. Again, the app name prefix can be overridden by the `tag-prefix` field.
+The web component is called `{app}-settings-main`. Again, the app name prefix
+can be overridden by the `tag-prefix` field.
 
 ```javascript
 import { LitElement, html, customElement, property } from 'lit-element'
@@ -263,7 +293,10 @@ export class IstioSettings extends LitElement {
 
 ## Uninstall Component
 
-A provisioner can implement an uninstall web component. This component allows the user to select advanced uninstall options. For example, in the VSCode provisioner, you can decide whether or not to keep the allocated volume and IP address.
+A provisioner can implement an uninstall web component. This component allows
+the user to select advanced uninstall options. For example, in the VSCode
+provisioner, you can decide whether or not to keep the allocated volume and IP
+address.
 
 ```javascript
 import {LitElement, html, customElement} from "lit-element"
@@ -311,11 +344,17 @@ export class UninstallVSCode extends LitElement implements StoreFlowStep {
 
 ### KubeClient
 
-Much of the development of a provisioner is manipulating resources on the cluster. To make this simple, the provisioner manager exposes the kubeclient interface. This allows provisioners to manipulate cluster resources and provides status updates to the system and CLI. For more information see the [KubeClient documentation](/reference/kubeclient.md).
+Much of the development of a provisioner is manipulating resources on the
+cluster. To make this simple, the provisioner manager exposes the kubeclient
+interface. This allows provisioners to manipulate cluster resources and provides
+status updates to the system and CLI. For more information see the
+[KubeClient documentation](/reference/kubeclient.md).
 
 ### Inquirer
 
-Interactive CLI support is provided by the npm Inquirer package. Documentation on this library can be found [here](https://github.com/SBoudrias/Inquirer.js#readme).
+Interactive CLI support is provided by the npm Inquirer package. Documentation
+on this library can be found
+[here](https://github.com/SBoudrias/Inquirer.js#readme).
 
 ## Provisioner Organization
 

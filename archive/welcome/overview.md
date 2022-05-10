@@ -1,14 +1,20 @@
 # Overview
 
-Welcome to CodeZero's documentation! This documentation is geared towards a technical audience, and is intended for users interested in using the CodeZero CLI publishing an application in the CodeZero ecosystem, or wanting to understand how CodeZero works under the hood.
+Welcome to CodeZero's documentation! This documentation is geared towards a
+technical audience, and is intended for users interested in using the CodeZero
+CLI publishing an application in the CodeZero ecosystem, or wanting to
+understand how CodeZero works under the hood.
 
 ## Getting Started
 
-Our [Getting Started](../guides/getting-started) guide is a great place to start to get setup with a CodeZero Cloud, and install the basic tools you'll need to start developing with CodeZero.
+Our [Getting Started](../guides/getting-started) guide is a great place to start
+to get setup with a CodeZero Cloud, and install the basic tools you'll need to
+start developing with CodeZero.
 
 ### Guides
 
-These guides will walk you through creating and publishing an application to CodeZero.
+These guides will walk you through creating and publishing an application to
+CodeZero.
 
 - [Getting Started with the CLI](../guides/cli)
 - [Teleport into a Cluster](../guides/teleport)
@@ -31,23 +37,28 @@ Learn more about the core concepts of CodeZero:
 
 ### Sample Provisioners
 
-If you prefer to learn by example, you can browse our full list of CodeZero applications in our GitHub repository [c6o/provisioners](https://github.com/c6o/provisioners).
+If you prefer to learn by example, you can browse our full list of CodeZero
+applications in our GitHub repository
+[c6o/provisioners](https://github.com/c6o/provisioners).
 
 ## Community and Support
 
-If you need any help to get started with CodeZero, please reach out to Connery and our developer support team at [email](mailto:support@codezero.io)
+If you need any help to get started with CodeZero, please reach out to Connery
+and our developer support team at [email](mailto:support@codezero.io)
 
-> [!WIP]
-> More community support tools coming soon.
+> [!WIP] More community support tools coming soon.
 
 ### Found an Issue?
 
-Please report any issues you come across to our [GitHub Issues](https://github.com/c6o/roadmap/issues), and we will try to get them resolved as soon as possible.
+Please report any issues you come across to our
+[GitHub Issues](https://github.com/c6o/roadmap/issues), and we will try to get
+them resolved as soon as possible.
 
-> [!PROTIP]
-> Every document on this site is hosted on GitHub and can be edited by members of the community. Constructive pull requests and issues requesting clarification are welcome.
+> [!PROTIP] Every document on this site is hosted on GitHub and can be edited by
+> members of the community. Constructive pull requests and issues requesting
+> clarification are welcome.
 
 ### Feature Requests
 
-> [!WIP]
-> Ability to submit feature requests is coming soon. For now, feel free to [email us](mailto:support@codezero.io).
+> [!WIP] Ability to submit feature requests is coming soon. For now, feel free
+> to [email us](mailto:support@codezero.io).

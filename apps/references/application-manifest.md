@@ -1,9 +1,10 @@
 # Application Manifest
 
-> [!WIP]
-> This document is still being developed and may be incomplete.
+> [!WIP] This document is still being developed and may be incomplete.
 
-The application manifest is a YAML definition file that describes all the attributes of an application and how it interacts with CodeZero. Namely, it covers:
+The application manifest is a YAML definition file that describes all the
+attributes of an application and how it interacts with CodeZero. Namely, it
+covers:
 
 1. How it is displayed in the Marketplace,
 2. What is used to perform provisioning and management,
@@ -12,7 +13,8 @@ The application manifest is a YAML definition file that describes all the attrib
 
 ## Publishing
 
-Using the Application Manifest, an Application developer can publish and update applications directly to the CodeZero Marketplace.
+Using the Application Manifest, an Application developer can publish and update
+applications directly to the CodeZero Marketplace.
 
 ```bash
 czctl app publish path/to/manifest.yaml
@@ -86,9 +88,12 @@ czctl app publish path/to/manifest.yaml
 
 ### Provisioner Spec
 
-The provisioner spec is dedicated to provisioner specific logic, and is up to the provisioner developer to define its schema. For example, see [App Engine's Schema](./appengine#Provisioner-Spec).
+The provisioner spec is dedicated to provisioner specific logic, and is up to
+the provisioner developer to define its schema. For example, see
+[App Engine's Schema](./appengine#Provisioner-Spec).
 
-However, there are a few reserved properties used by CodeZero internally as well:
+However, there are a few reserved properties used by CodeZero internally as
+well:
 
 | Property | Value(s) | Description                                                                            |
 | -------- | -------- | -------------------------------------------------------------------------------------- |
@@ -123,19 +128,20 @@ However, there are a few reserved properties used by CodeZero internally as well
 
 ### Categories
 
-Each application should be placed into a related category. Each of available categories to choose from are listed below.
+Each application should be placed into a related category. Each of available
+categories to choose from are listed below.
 
-**Business Applications:**
-blockchain, crm, comm, contact-center, cms, dms, e-comm, e-learning, human-resources
+**Business Applications:** blockchain, crm, comm, contact-center, cms, dms,
+e-comm, e-learning, human-resources
 
-**Technical Applications:**
-analytics, AI, dashboards, databases, etl, identity, integration, iot, location, messaging, monitoring, rendering, reporting, security, storage
+**Technical Applications:** analytics, AI, dashboards, databases, etl, identity,
+integration, iot, location, messaging, monitoring, rendering, reporting,
+security, storage
 
-**Vertical Solutions:**
-education, healthcare, finance, manufacturing, media, water
+**Vertical Solutions:** education, healthcare, finance, manufacturing, media,
+water
 
-**Software Development:**
-dev-tools, devops
+**Software Development:** dev-tools, devops
 
 ### Artwork
 
@@ -146,8 +152,7 @@ Artwork can be provided in several formats:
 - raw SVG markup
 - base 64 encoded image
 
-> [!NOTE]
-> Files have a max upload size of 500kb.
+> [!NOTE] Files have a max upload size of 500kb.
 
 ## Example Manifest
 

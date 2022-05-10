@@ -1,8 +1,10 @@
 # Application Spec Reference
 
-The CodeZero Application Custom Resource Definition (CRD) is used by CodeZero to configure applications and provide information to the CodeZero apps for display.
+The CodeZero Application Custom Resource Definition (CRD) is used by CodeZero to
+configure applications and provide information to the CodeZero apps for display.
 
-The system uses the application metadata fields, labels, and annotations as well as content in the `spec` section
+The system uses the application metadata fields, labels, and annotations as well
+as content in the `spec` section
 
 An example spec is shown below:
 
@@ -15,7 +17,9 @@ metadata:
     system.codezero.io/edition: latest
   annotations:
     system.codezero.io/display: Node-RED
-    system.codezero.io/description: "IoT programming tool for wiring together hardware devices, APIs and online services."
+    system.codezero.io/description:
+      "IoT programming tool for wiring together hardware devices, APIs and
+      online services."
     system.codezero.io/iconUrl: "https://hub.codezero.io/api/assets/apps/01E8Q6AARJG3Q6XWEVDD7FYZ9V/icon"
 spec:
   routes:
@@ -74,7 +78,8 @@ These are standard k8s metadata fields and how they are used by c6o
 
 ### Marina
 
-The Marina section describes how the application should be 'launched' from the Marina when it is clicked on. For example:
+The Marina section describes how the application should be 'launched' from the
+Marina when it is clicked on. For example:
 
 ```yaml
 # ....
@@ -97,7 +102,10 @@ spec:
 
 ### Routes
 
-The routes section defines how the app can be accessed from outisde of the cluster. Multiple hosts can listen on the same external https port. Requests are routed to a designated service however, TCP based applications have to request unique ports or accept randomly assigned external ports.
+The routes section defines how the app can be accessed from outisde of the
+cluster. Multiple hosts can listen on the same external https port. Requests are
+routed to a designated service however, TCP based applications have to request
+unique ports or accept randomly assigned external ports.
 
 Example:
 
@@ -134,13 +142,18 @@ spec:
 
 ### Navstation
 
-When the `spec.navstation` field is set to true, the application and associated UI panel will appear in the NavStation settings application.
+When the `spec.navstation` field is set to true, the application and associated
+UI panel will appear in the NavStation settings application.
 
 ### Services
 
-The services section provides information on how client applications should access application services that are advertized in an application metadata label.
+The services section provides information on how client applications should
+access application services that are advertized in an application metadata
+label.
 
-For example, for the `npm-registry` interface, the metadata label section will include a label for `system.codezero.io/interface-npm-registry` and the services section will look as follows
+For example, for the `npm-registry` interface, the metadata label section will
+include a label for `system.codezero.io/interface-npm-registry` and the services
+section will look as follows
 
 ```yaml
 # ...

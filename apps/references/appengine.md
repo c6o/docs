@@ -2,17 +2,20 @@
 
 # App Engine
 
-> [!WIP]
-> This document is still being developed and may be incomplete.
+> [!WIP] This document is still being developed and may be incomplete.
 
-App Engine is a highly configurable provisioner created by CodeZero that provides developers with a fast and easy way to onboard their applications without creating a customer provisioner of their own.
+App Engine is a highly configurable provisioner created by CodeZero that
+provides developers with a fast and easy way to onboard their applications
+without creating a customer provisioner of their own.
 
-> [!NOTE]
-> Check out the [Creating a Basic Application Guide](../guides/appengine) to see App Engine in action.
+> [!NOTE] Check out the
+> [Creating a Basic Application Guide](../guides/appengine) to see App Engine in
+> action.
 
 ## When to use App Engine
 
-App Engine supports the most common application use cases. It is ideal for any application that:
+App Engine supports the most common application use cases. It is ideal for any
+application that:
 
 1. is contained in a single docker image,
 2. exposes any number of TCP or HTTP endpoints,
@@ -21,7 +24,9 @@ App Engine supports the most common application use cases. It is ideal for any a
 
 ### Not supported
 
-App Engine does not cover every possible use case (yet). If an application needs more functionality than App Engine supports, you need to create a custom Provisioner.
+App Engine does not cover every possible use case (yet). If an application needs
+more functionality than App Engine supports, you need to create a custom
+Provisioner.
 
 A custom provisioner may be necessary for any applications that:
 
@@ -31,12 +36,13 @@ A custom provisioner may be necessary for any applications that:
 - link to other CodeZero applications, or
 - expose a custom API for other applications
 
-> [!EXPERT]
-> You can read more about creating custom provisioners [here](../guides/custom-provisioner).
+> [!EXPERT] You can read more about creating custom provisioners
+> [here](../guides/custom-provisioner).
 
 ## Provisioner Specification
 
-The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) defines the App Engine specific configuration and controls the provisioner's behaviour.
+The [Provisioner Spec](./application-manifest.md#Provisioner-Spec) defines the
+App Engine specific configuration and controls the provisioner's behaviour.
 
 ```yaml
 name: packageName
@@ -73,12 +79,14 @@ editions:
 
 ### Config
 
-Configs are a KeyValue pair to define environment variables for the application. The value is either a string or object of type [Generator](#Generator).
+Configs are a KeyValue pair to define environment variables for the application.
+The value is either a string or object of type [Generator](#Generator).
 
-> [!NOTE]
-> If the variable value contains sensitive information (ex: passwords, keys, tokens), then use the [secrets](#Secret) property instead.
+> [!NOTE] If the variable value contains sensitive information (ex: passwords,
+> keys, tokens), then use the [secrets](#Secret) property instead.
 
-Several reserved values have special meaning. If the value matches one of these reserved values, it is replaced at run-time by the appropriate value:
+Several reserved values have special meaning. If the value matches one of these
+reserved values, it is replaced at run-time by the appropriate value:
 
 | Value        | Description                                                                                                                           |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,8 +120,9 @@ editions:
 | generate.strict                   | Boolean  | false   | Require string to include at least one character from each pool. |
 | generate.excludeSimilarCharacters | Boolean  | false   | Exclude similar chars, like 'i' and 'l'.                         |
 
-> [!EXPERT]
-> See [generate-password](https://www.npmjs.com/package/generate-password) for more details on the generate options.
+> [!EXPERT] See
+> [generate-password](https://www.npmjs.com/package/generate-password) for more
+> details on the generate options.
 
 #### Generator Example
 
@@ -134,10 +143,14 @@ editions:
 
 ### Secret
 
-Secrets are the same structure as [Configs](#Config), just under the `secrets` property. Store variables that contain potentially sensitive information as a secret instead of a standard [Config](#Config).
+Secrets are the same structure as [Configs](#Config), just under the `secrets`
+property. Store variables that contain potentially sensitive information as a
+secret instead of a standard [Config](#Config).
 
-> [!EXPERT]
-> Under the hood, Kubernetes stores these values as a `Secret`. Check out the Kubernetes [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to learn more about how Secrets work.
+> [!EXPERT] Under the hood, Kubernetes stores these values as a `Secret`. Check
+> out the Kubernetes
+> [documentation](https://kubernetes.io/docs/concepts/configuration/secret/) to
+> learn more about how Secrets work.
 
 #### Secret Example
 
@@ -206,18 +219,23 @@ editions:
 
 ### Flows
 
-Flows are responsible for defining a list of questions presented to the end-user during installation.
+Flows are responsible for defining a list of questions presented to the end-user
+during installation.
 
-Flows is an array of [Steps](Step), where each step defines one or more [Prompts](#Prompt) that the user must answer.
+Flows is an array of [Steps](Step), where each step defines one or more
+[Prompts](#Prompt) that the user must answer.
 
-> [!PROTIP] The answer to prompts can alter which steps and prompts display to the user.
+> [!PROTIP] The answer to prompts can alter which steps and prompts display to
+> the user.
 
-> [!EXPERT]
-> The WebUI and CLI use the Flows' configuration to determine how to interact with the end-user, so you only need to write one set of rules for both uses.
+> [!EXPERT] The WebUI and CLI use the Flows' configuration to determine how to
+> interact with the end-user, so you only need to write one set of rules for
+> both uses.
 
 ### Step
 
-A step defines a collection of questions and can even group sets of questions into separate sections.
+A step defines a collection of questions and can even group sets of questions
+into separate sections.
 
 | Property | Value(s)              | Description                                                                 |
 | -------- | --------------------- | --------------------------------------------------------------------------- |
@@ -226,11 +244,9 @@ A step defines a collection of questions and can even group sets of questions in
 | sections | [Section](#Section)[] | A section allows the developer to group a set of questions within the step. |
 | prompts  | [Prompt](#Prompt)[]   | If no sections are required, list a set of prompts for this step.           |
 
-> [!WARNING]
-> You cannot use both `sections` and `prompts` in the same step.
+> [!WARNING] You cannot use both `sections` and `prompts` in the same step.
 
-> [!PROTIP]
-> Both `sections` or `prompts` can be an array or single object.
+> [!PROTIP] Both `sections` or `prompts` can be an array or single object.
 
 #### Step Example
 
@@ -296,8 +312,9 @@ editions:
 | mask        | Char                      |          | Character to use to hide the user's actual input.                                                                |
 | c6o         | [C6O](#Prompt-Extensions) |          | Object containing C6O specific properties.                                                                       |
 
-> [!EXPERT]
-> Individual prompts are based on [inquirer](https://www.npmjs.com/package/inquirer), with a few CodeZero specific [extensions](#Prompt-Extensions).
+> [!EXPERT] Individual prompts are based on
+> [inquirer](https://www.npmjs.com/package/inquirer), with a few CodeZero
+> specific [extensions](#Prompt-Extensions).
 
 #### Prompt Example
 
@@ -367,7 +384,9 @@ editions:
 
 ### Data Sources
 
-Data Sources are used to populate the list options with commonly used values automatically. Currently, the only supported data source is `timezone`, but more to come.
+Data Sources are used to populate the list options with commonly used values
+automatically. Currently, the only supported data source is `timezone`, but more
+to come.
 
 #### Timezone Example
 

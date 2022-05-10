@@ -5,7 +5,7 @@ default: true
 MD013:
 
   # Number of characters
-  line_length: 450
+  line_length: 240
   # Number of characters for headings
   heading_line_length: 80
   # Number of characters for code blocks
@@ -21,4 +21,4 @@ MD013:
   # Strict length checking
   strict: false
   # Stern length checking
-  stern: false
+  stern: true

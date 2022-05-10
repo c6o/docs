@@ -1,12 +1,16 @@
 # KubeClient Reference
 
-The KubeClient provides an easy to use interface to Kubernetes clusters. It can be used in direct mode, where changes are immediate, or in a batch mode where commands are added to a command stack and then executed sequentially when the command stack is ended.
+The KubeClient provides an easy to use interface to Kubernetes clusters. It can
+be used in direct mode, where changes are immediate, or in a batch mode where
+commands are added to a command stack and then executed sequentially when the
+command stack is ended.
 
 ## API Examples
 
 ### Direct Mode - Cluster
 
-The following snippet illustrates the use of the KubeClient to retrieve the config map resources that have the specified labels.
+The following snippet illustrates the use of the KubeClient to retrieve the
+config map resources that have the specified labels.
 
 ```javascript
 let result = await this.manager.cluster.list({
@@ -24,9 +28,11 @@ if (result.error) throw result.error
 
 ### Batch Mode - Processor Command Stack
 
-The following snippet creates a new cluster object, and then executes a list of commands sequentially.
+The following snippet creates a new cluster object, and then executes a list of
+commands sequentially.
 
-A command stack is created with the `begin()` method, and execution on the stack begins when `end()` is called as shown.
+A command stack is created with the `begin()` method, and execution on the stack
+begins when `end()` is called as shown.
 
 ```javascript
 const cluster = new Cluster({})
@@ -46,13 +52,18 @@ cluster
   .end()
 ```
 
-In some cases, you may need to execute arbitrary Typescript code in the middle of a command sequence. This is done using the `do` method as shown. You provide `do()` with a callback that has the result from the previous command, and the processor command stack.
+In some cases, you may need to execute arbitrary Typescript code in the middle
+of a command sequence. This is done using the `do` method as shown. You provide
+`do()` with a callback that has the result from the previous command, and the
+processor command stack.
 
 ## Functionality
 
-The KubeClient functionality is available in both direct and batch mode except where indicated.
+The KubeClient functionality is available in both direct and batch mode except
+where indicated.
 
-- CRUD - perform create, read list, update, patch or delete on a specified Kubernetes document.
+- CRUD - perform create, read list, update, patch or delete on a specified
+  Kubernetes document.
 
 - exec - run the command and args on a specified pod.
 
@@ -60,10 +71,13 @@ The KubeClient functionality is available in both direct and batch mode except w
 
 - Files - CRUD using file handlebar templates
 
-- Attempt - repeatedly call a function a number of times with a delay until it succeeds
+- Attempt - repeatedly call a function a number of times with a delay until it
+  succeeds
 
 - portForward - set up a portForward to cluster service for access
 
 ## Status Reporting
 
-The KubeClient can be supplied with an instance of the Status object. The Status object maintains the state of the execution of a command stack for display on the command line or other real-time status display.
+The KubeClient can be supplied with an instance of the Status object. The Status
+object maintains the state of the execution of a command stack for display on
+the command line or other real-time status display.

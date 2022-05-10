@@ -4,9 +4,11 @@
 
 ### attempt
 
-▸ **attempt**(`times`: number, `sleepTime`: number, `fn`: attemptCallback): _this_
+▸ **attempt**(`times`: number, `sleepTime`: number, `fn`: attemptCallback):
+_this_
 
-Attempts an operation several times until it either succeeds or exceeds the attempt count
+Attempts an operation several times until it either succeeds or exceeds the
+attempt count
 
 **Parameters:**
 
