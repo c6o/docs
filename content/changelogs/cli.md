@@ -4,7 +4,7 @@ This document contains the release notes for the CodeZero CLI.
 
 ## Release Notes for v1.7.0
 
-This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface (more information will be coming soon).
+This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface which is now live at [https://k8s.surf](https://k8s.surf).
 
 > [!WIP]
 > Although we thoroughly test each release, if, for whatever reason, this feature introduces any instability to your environment, you can opt to disable it's use entirely by running `touch ~/.codezero/no-surf`, and restarting CodeZero (`czctl stop && czctl start`).
