@@ -2,6 +2,32 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.7.0
+
+This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface (more information will be coming soon).
+
+> [!WIP]
+> Although we thoroughly test each release, if, for whatever reason, this feature introduces any instability to your environment, you can opt to disable it's use entirely by running `touch ~/.codezero/no-surf`, and restarting CodeZero (`czctl stop && czctl start`).
+
+### Features
+
+- Prompt for name and email during startup of CLI and Desktop apps
+- Add opt-in for the CodeZero product update newsletters
+- Introduce backend support for `surf`, a new way of querying you cluster resources
+- **desktop**: Add keyboard shortcut to launch the desktop dashboard
+
+### Bug Fixes
+
+- **daemon**: Prevent daemon from crashing if `kubeconfig` is in an unknown format
+- **desktop**: Optimize user profile fetching
+- **desktop**: Improve dashboard grid layout when displaying long strings
+- **desktop**: Eliminate the responsiveness delay in the dashboard UI when new sessions are launched
+- **mount**: Allow mount paths destinations longer than 63 characters
+- **intercept**: Multi-port services properly handle all ports during an intercept
+- **intercept**: Remove caching directives from intercept proxy settings
+- **teleport**: Session close `--purge` properly cleans up hosts file
+- **vsocde**: VSCode icon image updated to match CodeZero logo
+
 ## Release Notes for v1.6.0
 
 ### Features
