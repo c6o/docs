@@ -8,6 +8,7 @@
   - [Installing CodeZero](/guides/installing)
   - [Using the CLI](/guides/using-cli)
   - [Using the Desktop App](/guides/using-desktop-app)
+  - [RBAC Security](/guides/security)
   - [Collaboration](/guides/collaboration)
 - Tutorials
   - [Kubernetes QuickStart](/tutorials/kubernetes-quickstart)
