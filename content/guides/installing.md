@@ -23,7 +23,7 @@ to install a headless version of the tool, which only includes the `czctl` CLI a
 If you want to install a specific version of our CLI or reinstall an older you can run:
 
 ```bash
-curl -sL https://releases.codezero.io/install-headless.sh | /bin/bash -s 1.6.0
+curl -sL https://releases.codezero.io/install-headless.sh | /bin/bash -s -- 1.6.0
 ```
 
 > [!WARNING]
@@ -49,7 +49,7 @@ We welcome feedback and bug reports related to Canary releases.
 If you'd like to try out pre-release builds, you can upgrade to the latest Canary release with:
 
 ```bash
-curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s canary
+curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s -- canary
 ```
 
 ### Stable
