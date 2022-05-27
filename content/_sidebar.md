@@ -20,7 +20,7 @@
 - Concepts
   - [Environments](/concepts/environments)
   - [Intercept](/concepts/intercept)
-  - [Moun](/concepts/mount)
+  - [Mount](/concepts/mount)
   - [Services](/concepts/services)
   - [Sessions](/concepts/sessions)
   - [Teleport](/concepts/teleport)
