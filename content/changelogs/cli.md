@@ -2,6 +2,12 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.7.1
+
+### Bug Fixes
+
+- **daemon**: Resource watchers would silently stop receiving event updates after a period of time
+
 ## Release Notes for v1.7.0
 
 This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface which is now live at [https://k8s.surf](https://k8s.surf).
