@@ -2,6 +2,19 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.8.0
+
+### Features
+
+- **desktop**: Give user a context selection dropdown when encrypting contexts
+- **intercept**: Intercept support for secure services (https or SSL) via `--tlsSecretName` flag
+- **profiles**: Development profiles now support basic variable substitution (email and name)
+- **teleport**: `ExternalName` services now supported as a pod-less service
+
+### Bug Fixes
+
+- **surf**: Added timeout support for cluster watcher to avoid stale data
+
 ## Release Notes for v1.7.1
 
 ### Bug Fixes
