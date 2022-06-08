@@ -2,6 +2,13 @@
 
 This document contains the release notes for the CodeZero CLI.
 
+## Release Notes for v1.8.1
+
+### Bug Fixes
+
+- **intercept**: intercept `--all` properly intercepts all traffic for specified port
+- **intercept**: un-intercepted ports continue to forward to the same port on the original service
+
 ## Release Notes for v1.8.0
 
 ### Features
