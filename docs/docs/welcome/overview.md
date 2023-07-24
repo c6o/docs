@@ -25,7 +25,7 @@ We recommend you go through this documentation in the order it is presented as w
 
 ### Guides
 
-Nothing beats having an actual Kubernetes cluster when it comes to learning CodeZero and Kubernetes. If you already have a cluster set up, you can simply use a _namespace_ within your existing cluster and move on to [Installing the CLI](/guides/installing.mdx). Otherwise, the [Kubernetes QuickStart](/guides/kubernetes-quickstart.md) has several options to get started with a learning cluster.
+Nothing beats having an actual Kubernetes cluster when it comes to learning CodeZero and Kubernetes. If you already have a cluster set up, you can simply use a _namespace_ within your existing cluster and move on to [Installing the CLI](/guides/installing.mdx). Otherwise, the [Kubernetes QuickStart](/tutorials/kubernetes-quickstart.md) has several options to get started with a learning cluster.
 
 ### Concepts
 
@@ -33,6 +33,6 @@ We strive to limit the jargon that developers have to learn in order to benefit 
 
 ### Tutorials
 
-We have put together a [Sample Kubernetes Project](/tutorials/sample-project.md) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This project is used in all the Tutorials and Videos in this documentation.
+We have put together a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This project is used in all the Tutorials and Videos in this documentation.
 
 The Tutorials walk you through how to develop and debug the various types of services you will encounter in just about any Kubernetes application.

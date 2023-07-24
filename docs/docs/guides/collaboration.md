@@ -17,7 +17,7 @@ A development profile creates a specific development scenario. For instance, a d
 Creating a Development Profile is as simple as using `czctl` just as you would normally, but appending the `--save-profile [filename]` flag.
 
 :::note
-See [CodeZero Overview](/welcome/overview) and [Installing CodeZero](/guides/installing) for more information on getting started with the CLI.
+See [CodeZero Overview](/welcome/overview.md) and [Installing CodeZero](/guides/installing.mdx) for more information on getting started with the CLI.
 :::
 
 #### Examples
