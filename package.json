@@ -1,17 +1,8 @@
 {
-  "name": "@traxitt/docs",
+  "name": "@c6o/docs",
   "version": "0.0.1",
+  "private": true,
   "description": "Documentation for CodeZero",
-  "main": "index.js",
-  "scripts": {
-    "start": "npx http-server -p 3000 -r .",
-    "precopy-kubeclient-docs": "rm -rf content/kubeclient && (cd ../node-monorepo/packages/kubeclient/ && yarn generate-docs)",
-    "copy-kubeclient-docs": "mv ../node-monorepo/packages/kubeclient/docs content/kubeclient",
-    "develop": "concurrently --raw 'docsify serve .'  'sleep 1 && open http://localhost:3000'",
-    "docker-build": "docker build -t traxitt/docs .",
-    "postdocker-build": "docker tag traxitt/docs:latest gcr.io/traxitt-staging/traxitt/docs:latest",
-    "docker-push": "docker push gcr.io/traxitt-staging/traxitt/docs"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/c6o/docs.git"
@@ -23,12 +14,46 @@
     "url": "https://github.com/c6o/docs/issues"
   },
   "homepage": "https://github.com/c6o/docs#readme",
+
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc"
+  },
   "dependencies": {
-    "docsify-cli": "^4.4.3",
-    "http-server": "^0.12.3",
-    "linkinator": "^3.0.3"
+    "@docusaurus/core": "2.4.1",
+    "@docusaurus/preset-classic": "2.4.1",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.2.1",
+    "prism-react-renderer": "^1.3.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "concurrently": "^6.2.0"
+    "@docusaurus/module-type-aliases": "2.4.1",
+    "@tsconfig/docusaurus": "^1.0.5",
+    "typescript": "^4.7.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=16.14"
   }
 }

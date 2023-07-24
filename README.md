@@ -6,7 +6,7 @@ All modifications should be submitted via a pull request and are subject to revi
 
 ## Running the Site Locally
 
-This documentation is put together using [docsify](docsifyjs.com) and uses `markdown`. You can edit the markdown files in the `content/` folder using the GitHub markdown editor, and submit a pull request.
+This documentation is put together using [Docusaurus](docusaurus.io) and uses `markdown`. You can edit the markdown files in the `docs/` folder using the GitHub markdown editor, and submit a pull request.
 
 If you would like to preview the site or make your changes locally, clone this repo and run the following:
 
@@ -14,23 +14,11 @@ If you would like to preview the site or make your changes locally, clone this r
 git clone ...
 cd docs
 yarn install
-yarn run develop
+yarn start
 
-OR
-
-yarn global add docsify-cli
-docsify serve .
 ```
 
 The site will run locally at `http://localhost:3000`
-
-## Finding broken links
-
-The tool linkinator can be used to make sure that all the links work. It doesn't work with the sidebars because of the absolute pathing, but this can be worked around by temporarily chaging (/ to (./ in the sidebar. Make sure this is changed back when committing changes.
-
-```bash
-linkinator ./content/**/*.md --markdown
-```
 
 ## Organization of the Documentation
 

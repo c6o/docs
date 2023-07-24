@@ -124,7 +124,7 @@ const config = {
         //     ],
         //   },
         // ],
-        copyright: `Copyright © ${new Date().getFullYear()} CodeZero Technologies, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © 2020-${new Date().getFullYear()} CodeZero Technologies, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

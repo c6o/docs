@@ -1,4 +1,0 @@
-- Partners
-  - Equinix Metal
-    - [Overview](/partners/equinix.md)
-    - [Technical Details](/partners/equinix-details.md)
