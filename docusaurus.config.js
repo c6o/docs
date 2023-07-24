@@ -41,6 +41,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: require.resolve("./sidebars.js"),
+          sidebarCollapsible: false,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -60,8 +61,8 @@ const config = {
       image: "img/docusaurus-social-card.jpg",
       docs: {
         sidebar: {
-          hideable: true,
-          autoCollapseCategories: true,
+          hideable: false,
+          // autoCollapseCategories: true,
         },
       },
       navbar: {
