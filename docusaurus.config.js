@@ -41,7 +41,10 @@ const config = {
         docs: {
           versions: {
             current: {
-              label: '2.0.0-rc'
+              label: 'Pasley (2.0.0-rc.5)'
+            },
+            '1.9.0': {
+              label: 'Anvil (1.9.0)'
             }
           },
           routeBasePath: '/',
