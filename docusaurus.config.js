@@ -39,6 +39,11 @@ const config = {
       ({
         pages: false,
         docs: {
+          versions: {
+            current: {
+              label: '2.0.0-rc'
+            }
+          },
           routeBasePath: '/',
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: false,
@@ -72,6 +77,10 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+          },
           // {
           //   type: "docSidebar",
           //   sidebarId: "tutorialSidebar",
