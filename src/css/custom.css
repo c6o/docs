@@ -34,7 +34,6 @@
 /*
   Hide document scrollbar for Chrome, Safari and Opera
 */
-*/
 .menu {
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
    scrollbar-width: 2px; /* Firefox */
