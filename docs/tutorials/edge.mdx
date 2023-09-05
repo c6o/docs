@@ -9,7 +9,7 @@ import Prerequisites from './_fragments/prerequisites.md'
 In this tutorial we get to experience how a frontend developer could use Codezero when developing an Edge Service.
 In the Sample Project, the Frontend Service is an Edge Service that makes calls to the Core and Socket services.
 
-Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service and teleport the other services in the cluster to your local machine.
+Traditionally the frontend developer would need to run all (or many) of an application's microservices locally just to work on the single Frontend Service. In this tutorial we will run _only_ the Frontend Service and consume the other services from the cluster.
 
 ## Objectives
 
@@ -38,11 +38,9 @@ yarn start-frontend
 
 You should be able to access the local Frontend service at `http://localhost:3030`, however you should see that the Socket and Core sections show errors. This is because the Frontend is not able to access the upstream services.
 
-This is where you would use Codezero's **Teleport**. First, we need the local frontend service to know that we wish to use the teleported configuration. We tell the Frontend service to use Teleport by adding `t=1` or `teleport=1` as a URL parameter:
+This is where you would use Codezero's **Consume**. First, we need the local frontend service to know that we wish to use the consume configuration. We tell the Frontend service to use Consume by adding `t=1` as a URL parameter:
 
 [http://localhost:3030?t=1](http://localhost:3030?t=1)
-or
-[http://localhost:3030?teleport=1](http://localhost:3030?teleport=1)
 
 This will tell the Frontend service to reference the following upstream services:
 
@@ -69,18 +67,20 @@ czctl start
 To verify that the daemon is running:
 
 ```bash
-czctl session list
+czctl status
 ```
 
-You should see a message that you have no running sessions. Reminder that you can run `czctl help` if you ever get stuck.
+You should see a message that the Codezero Daemon is running. Reminder that you can run `czctl help` if you ever get stuck.
 
-### Teleport into the Cluster
+### Consume Services from the Cluster
 
-You can now teleport into the sample-project namespace using the following command:
+You can now consume services from sample-project namespace using the following command:
 
 ```bash
-czctl teleport namespace sample-project
+czctl consume edit --primary-namespace sample-project
 ```
+
+Enter `sample-project/*`, save and exit the editor to consume all services from the sample project.
 
 You should now see the failed connections on the webpage start to work because the in-cluster services can now be accessed by your local Frontend.
 
@@ -94,8 +94,10 @@ After making changes, stop and start the frontend service, and perform a hard re
 
 ### Cleanup
 
-When you are done, you can close the Teleport session using:
+When you are done, you can stop consuming resources using:
 
 ```bash
-czctl session close
+czctl consume edit
 ```
+
+Delete the line `sample-project/*`, save and exit the editor.

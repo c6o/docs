@@ -11,13 +11,13 @@ In the Sample Project, the backend includes three services that handle frontend 
 
 Traditionally the backend developer would need to run all (or many) of an application's microservices locally in order to work on one of the backend services.
 
-In this tutorial we will show two scenarios: intercepting a Leaf service, and using Intercept and Teleport together with a Core service.
+In this tutorial we will show two scenarios: serving a Leaf service, and consuming and serving services.
 
-1. Leaf service: Here, the developer runs _only_ a Leaf service which will intercept requests
+1. Leaf service: Here, the developer runs _only_ a Leaf service which will serve requests
    to a cluster-based Leaf service. No other services will be run locally.
 
-2. Core service: Here, the developer runs _only_ a Core service which will intercept requests
-   to a cluster-based Core service, but it will need to have an active Teleport so that it can talk to the Leaf service in the cloud. No other services will be run locally.
+2. Core service: Here, the developer runs _only_ a Core service which will serve requests
+   to a cluster-based Core service, but it will need to consume a Leaf service in the cloud. No other services will be run locally.
 
 ## Objectives
 
@@ -51,7 +51,7 @@ You should be able to access the local Leaf service at `http://localhost:3010/ap
 {"who": "leaf", "where": "Somewhere-Machine.local"}
 ```
 
-We are now set up to use Codezero's **Intercept** with the Leaf service. A locally running service will soon be accepting requests from the cluster.
+We are now set up to use Codezero's **Serve** with the Leaf service. A locally running service will soon be accepting requests from the cluster.
 
 ### Start the Codezero Daemon
 
@@ -64,14 +64,14 @@ czctl start
 To verify that the daemon is running:
 
 ```bash
-czctl session list
+czctl status
 ```
 
-You should see a message that you have no running sessions. Reminder that you can run `czctl help` if you ever get stuck.
+You should see a message that the Codezero Daemon is running. Reminder that you can run `czctl help` if you ever get stuck.
 
-### Intercepting Leaf Services
+### Serving Leaf Services
 
-To intercept the sample-project-leaf service in the cluster, navigate to the URL of your frontend in the cluster. If you have used a load balancer, you can get the URL to the frontend via a `kubectl` command:
+To serve the sample-project-leaf service to the cluster, navigate to the URL of your frontend in the cluster. If you have used a load balancer, you can get the URL to the frontend via a `kubectl` command:
 
 ```bash
 kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
@@ -95,20 +95,20 @@ You will see that the response of the Leaf service is from the cluster-based ser
 }
 ```
 
-You can now intercept into the sample-project-leaf namespace using the following command:
+You can now serve your local sample-project-leaf to the cluster using the following command:
 
 ```bash
-czctl intercept service sample-project-leaf -n sample-project
+czctl serve sample-project/sample-project-leaf 3010
 ```
 
-Add a header (using something like the ModHeader Chrome extension) to the frontend page request `x-c6o-intercept:yes` and refresh the frontend page. You will now see a response from your local system:
+Add a header (using something like the ModHeader Chrome extension) to the frontend page request `x-c6o-userID:YOUR_USER_ID`. Replace YOUR_USER_ID with the user ID that you see in `czctl status` and refresh the frontend page. You will now see a response from your local system:
 
 ```json
 {
   "url": "http://sample-project-leaf:3010/api",
   "who": "leaf",
   "where": "Local-Machine.local",
-  "propagated-headers": "{\"x-c6o-intercept\":\"yes\"}"
+  "propagated-headers": "{\"x-c6o-userid\":\"YOUR_USER_ID\"}"
 }
 ```
 
@@ -120,55 +120,25 @@ We use an extension to add headers to the request. For Chrome, the extension `Mo
 
 You can debug your code by attaching the debugger to port 9339 and this will allow you to set breakpoints in the Leaf service in the file `./packages/leaf/index.js`
 
-:::note
-If you would like to add a Teleport and run the sample-project-leaf service locally, use
-`czctl teleport namespace sample-project --exclude orig-sample-project-leaf sample-project-leaf`
-This will allow you to listen to port 3010 locally since the cluster-based service will not be using your local Leaf service port.
-:::
-
 ## Core Tutorial
 
-In this tutorial we will Intercept the "sample-project-core" service in the cluster while Teleporting to the "sample-project" namespace.
+In this tutorial we will serve the "sample-project-core" service to the cluster while consuming other services from the "sample-project" namespace.
 
-### Setting up a teleport
+### Setting up Consume
 
-This tutorial assumes you have closed all czctl sessions with `czctl session close --all` and have stopped locally
-running services.
-
-In order to start the Core service locally, the cluster configuration for that service will need to be instantiated locally.
-This will enable the locally running service to talk to cluster services without modification.
-This is accomplished with the `configuration` command.
-
-Instantiate the Core service configuration with:
-
-```bash
-czctl configuration deployment sample-project-core env-core.sh --format sh --namespace sample-project
-```
-
-When that's done run the following to set the environment variables locally:
-
-```bash
-source env-core.sh
-```
-
-The key environment variable is `SP_LEAF_URL` (`env | grep SP_LEAF_URL`).
-
-Now, start up the Core service locally:
+Let's start by running the backend Core service locally. In the sample project root run:
 
 ```bash
 yarn start-core
 ```
 
-With the Core service configuration instantiated, it will try to talk to the Leaf service in the cluster.
-Note that right now, without a Teleport, it will be unsuccessful.
-
 Now make sure it's running correctly by opening the local URL in a browser:
 
 ```bash
-open http://localhost:3000/api
+open http://localhost:3001/api
 ```
 
-You will see the following errors in the output without a Teleport:
+You will see the following errors in the output without Consume:
 
 ```json
 {
@@ -189,18 +159,26 @@ You will see the following errors in the output without a Teleport:
 }
 ```
 
-### Teleporting With Core Services
+### Consuming With Core Services
 
-Unlike the Leaf service, the Core service will need to talk to other services in the cloud and as a result will need a Teleport.
-However, when a teleport is active, the services in the cloud will prevent the local system from starting services on the same ports.
-Since the local Core service will need to listen to port 3000, we will exclude it from the Teleport.
+Unlike the Leaf service, the Core service will need to talk to other services in the cloud and as a result will need to Consume.
+However, when Consume is active, the services in the cloud will prevent the local system from starting services on the same ports.
+Since the local Core service will need to listen to port 3001, we will exclude it from Consume.
 
 ```bash
-czctl teleport namespace sample-project --exclude orig-sample-project-core sample-project-core
+czctl consume edit
 ```
 
+Enter the following, save and exit the editor.
+
+```
+sample-project/*
+!sample-project/sample-project-core
+```
+
+
 :::note
-When using teleport with a locally intercepted service, we need to exclude the intercept backup service at `orig-sample-project-core`
+When using Consume with a locally served service, we need to exclude the served service.
 :::
 
 Now your local Core service can talk to the cluster Leaf service at sample-project-leaf, and you should see this output:
@@ -227,12 +205,12 @@ Now your local Core service can talk to the cluster Leaf service at sample-proje
 }
 ```
 
-### Intercepting Core Services
+### Serving Core Services
 
-Now, as with Leaf services, we can set up an Intercept so that the frontend service talks to our locally running Core service.
+Now, as with Leaf services, we can serve the Core service so that the frontend service talks to our locally running Core service.
 
 ```bash
-czctl intercept service sample-project-core -n sample-project
+czctl serve sample-project/sample-project-core 3001:3000
 ```
 
 You can now navigate to the frontend in the cloud:
@@ -255,20 +233,20 @@ You will see that the core output comes from your locally running service with t
 
 As before, you will still be able to set breakpoints in your locally running Core service.
 
-## Collaboration with Intercept and Teleport
+## Collaboration with Serve and Consume
 
 For the following, we are assuming the backend developer has started their Core service running from the previous section on Core services.
 
-Now, a frontend developer on another machine can teleport to the cluster and access your locally running Core service.
+Now, a frontend developer on another machine can consume services in the cluster and access your locally running Core service.
 
-On another machine, teleport into sample-project and run the frontend locally.
+On another machine, consume the sample-project and run the frontend locally.
 
 ```bash
-czctl teleport namespace sample-project
+czctl consume edit
 yarn start-frontend
 ```
 
-Navigate to `http://localhost:3030?t=1` with the header flags `x-c6o-intercept:yes`.
+Navigate to `http://localhost:3030?t=1` with the header flags `x-c6o-userid:YOUR_USER_ID`.
 
 ```bash
 open http://localhost:3030?t=1
@@ -286,8 +264,8 @@ They should see the output from your locally running Core service where you can 
 
 ## Cleanup
 
-When you are done, you can close all Teleports, Intercepts, and Configuration sessions using:
+When you are done, you can stop all sessions by stopping the Codezero Daemon:
 
 ```bash
-czctl session close --all
+czctl stop
 ```
