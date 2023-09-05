@@ -2,7 +2,7 @@
   "name": "@c6o/docs",
   "version": "0.0.1",
   "private": true,
-  "description": "Documentation for CodeZero",
+  "description": "Documentation for Codezero",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/c6o/docs.git"

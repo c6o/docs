@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Kubernetes Cluster QuickStart
 
-CodeZero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
+Codezero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
 
 If you do not have a Kubernetes cluster, here is a list of providers who provide managed Kubernetes.
 Most will give you more than enough credits to get the basics.

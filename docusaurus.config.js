@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "CodeZero Documentation",
+  title: "Codezero Documentation",
   tagline: "Dinosaurs are cool",
   favicon: "img/favicon.ico",
 
@@ -74,9 +74,9 @@ const config = {
         },
       },
       navbar: {
-        //title: "CodeZero Documentation",
+        //title: "Codezero Documentation",
         logo: {
-          alt: "CodeZero Logo",
+          alt: "Codezero Logo",
           src: "img/logo.svg",
         },
         items: [
@@ -137,7 +137,7 @@ const config = {
         //     ],
         //   },
         // ],
-        copyright: `Copyright © 2020-${new Date().getFullYear()} CodeZero Technologies, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © 2020-${new Date().getFullYear()} Codezero Technologies, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,

@@ -1,6 +1,6 @@
-# CodeZero Docs
+# Codezero Docs
 
-This documentation is published by CodeZero Technologies Inc. and covers all aspects of the CodeZero system. The documents are open to modification and is the basis for the [https://docs.codezero.io](https://docs.codezero.io) website.
+This documentation is published by Codezero Technologies Inc. and covers all aspects of the Codezero system. The documents are open to modification and is the basis for the [https://docs.codezero.io](https://docs.codezero.io) website.
 
 All modifications should be submitted via a pull request and are subject to review prior to publishing.
 
@@ -29,6 +29,6 @@ Reference => Detail information on a single command (a more graphical view of cz
 
 ## Legal Stuff
 
-These documents are published as-is and come with no warranty. CodeZero Technologies Inc. reserves the right to change these documents at any time.
+These documents are published as-is and come with no warranty. Codezero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2021 CodeZero Technologies Inc. All Rights Reserved
+© Copyright 2021 Codezero Technologies Inc. All Rights Reserved

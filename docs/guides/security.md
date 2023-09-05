@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # RBAC Security
 
-CodeZero requires the following Kubernetes Role Based Access Control (RBAC) for the various commands to function.
+Codezero requires the following Kubernetes Role Based Access Control (RBAC) for the various commands to function.
 
 You can choose to either restrict users to specific namespaces or give them cluster wide access. Replace `<NAMESPACE>` and `<USERNAME>` with your desired values.
 

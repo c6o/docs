@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Using the CLI
 
-CodeZero's tools can be used via the Desktop app or the CLI. If you installed the Desktop app you also have the CLI.
+Codezero's tools can be used via the Desktop app or the CLI. If you installed the Desktop app you also have the CLI.
 
 This section is about getting up and running with the CLI.
 
@@ -14,7 +14,7 @@ Many CLI commands need to interact with a Kubernetes cluster, therefore the CLI 
 
 ### Accessing Your Cluster
 
-By default, CodeZero uses the default cluster in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to point to your `kubeconfig` file.
+By default, Codezero uses the default cluster in `~/.kube/config`. Alternatively, you can set the `KUBECONFIG` environment variable to point to your `kubeconfig` file.
 
 ```bash
 export KUBECONFIG=<path to kubeconfig>
@@ -35,14 +35,14 @@ The CLI is invoked via the `czctl` command. To get more information about indivi
 
 ## Initialize the CLI
 
-Start the CodeZero daemon (background service) by running:
+Start the Codezero daemon (background service) by running:
 
 ```bash
 > czctl start
 ```
 
 :::note
-CodeZero requires `sudo` access to modify your system's `hosts` file. The `hosts` file is used to define in-cluster DNS information on your local machine during a teleport session.
+Codezero requires `sudo` access to modify your system's `hosts` file. The `hosts` file is used to define in-cluster DNS information on your local machine during a teleport session.
 :::
 
 ## Run commands
@@ -93,7 +93,7 @@ The primary concept behind the Configuration command is to help developers to de
 
 A problem that developers encounter is that they need to locally use the same configuration that a remotely deployed service uses. Finding the configuration and setting of a remote service so that the local service can use it is a time-consuming task. Additionally, if the configuration changes on the server, the developer may not be aware of those changes when they occur. Configurations need to be updated locally as they change remotely.
 
-CodeZero resolves this by enabling developers to bring down environment variables from workloads they are modifying and have the local configuration files update as they change on the server.
+Codezero resolves this by enabling developers to bring down environment variables from workloads they are modifying and have the local configuration files update as they change on the server.
 
 ### Under the Hood
 
