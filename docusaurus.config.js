@@ -78,6 +78,7 @@ const config = {
         logo: {
           alt: "Codezero Logo",
           src: "img/logo.svg",
+          srcDark: "img/logo_dark.svg",
         },
         items: [
           {
