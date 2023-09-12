@@ -38,6 +38,9 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         pages: false,
+        gtag: {
+          trackingID: 'G-6WP59C6D87',
+        },
         docs: {
           versions: {
             current: {
