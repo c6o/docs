@@ -42,3 +42,8 @@
   width:2px;
   /*  display: none;  Safari and Chrome */
 }
+
+.docusaurus-mermaid-container {
+  display: flex;
+  justify-content: center;
+}

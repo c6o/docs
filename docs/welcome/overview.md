@@ -3,13 +3,25 @@ sidebar_position: 1
 slug: /
 ---
 
-# Overview
+# Omni Development
 
-Codezero is for modern development with Kubernetes. Before Kubernetes and Cloud-computing it was possible to write and debug _most_ software on a single developer workstation. As software complexity has grown and organizations have moved to a microservice focused architecture designed to run on clusters of computers, it is no longer feasible to run these applications on a single workstation. This makes developing new features and diagnosing issues challenging.
+## Definition
+
+Imagine building a car with a team of people. Each of you is responsible for your own component - the steering wheel, the engine, the transmission, etc. And here’s the catch: you’re each in your own shop, with zero visibility into what the others are doing until you finally get together to assemble and troubleshoot each part.
+
+That’s essentially how cloud native software development happens today. We build in isolation, deploy and test together, debug in isolation, get feedback, deploy again. It’s a vicious cycle. From startups to tech giants, it’s a fundamental problem in the dev process that has yet to be solved. And it’s costing millions every day.
+
+CodeZero changes all that. Entirely. Now, team members can build in their own shops while also accessing and engaging with their colleagues’ work in real time – swapping parts in and out to make sure everything will come together seamlessly. Sound like an alternate reality? It sort of is. But that’s exactly what our solution enables.
+
+With CodeZero, your dev team – yes, the one spread across coffee shops and continents – can build and test code in a simulated, integrated environment that’s accessible from the comfort of their own workspace. Everyone else’s work is instantly available and actionable to others, without ever having to deploy.
+
+CodeZero is not just a tool; it’s a new way to dev. We call it _Omni-Dev_. And, soon enough, we won’t remember how we ever worked without it.
+
+## Overview
+
+Codezero enabled Omni-Dev with Kubernetes. Before Kubernetes and Cloud-computing it was possible to write and debug _most_ software on a single developer workstation. As software complexity has grown and organizations have moved to a microservice focused architecture designed to run on clusters of computers, it is no longer feasible to run these applications on a single workstation. This makes developing new features and diagnosing issues challenging.
 
 This documentation is geared towards a technical audience, and we assume you have a working knowledge of Kubernetes.
-
-## Modern Development
 
 Debugging applications on remote environments is painful. Despite observability and logging tools, nothing matches the local development experience. For instance, you cannot set breakpoints on remote applications running in distributed environments, and you do not have access to local tooling in these environments.
 
@@ -19,7 +31,7 @@ Developers can now collaborate with team members and work on any part of the app
 
 ## Getting Started
 
-Our goal here is to walk you through the basics of Modern Development using Codezero for Kubernetes. This documentation is a manual for the Codezero tools and includes hands-on tutorials.
+Our goal here is to walk you through the basics of Omni-Dev using Codezero for Kubernetes. This documentation is a manual for the Codezero tools and includes hands-on tutorials.
 
 We recommend you go through this documentation in the order it is presented as we build on previously defined concepts. Happy Learning!
 

@@ -3,11 +3,11 @@ To install the full Desktop application and CLI, visit our [Getting Started](htt
 Alternatively, to install Codezero via the command line, run:
 
 ```bash
-curl -L https://get.c6o.io | /bin/bash
+curl -L https://releases.codezero.io/install.sh | /bin/bash -s pasley
 ```
 
 :::tip
 
-If you want to play around with pre-releases, you can install canary releases using: `curl -L https://get.c6o.io | /bin/bash -s -- canary`. A word of caution, however, as canary releases have not been fully tested and may cause unexpected behavior.
+If you want to play around with pre-releases, you can install canary releases using: `curl -L https://releases.codezero.io | /bin/bash -s -- canary`. A word of caution, however, as canary releases have not been fully tested and may cause unexpected behavior.
 
 :::

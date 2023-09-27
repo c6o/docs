@@ -32,6 +32,11 @@ const config = {
     locales: ["en"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ["@docusaurus/theme-mermaid"],
+
   presets: [
     [
       "classic",
@@ -39,18 +44,18 @@ const config = {
       ({
         pages: false,
         gtag: {
-          trackingID: 'G-6WP59C6D87',
+          trackingID: "G-6WP59C6D87",
         },
         docs: {
           versions: {
             current: {
-              label: 'Pasley (2.0.0-rc.5)'
+              label: "Pasley (2.0.0-rc.9)",
             },
-            '1.9.0': {
-              label: 'Anvil (1.9.0)'
-            }
+            "1.9.0": {
+              label: "Anvil (1.9.0)",
+            },
           },
-          routeBasePath: '/',
+          routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           sidebarCollapsible: false,
           // Please change this to your repo.
@@ -85,8 +90,8 @@ const config = {
         },
         items: [
           {
-            type: 'docsVersionDropdown',
-            position: 'right',
+            type: "docsVersionDropdown",
+            position: "right",
           },
           // {
           //   type: "docSidebar",
