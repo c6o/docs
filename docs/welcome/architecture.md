@@ -47,7 +47,7 @@ erDiagram
 
 ## Hub
 
-The Hub is managed by Codezero and is available at [https://hub.codezero.io](hub.codezero.io). The Hub is the central authority that manages Organizations, Users, Roles, Policies and Teamspaces.
+The Hub is managed by Codezero and is available at [https://hub.codezero.io](https://hub.codezero.io). The Hub is the central authority that manages Organizations, Users, Roles, Policies and Teamspaces.
 
 The Hub also provides a graphical user interface where developers can perform all the functions available in the `czctl` command line tool.
 

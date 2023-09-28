@@ -10,7 +10,7 @@ Mount allows developers to locally mount cluster volumes in their local workstat
 
 Developers need to have access to persistent volumes that workloads mount so that they can easily see data that the code is using remotely. Seeing this data is quite difficult because the data is only visible from within running pods.
 
-CodeZero resolves visibility of persistent volume data by allowing developers to mount them as local drives.
+Codezero resolves visibility of persistent volume data by allowing developers to mount them as local drives.
 
 ## Overview
 

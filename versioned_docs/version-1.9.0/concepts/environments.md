@@ -28,6 +28,6 @@ Services running in Kubernetes form a graph. The following simplified graph repr
 
 Typically, each pre-Production environment has an exact replica or a subset of the application Microservices Graph. However, we would like you to consider alterations to this graph within a physical environment as a new Logical Ephemeral Environment.
 
-CodeZero provides you a set of primitives: Teleport, Intercept and Mount which can be configured and composed to re-shape the Microservices Graph in order to work on a feature or an issue.
+Codezero provides you a set of primitives: Teleport, Intercept and Mount which can be configured and composed to re-shape the Microservices Graph in order to work on a feature or an issue.
 
 Alterations to the graph are recorded in [Sessions](sessions.md) which, when closed, restore the physical graph to its original state.

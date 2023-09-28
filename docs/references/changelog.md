@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # CLI Release Notes
 
-This document contains the release notes for the CodeZero CLI.
+This document contains the release notes for the Codezero CLI.
 
 ## Release Notes for v1.9.0
 
@@ -43,12 +43,12 @@ This document contains the release notes for the CodeZero CLI.
 This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface which is now live at [https://k8s.surf](https://k8s.surf).
 
 > [!WIP]
-> Although we thoroughly test each release, if, for whatever reason, this feature introduces any instability to your environment, you can opt to disable it's use entirely by running `touch ~/.codezero/no-surf`, and restarting CodeZero (`czctl stop && czctl start`).
+> Although we thoroughly test each release, if, for whatever reason, this feature introduces any instability to your environment, you can opt to disable it's use entirely by running `touch ~/.codezero/no-surf`, and restarting Codezero (`czctl stop && czctl start`).
 
 ### Features
 
 - Prompt for name and email during startup of CLI and Desktop apps
-- Add opt-in for the CodeZero product update newsletters
+- Add opt-in for the Codezero product update newsletters
 - Introduce backend support for `surf`, a new way of querying you cluster resources
 - **desktop**: Add keyboard shortcut to launch the desktop dashboard
 
@@ -62,7 +62,7 @@ This release introduced a new daemon feature for querying a cluster's status and
 - **intercept**: Multi-port services properly handle all ports during an intercept
 - **intercept**: Remove caching directives from intercept proxy settings
 - **teleport**: Session close `--purge` properly cleans up hosts file
-- **vsocde**: VSCode icon image updated to match CodeZero logo
+- **vsocde**: VSCode icon image updated to match Codezero logo
 
 ## Release Notes for v1.6.0
 
@@ -95,8 +95,8 @@ This release introduced a new daemon feature for querying a cluster's status and
 
 ### Breaking Changes
 
-- CodeZero is no longer distributed via NPM. You should uninstall CodeZero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
-- Instead, please install CodeZero via one of:
+- Codezero is no longer distributed via NPM. You should uninstall Codezero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
+- Instead, please install Codezero via one of:
   - [Download](https://codezero.io/tooling/desktop#download-app) and run the appropriate installer
   - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
   - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
@@ -112,7 +112,7 @@ This release introduced a new daemon feature for querying a cluster's status and
 ### Bug Fixes
 
 - Fix daemon crashing when `.kube` directory does not exist ([#2854])
-- Fix running CodeZero in a docker container (buster+) ([#2829])
+- Fix running Codezero in a docker container (buster+) ([#2829])
 - Fix extremely slow installation experience ([#42](https://github.com/c6o/roadmap/issues/42)]
 - **cli:** Save a dev profile with a yaml file extension if one isn't provided ([#2839])
 - **daemon:** Make it so that user name and email are not required to run the daemon ([#2829])
@@ -128,7 +128,7 @@ This release introduced a new daemon feature for querying a cluster's status and
 
 ### Breaking Changes
 
-- Before upgrading, ensure existing CodeZero instance is fully stopped (run `czctl stop`)
+- Before upgrading, ensure existing Codezero instance is fully stopped (run `czctl stop`)
 
 KNOWN ISSUES: This stable release does not fix the issue where performing the same intercept twice kills the first intercept. We are aware of this issue and are working on a resolution (See: [#44](https://github.com/c6o/roadmap/issues/44) for details)
 
@@ -156,7 +156,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 - **daemon:** gracefully handle kubeconfigs that are missing clusters, contexts and/or users [#2504]
 - **desktop:** Don't show notification on dialog cancel [#2762]
 - **desktop:** Fix a typo in the UI for the local and remote ports [#2716]
-- **desktop:** Fix the version displaying in the screen from the About CodeZero menu [#2663]
+- **desktop:** Fix the version displaying in the screen from the About Codezero menu [#2663]
 - **mount:** No error is reported if the NFS server is not available locally yet ([#2619]
 - **vscode:** Modify vscode to work with new daemon API [#2696]
 - **vscode:** Fix vscode sourcemap resolution for sub-dependencies
@@ -214,7 +214,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 ### Features
 
 - Check for git repository root when creating development profiles [#2413]
-- Enable Desktop application's ability to auto-launch the CodeZero daemon.
+- Enable Desktop application's ability to auto-launch the Codezero daemon.
 - Prompt user if namespace is missing, rather than throw an error.
 
 ### Bug Fixes
@@ -229,7 +229,7 @@ KNOWN ISSUES: This stable release does not fix the issue where performing the sa
 
 ### BREAKING CHANGES
 
-- Close the existing CodeZero background process **before** upgrading (`czctl stop`). In case of issues, the old background service can be shutdown using: `sudo npx pm2 kill`.
+- Close the existing Codezero background process **before** upgrading (`czctl stop`). In case of issues, the old background service can be shutdown using: `sudo npx pm2 kill`.
 
 ### Features
 

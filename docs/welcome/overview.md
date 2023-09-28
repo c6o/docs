@@ -11,11 +11,11 @@ Imagine building a car with a team of people. Each of you is responsible for you
 
 That’s essentially how cloud native software development happens today. We build in isolation, deploy and test together, debug in isolation, get feedback, deploy again. It’s a vicious cycle. From startups to tech giants, it’s a fundamental problem in the dev process that has yet to be solved. And it’s costing millions every day.
 
-CodeZero changes all that. Entirely. Now, team members can build in their own shops while also accessing and engaging with their colleagues’ work in real time – swapping parts in and out to make sure everything will come together seamlessly. Sound like an alternate reality? It sort of is. But that’s exactly what our solution enables.
+Codezero changes all that. Entirely. Now, team members can build in their own shops while also accessing and engaging with their colleagues’ work in real time – swapping parts in and out to make sure everything will come together seamlessly. Sound like an alternate reality? It sort of is. But that’s exactly what our solution enables.
 
-With CodeZero, your dev team – yes, the one spread across coffee shops and continents – can build and test code in a simulated, integrated environment that’s accessible from the comfort of their own workspace. Everyone else’s work is instantly available and actionable to others, without ever having to deploy.
+With Codezero, your dev team – yes, the one spread across coffee shops and continents – can build and test code in a simulated, integrated environment that’s accessible from the comfort of their own workspace. Everyone else’s work is instantly available and actionable to others, without ever having to deploy.
 
-CodeZero is not just a tool; it’s a new way to dev. We call it _Omni-Dev_. And, soon enough, we won’t remember how we ever worked without it.
+Codezero is not just a tool; it’s a new way to dev. We call it _Omni-Dev_. And, soon enough, we won’t remember how we ever worked without it.
 
 ## Overview
 

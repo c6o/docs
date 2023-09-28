@@ -47,6 +47,7 @@ const config = {
           trackingID: "G-6WP59C6D87",
         },
         docs: {
+          lastVersion: "current",
           versions: {
             current: {
               label: "Pasley (2.0.0-rc.9)",

@@ -10,7 +10,7 @@ In this tutorial we expore how developers can locally mount cluster volumes in t
 
 When working on a service locally, developers may want to see the data being used by the same service running in their cluster. Seeing this data locally is quite difficult, however, because the data is stored remotely in a Persistent Volume, and only visible from within running pods. Copying the data locally can be cumbersome, and is a real challenge to keep in sync.
 
-CodeZero resolves visibility of remote data by allowing developers to mount Persistent Volumes as local drives.
+Codezero resolves visibility of remote data by allowing developers to mount Persistent Volumes as local drives.
 
 ## Objectives
 
@@ -31,7 +31,7 @@ The tutorial assumes you are at the root of the Sample Project repo, have comple
 
 Without Mount, when working on service that uses volumes, you would need to stub out or synthesize storage read/write operations. With Mount, you can access these remote volumes locally.
 
-### Start the CodeZero Daemon
+### Start the Codezero Daemon
 
 Assuming you have already [installed the CLI](/guides/installing.mdx), initialize the daemon:
 

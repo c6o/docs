@@ -8,7 +8,7 @@ We love hearing from Developers! Feedback from developers like you significantly
 
 ## Community and Support
 
-If none of the resources below address your need or if you need any help to get started with CodeZero, please reach out to Connery and our developer support team at [support@codezero.io](mailto:support@codezero.io)
+If none of the resources below address your need or if you need any help to get started with Codezero, please reach out to Connery and our developer support team at [support@codezero.io](mailto:support@codezero.io)
 
 ### Found an Issue?
 
