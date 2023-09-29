@@ -2,438 +2,256 @@
 sidebar_position: 2
 ---
 
-# CLI Release Notes
+# Release Notes
 
-This document contains the release notes for the Codezero CLI.
+## [2.0.0-rc.9](https://github.com/c6o/codezero/compare/2.0.0-rc.8...2.0.0-rc.9) (2023-09-22)
 
-## Release Notes for v1.9.0
+## [2.0.0-rc.8](https://github.com/c6o/codezero/compare/2.0.0-rc.7...2.0.0-rc.8) (2023-09-22)
 
-### Bug Fixes
-
-- **intercept**: support named ports in intercepted services
-
-## Release Notes for v1.8.1
-
-### Bug Fixes
-
-- **intercept**: intercept `--all` properly intercepts all traffic for specified port
-- **intercept**: un-intercepted ports continue to forward to the same port on the original service
-
-## Release Notes for v1.8.0
 
 ### Features
 
-- **desktop**: Give user a context selection dropdown when encrypting contexts
-- **intercept**: Intercept support for secure services (https or SSL) via `--tlsSecretName` flag
-- **profiles**: Development profiles now support basic variable substitution (email and name)
-- **teleport**: `ExternalName` services now supported as a pod-less service
+* add feature flags ([#500](https://github.com/c6o/codezero/issues/500)) ([90b698c](https://github.com/c6o/codezero/commit/90b698c3bf7b533c263f942591ad68a91e7fb8eb))
+* improved onboarding experience ([#512](https://github.com/c6o/codezero/issues/512)) ([3dbb67b](https://github.com/c6o/codezero/commit/3dbb67b0614f4a9d9bdc77c7e6f0673710f0f297))
+
+## [2.0.0-rc.7](https://github.com/c6o/codezero/compare/2.0.0-rc.6...2.0.0-rc.7) (2023-09-21)
+
 
 ### Bug Fixes
 
-- **surf**: Added timeout support for cluster watcher to avoid stale data
+* broken intercept with different port/targetPort ([#510](https://github.com/c6o/codezero/issues/510)) ([70ee1eb](https://github.com/c6o/codezero/commit/70ee1ebb94ad0d5f77a8132488ffe8b9c6a2c8ec))
+* description of primary-namespace clear ([#480](https://github.com/c6o/codezero/issues/480)) ([295986b](https://github.com/c6o/codezero/commit/295986baeac301f4368a7aee358b9c402ca70e9a))
+* get space token corrupts space list ([523c33a](https://github.com/c6o/codezero/commit/523c33aabdc4ebf9005b276bb79a0e5fbffbf23e))
+* remove hub authentication.create call on each czctl cmd ([#497](https://github.com/c6o/codezero/issues/497)) ([685be8e](https://github.com/c6o/codezero/commit/685be8eb511453c42cb471502bff903e4e1dfaa7))
 
-## Release Notes for v1.7.1
-
-### Bug Fixes
-
-- **daemon**: Resource watchers would silently stop receiving event updates after a period of time
-
-## Release Notes for v1.7.0
-
-This release introduced a new daemon feature for querying a cluster's status and resources.  This is to support the upcoming `surf` interface which is now live at [https://k8s.surf](https://k8s.surf).
-
-> [!WIP]
-> Although we thoroughly test each release, if, for whatever reason, this feature introduces any instability to your environment, you can opt to disable it's use entirely by running `touch ~/.codezero/no-surf`, and restarting Codezero (`czctl stop && czctl start`).
 
 ### Features
 
-- Prompt for name and email during startup of CLI and Desktop apps
-- Add opt-in for the Codezero product update newsletters
-- Introduce backend support for `surf`, a new way of querying you cluster resources
-- **desktop**: Add keyboard shortcut to launch the desktop dashboard
+* ensure that czdaemon does not restart when changing spaces ([#473](https://github.com/c6o/codezero/issues/473)) ([b048ff2](https://github.com/c6o/codezero/commit/b048ff285bc5ce63833c10810499a4c4f48aec2d))
+* make go logs consistent ([#499](https://github.com/c6o/codezero/issues/499)) ([9558054](https://github.com/c6o/codezero/commit/9558054f586d514bfcf95509637bab39e2583c4e))
+
+## [2.0.0-rc.6](https://github.com/c6o/codezero/compare/2.0.0-rc.5...2.0.0-rc.6) (2023-09-04)
+
+## [2.0.0-rc.5](https://github.com/c6o/codezero/compare/2.0.0-rc.4...2.0.0-rc.5) (2023-08-31)
+
 
 ### Bug Fixes
 
-- **daemon**: Prevent daemon from crashing if `kubeconfig` is in an unknown format
-- **desktop**: Optimize user profile fetching
-- **desktop**: Improve dashboard grid layout when displaying long strings
-- **desktop**: Eliminate the responsiveness delay in the dashboard UI when new sessions are launched
-- **mount**: Allow mount paths destinations longer than 63 characters
-- **intercept**: Multi-port services properly handle all ports during an intercept
-- **intercept**: Remove caching directives from intercept proxy settings
-- **teleport**: Session close `--purge` properly cleans up hosts file
-- **vsocde**: VSCode icon image updated to match Codezero logo
+* cache space context and token ([#442](https://github.com/c6o/codezero/issues/442)) ([5ee6f30](https://github.com/c6o/codezero/commit/5ee6f305288f5ae1b16440b09b83827353b45ae1))
+* network services parsing ([9055618](https://github.com/c6o/codezero/commit/9055618d184b8bb5f178d15071519fe06b48acca))
+* prevent invitation token leak ([#464](https://github.com/c6o/codezero/issues/464)) ([38b2c3f](https://github.com/c6o/codezero/commit/38b2c3f251c612654b3416d4e29e0b421961d99a))
 
-## Release Notes for v1.6.0
 
 ### Features
 
-- Added support for older versions of Kubernetes. Now supporting Kubernetes >= 1.14
-- Improved UX for sharing encrypted contexts with multiple users
+* add orchestrator status to czctl status ([#386](https://github.com/c6o/codezero/issues/386)) ([1c00258](https://github.com/c6o/codezero/commit/1c002585b7c6f02e7c2c9206dd6e6f3f6f5bc3eb))
+* add schema validation in hub ([#420](https://github.com/c6o/codezero/issues/420)) ([59ad978](https://github.com/c6o/codezero/commit/59ad97895955871f8f32625560b95b433d1c4f50))
+* get context instead of find on go hubclient ([#427](https://github.com/c6o/codezero/issues/427)) ([6331285](https://github.com/c6o/codezero/commit/633128593b3c30cae9bcd0a8696dbff8ca6cbb26))
+* show header details in service catalog ([#456](https://github.com/c6o/codezero/issues/456)) ([6bcd1ad](https://github.com/c6o/codezero/commit/6bcd1ad0248b7c095dbc0b4e012d328dd7d92333))
+* use validators on create/patch api/spaces ([#409](https://github.com/c6o/codezero/issues/409)) ([a4bde67](https://github.com/c6o/codezero/commit/a4bde67704321dbc05096a025c1c6ea01d44a98d))
+* user profile and unique name ([#454](https://github.com/c6o/codezero/issues/454)) ([ce657bf](https://github.com/c6o/codezero/commit/ce657bfee418004b64ffdc5ede10b9719c9e79c5))
+
+## [2.0.0-rc.4](https://github.com/c6o/codezero/compare/2.0.0-rc.3...2.0.0-rc.4) (2023-08-24)
+
 
 ### Bug Fixes
 
-- **cli**: Show meaningful error messages for invalid command arguments
-- **desktop**: clearing of unseen errors flag
-- **desktop**: minor UI improvement for copy/save buttons appearing cut-off
-- **mount**: provide better error messaging if no persistent volumes are available
-- **mount**: errors when workload contains mounted secrets
+* remove space name from certificates ([#407](https://github.com/c6o/codezero/issues/407)) ([1bb2e60](https://github.com/c6o/codezero/commit/1bb2e604ebc7e58b3128806c6a285e79803b29ae))
 
-## Release Notes for v1.5.0
 
 ### Features
 
-- **desktop:** Use Fira Code monotype font for contexts and public key
+* **containerize:** Add containerize workflow ([#393](https://github.com/c6o/codezero/issues/393)) ([51bcb49](https://github.com/c6o/codezero/commit/51bcb49c0e6033e74ecb658647a32bdff4bec788))
+* improved typesafety of hub and core clients ([#378](https://github.com/c6o/codezero/issues/378)) ([6be233d](https://github.com/c6o/codezero/commit/6be233d28c376fdd420533fb6f3b8f74ab02896b))
+* Stripe checkout & billing portal ([#383](https://github.com/c6o/codezero/issues/383)) ([6686d7f](https://github.com/c6o/codezero/commit/6686d7fc8c18fd4d622e941f702398cfc2d351f0))
+
+## [2.0.0-rc.3](https://github.com/c6o/codezero/compare/2.0.0-rc.2...2.0.0-rc.3) (2023-08-15)
+
 
 ### Bug Fixes
 
-- Closing multiple sessions may result in errors due to session parameters bleeding over
-- **cli**: `czctl intercept` ignores the supplied remote port and used the first found port instead
-- **desktop**: Unable to save a user profile under initial conditions
+* add Terraform variable for Stripe secret key ([#384](https://github.com/c6o/codezero/issues/384)) ([a0a2cc9](https://github.com/c6o/codezero/commit/a0a2cc91b93f719580acb112de2f65fdf2b73981))
+* connection is unstable requests take too long to be verified ([#321](https://github.com/c6o/codezero/issues/321)) ([5694e76](https://github.com/c6o/codezero/commit/5694e769febdb28f735025d74060addbe9c3761a))
+* enable WebSocket proxy for '/api' endpoint ([#381](https://github.com/c6o/codezero/issues/381)) [skip ci] ([17616b9](https://github.com/c6o/codezero/commit/17616b91783def68dc819c1f24e455906caf4c44))
+* fixes selecting no organisation ([#385](https://github.com/c6o/codezero/issues/385)) ([c2a0ac8](https://github.com/c6o/codezero/commit/c2a0ac8bbd892c2d4f8cd75ebb6cff6b81709585))
+* ignore tainted resources when observing kubernetes resources ([#377](https://github.com/c6o/codezero/issues/377)) ([cdf9f79](https://github.com/c6o/codezero/commit/cdf9f790c453997b03e0191443a53fe5631a317a))
+* navigation highlighting when in service catalog ([b73b30c](https://github.com/c6o/codezero/commit/b73b30c9e9c85e981f2ce6d784aa54821736ef2d))
+* open login page instead of GitHub oauth page for auth login ([#337](https://github.com/c6o/codezero/issues/337)) ([782b34c](https://github.com/c6o/codezero/commit/782b34c90c3d02ba7d5b9ae082112653a755c0e3)), closes [#335](https://github.com/c6o/codezero/issues/335)
+* remove dargo imports ([#366](https://github.com/c6o/codezero/issues/366)) ([95a3677](https://github.com/c6o/codezero/commit/95a3677a854f126b4cdf7f988359106dbcc0c511))
+* rollout restart codezero after registration ([#380](https://github.com/c6o/codezero/issues/380))  [skip ci] ([a8605a7](https://github.com/c6o/codezero/commit/a8605a70a988c9de0405bcd8b259e0e8077de44e))
+* spaces not refreshing properly ([f806e33](https://github.com/c6o/codezero/commit/f806e3362fe4ef302c187b63c55a1d3579787d89))
+* use separate /auth/cli login path for CLI logins ([#369](https://github.com/c6o/codezero/issues/369)) ([e0e24db](https://github.com/c6o/codezero/commit/e0e24dbb03d694495bf749091954e8d2cb55fa1f))
+* versioning issues ([#324](https://github.com/c6o/codezero/issues/324)) ([c023be2](https://github.com/c6o/codezero/commit/c023be2f63f7c007a1816338f8a6e666d569ee66))
 
-## Release Notes for v1.4.0
-
-### Breaking Changes
-
-- Codezero is no longer distributed via NPM. You should uninstall Codezero before upgrading (`npm uninstall -g @c6o/cli` or `brew uninstall c6o/tools/czctl`)
-- Instead, please install Codezero via one of:
-  - [Download](https://codezero.io/tooling/desktop#download-app) and run the appropriate installer
-  - Run `curl -L https://releases.codezero.io/install.sh | /bin/bash`
-  - Run `curl -L https://releases.codezero.io/install-headless.sh | /bin/bash` (does not include desktop)
 
 ### Features
 
-- Create an installation experience that bundles all Desktop components as a single binary ([#2851])
-- **cli:** Added `--force` flag to `czctl session close` to close sessions that have entered a bad state ([#38](https://github.com/c6o/roadmap/issues/38)]
-- **cli:** Add `czctl upgrade` to provide an easier upgrade experience for future releases
-- **teleport:** Exclusion of one or more services by name when teleporting to avoid port conflict issues when running locally ([#45](https://github.com/c6o/roadmap/issues/45))
-- **desktop:** Allow for secure kubeconfig request and distribution (documetation and official release coming soon) ([#2860])
+* add commit sha tags to helm install cmd ([#363](https://github.com/c6o/codezero/issues/363)) ([778d95a](https://github.com/c6o/codezero/commit/778d95a083bb187b40118855628a92880d25867c))
+* add hub status to czctl status ([#307](https://github.com/c6o/codezero/issues/307)) ([bca9518](https://github.com/c6o/codezero/commit/bca9518892f3bc8f02ea6d7847e66d0d0327a08e))
+* Added context on hub ([#342](https://github.com/c6o/codezero/issues/342)) ([b5a23ee](https://github.com/c6o/codezero/commit/b5a23ee9bdf32803a056ea34ba3bad058d8faa08))
+* adjust orchestrator channels ([#345](https://github.com/c6o/codezero/issues/345)) ([27e59db](https://github.com/c6o/codezero/commit/27e59dbd4d0a2d68f9ec6ab86781dc0a709bdcc7))
+* connect system to orchestrator over websockets (+shadiasocketio fix) ([#330](https://github.com/c6o/codezero/issues/330)) ([86f92d9](https://github.com/c6o/codezero/commit/86f92d940d066ae5ea0a45fba18b4ee97650c216))
+* create Stripe customers when creating users/orgs ([#365](https://github.com/c6o/codezero/issues/365)) ([9e50543](https://github.com/c6o/codezero/commit/9e505436d8e38ed927e56c3e52af91f414e85669))
+* czapp consume all ([#375](https://github.com/c6o/codezero/issues/375)) ([a3ca2a5](https://github.com/c6o/codezero/commit/a3ca2a5af2213e4bae533a6b3ddac92530b2d768))
+* **feathers:** kill daemon when feathers socket gets disconnected ([#326](https://github.com/c6o/codezero/issues/326)) ([6eaf4a8](https://github.com/c6o/codezero/commit/6eaf4a8eda13c476aaa3e92c7e49af3c486f7589))
+* get other user's profile ([2583a89](https://github.com/c6o/codezero/commit/2583a891d159eaf003d568f86f18cccaa7dc04a9))
+* intercept ([#388](https://github.com/c6o/codezero/issues/388)) ([c0eb90c](https://github.com/c6o/codezero/commit/c0eb90cc2f94f00c9e13078e22be1eb1d46ba0c7))
+* moved context management to hub for czapp ([#343](https://github.com/c6o/codezero/issues/343)) ([dc1b4f5](https://github.com/c6o/codezero/commit/dc1b4f5c49f81c4e6321f3ea6fa5fe49fbf793bc))
+* publish svc in cluster ([#349](https://github.com/c6o/codezero/issues/349)) ([cb63eed](https://github.com/c6o/codezero/commit/cb63eed23c99c56e076e20f9e934315ad5fc0d2a))
+* real-time display of service status ([#364](https://github.com/c6o/codezero/issues/364)) ([1003a6e](https://github.com/c6o/codezero/commit/1003a6efad3937fbd6812d98e94128c034cf2dd7))
+* redesigned application navigation and layout ([#317](https://github.com/c6o/codezero/issues/317)) ([0296683](https://github.com/c6o/codezero/commit/02966834cfe589b9d2e0b69dbba32016b1c7dc3c))
+* serve from within  czapp ([#382](https://github.com/c6o/codezero/issues/382)) ([603d80c](https://github.com/c6o/codezero/commit/603d80c9cc3729b975d2ab8487bc1694ae9a31c0))
+* service catalog ([#331](https://github.com/c6o/codezero/issues/331)) ([9ece333](https://github.com/c6o/codezero/commit/9ece3331cb043c621f7990439cfb3a0bc59400b7))
+* **service-catalog:** live namespaces and namespaces based filtering ([#347](https://github.com/c6o/codezero/issues/347)) ([c6a4e97](https://github.com/c6o/codezero/commit/c6a4e971b2d41e2d3bf6b4147ab46a52e50d06c7))
+* update orchestrator API ([#329](https://github.com/c6o/codezero/issues/329)) ([975dbaf](https://github.com/c6o/codezero/commit/975dbaf6affd0e9bb70c801dbd2316b5e980888d))
+* use context from hub in czctl and czdaemon ([#346](https://github.com/c6o/codezero/issues/346)) ([a03b0a4](https://github.com/c6o/codezero/commit/a03b0a41ecf055876a5829f05ef4faaa745942f7))
+
+## [2.0.0-rc.2](https://github.com/c6o/codezero/compare/2.0.0-rc.1...2.0.0-rc.2) (2023-07-05)
+
 
 ### Bug Fixes
 
-- Fix daemon crashing when `.kube` directory does not exist ([#2854])
-- Fix running Codezero in a docker container (buster+) ([#2829])
-- Fix extremely slow installation experience ([#42](https://github.com/c6o/roadmap/issues/42)]
-- **cli:** Save a dev profile with a yaml file extension if one isn't provided ([#2839])
-- **daemon:** Make it so that user name and email are not required to run the daemon ([#2829])
-- **desktop:** Make sure dev profiles update in the Desktop app when the content changes ([#2852])
-- **desktop:** Fix status causing infinite loop crash
-- **desktop:** ensure onboarding screens are displayed and dismissed properly ([#2862])
-- **desktop:** fix file watcher to ensure app changes when files are added/moved/renamed ([#2863])
-- **desktop:** activity tab erorr display when viewed for the first time ([#2883])
-- **mount:** Modifying files in mounted volume causes issues cleaning up; Mount gives error of: "Child has already been spawned" ([#2856])
-- **vsode:** Properly show errors if daemon not running
+* fixes leaking open sockets held by never-ending `io.Copy` on UDP ([#281](https://github.com/c6o/codezero/issues/281)) ([6d65920](https://github.com/c6o/codezero/commit/6d65920d2a5bb877ecaba3c8ad02b32c0fcb5c2f))
+* handle watch failures ([#267](https://github.com/c6o/codezero/issues/267)) ([b166223](https://github.com/c6o/codezero/commit/b166223e622c9c668f1080889bb4df51548d41f7))
+* invites fail to send ([#272](https://github.com/c6o/codezero/issues/272)) ([ce093e6](https://github.com/c6o/codezero/commit/ce093e6a1e43755a91564d58cada4f9bd4790187))
+* Prevent changes to dns.cfID ([#278](https://github.com/c6o/codezero/issues/278)) ([3e4b344](https://github.com/c6o/codezero/commit/3e4b34416c7477e3861cbd5047dce0b5b0a98457))
 
-## Release Notes for v1.3.2
-
-### Breaking Changes
-
-- Before upgrading, ensure existing Codezero instance is fully stopped (run `czctl stop`)
-
-KNOWN ISSUES: This stable release does not fix the issue where performing the same intercept twice kills the first intercept. We are aware of this issue and are working on a resolution (See: [#44](https://github.com/c6o/roadmap/issues/44) for details)
 
 ### Features
 
-- Added support for pre-release canary builds (full details in [our docs](https://docs.codezero.io/#/guides/installing?id=canary-vs-stable-releases))
-- **cli:** Return non-zero status code on errors ([#41](https://github.com/c6o/roadmap/issues/41))
-- **daemon:** Backup existing kubeconfig on startup, so it can be restored if needed [#2491]
-- **daemon:** Use the current context's default namespace, if set [#2191]
-- **desktop:** Don't show "podless-service" remote sessions in the dashboard [#2558]
-- **desktop:** When the dashboard is open, show notifications there instead of in system notifications [#2507]
-- **desktop:** Add activity feed screen null experience.
-- **desktop:** Supply additional information in the intercept display description [#2572]
+* add DNS flushing after changes to DNS ([#259](https://github.com/c6o/codezero/issues/259)) ([241dde9](https://github.com/c6o/codezero/commit/241dde9026e5e2bb06022948cda096720e692daa))
+* Added version reporting ([#277](https://github.com/c6o/codezero/issues/277)) ([72fedfd](https://github.com/c6o/codezero/commit/72fedfd769629a08586eface703b0a8919765ac9))
+* czctl status display adjustments ([#296](https://github.com/c6o/codezero/issues/296)) ([248b50d](https://github.com/c6o/codezero/commit/248b50d7b6d5a243a7a2f05bd43cb7a057e76cd9))
+* direct intercept ([#255](https://github.com/c6o/codezero/issues/255)) ([8977ed6](https://github.com/c6o/codezero/commit/8977ed62d3bf42d77c52ee927cf614b475fb14d4))
+* **ij:** run configs with prompts ([#262](https://github.com/c6o/codezero/issues/262)) ([78f1a7d](https://github.com/c6o/codezero/commit/78f1a7ddfe55fcad884d0331f2b0e9311d7bd676))
+* support login with Google ([#283](https://github.com/c6o/codezero/issues/283)) ([4ca5c1b](https://github.com/c6o/codezero/commit/4ca5c1ba3246cd6d350887297df0c73b0b13a5fa))
+* support teleport per port ([#294](https://github.com/c6o/codezero/issues/294)) ([6f5cf38](https://github.com/c6o/codezero/commit/6f5cf38cc67b6ebf751f0fc2f32e81b8576f5cf6))
+
+## [2.0.0-rc.1](https://github.com/c6o/codezero/compare/2.0.0-rc.0...2.0.0-rc.1) (2023-06-21)
+
 
 ### Bug Fixes
 
-- **cli:** CLI fails with `Expected columns` error when output is piped/captured ([#40](https://github.com/c6o/roadmap/issues/40))
-- **cli:** Prompt the user for resource name and local directory if they are not given [#2495]
-- **cli:** Improved error message when run from windows [#2610]
-- **cli:** Fix error and status propagation from backend to CLI response and remove redundant messages [#2538]
-- **cli:** session flag fixed for sub-sessions, environment command descriptions updated. ([#2624]
-- **daemon:** Graceful shutdown, exit codes and dealing with older daemons [#2718]
-- **daemon:** properly detect locally running daemon via port [#2575]
-- **daemon:** fix error handling when dealing with problems with clusters, namespaces and resources on the server [#2506]
-- **daemon:** gracefully handle kubeconfigs that are missing clusters, contexts and/or users [#2504]
-- **desktop:** Don't show notification on dialog cancel [#2762]
-- **desktop:** Fix a typo in the UI for the local and remote ports [#2716]
-- **desktop:** Fix the version displaying in the screen from the About Codezero menu [#2663]
-- **mount:** No error is reported if the NFS server is not available locally yet ([#2619]
-- **vscode:** Modify vscode to work with new daemon API [#2696]
-- **vscode:** Fix vscode sourcemap resolution for sub-dependencies
+* adjust exit codes on login ([#250](https://github.com/c6o/codezero/issues/250)) ([8300a4b](https://github.com/c6o/codezero/commit/8300a4b2d6d1991e8c81207d0754422aa5a0ca20))
+* certs race on orchestrator auth service ([#257](https://github.com/c6o/codezero/issues/257)) ([8e342d3](https://github.com/c6o/codezero/commit/8e342d32432d05441fb6ae86dd9c2f0e6da76f87))
+* czctl auth login redirect ([b200c9d](https://github.com/c6o/codezero/commit/b200c9d2788ccc1019076887e2627cb57b3d7a89))
+* **czctl:** perform clean exit when space is not set or user is not logged in during attach commands ([#253](https://github.com/c6o/codezero/issues/253)) ([a3939ef](https://github.com/c6o/codezero/commit/a3939efb5a79e81c1e3278206d84740c6df62685))
+* **czsupervisor:** fixes http handler crash when checking status and daemon is not running ([#252](https://github.com/c6o/codezero/issues/252)) ([8906a4f](https://github.com/c6o/codezero/commit/8906a4fcc79ef5d181374987735878f0e11a5f54))
+* fix duplicated flags issue ([#256](https://github.com/c6o/codezero/issues/256)) ([c37bd59](https://github.com/c6o/codezero/commit/c37bd59c0ef0f641f15f67381bff15d644dadd44))
+* fix missing default for DaemonListenAddr ([#258](https://github.com/c6o/codezero/issues/258)) ([28b5605](https://github.com/c6o/codezero/commit/28b5605bfb91d3d0b0290eeead136b49b8345f85))
+* fixes space status when organization is selected ([#234](https://github.com/c6o/codezero/issues/234)) ([d22df81](https://github.com/c6o/codezero/commit/d22df81a29cc1750c842423371fccbcfef301482))
+* fixes spinner UI clashing with UI messages ([#235](https://github.com/c6o/codezero/issues/235)) ([d560fc3](https://github.com/c6o/codezero/commit/d560fc30841c9f618ec23c06328a2b3106277cfd))
+* v1.x headless install [skip ci] ([7d04b54](https://github.com/c6o/codezero/commit/7d04b548b4f7b1dcad695f1a274741110c0e84c7))
 
-## Release Notes for v1.3.1
-
-### Breaking Changes
-
-- Mounted volume locations will now maintain the directory structure of the related workload:
-  Example: For example, a pod with mounts at `/var/lib/my-app` and `/data`, when mounted with `czctl mount deployment [name] /mnt/test` will create the local mounts at `/mnt/test/var/lib/my-app` and `/mnt/test/data`.
-
-### Bug Fixes
-
-- Fix warning and stack trace related to a module not found error returned at the end of each command. [[#39](https://github.com/c6o/roadmap/issues/39)]
-
-## Release Notes for v1.3.0
-
-### Breaking Changes
-
-- Re-order czctl command argument order to `czctl [command] [workload type]`
-  NOTE: The previous ordering will continue to be supported, but documentation going forward will prefer this new order
 
 ### Features
 
-- Add and remove workspaces from Desktop App
-- Add and remove clusters from Desktop app
-- Backup kubeconfigs on edit
-- Show notifications in dashboard when open
-- Remove extra sessions rom main dashboard screen
-- Detect start/stop of daemon via Desktop App
-- Dynamically load doc links, to stay up to date with the latest docs
-- Consolidated analytics across CLI, Desktop App, and VSCode
-- More descriptive session display information with --details flag
-- Clean up `czctl help` documentation
-- Added standalone `czctl environment [workloadtype] [workload]` to output environment variables without being tied to a teleport session
+* implement file watching in marshal.File interface ([#236](https://github.com/c6o/codezero/issues/236)) ([664ade8](https://github.com/c6o/codezero/commit/664ade87183968140ec9455183d773a16e2c56a5))
+* improve daemon resiliency to issues in config daemon should start irrespective of config state ([#247](https://github.com/c6o/codezero/issues/247)) ([73f1842](https://github.com/c6o/codezero/commit/73f1842dd5b81b4d3f94e9648457026aaf19be13))
+* primary namespace ([#241](https://github.com/c6o/codezero/issues/241)) ([89d1c3c](https://github.com/c6o/codezero/commit/89d1c3c6086b7c6b27e41963e650fdf3c22278ff))
+
+## [2.0.0-rc.0](https://github.com/c6o/codezero/compare/1.0.0...2.0.0-rc.0) (2023-05-27)
+
 
 ### Bug Fixes
 
-- Clean up redundant messaging on czctl start
-- CLI to report clear messaging when run on Windows
-- Ensure mount command reports failure if there was an internal error
-- Teleport to missing resource returns no output
-- Return an error if mounting a workload that has no mounts
-- Ensure teleport runs before mount command, when in the same development profile
-- Error during startup when kubeconfig is missing from home directory
+* add default config path for local hub server ([#111](https://github.com/c6o/codezero/issues/111)) ([796b9e5](https://github.com/c6o/codezero/commit/796b9e5ff94d482ab93be5945f5e65db89df5c7e))
+* add default config path for local orchestrator ([#112](https://github.com/c6o/codezero/issues/112)) ([2c9f18d](https://github.com/c6o/codezero/commit/2c9f18dd5150e0630d833ba9497fe165d1acacf7))
+* adds schema to generated config file ([#71](https://github.com/c6o/codezero/issues/71)) ([c96d787](https://github.com/c6o/codezero/commit/c96d787757420113e0a563329fa6364b84cc0abb))
+* adjust client path to spaces certification ([#107](https://github.com/c6o/codezero/issues/107)) ([6699128](https://github.com/c6o/codezero/commit/6699128bafc7a85413cda7e947cc3288367ce607))
+* adjust logger, allow orchestrator multi remove ([#216](https://github.com/c6o/codezero/issues/216)) ([f285e17](https://github.com/c6o/codezero/commit/f285e179e265a97c0455476ba05d6d84469e3a11))
+* adjust space user token claims ([#213](https://github.com/c6o/codezero/issues/213)) ([e828655](https://github.com/c6o/codezero/commit/e828655b6c34fd44573bfb7c4e914d7552e6d500))
+* Certification display in space list ([8799821](https://github.com/c6o/codezero/commit/8799821cf217b500310203ba20f0b106cad29f70))
+* change .env default to yml extension ([#108](https://github.com/c6o/codezero/issues/108)) ([97015b3](https://github.com/c6o/codezero/commit/97015b351bb8e515053b75f3d9e91f9e3545524c))
+* czdaemon hubauth config ([#131](https://github.com/c6o/codezero/issues/131)) ([6f3739a](https://github.com/c6o/codezero/commit/6f3739a5d7a619fbd6d31ef9e343aa252a89ea58))
+* DNS typo ([#188](https://github.com/c6o/codezero/issues/188)) ([e985bf1](https://github.com/c6o/codezero/commit/e985bf1cdc7be1c74f354f948983926f17589d14))
+* Ensure owner handling ([#168](https://github.com/c6o/codezero/issues/168)) ([f29099f](https://github.com/c6o/codezero/commit/f29099fd71688321d8830d16a014c82aa0bbb4b8))
+* Filter user resources on find ([edc6a08](https://github.com/c6o/codezero/commit/edc6a08151b7c4f3a1092cb7a22a2f3fcfc450d2))
+* fix eslint error ([#80](https://github.com/c6o/codezero/issues/80)) ([4172ceb](https://github.com/c6o/codezero/commit/4172ceb59acd8ef9e83d337854d64b194a7b44e6))
+* fixed daemon exiting right after starting ([#106](https://github.com/c6o/codezero/issues/106)) ([1eeeb8e](https://github.com/c6o/codezero/commit/1eeeb8edcf3880d0e4df34973b09558a6ebe4b79))
+* fixed dns setup, backup and revert ([#134](https://github.com/c6o/codezero/issues/134)) ([baf3a6f](https://github.com/c6o/codezero/commit/baf3a6fe266736947ad431ad757532c6b2031b62))
+* fixes `czdaemon configcreate --overwrite` ([#69](https://github.com/c6o/codezero/issues/69)) ([c7e95dc](https://github.com/c6o/codezero/commit/c7e95dcc0be3f345b4919fc4357b951e397bfc81)), closes [#68](https://github.com/c6o/codezero/issues/68)
+* fixes czsystem hubauth config ([#132](https://github.com/c6o/codezero/issues/132)) ([89ca951](https://github.com/c6o/codezero/commit/89ca951562ba23534fd9dd80d3843000904c72b5))
+* fixes default flag values overriding config values ([#133](https://github.com/c6o/codezero/issues/133)) ([c1a5dc7](https://github.com/c6o/codezero/commit/c1a5dc73c2ae544d1e42d9f84037b276b1a4a7b8))
+* fixes flags not being read ([#143](https://github.com/c6o/codezero/issues/143)) ([f0593ce](https://github.com/c6o/codezero/commit/f0593ced50b71f851c085def912ab9e929372efc))
+* fixes IJ run configurations ([#38](https://github.com/c6o/codezero/issues/38)) ([260df3e](https://github.com/c6o/codezero/commit/260df3e0a4af7ef5704e1107ace186313c016494)), closes [#37](https://github.com/c6o/codezero/issues/37)
+* fixes panic when could not create log file ([#229](https://github.com/c6o/codezero/issues/229)) ([6c00565](https://github.com/c6o/codezero/commit/6c005653ac05daff27d27c7280d0cfde577615b4))
+* Incorrect space rotate certificates ([#223](https://github.com/c6o/codezero/issues/223)) ([6be4bce](https://github.com/c6o/codezero/commit/6be4bcee38431ab47c1a1720554ec6a066c8a7d7))
+* inject ui config in system ([#209](https://github.com/c6o/codezero/issues/209)) ([830b7a8](https://github.com/c6o/codezero/commit/830b7a865d1b786aaed153b63d780bcdee51d777))
+* make czctl space commands use org context ([#194](https://github.com/c6o/codezero/issues/194)) ([123ebbe](https://github.com/c6o/codezero/commit/123ebbea1ad889edfe5ea16e250ce0f37cfb3934))
+* make forwardmanager thread-safe ([#225](https://github.com/c6o/codezero/issues/225)) ([d31fb07](https://github.com/c6o/codezero/commit/d31fb07310f430fd3c710eea34c0399fbe429a71))
+* Missing hub.url for non-prod hub ([4bfc388](https://github.com/c6o/codezero/commit/4bfc388c9a06d6724331ffcaf09083b6ddb568c0))
+* oauth redirect origin resolution ([#210](https://github.com/c6o/codezero/issues/210)) ([0036ec3](https://github.com/c6o/codezero/commit/0036ec356ca7d12c0f2f962b14f00cc577c09640))
+* pass flags from czctl to czdaemon as env variables ([#182](https://github.com/c6o/codezero/issues/182)) ([f5ac1e1](https://github.com/c6o/codezero/commit/f5ac1e18f3cbde8163b738d7a7b9cee62c765edd))
+* pass through query on ensureOwner find ([#118](https://github.com/c6o/codezero/issues/118)) ([#119](https://github.com/c6o/codezero/issues/119)) ([aa4de07](https://github.com/c6o/codezero/commit/aa4de07534f8caf2a6c2a5b87e7b04f0c8c7a799))
+* prevent czdaemon from exiting prematurely ([#73](https://github.com/c6o/codezero/issues/73)) ([775c09a](https://github.com/c6o/codezero/commit/775c09a2ebb32995bbbea85734556c614fe0f9b7)), closes [#72](https://github.com/c6o/codezero/issues/72)
+* remove deps cycle ([#148](https://github.com/c6o/codezero/issues/148)) ([545ab5e](https://github.com/c6o/codezero/commit/545ab5e614d7f9fdace1f4b83370976ddd5f3119))
+* remove dynamic import for oauth profile mappers ([#109](https://github.com/c6o/codezero/issues/109)) ([4c36c5b](https://github.com/c6o/codezero/commit/4c36c5b45d079d106710ab56849a6cb23ace6314))
+* small fix to hub tf deployment ([#159](https://github.com/c6o/codezero/issues/159)) ([01602aa](https://github.com/c6o/codezero/commit/01602aa43c0bd78780943b497be0008925c343b9))
+* Space certification auth issue ([cf9f27a](https://github.com/c6o/codezero/commit/cf9f27ad587fd5e0e2b632b06381f9b753c0223d))
+* temporarily set default audience for user space token ([#214](https://github.com/c6o/codezero/issues/214)) ([976e416](https://github.com/c6o/codezero/commit/976e416c24423d88b9548995064cb45cbfafae10))
+* tests for czdaemon ([#147](https://github.com/c6o/codezero/issues/147)) ([69a3694](https://github.com/c6o/codezero/commit/69a3694ed5df91bc555e2ed2fd63ea07d6aa681a))
 
-## Release Notes for v1.2.3
-
-### Bug Fixes
-
-- Fixed a critical bug with the @oclif/plugin-help dependency that was preventing all previous versions of the CLI from installing correctly.
-
-## Release Notes for v1.2.2
 
 ### Features
 
-- Check for git repository root when creating development profiles [#2413]
-- Enable Desktop application's ability to auto-launch the Codezero daemon.
-- Prompt user if namespace is missing, rather than throw an error.
-
-### Bug Fixes
-
-- Fix teleport environment variable output if path does not exist. [#2389]
-- Ensure mount is cleaned up prior to teleport session. [#2276]
-- Fix CLI checks for intercept and teleport versions.
-- Gracefully handle errors when checking Daemon version.
-- Improved reliability for detecting if Daemon is already running.
-
-## Release Notes for v1.2.1
-
-### BREAKING CHANGES
-
-- Close the existing Codezero background process **before** upgrading (`czctl stop`). In case of issues, the old background service can be shutdown using: `sudo npx pm2 kill`.
-
-### Features
-
-- Better daemon management, so the CLI and desktop app can share the same binary and detect when an upgrade needs to be performed.
-
-### Bug Fixes
-
-- Fix teleport environment output file not being created [#2237]
-- Fix teleport output file path resolution to support relative paths [#2237]
-- Session close with namespace error [#2309]
-- Multiple fixes for saving of development profiles [#2346]
-- Teleporting to non-existent workload produces no error [#2373]
-- Fix closing existing sessions if the active cluster changes [#2208]
-- Various fixes related to the desktop application (coming soon)
-
-## Release Notes for v1.2.0
-
-### BREAKING CHANGES
-
-- Please use `czctl start` instead of `sudo czctl init` when starting up the CLI. The `start` command does not need to be run with `sudo` explicitly, as the command will prompt you for your password if permission elevation is required.
-
-### New Features
-
-- This release introduces a daemon service on your local machine to manage the long-running session (in preparation for [[#21](https://github.com/c6o/roadmap/issues/21)]).
-- Added `czctl start` and `czctl stop` commands (`init` is now an alias of `start`) to manage the daemon's lifecycle.
-- Volume mount command: now works on Linux without `sudo`. [[#25](https://github.com/c6o/roadmap/issues/25)]
-- Auto-Restart interceptor tunnel to avoid tunnel timeout. [[#26](https://github.com/c6o/roadmap/issues/26)]
-- `sudo` is no longer required to start up the CLI. [[#23](https://github.com/c6o/roadmap/issues/23)]
-- Added `--save-profile` flag to `teleport`, `intercept` and `mount` commands to prepare for use of Development Profiles.
-
-### Bug Fixes
-
-- Fixed podless services with no endpoint causing crash
-- Fixed issue when registering configuration watcher
-- Fixed intercept session cleanup on close
-- Fixed NVM environments unable to reliably initialize the CLI [[#23](https://github.com/c6o/roadmap/issues/23)]
-
-Note (Known Issue): Intercept currently does NOT work with Node 17.x on macOS. [[#24](https://github.com/c6o/roadmap/issues/24)]
-
-## Release Notes for v1.1.1
-
-### Bug Fixes
-
-- Update package.json "pack" script to avoid conflict with brew installation (#2071)
-
-## Release Notes for v1.1.0
-
-### New Features
-
-- Volume mount command: You can now mount persistent volumes that any workload has mounted: `czctl [workload] mount [workload name] [mount root] -n [namespace]`
-  Where the `workload` is cronjob, deployment, job, pod, or statefulset (Mounting all volumes in a namespace is not supported),
-  the `workload name` is the name of the workload, the `mount root` is a local directory where the volumes should be mounted,
-  and the `namespace` is the namespace where the workload resides.
-
-Note: On Linux: you will need to use `sudo -E` to run the czctl workload mount command.
-
-Note: On first read or write to a mounted volume there will be a delay, but on subsequent writes performance will be improved.
-
-Note: Make sure you have a teleport session open before using the mount command: `czctl [workload] teleport [workload name] -n [namespace]`
-
-Note (Known Issue): If you have mounted some volumes, do not use `czctl session close --all` as this will close teleport before trying to unmount volumes. If you end up in this state, re-teleport and explicitly close the mount session first and then the teleport session.
-
-## Release Notes for v1.0.4
-
-### New Features
-
-- Support for intercepting all traffic (#1997)
-
-### Bug Fixes
-
-- Environment monitor now checks process rather than the file to determine if a session is open (#2000)
-
-## Release Notes for v1.0.3
-
-### Bug Fixes
-
-- Increased timeouts for pod-less decoy (#1982)
-
-## Release Notes for v1.0.2
-
-### Bug Fixes
-
-- Don't allow names over 63 characters as this will be used in a selector.(#1974)
-
-## Release Notes for v1.0.1
-
-### New Features
-
-- Multi-port services support (#1945)
-
-## Release Notes for v1.0.0
-
-### New Features
-
-- Tunnel supports purge to restore hosts file and loopback interface #1909 (#1957)
-
-### Bug Fixes
-
-- The success contextual banner shows and fades out as expected (#1955)
-- Intercept supports HTTPS / TLS (#1951)
-
-## Release Notes for v0.3.0
-
-### BREAKING CHANGES
-
-- There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
-
-### New Features
-
-- Support teleporting to headless and podless services
-
-### Known Issues
-
-- Cannot _intercept_ a headless and podless service
-
-## Release Notes for v0.2.8
-
-### New Features
-
-- Support for headless services
-- Increase the timeout of the teleport tunneller.
-- Stability Improvements
-
-## Release Notes for v0.2.7
-
-### BREAKING CHANGES
-
-- Any scripting that assumes that all namespaces will be teleported needs to be modified to use the new flags to add namespaces other than the one being referenced in the teleport command. The `--all` flag allows you to connect to all namespaces. You can also add more namespaces with additional `-a namespace1 -a namespace2`
-
-### Bug Fixes
-
-- Fix for teleport cleanup
-
-### Migration notes from v0.2.6 to v0.2.7
-
-To upgrade from 0.2.6 to 0.2.7 you will need to:
-
-1. Close your current sessions: `czctl session close --all`
-1. Restore your `/etc/hosts` and remove the Kubernetes services referenced there. You can copy `~/hosts.original` to `/etc/hosts` or edit the `/etc/hosts` file directly using sudo. Make sure that `~/hosts.original` is correct before using it to restore things using `sudo cp ~/hosts.original /etc/hosts`. If the `hosts.original` files is not correct, then edit the `/etc/hosts` file directly (use sudo to edit this file with your favourite editor: `sudo vi /etc/hosts`
-1. Remove `~/hosts.original`
-
-You can do this before or after installing the new @c6o/cli version 0.2.7: `npm update -g @c6o/cli`, `npm install -g @c6o/cli@0.2.7` or `npm install -g @c6o/cli@latest`
-
-To make sure you have the right version, use czctl version . The output should look something like this:
-
-```bash
-> czctl version
-@c6o/cli/0.2.7 darwin-arm64 node-v16.2.0
-```
-
-## Release Notes for v0.2.6
-
-### BREAKING CHANGES
-
-- There are changes to the teleport binary that need to be applied, so existing users MUST re-run `sudo czctl init`.
-
-### Bug Fixes
-
-- Fix error messaging to users of unsupported Node versions (<= 12.x)
-- Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
-
-### New Features
-
-- Teleport provides feedback to the user once all connections are fully setup [#1766, #1827]
-- Teleport auto-detects when new intercepts are added/removed, so restart is no longer required [#1808]
-- Extended teleport to work with other workloads (pods, cronjobs, jobs, statefulsets) [#1778]
-
-### Outstanding Issues
-
-- NodesJS <= 12.x is not supported.
-- Cannot intercept more than 4 services simultaneously from the same machine.
-- Cannot teleport to headless services yet
-
-> [!WARNING]
-> We expect the cli commands to change in the next release. We are considering reversing the commands from `<resource> <action>` to `<action> <resource>` and dropping the term `intercept`.
-> For instance, you will run: `czctl teleport deployment ...` and `czctl teleport service ...` and the parameters will change depending on the resource.
-> We may also use a generic term like `connect` so as not to confuse our tool with tools like `goteleport.com`.
-
-## Release Notes for v0.2.5
-
-### BREAKING CHANGES
-
-- `czctl service intercept` port flags changed. `-p` is now `-r` for remote and `-o` is now `-l` for local.
-- We have removed having to run sudo each time you teleport. Now, after installing the CLI, a user must run `sudo czctl init` once and from then on, sudo is no longer required. [#1744]
-
-### Bug Fixes
-
-- Fix Teleport hanging forever on Node 14.x
-- Fix Teleport environment file flag to support absolute paths.
-- Fix intercept's ngrok tunnels closing unexpectedly.
-- Fix various CLI error messages and suggestions to display more useful information.
-- Fix namespaces and service names being passed through and displayed as 'undefined'
-
-### New Features
-
-- Support multiple users intercepting the same service(s). Requires users to use the same header key but different values. [#1711, #1757]
-- Cluster based session management, so user can list and clean up sessions created by other users. [#1688]
-- Allow intercepting up to 4 services simultaneously per machine. [#1783]
-- `sudo -E` is no longer required for `czctl teleport`. [#1744]
-- Teleport no longer requires the environment file flag (-f).
-
-### Outstanding Issues
-
-- NodesJS <= 12.x is not supported.
-- Cannot intercept more than 4 services simultaneously from the same machine.
-- Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
-- Teleport should provide feedback to the user, so they know when all services have been fully setup.
+* add --id flag support to spaces ([#193](https://github.com/c6o/codezero/issues/193)) ([ec6cd35](https://github.com/c6o/codezero/commit/ec6cd356e3957a0e97d472cd3801271c9987fae6))
+* add attach command ([#135](https://github.com/c6o/codezero/issues/135)) ([837dfa3](https://github.com/c6o/codezero/commit/837dfa32826f0e78c9494cbaed08853fcbed3c3f))
+* add commands to czdaemon ([#50](https://github.com/c6o/codezero/issues/50)) ([3d50b86](https://github.com/c6o/codezero/commit/3d50b862b5305cd9a433ac2b22cf4d730073fd7e))
+* add dev cluster setup scripts ([#42](https://github.com/c6o/codezero/issues/42)) ([f28127d](https://github.com/c6o/codezero/commit/f28127d953c66890b7f3ac716e4d5695901f2ecf))
+* add hub token refresh ([#130](https://github.com/c6o/codezero/issues/130)) ([aa1224c](https://github.com/c6o/codezero/commit/aa1224cd7ea529b3ae4ea573e552b526a7f870dd))
+* add inspect-brk configs ([#115](https://github.com/c6o/codezero/issues/115)) ([2cc86ba](https://github.com/c6o/codezero/commit/2cc86baac63ff2520bc77ef488b80218d0b07614))
+* add support for more domains on forwarder ([#175](https://github.com/c6o/codezero/issues/175)) ([#231](https://github.com/c6o/codezero/issues/231)) ([aaa4774](https://github.com/c6o/codezero/commit/aaa47747fb69aa34ddddeea443876c2c6b693d4c))
+* add tls in http connect ([#116](https://github.com/c6o/codezero/issues/116)) ([ec75e3b](https://github.com/c6o/codezero/commit/ec75e3b198d19077f0dd3ee794e92d7884519c5c))
+* Add tunnel authentication ([#129](https://github.com/c6o/codezero/issues/129)) ([6759386](https://github.com/c6o/codezero/commit/67593862b45238f4a0e5cd69f36d0cf276cd56f2))
+* add ui results to daemonctl ([#190](https://github.com/c6o/codezero/issues/190)) ([509ee5e](https://github.com/c6o/codezero/commit/509ee5e9b6c2c510b2ad5d5c2cf633d9a36b5ed8))
+* added .nvmrc to define project's base node version ([#39](https://github.com/c6o/codezero/issues/39)) ([f157fba](https://github.com/c6o/codezero/commit/f157fba093d54a14b3e5c4cddbc5270c29a9bda7))
+* added option to (re-)create empty config file ([#45](https://github.com/c6o/codezero/issues/45)) ([b7e0c1c](https://github.com/c6o/codezero/commit/b7e0c1c2a6c281f7a104ae82bec06fbcae8515bf))
+* Added RSA token handling on hub ([#77](https://github.com/c6o/codezero/issues/77)) ([5b8dd03](https://github.com/c6o/codezero/commit/5b8dd0371b2eb8d7d69d3d47d09caba125e05ec0)), closes [#76](https://github.com/c6o/codezero/issues/76)
+* adjust czdaemon cli to czctl cli ([#171](https://github.com/c6o/codezero/issues/171)) ([c1e4cd6](https://github.com/c6o/codezero/commit/c1e4cd65724150066e356ce11b6f7b7e70584e64))
+* adjust error handling for rest transport ([#208](https://github.com/c6o/codezero/issues/208)) ([d57b47d](https://github.com/c6o/codezero/commit/d57b47d7114afc78409fa0fa50d2401f5820636f))
+* Basic and working hub ([#57](https://github.com/c6o/codezero/issues/57)) ([247e1dd](https://github.com/c6o/codezero/commit/247e1dd7804ba25a587dc00afd004feb89c99cf8))
+* Changed develop zone to tmsp.ac. Added space.dns.host ([#187](https://github.com/c6o/codezero/issues/187)) ([78db195](https://github.com/c6o/codezero/commit/78db195aba8a6f9cfee5b53cec1fb883cf865092))
+* Context and policies in frontend ([#149](https://github.com/c6o/codezero/issues/149)) ([1a040c8](https://github.com/c6o/codezero/commit/1a040c82d36f12512a88bc753645ef0e6e4eb791))
+* Copy  helm install instructions ([#173](https://github.com/c6o/codezero/issues/173)) ([9e83c2b](https://github.com/c6o/codezero/commit/9e83c2bcb91d284711b7f78b827c99710ea37ca6))
+* create Iif method for simplifying certain conditional cases ([#181](https://github.com/c6o/codezero/issues/181)) ([a4d63e2](https://github.com/c6o/codezero/commit/a4d63e269c7dc08c076344ca738cc90986460718))
+* create UI for non-interactive terminals ([#183](https://github.com/c6o/codezero/issues/183)) ([bda0cb9](https://github.com/c6o/codezero/commit/bda0cb93e96d06621ee3206f1aeefc966bcb858f))
+* czctl organization commands [#155](https://github.com/c6o/codezero/issues/155) ([#167](https://github.com/c6o/codezero/issues/167)) ([70875c0](https://github.com/c6o/codezero/commit/70875c0f0ce14f8e4bdbce5f30a17e5533795203))
+* czctl should write to user on stdout ([#170](https://github.com/c6o/codezero/issues/170)) ([ac2bd9c](https://github.com/c6o/codezero/commit/ac2bd9caa14f52ab790adaa61b76d7f3f367fea4))
+* czdaemon & czsystem prototype with Nx ([#34](https://github.com/c6o/codezero/issues/34)) ([fd3e95e](https://github.com/c6o/codezero/commit/fd3e95e413c494a4649b7c562cac9ca9c75e5428)), closes [#11](https://github.com/c6o/codezero/issues/11) [#12](https://github.com/c6o/codezero/issues/12) [#12](https://github.com/c6o/codezero/issues/12) [#11](https://github.com/c6o/codezero/issues/11) [#12](https://github.com/c6o/codezero/issues/12) [#23](https://github.com/c6o/codezero/issues/23)
+* czsystem registry and authentication ([#76](https://github.com/c6o/codezero/issues/76)) ([3ef6e96](https://github.com/c6o/codezero/commit/3ef6e963e791592e54f94b4bf94f6b289080af9f))
+* do not throw on reading the file that is missing (by default), just return empty struct instead ([#163](https://github.com/c6o/codezero/issues/163)) ([047e91c](https://github.com/c6o/codezero/commit/047e91c6340de4e64eb65417c129e1ce068c56a8))
+* ensure auth when `czctl start` is called ([#205](https://github.com/c6o/codezero/issues/205)) ([e01ba9e](https://github.com/c6o/codezero/commit/e01ba9e8b96b9df03d915698f29fbface6b88a25))
+* feathers go client rest transport ([#140](https://github.com/c6o/codezero/issues/140)) ([3ee8853](https://github.com/c6o/codezero/commit/3ee8853b277a4d734d707e9994787e33506c0765))
+* HUB handle DNS update from spaces ([#158](https://github.com/c6o/codezero/issues/158)) ([28e5b6d](https://github.com/c6o/codezero/commit/28e5b6d7b502c538897e5205edeb2fa77ca30a97)), closes [#90](https://github.com/c6o/codezero/issues/90)
+* implement `czctl auth login --token` ([#177](https://github.com/c6o/codezero/issues/177)) ([e55069d](https://github.com/c6o/codezero/commit/e55069d8f78c59b313c23213b242147f760342fe))
+* implement czctl login with oauth from hub ([#138](https://github.com/c6o/codezero/issues/138)) ([83cff9f](https://github.com/c6o/codezero/commit/83cff9f7eaecd5af39c9094fb2761c5b85f447b6))
+* implement czctl status command ([#144](https://github.com/c6o/codezero/issues/144)) ([c5c6a42](https://github.com/c6o/codezero/commit/c5c6a42c0bf0227134b05d2c1d7482619a36de44))
+* implement daemonization ([#47](https://github.com/c6o/codezero/issues/47)) ([#66](https://github.com/c6o/codezero/issues/66)) ([b5ba1bb](https://github.com/c6o/codezero/commit/b5ba1bb1c25e248f025da8e236367970239fa80b))
+* implement spaces certificates ([#83](https://github.com/c6o/codezero/issues/83)) ([#92](https://github.com/c6o/codezero/issues/92)) ([849c5a8](https://github.com/c6o/codezero/commit/849c5a8bde4037a3dd96cf2f9ae232fb9723e7ae))
+* implements start, stop and restart command in czctl ([#142](https://github.com/c6o/codezero/issues/142)) ([372d9e7](https://github.com/c6o/codezero/commit/372d9e78a27eba43359b364eb6d5683bc649ca4f))
+* make elevated commands respect sudo's caller when creating new files and directories ([#227](https://github.com/c6o/codezero/issues/227)) ([2a82986](https://github.com/c6o/codezero/commit/2a8298610524faf8097308549f440aa4cfd7bc2c))
+* manage teleport rules in orchestrator session ([#215](https://github.com/c6o/codezero/issues/215)) ([15d4efd](https://github.com/c6o/codezero/commit/15d4efdbabefdff5511c3f3b9508bd24cf9803c2))
+* new status, less root, other fixes and improvements ([#220](https://github.com/c6o/codezero/issues/220)) ([d6bf5a8](https://github.com/c6o/codezero/commit/d6bf5a83db5c7c9b2acdd2ee086545a28482f687))
+* observe the cluster state and send changes via ctrl ([#13](https://github.com/c6o/codezero/issues/13)) ([#49](https://github.com/c6o/codezero/issues/49)) ([0ab1db8](https://github.com/c6o/codezero/commit/0ab1db8aa3cd534a179cb66c5ef19684ab712454))
+* pass logger to feathers client ([#151](https://github.com/c6o/codezero/issues/151)) ([f1a1113](https://github.com/c6o/codezero/commit/f1a1113c13c99c2342602941fcdc70c2346d60be))
+* pull request CI [#150](https://github.com/c6o/codezero/issues/150) ([ed08244](https://github.com/c6o/codezero/commit/ed08244ee7d316e2a6b23c739da3f1b43195ba82))
+* RBAC and Policy based authorization ([#139](https://github.com/c6o/codezero/issues/139)) ([db9e7f9](https://github.com/c6o/codezero/commit/db9e7f9a2a929cb3c91392a82dd8857f4fc802b0))
+* refactor czproxy to dargo di ([#60](https://github.com/c6o/codezero/issues/60)) ([a5052bc](https://github.com/c6o/codezero/commit/a5052bc33e54a4f1538dcf27f409b7a434ae5ce9)), closes [#58](https://github.com/c6o/codezero/issues/58)
+* refactor czsystem to use dargo ([#54](https://github.com/c6o/codezero/issues/54)) ([82a095f](https://github.com/c6o/codezero/commit/82a095f6331c473c2d62ced07a654a6708713855))
+* refactor tunnel into common http handler ([#10](https://github.com/c6o/codezero/issues/10)) ([#46](https://github.com/c6o/codezero/issues/46)) ([f8fb1f9](https://github.com/c6o/codezero/commit/f8fb1f93dd077af98d24b4c0ae68911cf801131e))
+* refactored logging and flags ([#207](https://github.com/c6o/codezero/issues/207)) ([f54f54b](https://github.com/c6o/codezero/commit/f54f54b72c3a5f6811a7022d66427c8787acc26c))
+* register the space host in hub by system on lb changes ([#176](https://github.com/c6o/codezero/issues/176)) ([819377d](https://github.com/c6o/codezero/commit/819377da304aefc05353846f55fb460f5c573f48))
+* remove spaces and tokens on logout ([#179](https://github.com/c6o/codezero/issues/179)) ([efa9887](https://github.com/c6o/codezero/commit/efa9887b5dfc706ba9d51ad6b4dfc84fc907c898))
+* restore the previous yarn.lock ([#164](https://github.com/c6o/codezero/issues/164)) ([ef8189c](https://github.com/c6o/codezero/commit/ef8189c7daa20b8cbb11e811722fa32587b7f35e))
+* save space cert to space config file ([#124](https://github.com/c6o/codezero/issues/124)) ([2163771](https://github.com/c6o/codezero/commit/21637712808ca91e1cbab86e2b5c654f1642d0f4))
+* secure ws connection to orchestrator ([#160](https://github.com/c6o/codezero/issues/160)) ([1e5a9ca](https://github.com/c6o/codezero/commit/1e5a9ca8d5856a71bf39a4f54744469572936978))
+* small improvements to e2e test script ([#74](https://github.com/c6o/codezero/issues/74)) ([d537e48](https://github.com/c6o/codezero/commit/d537e48873899889028be895a74398bdb6c5a475))
+* teleport all ([#128](https://github.com/c6o/codezero/issues/128)) ([387d7cc](https://github.com/c6o/codezero/commit/387d7ccb6043360a20a83735013d8856c5206ef1))
+* teleport all ([#137](https://github.com/c6o/codezero/issues/137)) ([6b8d348](https://github.com/c6o/codezero/commit/6b8d34843f8e6c89d71eb66eb4f7060a48158486))
+* teleport e2e tests ([d45dcc6](https://github.com/c6o/codezero/commit/d45dcc68f2bf643c73a4d6e792fed5e0c599f871))
+* teleport rules ([#218](https://github.com/c6o/codezero/issues/218)) ([743f640](https://github.com/c6o/codezero/commit/743f6407886e7a1fa5c046a9e269152bcdc22f67))
+* use feathers client for hub communication ([#157](https://github.com/c6o/codezero/issues/157)) ([fb218f0](https://github.com/c6o/codezero/commit/fb218f09a018de24afecebc6c47900c714597497))
+* use kubefwd instead of port-forward for dev-cluster integration ([#52](https://github.com/c6o/codezero/issues/52)) ([0babe51](https://github.com/c6o/codezero/commit/0babe51bdb9a27634ae517b9e36cb16cc5c1c0c4))
+* use space id instead of space name in space config context ([#180](https://github.com/c6o/codezero/issues/180)) ([43fe5e7](https://github.com/c6o/codezero/commit/43fe5e7ca35324f614c303dfcc57b1519853cfd3))
+* various improvements ([#113](https://github.com/c6o/codezero/issues/113)) ([379a4cc](https://github.com/c6o/codezero/commit/379a4cc883c2897eef1075ea05168e482a5ba1a3))
