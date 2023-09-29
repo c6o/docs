@@ -3,7 +3,7 @@ To install the full Desktop application and CLI, visit our [Getting Started](htt
 Alternatively, to install Codezero via the command line, run:
 
 ```bash
-curl -L https://releases.codezero.io/install.sh | /bin/bash -s pasley
+curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s pasley
 ```
 
 :::tip

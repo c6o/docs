@@ -69,4 +69,20 @@ The Orchestrator provides real-time information to all clients connected to the 
 
 ## Local
 
-The local agent is made up of two executables, the Daemon and the Supervisor
+The local agent is made up of two executables, the Daemon and the Supervisor.
+
+### Supervisor
+
+The Supervisor is responsible for making sure the Daemon is in a healthy state and running when `czctl start` is executed. The Supervisor executable is generally located at `/usr/local/bin/codezero/czsupervisor`.
+
+### Daemon
+
+The Daemon runs with root privileges and is:
+
+1. A tunnel to the current selected Teamspace
+1. A Split Domain Name Service (DNS) server that resolves in cluster services to the tunnel
+1. A secure proxy for client applications (czctl, desktop, hub) to communicate with the current Teamspace
+
+The Daemon executable is generally located at `/usr/local/bin/codezero/czdaemon`.
+
+The Supervisor and Daemon are started when you run `czctl start`. You can directly execute the Daemon and this can be especially useful when troubleshooting.

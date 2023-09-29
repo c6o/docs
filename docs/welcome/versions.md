@@ -7,13 +7,13 @@ sidebar_position: 5
 The Codezero team comprises of avid sailors and thus, our major versions releases are named after islands in the Howe Sound Region of Vancouver, British Columbia. The team has sailed extensively around the Vancouver Island region and some of us have made it far out as Hawaii.
 
 ## 2.x - Pasley
-[49.3663° N, 123.4613° W](https://mapcarta.com/24543628)
+[49.3663° N, 123.4613° W](https://mapcarta.com/24543628/map)
 
 Pasley is the current pre-release and is the default version when you install Codezero. This version was written from scratch for resiliency and performance based on feedback from our customers.
 
 
 ## 1.x - Anvil
-[49.53°N 123.309°W](https://mapcarta.com/24118270)
+[49.53°N 123.309°W](https://mapcarta.com/24118270/map)
 
 Anvil was the initial release of Codezero. This release used Kubernetes port-forwarding and nginx reverse proxies to perform teleport and intercepts.
 
@@ -35,7 +35,7 @@ It is safe to have both Anvil and Pasley installed though we do not recommend yo
 
 We are constantly adding new features and addressing issues. As a result, we strive to have a fairly rapid release of our tools. There are times when we want to get your feedback on new features or issues. This is particularly important when there are scenarios that are difficult for us to reproduce. For this reason, we have split our releases into Stable and Canary releases.
 
-Yes - we get that there are the Canary Islands but in this case, canary refers to the colloquial term when referring to nightly releases.
+Yes - there are the Canary Islands but in this case, _Canary_ refers to the colloquial term when referring to software that's still undergoing testing.
 
 You can tell Stable versus Canary releases by the version numbers. Canary releases have pre-release labels in the semantic versions (e.g. 2.0.2-alpha.0 vs 2.0.1). In the previous example, 2.0.1 would be considered the latest Stable release until 2.0.1 is published.
 
