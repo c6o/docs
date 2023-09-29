@@ -1,0 +1,40 @@
+---
+sidebar_position: 1
+---
+
+import AppInstall from '../_fragments/app-install.md'
+import AppRequirements from '../_fragments/app-requirements.md'
+
+# Installing Local Tools
+
+Codezero's developer tools help in the development and testing of Kubernetes applications through a Command Line Interface (CLI) and a Desktop application.
+
+<AppInstall />
+
+## Requirements
+
+<AppRequirements />
+
+## Install Only the Codezero CLI
+
+If you are in a headless environment, or don't want to install the Desktop GUI, you can run:
+
+```bash
+curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s pasley
+```
+
+to install a headless version of the tool, which only includes the `czctl` CLI and background services.
+
+### Installing a Specific Version
+
+If you want to install a specific version of our CLI or reinstall an older you can run:
+
+```bash
+curl -L https://releases.codezero.io/install-headless.sh | /bin/bash -s -- 1.7.0
+```
+
+:::caution
+
+Older releases might contain bugs that have since been fixed. We always recomend running the lastest version of both our CLI and Desktop products. Additonally, before opening any bug reports, please update the latest stable release. If you still encouter an issue, please report it on our public roadmap.
+
+:::
