@@ -46,6 +46,9 @@ const config = {
         gtag: {
           trackingID: "G-6WP59C6D87",
         },
+        googleTagManager: {
+          containerId: 'GTM-MDBMNLL',
+        },
         docs: {
           lastVersion: "current",
           versions: {
