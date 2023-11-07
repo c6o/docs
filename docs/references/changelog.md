@@ -4,7 +4,68 @@ sidebar_position: 2
 
 # Release Notes
 
+# [2.0.0-rc.13](https://github.com/c6o/codezero/compare/2.0.0-rc.12...2.0.0-rc.13) (2023-11-07)
+
+
+### Bug Fixes
+
+* moved local service addresses to local.t8s.io instead of .local so we don't conflict with mDNS (Bonjour etc.)
+* added better cors handling to orchestrator proxy ([#668](https://github.com/c6o/codezero/issues/668)) ([eedb7c3](https://github.com/c6o/codezero/commit/eedb7c33f5e1383fc230b2d14e006a9d59e85d82))
+* errors when attempting to service list catalog with other users ([7bcfb0a](https://github.com/c6o/codezero/commit/7bcfb0a1075aae2d3445a723c917e24812efdfe9))
+* long loading in czapp after czctl stop ([#616](https://github.com/c6o/codezero/issues/616)) ([485254f](https://github.com/c6o/codezero/commit/485254fbf53db149e8d2eb418857bd2ff8d9bf96))
+* multiple users cannot serve the same resource ([#654](https://github.com/c6o/codezero/issues/654)) ([f018c6e](https://github.com/c6o/codezero/commit/f018c6e8ebb798213ba181bb2d6f00c322ee667f))
+* paging issues that broke serve ([ad4acef](https://github.com/c6o/codezero/commit/ad4acefe97b09f704502e1e523537c1c39879b5c))
+* save dialogs reverts before saving ([#653](https://github.com/c6o/codezero/issues/653)) ([7ed077f](https://github.com/c6o/codezero/commit/7ed077f4a178f881f4fb5724a21ec340499e7ca0))
+* unable to consume because of variant iteration error ([726cb67](https://github.com/c6o/codezero/commit/726cb679c688791dc0d76a229029cbd530d6d6ac))
+
+
+# [2.0.0-rc.12](https://github.com/c6o/codezero/compare/2.0.0-rc.11...2.0.0-rc.12) (2023-11-03)
+
+### Bug Fixes
+
+* change daemon listening address to .local (yeah this was a bad idea! - see RC13)  ([#639](https://github.com/c6o/codezero/issues/639)) ([5f99f4c](https://github.com/c6o/codezero/commit/5f99f4c054e47394cb92b599badc0065c1a09845))
+
+
+### Features
+
+* added support to bypass ISP for space ingress DNS ([#643](https://github.com/c6o/codezero/issues/643)) ([7026e5d](https://github.com/c6o/codezero/commit/7026e5d321c4b64b3068feafb99294d56c18b808))
+* added version check to czctl ([deba699](https://github.com/c6o/codezero/commit/deba6994c674280f98519775c875d5beac2813a8))
+* added version display and added copyable install instructions to getting started ([#644](https://github.com/c6o/codezero/issues/644)) ([b905186](https://github.com/c6o/codezero/commit/b9051863cfef871f271540ecf4894c2d503865ab))
+
+
+# [2.0.0-rc.11](https://github.com/c6o/codezero/compare/2.0.0-rc.10...2.0.0-rc.11) (2023-10-31)
+
+
+### Features
+
+* add --reinstall-certs flag to czctl start and add czctl opts certs ([#590](https://github.com/c6o/codezero/issues/590)) ([370b38f](https://github.com/c6o/codezero/commit/370b38fd197fc28f4734d8206450b4f5bf610282))
+* added support for default and header based conditions when serving variants ([#617](https://github.com/c6o/codezero/issues/617)) ([5564ceb](https://github.com/c6o/codezero/commit/5564ceb0c2a1c8626c3d18b1f2db82368256ad96))
+* show version number of space agent in czapp teamspaces list ([#542](https://github.com/c6o/codezero/issues/542)) ([547b8ee](https://github.com/c6o/codezero/commit/547b8eed6690588b814a23e3d4d5935cf2c1d06f))
+
+# [2.0.0-rc.10](https://github.com/c6o/codezero/compare/2.0.0-rc.9...2.0.0-rc.10) (2023-10-16)
+
+### Bug Fixes
+
+* count only active teleports in command limit enforcer ([#543](https://github.com/c6o/codezero/issues/543)) ([f6ae569](https://github.com/c6o/codezero/commit/f6ae569c24f7c1bb4e02086c9a082c07ea4e350b))
+* **czapp:** clear timed display timer when space was removed ([#519](https://github.com/c6o/codezero/issues/519)) ([ad2ca56](https://github.com/c6o/codezero/commit/ad2ca56e4ac366269a54cf7315fe5912894370a2)), closes [#391](https://github.com/c6o/codezero/issues/391)
+* fix czctl serve update ([#551](https://github.com/c6o/codezero/issues/551)) ([7a6ae5c](https://github.com/c6o/codezero/commit/7a6ae5c099e9ba6a61570aa35c3a4ba8ab6f31d3))
+* fixes crash when restoring DNS on an unavailable network service ([#511](https://github.com/c6o/codezero/issues/511)) ([f1ff93e](https://github.com/c6o/codezero/commit/f1ff93ed604d6d2efda04dc078be04dac3e7276d))
+* fixes invite user allows user to invite the same email multiple times while pending ([#465](https://github.com/c6o/codezero/issues/465)) ([c9442ab](https://github.com/c6o/codezero/commit/c9442abeb15271be110bf1a38cfadf574f369ff0))
+* ignore handled feathers services errors ([#532](https://github.com/c6o/codezero/issues/532)) ([1a66f74](https://github.com/c6o/codezero/commit/1a66f7490c6f4e4eadb118ffa7e0ed58d2fe8de5))
+* **linux** builds were for darwin ([7657157](https://github.com/c6o/codezero/commit/765715784585a7e58cc84b2a611c28827e32bc68))
+
+
+### Features
+
+* front-side hub schema validators ([#419](https://github.com/c6o/codezero/issues/419)) ([77c2236](https://github.com/c6o/codezero/commit/77c2236d5fa6c043bba704623325b1d00a1b21e5))
+* **linux:** fix DNS creation when backup file already exists ([#566](https://github.com/c6o/codezero/issues/566)) ([dcc1c48](https://github.com/c6o/codezero/commit/dcc1c489fc37c736474a5b8d323ac12732cdc2a3))
+
 ## [2.0.0-rc.9](https://github.com/c6o/codezero/compare/2.0.0-rc.8...2.0.0-rc.9) (2023-09-22)
+
+### Bug Fixes
+
+* incorrect bin file paths ([#510](https://github.com/c6o/codezero/issues/510)) ([de61482d](https://github.com/c6o/codezero/commit/de61482d))
+
 
 ## [2.0.0-rc.8](https://github.com/c6o/codezero/compare/2.0.0-rc.7...2.0.0-rc.8) (2023-09-22)
 
