@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Release Notes
 
-# [2.0.0-rc.13](https://github.com/c6o/codezero/compare/2.0.0-rc.12...2.0.0-rc.13) (2023-11-07)
+## [2.0.0-rc.13](https://github.com/c6o/codezero/compare/2.0.0-rc.12...2.0.0-rc.13) (2023-11-07)
 
 
 ### Bug Fixes
@@ -18,8 +18,7 @@ sidebar_position: 2
 * save dialogs reverts before saving ([#653](https://github.com/c6o/codezero/issues/653)) ([7ed077f](https://github.com/c6o/codezero/commit/7ed077f4a178f881f4fb5724a21ec340499e7ca0))
 * unable to consume because of variant iteration error ([726cb67](https://github.com/c6o/codezero/commit/726cb679c688791dc0d76a229029cbd530d6d6ac))
 
-
-# [2.0.0-rc.12](https://github.com/c6o/codezero/compare/2.0.0-rc.11...2.0.0-rc.12) (2023-11-03)
+## [2.0.0-rc.12](https://github.com/c6o/codezero/compare/2.0.0-rc.11...2.0.0-rc.12) (2023-11-03)
 
 ### Bug Fixes
 
@@ -33,7 +32,7 @@ sidebar_position: 2
 * added version display and added copyable install instructions to getting started ([#644](https://github.com/c6o/codezero/issues/644)) ([b905186](https://github.com/c6o/codezero/commit/b9051863cfef871f271540ecf4894c2d503865ab))
 
 
-# [2.0.0-rc.11](https://github.com/c6o/codezero/compare/2.0.0-rc.10...2.0.0-rc.11) (2023-10-31)
+## [2.0.0-rc.11](https://github.com/c6o/codezero/compare/2.0.0-rc.10...2.0.0-rc.11) (2023-10-31)
 
 
 ### Features
@@ -42,7 +41,7 @@ sidebar_position: 2
 * added support for default and header based conditions when serving variants ([#617](https://github.com/c6o/codezero/issues/617)) ([5564ceb](https://github.com/c6o/codezero/commit/5564ceb0c2a1c8626c3d18b1f2db82368256ad96))
 * show version number of space agent in czapp teamspaces list ([#542](https://github.com/c6o/codezero/issues/542)) ([547b8ee](https://github.com/c6o/codezero/commit/547b8eed6690588b814a23e3d4d5935cf2c1d06f))
 
-# [2.0.0-rc.10](https://github.com/c6o/codezero/compare/2.0.0-rc.9...2.0.0-rc.10) (2023-10-16)
+## [2.0.0-rc.10](https://github.com/c6o/codezero/compare/2.0.0-rc.9...2.0.0-rc.10) (2023-10-16)
 
 ### Bug Fixes
 
