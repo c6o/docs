@@ -4,8 +4,19 @@ sidebar_position: 2
 
 # Release Notes
 
-## [2.0.0-rc.13](https://github.com/c6o/codezero/compare/2.0.0-rc.12...2.0.0-rc.13) (2023-11-07)
+## [2.0.0-rc.14](https://github.com/c6o/codezero/compare/2.0.0-rc.13...2.0.0-rc.14) (2023-11-15)
 
+### Bug Fixes
+
+* paging issues for consume and catalog ([#682](https://github.com/c6o/codezero/issues/682)) ([aca2aec](https://github.com/c6o/codezero/commit/aca2aecd815cda34cac3cd91246e53654bf8846b))
+
+
+### Features
+
+* add default, user and header conditions to `czctl serve` ([#677](https://github.com/c6o/codezero/issues/677)) ([ca8b364](https://github.com/c6o/codezero/commit/ca8b3642ce69549a49fc3147fa6d8800f171a5df))
+
+
+## [2.0.0-rc.13](https://github.com/c6o/codezero/compare/2.0.0-rc.12...2.0.0-rc.13) (2023-11-07)
 
 ### Bug Fixes
 
