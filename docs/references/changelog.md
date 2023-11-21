@@ -4,6 +4,22 @@ sidebar_position: 2
 
 # Release Notes
 
+## [2.0.0-rc.15](https://github.com/c6o/codezero/compare/2.0.0-rc.14...2.0.0-rc.15) (2023-11-21)
+
+### Bug Fixes
+
+* failure to restore intercept if copy service has annotations added ([#706](https://github.com/c6o/codezero/issues/706)) ([4732b7c](https://github.com/c6o/codezero/commit/4732b7c1cea394bb20299057b8af1a39acb1adee)), closes [#705](https://github.com/c6o/codezero/issues/705)
+* invite token processed multiple times ([#725](https://github.com/c6o/codezero/issues/725)) ([d1410ae](https://github.com/c6o/codezero/commit/d1410aeba365fb29b4d3124758e0232bd94f51ab))
+* spaces do not load for new organizations ([#726](https://github.com/c6o/codezero/issues/726)) ([a6b1245](https://github.com/c6o/codezero/commit/a6b1245acfb250e469c34c527bb3868655adcb85))
+* unset space from contexts after removal ([#701](https://github.com/c6o/codezero/issues/701)) ([544f7fe](https://github.com/c6o/codezero/commit/544f7fe13fc1329d0bdd809c95eeda7154390fd3))
+* update paging to 100 ([e28cc94](https://github.com/c6o/codezero/commit/e28cc942da96eafd43a2b119c4f5062b897e012b))
+
+
+### Features
+
+* added ability to upgrade teamspace from hub ([#710](https://github.com/c6o/codezero/issues/710)) ([9c7eb8f](https://github.com/c6o/codezero/commit/9c7eb8f957915fe4ad1013c2ee2ba87508463a0e))
+
+
 ## [2.0.0-rc.14](https://github.com/c6o/codezero/compare/2.0.0-rc.13...2.0.0-rc.14) (2023-11-15)
 
 ### Bug Fixes

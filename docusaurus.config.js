@@ -50,7 +50,7 @@ const config = {
           lastVersion: "current",
           versions: {
             current: {
-              label: "Pasley (2.0.0-rc.14)",
+              label: "Pasley (2.0.0-rc.15)",
             },
             "1.9.0": {
               label: "Anvil (1.9.0)",
