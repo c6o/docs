@@ -388,7 +388,7 @@ To make sure you have the right version, use czctl version . The output should l
 
 ### Bug Fixes
 
-- Fix error messaging to users of unsupported Node versions (<= 12.x)
+- Fix error messaging to users of unsupported Node versions (less than 13.x)
 - Fixed some `czctl deployment` arguments not being properly recognized [#1834, #1837]
 
 ### New Features
@@ -399,7 +399,7 @@ To make sure you have the right version, use czctl version . The output should l
 
 ### Outstanding Issues
 
-- NodesJS <= 12.x is not supported.
+- NodesJS < 13.x is not supported.
 - Cannot intercept more than 4 services simultaneously from the same machine.
 - Cannot teleport to headless services yet
 
@@ -433,7 +433,7 @@ To make sure you have the right version, use czctl version . The output should l
 
 ### Outstanding Issues
 
-- NodesJS <= 12.x is not supported.
+- NodesJS less than 13.x is not supported.
 - Cannot intercept more than 4 services simultaneously from the same machine.
 - Teleport must be run after all intercepts. Please stop and run teleport after any `czctl service intercept` calls to take the new intercept into account locally.
 - Teleport should provide feedback to the user, so they know when all services have been fully setup.
