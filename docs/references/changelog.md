@@ -4,6 +4,22 @@ sidebar_position: 2
 
 # Release Notes
 
+## [2.0.0-rc.16](https://github.com/c6o/codezero/compare/2.0.0-rc.15...2.0.0-rc.16) (2023-12-19)
+
+
+### Bug Fixes
+
+* cannot create ip alias, exit status 2 ([#773](https://github.com/c6o/codezero/issues/773)) ([725dff9](https://github.com/c6o/codezero/commit/725dff95472d8791fd58533895a93be1d990f718))
+
+
+### Features
+
+* ability to publish a service that does not exist in cluster ([#751](https://github.com/c6o/codezero/issues/751)) ([453e030](https://github.com/c6o/codezero/commit/453e0305aaeef46d7c576e69dd0741d6471c7481))
+* implement alternative host resolver handling using hosts file ([#782](https://github.com/c6o/codezero/issues/782)) ([3db4f1d](https://github.com/c6o/codezero/commit/3db4f1d3c5a7c9d9a26b0fd27a126b5692e2f41c))
+* refactor DNS manager, backup and OS interface ([#736](https://github.com/c6o/codezero/issues/736)) ([3a55b2e](https://github.com/c6o/codezero/commit/3a55b2e782c501811aaeccff0cc5bbeb05537bce))
+* support reading ruleset from stdin on czctl apply ([#607](https://github.com/c6o/codezero/issues/607)) ([4a98765](https://github.com/c6o/codezero/commit/4a987651108f20f556cb2183668b76a85f506f74))
+
+
 ## [2.0.0-rc.15](https://github.com/c6o/codezero/compare/2.0.0-rc.14...2.0.0-rc.15) (2023-11-21)
 
 ### Bug Fixes
