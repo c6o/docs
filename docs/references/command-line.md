@@ -411,11 +411,20 @@ czctl serve sample-project/core 3000
 
 <div class="flags-table">
 
-| Flags    | Description            |
-| -------- | ---------------------- |
-| --delete | Delete served resource |
+| Flags                     | Description                                                 |
+| ------------------------- | ----------------------------------------------------------- |
+| --condition `string`      | Condition based on type                                     |
+| --condition-type `string` | Condition type (default \| user \| header) (default "user") |
+| --remove                  | Remove served resource                                      |
 
 </div>
+
+The `--condition-type` flag defines when the resource is served from the local endpoint.
+Only the `header` condition type requires the additional `--condition` flag.
+
+- When setting the condition type to `default`, all traffic is routed to the local resource instead of the cluster resource.
+- Opting for the `user` condition type directs only HTTP traffic containing the `x-c6o-userid: YOUR_USER_ID` header to the local resource. You can see your current user ID by running `czctl status`.
+- For the `header` condition type, any traffic matching the specified HTTP header provided via the `--condition` flag will be directed to the local resource.
 
 ### List
 
