@@ -22,20 +22,20 @@ czctl auth login
 
 ### Sub-commands
 
-| Sub-command | Description                                |
-| ----------- | ------------------------------------------ |
-| login       | Login to Codezero                          |
-| logout      | Logout from Codezero                       |
+| Sub-command | Description          |
+| ----------- | -------------------- |
+| login       | Login to Codezero    |
+| logout      | Logout from Codezero |
 
 ### Flags
 
 <div class="flags-table">
 
-| Flags          | Description                                                                                  |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| --force        | If set, app will not check if the user is already logged in (not needed for --token).        |
-| --no-gui       | If set, app will not try to open a browser window for login.                                 |
-| --token        | If set, app will not try to open a browser window for login and will use the provided token. |
+| Flags    | Description                                                                                  |
+| -------- | -------------------------------------------------------------------------------------------- |
+| --force  | If set, app will not check if the user is already logged in (not needed for --token).        |
+| --no-gui | If set, app will not try to open a browser window for login.                                 |
+| --token  | If set, app will not try to open a browser window for login and will use the provided token. |
 
 </div>
 
@@ -81,42 +81,6 @@ To load zsh completions in your current shell session:
 ```sh
 source <(czctl completion zsh)
 ```
-
----
-
-## Config
-
-Provides operations for the configuration file.
-
-### Usage
-
-```bash
-czctl config [SUB-COMMAND]
-```
-
-### Examples
-
-```bash
-czctl config view
-```
-
-### Sub-commands
-
-| Sub-command | Description                                                                                                                                 |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| create      | Creates a new config file and quits. Does not overwrite existing config file be default. Use --overwrite to overwrite existing config file. |
-| test        | Test the configuration file.                                                                                                                |
-| view        | View config                                                                                                                                 |
-
-### Flags
-
-<div class="flags-table">
-
-| Flags       | Description                    |
-| ----------- | ------------------------------ |
-| --overwrite | Overwrite existing config file |
-
-</div>
 
 ---
 
@@ -170,10 +134,10 @@ czctl consume edit
 
 <div class="flags-table">
 
-| Flags               | Description                                     |
-| ------------------- | ----------------------------------------------- |
+| Flags               | Description                                                                                                                                                                                                                                        |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | --editor            | Your preferred editor to edit the rules. If not set, will try to use EDITOR environment variable, or present you a list of available ones. Please make sure to use the -w flag with the editor so that the app can wait for you to finish editing. |
-| --primary-namespace | The primary namespace used for services consume |
+| --primary-namespace | The primary namespace used for services consume                                                                                                                                                                                                    |
 
 </div>
 
@@ -197,10 +161,10 @@ czctl consume list
 
 <div class="flags-table">
 
-| Flags               | Description                                     |
-| ------------------- | ----------------------------------------------- |
-| --filter `string`   | Filter to apply to the list. Format is: \<namespace\>[/\<resource\>]. Wildcards are supported. |
-| --format `string`   | Output format. Supported values: yaml, json, pretty (default "pretty") |
+| Flags             | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| --filter `string` | Filter to apply to the list. Format is: \<namespace\>[/\<resource\>]. Wildcards are supported. |
+| --format `string` | Output format. Supported values: yaml, json, pretty (default "pretty")                         |
 
 </div>
 
@@ -218,6 +182,88 @@ czctl consume view
 
 ```bash
 czctl consume view
+```
+
+---
+
+## Options
+
+Provides operations for managing Codezero options.
+
+### Certs
+
+Manage Codezero certificates.
+
+| Sub-command | Description                              |
+| ----------- | ---------------------------------------- |
+| install     | Install Codezero certificates to system  |
+| remove      | Remove Codezero certificates from system |
+
+#### Usage
+
+```bash
+czctl options certs [SUB-COMMAND]
+```
+
+#### Examples
+
+```bash
+czctl options certs remove
+```
+
+### Config
+
+Manage Codezero configuration file.
+
+| Sub-command | Description                                                                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| create      | Creates a new config file and quits. Does not overwrite existing config file be default. Use --overwrite to overwrite existing config file. |
+| test        | Test the configuration file.                                                                                                                |
+| view        | View config                                                                                                                                 |
+
+#### Usage
+
+```bash
+czctl options config [SUB-COMMAND]
+```
+
+#### Examples
+
+```bash
+czctl options config view
+```
+
+#### Flags
+
+<div class="flags-table">
+
+| Flags       | Description                    |
+| ----------- | ------------------------------ |
+| --overwrite | Overwrite existing config file |
+
+</div>
+
+### Set
+
+Set configuration options.
+
+| Option             | Description                                                                                                                                       |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| resolver           | Specify host resolver (dns, hosts) (default: dns)                                                                                                 |
+| skip-version-check | Do not check version against hub version (bool) (default: false)                                                                                  |
+| log-level          | Sets the logging verbosity. Accepted values: panic, fatal, error, warn, info, debug, trace (string) (default: info)                               |
+| log-directory      | Path where logs are stored, optionally can be set to stdout or stderr (string) (default: /Users/georgf/Library/Application Support/codezero/logs) |
+
+#### Usage
+
+```bash
+czctl options set [OPTION] [VALUE]
+```
+
+#### Examples
+
+```bash
+czctl options set resolver hosts
 ```
 
 ---
@@ -365,11 +411,20 @@ czctl serve sample-project/core 3000
 
 <div class="flags-table">
 
-| Flags    | Description            |
-| -------- | ---------------------- |
-| --delete | Delete served resource |
+| Flags                     | Description                                                 |
+| ------------------------- | ----------------------------------------------------------- |
+| --condition `string`      | Condition based on type                                     |
+| --condition-type `string` | Condition type (default \| user \| header) (default "user") |
+| --remove                  | Remove served resource                                      |
 
 </div>
+
+The `--condition-type` flag defines when the resource is served from the local endpoint.
+Only the `header` condition type requires the additional `--condition` flag.
+
+- When setting the condition type to `default`, all traffic is routed to the local resource instead of the cluster resource.
+- Opting for the `user` condition type directs only HTTP traffic containing the `x-c6o-userid: YOUR_USER_ID` header to the local resource. You can see your current user ID by running `czctl status`.
+- For the `header` condition type, any traffic matching the specified HTTP header provided via the `--condition` flag will be directed to the local resource.
 
 ### List
 

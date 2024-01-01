@@ -1,6 +1,7 @@
 {
   "name": "@c6o/docs",
   "version": "0.0.1",
+  "packageManager": "yarn@1.22.19",
   "private": true,
   "description": "Documentation for Codezero",
   "repository": {
