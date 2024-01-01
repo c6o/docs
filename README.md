@@ -25,7 +25,7 @@ The site will run locally at `http://localhost:3000`
 Concepts => Thought leadership to train, educate and evangelize best practices to DevOps, Architects
 Guides => Multi step complex scenarios/tasks
 Tutorials => Exercises to try with the sample-project
-Reference => Detail information on a single command (a more graphical view of czctl <command> --help)
+Reference => Detail information on a single command (a more graphical view of czctl \<command\> --help)
 
 ## Legal Stuff
 
