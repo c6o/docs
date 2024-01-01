@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: MegaLinter
-        uses: megalinter/megalinter/flavors/documentation@v5
+        uses: megalinter/megalinter/flavors/documentation@v7
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           ENABLE_LINTERS: MARKDOWN_MARKDOWNLINT,ACTION_ACTIONLINT,DOCKERFILE_HADOLINT,GIT_GIT_DIFF,JSON_JSONLINT,MARKDOWN_MARKDOWN_TABLE_FORMATTER,CREDENTIALS_SECRETLINT
@@ -30,7 +30,7 @@ jobs:
           YAML_YAMLLINT_CONFIG_FILE: .yamllint.yaml
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: MegaLinter reports
           path: |
