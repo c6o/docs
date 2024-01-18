@@ -113,17 +113,11 @@ Civo has an excellent and succinct getting started guide
 ### Set Up a Cluster
 
 The following command sets up a single node cluster and installs Traefik-v2 on it which is optional.
-We found it better to separate the installation of Traefik from the creation step.
 
 ```bash
 #!/bin/bash
 echo 'Creating my-cluster cluster'
-civo kubernetes create my-cluster -n 1 -w
-echo 'Installing Traefik V2'
-# There's a bug in civo where apps passed into
-# civo kubernetes create are not installed
-# So let's do it here
-civo kubernetes applications add Traefik-v2 -c my-cluster
+civo kubernetes create my-cluster -n 1 -w -a traefik2-loadbalancer
 ```
 
 ### Obtain Credentials
