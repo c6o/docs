@@ -4,6 +4,14 @@ sidebar_position: 2
 
 # Release Notes
 
+## [2.0.0-rc.19](https://github.com/c6o/codezero/compare/2.0.0-rc.18...2.0.0-rc.19) (2024-02-08)
+
+
+### Bug Fixes
+
+* Fix minor bug in Teamspace selector ([3a86e63](https://github.com/c6o/codezero/commit/3a86e63fc6762cb8a7f05a0a77d98a296162d642))
+
+
 ## [2.0.0-rc.18](https://github.com/c6o/codezero/compare/2.0.0-rc.17...2.0.0-rc.18) (2024-02-07)
 
 
