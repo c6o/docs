@@ -4,6 +4,40 @@ sidebar_position: 2
 
 # Release Notes
 
+## [2.0.0-rc.18](https://github.com/c6o/codezero/compare/2.0.0-rc.17...2.0.0-rc.18) (2024-02-07)
+
+
+### Bug Fixes
+
+* fixes errors regarding closed connections ([#853](https://github.com/c6o/codezero/issues/853)) ([4e28db6](https://github.com/c6o/codezero/commit/4e28db6e9cd8c40775131f28b1b64e8087cc8c07))
+
+
+### Features
+
+* new app layout ([#892](https://github.com/c6o/codezero/issues/892)) ([c5df251](https://github.com/c6o/codezero/commit/c5df251965bf5d96e8be148935935e31dd0dcca4))
+
+
+## [2.0.0-rc.17](https://github.com/c6o/codezero/compare/2.0.0-rc.16...2.0.0-rc.17) (2024-01-30)
+
+
+### Bug Fixes
+
+* clear localStorage on logout ([#825](https://github.com/c6o/codezero/issues/825)) ([3e21051](https://github.com/c6o/codezero/commit/3e21051d4445687ee31764f5416bfad255a7b61b))
+* fixed error when `czctl status` is executed and user is not logged in ([#852](https://github.com/c6o/codezero/issues/852)) ([f9b372f](https://github.com/c6o/codezero/commit/f9b372f2d9fc91871ee29c8c4643e150ab85a9ed)), closes [#866](https://github.com/c6o/codezero/issues/866) [#861](https://github.com/c6o/codezero/issues/861) [#865](https://github.com/c6o/codezero/issues/865) [#864](https://github.com/c6o/codezero/issues/864) [#863](https://github.com/c6o/codezero/issues/863) [#794](https://github.com/c6o/codezero/issues/794)
+* handle tcp consume and unify externalname service behavior ([#910](https://github.com/c6o/codezero/issues/910)) ([f6f28af](https://github.com/c6o/codezero/commit/f6f28af75880af102743561bbec5e65e3c35cc12))
+* incorrect frontend version vs api version reporting ([3c422ca](https://github.com/c6o/codezero/commit/3c422ca919d65fb6ff43b1771a7cbc8cf9e3cfc9))
+* update fallback DNS resolvers if current ones fail ([#790](https://github.com/c6o/codezero/issues/790)) ([7db20c9](https://github.com/c6o/codezero/commit/7db20c9140c6320fa96e360d1d8fba4ac4b21694))
+
+
+### Features
+
+* ability to consume headless and external services ([#890](https://github.com/c6o/codezero/issues/890)) ([99b3c25](https://github.com/c6o/codezero/commit/99b3c256334ef17b7aa0cb9f0b2f16a8d511e256))
+* add selected org and primary namespace to czctl status output ([#902](https://github.com/c6o/codezero/issues/902)) ([8560680](https://github.com/c6o/codezero/commit/85606808fbf700a926b754899faee8bd5dd1ccb7))
+* **czctl:** add primary namespace check and selection ([#811](https://github.com/c6o/codezero/issues/811)) ([22e336e](https://github.com/c6o/codezero/commit/22e336e64bf64339e4479287d752db6c5d96cc28))
+* improved onboarding flow ([#903](https://github.com/c6o/codezero/issues/903)) ([e4723e9](https://github.com/c6o/codezero/commit/e4723e942a98fb30a572118da37cb9b5f4fee344))
+* make hosts resolver the default in czdaemon ([#868](https://github.com/c6o/codezero/issues/868)) ([8690c83](https://github.com/c6o/codezero/commit/8690c83119c27ff84712d76baeb88d5f2ac420d0))
+
+
 ## [2.0.0-rc.16](https://github.com/c6o/codezero/compare/2.0.0-rc.15...2.0.0-rc.16) (2023-12-19)
 
 
