@@ -10,13 +10,13 @@ Teamspaces are vanilla Kubernetes clusters with Codezero installed. We strive to
 
 Log in to the [Codezero Hub](https://hub.codezero.io) and navigate to Settings > Teamspaces:
 
-![Teamspace Settings](./_media/ts-settings.png)
+![Teamspace Settings](./_media/ts-settings.jpg)
 
 ## Add Teamspace
 
 Click _Add Teamspace_ to name and create your Teamspace.
 
-![Teamspace Create](./_media/ts-create.png)
+![Teamspace Create](./_media/ts-create.jpg)
 
 ## Install Codezero
 
@@ -30,7 +30,7 @@ helm install --create-namespace --namespace=codezero --set space.token=<ONE-TIME
     codezero codezero/codezero
 ```
 
-![Teamspace Install](./_media/ts-helm.png)
+![Teamspace Install](./_media/ts-helm.jpg)
 
 ## Wait for Certification
 
@@ -38,7 +38,7 @@ Finally, you should see the Certification column change to _Certified_ and short
 
 You can now select the Teamspace from the _Teamspace List_ in the navigation panel. This will take you to the _Service Catalog_:
 
-![Teamspace Install](./_media/ts-certified.png)
+![Teamspace Install](./_media/ts-certified.jpg)
 
 ## Troubleshooting
 
@@ -52,7 +52,7 @@ Should you encounter any issues with the _Helm Install_, you cannot re-use the p
 
 If you continue to encounter problems, please do not hesitate to reach out to us.
 
-![Teamspace Install](./_media/ts-rotate.png)
+![Teamspace Install](./_media/ts-rotate.jpg)
 
 ### Stuck _Waiting_ for DNS
 
