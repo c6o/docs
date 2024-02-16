@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # Release Notes
 
+## 2.0.0
+
+No new changes since 2.0.0-rc.19.
+
 ## [2.0.0-rc.19](https://github.com/c6o/codezero/compare/2.0.0-rc.18...2.0.0-rc.19) (2024-02-08)
 
 
