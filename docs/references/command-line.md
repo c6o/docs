@@ -289,13 +289,13 @@ List organizations
 #### Usage
 
 ```bash
-czctl organization clear [flags]
+czctl organization list [flags]
 ```
 
 #### Examples
 
 ```bash
-czctl organization clear --format json
+czctl organization list --format json
 ```
 
 #### Flags
@@ -304,7 +304,7 @@ czctl organization clear --format json
 
 | Flags             | Description                                 |
 | ----------------- | ------------------------------------------- |
-| --format `string` | Output format (text\|json) (default "text") |
+| --format `string` | Output format (text \| json) (default "text") |
 
 </div>
 
@@ -448,7 +448,7 @@ czctl serve list --format json
 
 | Flags             | Description                                 |
 | ----------------- | ------------------------------------------- |
-| --format `string` | Output format (yaml\|json) (default "yaml") |
+| --format `string` | Output format (yaml \| json) (default "yaml") |
 
 </div>
 
@@ -480,7 +480,7 @@ czctl space list --format json
 
 | Flags             | Description                                 |
 | ----------------- | ------------------------------------------- |
-| --format `string` | Output format (text\|json) (default "text") |
+| --format `string` | Output format (text \| json) (default "text") |
 
 </div>
 
