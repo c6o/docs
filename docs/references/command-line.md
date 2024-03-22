@@ -217,7 +217,7 @@ Manage Codezero configuration file.
 
 | Sub-command | Description                                                                                                                                 |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| create      | Creates a new config file and quits. Does not overwrite existing config file be default. Use --overwrite to overwrite existing config file. |
+| create      | Creates a new config file and quits. Does not overwrite existing config file by default. Use --overwrite to overwrite existing config file. |
 | test        | Test the configuration file.                                                                                                                |
 | view        | View config                                                                                                                                 |
 
