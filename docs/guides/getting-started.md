@@ -5,11 +5,11 @@ sidebar_position: 1
 # Getting Started
 
 Sign up or log in to the [Codezero Hub](https://hub.codezero.io).
-The onboarding wizard will guide you through creating an organization and your first teamspace.
+The onboarding wizard will guide you through creating an organization and your first Teamspace.
 
 ## Install Codezero in your Cluster
 
-After creating your teamspace you need to install the Codezero Space Agent. Click on Helm Install to copy the Helm install string. This install command is unique to your cluster. It includes a one-time token that is used to certify the Teamspace.
+After creating your Teamspace you need to install the Codezero Space Agent. Click on Helm Install to copy the Helm install string. This install command is unique to your cluster. It includes a one-time token that is used to certify the Teamspace.
 
 ![Install Codezero](./_media/ts-helm.jpg)
 
@@ -43,7 +43,7 @@ czctl start
 
 ## Navigate to your Service Catalog
 
-You can now select the Teamspace from the Teamspace List in the top left corner of you browser window.
+You can now select the Teamspace from the Teamspace List in the top left corner of your browser window.
 This will take you to the Service Catalog:
 
 ![Service Catalog](./_media/service-catalog.jpg)
