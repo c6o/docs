@@ -4,7 +4,7 @@ sidebar_position: 2
 
 import Prerequisites from './_fragments/prerequisites.md'
 
-# Sample Kubernetes Project
+# The Sample Project
 
 All the tutorials use the [Sample Kubernetes Project](https://github.com/c6o/sample-project) on GitHub. For the remainder of these tutorials, you will need:
 
@@ -26,7 +26,17 @@ By the end of the tutorial you should have successfully run the application loca
 
 The following diagram depicts all the components of the sample project:
 
-![Simple Architecture](../_media/architecture/sample-architecture.svg)
+```mermaid
+flowchart TD
+    subgraph F[" "]
+    direction LR
+    User(Ingress) --- |HTTP| Frontend((Frontend))
+    Frontend ---|Websocket| Sockets((Sockets))
+    Frontend --- |HTTP|Core((Core))
+    Core ---|TCP| Database[(Database)]
+    Core ---|HTTP| Leaf((Leaf))
+    end
+```
 
 ## Tutorial
 
@@ -34,7 +44,11 @@ If you haven't already, clone the [Sample Kubernetes Project](https://github.com
 
 Getting to know Kubernetes and setting up a cluster is beyond the scope of this README, however you can check out the beginner articles on our [Blog](https://blog.codezero.io/tag/learning/).
 
-### Local Setup
+### Local Setup - Optional
+
+:::note
+You can skip the local setup if you do not intend to make code changes or if you would rather use a framework other than NodeJS. All the services above are quite simple and because Codezero is language agnostic, any language that can return JSON via HTTP would suffice.
+:::
 
 This project requires NodeJS 16+ and yarn, has been tested on macOS (BigSur), Linux, and Windows Subsystem for Linux (WSL).
 
