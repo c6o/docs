@@ -3,6 +3,8 @@ sidebar_position: 2
 ---
 
 import Prerequisites from './_fragments/prerequisites.md'
+import Architecture from './_fragments/architecture.md'
+import SamplePageImg from './_media/sample.png'
 
 # The Sample Project
 
@@ -26,23 +28,56 @@ By the end of the tutorial you should have successfully run the application loca
 
 The following diagram depicts all the components of the sample project:
 
-```mermaid
-flowchart TD
-    subgraph F[" "]
-    direction LR
-    User(Ingress) --- |HTTP| Frontend((Frontend))
-    Frontend ---|Websocket| Sockets((Sockets))
-    Frontend --- |HTTP|Core((Core))
-    Core ---|TCP| Database[(Database)]
-    Core ---|HTTP| Leaf((Leaf))
-    end
-```
+<Architecture />
 
 ## Tutorial
 
 If you haven't already, clone the [Sample Kubernetes Project](https://github.com/c6o/sample-project) repo on GitHub, and set up a Kubernetes cluster. For development, we recommend using either [Civo](https://civo.com) or [DigitalOcean](https://digitalocean.com), but any k8s or k3s Kubernetes cluster will do.
 
 Getting to know Kubernetes and setting up a cluster is beyond the scope of this README, however you can check out the beginner articles on our [Blog](https://blog.codezero.io/tag/learning/).
+
+
+### Kubernetes Setup
+
+Once your cluster is set up, install the sample project in-cluster. From the root of the repo, run:
+
+```bash
+kubectl create ns sample-project
+kubectl -n sample-project apply -k ./k8s
+```
+
+#### Set Up Ingress - Optional
+
+The above commands will install all the services and deployment, but will not set up ingress. If you are not able to setup Ingress, you will be able to use Codezero to access the frontend using Consume. You may choose any form of Ingress you prefer. We have implemented the following:
+
+* Traefik
+* Ingress
+* LoadBalance
+
+If you're using TraefikV2, run the following:
+
+```bash
+kubectl -n sample-project apply -f ./k8s/traefik
+```
+
+Or if you use an Ingress Controller, run the following:
+
+```bash
+kubectl -n sample-project apply -f ./k8s/ingress
+```
+
+To use a generic LoadBalance service (for example if your cluster is on DigitalOcean), run the following:
+
+```bash
+kubectl -n sample-project apply -f ./k8s/loadbalance
+```
+
+Once configured, you will then need to obtain the appropriate external IP address. You will not need to setup a DNS record for the tutorial. When you launch the application in the browser, you should see the following page. The application Frontend Service polls and retrieved data from the other services and renders their values.
+
+<div class="text--center">
+  <img width="50%" src={SamplePageImg}/>
+</div>
+
 
 ### Local Setup - Optional
 
@@ -71,66 +106,4 @@ If you aren't running MongoDB locally you won't see the database service running
 
 Hit Ctrl-C now to stop the services and exit.
 
-### Kubernetes Setup
-
-This project uses Persistent Volumes, and for [ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) it can use either LoadBalancer services (e.g. for clusters on DigitalOcean) or Traefik V2.
-
-Once your cluster is set up, install the sample project in-cluster. From the root of the repo, run:
-
-```bash
-kubectl create ns sample-project
-kubectl -n sample-project apply -f ./k8s
-```
-
-#### Set Up Ingress (optional)
-
-The above commands will install all the services and deployment, but will not set up ingress. You won't need ingress for performing a Teleport, but you will need it for performing other commands like Intercept.
-
-If you're using TraefikV2, run the following:
-
-```bash
-kubectl -n sample-project apply -f ./k8s/traefik
-```
-
-Or if you use an Ingress Controller, run the following:
-
-```bash
-kubectl -n sample-project apply -f ./k8s/ingress
-```
-
-To use a generic LoadBalance service (for example if your cluster is on DigitalOcean), run the following:
-
-```bash
-kubectl -n sample-project apply -f ./k8s/loadbalance
-```
-
-:::note
-The above assumes port 80 is available. If you'd like an alternative port, edit the port in `k8s/loadbalance/frontend.yaml`
-:::
-
-You will then need to obtain the appropriate ingress service IP address or the LoadBalancer IP address, and go to `http://IP-ADDRESS` in a browser, where you should see all the microservices running.
-
-If using LoadBalance as the Service type, you can get the Frontend IP using:
-
-```bash
-kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}'
-```
-
-:::note
-It may take a bit of time for the load balancer to obtain an address.
-You can use the following command to determine if the load balancer has an external address:
-`kubectl get svc -n sample-project sample-project-frontend`
-:::
-
-On macOS, you can access the service using:
-
-```bash
-open http://$(kubectl get svc -n sample-project sample-project-frontend --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
-```
-
-:::note
-For `zsh` users, when pasting the script command into your terminal, the open parenthesis before "kubectl"
-may be escaped automatically by zsh. The escape character will need to be removed for the comand to run.
-:::
-
-Congratulations, you are now ready to move on to the [Developing Edge Services](/tutorials/edge.mdx) tutorial.
+You are now ready for the tutorials.
