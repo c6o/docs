@@ -135,7 +135,7 @@ sample-project/*
 
 The above rule set will consume all services in the `sample-project` namespace except for the `sample-project-core` service.
 
-### Consuming with a Primary Namespace
+### Selecting a Primary Namespace
 
 Kubernetes services can access services across namespaces. The following defines all valid names for a Kubernetes service.
 
@@ -145,7 +145,7 @@ service-name.namespace
 service-name.namespace.svc.cluster.local
 ```
 
-Consume supports all of the above permutations however, in order to use the first one `service-name`, we need to designate a *Primary Namespace*. The Primary Namespace makes the `namespace` optional so you can address the service by its `service-name` as if your local machine is running inside the cluster and within the same namespace.
+Consume supports all of the above permutations however, in order to use the simple form `service-name`, we need to designate a *Primary Namespace*. This is because service names are not unique across namespaces. The Primary Namespace makes the `namespace` optional so you can address the service by its `service-name` as if your local machine is running inside the cluster and within the same namespace.
 
 To select the Primary Namespace, run:
 
