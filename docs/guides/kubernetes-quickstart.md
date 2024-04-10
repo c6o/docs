@@ -2,11 +2,11 @@
 sidebar_position: 2
 ---
 
-# Kubernetes Cluster QuickStart
+# Kubernetes QuickStart
 
 ## Overview
 
-You will require a Kubernetes cluster before you can create a Teamspace. If you are primarily evaluating Teamspaces, you may perform this tutorial with your own cluster and project. Alternatively, we have provided a Sample Project for learning. Codezero and the Sample Project is lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
+You will require a Kubernetes cluster before you can create a Teamspace. If you are just evaluating Codezero, you may safely use your own cluster and project as uninstalling Codezero is pretty straight forward. Alternatively, we have provided a Sample Project for learning. Codezero and the Sample Project is lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
 
 If you do not have a Kubernetes cluster, here is a list of providers who provide managed Kubernetes.
 Most will give you more than enough credits to get the basics.
