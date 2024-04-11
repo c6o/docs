@@ -4,6 +4,16 @@ sidebar_position: 2
 
 # Release Notes
 
+## 2.1.0
+
+### Features
+
+* New command: `czctl reset` to remove all consume and serve sessions.
+
+### Bug Fixes
+
+* improved startup sequence of Space Agent
+
 ## 2.0.0
 
 No new changes since 2.0.0-rc.19.

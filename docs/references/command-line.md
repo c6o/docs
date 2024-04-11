@@ -249,7 +249,7 @@ Set configuration options.
 
 | Option             | Description                                                                                                                                       |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| resolver           | Specify host resolver (dns, hosts) (default: dns)                                                                                                 |
+| resolver           | Specify host resolver (dns, hosts) (default: hosts)                                                                                                 |
 | skip-version-check | Do not check version against hub version (bool) (default: false)                                                                                  |
 | log-level          | Sets the logging verbosity. Accepted values: panic, fatal, error, warn, info, debug, trace (string) (default: info)                               |
 | log-directory      | Path where logs are stored, optionally can be set to stdout or stderr (string) (default: /Users/georgf/Library/Application Support/codezero/logs) |
@@ -378,6 +378,17 @@ czctl primary-namespace select sample-project
 
 ---
 
+## Reset
+
+Removes all consume and serve sessions.
+
+### Usage
+
+```bash
+czctl reset
+```
+
+---
 ## Restart
 
 Restarts the Codezero daemon if it is running. If it is not running, does nothing.
