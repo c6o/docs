@@ -84,7 +84,7 @@ const config = {
         },
       },
       mermaid: {
-        theme: {light: 'neutral', dark: 'dark'},
+        theme: {light: 'neutral', dark: 'dark'}
       },
       navbar: {
         //title: "Codezero Documentation",

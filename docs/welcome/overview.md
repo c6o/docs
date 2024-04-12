@@ -5,13 +5,32 @@ slug: /
 
 # Overview
 
-Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable on a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog across the team.
+Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable on a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog to other members of the team.
+
+<center><h3>Teamspace</h3></center>
+
+```mermaid
+flowchart LR
+    subgraph Kubernetes
+    direction LR
+    Frontend((Service A)) --- Sockets((Service B))
+    Frontend --- Core
+    Core((Service C)) --- Database((Service D))
+    Core ---Leaf((Service E))
+    end
+
+    subgraph Local Machine
+    Frontend -.-> |Serve|Local-Core
+    Local-Core[Service C Variant] -.-> |Consume| Database
+    end
+```
+
 
 Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
 Teamspaces are language agnostic and operate at the network level. Any authorized member can define _Conditions_ that reshape traffic across the services available in the catalog to instantly create a _Logical Ephemeral Environment_. While the Teamspace is long running, this temporary traffic shaped environment comprising of a mix of remote and local services can be used to rapidly build and test software before code is pushed.
 
-You do not have to be a Kubernetes admin or a networking guru in order to develop with a Teamspace. Once setup, most developers need not have any direct knowledge of or access to the underlying Kubernetes Clusters.
+You do not have to be a Kubernetes admin or a networking guru in order to develop with a Teamspace. Once setup, most developers need not have any direct knowledge of, or access to the underlying Kubernetes Clusters.
 
 ## Getting Started
 

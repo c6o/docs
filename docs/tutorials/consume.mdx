@@ -1,11 +1,11 @@
 ---
 sidebar_position: 3
-title: Consuming Services
+title: Consuming Remote Services
 ---
 
 import Architecture from './_fragments/architecture.md'
 
-In this tutorial, we learn how to Consume services running in a Kubernetes Cluster. If you recall, the following diagram represents our Application Service Graph:
+In this tutorial, we learn how to Consume services running in a Teamspace. If you recall, the following diagram represents our Application Service Graph running in Kubernetes:
 
 <Architecture />
 
@@ -13,26 +13,27 @@ In this tutorial, we learn how to Consume services running in a Kubernetes Clust
 
 Let us assume you wish to make changes to the Frontend service. We can see from the diagram above that the Frontend Service requires the Sockets and the Core services. In order to develop locally, you would not only have to run the Sockets and Core service locally but the entire blast radius of upstream services. In this case, this includes Database and Leaf even though Frontend does not directly require this.
 
-Instead, given that we have a Kubernetes cluster with these services running, we would like to do the following:
+Instead, given that we have a Teamspace with these services running, we would like to do the following:
 
 ```mermaid
 flowchart LR
     subgraph Kubernetes
     direction LR
-    User(Ingress) --- |HTTP| Frontend((Frontend))
+    User(Ingress) --- |HTTP /| Frontend((Frontend))
     Frontend ---|Websocket| Sockets((Sockets))
     Frontend --- |HTTP|Core((Core))
     Core ---|TCP| Database[(Database)]
     Core ---|HTTP| Leaf((Leaf))
+    User --- |HTTP /api| Core
     end
 
     subgraph Local
-    Local-Frontend[Frontend] ---|Websocket| Sockets((Sockets))
-    Local-Frontend --- |HTTP|Core((Core))
+    Local-Frontend[Frontend] -.->|Websocket| Sockets((Sockets))
+    Local-Frontend -.-> |HTTP|Core((Core))
     end
 ```
 
-We say that we would like to be able to consume the Core and Sockets services. Concretely, we would like to be able to run the following `curl` or `websocat` commands and retrieve data from these services as though they were running locally:
+We say that we would like to _Consume_ the Core and Sockets services. Concretely, we would like to be able to run the following `curl` or `websocat` commands and retrieve data from these services as though they were running locally:
 
 ```bash
 curl -L http://sample-project-core.sample-project:3000/api
@@ -82,6 +83,10 @@ sample-project/sample-project-sockets (sessions: 1)
     Port: 8999
     Status: enabled
 ```
+
+:::note
+Make sure you have run `czctl start` now if you have not already
+:::
 
 You can now test to see if these services are available locally using either of the `curl` or `websocat` commands above.
 
