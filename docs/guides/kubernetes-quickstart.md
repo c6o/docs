@@ -1,20 +1,21 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Kubernetes Cluster QuickStart
+# Kubernetes QuickStart
 
-Codezero and the Sample Project is quite lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
+## Overview
+
+You will require a Kubernetes cluster before you can create a Teamspace. If you are just evaluating Codezero, you may safely use your own cluster and project as uninstalling Codezero is pretty straight forward. Alternatively, we have provided a Sample Project for learning. Codezero and the Sample Project is lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
 
 If you do not have a Kubernetes cluster, here is a list of providers who provide managed Kubernetes.
 Most will give you more than enough credits to get the basics.
-Of course, you can also follow the [Kubernetes the Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) guide if you would like to set up your own cluster from scratch.
 
 - [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
 - [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/#overview)
-- [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
-- [DigitalOcean Kubernetes](https://try.digitalocean.com/codezero/)
 - [Civo](https://www.civo.com/)
+- [DigitalOcean Kubernetes](https://try.digitalocean.com/codezero/)
+- [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
 
 We recommend you use the service your organization uses.
 We have put together a short guide on using DigitalOcean and Civo as we have found these to be especially easy to get started with.

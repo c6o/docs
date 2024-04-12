@@ -83,6 +83,9 @@ const config = {
           // autoCollapseCategories: true,
         },
       },
+      mermaid: {
+        theme: {light: 'neutral', dark: 'dark'}
+      },
       navbar: {
         //title: "Codezero Documentation",
         logo: {
