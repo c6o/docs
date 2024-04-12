@@ -6,7 +6,7 @@ import Prerequisites from './_fragments/prerequisites.md'
 
 # Developing with Remote Volumes
 
-In this tutorial we expore how developers can locally mount cluster volumes in their local workstation so that their local code can read or write to these volumes.
+In this tutorial we explore how developers can locally mount cluster volumes in their local workstation so that their local code can read or write to these volumes.
 
 When working on a service locally, developers may want to see the data being used by the same service running in their cluster. Seeing this data locally is quite difficult, however, because the data is stored remotely in a Persistent Volume, and only visible from within running pods. Copying the data locally can be cumbersome, and is a real challenge to keep in sync.
 
@@ -107,7 +107,7 @@ If you don't have the Desktop installed, you can run the Intercept using the CLI
 Open `packages/core/index.js` in your IDE and set the port on Line 10 be equal to the local port specified in the Intercept. If you ran the Intercept using the Development Profile this port needs to be changed to `4000`.
 
 :::note
-If you haven't already instantiated the cluster configuration for running the Core service locally, follow the steps under [Setting up a Teleport](/tutorials/core?id=setting-up-a-teleport)
+If you haven't already instantiated the cluster configuration for running the Core service locally, follow the steps under [Setting up a Teleport](/tutorials/core.mdx?id=setting-up-a-teleport)
 :::
 
 Run the Core service locally:

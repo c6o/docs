@@ -93,7 +93,7 @@ The developer who does not have access to download a cluster's kubeconfig can us
 2. You will be presented with a screen containing your public key. The associated private key is stored securely in a local database.
 3. Copy or download your public key.
 4. Send the public key to your cluster admin and wait for them to generate and send you back an encrypted context.
-5. Once you have an encrypted context you can [add it](/guides/using-desktop-app?id=adding-a-context) using the Desktop app or the [CLI](/references/command-line?id=add).
+5. Once you have an encrypted context you can [add it](/guides/using-desktop-app.mdx?id=adding-a-context) using the Desktop app or the [CLI](/references/command-line?id=add).
 
 #### Using the CLI
 
