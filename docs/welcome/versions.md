@@ -4,12 +4,12 @@ sidebar_position: 5
 
 # Versions
 
-The Codezero team comprises of avid sailors and thus, our major versions releases are named after islands in the Howe Sound Region of Vancouver, British Columbia. The team has sailed extensively around the Vancouver Island region and some of us have made it far out as Hawaii.
+The Codezero team is comprised of many avid sailors and thus, our major versions releases are named after islands in the Howe Sound Region of Vancouver, British Columbia. The team has sailed extensively around the Vancouver Island region and some of us have made it far out as Hawaii.
 
 ## 2.x - Pasley
 [49.3663° N, 123.4613° W](https://mapcarta.com/24543628/map)
 
-Pasley is the current pre-release and is the default version when you install Codezero. This version was written from scratch for resiliency and performance based on feedback from our customers.
+Pasley is the current release and is the default version when you install Codezero. This version was written from scratch for resiliency and performance based on feedback from our customers.
 
 
 ## 1.x - Anvil
@@ -27,7 +27,7 @@ When installed, `czctl` is available as `czctl1`. The binaries for this install 
 
 :::caution
 
-It is safe to have both Anvil and Pasley installed though we do not recommend you use together as this can lead to unexpected behavior. Should you need to switch, please run `czctl stop` or `czctl1 stop` and then start the desired version.
+It is safe to have both Anvil and Pasley installed though we do not recommend you use them together as this can lead to unexpected behavior. Should you need to switch, please run `czctl stop` or `czctl1 stop` and then start the desired version.
 
 :::
 
