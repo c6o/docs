@@ -13,18 +13,17 @@ Codezero is an overlay network that empowers development teams to turn Kubernete
 flowchart LR
     subgraph Kubernetes
     direction LR
-    Frontend((Service A)) --- Sockets((Service B))
-    Frontend --- Core
-    Core((Service C)) --- Database((Service D))
-    Core ---Leaf((Service E))
+    Frontend((Service A)) <--> Core
+    Core((Service B)) <--> Database((Service C))
     end
 
     subgraph Local Machine
     Frontend <-.-> |Serve|Local-Core
-    Local-Core[Service C Variant] <-.-> |Consume| Database
+    Local-Core[Service B Variant] <-.-> |Consume| Database
     end
 ```
-<i>In the above diagram, A developer is developing & running Service C <b>Variant</b> locally. Their local Service C Variant is <b>Consuming</b> Service D from the Kubernetes cluster. They are using a Codezero Teamspace to <b>Serve</b> their local Variant to Service A in the Kubernetes cluster.</i>
+
+In the above diagram, a developer is runs the Service B Variant locally. This local Service B Variant is Served in the Teamspace and receives traffic from Service A based on _Conditions_ specified by the developer. The local Service B Variant then delivers traffic back into the Teamspace by Consuming Service C. Traffic that does not meet the condition flows through the Teamspace unperturbed.
 
 Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
