@@ -4,9 +4,7 @@ sidebar_position: 3
 
 # Release Notes
 
-## 2.1.1
-
-Please make sure that you update your Codezero Local Agent and Space Agent to this version.
+Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
 To update your Local Agent, run:
 
@@ -32,6 +30,15 @@ To update your Codezero Space Agent, follow these steps:
 5. Wait for your upgrade to complete and then sign out and sign in again.
 
 ![Upgrade Space Agent](../_media/upgrade-cluster.jpg)
+
+
+## 2.2.0
+
+### Features
+
+* New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`.
+
+## 2.1.1
 
 ### Bug Fixes
 

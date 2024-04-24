@@ -84,6 +84,28 @@ source <(czctl completion zsh)
 
 ---
 
+## Compose
+
+Applies all the serve sessions/consume rules from a compose file.
+
+### Usage
+
+```bash
+czctl compose start
+```
+
+#### Flags
+
+<div class="flags-table">
+
+| Flags  | Description                                                |
+| ------ | ---------------------------------------------------------- |
+| --file | Path to the compose file (default "codezero-compose.yaml") |
+
+</div>
+
+---
+
 ## Consume
 
 Manage consume rules.
