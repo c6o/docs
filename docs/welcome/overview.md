@@ -20,11 +20,11 @@ flowchart LR
     end
 
     subgraph Local Machine
-    Frontend -.-> |Serve|Local-Core
-    Local-Core[Service C Variant] -.-> |Consume| Database
+    Frontend <-.-> |Serve|Local-Core
+    Local-Core[Service C Variant] <-.-> |Consume| Database
     end
 ```
-
+<i>In the above diagram, A developer is developing & running Service C <b>Variant</b> locally. Their local Service C Variant is <b>Consuming</b> Service D from the Kubernetes cluster. They are using a Codezero Teamspace to <b>Serve</b> their local Variant to Service A in the Kubernetes cluster.</i>
 
 Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
