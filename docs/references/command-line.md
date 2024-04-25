@@ -271,10 +271,10 @@ Set configuration options.
 
 | Option             | Description                                                                                                                                       |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| resolver           | Specify host resolver (dns, hosts) (default: hosts)                                                                                                 |
+| resolver           | Specify host resolver (dns, hosts) (default: hosts)                                                                                               |
 | skip-version-check | Do not check version against hub version (bool) (default: false)                                                                                  |
 | log-level          | Sets the logging verbosity. Accepted values: panic, fatal, error, warn, info, debug, trace (string) (default: info)                               |
-| log-directory      | Path where logs are stored, optionally can be set to stdout or stderr (string) (default: /Users/georgf/Library/Application Support/codezero/logs) |
+| log-directory      | Path where logs are stored, optionally can be set to stdout or stderr (string) (default: ~/Library/Application Support/codezero/logs)             |
 
 #### Usage
 
