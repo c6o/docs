@@ -5,7 +5,7 @@ slug: /
 
 # Overview
 
-Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable on a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog to other members of the team.
+Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable in a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog to other team members.
 
 <center><h3>Teamspace</h3></center>
 
@@ -19,17 +19,24 @@ flowchart LR
 
     subgraph Local Machine
     Frontend <-.-> |Serve|Local-Core
-    Local-Core[Service B Variant] <-.-> |Consume| Database
+     Local-Core(Service B Variant) <-.-> |Consume| Database
     end
 ```
 
-In the above diagram, a developer is runs the Service B Variant locally. This local Service B Variant is Served in the Teamspace and receives traffic from Service A based on _Conditions_ specified by the developer. The local Service B Variant then delivers traffic back into the Teamspace by Consuming Service C. Traffic that does not meet the condition flows through the Teamspace unperturbed.
+In the above diagram, a developer is running the Service B Variant locally. This local Service B Variant: 
+* is _Served_ in the _Teamspace_ and 
+* Receives traffic from Service A 
+* based on _Conditions_ specified by the developer. 
 
-Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
+The local Service B Variant then: 
+* delivers traffic back into the _Teamspace_ 
+* by _Consuming_ Service C. 
+
+Traffic that does not meet the condition flows through the Teamspace untouched. Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
 Teamspaces are language agnostic and operate at the network level. Any authorized member can define _Conditions_ that reshape traffic across the services available in the catalog to instantly create a _Logical Ephemeral Environment_. While the Teamspace is long running, this temporary traffic shaped environment comprising of a mix of remote and local services can be used to rapidly build and test software before code is pushed.
 
-You do not have to be a Kubernetes admin or a networking guru in order to develop with a Teamspace. Once setup, most developers need not have any direct knowledge of, or access to the underlying Kubernetes Clusters.
+You do not have to be a Kubernetes admin or a networking guru to develop using a Teamspace. Once set up, most developers need not have any direct knowledge of, or access to the underlying Kubernetes Clusters.
 
 ## Getting Started
 
@@ -45,10 +52,10 @@ The Guides cover setting up and administering a Teamspace. You will require a Ku
 
 WE SHOULD ADD BACK A CONCEPTS SECTION
 
-We strive to limit the jargon that developers have to learn in order to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation. -->
+We strive to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation. -->
 
 ### Tutorials
 
-The Tutorials focus on using a Teamspace once setup. We have put together a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This project is used across all the Tutorials and Videos in this documentation.
+The [Tutorials](https://docs.codezero.io/tutorials/sample-project) focus on using a Teamspace once setup. We have a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This [project](/tutorials/sample-project.mdx) is used across all the Tutorials and Videos in this documentation.
 
 The Tutorials walk you through scenarios you will encounter in just about any modern microservices application development.
