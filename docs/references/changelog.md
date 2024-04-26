@@ -36,7 +36,7 @@ To update your Codezero Space Agent, follow these steps:
 
 ### Features
 
-* New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`.
+* New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`. You can read about this new feature in the [Codezero Compose](../guides/compose) guide.
 
 ## 2.1.1
 
