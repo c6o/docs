@@ -60,6 +60,27 @@ If you continue to encounter problems, please do not hesitate to reach out to us
 
 ![Teamspace Install](./_media/ts-rotate.jpg)
 
+### Upgrade Cluster / Codezero Space Agent
+
+Occasionally a new Codezero release requires you to Update your Codezero Space Agent (also referred to as Upgrade your Cluster)
+
+To update your Codezero Space Agent, follow these steps:
+
+1. Log in to [Codezero Hub](https://hub.codezero.io).
+2. Select your Teamspace in the top-left corner
+3. Navigate to Settings > Teamspaces
+4. Click the
+   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-arrow-up" width="24" height="24" viewBox="0 -2 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+       <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path d="M12 8l-4 4"></path>
+       <path d="M12 8v8"></path>
+       <path d="M16 12l-4 -4"></path>
+   </svg>
+   icon next to the version number of your Teamspace.
+5. Wait for your upgrade to complete and then sign out and sign in again.
+
+![Upgrade Space Agent](../_media/upgrade-cluster.jpg)
+
 ### Stuck _Waiting_ for DNS
 
 The Codezero _System_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _System_ service. To do so, simply delete the _System_ pod:
@@ -83,3 +104,7 @@ kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezer
 ```
 
 You should close all Consume and Serve sessions prior to cleaning up residue in which case the Codezero System controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
+
+### Getting Further Help
+
+If you have any further questions - please reach out to us via [support@codezero.io](mailto:support@codezero.io) or [Discord](https://discord.gg/wx3JkVjTPy) or your dedicated Slack Connect channel (if you're an Enterprise Customer).
