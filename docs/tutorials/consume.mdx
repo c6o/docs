@@ -150,7 +150,7 @@ service-name.namespace
 service-name.namespace.svc.cluster.local
 ```
 
-Consume supports all of the above permutations however, in order to use the simple form `service-name`, we need to designate a *Primary Namespace*. This is because service names are not unique across namespaces. The Primary Namespace makes the `namespace` optional so you can address the service by its `service-name` as if your local machine is running inside the cluster and within the same namespace.
+Consume supports all of the above permutations however, to use the simple form `service-name`, we need to designate a *Primary Namespace*. This is because service names are not unique across namespaces. The Primary Namespace makes the `namespace` optional so you can address the service by its `service-name` as if your local machine is running inside the cluster and within the same namespace.
 
 To select the Primary Namespace, run:
 
@@ -168,3 +168,27 @@ curl -L http://sample-project-core:3000/api
 ```bash
 websocat -v ws://sample-project-sockets:8999/
 ```
+## Advanced Topics
+
+Working with traffic shaping is new concept. Here are some advanced capabilities and considerations when using logical traffic shaped environments.
+
+### Mounting an In-Cluster Volume for use with Codezero
+
+When using Codezero to consume a remote service, traffic is intercepted and sent to the local process. But let's say you have a kubernetes operator which depends on a resource in a mounted directory in the cloud - like a storage class files needed to execute. To allow the consumed process access to the files on the remote volume follow these steps.
+
+Here's the procedure using an NFS Mount:
+
+1. Copy the following sample yaml from our [c6o/sample-project](https://raw.githubusercontent.com/c6o/sample-project/master/k8s/nfs/core.yaml) repo
+2. Modify lines 40 and 50 to match your persistentVolumeClaim [PVC] and also match all the namespaces
+3. Apply the file and make sure the NFS Pod starts properly
+4. Run `czctl consume edit` and enter `<namespace>/nfs-mount`
+5. For convenience, make the namespace the primary namespace `czctl primary-namespace select <namespace>`
+6. You should be able to now mount the volume locally using NFS `mount -t nfs nfs-mount:/usr/src/app/data ~/mnt`
+
+
+The above assumes you want the path `/usr/src/app/data` (defined in the yaml) and that you have a local mountpoint `~/mnt`
+
+For more resiliency, you can use a Deployment instead of a Pod. Codezero tunnels to the Service (not the Pod) so the above will work even a single NFS Pod fails.  
+
+If you have any further questions - please reach out to us via [support@codezero.io](mailto:support@codezero.io) or [Discord](https://discord.gg/wx3JkVjTPy) or your dedicated Slack Connect channel (if you're an Enterprise Customer).
+
