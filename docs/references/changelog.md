@@ -4,33 +4,7 @@ sidebar_position: 3
 
 # Release Notes
 
-Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
-
-To update your Local Agent, run:
-
-```bash
-czctl stop
-curl -L https://releases.codezero.io/install-headless.sh | /bin/bash
-czctl start
-```
-
-To update your Codezero Space Agent, follow these steps:
-
-1. Log in to [Codezero Hub](https://hub.codezero.io).
-2. Select your Teamspace in the top-left corner
-3. Navigate to Settings > Teamspaces
-4. Click the
-   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-arrow-up" width="24" height="24" viewBox="0 -2 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-       <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-       <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path><path d="M12 8l-4 4"></path>
-       <path d="M12 8v8"></path>
-       <path d="M16 12l-4 -4"></path>
-   </svg>
-   icon next to the version number of your Teamspace.
-5. Wait for your upgrade to complete and then sign out and sign in again.
-
-![Upgrade Space Agent](../_media/upgrade-cluster.jpg)
-
+Please make sure that you update your Codezero Local Agent and Space Agent to the same version. Instructions on the update process are found in our [Documentation site](https://docs.codezero.io/guides/teamspace-setup#upgrade-cluster--codezero-space-agent)
 
 ## 2.2.0
 
