@@ -23,14 +23,8 @@ flowchart LR
     end
 ```
 
-In the above diagram, a developer is running the Service B Variant locally. This local Service B Variant: 
-* is _Served_ in the _Teamspace_ and 
-* Receives traffic from Service A 
-* based on _Conditions_ specified by the developer. 
-
-The local Service B Variant then: 
-* delivers traffic back into the _Teamspace_ 
-* by _Consuming_ Service C. 
+In the above diagram, a developer is running the Service B Variant locally. This local Service B Variant is _Served_ in the Teamspace and receives traffic from Service A based on _Conditions_ specified by the developer. 
+The local Service B Variant then delivers traffic back into the Teamspace by Consuming Service C.
 
 Traffic that does not meet the condition flows through the Teamspace untouched. Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
