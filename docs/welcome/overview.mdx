@@ -7,6 +7,23 @@ slug: /
 
 Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable in a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog to other team members.
 
+<center><h3>Development Cluster</h3></center>
+
+```mermaid
+flowchart LR
+    subgraph Kubernetes
+    direction LR
+    Frontend((Service A)) <--> Core
+    Core((Service B)) <--> Database((Service C))
+    end
+```
+
+Consider the application above. Services A, B and C are deployed to a development cluster or namespace. You would either have to replicate the entire application locally or, replace Service B with the new version in the development environment in order to test.
+
+:::tip
+The version of the app one experiences is determined by the path a ray of traffic takes across the services.
+:::
+
 <center><h3>Teamspace</h3></center>
 
 ```mermaid
@@ -23,16 +40,9 @@ flowchart LR
     end
 ```
 
-In the above diagram, a developer is running the Service B Variant locally. This local Service B Variant: 
-* is _Served_ in the _Teamspace_ and 
-* Receives traffic from Service A 
-* based on _Conditions_ specified by the developer. 
+With a Teamspace, in order to work on Service B, you simply run the service locally. This _Local_ Service B Variant receives traffic based on _Conditions_ you specify. The Local Variant then delivers traffic back by Consuming Service C. Traffic that does not meet the specified condition flows through the _Default_ Service B Variant running in the cluster untouched.
 
-The local Service B Variant then: 
-* delivers traffic back into the _Teamspace_ 
-* by _Consuming_ Service C. 
-
-Traffic that does not meet the condition flows through the Teamspace untouched. Variants running locally need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
+Local Variants need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
 Teamspaces are language agnostic and operate at the network level. Any authorized member can define _Conditions_ that reshape traffic across the services available in the catalog to instantly create a _Logical Ephemeral Environment_. While the Teamspace is long running, this temporary traffic shaped environment comprising of a mix of remote and local services can be used to rapidly build and test software before code is pushed.
 
