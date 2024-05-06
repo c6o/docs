@@ -22,6 +22,9 @@ Please use our [GitHub Discussion Board](https://github.com/c6o/roadmap/discussi
 
 Checkout our [public roadmap](https://github.com/orgs/c6o/projects/3) to see what is coming down the pipe, and help us prioritize what is important to you! At this time, the Roadmap is just a subset of everything we are working on.
 
+## Codezero System Status
+Transparency and Trust are important to us. Our public System Status page is here: [Codezero Status](https://www.youtube.com/watch?v=8NXDMknahzo) 
+
 ## Community and Support
 
 If you prefer to reach out to us directly, we have a [Discord community](https://discord.gg/wx3JkVjTPy) where we hang out or you can email us at [support@codezero.io](mailto:support@codezero.io)
