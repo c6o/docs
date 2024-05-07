@@ -4,7 +4,17 @@ sidebar_position: 3
 
 # Release Notes
 
-Please make sure that you update your Codezero Local Agent and Space Agent to the same version. Instructions on the update process are found in our [Documentation site](https://docs.codezero.io/guides/teamspace-setup#upgrade-cluster--codezero-space-agent)
+Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
+
+## 2.3.0
+
+### Changes
+
+* We have started to version our Helm charts. In order to upgrade from an earlier version to this release, please rotate the certificate as documented in our [Teamspace Setup](https://docs.codezero.io/guides/teamspace-setup/#rotate-certificate).
+* Bug Fix: `czctl auth login` now correctly opens a web browser on Linux
+* Experimental Windows support. Please contact us to request binaries
+* Various package upgrades and security patches
+
 
 ## 2.2.0
 

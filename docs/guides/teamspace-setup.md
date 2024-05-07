@@ -76,8 +76,8 @@ To update your Codezero Space Agent, follow these steps:
        <path d="M12 8v8"></path>
        <path d="M16 12l-4 -4"></path>
    </svg>
-   icon next to the version number of your Teamspace.
-5. Wait for your upgrade to complete and then sign out and sign in again.
+   icon next to the version number of your Teamspace to copy the Helm upgrade command.
+5. Run the command and then sign out and sign in again.
 
 ![Upgrade Space Agent](../_media/upgrade-cluster.jpg)
 
