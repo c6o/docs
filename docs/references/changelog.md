@@ -10,7 +10,12 @@ Please make sure that you update your Codezero Local Agent and Space Agent to th
 
 ### Changes
 
-* We have started to version our Helm charts. In order to upgrade from an earlier version to this release, please rotate the certificate as documented in our [Teamspace Setup](https://docs.codezero.io/guides/teamspace-setup/#rotate-certificate).
+* We have started to version our Helm charts. In order to upgrade your Space Agent from an earlier version to this release, please run the following:
+
+  ```sh
+  helm repo add --force-update codezero https://charts.codezero.io && helm upgrade --namespace=codezero codezero codezero/codezero --reset-values
+  ```
+
 * Bug Fix: `czctl auth login` now correctly opens a web browser on Linux
 * Experimental Windows support. Please contact us to request binaries
 * Various package upgrades and security patches
