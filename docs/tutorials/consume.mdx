@@ -178,7 +178,7 @@ When using Codezero to consume a remote service, traffic is intercepted and sent
 
 Here's the procedure using an NFS Mount:
 
-1. Copy the following sample yaml from our [c6o/sample-project](https://raw.githubusercontent.com/c6o/sample-project/master/k8s/nfs/core.yaml) repo
+1. Copy the following sample yaml from our [c6o/sample-project](https://raw.githubusercontent.com/c6o/sample-project/main/k8s/nfs/core.yaml) repo
 2. Modify lines 40 and 50 to match your persistentVolumeClaim [PVC] and also match all the namespaces
 3. Apply the file and make sure the NFS Pod starts properly
 4. Run `czctl consume edit` and enter `<namespace>/nfs-mount`
