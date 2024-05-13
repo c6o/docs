@@ -6,6 +6,13 @@ sidebar_position: 3
 
 Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.3.1
+
+### Bug Fixes
+
+* Prevent crash-loop when serving a resource in a non-existent namespace
+* Fix CPU thrashing during system startup
+
 ## 2.3.0
 
 ### Changes
