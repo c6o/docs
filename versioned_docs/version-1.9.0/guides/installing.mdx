@@ -20,24 +20,10 @@ Codezero's developer tools help in the development and testing of Kubernetes app
 If you are in a headless environment, or don't want to install the Desktop GUI, you can run:
 
 ```bash
-curl -sL https://releases.codezero.io/install-headless.sh | /bin/bash
+brew install c6o/codezero/codezero
 ```
 
 to install a headless version of the tool, which only includes the `czctl` CLI and background services.
-
-### Installing a Specific Version
-
-If you want to install a specific version of our CLI or reinstall an older you can run:
-
-```bash
-curl -sL https://releases.codezero.io/install-headless.sh | /bin/bash -s -- 1.6.0
-```
-
-:::caution
-
-Older releases might contain bugs that have since been fixed. We always recomend running the lastest version of both our CLI and Desktop products. Additonally, before opening any bug reports, please update the latest stable release. If you still encouter an issue, please report it on our public roadmap.
-
-:::
 
 ## Canary vs Stable Releases
 
