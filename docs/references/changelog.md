@@ -6,6 +6,12 @@ sidebar_position: 3
 
 Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.3.2
+
+### Changes
+
+* Bug fixes and security updates
+
 ## 2.3.1
 
 ### Bug Fixes
