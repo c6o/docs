@@ -6,15 +6,53 @@ sidebar_position: 4
 
 Codezero's developer tools help in the development and testing of Kubernetes applications through a Command Line Interface (CLI) and a web application.
 
-To install Codezero via the command line, run:
-
-```bash
-brew install c6o/tap/codezero
-```
+From the command-line, use an install script or download and extract a versioned archive file for your operating system to install Codezero.
 
 ## Requirements
 
 Codezero requires:
 
 - MacOS or Ubuntu 18.x+ to run the CLI (`czctl`)
-- `sudo`/`root` permissions on your local system
+- `sudo`/`root`/administrator permissions on your local system
+
+## Homebrew
+
+To install Codezero with [homebrew](https://brew.sh), run:
+
+```bash
+brew install c6o/tap/codezero
+```
+
+## Install without a package manager on macOS or Linux
+
+To install Codezero without a package manager on macOS or Linux:
+
+1. Download the latest version for your OS and CPU architecture type:
+
+| OS    | Arch Type | URL                                                             |
+| ----- | --------- | --------------------------------------------------------------- |
+| macOS | amd64     | https://releases.codezero.io/2.3.3/headless-darwin-amd64.tar.gz |
+| macOS | arm64     | https://releases.codezero.io/2.3.3/headless-darwin-arm64.tar.gz |
+| Linux | amd64     | https://releases.codezero.io/2.3.3/headless-linux-amd64.tar.gz  |
+| Linux | arm64     | https://releases.codezero.io/2.3.3/headless-linux-arm64.tar.gz  |
+
+2. Unzip the file: `tar -xzvf headless-*.tar.gz`
+
+Optionally, install the binary in a location where you can execute it globally (for example, `/usr/local/bin`).
+
+## Install without a package manager on Windows
+
+To install Codezero without a package manager on Windows:
+
+1. Download the latest version for your CPU architecture type:
+
+| Arch Type | URL                                                           |
+| --------- | ------------------------------------------------------------- |
+| amd64     | https://releases.codezero.io/2.3.3/headless-windows-amd64.zip |
+| arm64     | https://releases.codezero.io/2.3.3/headless-windows-arm64.zip |
+
+2. Unzip the file.
+
+3. Add the path to the unzipped `czctl.exe` and `czdaemon.exe` files to your `Path` environment variable.
+   To learn how to update environment variables, see the
+   [Microsoft PowerShell documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.3#saving-changes-to-environment-variables).
