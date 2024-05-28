@@ -48,13 +48,11 @@ const config = {
           trackingID: "G-6WP59C6D87",
         },
         docs: {
+          disableVersioning: true,
           lastVersion: "current",
           versions: {
             current: {
-              label: "Pasley (2.3)",
-            },
-            "1.9.0": {
-              label: "Anvil (1.9)",
+              label: "v2.3",
             },
           },
           routeBasePath: "/",
