@@ -6,6 +6,24 @@ sidebar_position: 3
 
 Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.3.3
+
+### Changes
+
+* New Homebrew installation package:
+  You can now install and update your Local Agent via Homebrew.
+  
+  To switch to Homebrew on macOS or Linux, run the following commands:
+
+  ```bash
+  curl -L https://releases.codezero.io/uninstall.sh | /bin/bash
+  brew install c6o/tap/codezero
+  ```
+
+* Fixed a bug that caused sticky HTTP connections in serve sessions when using persistent connections.
+
+* Fixed a bug that prevented the Windows background service from starting on some machines.
+
 ## 2.3.2
 
 ### Changes
