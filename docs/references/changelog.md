@@ -6,6 +6,20 @@ sidebar_position: 3
 
 Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.3.4
+
+* New Scoop installation package for Windows:
+  You can now install and update your Local Agent via Scoop.
+
+  ```powershell
+  scoop bucket add codezero https://github.com/c6o/scoop-codezero.git;scoop install codezero
+  ```
+
+* ARM64 images for the Space Agent:
+  Codezero now supports Kubernetes clusters running on ARM64 nodes.
+
+* Bug fixes and stability improvements
+
 ## 2.3.3
 
 * New Homebrew installation package:
