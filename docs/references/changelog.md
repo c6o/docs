@@ -3,10 +3,10 @@ sidebar_position: 3
 ---
 
 # Release Notes
+We have a regular 2 week release cadence.
+NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
-Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
-
-## 2.3.4
+## 2.3.4 [2024-06-05]
 
 * New Scoop installation package for Windows:
   You can now install and update your Local Agent via Scoop.
@@ -20,7 +20,7 @@ Please make sure that you update your Codezero Local Agent and Space Agent to th
 
 * Bug fixes and stability improvements
 
-## 2.3.3
+## 2.3.3 [2024-05-28]
 
 * New Homebrew installation package:
   You can now install and update your Local Agent via Homebrew.
@@ -36,16 +36,16 @@ Please make sure that you update your Codezero Local Agent and Space Agent to th
 * Fixed a bug that prevented the Windows background service from starting on some machines.
 * New icons for Consume and Serve
 
-## 2.3.2
+## 2.3.2 [2024-05-22]
 
 * Bug fixes and security updates
 
-## 2.3.1
+## 2.3.1 [2024-05-13]
 
 * Prevent crash-loop when serving a resource in a non-existent namespace
 * Fix CPU thrashing during system startup
 
-## 2.3.0
+## 2.3.0 [2024-05-08]
 
 * We have started to version our Helm charts. In order to upgrade your Space Agent from an earlier version to this release, please run the following:
 
@@ -54,22 +54,22 @@ Please make sure that you update your Codezero Local Agent and Space Agent to th
   ```
 
 * Bug Fix: `czctl auth login` now correctly opens a web browser on Linux
-* Experimental Windows support. Please contact us to request binaries
+* Experimental Windows support. 
 * Various package upgrades and security patches
 
-## 2.2.0
+## 2.2.0 [2024-04-24]
 
 * New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`. You can read about this new feature in the [Codezero Compose](../guides/compose) guide.
 
-## 2.1.1
+## 2.1.1 [2024-04-11]
 
 * Fixed startup bug in Space Agent
 
-## 2.1.0
+## 2.1.0 [2024-04-11]
 
 * New command: `czctl reset` to remove all consume and serve sessions.
 * Improved startup sequence of Space Agent
 
-## 2.0.0
+## 2.0.0 [2024-02-16]
 
 Complete rewrite of Codezero for improved stability and reliability.
