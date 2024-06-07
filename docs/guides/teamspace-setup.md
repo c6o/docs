@@ -24,6 +24,40 @@ After registering your Teamspace you need to install the _Codezero System_ onto 
 
 ![Install Codezero](./_media/ts-helm.jpg)
 
+### Load balancer requirements
+
+The Codezero helm chart deploys a Kubernetes service of type `LoadBalancer`. For Codezero to function properly the provisioned load balancer requires a public ip address and must work on OSI layer 4.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="aws-eks" label="AWS EKS" default>
+    By default AWS EKS uses classic load balancers for a Kubernetes service of type `LoadBalancer`. In this case no additional setup is required.
+
+    However when using [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html) additional annotations need to be set on Codezero's load balancer service. This can be done via the helm chart by adding the following values:
+
+    ```
+    lb:
+        service:
+            annotations:
+                service.beta.kubernetes.io/aws-load-balancer-type: "external"
+                service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+                service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    ```
+
+
+</TabItem>
+<TabItem value="gke" label="GKE" default>
+    Google Kubernetes Engine creates external Network Load Balancers by default.
+</TabItem>
+<TabItem value="generic-cluster" label="Generic cluster">
+    Codezero will rely on the default behaviour provided by the cluster.
+</TabItem>
+</Tabs>
+
+
+
 ## Certification
 
 The Codezero System installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer. Once ready, you should see the Certification column change to _Certified_ and shortly thereafter, you should see an IP address or Host Name show up under DNS. Your Teamspace is ready for use.
