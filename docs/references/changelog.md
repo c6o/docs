@@ -3,8 +3,15 @@ sidebar_position: 3
 ---
 
 # Release Notes
+
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
+
+## 2.4.0 [2024-06-11]
+
+* Preview release of [Open Policy Agent integration](../guides/opa)
+* Ability to delete organizations
+* Bug fixes and security updates
 
 ## 2.3.4 [2024-06-05]
 
