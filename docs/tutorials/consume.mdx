@@ -172,6 +172,86 @@ websocat -v ws://sample-project-sockets:8999/
 
 Working with traffic shaping is new concept. Here are some advanced capabilities and considerations when using logical traffic shaped environments.
 
+### Consuming external databases
+
+When running applications in Kubernetes their databases usually run outside the Kubernetes cluster. In these scenarios the database commonly resides in different subnets or VPCs. Kubernetes worker nodes can route to the subnet or VPC but developers usually do not have direct access or require a VPN connection:
+
+```mermaid
+flowchart LR
+    direction LR
+    subgraph Kubernetes VPC
+      Service
+    end
+    localDev[Local Development]--xPostgres
+    subgraph Database VPC
+     Service-->Postgres[(Database)]
+    end
+```
+
+Consume can support external databases (or any external service) by applying a Kuberentes [service](https://kubernetes.io/docs/concepts/services-networking/service/#externalname) manifest. Apply the following manifests to create an external service using Postgres as an example:
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="dns" label="External DNS" default>
+  Use the database DNS in `externalName`. For example in AWS Aurora use the cluster endpoint or reader endpoint.
+
+  ```
+  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+    name: postgres
+    namespace: example
+  spec:
+    externalName: <aurora cluster endpoint>
+    ports:
+    - port: 5432
+      protocol: TCP
+      targetPort: 5432
+    type: ExternalName
+  ```
+</TabItem>
+<TabItem value="ip" label="External IP" default>
+  A DNS is not always available. E.g. private Google SQL clusters have a private IP address.
+
+  ```
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: postgres
+    namespace: example
+  spec:
+    clusterIP: None
+    ports:
+    - port: 5432
+  ---
+  kind: Endpoints
+  apiVersion: v1
+  metadata:
+    name: postgres
+    namespace: example
+  subsets:
+    - addresses:
+          - ip: <private database ip>
+      ports:
+        - port: 5432
+          name: postgres
+  ```
+</TabItem>
+</Tabs>
+
+:::note
+For Codezero to consume external services properly a service manifest must include ports.
+:::
+
+Then consume as usual via `czctl consume edit` and add
+
+```
+example/postgres
+```
+
 ### Mounting an In-Cluster Volume for use with Codezero
 
 When using Codezero to consume a remote service, traffic is intercepted and sent to the local process. But let's say you have a kubernetes operator which depends on a resource in a mounted directory in the cloud - like a storage class files needed to execute. To allow the consumed process access to the files on the remote volume follow these steps.
