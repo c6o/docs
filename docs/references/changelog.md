@@ -7,6 +7,13 @@ sidebar_position: 3
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.5.0 [2024-06-25]
+
+* New Teamspace installation method to facilitate automated scripting of Teamspace deployments
+* Fix namespace filter in Service Catalog
+* Added security context to Router pods to satisfy [Restricted Pod Security policy](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted)
+* Bug fixes and security updates
+
 ## 2.4.0 [2024-06-11]
 
 * Preview release of [Open Policy Agent integration](../guides/opa)
