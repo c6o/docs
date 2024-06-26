@@ -16,7 +16,7 @@ NOTE: Please make sure that you update your Codezero Local Agent and Space Agent
 
 ## 2.4.0 [2024-06-11]
 
-* Preview release of [Open Policy Agent integration](../guides/opa)
+* Preview release of [Open Policy Agent integration](../../guides/opa)
 * Ability to delete organizations
 * Bug fixes and security updates
 
