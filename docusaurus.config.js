@@ -52,7 +52,7 @@ const config = {
           lastVersion: "current",
           versions: {
             current: {
-              label: "v2.4",
+              label: "v2.5",
             },
           },
           routeBasePath: "/",
