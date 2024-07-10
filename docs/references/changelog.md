@@ -7,6 +7,11 @@ sidebar_position: 3
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.5.1 [2024-07-09]
+
+* Support use of named targetPort references in K8s service definitions
+* Improved network connectivity between Local and Space Agent
+
 ## 2.5.0 [2024-06-25]
 
 * New Teamspace installation method to facilitate automated scripting of Teamspace deployments
