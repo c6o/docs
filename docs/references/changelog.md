@@ -7,6 +7,13 @@ sidebar_position: 3
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.5.2 [2024-07-23]
+
+* Added option to run the router pod of Codezero Space Agent with privileged access. By default, the router pod runs with a security context with only the `NET_BIND_SERVICE` capability.
+  When the `router.privilegedAccess` option is set to `true` in the Codezero Helm chart values, the router pods are deployed with an empty security context.
+* We switched to a new auth provider resulting in a new login page.
+* Various bug fixes and security updates.
+
 ## 2.5.1 [2024-07-09]
 
 * Support use of named targetPort references in K8s service definitions
