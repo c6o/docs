@@ -6,10 +6,11 @@ sidebar_position: 2
 
 ## Overview
 
-You will require a Kubernetes cluster before you can create a Teamspace. If you are just evaluating Codezero, you may safely use your own cluster and project as uninstalling Codezero is pretty straight forward. Alternatively, we have provided a Sample Project for learning. Codezero and the Sample Project is lightweight and work fine on a single node 4 core cluster or a two node 2 core cluster.
+You will require a Kubernetes cluster before you can create a Teamspace. If you are evaluating Codezero, you may safely use your own cluster and project as uninstalling Codezero is pretty straightforward. Alternatively, we have provided a [Sample Project](https://docs.codezero.io/tutorials/sample-project) for learning. Codezero and the Sample Project are lightweight and work well on a single node 4 core cluster or a two node 2 core cluster.
 
-If you do not have a Kubernetes cluster, here is a list of providers who provide managed Kubernetes.
-Most will give you more than enough credits to get the basics.
+If you want an easy, "bare-metal" experience to create & manage your own Kubernetes cluster - try [Equinix Metal](https://deploy.equinix.com/developers/docs/metal/getting-started/)'s Getting Started. Check out [Why deploy Kubernetes on Bare Metal?](https://deploy.equinix.com/developers/guides/why-deploy-kubernetes-on-bare-metal/)
+
+If you do not have a Kubernetes cluster and don't want to manage your own, here are managed Kubernetes Providers. Most will give you more than enough credits to get the basics.
 
 - [Amazon Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
 - [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/#overview)
@@ -17,13 +18,55 @@ Most will give you more than enough credits to get the basics.
 - [DigitalOcean Kubernetes](https://try.digitalocean.com/codezero/)
 - [Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine)
 
-We recommend you use the service your organization uses.
-We have put together a short guide on using DigitalOcean and Civo as we have found these to be especially easy to get started with.
+We recommend you use the service your organization uses. We have put together a short guide on using DigitalOcean and Civo as we have found these to be especially easy to get started with.
 The following guide assumes you want to name your cluster `my-cluster` and you do not wish to merge the kubeconfig into your user's default Kubernetes config.
+
+## Civo QuickStart
+
+Everything described here can be done in the Civo GUI however, using the CLI makes things easier and repeatable.
+Civo has the benefit of fast (sub-2 minute) provisioning times.
+
+Civo has an excellent Getting Started guide: 
+[Kubernetes Cluster Administration Using Civo CLI](https://www.civo.com/learn/kubernetes-cluster-administration-using-civo-cli). We won't repeat it here but provide a highly condensed set of scripts to get you started:
+
+### Set Up a Cluster
+
+The following command sets up a single node cluster and installs Traefik-v2 on it which is optional.
+
+```bash
+#!/bin/bash
+echo 'Creating my-cluster cluster'
+civo kubernetes create my-cluster -n 1 -w -a traefik2-loadbalancer
+```
+
+### Obtain Credentials
+
+The following script fetches and exports the credentials:
+
+```bash
+#!/bin/bash
+echo 'Fetching config as my-cluster-kubeconfig.yaml'
+civo kubernetes config my-cluster > $PWD/my-cluster-kubeconfig.yaml
+export KUBECONFIG=$PWD/my-cluster-kubeconfig.yaml
+```
+
+If you save the above as `civo-config`, You can then configure credentials anywhere you need them by running `source civo-create`
+
+:::note
+Be sure to add `*-kubeconfig.yaml` and `*-kubeconfig.yml` to your `.gitignore` so you do not accidentally check in your credentials file!
+:::
+
+### Tear Down
+
+Tear down is quite simple:
+
+```bash
+civo kubernetes delete my-cluster -y%
+```
 
 ## DigitalOcean QuickStart
 
-Everything described here can be done in the DigitalOcean Web UI however, we find that we often set up and tear down development clusters. It helps to have the setup and teardown scripted to be able to do this quickly.
+As with Civo, wverything described here can be done in the DigitalOcean Web UI however, we find that we often set up and tear down development clusters. It helps to have the setup and teardown scripted to do this quickly.
 
 ### Install the CLI
 
@@ -101,47 +144,4 @@ doctl compute load-balancer list | awk 'NR>1 { print $1 }' | xargs -I id doctl c
 
 ```bash
 doctl compute volume list | awk 'NR>1 { print $1 }' | xargs -I id doctl compute volume delete id -f
-```
-
-## Civo QuickStart
-
-As with DigitalOcean, everything described here can be done in the Civo GUI however, using the CLI makes things easier and repeatable.
-Civo has the added bonus of having really fast (2 minute) provisioning times.
-
-Civo has an excellent and succinct getting started guide
-[Kubernetes Cluster Administration Using Civo CLI](https://www.civo.com/learn/kubernetes-cluster-administration-using-civo-cli). We won't repeat it here but provide a highly condensed set of scripts to get you started:
-
-### Set Up a Cluster
-
-The following command sets up a single node cluster and installs Traefik-v2 on it which is optional.
-
-```bash
-#!/bin/bash
-echo 'Creating my-cluster cluster'
-civo kubernetes create my-cluster -n 1 -w -a traefik2-loadbalancer
-```
-
-### Obtain Credentials
-
-The following script fetches and exports the credentials:
-
-```bash
-#!/bin/bash
-echo 'Fetching config as my-cluster-kubeconfig.yaml'
-civo kubernetes config my-cluster > $PWD/my-cluster-kubeconfig.yaml
-export KUBECONFIG=$PWD/my-cluster-kubeconfig.yaml
-```
-
-If you save the above as `civo-config`, You can then configure credentials anywhere you need them by running `source civo-create`
-
-:::note
-Be sure to add `*-kubeconfig.yaml` and `*-kubeconfig.yml` to your `.gitignore` so you do not accidentally check in your credentials file!
-:::
-
-### Tear Down
-
-Tear down is quite simple:
-
-```bash
-civo kubernetes delete my-cluster -y%
 ```
