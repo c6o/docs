@@ -7,6 +7,11 @@ sidebar_position: 3
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.6.0 [2024-08-06]
+
+* Preview release of our new Codezero K8s operator: Setting `operator.enabled` to `true` in the Codezero Helm chart values, will enable the use of the new Codezero K8s operator for creating Serve sessions.
+* Various bug fixes and security updates.
+
 ## 2.5.2 [2024-07-23]
 
 * Added option to run the router pod of Codezero Space Agent with privileged access. By default, the router pod runs with a security context with only the `NET_BIND_SERVICE` capability.
