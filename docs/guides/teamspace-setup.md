@@ -14,13 +14,16 @@ The Hub allows you to register and certify Teamspaces. This is also where you ca
 
 ## Install Codezero in your Cluster
 
-On the Profile menu, click on _Settings_ and then select _Teamspaces_. Click _Add Teamspace_ to create the installation command.
+On the Profile menu, click _Settings_ and then select _Teamspaces_. Click _Add Teamspace_ to create the installation command.
 
 ![Teamspace Create](./_media/ts-create.jpg)
 
 This install command contains your organization's API key. Please keep it confidential.
-It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can find the Helm charts on [GitHub](https://github.com/c6o/helm-charts).
-Additional annotations may be necessary; refer to the [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
+It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can find the Helm charts on Codezero's [GitHub](https://github.com/c6o/helm-charts).
+
+:::note
+_Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
+:::
 
 ### Load balancer requirements
 
@@ -65,7 +68,7 @@ You can now select the Teamspace from the _Teamspace List_ in the navigation pan
 
 ## Uninstalling Codezero
 
-Codezero may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions prior to uninstalling.
+Codezero may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
 
 To uninstall, run:
 
