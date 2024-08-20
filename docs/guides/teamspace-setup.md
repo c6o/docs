@@ -21,7 +21,9 @@ On the Profile menu, click _Settings_ and then select _Teamspaces_. Click _Add T
 This install command contains your organization's API key. Please keep it confidential.
 It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can find the Helm charts on Codezero's [GitHub](https://github.com/c6o/helm-charts).
 
-NOTE: _Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
+:::note
+_Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
+:::
 
 ### Load balancer requirements
 
