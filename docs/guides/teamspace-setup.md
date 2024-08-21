@@ -10,16 +10,25 @@ Teamspaces are vanilla Kubernetes clusters with Codezero installed. The followin
 
 Sign up or log in to the [Codezero Hub](https://hub.codezero.io). The onboarding wizard will guide you through creating an organization and your first Teamspace.
 
-The Hub allows you to register and certify Teamspaces. This is also where you can invite and administer members of the Teamspace. While the Hub provides a graphical user interface equivalent to the `czctl` command line tool, all services either run on your local machine or in the Kubernetes cluster.
+The Hub allows you to manage your organization, invite and administer members and register and certify Teamspaces.  You can always get back to your organization and list of Teamspaces by going to the Profile menu in the top right corner of the screen.
+
+While the Hub provides a graphical user interface equivalent to the `czctl` command line tool, all services either run on your local machine or in the Kubernetes cluster.
 
 ## Install Codezero in your Cluster
 
-On the Profile menu, click _Settings_ and then select _Teamspaces_. Click _Add Teamspace_ to create the installation command.
+Make sure you have access to the cluster you want to install Codezero into from your terminal, your have `helm` and `kubectl` installed and
+your current context is the correct cluster.
+
+On the Profile menu, click _Settings_ and then select the _Teamspaces_ tab. Click _Add Teamspace_ to create the installation command.
 
 ![Teamspace Create](./_media/ts-create.jpg)
 
+To use this command copy to your clipboard using the _copy_ button on the right side of the screen.  After doing that press the _Done_ button.
+
 This install command contains your organization's API key. Please keep it confidential.
 It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can find the Helm charts on Codezero's [GitHub](https://github.com/c6o/helm-charts).
+
+Now paste the command into your terminal and wait for Codezero to be installed and started.
 
 :::note
 _Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
@@ -58,7 +67,27 @@ import TabItem from '@theme/TabItem';
 
 ## Certification
 
-The Codezero System installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer. Once ready, you should see the Certification column change to _Certified_ and shortly thereafter, you should see an IP address or Host Name show up under DNS. Your Teamspace is ready for use.
+The Codezero System installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer. 
+
+You can view the codezero pods and services using the following:
+
+```
+kubectl get pods,svc -n codezero
+
+NAME                                READY   STATUS    RESTARTS   AGE
+pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
+pod/orchestrator-54675d9cdf-5jmm4   1/1     Running   0          9d
+pod/loadbalancer-556d54fb4-qx6w4    1/1     Running   0          9d
+pod/system-5cb47f595b-m8ppw         1/1     Running   0          9d
+
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
+service/orchestrator   ClusterIP      10.43.42.173   <none>          8900/TCP                        13d
+service/system         ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
+service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP,8900:30389/TCP   13d
+```
+
+Once ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address or Host Name show up under DNS. Your Teamspace is ready for use.
+
 
 Certification ensures secure communications between the Codezero System in cluster and the Hub.
 
