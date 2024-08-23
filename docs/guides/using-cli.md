@@ -8,6 +8,11 @@ Codezero's tools can be used via the Desktop app or the CLI. If you installed th
 
 This section is about getting up and running with the CLI.
 
+:::note
+For Windows you'll need to run `czctl` as an Administrator as it needs to modify your DNS settings.  You can do this by starting
+a Command Prompt or Windows PowerShell with `Run as Administrator`.
+:::
+
 ## Configure the CLI
 
 Before you get started, you need to log in to your Codezero account.
@@ -33,8 +38,16 @@ Start the Codezero daemon (background service) by running:
 ```
 
 :::note
-Codezero requires `sudo` access to modify your DNS settings.
+For MacOS and Linux Codezero requires `sudo` access to modify your DNS settings.
 :::
+
+## Get the current status
+
+To get the current status of `codezero` that includes the authenicated user, organization and teamspace run.
+
+```bash
+> czctl status
+```
 
 ## Run commands
 
