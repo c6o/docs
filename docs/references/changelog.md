@@ -7,6 +7,48 @@ sidebar_position: 3
 We have a regular 2 week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
+## 2.7.0 [2024-10-20]
+
+:::note
+The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In order to access the Service Catalog, you can use the Desktop Application or the `czctl services list` command.
+
+* Local Agent 2.7.0 can connect to Space Agents 2.7.0 and below.
+* Local Agents below version 2.6.0 cannot connect to the Space Agents 2.7.0 and above.
+* **We strongly recommend updating your Local Agents of all developers to version 2.7.0 before updating your Space Agents to avoid any connectivity interruptions.**
+
+:::
+
+### Local Agent
+
+* New [Desktop Application](http://localhost:3000/guides/installing#desktop-application) which provides:
+
+  * Quick access to the Service Catalog
+  * Easy Consume All / Clear button (blue)
+  * Fast filtering for Namespace & Services at top of screen
+  * Quick Switch between Teamspaces
+  * Organization access (if you belong to more than one Codezero Org)
+  * Easy Test connect to Variants - (one click copy of curl command when clicking on a user’s Variant in the Service Catalog)
+
+* The Daemon now runs as a background service and is automatically started on startup.
+* New CLI commands: `czctl consume all`, `czctl consume clear` and `czctl services list`.
+* Deprecated commands: `czctl options` and `czctl organization clear`.
+* Improved connection stability.
+
+### Space Agent
+
+* The Operator is now enabled by default.
+* The Space Agent requires fewer resources. It now only consists of System and Operator.
+
+### How to update from the CLI to the Desktop App?
+
+The Desktop App contains the binary for the CLI. If you have installed the CLI via homebrew, you can simply run the following commands to uninstall the CLI and install the new Desktop App:
+
+```bash
+brew uninstall codezero
+brew install --cask c6o/tap/codezero-app@beta
+```
+
+
 ## 2.6.0 [2024-08-06]
 
 * Preview release of our new Codezero K8s operator: Setting `operator.enabled` to `true` in the Codezero Helm chart values, will enable the use of the new Codezero K8s operator for creating Serve sessions.
