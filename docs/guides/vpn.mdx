@@ -4,27 +4,16 @@ sidebar_position: 7
 
 # Coexisting with VPNs
 
-In many ways, Codezero works like a Virtual Private Network (VPN). Unlike a VPN however, Codezero only handles traffic related to services in a Teamspace. If you wish to operate a VPN while using Codezero, this guide will walk you through ensuring both coexist without interfering with each other.
+In many ways, Codezero works like a Virtual Private Network (VPN). Unlike a VPN however, Codezero only handles traffic related to services in a Teamspace. 
+If you wish to operate a VPN while using Codezero, this guide will walk you through ensuring both coexist without interfering with each other.
 
-In a VPN setup, the integration of a Domain Name System (DNS) is not strictly necessary but is commonly implemented to enhance functionality and user experience. Codezero needs to be able to create Virtual Interfaces for services running in the Teamspace and register DNS records for these interfaces.
+In a VPN setup, the integration of a Domain Name System (DNS) is not strictly necessary but is commonly implemented to enhance functionality and user experience.
+Codezero needs to be able to create Virtual Interfaces for services running in the Teamspace and maintain entries in the `/etc/hosts` for these interfaces.
 
-Codezero has two _Resolver_ implementations, one which is a full fledged in-memory _Split DNS_ and another that is a _Hosts_ resolver that modifies local resolver files. If your VPN comes with a DNS, and most do for privacy reasons, you many not have to do anything as the `Hosts` Resolver is now the default resolver mechanism for Codezero. This guide is here so administrators can ensure Codezero is not interfering with the VPN and that the VPN is in-turn not interfering with Codezero.
+If your VPN comes with a DNS, and most do for privacy reasons, you many not have to do anything as Codezero modifies the `/etc/hosts` file.
+This guide is here so administrators can ensure Codezero is not interfering with the VPN and that the VPN is in-turn not interfering with Codezero.
 
-## Changing the Resolver
-
-Use the following commands to change the DNS Resolver. Be sure to `stop` Codezero before making this change.
-
-```bash
-czctl stop
-czctl options set resolver <TYPE>
-czctl start
-```
-
-You may choose from `hosts` or `dns`
-
-## Hosts Resolver (default)
-
-The Hosts resolver adds DNS entries to the `/etc/hosts` file that is part of most Linux implementations. On Windows, Codezero modifies the appropriate Windows hosts file which in turn, propagates entries for the _Windows Subsystem for Linux_.
+Codezero adds DNS entries to the `/etc/hosts` file that is part of most Linux implementations. On Windows, Codezero modifies the appropriate Windows hosts file which in turn, propagates entries for the _Windows Subsystem for Linux_.
 
 If you look at your `/etc/hosts/` file, you will see entries between the following markers
 
@@ -41,15 +30,3 @@ If you look at your `/etc/hosts/` file, you will see entries between the followi
 :::caution
 Modifying the markers or the content between the markers could make Codezero malfunction.
 :::
-
-Most VPNs leave the `/etc/hosts` file alone and therefore, this is the safest method if you use VPNs often.
-
-## DNS Resolver
-
-The Split DNS resolver registers a local DNS Server on `127.100.0.16`. Like all DNS Servers, this one runs on port 53. This DNS syncs with `kube-dns` in the current Teamspace in real time. As services are added and removed in the underlying Kubernetes cluster, DNS entries are added in memory. There are no files modified on your system in this method and it may  perform faster if you have a large number of namespaces or services.
-
-The Codezero Daemon will register this DNS on all local interfaces and will make the current DNS for each interface the fallback DNS for all requests that do not match services in the Kubernetes cluster.
-
-VPNs may override this DNS registration and therefore, break Codezero. If you wish to use the DNS Resolver together with a VPN, you may have to experiment with the the order in which the VPN and Codezero are started.
-
-Unfortunately, aggressive VPNs may override the interface DNS settings irrespective of whether they are started first or second in which case, the Hosts resolver should work.

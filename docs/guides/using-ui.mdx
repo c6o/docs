@@ -1,20 +1,25 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
-# Using the UI
+# Using the App
 
-import ServiceCatalogImg from './_media/service_catalog.png'
+import ServiceCatalogImg from './_media/service-catalog.png'
 
-The Codezero Hub has a built in UI that is twofold. The Hub is where one can provision Teamspaces but also holds the Service Catalog where developers can Consume services as well as Serve up Variants.
+The Desktop Application adds a menu bar on macOS and a tray icon on Windows. The icon indicates the current state of the connectivity with the Teamspace.
 
-The following image highlights elements of the Service Catalog UI:
+- The gray icon indicates no active Consumes
+- The colored icon indicates active Consumes
+- The gray icon with a triangle exclamation mark indicates an error
 
+The Desktop Application provides:
+- Quick access to the Service Catalog
+- Easy Consume All / Clear button (blue)
+- Fast filtering for Namespace & Services at top of screen
+- Quick Switch between Teamspaces
+- Organization access (if you belong to more than one Codezero Org)
+- Easy Test connect to Variants - (one click copy of curl command when clicking on a user’s Variant in the Service Catalog)
 
 <div class="text--center">
   <img width="80%" src={ServiceCatalogImg}/>
 </div>
-
-:::info
-In order to see the Servcice Catalog you need to have `czctl` running on your local machine.  See [Initialize the CLI](/guides/using-cli#initialize-the-cli).
-:::

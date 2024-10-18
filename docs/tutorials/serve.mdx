@@ -52,16 +52,15 @@ czctl serve list
 
 Which will present the following:
 
-```bash
-- id: 01H8X4DCNFYCW2PZV0V77NCMXR:sample-project:sample-project-core
-  userID: 01H8D4XXXFYAAAPZYYY77NCMXR
-  name: sample-project-core
-  namespace: sample-project
-  ports:
-    - local: 3000
-      remote: 3000
-  condition:
-    type: user
+```
+sample-project-core.sample-project
+  Variants:
+    UserID: 01H8X7K3TWHRMW0E2RWGSKGV2G
+    Ports:
+      Local Port: 3000
+      Remote Port: 3000
+    Condition:
+      Type: user
 ```
 
 Note the `condition.type: user` and the `userID`. This `userID` is your Codezero `userID`. The above indicates that traffic coming from this user will be routed to the variant instead of the in-cluster service. We will cover conditions in detail below.
@@ -236,7 +235,7 @@ sample-project/*
 ```
 
 :::caution
-You will want to exclude the Core service in the consume rules to reduce confusion and local port conflicts. Currently, Codezero maps ports to the `127.100.0.0/16` range but local apps that bind to `0.0.0.0` or `localhost` will encounter port conflicts as they attempt to bind to all local interfaces.
+You will want to exclude the Core service in the consume rules to reduce confusion and local port conflicts. Currently, Codezero maps ports to the `127.72.0.0/14` range but local apps that bind to `0.0.0.0` or `localhost` will encounter port conflicts as they attempt to bind to all local interfaces.
 
 Also, please note that the Codezero IP range above is subject to change.
 :::

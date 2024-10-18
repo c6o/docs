@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Using the CLI
@@ -9,7 +9,7 @@ Codezero's tools can be used via the Desktop app or the CLI. If you installed th
 This section is about getting up and running with the CLI.
 
 :::note
-For Windows you'll need to run `czctl` as an Administrator as it needs to modify your DNS settings.  You can do this by starting
+For Windows you'll need to run `czctl` as an Administrator as it needs to modify your local network settings.  You can do this by starting
 a Command Prompt or Windows PowerShell with `Run as Administrator`.
 :::
 
@@ -26,7 +26,7 @@ czctl auth login
 The CLI is invoked via the `czctl` command. To get more information about individual commands, see the associated command under References (e.g. [Consume](../references/command-line#consume)), or run:
 
 ```bash
-> czctl help
+czctl help
 ```
 
 ## Initialize the CLI
@@ -34,11 +34,11 @@ The CLI is invoked via the `czctl` command. To get more information about indivi
 Start the Codezero daemon (background service) by running:
 
 ```bash
-> czctl start
+czctl start
 ```
 
 :::note
-For MacOS and Linux Codezero requires `sudo` access to modify your DNS settings.
+For MacOS and Linux Codezero requires `sudo` access to modify your local network settings.
 :::
 
 ## Get the current status
@@ -46,7 +46,7 @@ For MacOS and Linux Codezero requires `sudo` access to modify your DNS settings.
 To get the current status of `codezero` that includes the authenicated user, organization and teamspace run.
 
 ```bash
-> czctl status
+czctl status
 ```
 
 ## Run commands
@@ -60,15 +60,13 @@ Most czctl commands take the form `czctl <command> <sub-command>`, and `czctl <c
 Some examples:
 
 ```bash
-> czctl serve list --help
+czctl serve list --help
 ```
 
 ```bash
-> czctl consume edit --help
+czctl consume edit --help
 ```
 
 ```bash
-> czctl space select --help
+czctl space select --help
 ```
-
----
