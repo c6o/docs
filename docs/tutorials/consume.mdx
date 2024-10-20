@@ -69,24 +69,9 @@ czctl consume list
 and your output will looks something like the following:
 
 ```
-sample-project/sample-project-core (sessions: 1)
-  ‣ 01H8X4DCNFYCW2PZV0V77NCMXR:sample-project:sample-project-core:3000
-    Resource: sample-project-core
-    Namespace: sample-project
-    Port: 3000
-    Status: enabled
-
-sample-project/sample-project-sockets (sessions: 1)
-  ‣ 01H8X4DCNFYCW2PZV0V77NCMXR:sample-project:sample-project-sockets:8999
-    Resource: sample-project-sockets
-    Namespace: sample-project
-    Port: 8999
-    Status: enabled
+sample-project-core.sample-project (3000) 
+sample-project-sockets.sample-project (8999) 
 ```
-
-:::note
-Make sure you have run `czctl start` now if you have not already
-:::
 
 You can now test to see if these services are available locally using either of the `curl` or `websocat` commands above.
 
@@ -107,10 +92,10 @@ Advantages over using port-forward include:
 In order to close your consume sessions, run:
 
 ```bash
-czctl consume edit
+czctl consume clear
 ```
 
-and this time clear all the lines in the file. Your consume sessions will close.
+Your consume sessions will close.
 
 
 ### Using Wildcards in Rules

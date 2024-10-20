@@ -33,8 +33,6 @@ czctl auth login
 
 | Flags    | Description                                                                                  |
 | -------- | -------------------------------------------------------------------------------------------- |
-| --force  | If set, app will not check if the user is already logged in (not needed for --token).        |
-| --no-gui | If set, app will not try to open a browser window for login.                                 |
 | --token  | If set, app will not try to open a browser window for login and will use the provided token. |
 
 </div>
@@ -110,6 +108,16 @@ czctl compose start
 
 Manage consume rules.
 
+### All
+
+Consume all services.
+
+#### Usage
+
+```bash
+czctl consume all
+```
+
 ### Apply
 
 Apply consume rules from a file.
@@ -118,12 +126,6 @@ Apply consume rules from a file.
 
 ```bash
 czctl consume apply source_file [flags]
-```
-
-#### Examples
-
-```bash
-czctl consume apply source_file
 ```
 
 #### Flags
@@ -143,25 +145,8 @@ Edit consume rules.
 #### Usage
 
 ```bash
-czctl consume edit [flags]
-```
-
-#### Examples
-
-```bash
 czctl consume edit
 ```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags               | Description                                                                                                                                                                                                                                        |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --editor            | Your preferred editor to edit the rules. If not set, will try to use EDITOR environment variable, or present you a list of available ones. Please make sure to use the -w flag with the editor so that the app can wait for you to finish editing. |
-| --primary-namespace | The primary namespace used for services consume                                                                                                                                                                                                    |
-
-</div>
 
 ### List
 
@@ -170,25 +155,8 @@ List consumed services.
 #### Usage
 
 ```bash
-czctl consume list [flags]
-```
-
-#### Examples
-
-```bash
 czctl consume list
 ```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags             | Description                                                                                    |
-| ----------------- | ---------------------------------------------------------------------------------------------- |
-| --filter `string` | Filter to apply to the list. Format is: \<namespace\>[/\<resource\>]. Wildcards are supported. |
-| --format `string` | Output format. Supported values: yaml, json, pretty (default "pretty")                         |
-
-</div>
 
 ### View
 
@@ -200,108 +168,40 @@ View consume rules.
 czctl consume view
 ```
 
-#### Examples
-
-```bash
-czctl consume view
-```
-
 ---
 
-## Options
+## Daemon
 
-Provides operations for managing Codezero options.
+Manage Codezero daemon.
 
-### Certs
-
-Manage Codezero certificates.
-
-| Sub-command | Description                              |
-| ----------- | ---------------------------------------- |
-| install     | Install Codezero certificates to system  |
-| remove      | Remove Codezero certificates from system |
-
-#### Usage
+### Usage
 
 ```bash
-czctl options certs [SUB-COMMAND]
+czctl daemon [SUB-COMMAND]
 ```
 
-#### Examples
+### Example
 
 ```bash
-czctl options certs remove
+czctl daemon start
 ```
 
-### Config
+### Sub-commands
 
-Manage Codezero configuration file.
-
-| Sub-command | Description                                                                                                                                 |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| create      | Creates a new config file and quits. Does not overwrite existing config file by default. Use --overwrite to overwrite existing config file. |
-| view        | View config                                                                                                                                 |
-
-#### Usage
-
-```bash
-czctl options config [SUB-COMMAND]
-```
-
-#### Examples
-
-```bash
-czctl options config view
-```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags       | Description                    |
-| ----------- | ------------------------------ |
-| --overwrite | Overwrite existing config file |
-
-</div>
-
-### Set
-
-Set configuration options.
-
-| Option             | Description                                                                                                                                       |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| resolver           | Specify host resolver (dns, hosts) (default: hosts)                                                                                               |
-| skip-version-check | Do not check version against hub version (bool) (default: false)                                                                                  |
-| log-level          | Sets the logging verbosity. Accepted values: panic, fatal, error, warn, info, debug, trace (string) (default: info)                               |
-| log-directory      | Path where logs are stored, optionally can be set to stdout or stderr (string) (default: ~/Library/Application Support/codezero/logs)             |
-
-#### Usage
-
-```bash
-czctl options set [OPTION] [VALUE]
-```
-
-#### Examples
-
-```bash
-czctl options set resolver hosts
-```
+| Sub-command | Description                                         |
+| ----------- | --------------------------------------------------- |
+| install     | Install the Codezero daemon as a background service |
+| restart     | Restart the Codezero daemon                         |
+| run         | Run the Codezero daemon in the foreground           |
+| start       | Start the Codezero daemon                           |
+| stop        | Stop the Codezero daemon                            |
+| uninstall   | Uninstall the Codezero daemon background service    |
 
 ---
 
 ## Organization
 
 Manage Organizations.
-
-### Clear
-
-Clear the currently selected organization.
-
-#### Usage
-
-```bash
-czctl organization clear
-```
 
 ### List
 
@@ -310,24 +210,8 @@ List organizations
 #### Usage
 
 ```bash
-czctl organization list [flags]
+czctl organization list
 ```
-
-#### Examples
-
-```bash
-czctl organization list --format json
-```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags             | Description                                 |
-| ----------------- | ------------------------------------------- |
-| --format `string` | Output format (text \| json) (default "text") |
-
-</div>
 
 ### Select
 
@@ -347,6 +231,12 @@ czctl organization select [organization name] [flags]
 ```bash
 czctl organization select MyOrg
 ```
+
+#### Arguments
+
+| Arguments         | Description                    |
+| ----------------- | ------------------------------ |
+| organization name | The name of the organization.  |
 
 #### Flags
 
@@ -465,24 +355,24 @@ List served resources.
 #### Usage
 
 ```bash
-czctl serve list [flags]
+czctl serve list
 ```
 
-#### Example
+---
+
+## Services
+
+Services commands.
+
+### List
+
+List services.
+
+#### Usage
 
 ```bash
-czctl serve list --format json
+czctl services list
 ```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags             | Description                                 |
-| ----------------- | ------------------------------------------- |
-| --format `string` | Output format (yaml \| json) (default "yaml") |
-
-</div>
 
 ---
 
@@ -497,24 +387,8 @@ List spaces.
 #### Usage
 
 ```bash
-czctl space list [flags]
+czctl space list
 ```
-
-#### Example
-
-```bash
-czctl space list --format json
-```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags             | Description                                 |
-| ----------------- | ------------------------------------------- |
-| --format `string` | Output format (text \| json) (default "text") |
-
-</div>
 
 ### Select
 
@@ -566,24 +440,8 @@ Returns the status of the Codezero daemon. If the daemon is not running, it will
 ### Usage
 
 ```bash
-czctl status [flags]
+czctl status
 ```
-
-#### Example
-
-```bash
-czctl status --format json
-```
-
-#### Flags
-
-<div class="flags-table">
-
-| Flags             | Description                                                            |
-| ----------------- | ---------------------------------------------------------------------- |
-| --format `string` | Output format. Supported values: yaml, json, pretty (default "pretty") |
-
-</div>
 
 ---
 
