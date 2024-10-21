@@ -4,17 +4,17 @@ sidebar_position: 3
 
 # Release Notes
 
-We have a regular 2 week release cadence.
-NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
+We have a regular 2-week release cadence.
+NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
 ## 2.7.0 [2024-10-20]
 
 :::note
-The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In order to access the Service Catalog, you can use the Desktop Application or the `czctl services list` command.
+The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. To access the Service Catalog, use the Desktop Application or the `czctl services list` command.
 
 * Local Agent 2.7.0 can connect to Space Agents 2.7.0 and below.
 * Local Agents below version 2.6.0 cannot connect to the Space Agents 2.7.0 and above.
-* **We strongly recommend updating your Local Agents of all developers to version 2.7.0 before updating your Space Agents to avoid any connectivity interruptions.**
+* **We strongly recommend updating your Local Agents of all developers to version 2.7.0 _before_ updating your Space Agents to avoid connectivity interruptions.**
 
 :::
 
@@ -27,25 +27,26 @@ The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In orde
   * Fast filtering for Namespace & Services at top of screen
   * Quick Switch between Teamspaces
   * Organization access (if you belong to more than one Codezero Org)
-  * Easy Test connect to Variants - (one click copy of curl command when clicking on a user’s Variant in the Service Catalog)
+  * _Easy_ Test connect to Variants+ - (one-click copy of curl command when clicking on a user’s Variant in the Service Catalog)
 
 * The Daemon now runs as a background service and is automatically started on startup.
 * New CLI commands: `czctl consume all`, `czctl consume clear` and `czctl services list`.
+  * `czctl services list` provides your cluster service details in the terminal!
 * Deprecated commands: `czctl options` and `czctl organization clear`.
 * Improved connection stability.
 
 ### Space Agent
 
 * The Operator is now enabled by default.
-* The Space Agent requires fewer resources. It now only consists of System and Operator.
+* The Space Agent requires fewer resources. It now only consists of System and Operator (Orchestrator has been removed).
 
-### How to update from the CLI to the Desktop App?
+### How to Install Desktop App using CLI?
 
-The Desktop App contains the binary for the CLI. If you have installed the CLI via homebrew, you can simply run the following commands to uninstall the CLI and install the new Desktop App:
+The Desktop App contains the binary for the CLI. If you have installed the CLI via homebrew, simply run the following commands to uninstall the previous CLI czctl and install the new Desktop App:
 
 ```bash
 brew uninstall codezero
-brew install --cask c6o/tap/codezero-app@beta
+brew install --cask c6o/tap/codezero-app
 ```
 
 
