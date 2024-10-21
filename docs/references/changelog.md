@@ -20,7 +20,7 @@ The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In orde
 
 ### Local Agent
 
-* New [Desktop Application](http://localhost:3000/guides/installing#desktop-application) which provides:
+* New [Desktop Application](/guides/installing#desktop-application) which provides:
 
   * Quick access to the Service Catalog
   * Easy Consume All / Clear button (blue)
