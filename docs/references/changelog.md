@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Release Notes
 
-We have a regular 2 week release cadence.
+We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and Space Agent to the same version.
 
 ## 2.7.0 [2024-10-20]
@@ -27,10 +27,11 @@ The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In orde
   * Fast filtering for Namespace & Services at top of screen
   * Quick Switch between Teamspaces
   * Organization access (if you belong to more than one Codezero Org)
-  * Easy Test connect to Variants - (one click copy of curl command when clicking on a user’s Variant in the Service Catalog)
+  * Easy Test connect to Variants - (one-click copy of curl command when clicking on a user’s Variant in the Service Catalog)
 
 * The Daemon now runs as a background service and is automatically started on startup.
 * New CLI commands: `czctl consume all`, `czctl consume clear` and `czctl services list`.
+  * 'czctl services list' provides you CLI warriors with your service details in the terminal without switching out of  
 * Deprecated commands: `czctl options` and `czctl organization clear`.
 * Improved connection stability.
 
@@ -39,13 +40,13 @@ The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. In orde
 * The Operator is now enabled by default.
 * The Space Agent requires fewer resources. It now only consists of System and Operator.
 
-### How to update from the CLI to the Desktop App?
+### How to upgrade to Desktop App using CLI?
 
-The Desktop App contains the binary for the CLI. If you have installed the CLI via homebrew, you can simply run the following commands to uninstall the CLI and install the new Desktop App:
+The Desktop App also contains the binary for the CLI. If you have previously installed the (czctl) CLI via homebrew, simply run the following commands to uninstall the previous CLI and install the new Desktop App:
 
 ```bash
 brew uninstall codezero
-brew install --cask c6o/tap/codezero-app@beta
+brew install --cask c6o/tap/codezero-app
 ```
 
 
