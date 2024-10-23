@@ -30,7 +30,7 @@ The 2.7.0 CLI does not provide access to the Service Catalog in the Hub. To acce
   * _Easy_ Test connect to Variants+ - (one-click copy of curl command when clicking on a user’s Variant in the Service Catalog)
 
 * The Daemon now runs as a background service and is automatically started on startup.
-* New CLI commands: `czctl consume all`, `czctl consume clear` and `czctl services list`.
+* New CLI commands: `czctl consume all`, `czctl consume clear`, `czctl daemon` and `czctl services list`.
   * `czctl services list` provides your cluster service details in the terminal!
 * Deprecated commands: `czctl options` and `czctl organization clear`.
 * Improved connection stability.
