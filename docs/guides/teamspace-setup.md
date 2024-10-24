@@ -79,18 +79,16 @@ You can view the codezero pods and services using the following:
 kubectl get pods,svc -n codezero
 
 NAME                                READY   STATUS    RESTARTS   AGE
-pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
-pod/orchestrator-54675d9cdf-5jmm4   1/1     Running   0          9d
 pod/loadbalancer-556d54fb4-qx6w4    1/1     Running   0          9d
+pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
 pod/system-5cb47f595b-m8ppw         1/1     Running   0          9d
 
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
-service/orchestrator   ClusterIP      10.43.42.173   <none>          8900/TCP                        13d
+service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP                  13d
 service/system         ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
-service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP,8900:30389/TCP   13d
 ```
 
-Once ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address or Host Name show up under DNS. Your Teamspace is ready for use.
+Once ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
 
 Certification ensures secure communications between the Codezero System in cluster and the Hub.
 
@@ -132,7 +130,7 @@ kubectl -n codezero delete pod system-<RANDOM>
 
 ### Locating Codezero Residue
 
-Codezero does not use any Custom Resource Definitions or finalizers. In the event that you need to lookup resources added or modified by Codezero, you can use the following `kubectl` commands
+Codezero does not use any Custom Resource Definitions or finalizers. If you need to lookup resources added or modified by Codezero, you can use the following `kubectl` commands to see if there are any active Serves in the cluster
 
 ```bash
 kubectl get all --selector="app.kubernetes.io/managed-by"=codezero --all-namespaces
@@ -144,7 +142,7 @@ If you are looking for residue in a specific namespace, use:
 kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezero
 ```
 
-You should close all Consume and Serve sessions prior to cleaning up residue in which case the Codezero System controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
+**NOTE:** You should close all Consume and Serve sessions prior to cleaning up residue in which case the Codezero System controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
 
 ### Getting Further Help
 
