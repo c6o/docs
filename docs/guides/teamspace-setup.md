@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
 
 ## Certification
 
-The Codezero System installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
+The Codezero SpaceAgent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
 
 :::info
 For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified. 
@@ -81,20 +81,21 @@ kubectl get pods,svc -n codezero
 NAME                                READY   STATUS    RESTARTS   AGE
 pod/loadbalancer-556d54fb4-qx6w4    1/1     Running   0          9d
 pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
-pod/system-5cb47f595b-m8ppw         1/1     Running   0          9d
+pod/spaceagent-5cb47f595b-m8ppw     1/1     Running   0          9d
 
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
 service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP                  13d
-service/system         ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
+service/spaceagent     ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
 ```
 
 Once ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
 
-Certification ensures secure communications between the Codezero System in cluster and the Hub.
+Certification ensures secure communications between the Codezero SpaceAgent in-cluster and the Hub.
 
 You can now select the Teamspace from the _Teamspace List_ in the navigation panel. This will take you to the _Service Catalog_:
 
-![Teamspace Install](./_media/ts-certified.jpg)
+![Teamspace Install](./_media/ts-certified.sm.png)
+
 
 ## Uninstalling Codezero
 
@@ -117,20 +118,20 @@ Occasionally a new Codezero release requires you to Update your Codezero Space A
 To update your Codezero Space Agent, run the following command:
 
     ```bash
-    helm repo add --force-update codezero https://charts.codezero.io && helm upgrade --namespace=codezero codezero codezero/codezero`
+    helm repo add --force-update codezero https://charts.codezero.io && helm upgrade --namespace=codezero codezero codezero/codezero
     ```
 
 ### Stuck _Waiting_ for DNS
 
-The Codezero _System_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _System_ service. To do so, simply delete the _System_ pod:
+The Codezero _SpaceAgent_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _SpaceAgent_ service. To do so, simply restart the _SpaceAgent_ pod:
 
 ```bash
-kubectl -n codezero delete pod system-<RANDOM>
+kubectl rollout restart deployment spaceagent -n codezero
 ```
 
 ### Locating Codezero Residue
 
-Codezero does not use any Custom Resource Definitions or finalizers. If you need to lookup resources added or modified by Codezero, you can use the following `kubectl` commands to see if there are any active Serves in the cluster
+Codezero does not use any Custom Resource Definitions or finalizers. If you need to lookup resources added or modified by Codezero, you can use the following `kubectl` commands to see if there are any active Serves in the cluster:
 
 ```bash
 kubectl get all --selector="app.kubernetes.io/managed-by"=codezero --all-namespaces
@@ -142,7 +143,7 @@ If you are looking for residue in a specific namespace, use:
 kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezero
 ```
 
-**NOTE:** You should close all Consume and Serve sessions prior to cleaning up residue in which case the Codezero System controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
+**NOTE:** You should close all Consume and Serve sessions before cleaning up residue in which case the Codezero SpaceAgent controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
 
 ### Getting Further Help
 
