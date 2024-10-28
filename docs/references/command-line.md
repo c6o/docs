@@ -41,7 +41,7 @@ czctl auth login
 
 ## Cleanup
 
-Cleans the system changes performed by czdaemon. Can help if czdaemon did not exit gracefully to bring back your network settings.
+Cleans the system changes performed by Codezero daemon. Can help if daemon did not exit gracefully to bring back your network settings.
 
 ### Usage
 
