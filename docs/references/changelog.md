@@ -7,6 +7,15 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.7.1 [2024-10-27]
+
+* Serve sessions are now reinstated after service deployments.
+* Added ability to Serve K8s services of type LoadBalancer.
+* The Desktop app now supports Dark Mode OS setting.
+* New Organizations in the Hub can now add a Demo Teamspace.
+* Renamed `system` service to `spaceagent` in the K8s Space Agent.
+* Various bug fixes and security updates.
+
 ## 2.7.0 [2024-10-20]
 
 :::note
