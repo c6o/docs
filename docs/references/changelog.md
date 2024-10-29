@@ -7,6 +7,10 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.7.2 [2024-10-28]
+
+* Fix: In some scenarios the Serve session reinstatement would not reinstate the K8s service selector properly.
+
 ## 2.7.1 [2024-10-27]
 
 * Serve sessions are now reinstated after service deployments.
