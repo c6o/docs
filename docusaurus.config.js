@@ -57,7 +57,8 @@ const config = {
           },
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          sidebarCollapsible: false,
+          sidebarCollapsible: true,
+          sidebarCollapsed: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
@@ -78,7 +79,7 @@ const config = {
       docs: {
         sidebar: {
           hideable: false,
-          // autoCollapseCategories: true,
+          autoCollapseCategories: true,
         },
       },
       mermaid: {
@@ -93,8 +94,10 @@ const config = {
         },
         items: [
           {
-            type: "docsVersionDropdown",
-            position: "right",
+            to: "https://discord.gg/wx3JkVjTPy",
+            className: 'navbar--discord-link', 
+            'aria-label': "Discord",
+            position: "right"
           },
           // {
           //   type: "docSidebar",

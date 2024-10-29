@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-# Installing Codezero Local Agent
+# Installing Local Agent
 
 Codezero's developer tools assist in the development/testing of Kubernetes applications through a Command-Line Interface (CLI) and a Desktop application.
 

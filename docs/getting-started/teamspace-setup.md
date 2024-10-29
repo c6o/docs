@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Teamspace Setup
+# Installing Space Agent
 
 Teamspaces are vanilla Kubernetes clusters with Codezero installed. The following guide will step you through registering a Teamspace and certifying it for development use. This should take about 10 minutes to complete.
 
