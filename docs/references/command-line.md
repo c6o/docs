@@ -300,6 +300,7 @@ czctl reset
 ```
 
 ---
+
 ## Restart
 
 Restarts the Codezero daemon if it is running. If it is not running, does nothing.

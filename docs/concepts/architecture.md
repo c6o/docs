@@ -67,7 +67,7 @@ The Operator manages Serve resources in the Kubernetes cluster.
 The local agent is composed of:
 
 1. A CLI and Daemon (aka `czctl`)
-2. A Desktop App (Codezero.app) 
+2. A Desktop App (Codezero.app)
 
 ### Daemon / CLI
 

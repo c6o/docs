@@ -2,21 +2,25 @@
 sidebar_position: 3
 ---
 
-# Installing Space Agent
+# Teamspace Setup
 
 Teamspaces are vanilla Kubernetes clusters with Codezero installed. The following guide will step you through registering a Teamspace and certifying it for development use. This should take about 10 minutes to complete.
 
 ## Create a Codezero Hub Account
 
-Sign up or log in to the [Codezero Hub](https://hub.codezero.io). The onboarding wizard will guide you through creating an organization and your first Teamspace.
+Sign up or log in to the [Codezero Hub](https://hub.codezero.io). The onboarding wizard will guide you through creating an Organization and your first Teamspace.
 
 The Hub allows you to manage your organization, invite and administer members, and register and certify Teamspaces. You can always return to your organization and list of Teamspaces by going to the Profile menu at the top right corner of the screen.
 
 While the Hub provides a graphical user interface equivalent to the `czctl` command line tool, all services run on your local machine or in the Kubernetes cluster.
 
-## Install Codezero in your Cluster
+## Install the Space Agent in your Cluster
 
-Ensure you have access to the cluster where you want to install Codezero from your terminal, have helm and kubectl installed, and that your current context is the correct cluster.
+To install Codezero from your terminal, you will need:
+
+* access to the cluster (i.e. kubeconfig)
+* [helm](https://helm.sh/docs/intro/install/) and [kubectl](https://kubernetes.io/docs/reference/kubectl/)  installed, and
+* your current context set to the correct cluster
 
 On the Profile menu, click _Settings_ and then select the _Teamspaces_ tab. Click _Add Teamspace_ to create the installation command.
 
@@ -33,7 +37,7 @@ Now paste the command into your terminal and wait for Codezero to be installed a
 _Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
 :::
 
-### Load balancer requirements
+### LoadBalancer requirements
 
 The Codezero helm chart deploys a Kubernetes service of type `LoadBalancer`. For Codezero to function properly the provisioned load balancer requires a public ip address and must work on OSI layer 4.
 
@@ -69,7 +73,7 @@ import TabItem from '@theme/TabItem';
 The Codezero SpaceAgent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
 
 :::info
-For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified. 
+For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified.
 However, the NLB can still be in a provisioning state and network access will only work once it is fully provisioned, which can take up to 5+ minutes.
 :::
 
@@ -96,7 +100,6 @@ You can now select the Teamspace from the _Teamspace List_ in the navigation pan
 
 ![Teamspace Install](./_media/ts-certified.sm.png)
 
-
 ## Uninstalling Codezero
 
 Codezero may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
@@ -108,43 +111,3 @@ To uninstall, run:
     ```
 
 You can then go into the Hub and delete the Teamspace.
-
-## Troubleshooting
-
-### Upgrade Cluster / Codezero Space Agent
-
-Occasionally a new Codezero release requires you to Update your Codezero Space Agent (also referred to as Upgrade your Cluster)
-
-To update your Codezero Space Agent, run the following command:
-
-    ```bash
-    helm repo add --force-update codezero https://charts.codezero.io && helm upgrade --namespace=codezero codezero codezero/codezero
-    ```
-
-### Stuck _Waiting_ for DNS
-
-The Codezero _SpaceAgent_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _SpaceAgent_ service. To do so, simply restart the _SpaceAgent_ pod:
-
-```bash
-kubectl rollout restart deployment spaceagent -n codezero
-```
-
-### Locating Codezero Residue
-
-Codezero does not use any Custom Resource Definitions or finalizers. If you need to lookup resources added or modified by Codezero, you can use the following `kubectl` commands to see if there are any active Serves in the cluster:
-
-```bash
-kubectl get all --selector="app.kubernetes.io/managed-by"=codezero --all-namespaces
-```
-
-If you are looking for residue in a specific namespace, use:
-
-```bash
-kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezero
-```
-
-**NOTE:** You should close all Consume and Serve sessions before cleaning up residue in which case the Codezero SpaceAgent controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
-
-### Getting Further Help
-
-If you have any further questions - please reach out to us via [support@codezero.io](mailto:support@codezero.io) or [Discord](https://discord.gg/wx3JkVjTPy) or your dedicated Slack Connect channel (if you're an Enterprise Customer).
