@@ -12,6 +12,6 @@ These are the general steps for setting up a Teamspace. Apart from setting up a 
 1. Install the Codezero System [on the Kubernetes cluster](https://docs.codezero.io/guides/teamspace-setup#install-codezero-in-your-cluster) in order to Certify it as a Teamspace
 1. Invite team members to the Organization
 
-Once a Teamspace is set up and certified, individual developers can then [install the Codezero local tools](https://docs.codezero.io/guides/installing) to work with the Teamspace. Developers will not require credentials for the Kubernetes cluster as they authenticate to the Teamspace via the Hub. 
+Once a Teamspace is set up and certified, individual developers can then [install the Codezero local tools](https://docs.codezero.io/guides/installing) to work with the Teamspace. Developers will not require credentials for the Kubernetes cluster as they authenticate to the Teamspace via the Hub.
 
 NOTE: We currently support Github and Google authentication.

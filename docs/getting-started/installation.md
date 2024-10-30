@@ -28,12 +28,13 @@ import TabItem from '@theme/TabItem';
 
    | Arch Type | URL                                                               |
    | --------- | ----------------------------------------------------------------- |
-   | amd64     | https://releases.codezero.io/app/latest/Codezero-latest-amd64.dmg |
-   | arm64     | https://releases.codezero.io/app/latest/Codezero-latest-arm64.dmg |
-   
+   | amd64     | [https://releases.codezero.io/app/latest/Codezero-latest-amd64.dmg](https://releases.codezero.io/app/latest/Codezero-latest-amd64.dmg) |
+   | arm64     | [https://releases.codezero.io/app/latest/Codezero-latest-arm64.dmg](https://releases.codezero.io/app/latest/Codezero-latest-arm64.dmg) |
+
    2. Drag the Codezero application to the Applications folder.
-   
+
    Alternatively you can use [homebrew](https://brew.sh):
+
    ```bash
    brew install --cask c6o/tap/codezero-app
    ```
@@ -46,11 +47,12 @@ import TabItem from '@theme/TabItem';
 
    | Arch Type | URL                                                                    |
    | --------- | ---------------------------------------------------------------------- |
-   | amd64     | https://releases.codezero.io/app/latest/CodezeroSetup-latest-amd64.exe |
-   | arm64     | https://releases.codezero.io/app/latest/CodezeroSetup-latest-arm64.exe |
-   
+   | amd64     | [https://releases.codezero.io/app/latest/CodezeroSetup-latest-amd64.exe](https://releases.codezero.io/app/latest/CodezeroSetup-latest-amd64.exe) |
+   | arm64     | [https://releases.codezero.io/app/latest/CodezeroSetup-latest-arm64.exe](https://releases.codezero.io/app/latest/CodezeroSetup-latest-arm64.exe) |
+
    2. Double click on the setup exe.
 </TabItem>
+
 </Tabs>
 
 ## Command-Line Interface (CLI)
@@ -68,6 +70,7 @@ The Desktop application contains the CLI. You only need to install the CLI when 
    ```bash
    brew install c6o/tap/codezero
    ```
+
 </TabItem>
 <TabItem value="scoop" label="Scoop">
    To install Codezero with [Scoop](https://scoop.sh) on Windows, run:
@@ -75,6 +78,7 @@ The Desktop application contains the CLI. You only need to install the CLI when 
    ```
    scoop bucket add codezero https://github.com/c6o/scoop-codezero.git;scoop install codezero
    ```
+
 </TabItem>
 </Tabs>
 
@@ -88,17 +92,19 @@ The Desktop application contains the CLI. You only need to install the CLI when 
 
    | Arch Type | URL                                                             |
    | --------- | --------------------------------------------------------------- |
-   | amd64     | https://releases.codezero.io/latest/headless-darwin-amd64.tar.gz |
-   | arm64     | https://releases.codezero.io/latest/headless-darwin-arm64.tar.gz |
+   | amd64     | [https://releases.codezero.io/latest/headless-darwin-amd64.tar.gz](https://releases.codezero.io/latest/headless-darwin-amd64.tar.gz) |
+   | arm64     | [https://releases.codezero.io/latest/headless-darwin-arm64.tar.gz](https://releases.codezero.io/latest/headless-darwin-arm64.tar.gz) |
 
    2. Unzip the file: `tar -xzvf headless-*.tar.gz`
 
    Optionally, install the binary in a location where you can execute it globally (for example, `/usr/local/bin`).
 
    Alternatively you can use the following command to install the latest version into `/usr/local/bin`:
+
    ```bash
    curl -L https://releases.codezero.io/install-headless.sh | /bin/bash
    ```
+
 </TabItem>
 <TabItem value="linux" label="Linux">
    To install Codezero without a package manager on Linux:
@@ -107,17 +113,19 @@ The Desktop application contains the CLI. You only need to install the CLI when 
 
    | Arch Type | URL                                                             |
    | --------- | --------------------------------------------------------------- |
-   | amd64     | https://releases.codezero.io/latest/headless-linux-amd64.tar.gz  |
-   | arm64     | https://releases.codezero.io/latest/headless-linux-arm64.tar.gz  |
+   | amd64     | [https://releases.codezero.io/latest/headless-linux-amd64.tar.gz](https://releases.codezero.io/latest/headless-linux-amd64.tar.gz)  |
+   | arm64     | [https://releases.codezero.io/latest/headless-linux-arm64.tar.gz](https://releases.codezero.io/latest/headless-linux-arm64.tar.gz)  |
 
    2. Unzip the file: `tar -xzvf headless-*.tar.gz`
 
    Optionally, install the binary in a location where you can execute it globally (for example, `/usr/local/bin`).
-   
+
    Alternatively, you can use the following command to install the latest version into `/usr/local/bin`:
+
    ```bash
    curl -L https://releases.codezero.io/install-headless.sh | /bin/bash
    ```
+
 </TabItem>
 <TabItem value="windows" label="Windows">
    To install Codezero without a package manager on Windows:
@@ -126,8 +134,8 @@ The Desktop application contains the CLI. You only need to install the CLI when 
 
    | Arch Type | URL                                                            |
    | --------- | -------------------------------------------------------------- |
-   | amd64     | https://releases.codezero.io/latest/headless-windows-amd64.zip |
-   | arm64     | https://releases.codezero.io/latest/headless-windows-arm64.zip |
+   | amd64     | [https://releases.codezero.io/latest/headless-windows-amd64.zip](https://releases.codezero.io/latest/headless-windows-amd64.zip) |
+   | arm64     | [https://releases.codezero.io/latest/headless-windows-arm64.zip](https://releases.codezero.io/latest/headless-windows-arm64.zip) |
 
    2. Unzip the file.
 
@@ -135,4 +143,5 @@ The Desktop application contains the CLI. You only need to install the CLI when 
       To learn how to update environment variables, see the
       [Microsoft PowerShell documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.3#saving-changes-to-environment-variables).
 </TabItem>
+
 </Tabs>
