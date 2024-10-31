@@ -70,7 +70,4 @@ The Guides cover setting up and administering a Teamspace. You will require a Ku
 
 ### Concepts
 
-
-
 We strive to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation.
-
