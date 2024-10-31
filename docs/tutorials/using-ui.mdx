@@ -8,19 +8,30 @@ import ServiceCatalogImg from './_media/service-catalog.png'
 
 The Desktop Application adds a menu bar icon (macOS) or a tray icon (Windows). The icon indicates the current state of Connectivity with the Teamspace.
 
+**(MacOS)**   ![Mac Menu Icon](./_media/icon-menu-bar-macos.png) 
+
+**(Windows)** ![Windows Tray Icon](./_media/icon-menu-bar-macos.png)
+
 - ![Colored Icon](./_media/c6o-colored-tiny.png) Colored icon indicates active Consumes
 - ![Gray Icon](./_media/c6o-grey-tiny.png) Gray icon indicates no active Consumes
 - ![Grey Error Icon](./_media/c6o-grey-error-tiny.png) Gray icon with a triangle exclamation mark indicates an error
 
-The Desktop Application provides:
+**The Desktop Application provides:**
 - Quick access to the Service Catalog
 - Easy Consume All / Clear button (blue)
 - Fast filtering for Namespace & Services at top of Desktop App window
 - Quick Switch between Teamspaces
 - Organization switching (if you belong to more than one Codezero Org)
-- Easy Test connect to Variants - (one click copy of curl command when clicking on a user’s Variant in the Service Catalog)
-  NOTE: default curl command providing might need customizing depending on the Variant service 
+- Dark/Light Mode to match system default
 
-<div class="text--center">
+<div>
   <img width="80%" src={ServiceCatalogImg}/>
 </div>
+
+- Easy Test connect to Variants 
+  - Clicking on a user’s Variant icon in the Service Catalog will provide Variant Details
+  ![Variant Details](./_media/variant-details.png)
+
+:::note
+The curl command provided by the Desktop App might need customizing depending on the nature of the Variant service 
+:::
