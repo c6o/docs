@@ -7,6 +7,13 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.7.3 [2024-10-31]
+
+* Create variant target port displays cluster port in Desktop App if the default value is not numeric.
+* Windows binaries are now signed.
+* When switching Organizations, automatically select first Teamspace.
+* Fix: Allow spaces in the installation path on Windows.
+
 ## 2.7.2 [2024-10-28]
 
 * Fix: In some scenarios the Serve session reinstatement would not reinstate the K8s service selector properly.
