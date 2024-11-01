@@ -18,9 +18,9 @@ While the Hub provides a graphical user interface equivalent to the `czctl` comm
 
 To install Codezero from your terminal, you will need:
 
-* access to the cluster (i.e. kubeconfig)
+* Access to the cluster (i.e. kubeconfig)
 * [helm](https://helm.sh/docs/intro/install/) and [kubectl](https://kubernetes.io/docs/reference/kubectl/)  installed, and
-* your current context set to the correct cluster
+* Your current context set to the correct cluster
 
 On the Profile menu, click _Settings_ and then select the _Teamspaces_ tab. Click _Add Teamspace_ to create the installation command.
 
@@ -46,18 +46,18 @@ import TabItem from '@theme/TabItem';
 
 <Tabs>
 <TabItem value="aws-eks" label="AWS EKS" default>
-    By default AWS EKS uses classic load balancers for a Kubernetes service of type `LoadBalancer`. In this case no additional setup is required.
+By default AWS EKS uses classic load balancers for a Kubernetes service of type `LoadBalancer`. In this case no additional setup is required.
 
-    However when using [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html) additional annotations need to be set on Codezero's load balancer service. This can be done via the helm chart by adding the following values:
+However when using [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html) additional annotations need to be set on Codezero's load balancer service. This can be done via the helm chart by adding the following values:
 
-    ```
-    lb:
-        service:
-            annotations:
-                service.beta.kubernetes.io/aws-load-balancer-type: "external"
-                service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-                service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
-    ```
+```text
+lb:
+    service:
+        annotations:
+            service.beta.kubernetes.io/aws-load-balancer-type: "external"
+            service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+            service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+```
 
 </TabItem>
 <TabItem value="gke" label="GKE" default>
@@ -79,7 +79,7 @@ However, the AWS NLB can still be in a provisioning state and network access wil
 
 You can view the codezero pods and services using the following:
 
-```
+```text
 kubectl get pods,svc -n codezero
 
 NAME                                READY   STATUS    RESTARTS   AGE
@@ -100,17 +100,16 @@ Certification ensures secure communications between the Codezero SpaceAgent in y
 
 To select your Teamspace you have two options: 
 
-* **Desktop App:** click on the menu (or tray) icon and then select Teamspaces > your_teamspace. Open the Service Catalog and you should see your list of services in the Teamspace for your cluster.
+- **Desktop App:** click on the menu (or tray) icon and then select Teamspaces > your_teamspace. Open the Service Catalog and you should see your list of services in the Teamspace for your cluster.
   
   ![Select Teamspace](./_media/icon-menu-teamspace.png)
 
   ![Select Teamspace](./_media/servicecatalog-teamspace.png)
-* **CLI: in the terminal run the following command to select from available Teamspaces
+- **CLI:** in the terminal run the following command to select from available Teamspaces
 
-    ```bash
-      czctl space select 
-     ```
-
+```bash
+czctl space select 
+```
 
 ## Uninstalling Codezero SpaceAgent
 
@@ -118,8 +117,8 @@ Codezero's SpaceAgent may be removed from the Kubernetes cluster at any time. It
 
 To uninstall, run:
 
-    ```bash
-    helm -n codezero uninstall codezero
-    ```
+```bash
+helm -n codezero uninstall codezero
+```
 
 You can then go into the Hub and delete the Teamspace.
