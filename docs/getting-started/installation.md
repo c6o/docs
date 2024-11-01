@@ -26,9 +26,9 @@ import TabItem from '@theme/TabItem';
 
    1. Download the latest version for your CPU architecture type:
 
-   | Arch Type | URL                                                               |
-   | --------- | ----------------------------------------------------------------- |
-   | amd64     | [https://releases.codezero.io/app/latest/Codezero-latest-amd64.dmg](https://releases.codezero.io/app/latest/Codezero-latest-amd64.dmg) |
+   | Arch Type | URL                                                                                                                                    |
+   | --------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+   | amd64     | [https://releases.codezero.io/app/latest/Codezero-latest-xd64.dmg](https://releases.codezero.io/app/latest/Codezero-latest-x64.dmg)    |
    | arm64     | [https://releases.codezero.io/app/latest/Codezero-latest-arm64.dmg](https://releases.codezero.io/app/latest/Codezero-latest-arm64.dmg) |
 
    2. Drag the Codezero application to the Applications folder.
@@ -45,9 +45,9 @@ import TabItem from '@theme/TabItem';
 
    1. Download the latest version for your CPU architecture type:
 
-   | Arch Type | URL                                                                    |
-   | --------- | ---------------------------------------------------------------------- |
-   | amd64     | [https://releases.codezero.io/app/latest/CodezeroSetup-latest-amd64.exe](https://releases.codezero.io/app/latest/CodezeroSetup-latest-amd64.exe) |
+   | Arch Type | URL                                                                                                                                              |
+   | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | amd64     | [https://releases.codezero.io/app/latest/CodezeroSetup-latest-x64.exe](https://releases.codezero.io/app/latest/CodezeroSetup-latest-x64.exe)     |
    | arm64     | [https://releases.codezero.io/app/latest/CodezeroSetup-latest-arm64.exe](https://releases.codezero.io/app/latest/CodezeroSetup-latest-arm64.exe) |
 
    2. Double click on the setup exe.
