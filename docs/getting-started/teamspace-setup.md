@@ -112,9 +112,9 @@ To select your Teamspace you have two options:
      ```
 
 
-## Uninstalling Codezero
+## Uninstalling Codezero SpaceAgent
 
-Codezero may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
+Codezero's SpaceAgent may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
 
 To uninstall, run:
 
