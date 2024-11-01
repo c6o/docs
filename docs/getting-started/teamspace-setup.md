@@ -68,13 +68,13 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## Certification
+## TeamSpace Certification
 
-The Codezero SpaceAgent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
+The Codezero SpaceAgent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer pod and service.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
 
 :::info
 For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified.
-However, the NLB can still be in a provisioning state and network access will only work once it is fully provisioned, which can take up to 5+ minutes.
+However, the AWS NLB can still be in a provisioning state and network access will only work once it is fully provisioned, which can take up to 5+ minutes.
 :::
 
 You can view the codezero pods and services using the following:
@@ -92,13 +92,25 @@ service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/
 service/spaceagent     ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
 ```
 
-Once ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
+Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
 
-Certification ensures secure communications between the Codezero SpaceAgent in-cluster and the Hub.
-
-You can now select the Teamspace from the _Teamspace List_ in the navigation panel. This will take you to the _Service Catalog_:
+Certification ensures secure communications between the Codezero SpaceAgent in your cluster and the [Hub](../concepts/architecture#hub) (the Codezero Admin Console).
 
 ![Teamspace Install](./_media/ts-certified.sm.png)
+
+To select your Teamspace you have two options: 
+
+* **Desktop App:** click on the menu (or tray) icon and then select Teamspaces > your_teamspace. Open the Service Catalog and you should see your list of services in the Teamspace for your cluster.
+  
+  ![Select Teamspace](./_media/icon-menu-teamspace.png)
+
+  ![Select Teamspace](./_media/servicecatalog-teamspace.png)
+* **CLI: in the terminal run the following command to select from available Teamspaces
+
+    ```bash
+      czctl space select 
+     ```
+
 
 ## Uninstalling Codezero
 
