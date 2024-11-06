@@ -7,7 +7,9 @@ slug: /
 
 Codezero is an overlay network that empowers development teams to turn Kubernetes clusters into _Teamspaces_. A Teamspace is a collaborative development environment where developers can locally _Consume_ services discoverable in a _Service Catalog_. Services featured in the catalog operate either within the Kubernetes cluster, or on a team member's local machine. Developers can _Serve_ local _Variants_ of services through this catalog to other team members.
 
-<center><h3>Development Cluster</h3></center>
+<center>
+<h3>Development Cluster</h3>
+</center>
 
 ```mermaid
 flowchart LR
@@ -24,7 +26,9 @@ Consider the application above. Services A, B and C are deployed to a developmen
 The version of the app one experiences is determined by the path a ray of traffic takes across the services.
 :::
 
-<center><h3>Teamspace</h3></center>
+<center>
+<h3>Teamspace</h3>
+</center>
 
 ```mermaid
 flowchart LR
@@ -40,7 +44,7 @@ flowchart LR
     end
 ```
 
-With a Teamspace, in order to work on Service B, you simply run the service locally. This _Local_ Service B Variant receives traffic based on _Conditions_ you specify. The Local Variant then delivers traffic back by Consuming Service C. Traffic that does not meet the specified condition flows through the _Default_ Service B Variant running in the cluster untouched.
+With a Teamspace, in order to work on Service B, you simply run the service locally. This _Local_ Service B Variant receives traffic based on [_Conditions_](../tutorials/serve#condition-types) you specify. The Local Variant then delivers traffic back by [Consuming](../tutorials/consume) Service C. Traffic that does not meet the specified condition flows through the _Default_ Service B Variant running in the cluster untouched.
 
 Local Variants need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
@@ -54,18 +58,16 @@ This documentation is geared to both Kubernetes Admins who want to create Teamsp
 
 We recommend you go through this documentation in the order it is presented as we build on previously defined concepts. Happy Learning!
 
-### Guides
-
-The Guides cover setting up and administering a Teamspace. You will require a Kubernetes Cluster to create a Teamspace. The [Kubernetes QuickStart](/guides/kubernetes-quickstart.md) has several options to get started if you do not currently have a custer. Due to inherent limitations, you cannot use a local cluster like Minikube or Kind with Codezero.
-
-<!-- ### Concepts
-
-WE SHOULD ADD BACK A CONCEPTS SECTION
-
-We strive to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation. -->
-
 ### Tutorials
 
-The [Tutorials](https://docs.codezero.io/tutorials/sample-project) focus on using a Teamspace once setup. We have a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This [project](/tutorials/sample-project.mdx) is used across all the Tutorials and Videos in this documentation.
+The [Tutorials](../category/tutorials) focus on using a Teamspace once setup. We have a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This [sample-project](/tutorials/sample-project.mdx) is used across all the Tutorials and Videos in this documentation.
 
 The Tutorials walk you through scenarios you will encounter in just about any modern microservices application development.
+
+### Guides
+
+The Guides cover setting up and administering a Teamspace. You will require a Kubernetes Cluster to create a Teamspace. Due to inherent limitations, you cannot use a local cluster like Minikube or Kind with Codezero.
+
+### Concepts
+
+We strive to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation.

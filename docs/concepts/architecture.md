@@ -6,10 +6,12 @@ sidebar_position: 1
 
 ## Overview
 
-Codezero is made up of components that run locally on your developer workstation, in the Kubernetes cluster and a central cloud hosted Hub. The following color code identifies where the sub-components identified below run. 
+Codezero is made up of components that run locally on your developer workstation, in the Kubernetes cluster and a central cloud hosted Hub. The following color code identifies where the sub-components identified below run.
+
 * HUB (orange) is hosted by Codezero.
 * TEAMSPACE is the System and Operator (pink) components installed in your cluster.
 * The CLI, Desktop App and Daemon are installed and run on your LOCAL development machine.
+
 ```mermaid
 %%{init: {"theme": "forest", "themeCSS": [
     "[id*=entity-HUB] .er.entityBox { fill: orange;}",
@@ -21,6 +23,7 @@ erDiagram
     TEAMSPACE
     LOCAL
 ```
+
 This diagram defines all the components that make up Codezero:
 
 ```mermaid
@@ -64,7 +67,7 @@ The Operator manages Serve resources in the Kubernetes cluster.
 The local agent is composed of:
 
 1. A CLI and Daemon (aka `czctl`)
-2. A Desktop App (Codezero.app) 
+2. A Desktop App (Codezero.app)
 
 ### Daemon / CLI
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 1
 ---
 
 # Using Compose Files
@@ -157,10 +157,21 @@ serve:
 
 In the above example, if the `USER` environment variable would be set to `joe`, any traffic to the `sample-project-core` service where the HTTP header `x-custom-header` is set to `user-joe` would be directed to your local machine.
 
-## Cleaning Up
+## Reset Sessions
 
 To stop all Consume and Serve sessions run the following command:
 
 ```sh
 czctl reset
 ```
+
+
+
+## Cleaning Up
+
+To stop the Codezero Daemon, and remove any residual Networking components, run the following command:
+
+```sh
+czctl cleanup
+```
+This will restore your local `/etc/hosts` file to default state.
