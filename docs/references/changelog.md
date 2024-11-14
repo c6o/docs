@@ -7,6 +7,13 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.7.4 [2024-11-13]
+
+* Fix: Only check for updates if your computer is online.
+* Fix: Update menubar/tray menu after logout.
+* Removed ability to connect to pre-2.7.0 Teamspaces.
+* Various bug fixes and security updates.
+
 ## 2.7.3 [2024-10-31]
 
 * Create variant target port displays cluster port in Desktop App if the default value is not numeric.
