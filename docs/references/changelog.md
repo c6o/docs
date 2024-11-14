@@ -7,6 +7,15 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.7.4 [2024-11-13]
+
+* New Feature: `helm uninstall codezero` now deletes the Teamspace in the Hub.
+* Fix(Windows): The last build was not properly timestamped which caused the validity of the code signature to expire in early November.
+* Fix: Only check for updates if your computer is online.
+* Fix: The menubar/tray menu was not updated after logout.
+* Removed ability to connect to pre-2.7.0 Teamspaces.
+* Various bug fixes and security updates.
+
 ## 2.7.3 [2024-10-31]
 
 * Create variant target port displays cluster port in Desktop App if the default value is not numeric.
