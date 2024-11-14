@@ -9,8 +9,10 @@ NOTE: Please make sure that you update your Codezero Local Agent and the in-clus
 
 ## 2.7.4 [2024-11-13]
 
+* New Feature: `helm uninstall codezero` now deletes the Teamspace in the Hub.
+* Fix(Windows): The last build was not properly timestamped which caused the validity of the code signature to expire in early November.
 * Fix: Only check for updates if your computer is online.
-* Fix: Update menubar/tray menu after logout.
+* Fix: The menubar/tray menu was not updated after logout.
 * Removed ability to connect to pre-2.7.0 Teamspaces.
 * Various bug fixes and security updates.
 
