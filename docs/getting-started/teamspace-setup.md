@@ -34,7 +34,7 @@ It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can fin
 Now paste the command into your terminal and wait for Codezero to be installed and started.
 
 :::note
-_Additional annotations may be necessary;_ refer to our Codezero [Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
+_Additional annotations may be necessary;_ refer to our [Codezero Helm Chart documentation](https://github.com/c6o/helm-charts) and the section on Load balancer requirements below.
 :::
 
 ### LoadBalancer requirements

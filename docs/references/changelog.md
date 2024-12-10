@@ -7,6 +7,17 @@ sidebar_position: 3
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.8.0 [2024-12-10]
+
+* Added options to scale Router for improved reliability. ([docs](/guides/spaceagent-config))
+* Preview: Allow Space Agent to be horizontally scaled with a Redis/Valkey backend. ([docs](/guides/spaceagent-config))
+* Preview Release of Space Agent for VMs: Enabling users to consume services from virtual machines or VPCs outside of Kubernetes clusters. ([docs](/guides/spaceagent-vm))
+* Improved User Interface of the Desktop Application, including new in-app chat with our support team and integration with our new [Codezero Tutorial](https://tutorial.codezero.dev).
+* New command `czctl diagnostics` to package system diagnostics for our support team.
+* New command `czctl tutorial` to connect to a demo Teamspace and open the [Codezero Tutorial](https://tutorial.codezero.dev).
+* Added czctl.exe to PATH environment variable during installation for Windows users.
+* Various bug fixes and security updates.
+
 ## 2.7.4 [2024-11-13]
 
 * New Feature: `helm uninstall codezero` now deletes the Teamspace in the Hub.

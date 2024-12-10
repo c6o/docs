@@ -199,6 +199,18 @@ czctl daemon start
 
 ---
 
+## Diagnostics
+
+Package system diagnostics for support team.
+
+### Usage
+
+```bash
+czctl diagnostics
+```
+
+---
+
 ## Organization
 
 Manage Organizations.
@@ -454,6 +466,18 @@ Stops the Codezero daemon. Does nothing if daemon is not running.
 
 ```bash
 czctl stop
+```
+
+---
+
+## Tutorial
+
+Starts the tutorial for Codezero.
+
+### Usage
+
+```bash
+czctl tutorial
 ```
 
 ---
