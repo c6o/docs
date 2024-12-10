@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Managing Access via Open Policy Agent
@@ -19,12 +19,15 @@ You need to set the following Helm Chart variables:
 
 Codezero sends the following inputs to the Named Policy Decision URL:
 
-| Input              | Description                                                            |
-| ------------------ | ---------------------------------------------------------------------- |
-| scope              | `consume` or `serve`                                                   |
-| auth.userID        | the Codezero user ID                                                   |
-| resource.namespace | the namespace of the resource that a user wants to consume or serve    |
-| resource.service   | the service name of the resource that a user wants to consume or serve |
+| Input                  | Description                                                            |
+| ---------------------- | ---------------------------------------------------------------------- |
+| action.operation       | `consume` or `serve`                                                   |
+| action.condition.type  | `default`, `user` or `header`                                          |
+| action.condition.key   | header key if the condition type is `header`                           |
+| action.condition.value | header value if the condition type is `header`                         |
+| auth.userID            | the Codezero user ID                                                   |
+| resource.namespace     | the namespace of the resource that a user wants to consume or serve    |
+| resource.service       | the service name of the resource that a user wants to consume or serve |
 
 For example the following [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/) code restricts access to any resources in the `codezero` namespace:
 
