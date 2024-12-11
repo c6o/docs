@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "@algolia/client-search": "^4.22.0",
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
-    "@docusaurus/theme-mermaid": "^3.5.2",
+    "@docusaurus/core": "^3.6.3",
+    "@docusaurus/preset-classic": "^3.6.3",
+    "@docusaurus/theme-mermaid": "^3.6.3",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.1.0",
     "prism-react-renderer": "^2.3.1",
@@ -44,8 +44,8 @@
     "search-insights": "^2.13.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.5.2",
-    "@docusaurus/types": "^3.2.1",
+    "@docusaurus/module-type-aliases": "^3.6.3",
+    "@docusaurus/types": "^3.6.3",
     "@tsconfig/docusaurus": "^2.0.2",
     "@types/react": "^18.2.46",
     "typescript": "^5.3.3"
