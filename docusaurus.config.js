@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const {themes} = require('prism-react-renderer');
+const { themes } = require("prism-react-renderer");
 const lightCodeTheme = themes.github;
 const darkCodeTheme = themes.dracula;
 
@@ -40,12 +40,12 @@ const config = {
 
   presets: [
     [
-      "classic",
+      "@docusaurus/preset-classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         pages: false,
-        gtag: {
-          trackingID: "G-6WP59C6D87",
+        googleTagManager: {
+          containerId: "GTM-MDBMNLL",
         },
         docs: {
           disableVersioning: true,
@@ -61,8 +61,7 @@ const config = {
           sidebarCollapsed: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/c6o/docs/edit/main/",
+          editUrl: "https://github.com/c6o/docs/edit/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -83,7 +82,7 @@ const config = {
         },
       },
       mermaid: {
-        theme: {light: 'neutral', dark: 'dark'}
+        theme: { light: "neutral", dark: "dark" },
       },
       navbar: {
         //title: "Codezero Documentation",
@@ -95,9 +94,9 @@ const config = {
         items: [
           {
             to: "https://discord.gg/wx3JkVjTPy",
-            className: 'navbar--discord-link', 
-            'aria-label': "Discord",
-            position: "right"
+            className: "navbar--discord-link",
+            "aria-label": "Discord",
+            position: "right",
           },
           // {
           //   type: "docSidebar",
@@ -115,12 +114,12 @@ const config = {
       },
       algolia: {
         // The application ID provided by Algolia
-        appId: 'J877LJFWCO',
+        appId: "J877LJFWCO",
 
         // Public API key: it is safe to commit it
-        apiKey: '351a6de2c5da7124507636d49357483e',
+        apiKey: "351a6de2c5da7124507636d49357483e",
 
-        indexName: 'codezero',
+        indexName: "codezero",
 
         // Optional: see doc section below
         contextualSearch: true,
@@ -138,7 +137,7 @@ const config = {
         searchParameters: {},
 
         // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
+        searchPagePath: "search",
 
         //... other Algolia params
       },
@@ -186,7 +185,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['bash', 'json'],
+        additionalLanguages: ["bash", "json"],
       },
     }),
 };
