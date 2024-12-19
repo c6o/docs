@@ -1,18 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Teamspace Setup
+# Installing Space Agent for Kubernetes
 
 Teamspaces are vanilla Kubernetes clusters with Codezero installed. The following guide will step you through registering a Teamspace and certifying it for development use. This should take about 10 minutes to complete.
-
-## Create a Codezero Hub Account
-
-Sign up or log in to the [Codezero Hub](https://hub.codezero.io). The onboarding wizard will guide you through creating an Organization and your first Teamspace.
-
-The Hub allows you to manage your organization, invite and administer members, and register and certify Teamspaces. You can always return to your organization and list of Teamspaces by going to the Profile menu at the top right corner of the screen.
-
-While the Hub provides a graphical user interface equivalent to the `czctl` command line tool, all services run on your local machine or in the Kubernetes cluster.
 
 ## Install the Space Agent in your Cluster
 
@@ -68,9 +60,9 @@ lb:
 </TabItem>
 </Tabs>
 
-## TeamSpace Certification
+## Teamspace Certification
 
-The Codezero SpaceAgent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer pod and service.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
+The Codezero Space Agent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer pod and service.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
 
 :::info
 For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified.
@@ -98,27 +90,21 @@ Certification ensures secure communications between the Codezero SpaceAgent in y
 
 ![Teamspace Install](./_media/ts-certified.sm.png)
 
-To select your Teamspace you have two options: 
+## Upgrading Codezero Space Agent
 
-- **Desktop App:** click on the menu (or tray) icon and then select Teamspaces > your_teamspace. Open the Service Catalog and you should see your list of services in the Teamspace for your cluster.
-  
-  ![Select Teamspace](./_media/icon-menu-teamspace.png)
-
-  ![Select Teamspace](./_media/servicecatalog-teamspace.png)
-- **CLI:** in the terminal run the following command to select from available Teamspaces
+Run the following commands to upgrade the Space Agent to the latest version without changing any configuration values:
 
 ```bash
-czctl space select 
+helm repo add --force-update codezero https://charts.codezero.io
+helm upgrade --namespace=codezero codezero codezero/codezero
 ```
 
-## Uninstalling Codezero SpaceAgent
+## Uninstalling Codezero Space Agent
 
-Codezero's SpaceAgent may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
+Codezero's Space Agent may be removed from the Kubernetes cluster at any time. It is recommended that you close all Consume and Serve sessions before you begin the uninstallation.
 
 To uninstall, run:
 
 ```bash
 helm -n codezero uninstall codezero
 ```
-
-You can then go into the Hub and delete the Teamspace.
