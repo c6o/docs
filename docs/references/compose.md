@@ -59,7 +59,7 @@ The Serve record consists of a `namespace`, `service`, `ports` and optionally, a
 
 Ports specify the `local` and `remote` port numbers.
 
-Condition types are explained in detail in [Tutorials > Serving Local Variants > Condition Types](../tutorials/serve.mdx#condition-types)
+Condition types are explained in detail in [Serve Condition Types](/references/serve.mdx#serve-condition-types).
 
 #### User Condition Type
 

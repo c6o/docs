@@ -86,7 +86,7 @@ service/spaceagent     ClusterIP      10.43.9.204    <none>          8800/TCP   
 
 Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
 
-Certification ensures secure communications between the Codezero SpaceAgent in your cluster and the [Hub](../concepts/architecture#hub) (the Codezero Admin Console).
+Certification ensures secure communications between the Codezero SpaceAgent in your cluster and the [Hub](/references/architecture#hub) (the Codezero Admin Console).
 
 ![Teamspace Install](./_media/ts-certified.sm.png)
 
