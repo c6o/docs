@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 9
 ---
 
 # Release Notes
@@ -11,7 +11,7 @@ NOTE: Please make sure that you update your Codezero Local Agent and the in-clus
 
 * Added options to scale Router for improved reliability. ([docs](/guides/spaceagent-config))
 * Preview: Allow Space Agent to be horizontally scaled with a Redis/Valkey backend. ([docs](/guides/spaceagent-config))
-* Preview Release of Space Agent for VMs: Enabling users to consume services from virtual machines or VPCs outside of Kubernetes clusters. ([docs](/guides/spaceagent-vm))
+* Preview Release of Space Agent for VMs: Enabling users to consume services from virtual machines or VPCs outside of Kubernetes clusters. ([docs](/getting-started/spaceagent-vm))
 * Improved User Interface of the Desktop Application, including new in-app chat with our support team and integration with our new [Codezero Tutorial](https://tutorial.codezero.dev).
 * New command `czctl diagnostics` to package system diagnostics for our support team.
 * New command `czctl tutorial` to connect to a demo Teamspace and open the [Codezero Tutorial](https://tutorial.codezero.dev).
@@ -116,7 +116,7 @@ brew install --cask c6o/tap/codezero-app
 
 ## 2.4.0 [2024-06-11]
 
-* Preview release of [Open Policy Agent integration](../../guides/opa)
+* Preview release of [Open Policy Agent integration](/references/opa)
 * Ability to delete organizations
 * Bug fixes and security updates
 
@@ -173,7 +173,7 @@ brew install --cask c6o/tap/codezero-app
 
 ## 2.2.0 [2024-04-24]
 
-* New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`. You can read about this new feature in the [Codezero Compose](../guides/compose) guide.
+* New command: `czctl compose start` to start consume and serve sessions based on rules in `codezero-compose.yml`. You can read about this new feature in the [Codezero Compose](/references/compose) guide.
 
 ## 2.1.1 [2024-04-11]
 

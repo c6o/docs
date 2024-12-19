@@ -1,18 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 20
 ---
 
 # Troubleshooting
-
-## Upgrade Cluster / Codezero Space Agent
-
-Occasionally a new Codezero release requires you to Update your Codezero Space Agent (also referred to as Upgrade your Cluster)
-
-To update your Codezero Space Agent, run the following command:
-
-    ```bash
-    helm repo add --force-update codezero https://charts.codezero.io && helm upgrade --namespace=codezero codezero codezero/codezero
-    ```
 
 ## Stuck _Waiting_ for DNS
 

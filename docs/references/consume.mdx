@@ -1,0 +1,62 @@
+---
+sidebar_position: 4
+---
+
+# Advanced Consume Topics
+
+## Using Wildcards in Rules
+
+As your application grows, your list of services can become unmanageable. In this case, you can use the `*` wildcard in the consume rules list.
+
+When you run `czctl consume edit` or edit the consume rules in the app, try the following rule:
+
+```
+my-namespace/*
+```
+
+This time, all the services in the `my-namespace` namespace are available locally.
+
+### Using Negation in Rules
+
+When running services locally, developers often start servers on `localhost` or `0.0.0.0` which binds to all interfaces.
+This can result in port conflicts. Often times, when developing a services, you do not want to consume the in-cluster variant of the service.
+You can add a negation rules to the consume rule set to exclude specific services:
+
+```
+my-namespace/*
+!my-namespace/frontend
+```
+
+The above rule set will consume all services in the `my-namespace` namespace except for the `frontend` service.
+
+## Cleaning up
+
+In order to close your consume sessions, run:
+
+```bash
+czctl consume clear
+```
+
+Your consume sessions will close.
+
+
+## Selecting a Primary Namespace
+
+Kubernetes services can access services across namespaces. The following defines all valid names for a Kubernetes service.
+
+```
+service-name
+service-name.my-namespace
+service-name.my-namespace.svc.cluster.local
+```
+
+Consume supports all of the above permutations however, to use the simple form `service-name`, we need to designate a *Primary Namespace*.
+This is because service names are not unique across namespaces. The Primary Namespace makes the `my-namespace` optional so you can address the service by its `service-name` as if your local machine is running inside the cluster and within the same namespace.
+
+To select the Primary Namespace, run:
+
+```bash
+czctl primary-namespace select my-namespace
+```
+
+Now you no longer have to specify the namespace when accessing services.

@@ -1,0 +1,43 @@
+---
+sidebar_position: 3
+---
+
+# Set up Header Propagation
+
+The above example shows a simple case where the service is at the edge of the network. In this case, headers used to redirect traffic are easily delivered to the in-cluster service. But what about the case where you want to work with the `Leaf` service?
+
+In order to achieve this, we have to ensure headers are propagated to upstream services. This is not uncommon. For example, if you are using OpenTelemetry to you have to propagate OpenTelemetry in order to profile spans that traverse services across the application.
+
+Header propagation is language specific. In some cases, there are libraries that fully automate header propagation (e.g. Hpropagate for NodeJS). In the case of the Sample Project, the Core service has the following code to propagate headers.
+
+```javascript
+// In order for intercept to work, headers need to
+// be propagated to upstream requests
+// In this case, we only propagate headers that start
+// with x-c6o but you should use your own convention
+const propagateHeaders = (headers) =>
+  Object.keys(headers)
+    .filter((key) => key.startsWith("x-c6o-"))
+    .reduce((obj, key) => {
+      obj[key] = headers[key];
+      return obj;
+    }, {});
+```
+
+and this code is used here:
+
+```javascript
+  export const leafResult = async (inHeaders) => {
+      try {
+        const headers = propagateHeaders(inHeaders)
+        const url = `${leafURL}/api`
+        const result = await axios({
+            url,
+            headers
+        })
+        ...
+      }
+  }
+```
+
+In the example above, we propagate all headers starting with `x-c6o`. In order to make your entire service graph easy to develop against, it is advised your team come up with some sort of convention where headers starting with `x-my-company-` are propagated if present.

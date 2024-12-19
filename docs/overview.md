@@ -44,7 +44,7 @@ flowchart LR
     end
 ```
 
-With a Teamspace, in order to work on Service B, you simply run the service locally. This _Local_ Service B Variant receives traffic based on [_Conditions_](../tutorials/serve#condition-types) you specify. The Local Variant then delivers traffic back by [Consuming](../tutorials/consume) Service C. Traffic that does not meet the specified condition flows through the _Default_ Service B Variant running in the cluster untouched.
+With a Teamspace, in order to work on Service B, you simply run the service locally. This _Local_ Service B Variant receives traffic based on [_Conditions_](../references/serve#condition-types) you specify. The Local Variant then delivers traffic back by [Consuming](../references/consume) Service C. Traffic that does not meet the specified condition flows through the _Default_ Service B Variant running in the cluster untouched.
 
 Local Variants need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
@@ -54,20 +54,20 @@ You do not have to be a Kubernetes admin or a networking guru to develop using a
 
 ## Getting Started
 
-This documentation is geared to both Kubernetes Admins who want to create Teamspaces as well as Developers who simply want to work with Teamspaces.
+The Getting Started section covers installing Codezero's Local Agent and setting up and administering Teamspaces whether they are in Kubernetes or VMs.
 
-We recommend you go through this documentation in the order it is presented as we build on previously defined concepts. Happy Learning!
+## Tutorial
 
-### Tutorials
+The [Tutorial](../tutorial) focuses on how to use Codezero to connect your local development environment to a set of services running in Codezero's Demo Teamspace and how to debug those remote services locally.
 
-The [Tutorials](../category/tutorials) focus on using a Teamspace once setup. We have a [Sample Kubernetes Project](/tutorials/sample-project.mdx) that comprises some of the most common Microservices Patterns you would encounter in a Kubernetes cluster. This [sample-project](/tutorials/sample-project.mdx) is used across all the Tutorials and Videos in this documentation.
-
-The Tutorials walk you through scenarios you will encounter in just about any modern microservices application development.
-
-### Guides
-
-The Guides cover setting up and administering a Teamspace. You will require a Kubernetes Cluster to create a Teamspace. Due to inherent limitations, you cannot use a local cluster like Minikube or Kind with Codezero.
-
-### Concepts
+## Concepts
 
 We strive to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes context. We cover various terms in the "Concepts" section of this documentation.
+
+## How-to Guides
+
+How-to guides take you through the steps required to solve a real-world problem.
+
+## References
+
+The Reference guides contain technical details about Codezero's architecture and software.

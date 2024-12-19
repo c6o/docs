@@ -2,9 +2,14 @@
 sidebar_position: 3
 ---
 
-# Space Agent for VMs and VPCs
+# Installing Space Agent for VMs
 
 In instances where services are not managed within a Kubernetes cluster, the Space Agent binary can be used outside the cluster to consume services within a Virtual Private Cloud (VPC).
+
+:::note
+Space Agent for VMs currently only supports Consume and does not support Serve.
+:::
+
 
 You will need to download the version for your CPU architecture type:
 
