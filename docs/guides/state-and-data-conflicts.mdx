@@ -1,0 +1,9 @@
+---
+sidebar_position: 4
+---
+
+# State and Data Conflicts
+
+One of the benefits of working in a Teamspace is that you are working in an environment that is as close to a real production environment as possible while getting to use local tooling. Unfortunately, there are certain conditions where this is not feasible. For instance, if you need make a schema change to the Database, there is simply no way to do this without impacting other team members.
+
+You may be able to run a local database with the new schema and serve that as a variant. However, sometimes, there is no real alternative but to create a different _Physical Environment_. You may consider implementing an easy to access Infrastructure as Code script using tools like Terraform or Pulumi to deploy the base services to another namespace where you can work with this new schema without impacting teammates.

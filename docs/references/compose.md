@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 6
 ---
 
 # Using Compose Files
@@ -45,10 +45,10 @@ The following example shows a Consume record:
 
 ```yaml
 consume:
-  primaryNamespace: sample-project
+  primaryNamespace: my-namespace
   rules:
-    - sample-project/*
-    - '!sample-project/sample-project-core'
+    - my-namespace/*
+    - "!my-namespace/frontend"
 ```
 
 ### Serve
@@ -67,11 +67,11 @@ Like `czctl serve ...`, the absence of a condition defaults to condition `user`.
 
 ```yaml
 serve:
-  - namespace: sample-project
-    service: sample-project-core
+  - namespace: my-namespace
+    service: frontend
     ports:
-      - local: 3000
-        remote: 3000
+      - local: 8080
+        remote: 8080
 ```
 
 #### Default Condition Type
@@ -80,11 +80,11 @@ The `default` condition type takes no additional parameters:
 
 ```yaml
 serve:
-  - namespace: sample-project
-    service: sample-project-core
+  - namespace: my-namespace
+    service: frontend
     ports:
-      - local: 3000
-        remote: 3000
+      - local: 8080
+        remote: 8080
     condition:
       type: default
 ```
@@ -95,11 +95,11 @@ The `header` condition type takes two parameters. The `key` parameter is case in
 
 ```yaml
 serve:
-  - namespace: sample-project
-    service: sample-project-core
+  - namespace: my-namespace
+    service: frontend
     ports:
-      - local: 3000
-        remote: 3000
+      - local: 8080
+        remote: 8080
     condition:
       type: header
       key: my-header
@@ -108,21 +108,21 @@ serve:
 
 ### Complete Example
 
-The following `codezero-compose.yaml` file will set the primary namespace to `sample-project`, consume all services within that namespace except the `sample-project-core` service and serve a user variant of the `sample-project-core` service.
+The following `codezero-compose.yaml` file will set the primary namespace to `my-namespace`, consume all services within that namespace except the `frontend` service and serve a user variant of the `frontend` service.
 
 ```yaml
 version: 1.0
 consume:
-  primaryNamespace: sample-project
+  primaryNamespace: my-namespace
   rules:
-    - sample-project/*
-    - '!sample-project/sample-project-core'
+    - my-namespace/*
+    - "!my-namespace/frontend"
 serve:
-  - namespace: sample-project
-    service: sample-project-core
+  - namespace: my-namespace
+    service: frontend
     ports:
-      - local: 3000
-        remote: 3000
+      - local: 8080
+        remote: 8080
 ```
 
 ## Templating
@@ -139,23 +139,23 @@ The following example shows how you can use the `USER` environment variable as a
 ```yaml
 version: 1.0
 consume:
-  primaryNamespace: sample-project
+  primaryNamespace: my-namespace
   rules:
-    - sample-project/*
-    - '!sample-project/sample-project-core'
+    - my-namespace/*
+    - "!my-namespace/frontend"
 serve:
-  - namespace: sample-project
-    service: sample-project-core
+  - namespace: my-namespace
+    service: frontend
     ports:
-      - local: 3000
-        remote: 3000
+      - local: 8080
+        remote: 8080
     condition:
       type: header
       key: x-custom-header
-      value: 'user-{{ .Env.USER }}'
+      value: "user-{{ .Env.USER }}"
 ```
 
-In the above example, if the `USER` environment variable would be set to `joe`, any traffic to the `sample-project-core` service where the HTTP header `x-custom-header` is set to `user-joe` would be directed to your local machine.
+In the above example, if the `USER` environment variable would be set to `joe`, any traffic to the `frontend` service where the HTTP header `x-custom-header` is set to `user-joe` would be directed to your local machine.
 
 ## Reset Sessions
 
@@ -164,14 +164,3 @@ To stop all Consume and Serve sessions run the following command:
 ```sh
 czctl reset
 ```
-
-
-
-## Cleaning Up
-
-To stop the Codezero Daemon, and remove any residual Networking components, run the following command:
-
-```sh
-czctl cleanup
-```
-This will restore your local `/etc/hosts` file to default state.

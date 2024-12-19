@@ -1,0 +1,9 @@
+---
+sidebar_position: 6
+---
+
+# Working with Message Queues
+
+Queues discard HTTP metadata like headers. One simple solution to this is to propagate headers in the metadata or payload enqueued so that the consumer at the other end of the queue can re-hydrate headers to upstream services.
+
+These few lines of code that propagate Headers and metadata through queues are a small price to pay for the added ability to develop services locally.

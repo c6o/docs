@@ -1,0 +1,75 @@
+---
+sidebar_position: 1
+---
+
+# Consume
+
+<div style={{ textAlign: 'center' }}>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0VrrEhNUSP4?si=wFryPs7sUx1beNSy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+
+Codezero’s Consume function enables developers to access and interact with Kubernetes cluster-based services as if they were running locally on their laptop.
+Consume allows developers to:
+
+- Access cluster services using their actual in-cluster DNS names instead of localhost
+- Route traffic to services based on namespace, service name, or port
+- Experience real round-robin load balancing just like in the cluster
+- Continue working even if pods crash or restart, unlike traditional port-forwarding
+
+## Key Benefits
+
+- **Performance**: No degradation in performance or resource constraints when accessing services
+- **Resource Efficiency**: Uses fewer resources compared to running services in local Docker containers
+- **No Kubernetes Credentials**: Developers don’t need direct access to Kubeconfig files
+- **Flexibility**: Supports wildcards for consuming multiple services, such as `namespace/*` to consume all services in a namespace
+
+## How it works…
+
+In many ways, Consume works like a Virtual Private Network (VPN). Unlike a VPN however, Codezero only handles traffic related to services in a Teamspace.
+You can use a VPN while using Codezero and both will coexist without interfering with each other.
+
+Codezero works by creating Virtual Interfaces for services running in the Teamspace and maintains entries in the `/etc/hosts` for these interfaces.
+
+Codezero adds DNS entries to the `/etc/hosts` file that is part of MacOS and most Linux implementations.
+On Windows, Codezero modifies the appropriate Windows hosts file which in turn, propagates entries for the _Windows Subsystem for Linux_.
+
+When Codezero's Daemon is running, you will see entries in `/etc/hosts/` file, between the following markers:
+
+```text
+###
+# CODEZERO
+# This section is managed by Codezero. Do not edit manually.
+...
+...
+# /CODEZERO
+###
+```
+
+As you Consume in-cluster services, you will see entries in this section appear, like below:
+
+```text
+127.72.0.0 frontend
+127.72.0.0 frontend.my-namespace
+127.72.0.0 frontend.my-namespace.svc
+127.72.0.0 frontend.my-namespace.svc.cluster.local
+```
+
+These entries help map your in-cluster services to local names and allow you to work with remote services as though they are local.
+
+:::caution
+Do not modify the markers or the content between the markers. This will cause Codezero to malfunction!
+
+Currently, Codezero maps ports to the 127.72.0.0/14 range but local apps that bind to 0.0.0.0 or localhost can encounter port conflicts as they attempt to bind to all local interfaces. Also, please note that the local Codezero IP range above is subject to change.
+:::
+
+## Why not use kubectl port-forward?
+
+Here are some reasons to use Codezero Consume instead of `kubectl port-forward`:
+
+1. You do not need to have access to Kubernetes credentials (Kubeconfig)
+1. Port-forwarding binds to Pods whereas Codezero routes to Services which means:
+    1. You get the real round-robin experience that the Frontend service gets in cluster
+    1. Pods can crash or restart and you will not have to re-establish your port-forward
+1. You get to use the proper in-cluster DNS name of the Socket and Core services instead of `localhost`
+1. Consume uses far fewer resources and is much more performant when trying to consume many services within a cluster

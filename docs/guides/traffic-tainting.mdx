@@ -1,0 +1,9 @@
+---
+sidebar_position: 5
+---
+
+# Traffic Tainting Non-Idempotent Operations
+
+When working with non-idempotent operations or operations where you do *not* want to commit changes during testing (e.g. to a database), you may want to consider using _Traffic Tainting_.
+
+Let us say that you are consuming a billing API but you do not want actions done during local development to actually perform a billing operation, you could taint the traffic going up to the consumed service using metadata (e.g. HTTP Header `x-is-tainted:true`). You could then have the upstream Billing API service reply with a 200 but not actually perform the billing operation when the request is tainted.

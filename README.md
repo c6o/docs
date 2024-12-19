@@ -20,15 +20,8 @@ yarn start
 
 The site will run locally at `http://localhost:3000`
 
-## Organization of the Documentation
-
-Concepts => Thought leadership to train, educate and evangelize best practices to DevOps, Architects
-Guides => Multi step complex scenarios/tasks
-Tutorials => Exercises to try with the sample-project
-Reference => Detail information on a single command (a more graphical view of czctl \<command\> --help)
-
 ## Legal Stuff
 
 These documents are published as-is and come with no warranty. Codezero Technologies Inc. reserves the right to change these documents at any time.
 
-© Copyright 2021 Codezero Technologies Inc. All Rights Reserved
+© Copyright 2021-2025 Codezero Technologies Inc. All Rights Reserved
