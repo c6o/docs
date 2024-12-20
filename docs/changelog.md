@@ -7,6 +7,14 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.8.1 [2024-12-18]
+
+* Correct the port mapping in the Variant dialog. The local and remote ports were incorrectly displayed.
+* Allow setting of external host and load balancer IP of Space Agent.
+* Added warning triangle to variant avatars of disconnected users.
+* Added avatar images to Teamspaces and services.
+* Various bug fixes and security updates.
+
 ## 2.8.0 [2024-12-10]
 
 * Added options to scale Router for improved reliability. ([docs](/guides/spaceagent-config))
