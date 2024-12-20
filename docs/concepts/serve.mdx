@@ -1,0 +1,37 @@
+---
+sidebar_position: 2
+---
+
+# Serve
+
+<div style={{ textAlign: 'center' }}>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4X47YxlcGkQ?si=QbbzWDas16vdB8DB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+Codezero’s Serve function allows developers to run a service locally while making it appear as if it’s deployed in the Kubernetes cluster. When you serve a local variant, you can:
+
+- Route specific traffic to your local service instance while keeping cluster traffic undisturbed
+- Test changes without deploying to the cluster
+- Share your local variant with team members through the service catalog
+
+## Variants
+
+A Variant in Codezero represents an alternative instance of a service that can run alongside the default in-cluster version.
+Unlike traditional versioning, variants allow developers to test changes without deployment while allowing the original service to function undisturbed.
+
+### Traffic Management
+
+- Multiple variants can coexist simultaneously
+- Traffic can be selectively routed based on:
+  - User ID
+  - Custom headers
+
+### Collaboration Features
+
+- Team members can see available variants in the service catalog
+- Developers can choose between original services or colleague’s variants
+- Multiple developers can work on different variants of the same service simultaneously
+
+## Benefits
+
+Serving variants enables developers to test changes in a production-like environment without deployment overhead, facilitating faster development cycles and reducing the complexity of microservice development.

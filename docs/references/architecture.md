@@ -30,15 +30,15 @@ This diagram defines all the components that make up Codezero:
 %%{init: {"theme": "forest", "themeCSS": [
     "[id*=entity-HUB] .er.entityBox { fill: orange;}",
     "[id*=entity-OPERATOR] .er.entityBox { fill: pink;}",
-    "[id*=entity-SYSTEM] .er.entityBox { fill: pink;}"
+    "[id*=entity-SPACEAGENT] .er.entityBox { fill: pink;}"
     ]
 }}%%
 
 erDiagram
-    OPERATOR ||--|| SYSTEM : ""
-    HUB ||--|| SYSTEM : ""
+    OPERATOR ||--|| SPACEAGENT : ""
+    HUB ||--|| SPACEAGENT : ""
     HUB ||--|| DAEMON : ""
-    SYSTEM ||--|| DAEMON : ""
+    SPACEAGENT ||--|| DAEMON : ""
     DAEMON  ||--|| DESKTOP_APP : ""
     DAEMON ||--|| CZCTL : ""
 ```
@@ -51,9 +51,9 @@ The Hub is Codezero's Admin Console, and our central authority that manages Orga
 
 A Teamspace is a vanilla Kubernetes cluster with Codezero installed. A Teamspace consists of a System and an Operator.
 
-### System
+### Space Agent
 
-The System is a Kubernetes controller that manages in-cluster resources that are added or altered depending on developer actions.
+The Space Agent is a Kubernetes controller that manages in-cluster resources that are added or altered depending on developer actions.
 It gives visibility into all activities happening in the cluster and co-ordinates between Local and In-cluster tunnels.
 
 The System has a single, secure tunnel that is used for Consume and Serve traffic between Local and In-cluster services.

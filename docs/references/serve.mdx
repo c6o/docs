@@ -1,0 +1,67 @@
+---
+sidebar_position: 5
+---
+
+import ModHeaderImg from './_media/modheader.png'
+
+# Advanced Serve Topics
+
+## Serve Condition Types
+
+Conditions are a powerful and simple way to create unique development environments based on a base in-cluster environment. Codezero provides conditions that define how traffic routes across in-cluster and local variants and essentially, allow you to develop without having to deploy.
+
+We currently support the following condition types. Should you have unique needs in order to make your development experience easier, please [reach out to us](mailto:support@codezero.io).
+
+### User
+
+When unspecified, Serve creates a conditional route based on the current Codezero User. Your `UserID` is unique and ensures that there will be no conflicts across other sessions.
+Other team members may use the same Teamspace to work on the same part of the application concurrently.
+
+### Header
+
+If you prefer to use your own header, you can use the `Header` condition. This allows you to specify any arbitrary header key and value. You would specify this condition as follows:
+
+```bash
+czctl serve my-project/frontend 8080 --condition-type header --condition "my-key:my-value"
+```
+
+In the case above, in order to route to this new variant, your `curl` command would be:
+
+```bash
+curl -H "my-key:my-value" http://<ExternalIP>:8080/
+```
+
+### Default
+
+We call the in-cluster variant the _Default Variant_. This is because it is the variant that is served when no conditions are met or when there are no conditions for routing traffic.
+
+In some cases, you may want all traffic destined for the in-cluster service to route to you. For instance, you may be interested in a web hook callback and are not able to manipulate the headers sent by a third party service.
+
+In this case, you want to make your local variant the new Default Variant.
+
+```bash
+czctl serve my-project/frontend 8080 --condition-type default
+```
+
+With the above, you no longer have to add anything to the `curl` request:
+
+```bash
+curl http://<ExternalIP>:8080/
+```
+
+:::note
+If team members are serving variants with User or Header conditions, any requests that match those conditions will be routed to those matching variants.
+:::
+
+## UserID header in browser
+
+In order to access variants via a browser, there are a number of third party tools that will add custom headers to browser requests:
+
+- [Requestly](https://requestly.com/)
+- [ModHeader](https://modheader.com/)
+
+A number of the above providers are browser extensions. For example, configuring _ModHeader_ as follows with your `UserID`:
+
+<div>
+  <img width="60%" src={ModHeaderImg}/>
+</div>
