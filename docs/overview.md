@@ -69,7 +69,7 @@ The [Tutorial](../tutorial) focuses on how to use Codezero to connect your local
 
 ## Concepts
 
-We have tried hard limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the "Concepts" section of this documentation.
+We have tried hard to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the "Concepts" section of this documentation.
 
 ## How-to Guides
 
