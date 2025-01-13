@@ -27,7 +27,7 @@ flowchart LR
     end
 ```
 
-Consider the application above. Services A, B and C are deployed to a development cluster, vm or namespace. You would either have to replicate the entire application locally or, replace Service B with the new version in the development environment in order to test.
+Consider the application above. Services A, B and C are deployed to a development cluster, VM or Namespace. Without Codezero, you would either have to replicate the entire application locally or, replace Service B with the new version in the development environment in order to test.
 
 :::tip
 The version of the app one experiences is determined by the path a ray of traffic takes across the services.
@@ -61,20 +61,20 @@ You do not have to be a Kubernetes/VM Admin or a networking guru to develop usin
 
 ## Getting Started
 
-The Getting Started section covers installing Codezero's Local Agent and setting up and administering Teamspaces whether they are in Kubernetes or VMs.
+The Getting Started section covers installing Codezero's Local Agent and setting up and administering Teamspaces whether in Kubernetes or VMs.
 
 ## Tutorial
 
-The [Tutorial](../tutorial) focuses on how to use Codezero to connect your local development environment to a set of services running in Codezero's Demo Teamspace and how to debug those remote services locally.
+The [Tutorial](../tutorial) focuses on using Codezero to connect your local development environment to a set of services running in Codezero's Demo Teamspace and how to debug those remote services locally.
 
 ## Concepts
 
-We have tried hard to limit the jargon that developers have to learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the "Concepts" section of this documentation.
+We have tried hard to limit the jargon developers must learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the "Concepts" section of this documentation.
 
 ## How-to Guides
 
-How-to guides take you through the steps required to solve a real-world problem.
+[How-to guides](../category/how-to-guides) take you through the steps required to solve a real-world problem.
 
 ## References
 
-The Reference guides contain technical details about Codezero's architecture and software.
+The [Reference](../category/references) guides contain technical details about Codezero's architecture and software.
