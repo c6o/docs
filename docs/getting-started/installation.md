@@ -75,7 +75,7 @@ The Desktop application contains the CLI. You only need to install the CLI when 
 <TabItem value="scoop" label="Scoop">
    To install Codezero with [Scoop](https://scoop.sh) on Windows, run:
 
-   ```
+   ```powershell
    scoop bucket add codezero https://github.com/c6o/scoop-codezero.git;scoop install codezero
    ```
 
@@ -144,4 +144,47 @@ The Desktop application contains the CLI. You only need to install the CLI when 
       [Microsoft PowerShell documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.3#saving-changes-to-environment-variables).
 </TabItem>
 
+</Tabs>
+
+## Uninstalling Codezero Local Agent
+
+<Tabs>
+<TabItem value="macos" label="macOS" default>
+Run the following script to completely uninstall Codezero:
+
+```bash
+curl -L https://releases.codezero.io/uninstall-macos.sh | /bin/bash
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+Run the following script to completely uninstall Codezero:
+
+```bash
+curl -L https://releases.codezero.io/uninstall-linux.sh | /bin/bash
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+To uninstall the Desktop application:
+
+1. From the Windows **Start** menu, select **Settings > Apps > Installed apps**.
+1. Select **Codezero** from the list and then select **Uninstall**.
+1. Select **Uninstall** to confirm your selection.
+
+If you installed Codezero via Scoop, run the following command:
+
+```powershell
+scoop uninstall codezero
+```
+
+After uninstalling Codezero, there may be some residual files left behind which you can remove manually. These are:
+
+```powershell
+C:\Program Files\Codezero
+C:\Users\<your user name>\AppData\Roaming\Codezero
+```
+
+</TabItem>
 </Tabs>
