@@ -159,7 +159,7 @@ curl -L https://releases.codezero.io/uninstall-macos.sh | /bin/bash
 </TabItem>
 <TabItem value="linux" label="Linux">
 
-Run the following to completely uninstall Codezero:
+Run the following script to completely uninstall Codezero:
 
 ```bash
 curl -L https://releases.codezero.io/uninstall-linux.sh | /bin/bash
