@@ -55,13 +55,13 @@ With a Teamspace, to work on Service B, just run a copy of the Service locally. 
 
 Local Variants need not be containerized. They are simply services running on a local port but through the service catalog appear like they are deployed to the Kubernetes cluster. Developers can, therefore, use preferred local tooling like IDEs, debuggers, profilers and test tools (e.g. Postman) during the development process.
 
-Teamspaces are language agnostic and operate at the network level. Any authorized member can define _Conditions_ that reshape traffic across the services available in the catalog to instantly create a _Logical Ephemeral Environment_. While the Teamspace is long-running, this temporary traffic-shaped environment comprising of a mix of remote and local services can be used to rapidly build and test software before code is pushed.
+Teamspaces are language agnostic and operate at the network level. Any authorized member can define _Conditions_ that reshape traffic across the services available in the catalog to instantly create a _Logical Ephemeral Environment_ or **"Zero Environment"**. While the Teamspace is long-running, this temporary traffic-shaped environment comprising of a mix of remote and local services can be used to rapidly build and test software before code is pushed.
 
 You do not have to be a Kubernetes/VM Admin or a networking guru to develop using a Teamspace. Once set up, most developers usually don't need any direct knowledge of, or access to the underlying Kubernetes Clusters.
 
 ## Getting Started
 
-The Getting Started section covers installing Codezero's Local Agent and setting up and administering Teamspaces whether in Kubernetes or VMs.
+The [Getting Started](../getting-started) section covers installing Codezero's Local Agent and setting up and administering Teamspaces whether in Kubernetes or VMs.
 
 ## Tutorial
 
@@ -69,7 +69,7 @@ The [Tutorial](../tutorial) focuses on using Codezero to connect your local deve
 
 ## Concepts
 
-We have tried hard to limit the jargon developers must learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the "Concepts" section of this documentation.
+We have tried hard to limit the jargon developers must learn to benefit from our tooling. While words like Services and Environments are commonplace, we felt it would help to clarify this terminology within the Codezero and Kubernetes/VMs context. We cover various terms in the [Concepts](..category/concepts) section.
 
 ## How-to Guides
 
