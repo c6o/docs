@@ -7,6 +7,13 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.8.2 [2025-01-14]
+
+* UI style tweaks in desktop app.
+* Remove haproxy from Space Agent deployment.
+* Change report location in `czctl diagnostics` from current working directory to the user's home directory.
+* Various bug fixes and security updates.
+
 ## 2.8.1 [2024-12-18]
 
 * Correct the port mapping in the Variant dialog. The local and remote ports were incorrectly displayed.

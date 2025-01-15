@@ -43,7 +43,7 @@ By default AWS EKS uses classic load balancers for a Kubernetes service of type 
 However when using [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html) additional annotations need to be set on Codezero's load balancer service. This can be done via the helm chart by adding the following values:
 
 ```text
-lb:
+spaceagent:
     service:
         annotations:
             service.beta.kubernetes.io/aws-load-balancer-type: "external"
@@ -75,13 +75,11 @@ You can view the codezero pods and services using the following:
 kubectl get pods,svc -n codezero
 
 NAME                                READY   STATUS    RESTARTS   AGE
-pod/loadbalancer-556d54fb4-qx6w4    1/1     Running   0          9d
 pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
 pod/spaceagent-5cb47f595b-m8ppw     1/1     Running   0          9d
 
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
-service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP                  13d
-service/spaceagent     ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
+service/spaceagent     LoadBalancer   10.43.9.204    xxx.x.xxx.xxx   8800:31360/TCP                  13d
 ```
 
 Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
