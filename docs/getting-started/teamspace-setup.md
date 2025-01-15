@@ -43,7 +43,7 @@ By default AWS EKS uses classic load balancers for a Kubernetes service of type 
 However when using [AWS Load Balancer Controller](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html) additional annotations need to be set on Codezero's load balancer service. This can be done via the helm chart by adding the following values:
 
 ```text
-lb:
+spaceagent:
     service:
         annotations:
             service.beta.kubernetes.io/aws-load-balancer-type: "external"
