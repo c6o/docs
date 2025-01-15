@@ -75,13 +75,11 @@ You can view the codezero pods and services using the following:
 kubectl get pods,svc -n codezero
 
 NAME                                READY   STATUS    RESTARTS   AGE
-pod/loadbalancer-556d54fb4-qx6w4    1/1     Running   0          9d
 pod/operator-86b9d856cb-ktqcj       1/1     Running   0          9d
 pod/spaceagent-5cb47f595b-m8ppw     1/1     Running   0          9d
 
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                         AGE
-service/codezero       LoadBalancer   10.43.95.152   xxx.x.xxx.xxx   8800:31420/TCP                  13d
-service/spaceagent     ClusterIP      10.43.9.204    <none>          8800/TCP                        13d
+service/spaceagent     LoadBalancer   10.43.9.204    xxx.x.xxx.xxx   8800:31360/TCP                  13d
 ```
 
 Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
