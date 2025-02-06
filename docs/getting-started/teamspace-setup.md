@@ -10,15 +10,15 @@ Teamspaces are vanilla Kubernetes clusters with Codezero installed. The followin
 
 To install Codezero from your terminal, you will need:
 
-* Access to the cluster (i.e. kubeconfig)
-* [helm](https://helm.sh/docs/intro/install/) and [kubectl](https://kubernetes.io/docs/reference/kubectl/)  installed, and
-* Your current context set to the correct cluster
+- Access to the cluster (i.e. kubeconfig)
+- [helm](https://helm.sh/docs/intro/install/) and [kubectl](https://kubernetes.io/docs/reference/kubectl/) installed, and
+- Your current context set to the correct cluster
 
-On the Profile menu, click _Settings_ and then select the _Teamspaces_ tab. Click _Add Teamspace_ to create the installation command.
+In the sidebar click _Teamspaces_ and then click _Add a Teamspace_ to create the installation command.
 
 ![Teamspace Create](./_media/ts-create.jpg)
 
-To use this command copy to your clipboard using the _copy_ button on the right side of the screen.  After doing that press the _Done_ button.
+To use this command copy to your clipboard using the _copy_ button on the right side of the screen. After doing that press the _Done_ button.
 
 This install command contains your organization's API key. Please keep it confidential.
 It uses [Helm](https://helm.sh) to install the Codezero Space Agent. You can find the Helm charts on Codezero's [GitHub](https://github.com/c6o/helm-charts).
@@ -63,7 +63,7 @@ spaceagent:
 
 ## Teamspace Certification
 
-The Codezero Space Agent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer pod and service.  The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
+The Codezero Space Agent installs into the `codezero` namespace and should take less than a minute to start depending on how long it takes to provision a LoadBalancer pod and service. The `codezero` loadbalancer service will be ready but the cloud loadbalancer may need minutes to be fully available.
 
 :::info
 For example, with AWS, the kubernetes loadbalancer service will show the AWS NLB (Network Load Balancer) hostname and codezero hub will show the space as ready and certified.
@@ -83,11 +83,11 @@ NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)    
 service/spaceagent     LoadBalancer   10.43.9.204    xxx.x.xxx.xxx   8800:31360/TCP                  13d
 ```
 
-Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [hub.codezero.io/settings/spaces](https://hub.codezero.io/settings/spaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
+Once the Codezero Loadbalancer pod is ready, you should see the Certification column at [https://hub.codezero.io/teamspaces](https://hub.codezero.io/teamspaces) change to _Certified_ and shortly thereafter, you should see an IP address (or Host Name) show up under DNS. Your Teamspace is ready for use.
 
-Certification ensures secure communications between the Codezero SpaceAgent in your cluster and the [Hub](/references/architecture#hub) (the Codezero Admin Console).
+Certification ensures secure communications between the Codezero Space Agent in your cluster and the Local Agent.
 
-![Teamspace Install](./_media/ts-certified.sm.png)
+![Teamspace Install](./_media/ts-certified.jpg)
 
 ## Upgrading Codezero Space Agent
 

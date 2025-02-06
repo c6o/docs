@@ -536,6 +536,18 @@ czctl stop
 
 ---
 
+## Trace Connections
+
+Shows traffic of all consume and serves.
+
+### Usage
+
+```bash
+czctl trace-connections
+```
+
+---
+
 ## Tutorial
 
 Starts the tutorial for Codezero.

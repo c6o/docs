@@ -6,42 +6,13 @@ sidebar_position: 1
 
 ## Overview
 
-Codezero is made up of components that run locally on your developer workstation, in the Kubernetes cluster and a central cloud hosted Hub. The following color code identifies where the sub-components identified below run.
+Codezero is made up of components that run locally on your developer workstation, in the Kubernetes cluster and a central cloud hosted Hub.
 
-* HUB (orange) is hosted by Codezero.
-* TEAMSPACE is the System and Operator (pink) components installed in your cluster.
-* The CLI, Desktop App and Daemon are installed and run on your LOCAL development machine.
+![Architecture Diagram](./_media/architecture.svg)
 
-```mermaid
-%%{init: {"theme": "forest", "themeCSS": [
-    "[id*=entity-HUB] .er.entityBox { fill: orange;}",
-    "[id*=entity-TEAMSPACE] .er.entityBox { fill: pink;}"
-    ]
-}}%%
-erDiagram
-    HUB
-    TEAMSPACE
-    LOCAL
-```
-
-This diagram defines all the components that make up Codezero:
-
-```mermaid
-%%{init: {"theme": "forest", "themeCSS": [
-    "[id*=entity-HUB] .er.entityBox { fill: orange;}",
-    "[id*=entity-OPERATOR] .er.entityBox { fill: pink;}",
-    "[id*=entity-SPACEAGENT] .er.entityBox { fill: pink;}"
-    ]
-}}%%
-
-erDiagram
-    OPERATOR ||--|| SPACEAGENT : ""
-    HUB ||--|| SPACEAGENT : ""
-    HUB ||--|| DAEMON : ""
-    SPACEAGENT ||--|| DAEMON : ""
-    DAEMON  ||--|| DESKTOP_APP : ""
-    DAEMON ||--|| CZCTL : ""
-```
+* Hub (blue) is hosted by Codezero.
+* Teamspace is the System and Operator (yellow) components installed in your cluster.
+* The CLI, Desktop App and Daemon are installed and run on your Local development machine (green).
 
 ## HUB
 
@@ -76,10 +47,10 @@ The Daemon runs with root privileges and is:
 * A tunnel to the current selected Teamspace
 * A secure proxy for client applications (`czctl`, Desktop App) to communicate with the current Teamspace
 
-The Daemon executable is generally located at `/usr/local/bin/czctl` or `/opt/homebrew/czctl` (depending on install method)
+The Daemon executable is generally located at `/usr/local/bin/czctl` or `/opt/homebrew/czctl` (depending on install method).
 
-The Daemon is started when you run `czctl start` or when you start the Codezero Desktop app
+The Daemon is started when you run `czctl start` or when you start the Codezero Desktop app.
 
 ### Desktop App
 
-The Desktop app provides a GUI for the Service Catalog, Serve and Control sessions, and easy access to Logs. It is a single binary that also contains the CLI and Daemon. It requires root/admin privileges to start the Daemon.
+The Desktop app provides a GUI for the Service Catalog, Serve and Control sessions, and easy access to Logs. It is a single app that also contains the CLI and Daemon. It requires root/admin privileges to start the Daemon.
