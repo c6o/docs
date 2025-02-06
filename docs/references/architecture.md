@@ -76,10 +76,10 @@ The Daemon runs with root privileges and is:
 * A tunnel to the current selected Teamspace
 * A secure proxy for client applications (`czctl`, Desktop App) to communicate with the current Teamspace
 
-The Daemon executable is generally located at `/usr/local/bin/czctl` or `/opt/homebrew/czctl` (depending on install method)
+The Daemon executable is generally located at `/usr/local/bin/czctl` or `/opt/homebrew/czctl` (depending on install method).
 
-The Daemon is started when you run `czctl start` or when you start the Codezero Desktop app
+The Daemon is started when you run `czctl start` or when you start the Codezero Desktop app.
 
 ### Desktop App
 
-The Desktop app provides a GUI for the Service Catalog, Serve and Control sessions, and easy access to Logs. It is a single binary that also contains the CLI and Daemon. It requires root/admin privileges to start the Daemon.
+The Desktop app provides a GUI for the Service Catalog, Serve and Control sessions, and easy access to Logs. It is a single app that also contains the CLI and Daemon. It requires root/admin privileges to start the Daemon.

@@ -6,7 +6,7 @@ sidebar_position: 20
 
 ## Stuck _Waiting_ for DNS
 
-The Codezero _SpaceAgent_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _SpaceAgent_ service. To do so, simply restart the _SpaceAgent_ pod:
+The Codezero _Space Agent_ service will fail to start if it is unable to obtain the DNS address of the cluster. Sometimes, the Kubernetes retry logic will time out before the ingress is ready. In this case, you may have to restart the _Space Agent_ service. To do so, simply restart the _Space Agent_ pod:
 
 ```bash
 kubectl rollout restart deployment spaceagent -n codezero
@@ -26,7 +26,7 @@ If you are looking for residue in a specific namespace, use:
 kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezero
 ```
 
-**NOTE:** You should close all Consume and Serve sessions before cleaning up residue in which case the Codezero SpaceAgent controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
+**NOTE:** You should close all Consume and Serve sessions before cleaning up residue in which case the Codezero Space Agent controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
 
 ## Getting Further Help
 
