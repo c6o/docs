@@ -26,6 +26,7 @@ Codezero sends the following inputs to the Named Policy Decision URL:
 | action.condition.key   | header key if the condition type is `header`                           |
 | action.condition.value | header value if the condition type is `header`                         |
 | auth.userID            | the Codezero user ID                                                   |
+| auth.email             | the Codezero user's email address                                      |
 | resource.namespace     | the namespace of the resource that a user wants to consume or serve    |
 | resource.service       | the service name of the resource that a user wants to consume or serve |
 

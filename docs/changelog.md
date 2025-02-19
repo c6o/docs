@@ -7,9 +7,16 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.10.0 [2025-02-18]
+
+* New [Credential Infusion](/guides/credential-infusion) for PostgreSQL and HTTP services.
+* New [VSCode Extension](/getting-started/vscode).
+* Added email address to [OPA input](/references/opa).
+* Various bug fixes and security updates.
+
 ## 2.9.0 [2025-02-05]
 
-* Added network traces for Consume and Serve requests
+* Added network traces for Consume and Serve requests.
 * New UI for the [Codezero Hub](https://hub.codezero.io/).
 * Improved WebSocket support.
 * Improved throughput for Serve requests.
