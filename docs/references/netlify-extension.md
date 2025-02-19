@@ -63,7 +63,11 @@ http.get("http://my-service.namespace/path", { agent }, (res) => {
 
 ## Example
 
-A full example of a Netlify Function that forwards calls to `http://my-service.namespace/path` is below:
+A full example of a Netlify Function that forwards calls to `http://my-service.namespace/path` is below.
+
+:::note
+The CodezeroAgent should be instantiated outside the request handler because it caches the credentials needed to connect to the Teamspace.
+:::
 
 ```js
 import fetch from 'node-fetch'
