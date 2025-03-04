@@ -47,8 +47,8 @@ The following example shows a Consume record:
 consume:
   primaryNamespace: my-namespace
   rules:
-    - my-namespace/*
-    - "!my-namespace/frontend"
+    - *.my-namespace
+    - "!frontend.my-namespace"
 ```
 
 ### Serve
@@ -115,8 +115,8 @@ version: 1.0
 consume:
   primaryNamespace: my-namespace
   rules:
-    - my-namespace/*
-    - "!my-namespace/frontend"
+    - *.my-namespace
+    - "!frontend.my-namespace"
 serve:
   - namespace: my-namespace
     service: frontend
@@ -141,8 +141,8 @@ version: 1.0
 consume:
   primaryNamespace: my-namespace
   rules:
-    - my-namespace/*
-    - "!my-namespace/frontend"
+    - *.my-namespace
+    - "!frontend.my-namespace"
 serve:
   - namespace: my-namespace
     service: frontend

@@ -35,7 +35,7 @@ czctl start
 :::note
 For MacOS and Linux Codezero requires `sudo` access to modify your local network settings.
 
-For Windows you'll need to run `czctl` as an Administrator as it needs to modify your local network settings.  You can do this by starting
+For Windows you'll need to run `czctl` as an Administrator as it needs to modify your local network settings. You can do this by starting
 a Command Prompt or Windows PowerShell with `Run as Administrator`.
 :::
 
@@ -69,7 +69,6 @@ czctl consume edit --help
 czctl space select --help
 ```
 
-
 ## Auth
 
 The Auth command allows you to log in and out of Codezero.
@@ -97,11 +96,31 @@ czctl auth login
 
 <div class="flags-table">
 
-| Flags    | Description                                                                                  |
-| -------- | -------------------------------------------------------------------------------------------- |
-| --token  | If set, app will not try to open a browser window for login and will use the provided token. |
+| Flags   | Description                                                                                  |
+| ------- | -------------------------------------------------------------------------------------------- |
+| --token | If set, app will not try to open a browser window for login and will use the provided token. |
 
 </div>
+
+---
+
+## Certificate
+
+Manage Codezero Credentials Infusion Root CA.
+
+### Usage
+
+```bash
+czctl cert [SUB-COMMAND]
+```
+
+### Sub-commands
+
+| Sub-command | Description                        |
+| ----------- | ---------------------------------- |
+| path        | Prints the path to the certificate |
+| install     | Installs the certificate           |
+| uninstall   | Uninstalls the certificate         |
 
 ---
 
@@ -312,9 +331,9 @@ czctl organization select MyOrg
 
 #### Arguments
 
-| Arguments         | Description                    |
-| ----------------- | ------------------------------ |
-| organization name | The name of the organization.  |
+| Arguments         | Description                   |
+| ----------------- | ----------------------------- |
+| organization name | The name of the organization. |
 
 #### Flags
 
@@ -347,7 +366,6 @@ czctl primary-namespace clear
 Change the current primary namespace.
 
 #### Usage
-
 
 ```bash
 czctl primary-namespace select [namespace]
@@ -404,6 +422,7 @@ czctl serve [namespace/name] [local_port:]remote_port [...[local_port_n:]remote_
 ```
 
 #### Example
+
 ```bash
 czctl serve my-namespace/frontend 8080
 ```

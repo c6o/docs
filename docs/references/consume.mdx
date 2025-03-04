@@ -11,7 +11,7 @@ As your application grows, your list of services can become unmanageable. In thi
 When you run `czctl consume edit` or edit the consume rules in the app, try the following rule:
 
 ```
-my-namespace/*
+*.my-namespace
 ```
 
 This time, all the services in the `my-namespace` namespace are available locally.
@@ -23,8 +23,8 @@ This can result in port conflicts. Often times, when developing a services, you 
 You can add a negation rules to the consume rule set to exclude specific services:
 
 ```
-my-namespace/*
-!my-namespace/frontend
+*.my-namespace
+!frontend.my-namespace
 ```
 
 The above rule set will consume all services in the `my-namespace` namespace except for the `frontend` service.

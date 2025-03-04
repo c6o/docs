@@ -7,6 +7,12 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.11.0 [2025-03-03]
+
+* [Credential Infusion](/guides/credential-infusion) for external HTTPS domains.
+* New syntax for consume rules. You can now use `service.namespace` in addition to `namespace.service`.
+* Various bug fixes and security updates.
+
 ## 2.10.0 [2025-02-18]
 
 * New [Credential Infusion](/guides/credential-infusion) for PostgreSQL and HTTP services.
