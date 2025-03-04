@@ -10,7 +10,7 @@ NOTE: Please make sure that you update your Codezero Local Agent and the in-clus
 ## 2.11.0 [2025-03-03]
 
 * [Credential Infusion](/guides/credential-infusion) for external HTTPS domains.
-* New syntax for consume rules. You can now use `service.namespace` in addition to `namespace.service`.
+* New syntax for consume rules. You can now use `service.namespace` in addition to `namespace/service`.
 * Various bug fixes and security updates.
 
 ## 2.10.0 [2025-02-18]
