@@ -37,13 +37,9 @@ package codezero
 
 import rego.v1
 
-import input.auth
-import input.scope
-import input.resource
-
-default allow = false
+default allow := false
 
 allow if {
-    resource.namespace != "codezero"
+    input.resource.namespace != "codezero"
 }
 ```
