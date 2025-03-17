@@ -27,4 +27,16 @@ router:
   replicas: 2
 ```
 
+## Router Pod Labels and Annotations
+
+You can provide annotations or labels for the Codezero Router pods as Helm chart values:
+
+```yaml
+router:
+  podAnnotations: 
+    annotationKey: value
+  podLabels:
+    labelKey: value
+```
+
 You can read more about the Router configuration options in the [Codezero Helm Chart documentation](https://github.com/c6o/helm-charts/blob/pasley/README.md).

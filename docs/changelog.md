@@ -7,6 +7,10 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.13.0 [2025-03-16]
+
+* Allow setting of Kubernetes pod labels and annotations for [Router pods in Space Agent configuration](guides/spaceagent-config.md#router-pod-labels-and-annotations).
+
 ## 2.12.0 [2025-03-12]
 
 * Add serve condition for [W3C Baggage](https://www.w3.org/TR/baggage/). For example, if you have instrumented your code with [OpenTelemetry](https://opentelemetry.io/docs/concepts/signals/baggage/) or [Datadog](https://docs.datadoghq.com/tracing/trace_collection/trace_context_propagation/), you don't need to implement your own [header propagation](/guides/header-propagation) and can now serve a variant based on a baggage key and value.
