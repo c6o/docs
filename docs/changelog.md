@@ -7,6 +7,11 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.14.0 [2025-03-17]
+
+* Allow setting of Kubernetes deployment and service labels for [Router deployments and services in Space Agent configuration](guides/spaceagent-config.md#router-pod-labels-and-annotations).
+* Fixed bug in W3C baggage serve condition.
+
 ## 2.13.0 [2025-03-16]
 
 * Allow setting of Kubernetes pod labels and annotations for [Router pods in Space Agent configuration](guides/spaceagent-config.md#router-pod-labels-and-annotations).
