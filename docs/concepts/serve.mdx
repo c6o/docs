@@ -33,13 +33,21 @@ Unlike traditional versioning, variants allow developers to test changes without
 - Developers can choose between original services or colleague’s variants
 - Multiple developers can work on different variants of the same service simultaneously
 
-## Benefits
+## Benefits of Codezero's Serve
 
 Serving variants enables developers to test changes in a production-like environment without deployment overhead, facilitating faster development cycles and reducing the complexity of microservice development.
 
-## Details
+This implementation allows developers to:
+- Test local changes against real cluster services without deployment overhead
+- Route specific traffic to their local instance while keeping cluster traffic undisturbed
+- Create multiple simultaneous variants that can be selectively accessed based on user ID or custom headers
+- Collaborate with team members who can see and use available service variants through the Service Catalog
 
-When you serve a local variant, the Codezero Space Agent creates a Serve Custom Resource.
+The architecture leverages Kubernetes' extensibility through Custom Resource Definitions while providing a seamless developer experience that bridges local development with cluster environments
+
+## Details (a.k.a What's Happening Under the Hood)
+
+When you serve a local variant, the Codezero Space Agent creates a Serve [Kubernetes Custom Resource](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 
 Based on the values in the Serve Custom Resource, the Codezero Operator performs the following tasks:
 1. It creates a new Codezero Router Deployment and changes the selector of the Service in the cluster to the new Router deployment.
@@ -50,7 +58,7 @@ The Router either forwards requests to the in-cluster service or local variants 
 
 ![Serve Details](./_media/serve.svg)
 
-When no local variant is served for a particular service, the Space Agent deletes the Serve Custom Resource.
+When no Local Variant is served for a particular service, the Space Agent deletes the Serve Custom Resource.
 The Operator deletes the Codezero Router Deployment and restores the selector of the Service to the original value.
 
-You can read more about configuration options for the Router in [Advanced Configuration Options for Space Agent](../guides/spaceagent-config.md).
+You can read about more in-depth configuration options for the Router in [Advanced Configuration Options for Space Agent](../guides/spaceagent-config.md).
