@@ -1,0 +1,27 @@
+---
+sidebar_position: 2
+---
+
+# Consuming Private Cloud Hostnames
+
+Use the following steps if you want to consume a private cloud hostname that is accessible to your cluster.
+
+1. For each hostname create a Kubernetes secret in the codezero namespace. The secret name must match the hostname of the external resource.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: b-1.democluster2.euesoh.c6.kafka.us-east-2.amazonaws.com
+  namespace: codezero
+  annotations:
+    codezero.io/credentials-infusion-type: none
+    codezero.io/credentials-infusion-port: "9096"
+type: Opaque
+```
+
+2. Consume `b-1.democluster2.euesoh.c6.kafka.us-east-2.amazonaws.com` service via the Codezero desktop app or `czctl`
+
+```bash
+echo "b-1.democluster2.euesoh.c6.kafka.us-east-2.amazonaws.com" | czctl consume apply
+```
