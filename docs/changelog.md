@@ -7,6 +7,13 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.15.0 [2025-03-19]
+
+* Add support for serving h2c (HTTP/2 without TLS) services.
+* Add support for persistent HTTP connections between cluster services and the Codezero Router.
+* Add support for [consuming private cloud hostnames](guides/consuming-hostnames.mdx).
+* Minor UI improvements in the app.
+
 ## 2.14.0 [2025-03-17]
 
 * Allow setting of Kubernetes deployment and service labels for [Router deployments and services in Space Agent configuration](guides/spaceagent-config.md#router-pod-labels-and-annotations).
