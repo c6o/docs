@@ -7,6 +7,12 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.16.0 [2025-03-26]
+
+* Allow override of image repository used for all deployments or individual deployments in Helm Chart.
+* Fix `czctl cert install` and `czctl cert uninstall` not working under certain conditions on macOS.
+* Various bug fixes and security updates.
+
 ## 2.15.0 [2025-03-19]
 
 * Add support for serving h2c (HTTP/2 without TLS) services.
