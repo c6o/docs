@@ -7,6 +7,11 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.16.1 [2025-04-09]
+
+* Fix deadlock in Space Agent that prevented users connecting to it under certain conditions.
+* Various security updates.
+
 ## 2.16.0 [2025-03-26]
 
 * Allow override of image repository used for all deployments or individual deployments in Helm Chart.
