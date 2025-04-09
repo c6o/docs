@@ -6,9 +6,9 @@ import TabItem from '@theme/TabItem';
 
 # Codezero Zero Trust Extension for Netlify
 
-A [Netlify extension](https://app.netlify.com/extensions/lm0he2wq-codezero-extension) that lets you use connect your Netlify site to your Codezero Teamspace.
+A [Netlify extension](https://app.netlify.com/extensions/codezero) that lets you use connect your Netlify site to your Codezero Teamspace.
 
-After installing the extension in Netlify, you'll need to configure it:
+After installing the Codezero ZERO TRUST Extension in Netlify, you'll need to configure it:
 
 1. In the Netlify app, navigate to the site you want to give access to your Codezero Teamspace
 2. Under _Extensions_, click on _Codezero Zero Trust_
