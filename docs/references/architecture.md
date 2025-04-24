@@ -11,7 +11,7 @@ Codezero is made up of components that run locally on your developer workstation
 ![Architecture Diagram](./_media/architecture.svg)
 
 * Hub (blue) is hosted by Codezero.
-* Teamspace is the System and Operator (yellow) components installed in your cluster.
+* Teamspace is our Space Agent and Operator (yellow) components installed in your cluster.
 * The CLI, Desktop App and Daemon are installed and run on your Local development machine (green).
 
 ## HUB
