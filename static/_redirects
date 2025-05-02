@@ -6,3 +6,8 @@
 /guides/compose /references/compose 301
 /guides/opa /references/opa 301
 /references/changelog /changelog 301
+/welcome/about-us / 301
+/concepts/intercept /concepts/serve 301
+/guides/collaboration / 301
+/guides/using-ui /references/desktop-app 301
+/concepts/mount /guides/mounting-in-cluster-volumes 301
