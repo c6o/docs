@@ -28,6 +28,22 @@ kubectl -n <NAMESPACE> get all --selector="app.kubernetes.io/managed-by"=codezer
 
 **NOTE:** You should close all Consume and Serve sessions before cleaning up residue in which case the Codezero Space Agent controller will perform the cleanup for you. If for whatever reason, it does not, you can remove the resources found and re-deploy your application to get back to a clean state.
 
+## Terminate a Served Variant in the Cluster
+
+You may encounter a situation where someone else is Serving a Variant and you (DevOps) need to terminate it.  You can do this with the following command:
+
+```bash
+kubectl delete serve -n <namespace> <service-name>
+```
+So for example if I wanted to delete the sample-project.sample-project-core service from our Sample-Project app in the [c6o/sample-project](https://raw.githubusercontent.com/c6o/sample-project/) repo, you would issue the following command:
+
+```bash
+kubectl delete serve -n sample-project sample-project-core
+```
+
+**NOTE:** To execute this command, you need access to the cluster via kubectl. Also, keep in mind that this command will delete all serves that other users might also be running.
+
+
 ## Getting Further Help
 
 If you have any further questions - please reach out to us via [support@codezero.io](mailto:support@codezero.io) or [Discord](https://discord.gg/wx3JkVjTPy) or your dedicated Slack Connect channel (if you're an Enterprise Customer).
