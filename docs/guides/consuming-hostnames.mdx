@@ -4,9 +4,48 @@ sidebar_position: 2
 
 # Consuming Private Cloud Hostnames
 
-Use the following steps if you want to consume a private cloud hostname that is accessible to your cluster.
+:::info[Prerequisites]
+- Your cluster needs to run Space Agent 2.17.0 or later.
+- You need Local Agent 2.17.0 or later.
+- You need macOS 15 or above with the [Network Extension enabled in the Codezero desktop app](./network-extension).
+:::
 
-1. For each hostname create a Kubernetes secret in the codezero namespace. The secret name must match the hostname of the external resource.
+1. Edit the ConfigMap `domain-forwarding` in the `codezero` namespace:
+
+```bash
+kubectl edit configmap domain-forwarding -n codezero
+```
+
+2. Set the `data.domains` value to the list of domains that you want to be able to consume, e.g.:
+
+```yaml
+apiVersion: v1
+data:
+  domains: |
+    - amazonaws.com
+kind: ConfigMap
+[…]
+```
+
+3. Consume the domains, e.g.:
+
+```bash
+echo "amazonaws.com" | czctl consume apply
+```
+
+4. Access the domains or any of its subdomains, e.g.:
+
+```bash
+$KAFKA_HOME/bin/kafka-broker-api-versions.sh --bootstrap-server b-1.democluster2.euesoh.c6.kafka.us-east-2.amazonaws.com:9096 --version
+```
+
+
+## Versions prior to 2.17.0
+
+If you are running version 2.16.1 or below, you can use the following steps if you want to consume a private cloud hostname that is accessible to your cluster.
+This approach does not support subdomains.
+
+1. For each fully qualified hostname create a Kubernetes secret in the codezero namespace. The secret name must match the hostname of the external resource.
 
 ```yaml
 apiVersion: v1

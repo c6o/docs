@@ -7,6 +7,12 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.17.0 [2025-05-07]
+
+* Add support for [consuming wildcard domains](guides/consuming-hostnames) on macOS 15+, e.g. `amazonaws.com` and all of its subdomains. Support for other operating systems will be coming in future versions.
+* Teamspace selector in Desktop app now has a search filter.
+* Various bug fixes and security updates.
+
 ## 2.16.1 [2025-04-09]
 
 * Fix deadlock in Space Agent that prevented users connecting to it under certain conditions.
