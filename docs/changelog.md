@@ -7,6 +7,10 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.17.1 [2025-05-08]
+
+* Fix deadlock in Space Agent that prevented users from connecting under certain conditions when in-cluster resources were changing.
+
 ## 2.17.0 [2025-05-07]
 
 * Add support for [consuming wildcard domains](guides/consuming-hostnames) on macOS 15+, e.g. `amazonaws.com` and all of its subdomains. Support for other operating systems will be coming in future versions.
