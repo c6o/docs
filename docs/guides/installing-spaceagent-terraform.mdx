@@ -17,9 +17,9 @@ org.apikey: your-org-api-key
 org.id: your-org-id
 space.name: name-of-teamspace
 ```
-You can get the first two variables in the Hub here: [https://hub.codezero.io/api-keys](https://hub.codezero.io/api-keys)
+You can retrieve the first two variables from [the Hub UI](https://hub.codezero.io/api-keys).
 
-Alternatively, you also have the option to put the API Key and Org ID in a Kubernetes secret. To store these in a k8s Secret, you need to set org.secret to the name of the secret. 
+Alternatively, you also have the option to put the API Key and Org ID in a Kubernetes secret. To store these in a k8s Secret, you need to set `org.secret` to the name of the secret. 
 
 The secret must contain two keys **CZ_HUB_ORG_ID** and **CZ_HUB_ORG_APIKEY**.
 
