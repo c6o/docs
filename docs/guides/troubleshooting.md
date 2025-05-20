@@ -41,6 +41,12 @@ So for example if I wanted to delete the sample-project.sample-project-core serv
 kubectl delete serve -n sample-project sample-project-core
 ```
 
+Or I wanted to delete the tutorial.service-b service from our live Tutorial app in the [c6o/tutorial-js](https://raw.githubusercontent.com/c6o/tutorial-js/) repo, you would issue the following command:
+
+```bash
+kubectl delete serve -n tutorial service-b
+```
+
 **NOTE:** To execute this command, you need access to the cluster via kubectl. Also, keep in mind that this command will delete all serves that other users might also be running.
 
 
