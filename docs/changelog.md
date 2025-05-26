@@ -7,6 +7,12 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.17.2 [2025-05-25]
+
+* Fix bug where long running connections between upstream and the Codezero router ([see details](https://docs.codezero.io/concepts/serve#details-aka-whats-happening-under-the-hood)) were prematurely closed resulting in 502 Bad Gateway errors after the first serve request was processed.
+* Remove 3s timeout on connections to local variants.
+* Various bug fixes and security updates.
+
 ## 2.17.1 [2025-05-08]
 
 * Fix deadlock in Space Agent that prevented users from connecting under certain conditions when in-cluster resources were changing.
