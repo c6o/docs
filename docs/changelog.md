@@ -7,6 +7,13 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.18.0 [2025-06-10]
+
+* Add new Login flow. This flow is making it easier to use Codezero in Devcontainers or Cloud IDEs.
+* Add new Settings Dialog to change application preferences like appearance and start on login.
+  You can access this dialog by clicking on your username in the lower left corner and then Settings.
+* Various bug fixes and security updates.
+
 ## 2.17.2 [2025-05-25]
 
 * Fix bug where long running connections between upstream and the Codezero router ([see details](https://docs.codezero.io/concepts/serve#details-aka-whats-happening-under-the-hood)) were prematurely closed resulting in 502 Bad Gateway errors after the first serve request was processed.
