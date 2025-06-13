@@ -38,6 +38,14 @@ const config = {
   },
   themes: ["@docusaurus/theme-mermaid"],
 
+  plugins: [
+    [
+      "docusaurus-plugin-generate-llms-txt",
+      {
+      },
+    ],
+  ],
+
   presets: [
     [
       "@docusaurus/preset-classic",
