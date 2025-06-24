@@ -13,4 +13,6 @@ These are the general steps for setting up a Teamspace. Apart from setting up a 
 
 Once a Teamspace is set up and certified, individual developers can then [install the Codezero Local Agent](./installation.md) to work with the Teamspace. Developers will not require credentials for the Kubernetes cluster as they authenticate to the Teamspace via the Hub.
 
-NOTE: We currently support Github and Google authentication.
+:::note
+Codezer currently supports Github and Google authentication using [WorkOS](https://workos.com/). If you require a different flavour of auth, [let us know](https://codezero.io/contact-us)!
+:::
