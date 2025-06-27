@@ -7,6 +7,14 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.19.0 [2025-06-26]
+
+* Desktop app: Better visualization of network traffic in the Network tab.
+* Desktop app: Reuse last variant condition as default value.
+* No more logging in every 30 days - Codezero Local Agent now automatically refreshes tokens.
+* Enable usage in CI/CD environments - `czctl` supports logging in with Org ID and API key.
+* Various bug fixes and security updates.
+
 ## 2.18.0 [2025-06-10]
 
 * Add new Login flow. This flow is making it easier to use Codezero in Devcontainers or Cloud IDEs.
