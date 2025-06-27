@@ -96,9 +96,11 @@ czctl auth login
 
 <div class="flags-table">
 
-| Flags   | Description                                                                                  |
-| ------- | -------------------------------------------------------------------------------------------- |
-| --token | If set, app will not try to open a browser window for login and will use the provided token. |
+| Flags    | Description                                                                                  |
+| -------- | -------------------------------------------------------------------------------------------- |
+| --token  | If set, app will not try to open a browser window for login and will use the provided token. |
+| --apikey | If set, app will not try to open a browser window for login and will use the provided apikey and orgID. |
+| --orgID  | If set, app will not try to open a browser window for login and will use the provided apikey and orgID. |
 
 </div>
 
