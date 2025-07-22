@@ -7,6 +7,11 @@ sidebar_position: 9
 We have a regular 2-week release cadence.
 NOTE: Please make sure that you update your Codezero Local Agent and the in-cluster Space Agent to the same version.
 
+## 2.20.0 [2025-07-21]
+
+* Add [Credential Infusion for MySQL](/guides/credential-infusion#setup-credential-infusion-for-mysql).
+* Various bug fixes and security updates.
+
 ## 2.19.0 [2025-06-26]
 
 * Desktop app: Better visualization of network traffic in the Network tab.
